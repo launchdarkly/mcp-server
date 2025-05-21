@@ -3,7 +3,7 @@ generation:
   devContainers:
     enabled: true
     schemaPath: ./schemas/openapi.json
-  sdkClassName: LaunchdarklyMcpServer
+  sdkClassName: LaunchDarkly
   maintainOpenAPIOrder: true
   usageSnippets:
     optionalPropertyRendering: withExample
@@ -14,11 +14,10 @@ generation:
     parameterOrderingFeb2024: true
     requestResponseComponentNamesFeb2024: true
     securityFeb2025: true
-    sharedErrorComponentsApr2025: true
+    sharedErrorComponentsApr2025: false
   auth:
-    oAuth2ClientCredentialsEnabled: true
-    oAuth2PasswordEnabled: true
-  sdkHooksConfigAccess: true
+    oAuth2ClientCredentialsEnabled: false
+    oAuth2PasswordEnabled: false
 typescript:
   version: 0.0.1
   additionalDependencies:
@@ -26,14 +25,14 @@ typescript:
     devDependencies: {}
     peerDependencies: {}
   additionalPackageJSON: {}
-  author: Speakeasy
+  author: LaunchDarkly
   clientServerStatusCodesAsErrors: true
   defaultErrorName: APIError
   enableCustomCodeRegions: false
   enableMCPServer: true
   enableReactQuery: false
   enumFormat: union
-  envVarPrefix: LAUNCHDARKLYMCPSERVER
+  envVarPrefix: LAUNCHDARKLY
   flattenGlobalSecurity: true
   flatteningOrder: parameters-first
   imports:
@@ -42,7 +41,7 @@ typescript:
       callbacks: models/callbacks
       errors: models/errors
       operations: models/operations
-      shared: models
+      shared: models/components
       webhooks: models/webhooks
   inputModelSuffix: input
   jsonpath: rfc9535
