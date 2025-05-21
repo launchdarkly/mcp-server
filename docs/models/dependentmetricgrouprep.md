@@ -1,0 +1,32 @@
+# DependentMetricGroupRep
+
+## Example Usage
+
+```typescript
+import { DependentMetricGroupRep } from "@launchdarkly/mcp-server";
+
+let value: DependentMetricGroupRep = {
+  key: "metric-group-key-123abc",
+  name: "My metric group",
+  kind: "funnel",
+  links: {
+    "parent": {
+      href: "/api/v2/projects/my-project",
+      type: "application/json",
+    },
+    "self": {
+      href: "/api/v2/projects/my-project/metric-groups/my-metric-group",
+      type: "application/json",
+    },
+  },
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                                                            | Type                                                                                                                                                                                             | Required                                                                                                                                                                                         | Description                                                                                                                                                                                      | Example                                                                                                                                                                                          |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `key`                                                                                                                                                                                            | *string*                                                                                                                                                                                         | :heavy_check_mark:                                                                                                                                                                               | A unique key to reference the metric group                                                                                                                                                       | metric-group-key-123abc                                                                                                                                                                          |
+| `name`                                                                                                                                                                                           | *string*                                                                                                                                                                                         | :heavy_check_mark:                                                                                                                                                                               | A human-friendly name for the metric group                                                                                                                                                       | My metric group                                                                                                                                                                                  |
+| `kind`                                                                                                                                                                                           | [models.DependentMetricGroupRepKind](../models/dependentmetricgrouprepkind.md)                                                                                                                   | :heavy_check_mark:                                                                                                                                                                               | The type of the metric group                                                                                                                                                                     | funnel                                                                                                                                                                                           |
+| `links`                                                                                                                                                                                          | Record<string, [models.Link](../models/link.md)>                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                                               | The location and content type of related resources                                                                                                                                               | {<br/>"parent": {<br/>"href": "/api/v2/projects/my-project",<br/>"type": "application/json"<br/>},<br/>"self": {<br/>"href": "/api/v2/projects/my-project/metric-groups/my-metric-group",<br/>"type": "application/json"<br/>}<br/>} |

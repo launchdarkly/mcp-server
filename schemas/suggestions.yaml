@@ -1,0 +1,2293 @@
+overlay: 1.0.0
+info:
+  title: Speakeasy Suggestions - LaunchDarkly REST API
+  version: 0.0.1
+actions:
+  - target: $["paths"]["/api/v2/integration-capabilities/flag-import"]["get"]
+    update:
+      x-speakeasy-name-override: list
+      x-speakeasy-group: flagImportConfigurations
+    x-speakeasy-metadata:
+      after: sdk.flagImportConfigurations.list()
+      before: sdk.Flag import configurations (beta).getFlagImportConfigurations()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/release-pipelines"]["get"]
+    update:
+      x-speakeasy-group: releasePipelines
+      x-speakeasy-name-override: getAll
+    x-speakeasy-metadata:
+      after: sdk.releasePipelines.getAll()
+      before: sdk.Release pipelines (beta).getAllReleasePipelines()
+      type: method-name
+  - target: $["paths"]["/api/v2/flag-links/projects/{projectKey}/flags/{featureFlagKey}/{id}"]["patch"]
+    update:
+      x-speakeasy-group: flagLinks
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.flagLinks.update()
+      before: sdk.Flag links (beta).updateFlagLink()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/flag-defaults"]["patch"]
+    update:
+      x-speakeasy-name-override: patchFlagDefaults
+    x-speakeasy-metadata:
+      after: sdk.projects.patchFlagDefaults()
+      before: sdk.Projects.patchFlagDefaultsByProject()
+      type: method-name
+  - target: $["paths"]["/api/v2/teams"]["get"]
+    update:
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.teams.list()
+      before: sdk.Teams.getTeams()
+      type: method-name
+  - target: $["paths"]["/api/v2/account/relay-auto-configs"]["get"]
+    update:
+      x-speakeasy-group: relayProxyConfigurations
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.relayProxyConfigurations.list()
+      before: sdk.Relay Proxy configurations.getRelayProxyConfigs()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/experimentation-settings"]["put"]
+    update:
+      x-speakeasy-name-override: updateSettings
+    x-speakeasy-metadata:
+      after: sdk.experiments.updateSettings()
+      before: sdk.Experiments.putExperimentationSettings()
+      type: method-name
+  - target: $["paths"]["/api/v2/flags/{projectKey}/{featureFlagKey}"]["delete"]
+    update:
+      x-speakeasy-group: featureFlags
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.featureFlags.delete()
+      before: sdk.Feature flags.deleteFeatureFlag()
+      type: method-name
+  - target: $["paths"]["/api/v2/usage/experimentation-units"]["get"]
+    update:
+      x-speakeasy-group: accountUsage
+      x-speakeasy-name-override: getExperimentationUnits
+    x-speakeasy-metadata:
+      after: sdk.accountUsage.getExperimentationUnits()
+      before: sdk.Account usage (beta).getExperimentationUnitsUsage()
+      type: method-name
+  - target: $["paths"]["/api/v2/usage/experimentation-keys"]["get"]
+    update:
+      x-speakeasy-group: accountUsage
+      x-speakeasy-name-override: getExperimentationKeys
+    x-speakeasy-metadata:
+      after: sdk.accountUsage.getExperimentationKeys()
+      before: sdk.Account usage (beta).getExperimentationKeysUsage()
+      type: method-name
+  - target: $["paths"]["/api/v2/users/{projectKey}/{environmentKey}"]["get"]
+    update:
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.users.list()
+      before: sdk.Users.getUsers()
+      type: method-name
+  - target: $["paths"]["/api/v2/integration-capabilities/big-segment-store/{projectKey}/{environmentKey}/{integrationKey}/{integrationId}"]["delete"]
+    update:
+      x-speakeasy-group: persistentStoreIntegrations
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.persistentStoreIntegrations.delete()
+      before: sdk.Persistent store integrations (beta).deleteBigSegmentStoreIntegration()
+      type: method-name
+  - target: $["paths"]["/api/v2/code-refs/repositories/{repo}/branch-delete-tasks"]["post"]
+    update:
+      x-speakeasy-group: codeReferences
+    x-speakeasy-metadata:
+      after: sdk.codeReferences.deleteBranches()
+      before: sdk.Code references.deleteBranches()
+      type: method-name
+  - target: $["paths"]["/api/v2/engineering-insights/insights/groups/{insightGroupKey}"]["patch"]
+    update:
+      x-speakeasy-name-override: updateGroup
+      x-speakeasy-group: insightsScores
+    x-speakeasy-metadata:
+      after: sdk.insightsScores.updateGroup()
+      before: sdk.Insights scores (beta).patchInsightGroup()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/layers"]["post"]
+    update:
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.layers.create()
+      before: sdk.Layers.createLayer()
+      type: method-name
+  - target: $["paths"]["/api/v2/flags/{projectKey}/{featureFlagKey}/expiring-user-targets/{environmentKey}"]["get"]
+    update:
+      x-speakeasy-group: featureFlags
+    x-speakeasy-metadata:
+      after: sdk.featureFlags.getExpiringUserTargets()
+      before: sdk.Feature flags.getExpiringUserTargets()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs/{configKey}"]["delete"]
+    update:
+      x-speakeasy-group: aiConfigs
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.aiConfigs.delete()
+      before: sdk.AI Configs (beta).deleteAIConfig()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs/{configKey}/metrics-by-variation"]["get"]
+    update:
+      x-speakeasy-group: aiConfigs
+      x-speakeasy-name-override: getMetricsByVariation
+    x-speakeasy-metadata:
+      after: sdk.aiConfigs.getMetricsByVariation()
+      before: sdk.AI Configs (beta).getAIConfigMetricsByVariation()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/scheduled-changes"]["post"]
+    update:
+      x-speakeasy-group: scheduledChanges
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.scheduledChanges.create()
+      before: sdk.Scheduled changes.postFlagConfigScheduledChanges()
+      type: method-name
+  - target: $["paths"]["/api/v2/segments/{projectKey}/{segmentKey}/expiring-user-targets/{environmentKey}"]["get"]
+    update:
+      x-speakeasy-name-override: getExpiringUserTargets
+    x-speakeasy-metadata:
+      after: sdk.segments.getExpiringUserTargets()
+      before: sdk.Segments.getExpiringUserTargetsForSegment()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/environments/{environmentKey}/context-instances/search"]["post"]
+    update:
+      x-speakeasy-name-override: search
+    x-speakeasy-metadata:
+      after: sdk.contexts.search()
+      before: sdk.Contexts.searchContextInstances()
+      type: method-name
+  - target: $["paths"]["/api/v2/engineering-insights/repositories"]["get"]
+    update:
+      x-speakeasy-group: insightsRepositories
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.insightsRepositories.list()
+      before: sdk.Insights repositories (beta).getInsightsRepositories()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/flags/{flagKey}/environments/{environmentKey}/migration-safety-issues"]["post"]
+    update:
+      x-speakeasy-group: featureFlags
+      x-speakeasy-name-override: getMigrationSafetyIssues
+    x-speakeasy-metadata:
+      after: sdk.featureFlags.getMigrationSafetyIssues()
+      before: sdk.Feature flags.postMigrationSafetyIssues()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/environments/{environmentKey}/segments/evaluate"]["post"]
+    update:
+      x-speakeasy-name-override: evaluateMembership
+    x-speakeasy-metadata:
+      after: sdk.segments.evaluateMembership()
+      before: sdk.Segments.getContextInstanceSegmentsMembershipByEnv()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}/metrics/{metricKey}/results"]["get"]
+    update:
+      x-speakeasy-name-override: getResults
+    x-speakeasy-metadata:
+      after: sdk.experiments.getResults()
+      before: sdk.Experiments.getExperimentResults()
+      type: method-name
+  - target: $["paths"]["/api/v2/integration-capabilities/featureStore/{projectKey}/{environmentKey}"]["get"]
+    update:
+      x-speakeasy-group: integrationDeliveryConfigurations
+      x-speakeasy-name-override: getByEnvironment
+    x-speakeasy-metadata:
+      after: sdk.integrationDeliveryConfigurations.getByEnvironment()
+      before: sdk.Integration delivery configurations (beta).getIntegrationDeliveryConfigurationByEnvironment()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/scheduled-changes/{id}"]["patch"]
+    update:
+      x-speakeasy-group: scheduledChanges
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.scheduledChanges.update()
+      before: sdk.Scheduled changes.patchFlagConfigScheduledChange()
+      type: method-name
+  - target: $["paths"]["/api/v2/account/relay-auto-configs"]["post"]
+    update:
+      x-speakeasy-group: relayProxyConfigurations
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.relayProxyConfigurations.create()
+      before: sdk.Relay Proxy configurations.postRelayAutoConfig()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs/{configKey}"]["patch"]
+    update:
+      x-speakeasy-group: aiConfigs
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.aiConfigs.update()
+      before: sdk.AI Configs (beta).patchAIConfig()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs/model-configs/restricted"]["post"]
+    update:
+      x-speakeasy-group: aiConfigs
+      x-speakeasy-name-override: addRestrictedModels
+    x-speakeasy-metadata:
+      after: sdk.aiConfigs.addRestrictedModels()
+      before: sdk.AI Configs (beta).postRestrictedModels()
+      type: method-name
+  - target: $["paths"]["/api/v2/flags/{projectKey}/{featureFlagKey}/expiring-targets/{environmentKey}"]["get"]
+    update:
+      x-speakeasy-group: featureFlags
+      x-speakeasy-name-override: getExpiringTargets
+    x-speakeasy-metadata:
+      after: sdk.featureFlags.getExpiringTargets()
+      before: sdk.Feature flags.getExpiringContextTargets()
+      type: method-name
+  - target: $["paths"]["/api/v2/auditlog"]["get"]
+    update:
+      x-speakeasy-group: auditLog
+      x-speakeasy-name-override: listEntries
+    x-speakeasy-metadata:
+      after: sdk.auditLog.listEntries()
+      before: sdk.Audit log.getAuditLogEntries()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}"]["patch"]
+    update:
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.projects.update()
+      before: sdk.Projects.patchProject()
+      type: method-name
+  - target: $["paths"]["/api/v2/flag-links/projects/{projectKey}/flags/{featureFlagKey}"]["post"]
+    update:
+      x-speakeasy-group: flagLinks
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.flagLinks.create()
+      before: sdk.Flag links (beta).createFlagLink()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/flags/{flagKey}/release"]["put"]
+    update:
+      x-speakeasy-group: releases
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.releases.create()
+      before: sdk.Releases (beta).createReleaseForFlag()
+      type: method-name
+  - target: $["paths"]["/api/v2/members/{id}/teams"]["post"]
+    update:
+      x-speakeasy-group: accountMembers
+      x-speakeasy-name-override: addToTeam
+    x-speakeasy-metadata:
+      after: sdk.accountMembers.addToTeam()
+      before: sdk.Account members.postMemberTeams()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/environments/{environmentKey}/contexts/search"]["post"]
+    update:
+      x-speakeasy-name-override: performSearch
+    x-speakeasy-metadata:
+      after: sdk.contexts.performSearch()
+      before: sdk.Contexts.searchContexts()
+      type: method-name
+  - target: $["paths"]["/api/v2/flags/{projectKey}/{flagKey}/release"]["get"]
+    update:
+      x-speakeasy-group: releases
+      x-speakeasy-name-override: getByFlagKey
+    x-speakeasy-metadata:
+      after: sdk.releases.getByFlagKey()
+      before: sdk.Releases (beta).getReleaseByFlagKey()
+      type: method-name
+  - target: $["paths"]["/api/v2/usage/streams/{source}/bysdkversion"]["get"]
+    update:
+      x-speakeasy-name-override: retrieveStreamUsage
+      x-speakeasy-group: accountUsageBeta
+    x-speakeasy-metadata:
+      after: sdk.accountUsageBeta.retrieveStreamUsage()
+      before: sdk.Account usage (beta).getStreamUsageBySdkVersion()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/experimentation-settings"]["get"]
+    update:
+      x-speakeasy-name-override: getSettings
+    x-speakeasy-metadata:
+      after: sdk.experiments.getSettings()
+      before: sdk.Experiments.getExperimentationSettings()
+      type: method-name
+  - target: $["paths"]["/api/v2/engineering-insights/deployments/{deploymentID}"]["patch"]
+    update:
+      x-speakeasy-group: insightsDeployments
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.insightsDeployments.update()
+      before: sdk.Insights deployments (beta).updateDeployment()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}"]["patch"]
+    update:
+      x-speakeasy-name-override: patch
+    x-speakeasy-metadata:
+      after: sdk.experiments.patch()
+      before: sdk.Experiments.patchExperiment()
+      type: method-name
+  - target: $["paths"]["/api/v2/webhooks/{id}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.webhooks.get()
+      before: sdk.Webhooks.getWebhook()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/environments/{environmentKey}/contexts/{kind}/{key}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.contexts.get()
+      before: sdk.Contexts.getContexts()
+      type: method-name
+  - target: $["paths"]["/api/v2/code-refs/repositories/{repo}/branches/{branch}/extinction-events"]["post"]
+    update:
+      x-speakeasy-group: codeReferences
+      x-speakeasy-name-override: createExtinctionEvent
+    x-speakeasy-metadata:
+      after: sdk.codeReferences.createExtinctionEvent()
+      before: sdk.Code references.postExtinction()
+      type: method-name
+  - target: $["paths"]["/api/v2/integration-capabilities/flag-import/{projectKey}/{integrationKey}/{integrationId}"]["patch"]
+    update:
+      x-speakeasy-group: flagImportConfigurations
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.flagImportConfigurations.update()
+      before: sdk.Flag import configurations (beta).patchFlagImportConfiguration()
+      type: method-name
+  - target: $["paths"]["/api/v2/teams/{teamKey}"]["delete"]
+    update:
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.teams.delete()
+      before: sdk.Teams.deleteTeam()
+      type: method-name
+  - target: $["paths"]["/api/v2/teams/{teamKey}/roles"]["get"]
+    update:
+      x-speakeasy-name-override: getRoles
+    x-speakeasy-metadata:
+      after: sdk.teams.getRoles()
+      before: sdk.Teams.getTeamRoles()
+      type: method-name
+  - target: $["paths"]["/api/v2/members"]["get"]
+    update:
+      x-speakeasy-group: accountMembers
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.accountMembers.list()
+      before: sdk.Account members.getMembers()
+      type: method-name
+  - target: $["paths"]["/api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/contexts"]["post"]
+    update:
+      x-speakeasy-name-override: updateContextTargets
+    x-speakeasy-metadata:
+      after: sdk.segments.updateContextTargets()
+      before: sdk.Segments.updateBigSegmentContextTargets()
+      type: method-name
+  - target: $["paths"]["/api/v2/templates"]["get"]
+    update:
+      x-speakeasy-name-override: list
+      x-speakeasy-group: workflowTemplates
+    x-speakeasy-metadata:
+      after: sdk.workflowTemplates.list()
+      before: sdk.Workflow templates.getWorkflowTemplates()
+      type: method-name
+  - target: $["paths"]["/api/v2/integration-capabilities/flag-import/{projectKey}/{integrationKey}/{integrationId}"]["get"]
+    update:
+      x-speakeasy-group: flagImportConfigurations
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.flagImportConfigurations.get()
+      before: sdk.Flag import configurations (beta).getFlagImportConfiguration()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/environments"]["get"]
+    update:
+      x-speakeasy-name-override: listByProject
+    x-speakeasy-metadata:
+      after: sdk.environments.listByProject()
+      before: sdk.Environments.getEnvironmentsByProject()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs/{configKey}/variations/{variationKey}"]["delete"]
+    update:
+      x-speakeasy-group: aiConfigs
+      x-speakeasy-name-override: deleteVariation
+    x-speakeasy-metadata:
+      after: sdk.aiConfigs.deleteVariation()
+      before: sdk.AI Configs (beta).deleteAIConfigVariation()
+      type: method-name
+  - target: $["paths"]["/api/v2/engineering-insights/insights/groups/{insightGroupKey}"]["delete"]
+    update:
+      x-speakeasy-group: insightsScores
+      x-speakeasy-name-override: deleteGroup
+    x-speakeasy-metadata:
+      after: sdk.insightsScores.deleteGroup()
+      before: sdk.Insights scores (beta).deleteInsightGroup()
+      type: method-name
+  - target: $["paths"]["/api/v2/tokens/{id}"]["get"]
+    update:
+      x-speakeasy-group: accessTokens
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.accessTokens.get()
+      before: sdk.Access tokens.getToken()
+      type: method-name
+  - target: $["paths"]["/api/v2/users/{projectKey}/{environmentKey}/{userKey}/flags/{featureFlagKey}"]["get"]
+    update:
+      x-speakeasy-name-override: getFlagSetting
+      x-speakeasy-group: userSettings
+    x-speakeasy-metadata:
+      after: sdk.userSettings.getFlagSetting()
+      before: sdk.User settings.getUserFlagSetting()
+      type: method-name
+  - target: $["paths"]["/api/v2/destinations/{projectKey}/{environmentKey}/{id}"]["delete"]
+    update:
+      x-speakeasy-group: dataExportDestinations
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.dataExportDestinations.delete()
+      before: sdk.Data Export destinations.deleteDestination()
+      type: method-name
+  - target: $["paths"]["/api/v2/approval-requests/{id}/apply"]["post"]
+    update:
+      x-speakeasy-name-override: apply
+    x-speakeasy-metadata:
+      after: sdk.approvals.apply()
+      before: sdk.Approvals.postApprovalRequestApply()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/environments/{environmentKey}/context-instances/{id}"]["get"]
+    update:
+      x-speakeasy-name-override: getInstances
+    x-speakeasy-metadata:
+      after: sdk.contexts.getInstances()
+      before: sdk.Contexts.getContextInstances()
+      type: method-name
+  - target: $["paths"]["/api/v2/code-refs/extinctions"]["get"]
+    update:
+      x-speakeasy-group: codereferences
+      x-speakeasy-name-override: listExtinctions
+    x-speakeasy-metadata:
+      after: sdk.codereferences.listExtinctions()
+      before: sdk.Code references.getExtinctions()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/followers/{memberId}"]["put"]
+    update:
+      x-speakeasy-group: followFlags
+      x-speakeasy-name-override: addFollower
+    x-speakeasy-metadata:
+      after: sdk.followFlags.addFollower()
+      before: sdk.Follow flags.putFlagFollower()
+      type: method-name
+  - target: $["paths"]["/api/v2/code-refs/repositories/{repo}"]["delete"]
+    update:
+      x-speakeasy-group: codeReferences
+    x-speakeasy-metadata:
+      after: sdk.codeReferences.deleteRepository()
+      before: sdk.Code references.deleteRepository()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{id}"]["delete"]
+    update:
+      x-speakeasy-name-override: deleteFlagRequest
+    x-speakeasy-metadata:
+      after: sdk.approvals.deleteFlagRequest()
+      before: sdk.Approvals.deleteApprovalRequestForFlag()
+      type: method-name
+  - target: $["paths"]["/api/v2/members/{id}"]["patch"]
+    update:
+      x-speakeasy-group: accountMembers
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.accountMembers.update()
+      before: sdk.Account members.patchMember()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects"]["get"]
+    update:
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.projects.list()
+      before: sdk.Projects.getProjects()
+      type: method-name
+  - target: $["paths"]["/api/v2/account/relay-auto-configs/{id}/reset"]["post"]
+    update:
+      x-speakeasy-group: relayProxyConfigurations
+      x-speakeasy-name-override: reset
+    x-speakeasy-metadata:
+      after: sdk.relayProxyConfigurations.reset()
+      before: sdk.Relay Proxy configurations.resetRelayAutoConfig()
+      type: method-name
+  - target: $["paths"]["/api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}"]["delete"]
+    update:
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.segments.delete()
+      before: sdk.Segments.deleteSegment()
+      type: method-name
+  - target: $["paths"]["/api/v2/user-attributes/{projectKey}/{environmentKey}"]["get"]
+    update:
+      x-speakeasy-name-override: getAttributeNames
+      x-speakeasy-group: users
+    x-speakeasy-metadata:
+      after: sdk.users.getAttributeNames()
+      before: sdk.Users (beta).getUserAttributeNames()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.experiments.get()
+      before: sdk.Experiments.getExperiment()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}/metric-groups/{metricGroupKey}/results"]["get"]
+    update:
+      x-speakeasy-name-override: getResultsForMetricGroup
+    x-speakeasy-metadata:
+      after: sdk.experiments.getResultsForMetricGroup()
+      before: sdk.Experiments.getExperimentResultsForMetricGroup()
+      type: method-name
+  - target: $["paths"]["/api/v2/flag-links/projects/{projectKey}/flags/{featureFlagKey}"]["get"]
+    update:
+      x-speakeasy-group: flagLinks
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.flagLinks.list()
+      before: sdk.Flag links (beta).getFlagLinks()
+      type: method-name
+  - target: $["paths"]["/api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/contexts/{contextKey}"]["get"]
+    update:
+      x-speakeasy-name-override: getMembershipForContext
+    x-speakeasy-metadata:
+      after: sdk.segments.getMembershipForContext()
+      before: sdk.Segments.getSegmentMembershipForContext()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/metric-groups/{metricGroupKey}"]["patch"]
+    update:
+      x-speakeasy-group: metrics
+    x-speakeasy-metadata:
+      after: sdk.metrics.patchMetricGroup()
+      before: sdk.Metrics (beta).patchMetricGroup()
+      type: method-name
+  - target: $["paths"]["/api/v2/webhooks/{id}"]["delete"]
+    update:
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.webhooks.delete()
+      before: sdk.Webhooks.deleteWebhook()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests-flag-copy"]["post"]
+    update:
+      x-speakeasy-name-override: createCopyConfigRequest
+    x-speakeasy-metadata:
+      after: sdk.approvals.createCopyConfigRequest()
+      before: sdk.Approvals.postFlagCopyConfigApprovalRequest()
+      type: method-name
+  - target: $["paths"]["/api/v2/engineering-insights/charts/lead-time"]["get"]
+    update:
+      x-speakeasy-name-override: getLeadTime
+      x-speakeasy-group: insightsCharts
+    x-speakeasy-metadata:
+      after: sdk.insightsCharts.getLeadTime()
+      before: sdk.Insights charts (beta).getLeadTimeChart()
+      type: method-name
+  - target: $["paths"]["/api/v2/approval-requests/{id}"]["delete"]
+    update:
+      x-speakeasy-name-override: deleteRequest
+    x-speakeasy-metadata:
+      after: sdk.approvals.deleteRequest()
+      before: sdk.Approvals.deleteApprovalRequest()
+      type: method-name
+  - target: $["paths"]["/api/v2/applications/{applicationKey}/versions"]["get"]
+    update:
+      x-speakeasy-group: applications
+      x-speakeasy-name-override: getVersions
+    x-speakeasy-metadata:
+      after: sdk.applications.getVersions()
+      before: sdk.Applications (beta).getApplicationVersions()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/environments/{environmentKey}/context-instances/{id}"]["delete"]
+    update:
+      x-speakeasy-name-override: deleteInstances
+    x-speakeasy-metadata:
+      after: sdk.contexts.deleteInstances()
+      before: sdk.Contexts.deleteContextInstances()
+      type: method-name
+  - target: $["paths"]["/api/v2/integrations/{integrationKey}/{id}"]["delete"]
+    update:
+      x-speakeasy-group: integrationAuditLogSubscriptions
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.integrationAuditLogSubscriptions.delete()
+      before: sdk.Integration audit log subscriptions.deleteSubscription()
+      type: method-name
+  - target: $["paths"]["/api/v2/engineering-insights/charts/flags/status"]["get"]
+    update:
+      x-speakeasy-name-override: getFlagStatus
+      x-speakeasy-group: insightsCharts
+    x-speakeasy-metadata:
+      after: sdk.insightsCharts.getFlagStatus()
+      before: sdk.Insights charts (beta).getFlagStatusChart()
+      type: method-name
+  - target: $["paths"]["/api/v2/segments/{projectKey}/{environmentKey}"]["get"]
+    update:
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.segments.list()
+      before: sdk.Segments.getSegments()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/flags/{flagKey}/release/phases/{phaseId}"]["put"]
+    update:
+      x-speakeasy-group: releases
+    x-speakeasy-metadata:
+      after: sdk.releases.updatePhaseStatus()
+      before: sdk.Releases (beta).updatePhaseStatus()
+      type: method-name
+  - target: $["paths"]["/api/v2/destinations/generate-warehouse-destination-key-pair"]["post"]
+    update:
+      x-speakeasy-group: dataExportDestinations
+      x-speakeasy-name-override: generateWarehouseDestinationKeyPair
+    x-speakeasy-metadata:
+      after: sdk.dataExportDestinations.generateWarehouseDestinationKeyPair()
+      before: sdk.Data Export destinations.postGenerateWarehouseDestinationKeyPair()
+      type: method-name
+  - target: $["paths"]["/api/v2/users/{projectKey}/{userKey}/expiring-user-targets/{environmentKey}"]["patch"]
+    update:
+      x-speakeasy-group: userSettings
+      x-speakeasy-name-override: updateExpiringTargets
+    x-speakeasy-metadata:
+      after: sdk.userSettings.updateExpiringTargets()
+      before: sdk.User settings.patchExpiringFlagsForUser()
+      type: method-name
+  - target: $["paths"]["/api/v2/integration-capabilities/big-segment-store/{projectKey}/{environmentKey}/{integrationKey}/{integrationId}"]["patch"]
+    update:
+      x-speakeasy-name-override: patchBigSegmentStore
+      x-speakeasy-group: persistentStoreIntegrations
+    x-speakeasy-metadata:
+      after: sdk.persistentStoreIntegrations.patchBigSegmentStore()
+      before: sdk.Persistent store integrations (beta).patchBigSegmentStoreIntegration()
+      type: method-name
+  - target: $["paths"]["/api/v2/integration-capabilities/big-segment-store"]["get"]
+    update:
+      x-speakeasy-group: persistentStoreIntegrations
+      x-speakeasy-name-override: listBigSegmentStores
+    x-speakeasy-metadata:
+      after: sdk.persistentStoreIntegrations.listBigSegmentStores()
+      before: sdk.Persistent store integrations (beta).getBigSegmentStoreIntegrations()
+      type: method-name
+  - target: $["paths"]["/api/v2/flags/{projectKey}/{featureFlagKey}/dependent-flags"]["get"]
+    update:
+      x-speakeasy-group: featureFlags
+      x-speakeasy-name-override: listDependentFlags
+    x-speakeasy-metadata:
+      after: sdk.featureFlags.listDependentFlags()
+      before: sdk.Feature flags (beta).getDependentFlags()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{id}/reviews"]["post"]
+    update:
+      x-speakeasy-name-override: reviewFlagRequest
+    x-speakeasy-metadata:
+      after: sdk.approvals.reviewFlagRequest()
+      before: sdk.Approvals.postApprovalRequestReviewForFlag()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs/{configKey}/variations"]["post"]
+    update:
+      x-speakeasy-group: aiConfigs
+      x-speakeasy-name-override: createVariation
+    x-speakeasy-metadata:
+      after: sdk.aiConfigs.createVariation()
+      before: sdk.AI Configs (beta).postAIConfigVariation()
+      type: method-name
+  - target: $["paths"]["/api/v2/usage/streams/{source}"]["get"]
+    update:
+      x-speakeasy-group: accountUsage
+    x-speakeasy-metadata:
+      after: sdk.accountUsage.getStreamUsage()
+      before: sdk.Account usage (beta).getStreamUsage()
+      type: method-name
+  - target: $["paths"]["/api/v2/approval-requests"]["post"]
+    update:
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.approvals.create()
+      before: sdk.Approvals.postApprovalRequest()
+      type: method-name
+  - target: $["paths"]["/api/v2/integration-capabilities/featureStore/{projectKey}/{environmentKey}/{integrationKey}/{id}"]["patch"]
+    update:
+      x-speakeasy-group: integrationDeliveryConfigurations
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.integrationDeliveryConfigurations.update()
+      before: sdk.Integration delivery configurations (beta).patchIntegrationDeliveryConfiguration()
+      type: method-name
+  - target: $["paths"]["/api/v2/flags/{projectKey}/{environmentKey}/{featureFlagKey}/dependent-flags"]["get"]
+    update:
+      x-speakeasy-name-override: getDependentByEnv
+      x-speakeasy-group: featureFlags
+    x-speakeasy-metadata:
+      after: sdk.featureFlags.getDependentByEnv()
+      before: sdk.Feature flags (beta).getDependentFlagsByEnv()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs/model-configs"]["get"]
+    update:
+      x-speakeasy-group: aiConfigs
+      x-speakeasy-name-override: listModels
+    x-speakeasy-metadata:
+      after: sdk.aiConfigs.listModels()
+      before: sdk.AI Configs (beta).listModelConfigs()
+      type: method-name
+  - target: $["paths"]["/api/v2/code-refs/statistics"]["get"]
+    update:
+      x-speakeasy-group: codeReferences
+      x-speakeasy-name-override: getLinks
+    x-speakeasy-metadata:
+      after: sdk.codeReferences.getLinks()
+      before: sdk.Code references.getRootStatistic()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs/{configKey}/variations/{variationKey}"]["patch"]
+    update:
+      x-speakeasy-group: aiConfigs
+      x-speakeasy-name-override: updateVariation
+    x-speakeasy-metadata:
+      after: sdk.aiConfigs.updateVariation()
+      before: sdk.AI Configs (beta).patchAIConfigVariation()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/environments/{environmentKey}/experiments"]["post"]
+    update:
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.experiments.create()
+      before: sdk.Experiments.createExperiment()
+      type: method-name
+  - target: $["paths"]["/api/v2/engineering-insights/charts/flags/stale"]["get"]
+    update:
+      x-speakeasy-group: insightsCharts
+    x-speakeasy-metadata:
+      after: sdk.insightsCharts.getStaleFlagsChart()
+      before: sdk.Insights charts (beta).getStaleFlagsChart()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs/model-configs"]["post"]
+    update:
+      x-speakeasy-group: aiConfigs
+      x-speakeasy-name-override: createModelConfig
+    x-speakeasy-metadata:
+      after: sdk.aiConfigs.createModelConfig()
+      before: sdk.AI Configs (beta).postModelConfig()
+      type: method-name
+  - target: $["paths"]["/api/v2/integration-configurations/keys/{integrationKey}"]["post"]
+    update:
+      x-speakeasy-group: integrations
+      x-speakeasy-name-override: createConfiguration
+    x-speakeasy-metadata:
+      after: sdk.integrations.createConfiguration()
+      before: sdk.Integrations (beta).createIntegrationConfiguration()
+      type: method-name
+  - target: $["paths"]["/api/v2/applications/{applicationKey}"]["get"]
+    update:
+      x-speakeasy-group: applications
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.applications.get()
+      before: sdk.Applications (beta).getApplication()
+      type: method-name
+  - target: $["paths"]["/api/v2/code-refs/repositories"]["get"]
+    update:
+      x-speakeasy-group: codeReferences
+      x-speakeasy-name-override: listRepositories
+    x-speakeasy-metadata:
+      after: sdk.codeReferences.listRepositories()
+      before: sdk.Code references.getRepositories()
+      type: method-name
+  - target: $["paths"]["/api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/imports"]["post"]
+    update:
+      x-speakeasy-name-override: createBigImport
+    x-speakeasy-metadata:
+      after: sdk.segments.createBigImport()
+      before: sdk.Segments.createBigSegmentImport()
+      type: method-name
+  - target: $["paths"]["/api/v2/engineering-insights/charts/releases/frequency"]["get"]
+    update:
+      x-speakeasy-group: insightsCharts
+    x-speakeasy-metadata:
+      after: sdk.insightsCharts.getReleaseFrequencyChart()
+      before: sdk.Insights charts (beta).getReleaseFrequencyChart()
+      type: method-name
+  - target: $["paths"]["/api/v2/integration-capabilities/featureStore/{projectKey}/{environmentKey}/{integrationKey}/{id}"]["get"]
+    update:
+      x-speakeasy-name-override: getById
+      x-speakeasy-group: integrationDeliveryConfigurations
+    x-speakeasy-metadata:
+      after: sdk.integrationDeliveryConfigurations.getById()
+      before: sdk.Integration delivery configurations (beta).getIntegrationDeliveryConfigurationById()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests"]["get"]
+    update:
+      x-speakeasy-name-override: listForFlag
+    x-speakeasy-metadata:
+      after: sdk.approvals.listForFlag()
+      before: sdk.Approvals.getApprovalsForFlag()
+      type: method-name
+  - target: $["paths"]["/api/v2/flags/{projectKey}/{featureFlagKey}/expiring-user-targets/{environmentKey}"]["patch"]
+    update:
+      x-speakeasy-group: featureFlags
+    x-speakeasy-metadata:
+      after: sdk.featureFlags.patchExpiringUserTargets()
+      before: sdk.Feature flags.patchExpiringUserTargets()
+      type: method-name
+  - target: $["paths"]["/api/v2/destinations/{projectKey}/{environmentKey}"]["post"]
+    update:
+      x-speakeasy-group: dataExportDestinations
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.dataExportDestinations.create()
+      before: sdk.Data Export destinations.postDestination()
+      type: method-name
+  - target: $["paths"]["/api/v2/members"]["post"]
+    update:
+      x-speakeasy-group: accountMembers
+      x-speakeasy-name-override: invite
+    x-speakeasy-metadata:
+      after: sdk.accountMembers.invite()
+      before: sdk.Account members.postMembers()
+      type: method-name
+  - target: $["paths"]["/api/v2/integration-configurations/{integrationConfigurationId}"]["get"]
+    update:
+      x-speakeasy-group: integrations
+      x-speakeasy-name-override: getConfiguration
+    x-speakeasy-metadata:
+      after: sdk.integrations.getConfiguration()
+      before: sdk.Integrations (beta).getIntegrationConfiguration()
+      type: method-name
+  - target: $["paths"]["/api/v2/flag-statuses/{projectKey}/{environmentKey}/{featureFlagKey}"]["get"]
+    update:
+      x-speakeasy-group: featureFlags
+      x-speakeasy-name-override: status
+    x-speakeasy-metadata:
+      after: sdk.featureFlags.status()
+      before: sdk.Feature flags.getFeatureFlagStatus()
+      type: method-name
+  - target: $["paths"]["/api/v2/usage/service-connections"]["get"]
+    update:
+      x-speakeasy-group: accountUsage
+    x-speakeasy-metadata:
+      after: sdk.accountUsage.getServiceConnectionUsage()
+      before: sdk.Account usage (beta).getServiceConnectionUsage()
+      type: method-name
+  - target: $["paths"]["/api/v2/flags/{projectKey}"]["post"]
+    update:
+      x-speakeasy-group: featureFlags
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.featureFlags.create()
+      before: sdk.Feature flags.postFeatureFlag()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/environments/{environmentKey}/holdouts/{holdoutKey}"]["get"]
+    update:
+      x-speakeasy-group: holdouts
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.holdouts.get()
+      before: sdk.Holdouts (beta).getHoldout()
+      type: method-name
+  - target: $["paths"]["/api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/users"]["post"]
+    update:
+      x-speakeasy-name-override: updateBigTargets
+    x-speakeasy-metadata:
+      after: sdk.segments.updateBigTargets()
+      before: sdk.Segments.updateBigSegmentTargets()
+      type: method-name
+  - target: $["paths"]["/api/v2/oauth/clients/{clientId}"]["patch"]
+    update:
+      x-speakeasy-name-override: patch
+      x-speakeasy-group: oauth2Clients
+    x-speakeasy-metadata:
+      after: sdk.oauth2Clients.patch()
+      before: sdk.OAuth2 Clients.patchOAuthClient()
+      type: method-name
+  - target: $["paths"]["/api/v2/approval-requests/{id}/reviews"]["post"]
+    update:
+      x-speakeasy-name-override: reviewRequest
+    x-speakeasy-metadata:
+      after: sdk.approvals.reviewRequest()
+      before: sdk.Approvals.postApprovalRequestReview()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.projects.get()
+      before: sdk.Projects.getProject()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/environments/{environmentKey}/context-attributes/{attributeName}"]["get"]
+    update:
+      x-speakeasy-name-override: getAttributeValues
+    x-speakeasy-metadata:
+      after: sdk.contexts.getAttributeValues()
+      before: sdk.Contexts.getContextAttributeValues()
+      type: method-name
+  - target: $["paths"]["/api/v2/flags/{projectKey}/{featureFlagKey}/triggers/{environmentKey}/{id}"]["delete"]
+    update:
+      x-speakeasy-group: flagTriggers
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.flagTriggers.delete()
+      before: sdk.Flag triggers.deleteTriggerWorkflow()
+      type: method-name
+  - target: $["paths"]["/api/v2/users/{projectKey}/{userKey}/expiring-user-targets/{environmentKey}"]["get"]
+    update:
+      x-speakeasy-group: userSettings
+    x-speakeasy-metadata:
+      after: sdk.userSettings.getExpiringFlagsForUser()
+      before: sdk.User settings.getExpiringFlagsForUser()
+      type: method-name
+  - target: $["paths"]["/api/v2/tokens/{id}"]["delete"]
+    update:
+      x-speakeasy-group: tokens
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.tokens.delete()
+      before: sdk.Access tokens.deleteToken()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects"]["post"]
+    update:
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.projects.create()
+      before: sdk.Projects.postProject()
+      type: method-name
+  - target: $["paths"]["/api/v2/code-refs/repositories/{repo}/branches/{branch}"]["get"]
+    update:
+      x-speakeasy-group: codeReferences
+    x-speakeasy-metadata:
+      after: sdk.codeReferences.getBranch()
+      before: sdk.Code references.getBranch()
+      type: method-name
+  - target: $["paths"]["/api/v2/integration-capabilities/featureStore/{projectKey}/{environmentKey}/{integrationKey}/{id}"]["delete"]
+    update:
+      x-speakeasy-group: integrationDeliveryConfigurations
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.integrationDeliveryConfigurations.delete()
+      before: sdk.Integration delivery configurations (beta).deleteIntegrationDeliveryConfiguration()
+      type: method-name
+  - target: $["paths"]["/api/v2/account/relay-auto-configs/{id}"]["patch"]
+    update:
+      x-speakeasy-group: relayProxyConfigurations
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.relayProxyConfigurations.update()
+      before: sdk.Relay Proxy configurations.patchRelayAutoConfig()
+      type: method-name
+  - target: $["paths"]["/api/v2/flags/{projectKey}/{featureFlagKey}/triggers/{environmentKey}"]["get"]
+    update:
+      x-speakeasy-name-override: list
+      x-speakeasy-group: flagTriggers
+    x-speakeasy-metadata:
+      after: sdk.flagTriggers.list()
+      before: sdk.Flag triggers.getTriggerWorkflows()
+      type: method-name
+  - target: $["paths"]["/api/v2/destinations"]["get"]
+    update:
+      x-speakeasy-name-override: list
+      x-speakeasy-group: dataExportDestinations
+    x-speakeasy-metadata:
+      after: sdk.dataExportDestinations.list()
+      before: sdk.Data Export destinations.getDestinations()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/environments/{environmentKey}/flags/evaluate"]["post"]
+    update:
+      x-speakeasy-name-override: evaluateFlags
+    x-speakeasy-metadata:
+      after: sdk.contexts.evaluateFlags()
+      before: sdk.Contexts.evaluateContextInstance()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{id}/apply"]["post"]
+    update:
+      x-speakeasy-name-override: applyRequest
+    x-speakeasy-metadata:
+      after: sdk.approvals.applyRequest()
+      before: sdk.Approvals.postApprovalRequestApplyForFlag()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/context-kinds"]["get"]
+    update:
+      x-speakeasy-name-override: listKinds
+    x-speakeasy-metadata:
+      after: sdk.contexts.listKinds()
+      before: sdk.Contexts.getContextKindsByProjectKey()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}"]["delete"]
+    update:
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.projects.delete()
+      before: sdk.Projects.deleteProject()
+      type: method-name
+  - target: $["paths"]["/api/v2/auditlog"]["post"]
+    update:
+      x-speakeasy-group: auditLog
+      x-speakeasy-name-override: searchEntries
+    x-speakeasy-metadata:
+      after: sdk.auditLog.searchEntries()
+      before: sdk.Audit log.postAuditLogEntries()
+      type: method-name
+  - target: $["paths"]["/api/v2/teams"]["post"]
+    update:
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.teams.create()
+      before: sdk.Teams.postTeam()
+      type: method-name
+  - target: $["paths"]["/api/v2/engineering-insights/repositories/projects"]["put"]
+    update:
+      x-speakeasy-group: insightsRepositories
+      x-speakeasy-name-override: associate
+    x-speakeasy-metadata:
+      after: sdk.insightsRepositories.associate()
+      before: sdk.Insights repositories (beta).associateRepositoriesAndProjects()
+      type: method-name
+  - target: $["paths"]["/api/v2/teams/{teamKey}/members"]["post"]
+    update:
+      x-speakeasy-name-override: addMembers
+    x-speakeasy-metadata:
+      after: sdk.teams.addMembers()
+      before: sdk.Teams.postTeamMembers()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/release-pipelines/{pipelineKey}"]["put"]
+    update:
+      x-speakeasy-group: releasePipelines
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.releasePipelines.update()
+      before: sdk.Release pipelines (beta).putReleasePipeline()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs/model-configs/restricted"]["delete"]
+    update:
+      x-speakeasy-group: aiConfigs
+    x-speakeasy-metadata:
+      after: sdk.aiConfigs.deleteRestrictedModels()
+      before: sdk.AI Configs (beta).deleteRestrictedModels()
+      type: method-name
+  - target: $["paths"]["/api/v2/flags/{projectKey}"]["get"]
+    update:
+      x-speakeasy-group: featureFlags
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.featureFlags.list()
+      before: sdk.Feature flags.getFeatureFlags()
+      type: method-name
+  - target: $["paths"]["/api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}"]["patch"]
+    update:
+      x-speakeasy-name-override: patch
+    x-speakeasy-metadata:
+      after: sdk.segments.patch()
+      before: sdk.Segments.patchSegment()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/environments"]["post"]
+    update:
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.environments.create()
+      before: sdk.Environments.postEnvironment()
+      type: method-name
+  - target: $["paths"]["/api/v2/engineering-insights/insights/scores"]["get"]
+    update:
+      x-speakeasy-group: insightsScores
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.insightsScores.get()
+      before: sdk.Insights scores (beta).getInsightsScores()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/scheduled-changes"]["get"]
+    update:
+      x-speakeasy-group: scheduledChanges
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.scheduledChanges.list()
+      before: sdk.Scheduled changes.getFlagConfigScheduledChanges()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{id}"]["get"]
+    update:
+      x-speakeasy-name-override: getForFlag
+    x-speakeasy-metadata:
+      after: sdk.approvals.getForFlag()
+      before: sdk.Approvals.getApprovalForFlag()
+      type: method-name
+  - target: $["paths"]["/api/v2/integrations/{integrationKey}/{id}"]["get"]
+    update:
+      x-speakeasy-group: integrationAuditLogSubscriptions
+      x-speakeasy-name-override: getSubscription
+    x-speakeasy-metadata:
+      after: sdk.integrationAuditLogSubscriptions.getSubscription()
+      before: sdk.Integration audit log subscriptions.getSubscriptionByID()
+      type: method-name
+  - target: $["paths"]["/api/v2/teams/{teamKey}"]["patch"]
+    update:
+      x-speakeasy-name-override: patch
+    x-speakeasy-metadata:
+      after: sdk.teams.patch()
+      before: sdk.Teams.patchTeam()
+      type: method-name
+  - target: $["paths"]["/api/v2/flag-links/projects/{projectKey}/flags/{featureFlagKey}/{id}"]["delete"]
+    update:
+      x-speakeasy-group: flagLinks
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.flagLinks.delete()
+      before: sdk.Flag links (beta).deleteFlagLink()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/context-kinds/{key}"]["put"]
+    update:
+      x-speakeasy-name-override: putKind
+    x-speakeasy-metadata:
+      after: sdk.contexts.putKind()
+      before: sdk.Contexts.putContextKind()
+      type: method-name
+  - target: $["paths"]["/api/v2/members"]["patch"]
+    update:
+      x-speakeasy-group: accountMembers
+      x-speakeasy-name-override: patch
+    x-speakeasy-metadata:
+      after: sdk.accountMembers.patch()
+      before: sdk.Account members (beta).patchMembers()
+      type: method-name
+  - target: $["paths"]["/api/v2/engineering-insights/insights/group"]["post"]
+    update:
+      x-speakeasy-group: insightsScores
+      x-speakeasy-name-override: createGroup
+    x-speakeasy-metadata:
+      after: sdk.insightsScores.createGroup()
+      before: sdk.Insights scores (beta).createInsightGroup()
+      type: method-name
+  - target: $["paths"]["/api/v2/teams/{teamKey}/maintainers"]["get"]
+    update:
+      x-speakeasy-name-override: getMaintainers
+    x-speakeasy-metadata:
+      after: sdk.teams.getMaintainers()
+      before: sdk.Teams.getTeamMaintainers()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/environments/{environmentKey}/holdouts"]["get"]
+    update:
+      x-speakeasy-group: holdouts
+      x-speakeasy-name-override: getAll
+    x-speakeasy-metadata:
+      after: sdk.holdouts.getAll()
+      before: sdk.Holdouts (beta).getAllHoldouts()
+      type: method-name
+  - target: $["paths"]["/api/v2/metrics/{projectKey}/{metricKey}"]["delete"]
+    update:
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.metrics.delete()
+      before: sdk.Metrics.deleteMetric()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/environments/{environmentKey}"]["patch"]
+    update:
+      x-speakeasy-name-override: patch
+    x-speakeasy-metadata:
+      after: sdk.environments.patch()
+      before: sdk.Environments.patchEnvironment()
+      type: method-name
+  - target: $["paths"]["/api/v2/usage/data-export-events"]["get"]
+    update:
+      x-speakeasy-group: accountUsage
+      x-speakeasy-name-override: getDataExportEvents
+    x-speakeasy-metadata:
+      after: sdk.accountUsage.getDataExportEvents()
+      before: sdk.Account usage (beta).getDataExportEventsUsage()
+      type: method-name
+  - target: $["paths"]["/api/v2/code-refs/repositories/{repo}/branches/{branch}"]["put"]
+    update:
+      x-speakeasy-group: codeReferences
+    x-speakeasy-metadata:
+      after: sdk.codeReferences.putBranch()
+      before: sdk.Code references.putBranch()
+      type: method-name
+  - target: $["paths"]["/api/v2/usage/mau/bycategory"]["get"]
+    update:
+      x-speakeasy-group: accountUsage
+      x-speakeasy-name-override: getMauByCategory
+    x-speakeasy-metadata:
+      after: sdk.accountUsage.getMauByCategory()
+      before: sdk.Account usage (beta).getMauUsageByCategory()
+      type: method-name
+  - target: $["paths"]["/api/v2/engineering-insights/charts/deployments/frequency"]["get"]
+    update:
+      x-speakeasy-group: insightsCharts
+    x-speakeasy-metadata:
+      after: sdk.insightsCharts.getDeploymentFrequencyChart()
+      before: sdk.Insights charts (beta).getDeploymentFrequencyChart()
+      type: method-name
+  - target: $["paths"]["/api/v2/approval-requests/{id}"]["get"]
+    update:
+      x-speakeasy-name-override: getRequest
+    x-speakeasy-metadata:
+      after: sdk.approvals.getRequest()
+      before: sdk.Approvals.getApprovalRequest()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/flag-defaults"]["put"]
+    update:
+      x-speakeasy-name-override: setFlagDefaults
+    x-speakeasy-metadata:
+      after: sdk.projects.setFlagDefaults()
+      before: sdk.Projects.putFlagDefaultsByProject()
+      type: method-name
+  - target: $["paths"]["/api/v2/flags/{projectKey}/{featureFlagKey}/triggers/{environmentKey}/{id}"]["patch"]
+    update:
+      x-speakeasy-group: flagTriggers
+      x-speakeasy-name-override: patchWorkflow
+    x-speakeasy-metadata:
+      after: sdk.flagTriggers.patchWorkflow()
+      before: sdk.Flag triggers.patchTriggerWorkflow()
+      type: method-name
+  - target: $["paths"]["/api/v2/auditlog/{id}"]["get"]
+    update:
+      x-speakeasy-name-override: getEntry
+      x-speakeasy-group: auditLog
+    x-speakeasy-metadata:
+      after: sdk.auditLog.getEntry()
+      before: sdk.Audit log.getAuditLogEntry()
+      type: method-name
+  - target: $["paths"]["/api/v2/approval-requests/{id}"]["patch"]
+    update:
+      x-speakeasy-group: approvals
+      x-speakeasy-name-override: patchRequest
+    x-speakeasy-metadata:
+      after: sdk.approvals.patchRequest()
+      before: sdk.Approvals (beta).patchApprovalRequest()
+      type: method-name
+  - target: $["paths"]["/api/v2/flags/{projectKey}/{featureFlagKey}/triggers/{environmentKey}"]["post"]
+    update:
+      x-speakeasy-group: flagTriggers
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.flagTriggers.create()
+      before: sdk.Flag triggers.createTriggerWorkflow()
+      type: method-name
+  - target: $["paths"]["/api/v2/announcements"]["get"]
+    update:
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.announcements.list()
+      before: sdk.Announcements.getAnnouncementsPublic()
+      type: method-name
+  - target: $["paths"]["/api/v2/webhooks"]["get"]
+    update:
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.webhooks.list()
+      before: sdk.Webhooks.getAllWebhooks()
+      type: method-name
+  - target: $["paths"]["/api/v2/members/{id}"]["get"]
+    update:
+      x-speakeasy-group: accountMembers
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.accountMembers.get()
+      before: sdk.Account members.getMember()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/environments/{environmentKey}/holdouts/id/{holdoutId}"]["get"]
+    update:
+      x-speakeasy-group: holdouts
+      x-speakeasy-name-override: getById
+    x-speakeasy-metadata:
+      after: sdk.holdouts.getById()
+      before: sdk.Holdouts (beta).getHoldoutById()
+      type: method-name
+  - target: $["paths"]["/api/v2/flag-status/{projectKey}/{featureFlagKey}"]["get"]
+    update:
+      x-speakeasy-group: featureFlags
+      x-speakeasy-name-override: getStatus
+    x-speakeasy-metadata:
+      after: sdk.featureFlags.getStatus()
+      before: sdk.Feature flags.getFeatureFlagStatusAcrossEnvironments()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/environments/{environmentKey}/holdouts/{holdoutKey}"]["patch"]
+    update:
+      x-speakeasy-group: holdouts
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.holdouts.update()
+      before: sdk.Holdouts (beta).patchHoldout()
+      type: method-name
+  - target: $["paths"]["/api/v2/usage/streams/{source}/sdkversions"]["get"]
+    update:
+      x-speakeasy-group: accountUsage
+      x-speakeasy-name-override: getStreamUsageSdkVersions
+    x-speakeasy-metadata:
+      after: sdk.accountUsage.getStreamUsageSdkVersions()
+      before: sdk.Account usage (beta).getStreamUsageSdkversion()
+      type: method-name
+  - target: $["paths"]["/api/v2/roles/{customRoleKey}"]["patch"]
+    update:
+      x-speakeasy-group: customRoles
+      x-speakeasy-name-override: patch
+    x-speakeasy-metadata:
+      after: sdk.customRoles.patch()
+      before: sdk.Custom roles.patchCustomRole()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/environments/{environmentKey}/context-attributes"]["get"]
+    update:
+      x-speakeasy-name-override: getAttributes
+    x-speakeasy-metadata:
+      after: sdk.contexts.getAttributes()
+      before: sdk.Contexts.getContextAttributeNames()
+      type: method-name
+  - target: $["paths"]["/api/v2/flags/{projectKey}/{featureFlagKey}/copy"]["post"]
+    update:
+      x-speakeasy-group: featureFlags
+      x-speakeasy-name-override: copy
+    x-speakeasy-metadata:
+      after: sdk.featureFlags.copy()
+      before: sdk.Feature flags.copyFeatureFlag()
+      type: method-name
+  - target: $["paths"]["/api/v2/integration-capabilities/featureStore"]["get"]
+    update:
+      x-speakeasy-group: integrationDeliveryConfigurations
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.integrationDeliveryConfigurations.list()
+      before: sdk.Integration delivery configurations (beta).getIntegrationDeliveryConfigurations()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs/model-configs/{modelConfigKey}"]["get"]
+    update:
+      x-speakeasy-group: aiConfigs
+    x-speakeasy-metadata:
+      after: sdk.aiConfigs.getModelConfig()
+      before: sdk.AI Configs (beta).getModelConfig()
+      type: method-name
+  - target: $["paths"]["/api/v2/users/{projectKey}/{environmentKey}/{userKey}"]["delete"]
+    update:
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.users.delete()
+      before: sdk.Users.deleteUser()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/workflows/{workflowId}"]["get"]
+    update:
+      x-speakeasy-name-override: fetchById
+    x-speakeasy-metadata:
+      after: sdk.workflows.fetchById()
+      before: sdk.Workflows.getCustomWorkflow()
+      type: method-name
+  - target: $["paths"]["/api/v2/integrations/{integrationKey}"]["get"]
+    update:
+      x-speakeasy-group: integrationAuditLogSubscriptions
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.integrationAuditLogSubscriptions.get()
+      before: sdk.Integration audit log subscriptions.getSubscriptions()
+      type: method-name
+  - target: $["paths"]["/api/v2/metrics/{projectKey}"]["post"]
+    update:
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.metrics.create()
+      before: sdk.Metrics.postMetric()
+      type: method-name
+  - target: $["paths"]["/api/v2/oauth/clients"]["post"]
+    update:
+      x-speakeasy-group: oauth2Clients
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.oauth2Clients.create()
+      before: sdk.OAuth2 Clients.createOAuth2Client()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/scheduled-changes/{id}"]["get"]
+    update:
+      x-speakeasy-group: scheduledChanges
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.scheduledChanges.get()
+      before: sdk.Scheduled changes.getFeatureFlagScheduledChange()
+      type: method-name
+  - target: $["paths"]["/api/v2/usage/mau/sdks"]["get"]
+    update:
+      x-speakeasy-group: accountUsage
+      x-speakeasy-name-override: getMauSdks
+    x-speakeasy-metadata:
+      after: sdk.accountUsage.getMauSdks()
+      before: sdk.Account usage (beta).getMauSdksByType()
+      type: method-name
+  - target: $["paths"]["/api/v2/integration-configurations/{integrationConfigurationId}"]["patch"]
+    update:
+      x-speakeasy-group: integrations
+      x-speakeasy-name-override: updateConfiguration
+    x-speakeasy-metadata:
+      after: sdk.integrations.updateConfiguration()
+      before: sdk.Integrations (beta).updateIntegrationConfiguration()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/environments/{environmentKey}/holdouts"]["post"]
+    update:
+      x-speakeasy-group: holdouts
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.holdouts.create()
+      before: sdk.Holdouts (beta).postHoldout()
+      type: method-name
+  - target: $["paths"]["/api/v2/oauth/clients/{clientId}"]["delete"]
+    update:
+      x-speakeasy-group: oauth2Clients
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.oauth2Clients.delete()
+      before: sdk.OAuth2 Clients.deleteOAuthClient()
+      type: method-name
+  - target: $["paths"]["/api/v2/applications/{applicationKey}"]["delete"]
+    update:
+      x-speakeasy-group: applications
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.applications.delete()
+      before: sdk.Applications (beta).deleteApplication()
+      type: method-name
+  - target: $["paths"]["/api/v2/flags/{projectKey}/{featureFlagKey}"]["get"]
+    update:
+      x-speakeasy-group: featureFlags
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.featureFlags.get()
+      before: sdk.Feature flags.getFeatureFlag()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/scheduled-changes/{id}"]["delete"]
+    update:
+      x-speakeasy-group: scheduledChanges
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.scheduledChanges.delete()
+      before: sdk.Scheduled changes.deleteFlagConfigScheduledChanges()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs/{configKey}"]["get"]
+    update:
+      x-speakeasy-group: aiConfigs
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.aiConfigs.get()
+      before: sdk.AI Configs (beta).getAIConfig()
+      type: method-name
+  - target: $["paths"]["/api/v2/engineering-insights/insights/groups"]["get"]
+    update:
+      x-speakeasy-group: insightsScores
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.insightsScores.list()
+      before: sdk.Insights scores (beta).getInsightGroups()
+      type: method-name
+  - target: $["paths"]["/api/v2/usage/evaluations/{projectKey}/{environmentKey}/{featureFlagKey}"]["get"]
+    update:
+      x-speakeasy-group: accountUsage
+      x-speakeasy-name-override: getEvaluations
+    x-speakeasy-metadata:
+      after: sdk.accountUsage.getEvaluations()
+      before: sdk.Account usage (beta).getEvaluationsUsage()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/environments/{environmentKey}/experiments"]["get"]
+    update:
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.experiments.list()
+      before: sdk.Experiments.getExperiments()
+      type: method-name
+  - target: $["paths"]["/api/v2/teams/{teamKey}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.teams.get()
+      before: sdk.Teams.getTeam()
+      type: method-name
+  - target: $["paths"]["/api/v2/flags/{projectKey}/{featureFlagKey}"]["patch"]
+    update:
+      x-speakeasy-group: featureFlags
+      x-speakeasy-name-override: patch
+    x-speakeasy-metadata:
+      after: sdk.featureFlags.patch()
+      before: sdk.Feature flags.patchFeatureFlag()
+      type: method-name
+  - target: $["paths"]["/api/v2/flags/{projectKey}/{featureFlagKey}/triggers/{environmentKey}/{id}"]["get"]
+    update:
+      x-speakeasy-group: flagTriggers
+      x-speakeasy-name-override: getById
+    x-speakeasy-metadata:
+      after: sdk.flagTriggers.getById()
+      before: sdk.Flag triggers.getTriggerWorkflowById()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs/{configKey}/metrics"]["get"]
+    update:
+      x-speakeasy-group: aiConfigs
+      x-speakeasy-name-override: getMetrics
+    x-speakeasy-metadata:
+      after: sdk.aiConfigs.getMetrics()
+      before: sdk.AI Configs (beta).getAIConfigMetrics()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/metric-groups"]["get"]
+    update:
+      x-speakeasy-group: metrics
+      x-speakeasy-name-override: listGroups
+    x-speakeasy-metadata:
+      after: sdk.metrics.listGroups()
+      before: sdk.Metrics (beta).getMetricGroups()
+      type: method-name
+  - target: $["paths"]["/api/v2/oauth/clients"]["get"]
+    update:
+      x-speakeasy-group: oauth2Clients
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.oauth2Clients.get()
+      before: sdk.OAuth2 Clients.getOAuthClients()
+      type: method-name
+  - target: $["paths"]["/api/v2/teams"]["patch"]
+    update:
+      x-speakeasy-group: teams
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.teams.update()
+      before: sdk.Teams (beta).patchTeams()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/followers"]["get"]
+    update:
+      x-speakeasy-group: followFlags
+      x-speakeasy-name-override: listFollowers
+    x-speakeasy-metadata:
+      after: sdk.followFlags.listFollowers()
+      before: sdk.Follow flags.getFlagFollowers()
+      type: method-name
+  - target: $["paths"]["/api/v2/webhooks/{id}"]["patch"]
+    update:
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.webhooks.update()
+      before: sdk.Webhooks.patchWebhook()
+      type: method-name
+  - target: $["paths"]["/api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.segments.get()
+      before: sdk.Segments.getSegment()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/environments/{environmentKey}/contexts/{contextKind}/{contextKey}/flags/{featureFlagKey}"]["put"]
+    update:
+      x-speakeasy-group: contextSettings
+      x-speakeasy-name-override: updateFlag
+    x-speakeasy-metadata:
+      after: sdk.contextSettings.updateFlag()
+      before: sdk.Context settings.putContextFlagSetting()
+      type: method-name
+  - target: $["paths"]["/api/v2/engineering-insights/deployments"]["get"]
+    update:
+      x-speakeasy-group: insightsDeployments
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.insightsDeployments.list()
+      before: sdk.Insights deployments (beta).getDeployments()
+      type: method-name
+  - target: $["paths"]["/api/v2/engineering-insights/repositories/{repositoryKey}/projects/{projectKey}"]["delete"]
+    update:
+      x-speakeasy-group: insightsRepositories
+      x-speakeasy-name-override: removeProjectAssociation
+    x-speakeasy-metadata:
+      after: sdk.insightsRepositories.removeProjectAssociation()
+      before: sdk.Insights repositories (beta).deleteRepositoryProject()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/metric-groups/{metricGroupKey}"]["delete"]
+    update:
+      x-speakeasy-group: metrics
+      x-speakeasy-name-override: deleteGroup
+    x-speakeasy-metadata:
+      after: sdk.metrics.deleteGroup()
+      before: sdk.Metrics (beta).deleteMetricGroup()
+      type: method-name
+  - target: $["paths"]["/api/v2/roles/{customRoleKey}"]["get"]
+    update:
+      x-speakeasy-group: customRoles
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.customRoles.get()
+      before: sdk.Custom roles.getCustomRole()
+      type: method-name
+  - target: $["paths"]["/api/v2/tokens/{id}/reset"]["post"]
+    update:
+      x-speakeasy-group: accessTokens
+      x-speakeasy-name-override: reset
+    x-speakeasy-metadata:
+      after: sdk.accessTokens.reset()
+      before: sdk.Access tokens.resetToken()
+      type: method-name
+  - target: $["paths"]["/api/v2/account/relay-auto-configs/{id}"]["get"]
+    update:
+      x-speakeasy-group: relayProxyConfigurations
+      x-speakeasy-name-override: getConfig
+    x-speakeasy-metadata:
+      after: sdk.relayProxyConfigurations.getConfig()
+      before: sdk.Relay Proxy configurations.getRelayProxyConfig()
+      type: method-name
+  - target: $["paths"]["/api/v2/segments/{projectKey}/{segmentKey}/expiring-user-targets/{environmentKey}"]["patch"]
+    update:
+      x-speakeasy-name-override: patchExpiringUserTargets
+    x-speakeasy-metadata:
+      after: sdk.segments.patchExpiringUserTargets()
+      before: sdk.Segments.patchExpiringUserTargetsForSegment()
+      type: method-name
+  - target: $["paths"]["/api/v2/announcements"]["post"]
+    update:
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.announcements.create()
+      before: sdk.Announcements.createAnnouncementPublic()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/release-pipelines"]["post"]
+    update:
+      x-speakeasy-name-override: create
+      x-speakeasy-group: releasePipelines
+    x-speakeasy-metadata:
+      after: sdk.releasePipelines.create()
+      before: sdk.Release pipelines (beta).postReleasePipeline()
+      type: method-name
+  - target: $["paths"]["/api/v2/webhooks"]["post"]
+    update:
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.webhooks.create()
+      before: sdk.Webhooks.postWebhook()
+      type: method-name
+  - target: $["paths"]["/api/v2/segments/{projectKey}/{environmentKey}"]["post"]
+    update:
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.segments.create()
+      before: sdk.Segments.postSegment()
+      type: method-name
+  - target: $["paths"]["/api/v2/integrations/{integrationKey}"]["post"]
+    update:
+      x-speakeasy-group: integrationAuditLogSubscriptions
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.integrationAuditLogSubscriptions.create()
+      before: sdk.Integration audit log subscriptions.createSubscription()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/layers/{layerKey}"]["patch"]
+    update:
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.layers.update()
+      before: sdk.Layers.updateLayer()
+      type: method-name
+  - target: $["paths"]["/api/v2/applications/{applicationKey}"]["patch"]
+    update:
+      x-speakeasy-group: applications
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.applications.update()
+      before: sdk.Applications (beta).patchApplication()
+      type: method-name
+  - target: $["paths"]["/api/v2/flags/{projectKey}/{flagKey}/release"]["patch"]
+    update:
+      x-speakeasy-group: releases
+      x-speakeasy-name-override: patchByFlagKey
+    x-speakeasy-metadata:
+      after: sdk.releases.patchByFlagKey()
+      before: sdk.Releases (beta).patchReleaseByFlagKey()
+      type: method-name
+  - target: $["paths"]["/api/v2/user-search/{projectKey}/{environmentKey}"]["get"]
+    update:
+      x-speakeasy-name-override: search
+    x-speakeasy-metadata:
+      after: sdk.users.search()
+      before: sdk.Users.getSearchUsers()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/release-pipelines/{pipelineKey}/releases"]["get"]
+    update:
+      x-speakeasy-group: releasePipelines
+      x-speakeasy-name-override: getAllReleaseProgressions
+    x-speakeasy-metadata:
+      after: sdk.releasePipelines.getAllReleaseProgressions()
+      before: sdk.Release pipelines (beta).getAllReleaseProgressionsForReleasePipeline()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests"]["post"]
+    update:
+      x-speakeasy-name-override: createRequest
+    x-speakeasy-metadata:
+      after: sdk.approvals.createRequest()
+      before: sdk.Approvals.postApprovalRequestForFlag()
+      type: method-name
+  - target: $["paths"]["/api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/exports"]["post"]
+    update:
+      x-speakeasy-name-override: createBigExport
+    x-speakeasy-metadata:
+      after: sdk.segments.createBigExport()
+      before: sdk.Segments.createBigSegmentExport()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs"]["post"]
+    update:
+      x-speakeasy-name-override: create
+      x-speakeasy-group: aiConfigs
+    x-speakeasy-metadata:
+      after: sdk.aiConfigs.create()
+      before: sdk.AI Configs (beta).postAIConfig()
+      type: method-name
+  - target: $["paths"]["/api/v2/engineering-insights/deployment-events"]["post"]
+    update:
+      x-speakeasy-group: insightsDeployments
+      x-speakeasy-name-override: createEvent
+    x-speakeasy-metadata:
+      after: sdk.insightsDeployments.createEvent()
+      before: sdk.Insights deployments (beta).createDeploymentEvent()
+      type: method-name
+  - target: $["paths"]["/api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/exports/{exportID}"]["get"]
+    update:
+      x-speakeasy-name-override: getExport
+    x-speakeasy-metadata:
+      after: sdk.segments.getExport()
+      before: sdk.Segments.getBigSegmentExport()
+      type: method-name
+  - target: $["paths"]["/api/v2/users/{projectKey}/{environmentKey}/{userKey}/flags"]["get"]
+    update:
+      x-speakeasy-group: userSettings
+      x-speakeasy-name-override: listFlags
+    x-speakeasy-metadata:
+      after: sdk.userSettings.listFlags()
+      before: sdk.User settings.getUserFlagSettings()
+      type: method-name
+  - target: $["paths"]["/api/v2/engineering-insights/insights/groups/{insightGroupKey}"]["get"]
+    update:
+      x-speakeasy-group: insightsScores
+      x-speakeasy-name-override: getGroup
+    x-speakeasy-metadata:
+      after: sdk.insightsScores.getGroup()
+      before: sdk.Insights scores (beta).getInsightGroup()
+      type: method-name
+  - target: $["paths"]["/api/v2/members/{id}"]["delete"]
+    update:
+      x-speakeasy-group: accountMembers
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.accountMembers.delete()
+      before: sdk.Account members.deleteMember()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/metric-groups/{metricGroupKey}"]["get"]
+    update:
+      x-speakeasy-group: metrics
+    x-speakeasy-metadata:
+      after: sdk.metrics.getMetricGroup()
+      before: sdk.Metrics (beta).getMetricGroup()
+      type: method-name
+  - target: $["paths"]["/api/v2/metrics/{projectKey}/{metricKey}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.metrics.get()
+      before: sdk.Metrics.getMetric()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/environments/{environmentKey}/followers"]["get"]
+    update:
+      x-speakeasy-group: followFlags
+      x-speakeasy-name-override: getFollowers
+    x-speakeasy-metadata:
+      after: sdk.followFlags.getFollowers()
+      before: sdk.Follow flags.getFollowersByProjEnv()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/environments/{environmentKey}"]["delete"]
+    update:
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.environments.delete()
+      before: sdk.Environments.deleteEnvironment()
+      type: method-name
+  - target: $["paths"]["/api/v2/templates"]["post"]
+    update:
+      x-speakeasy-group: workflowTemplates
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.workflowTemplates.create()
+      before: sdk.Workflow templates.createWorkflowTemplate()
+      type: method-name
+  - target: $["paths"]["/api/v2/integration-capabilities/flag-import/{projectKey}/{integrationKey}"]["post"]
+    update:
+      x-speakeasy-group: flagImportConfigurations
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.flagImportConfigurations.create()
+      before: sdk.Flag import configurations (beta).createFlagImportConfiguration()
+      type: method-name
+  - target: $["paths"]["/api/v2/tokens/{id}"]["patch"]
+    update:
+      x-speakeasy-group: accessTokens
+      x-speakeasy-name-override: patch
+    x-speakeasy-metadata:
+      after: sdk.accessTokens.patch()
+      before: sdk.Access tokens.patchToken()
+      type: method-name
+  - target: $["paths"]["/api/v2/tokens"]["get"]
+    update:
+      x-speakeasy-name-override: list
+      x-speakeasy-group: accessTokens
+    x-speakeasy-metadata:
+      after: sdk.accessTokens.list()
+      before: sdk.Access tokens.getTokens()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/release-pipelines/{pipelineKey}"]["delete"]
+    update:
+      x-speakeasy-group: releasePipelines
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.releasePipelines.delete()
+      before: sdk.Release pipelines (beta).deleteReleasePipeline()
+      type: method-name
+  - target: $["paths"]["/api/v2/users/{projectKey}/{environmentKey}/{userKey}/flags/{featureFlagKey}"]["put"]
+    update:
+      x-speakeasy-group: userSettings
+      x-speakeasy-name-override: updateFlagSetting
+    x-speakeasy-metadata:
+      after: sdk.userSettings.updateFlagSetting()
+      before: sdk.User settings.putFlagSetting()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/followers/{memberId}"]["delete"]
+    update:
+      x-speakeasy-group: followFlags
+      x-speakeasy-name-override: deleteFollower
+    x-speakeasy-metadata:
+      after: sdk.followFlags.deleteFollower()
+      before: sdk.Follow flags.deleteFlagFollower()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs/model-configs/{modelConfigKey}"]["delete"]
+    update:
+      x-speakeasy-group: aiConfigs
+    x-speakeasy-metadata:
+      after: sdk.aiConfigs.deleteModelConfig()
+      before: sdk.AI Configs (beta).deleteModelConfig()
+      type: method-name
+  - target: $["paths"]["/api/v2/code-refs/repositories/{repo}"]["patch"]
+    update:
+      x-speakeasy-group: codeReferences
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.codeReferences.update()
+      before: sdk.Code references.patchRepository()
+      type: method-name
+  - target: $["paths"]["/api/v2/templates/{templateKey}"]["delete"]
+    update:
+      x-speakeasy-group: workflowTemplates
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.workflowTemplates.delete()
+      before: sdk.Workflow templates.deleteWorkflowTemplate()
+      type: method-name
+  - target: $["paths"]["/api/v2/usage/events/{type}"]["get"]
+    update:
+      x-speakeasy-group: accountUsage
+    x-speakeasy-metadata:
+      after: sdk.accountUsage.getEventsUsage()
+      before: sdk.Account usage (beta).getEventsUsage()
+      type: method-name
+  - target: $["paths"]["/api/v2/integrations/{integrationKey}/{id}"]["patch"]
+    update:
+      x-speakeasy-group: integrationAuditLogSubscriptions
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.integrationAuditLogSubscriptions.update()
+      before: sdk.Integration audit log subscriptions.updateSubscription()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs/{configKey}/variations/{variationKey}"]["get"]
+    update:
+      x-speakeasy-group: aiConfigs
+      x-speakeasy-name-override: getVariation
+    x-speakeasy-metadata:
+      after: sdk.aiConfigs.getVariation()
+      before: sdk.AI Configs (beta).getAIConfigVariation()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/layers"]["get"]
+    update:
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.layers.list()
+      before: sdk.Layers.getLayers()
+      type: method-name
+  - target: $["paths"]["/api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/users/{userKey}"]["get"]
+    update:
+      x-speakeasy-name-override: getMembershipForUser
+    x-speakeasy-metadata:
+      after: sdk.segments.getMembershipForUser()
+      before: sdk.Segments.getSegmentMembershipForUser()
+      type: method-name
+  - target: $["paths"]["/api/v2/integration-configurations/{integrationConfigurationId}"]["delete"]
+    update:
+      x-speakeasy-group: integrations
+      x-speakeasy-name-override: deleteConfiguration
+    x-speakeasy-metadata:
+      after: sdk.integrations.deleteConfiguration()
+      before: sdk.Integrations (beta).deleteIntegrationConfiguration()
+      type: method-name
+  - target: $["paths"]["/api/v2/integration-capabilities/flag-import/{projectKey}/{integrationKey}/{integrationId}/trigger"]["post"]
+    update:
+      x-speakeasy-group: flagImportConfigurations
+      x-speakeasy-name-override: triggerJob
+    x-speakeasy-metadata:
+      after: sdk.flagImportConfigurations.triggerJob()
+      before: sdk.Flag import configurations (beta).triggerFlagImportJob()
+      type: method-name
+  - target: $["paths"]["/api/v2/segments/{projectKey}/{segmentKey}/expiring-targets/{environmentKey}"]["get"]
+    update:
+      x-speakeasy-name-override: getExpiringTargets
+    x-speakeasy-metadata:
+      after: sdk.segments.getExpiringTargets()
+      before: sdk.Segments.getExpiringTargetsForSegment()
+      type: method-name
+  - target: $["paths"]["/api/v2/metrics/{projectKey}/{metricKey}"]["patch"]
+    update:
+      x-speakeasy-name-override: patch
+    x-speakeasy-metadata:
+      after: sdk.metrics.patch()
+      before: sdk.Metrics.patchMetric()
+      type: method-name
+  - target: $["paths"]["/api/v2/integration-capabilities/flag-import/{projectKey}/{integrationKey}/{integrationId}"]["delete"]
+    update:
+      x-speakeasy-group: flagImportConfigurations
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.flagImportConfigurations.delete()
+      before: sdk.Flag import configurations (beta).deleteFlagImportConfiguration()
+      type: method-name
+  - target: $["paths"]["/api/v2/destinations/{projectKey}/{environmentKey}/{id}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+      x-speakeasy-group: dataExportDestinations
+    x-speakeasy-metadata:
+      after: sdk.dataExportDestinations.get()
+      before: sdk.Data Export destinations.getDestination()
+      type: method-name
+  - target: $["paths"]["/api/v2/roles/{customRoleKey}"]["delete"]
+    update:
+      x-speakeasy-group: customRoles
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.customRoles.delete()
+      before: sdk.Custom roles.deleteCustomRole()
+      type: method-name
+  - target: $["paths"]["/api/v2/engineering-insights/pull-requests"]["get"]
+    update:
+      x-speakeasy-name-override: list
+      x-speakeasy-group: insightsPullRequests
+    x-speakeasy-metadata:
+      after: sdk.insightsPullRequests.list()
+      before: sdk.Insights pull requests (beta).getPullRequests()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/workflows"]["post"]
+    update:
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.workflows.create()
+      before: sdk.Workflows.postWorkflow()
+      type: method-name
+  - target: $["paths"]["/api/v2/code-refs/statistics/{projectKey}"]["get"]
+    update:
+      x-speakeasy-group: codeReferences
+    x-speakeasy-metadata:
+      after: sdk.codeReferences.getStatistics()
+      before: sdk.Code references.getStatistics()
+      type: method-name
+  - target: $["paths"]["/api/v2/oauth/clients/{clientId}"]["get"]
+    update:
+      x-speakeasy-name-override: getById
+      x-speakeasy-group: oauth2Clients
+    x-speakeasy-metadata:
+      after: sdk.oauth2Clients.getById()
+      before: sdk.OAuth2 Clients.getOAuthClientById()
+      type: method-name
+  - target: $["paths"]["/api/v2/tokens"]["post"]
+    update:
+      x-speakeasy-group: accessTokens
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.accessTokens.create()
+      before: sdk.Access tokens.postToken()
+      type: method-name
+  - target: $["paths"]["/api/v2/integration-capabilities/big-segment-store/{projectKey}/{environmentKey}/{integrationKey}/{integrationId}"]["get"]
+    update:
+      x-speakeasy-group: persistentStoreIntegrations
+      x-speakeasy-name-override: getIntegration
+    x-speakeasy-metadata:
+      after: sdk.persistentStoreIntegrations.getIntegration()
+      before: sdk.Persistent store integrations (beta).getBigSegmentStoreIntegration()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/metric-groups"]["post"]
+    update:
+      x-speakeasy-group: metrics
+      x-speakeasy-name-override: createGroup
+    x-speakeasy-metadata:
+      after: sdk.metrics.createGroup()
+      before: sdk.Metrics (beta).createMetricGroup()
+      type: method-name
+  - target: $["paths"]["/api/v2/integration-capabilities/big-segment-store/{projectKey}/{environmentKey}/{integrationKey}"]["post"]
+    update:
+      x-speakeasy-group: persistentStoreIntegrations
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.persistentStoreIntegrations.create()
+      before: sdk.Persistent store integrations (beta).createBigSegmentStoreIntegration()
+      type: method-name
+  - target: $["paths"]["/api/v2/engineering-insights/deployments/{deploymentID}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+      x-speakeasy-group: insightsDeployments
+    x-speakeasy-metadata:
+      after: sdk.insightsDeployments.get()
+      before: sdk.Insights deployments (beta).getDeployment()
+      type: method-name
+  - target: $["paths"]["/api/v2/tags"]["get"]
+    update:
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.tags.list()
+      before: sdk.Tags.getTags()
+      type: method-name
+  - target: $["paths"]["/api/v2/users/{projectKey}/{environmentKey}/{userKey}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.users.get()
+      before: sdk.Users.getUser()
+      type: method-name
+  - target: $["paths"]["/api/v2/code-refs/repositories"]["post"]
+    update:
+      x-speakeasy-group: codeReferences
+      x-speakeasy-name-override: createRepository
+    x-speakeasy-metadata:
+      after: sdk.codeReferences.createRepository()
+      before: sdk.Code references.postRepository()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/workflows"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.workflows.get()
+      before: sdk.Workflows.getWorkflows()
+      type: method-name
+  - target: $["paths"]["/api/v2/applications/{applicationKey}/versions/{versionKey}"]["delete"]
+    update:
+      x-speakeasy-group: applicationsBeta
+      x-speakeasy-name-override: deleteVersion
+    x-speakeasy-metadata:
+      after: sdk.applicationsBeta.deleteVersion()
+      before: sdk.Applications (beta).deleteApplicationVersion()
+      type: method-name
+  - target: $["paths"]["/api/v2/flags/{projectKey}/{featureFlagKey}/expiring-targets/{environmentKey}"]["patch"]
+    update:
+      x-speakeasy-group: featureFlags
+      x-speakeasy-name-override: updateExpiringTargets
+    x-speakeasy-metadata:
+      after: sdk.featureFlags.updateExpiringTargets()
+      before: sdk.Feature flags.patchExpiringTargets()
+      type: method-name
+  - target: $["paths"]["/api/v2/roles"]["get"]
+    update:
+      x-speakeasy-group: customRoles
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.customRoles.list()
+      before: sdk.Custom roles.getCustomRoles()
+      type: method-name
+  - target: $["paths"]["/api/v2/usage/mau"]["get"]
+    update:
+      x-speakeasy-group: accountUsage
+      x-speakeasy-name-override: getMau
+    x-speakeasy-metadata:
+      after: sdk.accountUsage.getMau()
+      before: sdk.Account usage (beta).getMauUsage()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{id}"]["patch"]
+    update:
+      x-speakeasy-group: approvals
+    x-speakeasy-metadata:
+      after: sdk.approvals.patchFlagConfigApprovalRequest()
+      before: sdk.Approvals (beta).patchFlagConfigApprovalRequest()
+      type: method-name
+  - target: $["paths"]["/api/v2/applications"]["get"]
+    update:
+      x-speakeasy-group: applicationsBeta
+      x-speakeasy-name-override: fetch
+    x-speakeasy-metadata:
+      after: sdk.applicationsBeta.fetch()
+      before: sdk.Applications (beta).getApplications()
+      type: method-name
+  - target: $["paths"]["/api/v2/applications/{applicationKey}/versions/{versionKey}"]["patch"]
+    update:
+      x-speakeasy-group: applications
+      x-speakeasy-name-override: updateVersion
+    x-speakeasy-metadata:
+      after: sdk.applications.updateVersion()
+      before: sdk.Applications (beta).patchApplicationVersion()
+      type: method-name
+  - target: $["paths"]["/api/v2/account/relay-auto-configs/{id}"]["delete"]
+    update:
+      x-speakeasy-group: relayProxyConfigurations
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.relayProxyConfigurations.delete()
+      before: sdk.Relay Proxy configurations.deleteRelayAutoConfig()
+      type: method-name
+  - target: $["paths"]["/api/v2/announcements/{announcementId}"]["delete"]
+    update:
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.announcements.delete()
+      before: sdk.Announcements.deleteAnnouncementPublic()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/environments/{environmentKey}/mobileKey"]["post"]
+    update:
+      x-speakeasy-name-override: resetMobileKey
+    x-speakeasy-metadata:
+      after: sdk.environments.resetMobileKey()
+      before: sdk.Environments.resetEnvironmentMobileKey()
+      type: method-name
+  - target: $["paths"]["/api/v2/approval-requests"]["get"]
+    update:
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.approvals.list()
+      before: sdk.Approvals.getApprovalRequests()
+      type: method-name
+  - target: $["paths"]["/api/v2/roles"]["post"]
+    update:
+      x-speakeasy-group: customRoles
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.customRoles.create()
+      before: sdk.Custom roles.postCustomRole()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/environments/{environmentKey}/apiKey"]["post"]
+    update:
+      x-speakeasy-name-override: resetSdkKey
+    x-speakeasy-metadata:
+      after: sdk.environments.resetSdkKey()
+      before: sdk.Environments.resetEnvironmentSDKKey()
+      type: method-name
+  - target: $["paths"]["/api/v2/destinations/{projectKey}/{environmentKey}/{id}"]["patch"]
+    update:
+      x-speakeasy-group: dataExportDestinations
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.dataExportDestinations.update()
+      before: sdk.Data Export destinations.patchDestination()
+      type: method-name
+  - target: $["paths"]["/api/v2/segments/{projectKey}/{segmentKey}/expiring-targets/{environmentKey}"]["patch"]
+    update:
+      x-speakeasy-name-override: patchExpiringTargets
+    x-speakeasy-metadata:
+      after: sdk.segments.patchExpiringTargets()
+      before: sdk.Segments.patchExpiringTargetsForSegment()
+      type: method-name
+  - target: $["paths"]["/api/v2/flag-statuses/{projectKey}/{environmentKey}"]["get"]
+    update:
+      x-speakeasy-group: featureFlags
+      x-speakeasy-name-override: listStatuses
+    x-speakeasy-metadata:
+      after: sdk.featureFlags.listStatuses()
+      before: sdk.Feature flags.getFeatureFlagStatuses()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/workflows/{workflowId}"]["delete"]
+    update:
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.workflows.delete()
+      before: sdk.Workflows.deleteWorkflow()
+      type: method-name
+  - target: $["paths"]["/api/v2/metrics/{projectKey}"]["get"]
+    update:
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.metrics.list()
+      before: sdk.Metrics.getMetrics()
+      type: method-name
+  - target: $["paths"]["/api/v2/integration-capabilities/featureStore/{projectKey}/{environmentKey}/{integrationKey}/{id}/validate"]["post"]
+    update:
+      x-speakeasy-group: integrationDeliveryConfigurations
+      x-speakeasy-name-override: validate
+    x-speakeasy-metadata:
+      after: sdk.integrationDeliveryConfigurations.validate()
+      before: sdk.Integration delivery configurations (beta).validateIntegrationDeliveryConfiguration()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs"]["get"]
+    update:
+      x-speakeasy-group: aiConfigs
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.aiConfigs.list()
+      before: sdk.AI Configs (beta).getAIConfigs()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/release-pipelines/{pipelineKey}"]["get"]
+    update:
+      x-speakeasy-group: releasePipelines
+      x-speakeasy-name-override: getByKey
+    x-speakeasy-metadata:
+      after: sdk.releasePipelines.getByKey()
+      before: sdk.Release pipelines (beta).getReleasePipelineByKey()
+      type: method-name
+  - target: $["paths"]["/api/v2/code-refs/repositories/{repo}/branches"]["get"]
+    update:
+      x-speakeasy-group: codeReferences
+    x-speakeasy-metadata:
+      after: sdk.codeReferences.getBranches()
+      before: sdk.Code references.getBranches()
+      type: method-name
+  - target: $["paths"]["/api/v2/engineering-insights/flag-events"]["get"]
+    update:
+      x-speakeasy-group: insightsFlagEvents
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.insightsFlagEvents.list()
+      before: sdk.Insights flag events (beta).getFlagEvents()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/environments/{environmentKey}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.environments.get()
+      before: sdk.Environments.getEnvironment()
+      type: method-name
+  - target: $["paths"]["/api/v2/code-refs/repositories/{repo}"]["get"]
+    update:
+      x-speakeasy-group: codeReferences
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.codeReferences.get()
+      before: sdk.Code references.getRepository()
+      type: method-name
+  - target: $["paths"]["/api/v2/integration-capabilities/featureStore/{projectKey}/{environmentKey}/{integrationKey}"]["post"]
+    update:
+      x-speakeasy-group: integrationDeliveryConfigurations
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.integrationDeliveryConfigurations.create()
+      before: sdk.Integration delivery configurations (beta).createIntegrationDeliveryConfiguration()
+      type: method-name
+  - target: $["paths"]["/api/v2/announcements/{announcementId}"]["patch"]
+    update:
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.announcements.update()
+      before: sdk.Announcements.updateAnnouncementPublic()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/flag-defaults"]["get"]
+    update:
+      x-speakeasy-name-override: getFlagDefaults
+    x-speakeasy-metadata:
+      after: sdk.projects.getFlagDefaults()
+      before: sdk.Projects.getFlagDefaultsByProject()
+      type: method-name
+  - target: $["paths"]["/api/v2/integration-configurations/keys/{integrationKey}"]["get"]
+    update:
+      x-speakeasy-name-override: getConfigurations
+      x-speakeasy-group: integrations
+    x-speakeasy-metadata:
+      after: sdk.integrations.getConfigurations()
+      before: sdk.Integrations (beta).getAllIntegrationConfigurations()
+      type: method-name
+  - target: $["paths"]["/api/v2/flags/{projectKey}/{flagKey}/release"]["delete"]
+    update:
+      x-speakeasy-name-override: deleteByFlagKey
+      x-speakeasy-group: releases
+    x-speakeasy-metadata:
+      after: sdk.releases.deleteByFlagKey()
+      before: sdk.Releases (beta).deleteReleaseByFlagKey()
+      type: method-name
+  - target: $["paths"]["/api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/imports/{importID}"]["get"]
+    update:
+      x-speakeasy-name-override: getImport
+    x-speakeasy-metadata:
+      after: sdk.segments.getImport()
+      before: sdk.Segments.getBigSegmentImport()
+      type: method-name

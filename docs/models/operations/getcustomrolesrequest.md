@@ -1,0 +1,16 @@
+# GetCustomRolesRequest
+
+## Example Usage
+
+```typescript
+import { GetCustomRolesRequest } from "@launchdarkly/mcp-server/models/operations";
+
+let value: GetCustomRolesRequest = {};
+```
+
+## Fields
+
+| Field                                                                                                                                                                                             | Type                                                                                                                                                                                              | Required                                                                                                                                                                                          | Description                                                                                                                                                                                       |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `limit`                                                                                                                                                                                           | *number*                                                                                                                                                                                          | :heavy_minus_sign:                                                                                                                                                                                | The maximum number of custom roles to return. Defaults to 20.                                                                                                                                     |
+| `offset`                                                                                                                                                                                          | *number*                                                                                                                                                                                          | :heavy_minus_sign:                                                                                                                                                                                | Where to start in the list. Defaults to 0. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`. |

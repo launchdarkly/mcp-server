@@ -1,0 +1,28 @@
+# GetReleaseFrequencyChartRequest
+
+## Example Usage
+
+```typescript
+import { GetReleaseFrequencyChartRequest } from "@launchdarkly/mcp-server/models/operations";
+
+let value: GetReleaseFrequencyChartRequest = {
+  projectKey: "<value>",
+  environmentKey: "<value>",
+};
+```
+
+## Fields
+
+| Field                                                                                                 | Type                                                                                                  | Required                                                                                              | Description                                                                                           |
+| ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `projectKey`                                                                                          | *string*                                                                                              | :heavy_check_mark:                                                                                    | The project key                                                                                       |
+| `environmentKey`                                                                                      | *string*                                                                                              | :heavy_check_mark:                                                                                    | The environment key                                                                                   |
+| `applicationKey`                                                                                      | *string*                                                                                              | :heavy_minus_sign:                                                                                    | Comma separated list of application keys                                                              |
+| `hasExperiments`                                                                                      | *boolean*                                                                                             | :heavy_minus_sign:                                                                                    | Filter events to those associated with an experiment (`true`) or without an experiment (`false`)      |
+| `global`                                                                                              | *string*                                                                                              | :heavy_minus_sign:                                                                                    | Filter to include or exclude global events. Default value is `include`. Options: `include`, `exclude` |
+| `groupBy`                                                                                             | *string*                                                                                              | :heavy_minus_sign:                                                                                    | Property to group results by. Options: `impact`                                                       |
+| `from`                                                                                                | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)         | :heavy_minus_sign:                                                                                    | Unix timestamp in milliseconds. Default value is 7 days ago.                                          |
+| `to`                                                                                                  | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)         | :heavy_minus_sign:                                                                                    | Unix timestamp in milliseconds. Default value is now.                                                 |
+| `bucketType`                                                                                          | *string*                                                                                              | :heavy_minus_sign:                                                                                    | Specify type of bucket. Options: `rolling`, `hour`, `day`. Default: `rolling`.                        |
+| `bucketMs`                                                                                            | *number*                                                                                              | :heavy_minus_sign:                                                                                    | Duration of intervals for x-axis in milliseconds. Default value is one day (`86400000` milliseconds). |
+| `expand`                                                                                              | *string*                                                                                              | :heavy_minus_sign:                                                                                    | Options: `metrics`                                                                                    |
