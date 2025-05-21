@@ -20,7 +20,7 @@ specific category of applications.
 
 ```typescript
 import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
-import { otherGetRoot } from "@launchdarkly/mcp-server/funcs/otherGetRoot.js";
+import { featureFlagsList } from "@launchdarkly/mcp-server/funcs/featureFlagsList.js";
 import { SDKValidationError } from "@launchdarkly/mcp-server/models/errors/sdkvalidationerror.js";
 
 // Use `LaunchDarklyCore` for best tree-shaking performance.
@@ -30,7 +30,9 @@ const launchDarkly = new LaunchDarklyCore({
 });
 
 async function run() {
-  const res = await otherGetRoot(launchDarkly);
+  const res = await featureFlagsList(launchDarkly, {
+    projectKey: "<value>",
+  });
 
   switch (true) {
     case res.ok:

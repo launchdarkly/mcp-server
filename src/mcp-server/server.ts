@@ -14,10 +14,14 @@ import {
 import { MCPScope } from "./scopes.js";
 import { createRegisterTool } from "./tools.js";
 import { tool$aiConfigsCreate } from "./tools/aiConfigsCreate.js";
+import { tool$aiConfigsCreateVariation } from "./tools/aiConfigsCreateVariation.js";
 import { tool$aiConfigsDelete } from "./tools/aiConfigsDelete.js";
+import { tool$aiConfigsDeleteVariation } from "./tools/aiConfigsDeleteVariation.js";
 import { tool$aiConfigsGet } from "./tools/aiConfigsGet.js";
+import { tool$aiConfigsGetVariation } from "./tools/aiConfigsGetVariation.js";
 import { tool$aiConfigsList } from "./tools/aiConfigsList.js";
 import { tool$aiConfigsUpdate } from "./tools/aiConfigsUpdate.js";
+import { tool$aiConfigsUpdateVariation } from "./tools/aiConfigsUpdateVariation.js";
 import { tool$featureFlagsCreate } from "./tools/featureFlagsCreate.js";
 import { tool$featureFlagsDelete } from "./tools/featureFlagsDelete.js";
 import { tool$featureFlagsGet } from "./tools/featureFlagsGet.js";
@@ -34,7 +38,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "LaunchDarkly",
-    version: "0.1.0",
+    version: "0.2.0",
   });
 
   const client = new LaunchDarklyCore({
@@ -74,6 +78,10 @@ export function createMCPServer(deps: {
   tool(tool$aiConfigsDelete);
   tool(tool$aiConfigsGet);
   tool(tool$aiConfigsUpdate);
+  tool(tool$aiConfigsCreateVariation);
+  tool(tool$aiConfigsDeleteVariation);
+  tool(tool$aiConfigsGetVariation);
+  tool(tool$aiConfigsUpdateVariation);
 
   return server;
 }

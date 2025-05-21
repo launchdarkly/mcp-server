@@ -108,6 +108,14 @@ actions:
         disabled: false
         scopes:
           - write
+  - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs/{aiConfigKey}/variations/{variationKey}"]["get"]
+    update:
+      x-speakeasy-mcp:
+        name: get-ai-config-variation
+        description: Retrieves an AI configuration variation.
+        disabled: false
+        scopes:
+          - read
   - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs/{aiConfigKey}/variations"]["post"]
     update:
       x-speakeasy-mcp:
@@ -121,6 +129,14 @@ actions:
       x-speakeasy-mcp:
         name: update-ai-config-variation
         description: Updates a specific variation within an AI Config. Enables fine-tuned control of model behavior.
+        disabled: false
+        scopes:
+          - write
+  - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs/{aiConfigKey}/variations/{variationKey}"]["delete"]
+    update:
+      x-speakeasy-mcp:
+        name: delete-ai-config-variation
+        description: Deletes an AI Config variation.
         disabled: false
         scopes:
           - write

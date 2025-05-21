@@ -7,7 +7,9 @@ const launchDarkly = new LaunchDarkly({
 });
 
 async function run() {
-  const result = await launchDarkly.other.getRoot();
+  const result = await launchDarkly.featureFlags.list({
+    projectKey: "<value>",
+  });
 
   // Handle the result
   console.log(result);
