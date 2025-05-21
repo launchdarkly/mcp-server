@@ -6,8 +6,8 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type PostAuditLogEntriesRequest = {
   /**
@@ -26,7 +26,7 @@ export type PostAuditLogEntriesRequest = {
    * A limit on the number of audit log entries that return. Set between 1 and 20. The default is 10.
    */
   limit?: number | undefined;
-  requestBody?: Array<models.StatementPost> | undefined;
+  requestBody?: Array<components.StatementPost> | undefined;
 };
 
 /** @internal */
@@ -39,7 +39,7 @@ export const PostAuditLogEntriesRequest$inboundSchema: z.ZodType<
   after: z.number().int().optional(),
   q: z.string().optional(),
   limit: z.number().int().optional(),
-  RequestBody: z.array(models.StatementPost$inboundSchema).optional(),
+  RequestBody: z.array(components.StatementPost$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "RequestBody": "requestBody",
@@ -52,7 +52,7 @@ export type PostAuditLogEntriesRequest$Outbound = {
   after?: number | undefined;
   q?: string | undefined;
   limit?: number | undefined;
-  RequestBody?: Array<models.StatementPost$Outbound> | undefined;
+  RequestBody?: Array<components.StatementPost$Outbound> | undefined;
 };
 
 /** @internal */
@@ -65,7 +65,7 @@ export const PostAuditLogEntriesRequest$outboundSchema: z.ZodType<
   after: z.number().int().optional(),
   q: z.string().optional(),
   limit: z.number().int().optional(),
-  requestBody: z.array(models.StatementPost$outboundSchema).optional(),
+  requestBody: z.array(components.StatementPost$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     requestBody: "RequestBody",

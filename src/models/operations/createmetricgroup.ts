@@ -6,15 +6,15 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type CreateMetricGroupRequest = {
   /**
    * The project key
    */
   projectKey: string;
-  metricGroupPost: models.MetricGroupPost;
+  metricGroupPost: components.MetricGroupPost;
 };
 
 /** @internal */
@@ -24,7 +24,7 @@ export const CreateMetricGroupRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   projectKey: z.string(),
-  MetricGroupPost: models.MetricGroupPost$inboundSchema,
+  MetricGroupPost: components.MetricGroupPost$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "MetricGroupPost": "metricGroupPost",
@@ -34,7 +34,7 @@ export const CreateMetricGroupRequest$inboundSchema: z.ZodType<
 /** @internal */
 export type CreateMetricGroupRequest$Outbound = {
   projectKey: string;
-  MetricGroupPost: models.MetricGroupPost$Outbound;
+  MetricGroupPost: components.MetricGroupPost$Outbound;
 };
 
 /** @internal */
@@ -44,7 +44,7 @@ export const CreateMetricGroupRequest$outboundSchema: z.ZodType<
   CreateMetricGroupRequest
 > = z.object({
   projectKey: z.string(),
-  metricGroupPost: models.MetricGroupPost$outboundSchema,
+  metricGroupPost: components.MetricGroupPost$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     metricGroupPost: "MetricGroupPost",

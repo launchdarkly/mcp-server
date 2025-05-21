@@ -3,43 +3,30 @@
 
 ## Overview
 
-> ### Data Export is an add-on feature
->
-> Data Export is available as an add-on for customers on a Foundation or Enterprise plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact Sales](https://launchdarkly.com/contact-sales/).
-
-Data Export provides a real-time export of raw analytics data, including feature flag requests, analytics events, custom events, and more.
-
-Data Export destinations are locations that receive exported data. The Data Export destinations API allows you to configure destinations so that your data can be exported.
-
-Several of the endpoints in the Data Export destinations API require a Data Export destination ID. The Data Export destination ID is returned as part of the [Create a Data Export destination](https://launchdarkly.com/docs/api/data-export-destinations/post-destination) and [List destinations](https://launchdarkly.com/docs/api/data-export-destinations/get-destinations) responses. It is the `_id` field, or the `_id` field of each element in the `items` array.
-
-To learn more, read [Data Export](https://launchdarkly.com/docs/integrations/data-export).
-
-
 ### Available Operations
 
-* [getDestinations](#getdestinations) - List destinations
-* [postGenerateWarehouseDestinationKeyPair](#postgeneratewarehousedestinationkeypair) - Generate Snowflake destination key pair
-* [postDestination](#postdestination) - Create Data Export destination
-* [getDestination](#getdestination) - Get destination
-* [deleteDestination](#deletedestination) - Delete Data Export destination
-* [patchDestination](#patchdestination) - Update Data Export destination
+* [list](#list) - List destinations
+* [generateWarehouseDestinationKeyPair](#generatewarehousedestinationkeypair) - Generate Snowflake destination key pair
+* [create](#create) - Create Data Export destination
+* [get](#get) - Get destination
+* [update](#update) - Update Data Export destination
+* [delete](#delete) - Delete Data Export destination
 
-## getDestinations
+## list
 
 Get a list of Data Export destinations configured across all projects and environments.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.dataExportDestinations.getDestinations();
+  const result = await launchDarkly.dataExportDestinations.list();
 
   // Handle the result
   console.log(result);
@@ -53,17 +40,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { dataExportDestinationsGetDestinations } from "@launchdarkly/mcp-server/funcs/dataExportDestinationsGetDestinations.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { dataExportDestinationsList } from "@launchdarkly/mcp-server/funcs/dataExportDestinationsList.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await dataExportDestinationsGetDestinations(launchdarklyMcpServer);
+  const res = await dataExportDestinationsList(launchDarkly);
 
   if (!res.ok) {
     throw res.error;
@@ -88,7 +75,7 @@ run();
 
 ### Response
 
-**Promise\<[models.Destinations](../../models/destinations.md)\>**
+**Promise\<[components.Destinations](../../models/components/destinations.md)\>**
 
 ### Errors
 
@@ -99,21 +86,21 @@ run();
 | errors.RateLimitedErrorRep  | 429                         | application/json            |
 | errors.APIError             | 4XX, 5XX                    | \*/\*                       |
 
-## postGenerateWarehouseDestinationKeyPair
+## generateWarehouseDestinationKeyPair
 
 Generate key pair to allow Data Export to authenticate into a Snowflake warehouse destination
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.dataExportDestinations.postGenerateWarehouseDestinationKeyPair();
+  const result = await launchDarkly.dataExportDestinations.generateWarehouseDestinationKeyPair();
 
   // Handle the result
   console.log(result);
@@ -127,17 +114,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { dataExportDestinationsPostGenerateWarehouseDestinationKeyPair } from "@launchdarkly/mcp-server/funcs/dataExportDestinationsPostGenerateWarehouseDestinationKeyPair.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { dataExportDestinationsGenerateWarehouseDestinationKeyPair } from "@launchdarkly/mcp-server/funcs/dataExportDestinationsGenerateWarehouseDestinationKeyPair.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await dataExportDestinationsPostGenerateWarehouseDestinationKeyPair(launchdarklyMcpServer);
+  const res = await dataExportDestinationsGenerateWarehouseDestinationKeyPair(launchDarkly);
 
   if (!res.ok) {
     throw res.error;
@@ -162,7 +149,7 @@ run();
 
 ### Response
 
-**Promise\<[models.GenerateWarehouseDestinationKeyPairPostRep](../../models/generatewarehousedestinationkeypairpostrep.md)\>**
+**Promise\<[components.GenerateWarehouseDestinationKeyPairPostRep](../../models/components/generatewarehousedestinationkeypairpostrep.md)\>**
 
 ### Errors
 
@@ -175,7 +162,7 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## postDestination
+## create
 
 
 Create a new Data Export destination.
@@ -237,14 +224,14 @@ To create a Data Export destination with a `kind` of `snowflake-v2`, the `config
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.dataExportDestinations.postDestination({
+  const result = await launchDarkly.dataExportDestinations.create({
     projectKey: "<value>",
     environmentKey: "<value>",
     destinationPost: {
@@ -268,17 +255,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { dataExportDestinationsPostDestination } from "@launchdarkly/mcp-server/funcs/dataExportDestinationsPostDestination.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { dataExportDestinationsCreate } from "@launchdarkly/mcp-server/funcs/dataExportDestinationsCreate.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await dataExportDestinationsPostDestination(launchdarklyMcpServer, {
+  const res = await dataExportDestinationsCreate(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
     destinationPost: {
@@ -314,7 +301,7 @@ run();
 
 ### Response
 
-**Promise\<[models.Destination](../../models/destination.md)\>**
+**Promise\<[components.Destination](../../models/components/destination.md)\>**
 
 ### Errors
 
@@ -327,21 +314,21 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## getDestination
+## get
 
 Get a single Data Export destination by ID.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.dataExportDestinations.getDestination({
+  const result = await launchDarkly.dataExportDestinations.get({
     projectKey: "<value>",
     environmentKey: "<value>",
     id: "<value>",
@@ -359,17 +346,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { dataExportDestinationsGetDestination } from "@launchdarkly/mcp-server/funcs/dataExportDestinationsGetDestination.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { dataExportDestinationsGet } from "@launchdarkly/mcp-server/funcs/dataExportDestinationsGet.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await dataExportDestinationsGetDestination(launchdarklyMcpServer, {
+  const res = await dataExportDestinationsGet(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
     id: "<value>",
@@ -399,7 +386,7 @@ run();
 
 ### Response
 
-**Promise\<[models.Destination](../../models/destination.md)\>**
+**Promise\<[components.Destination](../../models/components/destination.md)\>**
 
 ### Errors
 
@@ -411,21 +398,121 @@ run();
 | errors.RateLimitedErrorRep  | 429                         | application/json            |
 | errors.APIError             | 4XX, 5XX                    | \*/\*                       |
 
-## deleteDestination
+## update
+
+Update a Data Export destination. Updating a destination uses a [JSON patch](https://datatracker.ietf.org/doc/html/rfc6902) or [JSON merge patch](https://datatracker.ietf.org/doc/html/rfc7386) representation of the desired changes. To learn more, read [Updates](https://launchdarkly.com/docs/api#updates).
+
+### Example Usage
+
+```typescript
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
+
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
+});
+
+async function run() {
+  const result = await launchDarkly.dataExportDestinations.update({
+    projectKey: "<value>",
+    environmentKey: "<value>",
+    id: "<value>",
+    requestBody: [
+      {
+        op: "replace",
+        path: "/config/topic",
+        value: "ld-pubsub-test-192302",
+      },
+    ],
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { dataExportDestinationsUpdate } from "@launchdarkly/mcp-server/funcs/dataExportDestinationsUpdate.js";
+
+// Use `LaunchDarklyCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
+});
+
+async function run() {
+  const res = await dataExportDestinationsUpdate(launchDarkly, {
+    projectKey: "<value>",
+    environmentKey: "<value>",
+    id: "<value>",
+    requestBody: [
+      {
+        op: "replace",
+        path: "/config/topic",
+        value: "ld-pubsub-test-192302",
+      },
+    ],
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.PatchDestinationRequest](../../models/operations/patchdestinationrequest.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[components.Destination](../../models/components/destination.md)\>**
+
+### Errors
+
+| Error Type                    | Status Code                   | Content Type                  |
+| ----------------------------- | ----------------------------- | ----------------------------- |
+| errors.InvalidRequestErrorRep | 400                           | application/json              |
+| errors.UnauthorizedErrorRep   | 401                           | application/json              |
+| errors.ForbiddenErrorRep      | 403                           | application/json              |
+| errors.NotFoundErrorRep       | 404                           | application/json              |
+| errors.StatusConflictErrorRep | 409                           | application/json              |
+| errors.RateLimitedErrorRep    | 429                           | application/json              |
+| errors.APIError               | 4XX, 5XX                      | \*/\*                         |
+
+## delete
 
 Delete a Data Export destination by ID.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  await launchdarklyMcpServer.dataExportDestinations.deleteDestination({
+  await launchDarkly.dataExportDestinations.delete({
     projectKey: "<value>",
     environmentKey: "<value>",
     id: "<value>",
@@ -442,17 +529,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { dataExportDestinationsDeleteDestination } from "@launchdarkly/mcp-server/funcs/dataExportDestinationsDeleteDestination.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { dataExportDestinationsDelete } from "@launchdarkly/mcp-server/funcs/dataExportDestinationsDelete.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await dataExportDestinationsDeleteDestination(launchdarklyMcpServer, {
+  const res = await dataExportDestinationsDelete(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
     id: "<value>",
@@ -492,103 +579,3 @@ run();
 | errors.NotFoundErrorRep     | 404                         | application/json            |
 | errors.RateLimitedErrorRep  | 429                         | application/json            |
 | errors.APIError             | 4XX, 5XX                    | \*/\*                       |
-
-## patchDestination
-
-Update a Data Export destination. Updating a destination uses a [JSON patch](https://datatracker.ietf.org/doc/html/rfc6902) or [JSON merge patch](https://datatracker.ietf.org/doc/html/rfc7386) representation of the desired changes. To learn more, read [Updates](https://launchdarkly.com/docs/api#updates).
-
-### Example Usage
-
-```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
-
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
-});
-
-async function run() {
-  const result = await launchdarklyMcpServer.dataExportDestinations.patchDestination({
-    projectKey: "<value>",
-    environmentKey: "<value>",
-    id: "<value>",
-    requestBody: [
-      {
-        op: "replace",
-        path: "/config/topic",
-        value: "ld-pubsub-test-192302",
-      },
-    ],
-  });
-
-  // Handle the result
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { dataExportDestinationsPatchDestination } from "@launchdarkly/mcp-server/funcs/dataExportDestinationsPatchDestination.js";
-
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
-});
-
-async function run() {
-  const res = await dataExportDestinationsPatchDestination(launchdarklyMcpServer, {
-    projectKey: "<value>",
-    environmentKey: "<value>",
-    id: "<value>",
-    requestBody: [
-      {
-        op: "replace",
-        path: "/config/topic",
-        value: "ld-pubsub-test-192302",
-      },
-    ],
-  });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.PatchDestinationRequest](../../models/operations/patchdestinationrequest.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[models.Destination](../../models/destination.md)\>**
-
-### Errors
-
-| Error Type                    | Status Code                   | Content Type                  |
-| ----------------------------- | ----------------------------- | ----------------------------- |
-| errors.InvalidRequestErrorRep | 400                           | application/json              |
-| errors.UnauthorizedErrorRep   | 401                           | application/json              |
-| errors.ForbiddenErrorRep      | 403                           | application/json              |
-| errors.NotFoundErrorRep       | 404                           | application/json              |
-| errors.StatusConflictErrorRep | 409                           | application/json              |
-| errors.RateLimitedErrorRep    | 429                           | application/json              |
-| errors.APIError               | 4XX, 5XX                      | \*/\*                         |

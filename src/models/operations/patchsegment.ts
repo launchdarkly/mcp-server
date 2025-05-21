@@ -6,8 +6,8 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type PatchSegmentRequest = {
   /**
@@ -22,7 +22,7 @@ export type PatchSegmentRequest = {
    * The segment key
    */
   segmentKey: string;
-  patchWithComment: models.PatchWithComment;
+  patchWithComment: components.PatchWithComment;
 };
 
 /** @internal */
@@ -34,7 +34,7 @@ export const PatchSegmentRequest$inboundSchema: z.ZodType<
   projectKey: z.string(),
   environmentKey: z.string(),
   segmentKey: z.string(),
-  PatchWithComment: models.PatchWithComment$inboundSchema,
+  PatchWithComment: components.PatchWithComment$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "PatchWithComment": "patchWithComment",
@@ -46,7 +46,7 @@ export type PatchSegmentRequest$Outbound = {
   projectKey: string;
   environmentKey: string;
   segmentKey: string;
-  PatchWithComment: models.PatchWithComment$Outbound;
+  PatchWithComment: components.PatchWithComment$Outbound;
 };
 
 /** @internal */
@@ -58,7 +58,7 @@ export const PatchSegmentRequest$outboundSchema: z.ZodType<
   projectKey: z.string(),
   environmentKey: z.string(),
   segmentKey: z.string(),
-  patchWithComment: models.PatchWithComment$outboundSchema,
+  patchWithComment: components.PatchWithComment$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     patchWithComment: "PatchWithComment",

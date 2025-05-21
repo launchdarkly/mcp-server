@@ -6,8 +6,8 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type CreateExperimentRequest = {
   /**
@@ -18,7 +18,7 @@ export type CreateExperimentRequest = {
    * The environment key
    */
   environmentKey: string;
-  experimentPost: models.ExperimentPost;
+  experimentPost: components.ExperimentPost;
 };
 
 /** @internal */
@@ -29,7 +29,7 @@ export const CreateExperimentRequest$inboundSchema: z.ZodType<
 > = z.object({
   projectKey: z.string(),
   environmentKey: z.string(),
-  ExperimentPost: models.ExperimentPost$inboundSchema,
+  ExperimentPost: components.ExperimentPost$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "ExperimentPost": "experimentPost",
@@ -40,7 +40,7 @@ export const CreateExperimentRequest$inboundSchema: z.ZodType<
 export type CreateExperimentRequest$Outbound = {
   projectKey: string;
   environmentKey: string;
-  ExperimentPost: models.ExperimentPost$Outbound;
+  ExperimentPost: components.ExperimentPost$Outbound;
 };
 
 /** @internal */
@@ -51,7 +51,7 @@ export const CreateExperimentRequest$outboundSchema: z.ZodType<
 > = z.object({
   projectKey: z.string(),
   environmentKey: z.string(),
-  experimentPost: models.ExperimentPost$outboundSchema,
+  experimentPost: components.ExperimentPost$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     experimentPost: "ExperimentPost",

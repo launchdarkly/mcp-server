@@ -6,8 +6,8 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type PostFeatureFlagRequest = {
   /**
@@ -18,7 +18,7 @@ export type PostFeatureFlagRequest = {
    * The key of the feature flag to be cloned. The key identifies the flag in your code. For example, setting `clone=flagKey` copies the full targeting configuration for all environments, including `on/off` state, from the original flag to the new flag.
    */
   clone?: string | undefined;
-  featureFlagBody: models.FeatureFlagBody;
+  featureFlagBody: components.FeatureFlagBody;
 };
 
 /** @internal */
@@ -29,7 +29,7 @@ export const PostFeatureFlagRequest$inboundSchema: z.ZodType<
 > = z.object({
   projectKey: z.string(),
   clone: z.string().optional(),
-  FeatureFlagBody: models.FeatureFlagBody$inboundSchema,
+  FeatureFlagBody: components.FeatureFlagBody$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "FeatureFlagBody": "featureFlagBody",
@@ -40,7 +40,7 @@ export const PostFeatureFlagRequest$inboundSchema: z.ZodType<
 export type PostFeatureFlagRequest$Outbound = {
   projectKey: string;
   clone?: string | undefined;
-  FeatureFlagBody: models.FeatureFlagBody$Outbound;
+  FeatureFlagBody: components.FeatureFlagBody$Outbound;
 };
 
 /** @internal */
@@ -51,7 +51,7 @@ export const PostFeatureFlagRequest$outboundSchema: z.ZodType<
 > = z.object({
   projectKey: z.string(),
   clone: z.string().optional(),
-  featureFlagBody: models.FeatureFlagBody$outboundSchema,
+  featureFlagBody: components.FeatureFlagBody$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     featureFlagBody: "FeatureFlagBody",

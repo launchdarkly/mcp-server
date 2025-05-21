@@ -35,7 +35,7 @@ let value: CreateSubscriptionRequest = {
 
 ## Fields
 
-| Field                                                       | Type                                                        | Required                                                    | Description                                                 |
-| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
-| `integrationKey`                                            | *string*                                                    | :heavy_check_mark:                                          | The integration key                                         |
-| `subscriptionPost`                                          | [models.SubscriptionPost](../../models/subscriptionpost.md) | :heavy_check_mark:                                          | N/A                                                         |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `integrationKey`                                                           | *string*                                                                   | :heavy_check_mark:                                                         | The integration key                                                        |
+| `subscriptionPost`                                                         | [components.SubscriptionPost](../../models/components/subscriptionpost.md) | :heavy_check_mark:                                                         | N/A                                                                        |

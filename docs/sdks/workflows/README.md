@@ -24,26 +24,26 @@ Several of the endpoints in the workflows API require a workflow ID or one or mo
 
 ### Available Operations
 
-* [getWorkflows](#getworkflows) - Get workflows
-* [postWorkflow](#postworkflow) - Create workflow
-* [getCustomWorkflow](#getcustomworkflow) - Get custom workflow
-* [deleteWorkflow](#deleteworkflow) - Delete workflow
+* [get](#get) - Get workflows
+* [create](#create) - Create workflow
+* [fetchById](#fetchbyid) - Get custom workflow
+* [delete](#delete) - Delete workflow
 
-## getWorkflows
+## get
 
 Display workflows associated with a feature flag.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.workflows.getWorkflows({
+  const result = await launchDarkly.workflows.get({
     projectKey: "<value>",
     featureFlagKey: "<value>",
     environmentKey: "<value>",
@@ -61,17 +61,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { workflowsGetWorkflows } from "@launchdarkly/mcp-server/funcs/workflowsGetWorkflows.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { workflowsGet } from "@launchdarkly/mcp-server/funcs/workflowsGet.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await workflowsGetWorkflows(launchdarklyMcpServer, {
+  const res = await workflowsGet(launchDarkly, {
     projectKey: "<value>",
     featureFlagKey: "<value>",
     environmentKey: "<value>",
@@ -101,7 +101,7 @@ run();
 
 ### Response
 
-**Promise\<[models.CustomWorkflowsListingOutput](../../models/customworkflowslistingoutput.md)\>**
+**Promise\<[components.CustomWorkflowsListingOutput](../../models/components/customworkflowslistingoutput.md)\>**
 
 ### Errors
 
@@ -113,7 +113,7 @@ run();
 | errors.RateLimitedErrorRep  | 429                         | application/json            |
 | errors.APIError             | 4XX, 5XX                    | \*/\*                       |
 
-## postWorkflow
+## create
 
 Create a workflow for a feature flag. You can create a workflow directly, or you can apply a template to create a new workflow.
 
@@ -215,14 +215,14 @@ If there are any steps in the template that are not applicable to the target res
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.workflows.postWorkflow({
+  const result = await launchDarkly.workflows.create({
     projectKey: "<value>",
     featureFlagKey: "<value>",
     environmentKey: "<value>",
@@ -271,17 +271,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { workflowsPostWorkflow } from "@launchdarkly/mcp-server/funcs/workflowsPostWorkflow.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { workflowsCreate } from "@launchdarkly/mcp-server/funcs/workflowsCreate.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await workflowsPostWorkflow(launchdarklyMcpServer, {
+  const res = await workflowsCreate(launchDarkly, {
     projectKey: "<value>",
     featureFlagKey: "<value>",
     environmentKey: "<value>",
@@ -342,7 +342,7 @@ run();
 
 ### Response
 
-**Promise\<[models.CustomWorkflowOutput](../../models/customworkflowoutput.md)\>**
+**Promise\<[components.CustomWorkflowOutput](../../models/components/customworkflowoutput.md)\>**
 
 ### Errors
 
@@ -355,21 +355,21 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## getCustomWorkflow
+## fetchById
 
 Get a specific workflow by ID.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.workflows.getCustomWorkflow({
+  const result = await launchDarkly.workflows.fetchById({
     projectKey: "<value>",
     featureFlagKey: "<value>",
     environmentKey: "<value>",
@@ -388,17 +388,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { workflowsGetCustomWorkflow } from "@launchdarkly/mcp-server/funcs/workflowsGetCustomWorkflow.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { workflowsFetchById } from "@launchdarkly/mcp-server/funcs/workflowsFetchById.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await workflowsGetCustomWorkflow(launchdarklyMcpServer, {
+  const res = await workflowsFetchById(launchDarkly, {
     projectKey: "<value>",
     featureFlagKey: "<value>",
     environmentKey: "<value>",
@@ -429,7 +429,7 @@ run();
 
 ### Response
 
-**Promise\<[models.CustomWorkflowOutput](../../models/customworkflowoutput.md)\>**
+**Promise\<[components.CustomWorkflowOutput](../../models/components/customworkflowoutput.md)\>**
 
 ### Errors
 
@@ -441,21 +441,21 @@ run();
 | errors.RateLimitedErrorRep  | 429                         | application/json            |
 | errors.APIError             | 4XX, 5XX                    | \*/\*                       |
 
-## deleteWorkflow
+## delete
 
 Delete a workflow from a feature flag.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  await launchdarklyMcpServer.workflows.deleteWorkflow({
+  await launchDarkly.workflows.delete({
     projectKey: "<value>",
     featureFlagKey: "<value>",
     environmentKey: "<value>",
@@ -473,17 +473,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { workflowsDeleteWorkflow } from "@launchdarkly/mcp-server/funcs/workflowsDeleteWorkflow.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { workflowsDelete } from "@launchdarkly/mcp-server/funcs/workflowsDelete.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await workflowsDeleteWorkflow(launchdarklyMcpServer, {
+  const res = await workflowsDelete(launchDarkly, {
     projectKey: "<value>",
     featureFlagKey: "<value>",
     environmentKey: "<value>",

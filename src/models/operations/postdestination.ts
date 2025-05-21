@@ -6,8 +6,8 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type PostDestinationRequest = {
   /**
@@ -18,7 +18,7 @@ export type PostDestinationRequest = {
    * The environment key
    */
   environmentKey: string;
-  destinationPost: models.DestinationPost;
+  destinationPost: components.DestinationPost;
 };
 
 /** @internal */
@@ -29,7 +29,7 @@ export const PostDestinationRequest$inboundSchema: z.ZodType<
 > = z.object({
   projectKey: z.string(),
   environmentKey: z.string(),
-  DestinationPost: models.DestinationPost$inboundSchema,
+  DestinationPost: components.DestinationPost$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "DestinationPost": "destinationPost",
@@ -40,7 +40,7 @@ export const PostDestinationRequest$inboundSchema: z.ZodType<
 export type PostDestinationRequest$Outbound = {
   projectKey: string;
   environmentKey: string;
-  DestinationPost: models.DestinationPost$Outbound;
+  DestinationPost: components.DestinationPost$Outbound;
 };
 
 /** @internal */
@@ -51,7 +51,7 @@ export const PostDestinationRequest$outboundSchema: z.ZodType<
 > = z.object({
   projectKey: z.string(),
   environmentKey: z.string(),
-  destinationPost: models.DestinationPost$outboundSchema,
+  destinationPost: components.DestinationPost$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     destinationPost: "DestinationPost",

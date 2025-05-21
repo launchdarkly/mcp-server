@@ -7,8 +7,8 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 /**
  * Version of the endpoint.
@@ -34,7 +34,7 @@ export type PatchAIConfigVariationRequest = {
   /**
    * AI Config variation object to update
    */
-  aiConfigVariationPatch?: models.AIConfigVariationPatch | undefined;
+  aiConfigVariationPatch?: components.AIConfigVariationPatch | undefined;
 };
 
 /** @internal */
@@ -69,7 +69,7 @@ export const PatchAIConfigVariationRequest$inboundSchema: z.ZodType<
   projectKey: z.string(),
   configKey: z.string(),
   variationKey: z.string(),
-  AIConfigVariationPatch: models.AIConfigVariationPatch$inboundSchema
+  AIConfigVariationPatch: components.AIConfigVariationPatch$inboundSchema
     .optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -84,7 +84,9 @@ export type PatchAIConfigVariationRequest$Outbound = {
   projectKey: string;
   configKey: string;
   variationKey: string;
-  AIConfigVariationPatch?: models.AIConfigVariationPatch$Outbound | undefined;
+  AIConfigVariationPatch?:
+    | components.AIConfigVariationPatch$Outbound
+    | undefined;
 };
 
 /** @internal */
@@ -97,7 +99,7 @@ export const PatchAIConfigVariationRequest$outboundSchema: z.ZodType<
   projectKey: z.string(),
   configKey: z.string(),
   variationKey: z.string(),
-  aiConfigVariationPatch: models.AIConfigVariationPatch$outboundSchema
+  aiConfigVariationPatch: components.AIConfigVariationPatch$outboundSchema
     .optional(),
 }).transform((v) => {
   return remap$(v, {

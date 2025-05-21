@@ -6,8 +6,8 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type UpdatePhaseStatusRequest = {
   /**
@@ -22,7 +22,7 @@ export type UpdatePhaseStatusRequest = {
    * The phase ID
    */
   phaseId: string;
-  updatePhaseStatusInput: models.UpdatePhaseStatusInput;
+  updatePhaseStatusInput: components.UpdatePhaseStatusInput;
 };
 
 /** @internal */
@@ -34,7 +34,7 @@ export const UpdatePhaseStatusRequest$inboundSchema: z.ZodType<
   projectKey: z.string(),
   flagKey: z.string(),
   phaseId: z.string(),
-  UpdatePhaseStatusInput: models.UpdatePhaseStatusInput$inboundSchema,
+  UpdatePhaseStatusInput: components.UpdatePhaseStatusInput$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "UpdatePhaseStatusInput": "updatePhaseStatusInput",
@@ -46,7 +46,7 @@ export type UpdatePhaseStatusRequest$Outbound = {
   projectKey: string;
   flagKey: string;
   phaseId: string;
-  UpdatePhaseStatusInput: models.UpdatePhaseStatusInput$Outbound;
+  UpdatePhaseStatusInput: components.UpdatePhaseStatusInput$Outbound;
 };
 
 /** @internal */
@@ -58,7 +58,7 @@ export const UpdatePhaseStatusRequest$outboundSchema: z.ZodType<
   projectKey: z.string(),
   flagKey: z.string(),
   phaseId: z.string(),
-  updatePhaseStatusInput: models.UpdatePhaseStatusInput$outboundSchema,
+  updatePhaseStatusInput: components.UpdatePhaseStatusInput$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     updatePhaseStatusInput: "UpdatePhaseStatusInput",

@@ -17,12 +17,103 @@ Users are always scoped within a project and environment. In other words, each e
 
 ### Available Operations
 
-* [~~getSearchUsers~~](#getsearchusers) - Find users :warning: **Deprecated**
-* [~~getUsers~~](#getusers) - List users :warning: **Deprecated**
-* [~~getUser~~](#getuser) - Get user :warning: **Deprecated**
-* [~~deleteUser~~](#deleteuser) - Delete user :warning: **Deprecated**
+* [~~getAttributeNames~~](#getattributenames) - Get user attribute names :warning: **Deprecated**
+* [~~search~~](#search) - Find users :warning: **Deprecated**
+* [~~list~~](#list) - List users :warning: **Deprecated**
+* [~~get~~](#get) - Get user :warning: **Deprecated**
+* [~~delete~~](#delete) - Delete user :warning: **Deprecated**
 
-## ~~getSearchUsers~~
+## ~~getAttributeNames~~
+
+> ### Use contexts instead
+>
+> After you have upgraded your LaunchDarkly SDK to use contexts instead of users, you should use [Get context attribute names
+](https://launchdarkly.com/docs/ld-docs/api/contexts/get-context-attribute-names) instead of this endpoint.
+
+Get all in-use user attributes in the specified environment. The set of in-use attributes typically consists of all attributes seen within the past 30 days.
+
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
+
+### Example Usage
+
+```typescript
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
+
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
+});
+
+async function run() {
+  const result = await launchDarkly.users.getAttributeNames({
+    projectKey: "<value>",
+    environmentKey: "<value>",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { usersGetAttributeNames } from "@launchdarkly/mcp-server/funcs/usersGetAttributeNames.js";
+
+// Use `LaunchDarklyCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
+});
+
+async function run() {
+  const res = await usersGetAttributeNames(launchDarkly, {
+    projectKey: "<value>",
+    environmentKey: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.GetUserAttributeNamesRequest](../../models/operations/getuserattributenamesrequest.md)                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[components.UserAttributeNamesRep](../../models/components/userattributenamesrep.md)\>**
+
+### Errors
+
+| Error Type                    | Status Code                   | Content Type                  |
+| ----------------------------- | ----------------------------- | ----------------------------- |
+| errors.InvalidRequestErrorRep | 400                           | application/json              |
+| errors.UnauthorizedErrorRep   | 401                           | application/json              |
+| errors.ForbiddenErrorRep      | 403                           | application/json              |
+| errors.NotFoundErrorRep       | 404                           | application/json              |
+| errors.APIError               | 4XX, 5XX                      | \*/\*                         |
+
+## ~~search~~
 
 > ### Use contexts instead
 >
@@ -40,14 +131,14 @@ To paginate through results, follow the `next` link in the `_links` object. To l
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.users.getSearchUsers({
+  const result = await launchDarkly.users.search({
     projectKey: "<value>",
     environmentKey: "<value>",
   });
@@ -64,17 +155,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { usersGetSearchUsers } from "@launchdarkly/mcp-server/funcs/usersGetSearchUsers.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { usersSearch } from "@launchdarkly/mcp-server/funcs/usersSearch.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await usersGetSearchUsers(launchdarklyMcpServer, {
+  const res = await usersSearch(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
   });
@@ -103,7 +194,7 @@ run();
 
 ### Response
 
-**Promise\<[models.Users](../../models/users.md)\>**
+**Promise\<[components.Users](../../models/components/users.md)\>**
 
 ### Errors
 
@@ -116,7 +207,7 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## ~~getUsers~~
+## ~~list~~
 
 > ### Use contexts instead
 >
@@ -132,14 +223,14 @@ Each page displays users up to a set `limit`. The default is 20. To page through
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.users.getUsers({
+  const result = await launchDarkly.users.list({
     projectKey: "<value>",
     environmentKey: "<value>",
   });
@@ -156,17 +247,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { usersGetUsers } from "@launchdarkly/mcp-server/funcs/usersGetUsers.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { usersList } from "@launchdarkly/mcp-server/funcs/usersList.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await usersGetUsers(launchdarklyMcpServer, {
+  const res = await usersList(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
   });
@@ -195,7 +286,7 @@ run();
 
 ### Response
 
-**Promise\<[models.UsersRep](../../models/usersrep.md)\>**
+**Promise\<[components.UsersRep](../../models/components/usersrep.md)\>**
 
 ### Errors
 
@@ -208,7 +299,7 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## ~~getUser~~
+## ~~get~~
 
 > ### Use contexts instead
 >
@@ -222,14 +313,14 @@ Get a user by key. The `user` object contains all attributes sent in `variation`
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.users.getUser({
+  const result = await launchDarkly.users.get({
     projectKey: "<value>",
     environmentKey: "<value>",
     userKey: "<value>",
@@ -247,17 +338,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { usersGetUser } from "@launchdarkly/mcp-server/funcs/usersGetUser.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { usersGet } from "@launchdarkly/mcp-server/funcs/usersGet.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await usersGetUser(launchdarklyMcpServer, {
+  const res = await usersGet(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
     userKey: "<value>",
@@ -287,7 +378,7 @@ run();
 
 ### Response
 
-**Promise\<[models.UserRecord](../../models/userrecord.md)\>**
+**Promise\<[components.UserRecord](../../models/components/userrecord.md)\>**
 
 ### Errors
 
@@ -300,7 +391,7 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## ~~deleteUser~~
+## ~~delete~~
 
 > ### Use contexts instead
 >
@@ -314,14 +405,14 @@ Delete a user by key.
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  await launchdarklyMcpServer.users.deleteUser({
+  await launchDarkly.users.delete({
     projectKey: "<value>",
     environmentKey: "<value>",
     userKey: "<value>",
@@ -338,17 +429,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { usersDeleteUser } from "@launchdarkly/mcp-server/funcs/usersDeleteUser.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { usersDelete } from "@launchdarkly/mcp-server/funcs/usersDelete.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await usersDeleteUser(launchdarklyMcpServer, {
+  const res = await usersDelete(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
     userKey: "<value>",

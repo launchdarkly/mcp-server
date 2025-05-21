@@ -6,8 +6,8 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type PatchDestinationRequest = {
   /**
@@ -22,7 +22,7 @@ export type PatchDestinationRequest = {
    * The Data Export destination ID
    */
   id: string;
-  requestBody: Array<models.PatchOperation>;
+  requestBody: Array<components.PatchOperation>;
 };
 
 /** @internal */
@@ -34,7 +34,7 @@ export const PatchDestinationRequest$inboundSchema: z.ZodType<
   projectKey: z.string(),
   environmentKey: z.string(),
   id: z.string(),
-  RequestBody: z.array(models.PatchOperation$inboundSchema),
+  RequestBody: z.array(components.PatchOperation$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
     "RequestBody": "requestBody",
@@ -46,7 +46,7 @@ export type PatchDestinationRequest$Outbound = {
   projectKey: string;
   environmentKey: string;
   id: string;
-  RequestBody: Array<models.PatchOperation$Outbound>;
+  RequestBody: Array<components.PatchOperation$Outbound>;
 };
 
 /** @internal */
@@ -58,7 +58,7 @@ export const PatchDestinationRequest$outboundSchema: z.ZodType<
   projectKey: z.string(),
   environmentKey: z.string(),
   id: z.string(),
-  requestBody: z.array(models.PatchOperation$outboundSchema),
+  requestBody: z.array(components.PatchOperation$outboundSchema),
 }).transform((v) => {
   return remap$(v, {
     requestBody: "RequestBody",

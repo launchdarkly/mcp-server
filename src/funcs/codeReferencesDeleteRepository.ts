@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod";
-import { LaunchdarklyMcpServerCore } from "../core.js";
+import { LaunchDarklyCore } from "../core.js";
 import { encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
@@ -32,7 +32,7 @@ import { Result } from "../types/fp.js";
  * Delete a repository with the specified name.
  */
 export function codeReferencesDeleteRepository(
-  client: LaunchdarklyMcpServerCore,
+  client: LaunchDarklyCore,
   request: operations.DeleteRepositoryRequest,
   options?: RequestOptions,
 ): APIPromise<
@@ -60,7 +60,7 @@ export function codeReferencesDeleteRepository(
 }
 
 async function $do(
-  client: LaunchdarklyMcpServerCore,
+  client: LaunchDarklyCore,
   request: operations.DeleteRepositoryRequest,
   options?: RequestOptions,
 ): Promise<

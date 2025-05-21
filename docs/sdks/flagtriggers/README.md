@@ -3,40 +3,29 @@
 
 ## Overview
 
-> ### Flag triggers is an Enterprise feature
->
-> Flag triggers is available to customers on an Enterprise plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact Sales](https://launchdarkly.com/contact-sales/).
-
-Flag triggers let you initiate flag changes remotely using a unique webhook URL. For example, you can integrate triggers with your existing tools to enable or disable flags when you hit specific operational health thresholds or receive certain alerts. To learn more, read [Flag triggers](https://launchdarkly.com/docs/home/releases/triggers).
-
-With the flag triggers API, you can create, delete, and manage triggers.
-
-Several of the endpoints in the flag triggers API require a flag trigger ID. The flag trigger ID is returned as part of the [Create flag trigger](https://launchdarkly.com/docs/api/flag-triggers/create-trigger-workflow) and [List flag triggers](https://launchdarkly.com/docs/api/flag-triggers/get-trigger-workflows) responses. It is the `_id` field, or the `_id` field of each element in the `items` array.
-
-
 ### Available Operations
 
-* [getTriggerWorkflows](#gettriggerworkflows) - List flag triggers
-* [createTriggerWorkflow](#createtriggerworkflow) - Create flag trigger
-* [getTriggerWorkflowById](#gettriggerworkflowbyid) - Get flag trigger by ID
-* [deleteTriggerWorkflow](#deletetriggerworkflow) - Delete flag trigger
-* [patchTriggerWorkflow](#patchtriggerworkflow) - Update flag trigger
+* [list](#list) - List flag triggers
+* [create](#create) - Create flag trigger
+* [getById](#getbyid) - Get flag trigger by ID
+* [patchWorkflow](#patchworkflow) - Update flag trigger
+* [delete](#delete) - Delete flag trigger
 
-## getTriggerWorkflows
+## list
 
 Get a list of all flag triggers.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.flagTriggers.getTriggerWorkflows({
+  const result = await launchDarkly.flagTriggers.list({
     projectKey: "<value>",
     environmentKey: "<value>",
     featureFlagKey: "<value>",
@@ -54,17 +43,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { flagTriggersGetTriggerWorkflows } from "@launchdarkly/mcp-server/funcs/flagTriggersGetTriggerWorkflows.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { flagTriggersList } from "@launchdarkly/mcp-server/funcs/flagTriggersList.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await flagTriggersGetTriggerWorkflows(launchdarklyMcpServer, {
+  const res = await flagTriggersList(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
     featureFlagKey: "<value>",
@@ -94,7 +83,7 @@ run();
 
 ### Response
 
-**Promise\<[models.TriggerWorkflowCollectionRep](../../models/triggerworkflowcollectionrep.md)\>**
+**Promise\<[components.TriggerWorkflowCollectionRep](../../models/components/triggerworkflowcollectionrep.md)\>**
 
 ### Errors
 
@@ -105,21 +94,21 @@ run();
 | errors.RateLimitedErrorRep  | 429                         | application/json            |
 | errors.APIError             | 4XX, 5XX                    | \*/\*                       |
 
-## createTriggerWorkflow
+## create
 
 Create a new flag trigger.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.flagTriggers.createTriggerWorkflow({
+  const result = await launchDarkly.flagTriggers.create({
     projectKey: "<value>",
     environmentKey: "<value>",
     featureFlagKey: "<value>",
@@ -146,17 +135,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { flagTriggersCreateTriggerWorkflow } from "@launchdarkly/mcp-server/funcs/flagTriggersCreateTriggerWorkflow.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { flagTriggersCreate } from "@launchdarkly/mcp-server/funcs/flagTriggersCreate.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await flagTriggersCreateTriggerWorkflow(launchdarklyMcpServer, {
+  const res = await flagTriggersCreate(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
     featureFlagKey: "<value>",
@@ -195,7 +184,7 @@ run();
 
 ### Response
 
-**Promise\<[models.TriggerWorkflowRep](../../models/triggerworkflowrep.md)\>**
+**Promise\<[components.TriggerWorkflowRep](../../models/components/triggerworkflowrep.md)\>**
 
 ### Errors
 
@@ -208,21 +197,21 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## getTriggerWorkflowById
+## getById
 
 Get a flag trigger by ID.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.flagTriggers.getTriggerWorkflowById({
+  const result = await launchDarkly.flagTriggers.getById({
     projectKey: "<value>",
     featureFlagKey: "<value>",
     environmentKey: "<value>",
@@ -241,17 +230,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { flagTriggersGetTriggerWorkflowById } from "@launchdarkly/mcp-server/funcs/flagTriggersGetTriggerWorkflowById.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { flagTriggersGetById } from "@launchdarkly/mcp-server/funcs/flagTriggersGetById.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await flagTriggersGetTriggerWorkflowById(launchdarklyMcpServer, {
+  const res = await flagTriggersGetById(launchDarkly, {
     projectKey: "<value>",
     featureFlagKey: "<value>",
     environmentKey: "<value>",
@@ -282,7 +271,7 @@ run();
 
 ### Response
 
-**Promise\<[models.TriggerWorkflowRep](../../models/triggerworkflowrep.md)\>**
+**Promise\<[components.TriggerWorkflowRep](../../models/components/triggerworkflowrep.md)\>**
 
 ### Errors
 
@@ -294,92 +283,7 @@ run();
 | errors.RateLimitedErrorRep  | 429                         | application/json            |
 | errors.APIError             | 4XX, 5XX                    | \*/\*                       |
 
-## deleteTriggerWorkflow
-
-Delete a flag trigger by ID.
-
-### Example Usage
-
-```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
-
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
-});
-
-async function run() {
-  await launchdarklyMcpServer.flagTriggers.deleteTriggerWorkflow({
-    projectKey: "<value>",
-    environmentKey: "<value>",
-    featureFlagKey: "<value>",
-    id: "<value>",
-  });
-
-
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { flagTriggersDeleteTriggerWorkflow } from "@launchdarkly/mcp-server/funcs/flagTriggersDeleteTriggerWorkflow.js";
-
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
-});
-
-async function run() {
-  const res = await flagTriggersDeleteTriggerWorkflow(launchdarklyMcpServer, {
-    projectKey: "<value>",
-    environmentKey: "<value>",
-    featureFlagKey: "<value>",
-    id: "<value>",
-  });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.DeleteTriggerWorkflowRequest](../../models/operations/deletetriggerworkflowrequest.md)                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<void\>**
-
-### Errors
-
-| Error Type                    | Status Code                   | Content Type                  |
-| ----------------------------- | ----------------------------- | ----------------------------- |
-| errors.InvalidRequestErrorRep | 400                           | application/json              |
-| errors.UnauthorizedErrorRep   | 401                           | application/json              |
-| errors.ForbiddenErrorRep      | 403                           | application/json              |
-| errors.NotFoundErrorRep       | 404                           | application/json              |
-| errors.RateLimitedErrorRep    | 429                           | application/json              |
-| errors.APIError               | 4XX, 5XX                      | \*/\*                         |
-
-## patchTriggerWorkflow
+## patchWorkflow
 
 Update a flag trigger. Updating a flag trigger uses the semantic patch format.
 
@@ -455,14 +359,14 @@ Here's an example:
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.flagTriggers.patchTriggerWorkflow({
+  const result = await launchDarkly.flagTriggers.patchWorkflow({
     projectKey: "<value>",
     environmentKey: "<value>",
     featureFlagKey: "<value>",
@@ -489,17 +393,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { flagTriggersPatchTriggerWorkflow } from "@launchdarkly/mcp-server/funcs/flagTriggersPatchTriggerWorkflow.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { flagTriggersPatchWorkflow } from "@launchdarkly/mcp-server/funcs/flagTriggersPatchWorkflow.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await flagTriggersPatchTriggerWorkflow(launchdarklyMcpServer, {
+  const res = await flagTriggersPatchWorkflow(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
     featureFlagKey: "<value>",
@@ -538,7 +442,7 @@ run();
 
 ### Response
 
-**Promise\<[models.TriggerWorkflowRep](../../models/triggerworkflowrep.md)\>**
+**Promise\<[components.TriggerWorkflowRep](../../models/components/triggerworkflowrep.md)\>**
 
 ### Errors
 
@@ -549,5 +453,90 @@ run();
 | errors.ForbiddenErrorRep      | 403                           | application/json              |
 | errors.NotFoundErrorRep       | 404                           | application/json              |
 | errors.StatusConflictErrorRep | 409                           | application/json              |
+| errors.RateLimitedErrorRep    | 429                           | application/json              |
+| errors.APIError               | 4XX, 5XX                      | \*/\*                         |
+
+## delete
+
+Delete a flag trigger by ID.
+
+### Example Usage
+
+```typescript
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
+
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
+});
+
+async function run() {
+  await launchDarkly.flagTriggers.delete({
+    projectKey: "<value>",
+    environmentKey: "<value>",
+    featureFlagKey: "<value>",
+    id: "<value>",
+  });
+
+
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { flagTriggersDelete } from "@launchdarkly/mcp-server/funcs/flagTriggersDelete.js";
+
+// Use `LaunchDarklyCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
+});
+
+async function run() {
+  const res = await flagTriggersDelete(launchDarkly, {
+    projectKey: "<value>",
+    environmentKey: "<value>",
+    featureFlagKey: "<value>",
+    id: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.DeleteTriggerWorkflowRequest](../../models/operations/deletetriggerworkflowrequest.md)                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<void\>**
+
+### Errors
+
+| Error Type                    | Status Code                   | Content Type                  |
+| ----------------------------- | ----------------------------- | ----------------------------- |
+| errors.InvalidRequestErrorRep | 400                           | application/json              |
+| errors.UnauthorizedErrorRep   | 401                           | application/json              |
+| errors.ForbiddenErrorRep      | 403                           | application/json              |
+| errors.NotFoundErrorRep       | 404                           | application/json              |
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |

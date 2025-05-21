@@ -28,7 +28,7 @@ let value: CreateMetricGroupRequest = {
 
 ## Fields
 
-| Field                                                     | Type                                                      | Required                                                  | Description                                               |
-| --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
-| `projectKey`                                              | *string*                                                  | :heavy_check_mark:                                        | The project key                                           |
-| `metricGroupPost`                                         | [models.MetricGroupPost](../../models/metricgrouppost.md) | :heavy_check_mark:                                        | N/A                                                       |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `projectKey`                                                             | *string*                                                                 | :heavy_check_mark:                                                       | The project key                                                          |
+| `metricGroupPost`                                                        | [components.MetricGroupPost](../../models/components/metricgrouppost.md) | :heavy_check_mark:                                                       | N/A                                                                      |

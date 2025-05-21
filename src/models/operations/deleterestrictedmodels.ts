@@ -7,8 +7,8 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 /**
  * Version of the endpoint.
@@ -32,7 +32,7 @@ export type DeleteRestrictedModelsRequest = {
   /**
    * List of AI model keys to remove from the restricted list
    */
-  restrictedModelsRequest: models.RestrictedModelsRequest;
+  restrictedModelsRequest: components.RestrictedModelsRequest;
 };
 
 /** @internal */
@@ -65,7 +65,7 @@ export const DeleteRestrictedModelsRequest$inboundSchema: z.ZodType<
 > = z.object({
   "LD-API-Version": DeleteRestrictedModelsLDAPIVersion$inboundSchema,
   projectKey: z.string(),
-  RestrictedModelsRequest: models.RestrictedModelsRequest$inboundSchema,
+  RestrictedModelsRequest: components.RestrictedModelsRequest$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "LD-API-Version": "ldAPIVersion",
@@ -77,7 +77,7 @@ export const DeleteRestrictedModelsRequest$inboundSchema: z.ZodType<
 export type DeleteRestrictedModelsRequest$Outbound = {
   "LD-API-Version": string;
   projectKey: string;
-  RestrictedModelsRequest: models.RestrictedModelsRequest$Outbound;
+  RestrictedModelsRequest: components.RestrictedModelsRequest$Outbound;
 };
 
 /** @internal */
@@ -88,7 +88,7 @@ export const DeleteRestrictedModelsRequest$outboundSchema: z.ZodType<
 > = z.object({
   ldAPIVersion: DeleteRestrictedModelsLDAPIVersion$outboundSchema,
   projectKey: z.string(),
-  restrictedModelsRequest: models.RestrictedModelsRequest$outboundSchema,
+  restrictedModelsRequest: components.RestrictedModelsRequest$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     ldAPIVersion: "LD-API-Version",

@@ -23,9 +23,9 @@ let value: CreateTriggerWorkflowRequest = {
 
 ## Fields
 
-| Field                                             | Type                                              | Required                                          | Description                                       |
-| ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
-| `projectKey`                                      | *string*                                          | :heavy_check_mark:                                | The project key                                   |
-| `environmentKey`                                  | *string*                                          | :heavy_check_mark:                                | The environment key                               |
-| `featureFlagKey`                                  | *string*                                          | :heavy_check_mark:                                | The feature flag key                              |
-| `triggerPost`                                     | [models.TriggerPost](../../models/triggerpost.md) | :heavy_check_mark:                                | N/A                                               |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `projectKey`                                                     | *string*                                                         | :heavy_check_mark:                                               | The project key                                                  |
+| `environmentKey`                                                 | *string*                                                         | :heavy_check_mark:                                               | The environment key                                              |
+| `featureFlagKey`                                                 | *string*                                                         | :heavy_check_mark:                                               | The feature flag key                                             |
+| `triggerPost`                                                    | [components.TriggerPost](../../models/components/triggerpost.md) | :heavy_check_mark:                                               | N/A                                                              |

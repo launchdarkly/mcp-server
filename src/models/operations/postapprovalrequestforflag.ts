@@ -5,8 +5,8 @@
 import * as z from "zod";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type PostApprovalRequestForFlagRequest = {
   /**
@@ -22,7 +22,7 @@ export type PostApprovalRequestForFlagRequest = {
    */
   environmentKey: string;
   createFlagConfigApprovalRequestRequest:
-    models.CreateFlagConfigApprovalRequestRequest;
+    components.CreateFlagConfigApprovalRequestRequest;
 };
 
 /** @internal */
@@ -35,7 +35,7 @@ export const PostApprovalRequestForFlagRequest$inboundSchema: z.ZodType<
   featureFlagKey: z.string(),
   environmentKey: z.string(),
   createFlagConfigApprovalRequestRequest:
-    models.CreateFlagConfigApprovalRequestRequest$inboundSchema,
+    components.CreateFlagConfigApprovalRequestRequest$inboundSchema,
 });
 
 /** @internal */
@@ -44,7 +44,7 @@ export type PostApprovalRequestForFlagRequest$Outbound = {
   featureFlagKey: string;
   environmentKey: string;
   createFlagConfigApprovalRequestRequest:
-    models.CreateFlagConfigApprovalRequestRequest$Outbound;
+    components.CreateFlagConfigApprovalRequestRequest$Outbound;
 };
 
 /** @internal */
@@ -57,7 +57,7 @@ export const PostApprovalRequestForFlagRequest$outboundSchema: z.ZodType<
   featureFlagKey: z.string(),
   environmentKey: z.string(),
   createFlagConfigApprovalRequestRequest:
-    models.CreateFlagConfigApprovalRequestRequest$outboundSchema,
+    components.CreateFlagConfigApprovalRequestRequest$outboundSchema,
 });
 
 /**

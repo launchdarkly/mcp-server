@@ -3,12 +3,12 @@
  */
 
 import { userSettingsGetExpiringFlagsForUser } from "../funcs/userSettingsGetExpiringFlagsForUser.js";
-import { userSettingsGetUserFlagSetting } from "../funcs/userSettingsGetUserFlagSetting.js";
-import { userSettingsGetUserFlagSettings } from "../funcs/userSettingsGetUserFlagSettings.js";
-import { userSettingsPatchExpiringFlagsForUser } from "../funcs/userSettingsPatchExpiringFlagsForUser.js";
-import { userSettingsPutFlagSetting } from "../funcs/userSettingsPutFlagSetting.js";
+import { userSettingsGetFlagSetting } from "../funcs/userSettingsGetFlagSetting.js";
+import { userSettingsListFlags } from "../funcs/userSettingsListFlags.js";
+import { userSettingsUpdateExpiringTargets } from "../funcs/userSettingsUpdateExpiringTargets.js";
+import { userSettingsUpdateFlagSetting } from "../funcs/userSettingsUpdateFlagSetting.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as models from "../models/index.js";
+import * as components from "../models/components/index.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
@@ -21,11 +21,11 @@ export class UserSettings extends ClientSDK {
    *
    * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
-  async getUserFlagSettings(
+  async listFlags(
     request: operations.GetUserFlagSettingsRequest,
     options?: RequestOptions,
-  ): Promise<models.UserFlagSettings> {
-    return unwrapAsync(userSettingsGetUserFlagSettings(
+  ): Promise<components.UserFlagSettings> {
+    return unwrapAsync(userSettingsListFlags(
       this,
       request,
       options,
@@ -40,11 +40,11 @@ export class UserSettings extends ClientSDK {
    *
    * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
-  async getUserFlagSetting(
+  async getFlagSetting(
     request: operations.GetUserFlagSettingRequest,
     options?: RequestOptions,
-  ): Promise<models.UserFlagSetting> {
-    return unwrapAsync(userSettingsGetUserFlagSetting(
+  ): Promise<components.UserFlagSetting> {
+    return unwrapAsync(userSettingsGetFlagSetting(
       this,
       request,
       options,
@@ -63,11 +63,11 @@ export class UserSettings extends ClientSDK {
    *
    * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
-  async putFlagSetting(
+  async updateFlagSetting(
     request: operations.PutFlagSettingRequest,
     options?: RequestOptions,
   ): Promise<void> {
-    return unwrapAsync(userSettingsPutFlagSetting(
+    return unwrapAsync(userSettingsUpdateFlagSetting(
       this,
       request,
       options,
@@ -85,7 +85,7 @@ export class UserSettings extends ClientSDK {
   async getExpiringFlagsForUser(
     request: operations.GetExpiringFlagsForUserRequest,
     options?: RequestOptions,
-  ): Promise<models.ExpiringUserTargetGetResponse> {
+  ): Promise<components.ExpiringUserTargetGetResponse> {
     return unwrapAsync(userSettingsGetExpiringFlagsForUser(
       this,
       request,
@@ -144,11 +144,11 @@ export class UserSettings extends ClientSDK {
    *
    * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
-  async patchExpiringFlagsForUser(
+  async updateExpiringTargets(
     request: operations.PatchExpiringFlagsForUserRequest,
     options?: RequestOptions,
-  ): Promise<models.ExpiringUserTargetPatchResponse> {
-    return unwrapAsync(userSettingsPatchExpiringFlagsForUser(
+  ): Promise<components.ExpiringUserTargetPatchResponse> {
+    return unwrapAsync(userSettingsUpdateExpiringTargets(
       this,
       request,
       options,

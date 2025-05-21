@@ -5,8 +5,8 @@
 import * as z from "zod";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type CreateTriggerWorkflowRequest = {
   /**
@@ -21,7 +21,7 @@ export type CreateTriggerWorkflowRequest = {
    * The feature flag key
    */
   featureFlagKey: string;
-  triggerPost: models.TriggerPost;
+  triggerPost: components.TriggerPost;
 };
 
 /** @internal */
@@ -33,7 +33,7 @@ export const CreateTriggerWorkflowRequest$inboundSchema: z.ZodType<
   projectKey: z.string(),
   environmentKey: z.string(),
   featureFlagKey: z.string(),
-  triggerPost: models.TriggerPost$inboundSchema,
+  triggerPost: components.TriggerPost$inboundSchema,
 });
 
 /** @internal */
@@ -41,7 +41,7 @@ export type CreateTriggerWorkflowRequest$Outbound = {
   projectKey: string;
   environmentKey: string;
   featureFlagKey: string;
-  triggerPost: models.TriggerPost$Outbound;
+  triggerPost: components.TriggerPost$Outbound;
 };
 
 /** @internal */
@@ -53,7 +53,7 @@ export const CreateTriggerWorkflowRequest$outboundSchema: z.ZodType<
   projectKey: z.string(),
   environmentKey: z.string(),
   featureFlagKey: z.string(),
-  triggerPost: models.TriggerPost$outboundSchema,
+  triggerPost: components.TriggerPost$outboundSchema,
 });
 
 /**

@@ -3,40 +3,30 @@
 
 ## Overview
 
-
-> ### Relay Proxy automatic configuration is an Enterprise feature
->
-> Relay Proxy automatic configuration is available to customers on an Enterprise plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact Sales](https://launchdarkly.com/contact-sales/).
-
-The Relay Proxy automatic configuration API provides access to all resources related to relay tokens. To learn more, read [Automatic configuration](https://launchdarkly.com/docs/sdk/relay-proxy/automatic-configuration).
-
-Several of the endpoints in the Relay Proxy automatic configuration API require a configuration ID. The Relay Proxy configuration ID is returned as part of the [Create a new Relay Proxy config](https://launchdarkly.com/docs/api/relay-proxy-configurations/post-relay-auto-config) and [List Relay Proxy configs](https://launchdarkly.com/docs/api/relay-proxy-configurations/get-relay-proxy-configs) responses. It is the `_id` field, or the `_id` field of each element in the `items` array.
-
-
 ### Available Operations
 
-* [getRelayProxyConfigs](#getrelayproxyconfigs) - List Relay Proxy configs
-* [postRelayAutoConfig](#postrelayautoconfig) - Create a new Relay Proxy config
-* [getRelayProxyConfig](#getrelayproxyconfig) - Get Relay Proxy config
-* [deleteRelayAutoConfig](#deleterelayautoconfig) - Delete Relay Proxy config by ID
-* [patchRelayAutoConfig](#patchrelayautoconfig) - Update a Relay Proxy config
-* [resetRelayAutoConfig](#resetrelayautoconfig) - Reset Relay Proxy configuration key
+* [list](#list) - List Relay Proxy configs
+* [create](#create) - Create a new Relay Proxy config
+* [getConfig](#getconfig) - Get Relay Proxy config
+* [update](#update) - Update a Relay Proxy config
+* [delete](#delete) - Delete Relay Proxy config by ID
+* [reset](#reset) - Reset Relay Proxy configuration key
 
-## getRelayProxyConfigs
+## list
 
 Get a list of Relay Proxy configurations in the account.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.relayProxyConfigurations.getRelayProxyConfigs();
+  const result = await launchDarkly.relayProxyConfigurations.list();
 
   // Handle the result
   console.log(result);
@@ -50,17 +40,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { relayProxyConfigurationsGetRelayProxyConfigs } from "@launchdarkly/mcp-server/funcs/relayProxyConfigurationsGetRelayProxyConfigs.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { relayProxyConfigurationsList } from "@launchdarkly/mcp-server/funcs/relayProxyConfigurationsList.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await relayProxyConfigurationsGetRelayProxyConfigs(launchdarklyMcpServer);
+  const res = await relayProxyConfigurationsList(launchDarkly);
 
   if (!res.ok) {
     throw res.error;
@@ -85,7 +75,7 @@ run();
 
 ### Response
 
-**Promise\<[models.RelayAutoConfigCollectionRep](../../models/relayautoconfigcollectionrep.md)\>**
+**Promise\<[components.RelayAutoConfigCollectionRep](../../models/components/relayautoconfigcollectionrep.md)\>**
 
 ### Errors
 
@@ -96,21 +86,21 @@ run();
 | errors.RateLimitedErrorRep  | 429                         | application/json            |
 | errors.APIError             | 4XX, 5XX                    | \*/\*                       |
 
-## postRelayAutoConfig
+## create
 
 Create a Relay Proxy config.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.relayProxyConfigurations.postRelayAutoConfig({
+  const result = await launchDarkly.relayProxyConfigurations.create({
     name: "Sample Relay Proxy config for all proj and env",
     policy: [
       {
@@ -137,17 +127,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { relayProxyConfigurationsPostRelayAutoConfig } from "@launchdarkly/mcp-server/funcs/relayProxyConfigurationsPostRelayAutoConfig.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { relayProxyConfigurationsCreate } from "@launchdarkly/mcp-server/funcs/relayProxyConfigurationsCreate.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await relayProxyConfigurationsPostRelayAutoConfig(launchdarklyMcpServer, {
+  const res = await relayProxyConfigurationsCreate(launchDarkly, {
     name: "Sample Relay Proxy config for all proj and env",
     policy: [
       {
@@ -179,14 +169,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [models.RelayAutoConfigPost](../../models/relayautoconfigpost.md)                                                                                                              | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [components.RelayAutoConfigPost](../../models/components/relayautoconfigpost.md)                                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.RelayAutoConfigRep](../../models/relayautoconfigrep.md)\>**
+**Promise\<[components.RelayAutoConfigRep](../../models/components/relayautoconfigrep.md)\>**
 
 ### Errors
 
@@ -197,21 +187,21 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## getRelayProxyConfig
+## getConfig
 
 Get a single Relay Proxy auto config by ID.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.relayProxyConfigurations.getRelayProxyConfig({
+  const result = await launchDarkly.relayProxyConfigurations.getConfig({
     id: "<value>",
   });
 
@@ -227,17 +217,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { relayProxyConfigurationsGetRelayProxyConfig } from "@launchdarkly/mcp-server/funcs/relayProxyConfigurationsGetRelayProxyConfig.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { relayProxyConfigurationsGetConfig } from "@launchdarkly/mcp-server/funcs/relayProxyConfigurationsGetConfig.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await relayProxyConfigurationsGetRelayProxyConfig(launchdarklyMcpServer, {
+  const res = await relayProxyConfigurationsGetConfig(launchDarkly, {
     id: "<value>",
   });
 
@@ -265,7 +255,7 @@ run();
 
 ### Response
 
-**Promise\<[models.RelayAutoConfigRep](../../models/relayautoconfigrep.md)\>**
+**Promise\<[components.RelayAutoConfigRep](../../models/components/relayautoconfigrep.md)\>**
 
 ### Errors
 
@@ -277,99 +267,21 @@ run();
 | errors.RateLimitedErrorRep  | 429                         | application/json            |
 | errors.APIError             | 4XX, 5XX                    | \*/\*                       |
 
-## deleteRelayAutoConfig
-
-Delete a Relay Proxy config.
-
-### Example Usage
-
-```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
-
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
-});
-
-async function run() {
-  await launchdarklyMcpServer.relayProxyConfigurations.deleteRelayAutoConfig({
-    id: "<value>",
-  });
-
-
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { relayProxyConfigurationsDeleteRelayAutoConfig } from "@launchdarkly/mcp-server/funcs/relayProxyConfigurationsDeleteRelayAutoConfig.js";
-
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
-});
-
-async function run() {
-  const res = await relayProxyConfigurationsDeleteRelayAutoConfig(launchdarklyMcpServer, {
-    id: "<value>",
-  });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.DeleteRelayAutoConfigRequest](../../models/operations/deleterelayautoconfigrequest.md)                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<void\>**
-
-### Errors
-
-| Error Type                    | Status Code                   | Content Type                  |
-| ----------------------------- | ----------------------------- | ----------------------------- |
-| errors.UnauthorizedErrorRep   | 401                           | application/json              |
-| errors.NotFoundErrorRep       | 404                           | application/json              |
-| errors.StatusConflictErrorRep | 409                           | application/json              |
-| errors.RateLimitedErrorRep    | 429                           | application/json              |
-| errors.APIError               | 4XX, 5XX                      | \*/\*                         |
-
-## patchRelayAutoConfig
+## update
 
 Update a Relay Proxy configuration. Updating a configuration uses a [JSON patch](https://datatracker.ietf.org/doc/html/rfc6902) or [JSON merge patch](https://datatracker.ietf.org/doc/html/rfc7386) representation of the desired changes. To learn more, read [Updates](https://launchdarkly.com/docs/api#updates).
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.relayProxyConfigurations.patchRelayAutoConfig({
+  const result = await launchDarkly.relayProxyConfigurations.update({
     id: "<value>",
     patchWithComment: {
       patch: [
@@ -402,17 +314,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { relayProxyConfigurationsPatchRelayAutoConfig } from "@launchdarkly/mcp-server/funcs/relayProxyConfigurationsPatchRelayAutoConfig.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { relayProxyConfigurationsUpdate } from "@launchdarkly/mcp-server/funcs/relayProxyConfigurationsUpdate.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await relayProxyConfigurationsPatchRelayAutoConfig(launchdarklyMcpServer, {
+  const res = await relayProxyConfigurationsUpdate(launchDarkly, {
     id: "<value>",
     patchWithComment: {
       patch: [
@@ -457,7 +369,7 @@ run();
 
 ### Response
 
-**Promise\<[models.RelayAutoConfigRep](../../models/relayautoconfigrep.md)\>**
+**Promise\<[components.RelayAutoConfigRep](../../models/components/relayautoconfigrep.md)\>**
 
 ### Errors
 
@@ -471,21 +383,99 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## resetRelayAutoConfig
+## delete
+
+Delete a Relay Proxy config.
+
+### Example Usage
+
+```typescript
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
+
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
+});
+
+async function run() {
+  await launchDarkly.relayProxyConfigurations.delete({
+    id: "<value>",
+  });
+
+
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { relayProxyConfigurationsDelete } from "@launchdarkly/mcp-server/funcs/relayProxyConfigurationsDelete.js";
+
+// Use `LaunchDarklyCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
+});
+
+async function run() {
+  const res = await relayProxyConfigurationsDelete(launchDarkly, {
+    id: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.DeleteRelayAutoConfigRequest](../../models/operations/deleterelayautoconfigrequest.md)                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<void\>**
+
+### Errors
+
+| Error Type                    | Status Code                   | Content Type                  |
+| ----------------------------- | ----------------------------- | ----------------------------- |
+| errors.UnauthorizedErrorRep   | 401                           | application/json              |
+| errors.NotFoundErrorRep       | 404                           | application/json              |
+| errors.StatusConflictErrorRep | 409                           | application/json              |
+| errors.RateLimitedErrorRep    | 429                           | application/json              |
+| errors.APIError               | 4XX, 5XX                      | \*/\*                         |
+
+## reset
 
 Reset a Relay Proxy configuration's secret key with an optional expiry time for the old key.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.relayProxyConfigurations.resetRelayAutoConfig({
+  const result = await launchDarkly.relayProxyConfigurations.reset({
     id: "<value>",
   });
 
@@ -501,17 +491,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { relayProxyConfigurationsResetRelayAutoConfig } from "@launchdarkly/mcp-server/funcs/relayProxyConfigurationsResetRelayAutoConfig.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { relayProxyConfigurationsReset } from "@launchdarkly/mcp-server/funcs/relayProxyConfigurationsReset.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await relayProxyConfigurationsResetRelayAutoConfig(launchdarklyMcpServer, {
+  const res = await relayProxyConfigurationsReset(launchDarkly, {
     id: "<value>",
   });
 
@@ -539,7 +529,7 @@ run();
 
 ### Response
 
-**Promise\<[models.RelayAutoConfigRep](../../models/relayautoconfigrep.md)\>**
+**Promise\<[components.RelayAutoConfigRep](../../models/components/relayautoconfigrep.md)\>**
 
 ### Errors
 

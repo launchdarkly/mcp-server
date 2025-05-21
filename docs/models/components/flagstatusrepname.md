@@ -1,0 +1,17 @@
+# FlagStatusRepName
+
+Status of the flag
+
+## Example Usage
+
+```typescript
+import { FlagStatusRepName } from "@launchdarkly/mcp-server/models/components";
+
+let value: FlagStatusRepName = "inactive";
+```
+
+## Values
+
+```typescript
+"new" | "inactive" | "active" | "launched"
+```

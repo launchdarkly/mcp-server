@@ -1047,22 +1047,6 @@ actions:
     update:
       x-speakeasy-mcp:
         disabled: true
-  - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs/{configKey}/variations"]["post"]
-    update:
-      x-speakeasy-mcp:
-        disabled: true
-  - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs/{configKey}/variations/{variationKey}"]["delete"]
-    update:
-      x-speakeasy-mcp:
-        disabled: true
-  - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs/{configKey}/variations/{variationKey}"]["get"]
-    update:
-      x-speakeasy-mcp:
-        disabled: true
-  - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs/{configKey}/variations/{variationKey}"]["patch"]
-    update:
-      x-speakeasy-mcp:
-        disabled: true
   - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs/{configKey}/metrics"]["get"]
     update:
       x-speakeasy-mcp:

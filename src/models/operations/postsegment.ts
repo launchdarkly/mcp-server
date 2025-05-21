@@ -6,8 +6,8 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type PostSegmentRequest = {
   /**
@@ -18,7 +18,7 @@ export type PostSegmentRequest = {
    * The environment key
    */
   environmentKey: string;
-  segmentBody: models.SegmentBody;
+  segmentBody: components.SegmentBody;
 };
 
 /** @internal */
@@ -29,7 +29,7 @@ export const PostSegmentRequest$inboundSchema: z.ZodType<
 > = z.object({
   projectKey: z.string(),
   environmentKey: z.string(),
-  SegmentBody: models.SegmentBody$inboundSchema,
+  SegmentBody: components.SegmentBody$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "SegmentBody": "segmentBody",
@@ -40,7 +40,7 @@ export const PostSegmentRequest$inboundSchema: z.ZodType<
 export type PostSegmentRequest$Outbound = {
   projectKey: string;
   environmentKey: string;
-  SegmentBody: models.SegmentBody$Outbound;
+  SegmentBody: components.SegmentBody$Outbound;
 };
 
 /** @internal */
@@ -51,7 +51,7 @@ export const PostSegmentRequest$outboundSchema: z.ZodType<
 > = z.object({
   projectKey: z.string(),
   environmentKey: z.string(),
-  segmentBody: models.SegmentBody$outboundSchema,
+  segmentBody: components.SegmentBody$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     segmentBody: "SegmentBody",

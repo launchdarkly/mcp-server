@@ -3,32 +3,25 @@
 
 ## Overview
 
-An account member can request approval on changes to a flag's targeting or variations, or to a segment's targeting. Members may be required to request approval depending on the settings in their LaunchDarkly project. Members can optionally request an approval even if it is not required.
-
-An approval request prevents a change from being applied without approval from another member. Select up to ten members as reviewers. Reviewers receive an email notification, but anyone with sufficient permissions can review a pending approval request. A change needs at least one approval before you can apply it. To learn more, read [Approvals](https://launchdarkly.com/docs/home/releases/approvals).
-
-Changes that conflict will fail if approved and applied, and the flag or segment will not be updated.
-
-Several of the endpoints in the approvals API require an approval request ID. The approval request ID is returned as part of the [Create approval request](https://launchdarkly.com/docs/api/approvals/post-approval-request) and [List approval requests for a flag](https://launchdarkly.com/docs/api/approvals/get-approvals-for-flag) responses. It is the `_id` field, or the `_id` field of each element in the `items` array. If you created the approval request as part of a [workflow](https://launchdarkly.com/docs/api/workflows), you can also use a workflow ID as the approval request ID. The workflow ID is returned as part of the [Create workflow](https://launchdarkly.com/docs/api/workflows/post-workflow) and [Get workflows](https://launchdarkly.com/docs/api/workflows/get-workflows) responses. It is the `_id` field, or the `_id` field of each element in the `items` array.
-
-
 ### Available Operations
 
-* [getApprovalRequests](#getapprovalrequests) - List approval requests
-* [postApprovalRequest](#postapprovalrequest) - Create approval request
-* [getApprovalRequest](#getapprovalrequest) - Get approval request
-* [deleteApprovalRequest](#deleteapprovalrequest) - Delete approval request
-* [postApprovalRequestApply](#postapprovalrequestapply) - Apply approval request
-* [postApprovalRequestReview](#postapprovalrequestreview) - Review approval request
-* [getApprovalsForFlag](#getapprovalsforflag) - List approval requests for a flag
-* [postApprovalRequestForFlag](#postapprovalrequestforflag) - Create approval request for a flag
-* [postFlagCopyConfigApprovalRequest](#postflagcopyconfigapprovalrequest) - Create approval request to copy flag configurations across environments
-* [getApprovalForFlag](#getapprovalforflag) - Get approval request for a flag
-* [deleteApprovalRequestForFlag](#deleteapprovalrequestforflag) - Delete approval request for a flag
-* [postApprovalRequestApplyForFlag](#postapprovalrequestapplyforflag) - Apply approval request for a flag
-* [postApprovalRequestReviewForFlag](#postapprovalrequestreviewforflag) - Review approval request for a flag
+* [list](#list) - List approval requests
+* [create](#create) - Create approval request
+* [getRequest](#getrequest) - Get approval request
+* [deleteRequest](#deleterequest) - Delete approval request
+* [apply](#apply) - Apply approval request
+* [reviewRequest](#reviewrequest) - Review approval request
+* [listForFlag](#listforflag) - List approval requests for a flag
+* [createRequest](#createrequest) - Create approval request for a flag
+* [createCopyConfigRequest](#createcopyconfigrequest) - Create approval request to copy flag configurations across environments
+* [getForFlag](#getforflag) - Get approval request for a flag
+* [deleteFlagRequest](#deleteflagrequest) - Delete approval request for a flag
+* [applyRequest](#applyrequest) - Apply approval request for a flag
+* [reviewFlagRequest](#reviewflagrequest) - Review approval request for a flag
+* [patchRequest](#patchrequest) - Update approval request
+* [patchFlagConfigApprovalRequest](#patchflagconfigapprovalrequest) - Update flag approval request
 
-## getApprovalRequests
+## list
 
 Get all approval requests.
 
@@ -59,14 +52,14 @@ For example, `expand=project,flag` includes the `project` and `flag` fields in t
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.approvals.getApprovalRequests({});
+  const result = await launchDarkly.approvals.list({});
 
   // Handle the result
   console.log(result);
@@ -80,17 +73,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { approvalsGetApprovalRequests } from "@launchdarkly/mcp-server/funcs/approvalsGetApprovalRequests.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { approvalsList } from "@launchdarkly/mcp-server/funcs/approvalsList.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await approvalsGetApprovalRequests(launchdarklyMcpServer, {});
+  const res = await approvalsList(launchDarkly, {});
 
   if (!res.ok) {
     throw res.error;
@@ -116,7 +109,7 @@ run();
 
 ### Response
 
-**Promise\<[models.ExpandableApprovalRequestsResponse](../../models/expandableapprovalrequestsresponse.md)\>**
+**Promise\<[components.ExpandableApprovalRequestsResponse](../../models/components/expandableapprovalrequestsresponse.md)\>**
 
 ### Errors
 
@@ -128,7 +121,7 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## postApprovalRequest
+## create
 
 Create an approval request.
 
@@ -151,14 +144,14 @@ If you are creating an approval request for a segment, you can use the following
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.approvals.postApprovalRequest({
+  const result = await launchDarkly.approvals.create({
     resourceId: "proj/projKey:env/envKey:flag/flagKey",
     comment: "optional comment",
     description: "Requesting to update targeting",
@@ -197,17 +190,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { approvalsPostApprovalRequest } from "@launchdarkly/mcp-server/funcs/approvalsPostApprovalRequest.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { approvalsCreate } from "@launchdarkly/mcp-server/funcs/approvalsCreate.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await approvalsPostApprovalRequest(launchdarklyMcpServer, {
+  const res = await approvalsCreate(launchDarkly, {
     resourceId: "proj/projKey:env/envKey:flag/flagKey",
     comment: "optional comment",
     description: "Requesting to update targeting",
@@ -251,14 +244,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [models.CreateApprovalRequestRequest](../../models/createapprovalrequestrequest.md)                                                                                            | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [components.CreateApprovalRequestRequest](../../models/components/createapprovalrequestrequest.md)                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.ApprovalRequestResponse](../../models/approvalrequestresponse.md)\>**
+**Promise\<[components.ApprovalRequestResponse](../../models/components/approvalrequestresponse.md)\>**
 
 ### Errors
 
@@ -270,7 +263,7 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## getApprovalRequest
+## getRequest
 
 Get an approval request by approval request ID.
 
@@ -289,14 +282,14 @@ For example, `expand=project,flag` includes the `project` and `flag` fields in t
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.approvals.getApprovalRequest({
+  const result = await launchDarkly.approvals.getRequest({
     id: "<value>",
   });
 
@@ -312,17 +305,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { approvalsGetApprovalRequest } from "@launchdarkly/mcp-server/funcs/approvalsGetApprovalRequest.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { approvalsGetRequest } from "@launchdarkly/mcp-server/funcs/approvalsGetRequest.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await approvalsGetApprovalRequest(launchdarklyMcpServer, {
+  const res = await approvalsGetRequest(launchDarkly, {
     id: "<value>",
   });
 
@@ -350,7 +343,7 @@ run();
 
 ### Response
 
-**Promise\<[models.ExpandableApprovalRequestResponse](../../models/expandableapprovalrequestresponse.md)\>**
+**Promise\<[components.ExpandableApprovalRequestResponse](../../models/components/expandableapprovalrequestresponse.md)\>**
 
 ### Errors
 
@@ -363,21 +356,21 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## deleteApprovalRequest
+## deleteRequest
 
 Delete an approval request.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  await launchdarklyMcpServer.approvals.deleteApprovalRequest({
+  await launchDarkly.approvals.deleteRequest({
     id: "<value>",
   });
 
@@ -392,17 +385,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { approvalsDeleteApprovalRequest } from "@launchdarkly/mcp-server/funcs/approvalsDeleteApprovalRequest.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { approvalsDeleteRequest } from "@launchdarkly/mcp-server/funcs/approvalsDeleteRequest.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await approvalsDeleteApprovalRequest(launchdarklyMcpServer, {
+  const res = await approvalsDeleteRequest(launchDarkly, {
     id: "<value>",
   });
 
@@ -441,21 +434,21 @@ run();
 | errors.RateLimitedErrorRep  | 429                         | application/json            |
 | errors.APIError             | 4XX, 5XX                    | \*/\*                       |
 
-## postApprovalRequestApply
+## apply
 
 Apply an approval request that has been approved. This endpoint works with approval requests for either flag or segment changes.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.approvals.postApprovalRequestApply({
+  const result = await launchDarkly.approvals.apply({
     id: "<value>",
     postApprovalRequestApplyRequest: {
       comment: "Looks good, thanks for updating",
@@ -474,17 +467,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { approvalsPostApprovalRequestApply } from "@launchdarkly/mcp-server/funcs/approvalsPostApprovalRequestApply.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { approvalsApply } from "@launchdarkly/mcp-server/funcs/approvalsApply.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await approvalsPostApprovalRequestApply(launchdarklyMcpServer, {
+  const res = await approvalsApply(launchDarkly, {
     id: "<value>",
     postApprovalRequestApplyRequest: {
       comment: "Looks good, thanks for updating",
@@ -515,7 +508,7 @@ run();
 
 ### Response
 
-**Promise\<[models.ApprovalRequestResponse](../../models/approvalrequestresponse.md)\>**
+**Promise\<[components.ApprovalRequestResponse](../../models/components/approvalrequestresponse.md)\>**
 
 ### Errors
 
@@ -528,21 +521,21 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## postApprovalRequestReview
+## reviewRequest
 
 Review an approval request by approving or denying changes.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.approvals.postApprovalRequestReview({
+  const result = await launchDarkly.approvals.reviewRequest({
     id: "<value>",
     postApprovalRequestReviewRequest: {
       kind: "approve",
@@ -562,17 +555,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { approvalsPostApprovalRequestReview } from "@launchdarkly/mcp-server/funcs/approvalsPostApprovalRequestReview.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { approvalsReviewRequest } from "@launchdarkly/mcp-server/funcs/approvalsReviewRequest.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await approvalsPostApprovalRequestReview(launchdarklyMcpServer, {
+  const res = await approvalsReviewRequest(launchDarkly, {
     id: "<value>",
     postApprovalRequestReviewRequest: {
       kind: "approve",
@@ -604,7 +597,7 @@ run();
 
 ### Response
 
-**Promise\<[models.ApprovalRequestResponse](../../models/approvalrequestresponse.md)\>**
+**Promise\<[components.ApprovalRequestResponse](../../models/components/approvalrequestresponse.md)\>**
 
 ### Errors
 
@@ -618,21 +611,21 @@ run();
 | errors.RateLimitedErrorRep      | 429                             | application/json                |
 | errors.APIError                 | 4XX, 5XX                        | \*/\*                           |
 
-## getApprovalsForFlag
+## listForFlag
 
 Get all approval requests for a feature flag.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.approvals.getApprovalsForFlag({
+  const result = await launchDarkly.approvals.listForFlag({
     projectKey: "<value>",
     featureFlagKey: "<value>",
     environmentKey: "<value>",
@@ -650,17 +643,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { approvalsGetApprovalsForFlag } from "@launchdarkly/mcp-server/funcs/approvalsGetApprovalsForFlag.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { approvalsListForFlag } from "@launchdarkly/mcp-server/funcs/approvalsListForFlag.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await approvalsGetApprovalsForFlag(launchdarklyMcpServer, {
+  const res = await approvalsListForFlag(launchDarkly, {
     projectKey: "<value>",
     featureFlagKey: "<value>",
     environmentKey: "<value>",
@@ -690,7 +683,7 @@ run();
 
 ### Response
 
-**Promise\<[models.FlagConfigApprovalRequestsResponse](../../models/flagconfigapprovalrequestsresponse.md)\>**
+**Promise\<[components.FlagConfigApprovalRequestsResponse](../../models/components/flagconfigapprovalrequestsresponse.md)\>**
 
 ### Errors
 
@@ -702,21 +695,21 @@ run();
 | errors.RateLimitedErrorRep  | 429                         | application/json            |
 | errors.APIError             | 4XX, 5XX                    | \*/\*                       |
 
-## postApprovalRequestForFlag
+## createRequest
 
 Create an approval request for a feature flag.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.approvals.postApprovalRequestForFlag({
+  const result = await launchDarkly.approvals.createRequest({
     projectKey: "<value>",
     featureFlagKey: "<value>",
     environmentKey: "<value>",
@@ -752,17 +745,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { approvalsPostApprovalRequestForFlag } from "@launchdarkly/mcp-server/funcs/approvalsPostApprovalRequestForFlag.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { approvalsCreateRequest } from "@launchdarkly/mcp-server/funcs/approvalsCreateRequest.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await approvalsPostApprovalRequestForFlag(launchdarklyMcpServer, {
+  const res = await approvalsCreateRequest(launchDarkly, {
     projectKey: "<value>",
     featureFlagKey: "<value>",
     environmentKey: "<value>",
@@ -810,7 +803,7 @@ run();
 
 ### Response
 
-**Promise\<[models.FlagConfigApprovalRequestResponse](../../models/flagconfigapprovalrequestresponse.md)\>**
+**Promise\<[components.FlagConfigApprovalRequestResponse](../../models/components/flagconfigapprovalrequestresponse.md)\>**
 
 ### Errors
 
@@ -822,21 +815,21 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## postFlagCopyConfigApprovalRequest
+## createCopyConfigRequest
 
 Create an approval request to copy a feature flag's configuration across environments.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.approvals.postFlagCopyConfigApprovalRequest({
+  const result = await launchDarkly.approvals.createCopyConfigRequest({
     projectKey: "<value>",
     featureFlagKey: "<value>",
     environmentKey: "<value>",
@@ -874,17 +867,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { approvalsPostFlagCopyConfigApprovalRequest } from "@launchdarkly/mcp-server/funcs/approvalsPostFlagCopyConfigApprovalRequest.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { approvalsCreateCopyConfigRequest } from "@launchdarkly/mcp-server/funcs/approvalsCreateCopyConfigRequest.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await approvalsPostFlagCopyConfigApprovalRequest(launchdarklyMcpServer, {
+  const res = await approvalsCreateCopyConfigRequest(launchDarkly, {
     projectKey: "<value>",
     featureFlagKey: "<value>",
     environmentKey: "<value>",
@@ -934,7 +927,7 @@ run();
 
 ### Response
 
-**Promise\<[models.FlagConfigApprovalRequestResponse](../../models/flagconfigapprovalrequestresponse.md)\>**
+**Promise\<[components.FlagConfigApprovalRequestResponse](../../models/components/flagconfigapprovalrequestresponse.md)\>**
 
 ### Errors
 
@@ -947,21 +940,21 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## getApprovalForFlag
+## getForFlag
 
 Get a single approval request for a feature flag.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.approvals.getApprovalForFlag({
+  const result = await launchDarkly.approvals.getForFlag({
     projectKey: "<value>",
     featureFlagKey: "<value>",
     environmentKey: "<value>",
@@ -980,17 +973,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { approvalsGetApprovalForFlag } from "@launchdarkly/mcp-server/funcs/approvalsGetApprovalForFlag.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { approvalsGetForFlag } from "@launchdarkly/mcp-server/funcs/approvalsGetForFlag.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await approvalsGetApprovalForFlag(launchdarklyMcpServer, {
+  const res = await approvalsGetForFlag(launchDarkly, {
     projectKey: "<value>",
     featureFlagKey: "<value>",
     environmentKey: "<value>",
@@ -1021,7 +1014,7 @@ run();
 
 ### Response
 
-**Promise\<[models.FlagConfigApprovalRequestResponse](../../models/flagconfigapprovalrequestresponse.md)\>**
+**Promise\<[components.FlagConfigApprovalRequestResponse](../../models/components/flagconfigapprovalrequestresponse.md)\>**
 
 ### Errors
 
@@ -1033,21 +1026,21 @@ run();
 | errors.RateLimitedErrorRep  | 429                         | application/json            |
 | errors.APIError             | 4XX, 5XX                    | \*/\*                       |
 
-## deleteApprovalRequestForFlag
+## deleteFlagRequest
 
 Delete an approval request for a feature flag.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  await launchdarklyMcpServer.approvals.deleteApprovalRequestForFlag({
+  await launchDarkly.approvals.deleteFlagRequest({
     projectKey: "<value>",
     featureFlagKey: "<value>",
     environmentKey: "<value>",
@@ -1065,17 +1058,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { approvalsDeleteApprovalRequestForFlag } from "@launchdarkly/mcp-server/funcs/approvalsDeleteApprovalRequestForFlag.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { approvalsDeleteFlagRequest } from "@launchdarkly/mcp-server/funcs/approvalsDeleteFlagRequest.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await approvalsDeleteApprovalRequestForFlag(launchdarklyMcpServer, {
+  const res = await approvalsDeleteFlagRequest(launchDarkly, {
     projectKey: "<value>",
     featureFlagKey: "<value>",
     environmentKey: "<value>",
@@ -1117,21 +1110,21 @@ run();
 | errors.RateLimitedErrorRep  | 429                         | application/json            |
 | errors.APIError             | 4XX, 5XX                    | \*/\*                       |
 
-## postApprovalRequestApplyForFlag
+## applyRequest
 
 Apply an approval request that has been approved. This endpoint requires a feature flag key, and can only be used for applying approval requests on flags.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.approvals.postApprovalRequestApplyForFlag({
+  const result = await launchDarkly.approvals.applyRequest({
     projectKey: "<value>",
     featureFlagKey: "<value>",
     environmentKey: "<value>",
@@ -1153,17 +1146,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { approvalsPostApprovalRequestApplyForFlag } from "@launchdarkly/mcp-server/funcs/approvalsPostApprovalRequestApplyForFlag.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { approvalsApplyRequest } from "@launchdarkly/mcp-server/funcs/approvalsApplyRequest.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await approvalsPostApprovalRequestApplyForFlag(launchdarklyMcpServer, {
+  const res = await approvalsApplyRequest(launchDarkly, {
     projectKey: "<value>",
     featureFlagKey: "<value>",
     environmentKey: "<value>",
@@ -1197,7 +1190,7 @@ run();
 
 ### Response
 
-**Promise\<[models.FlagConfigApprovalRequestResponse](../../models/flagconfigapprovalrequestresponse.md)\>**
+**Promise\<[components.FlagConfigApprovalRequestResponse](../../models/components/flagconfigapprovalrequestresponse.md)\>**
 
 ### Errors
 
@@ -1210,21 +1203,21 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## postApprovalRequestReviewForFlag
+## reviewFlagRequest
 
 Review an approval request by approving or denying changes.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.approvals.postApprovalRequestReviewForFlag({
+  const result = await launchDarkly.approvals.reviewFlagRequest({
     projectKey: "<value>",
     featureFlagKey: "<value>",
     environmentKey: "<value>",
@@ -1247,17 +1240,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { approvalsPostApprovalRequestReviewForFlag } from "@launchdarkly/mcp-server/funcs/approvalsPostApprovalRequestReviewForFlag.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { approvalsReviewFlagRequest } from "@launchdarkly/mcp-server/funcs/approvalsReviewFlagRequest.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await approvalsPostApprovalRequestReviewForFlag(launchdarklyMcpServer, {
+  const res = await approvalsReviewFlagRequest(launchDarkly, {
     projectKey: "<value>",
     featureFlagKey: "<value>",
     environmentKey: "<value>",
@@ -1292,7 +1285,7 @@ run();
 
 ### Response
 
-**Promise\<[models.FlagConfigApprovalRequestResponse](../../models/flagconfigapprovalrequestresponse.md)\>**
+**Promise\<[components.FlagConfigApprovalRequestResponse](../../models/components/flagconfigapprovalrequestresponse.md)\>**
 
 ### Errors
 
@@ -1304,3 +1297,213 @@ run();
 | errors.NotFoundErrorRep       | 404                           | application/json              |
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
+
+## patchRequest
+
+Perform a partial update to an approval request. Updating an approval request uses the semantic patch format. This endpoint works with approval requests for either flag or segment changes.
+
+To make a semantic patch request, you must append `domain-model=launchdarkly.semanticpatch` to your `Content-Type` header. To learn more, read [Updates using semantic patch](https://launchdarkly.com/docs/api#updates-using-semantic-patch).
+
+### Instructions
+
+Semantic patch requests support the following `kind` instruction for updating an approval request.
+
+#### addReviewers
+
+Adds the specified members and teams to the existing list of reviewers. You must include at least one of `notifyMemberIds` and `notifyTeamKeys`.
+
+##### Parameters
+
+- `notifyMemberIds`: (Optional) List of member IDs.
+- `notifyTeamKeys`: (Optional) List of team keys.
+
+Here's an example:
+
+```json
+{
+  "instructions": [{
+    "kind": "addReviewers",
+    "notifyMemberIds": [ "user-key-123abc", "user-key-456def" ],
+    "notifyTeamKeys": [ "team-key-789abc"]
+  }]
+}
+```
+
+
+### Example Usage
+
+```typescript
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
+
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
+});
+
+async function run() {
+  const result = await launchDarkly.approvals.patchRequest({
+    id: "<value>",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { approvalsPatchRequest } from "@launchdarkly/mcp-server/funcs/approvalsPatchRequest.js";
+
+// Use `LaunchDarklyCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
+});
+
+async function run() {
+  const res = await approvalsPatchRequest(launchDarkly, {
+    id: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.PatchApprovalRequestRequest](../../models/operations/patchapprovalrequestrequest.md)                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[components.FlagConfigApprovalRequestResponse](../../models/components/flagconfigapprovalrequestresponse.md)\>**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.UnauthorizedErrorRep | 401                         | application/json            |
+| errors.ForbiddenErrorRep    | 403                         | application/json            |
+| errors.NotFoundErrorRep     | 404                         | application/json            |
+| errors.RateLimitedErrorRep  | 429                         | application/json            |
+| errors.APIError             | 4XX, 5XX                    | \*/\*                       |
+
+## patchFlagConfigApprovalRequest
+
+Perform a partial update to an approval request. Updating an approval request uses the semantic patch format. This endpoint requires a feature flag key, and can only be used for updating approval requests for flags.
+
+To make a semantic patch request, you must append `domain-model=launchdarkly.semanticpatch` to your `Content-Type` header. To learn more, read [Updates using semantic patch](https://launchdarkly.com/docs/api#updates-using-semantic-patch).
+
+### Instructions
+
+Semantic patch requests support the following `kind` instruction for updating an approval request.
+
+#### addReviewers
+
+Adds the specified members and teams to the existing list of reviewers. You must include at least one of `notifyMemberIds` and `notifyTeamKeys`.
+
+##### Parameters
+
+- `notifyMemberIds`: (Optional) List of member IDs.
+- `notifyTeamKeys`: (Optional) List of team keys.
+
+
+### Example Usage
+
+```typescript
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
+
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
+});
+
+async function run() {
+  const result = await launchDarkly.approvals.patchFlagConfigApprovalRequest({
+    projectKey: "<value>",
+    featureFlagKey: "<value>",
+    environmentKey: "<value>",
+    id: "<value>",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { approvalsPatchFlagConfigApprovalRequest } from "@launchdarkly/mcp-server/funcs/approvalsPatchFlagConfigApprovalRequest.js";
+
+// Use `LaunchDarklyCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
+});
+
+async function run() {
+  const res = await approvalsPatchFlagConfigApprovalRequest(launchDarkly, {
+    projectKey: "<value>",
+    featureFlagKey: "<value>",
+    environmentKey: "<value>",
+    id: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.PatchFlagConfigApprovalRequestRequest](../../models/operations/patchflagconfigapprovalrequestrequest.md)                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[components.FlagConfigApprovalRequestResponse](../../models/components/flagconfigapprovalrequestresponse.md)\>**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.UnauthorizedErrorRep | 401                         | application/json            |
+| errors.ForbiddenErrorRep    | 403                         | application/json            |
+| errors.NotFoundErrorRep     | 404                         | application/json            |
+| errors.RateLimitedErrorRep  | 429                         | application/json            |
+| errors.APIError             | 4XX, 5XX                    | \*/\*                       |

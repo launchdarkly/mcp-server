@@ -3,29 +3,19 @@
 
 ## Overview
 
-> ### Teams is an Enterprise feature
->
-> Teams is available to customers on an Enterprise plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact Sales](https://launchdarkly.com/contact-sales/).
-
-A team is a group of members in your LaunchDarkly account. Members of the team have access to various resources in LaunchDarkly, such as projects or flags, based on the role or roles you assign to the team. To learn more, read [Teams](https://launchdarkly.com/docs/home/account/teams).
-
-The Teams API allows you to create, read, update, and delete a team.
-
-Several of the endpoints in the Teams API require one or more member IDs. The member ID is returned as part of the [List account members](https://launchdarkly.com/docs/api/account-members/get-members) response. It is the `_id` field of each element in the `items` array.
-
-
 ### Available Operations
 
-* [getTeams](#getteams) - List teams
-* [postTeam](#postteam) - Create team
-* [getTeam](#getteam) - Get team
-* [deleteTeam](#deleteteam) - Delete team
-* [patchTeam](#patchteam) - Update team
-* [getTeamMaintainers](#getteammaintainers) - Get team maintainers
-* [postTeamMembers](#postteammembers) - Add multiple members to team
-* [getTeamRoles](#getteamroles) - Get team custom roles
+* [list](#list) - List teams
+* [create](#create) - Create team
+* [get](#get) - Get team
+* [patch](#patch) - Update team
+* [delete](#delete) - Delete team
+* [getMaintainers](#getmaintainers) - Get team maintainers
+* [addMembers](#addmembers) - Add multiple members to team
+* [getRoles](#getroles) - Get team custom roles
+* [update](#update) - Update teams
 
-## getTeams
+## list
 
 Return a list of teams.
 
@@ -58,14 +48,14 @@ For example, `expand=members,maintainers` includes the `members` and `maintainer
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.teams.getTeams({});
+  const result = await launchDarkly.teams.list({});
 
   // Handle the result
   console.log(result);
@@ -79,17 +69,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { teamsGetTeams } from "@launchdarkly/mcp-server/funcs/teamsGetTeams.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { teamsList } from "@launchdarkly/mcp-server/funcs/teamsList.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await teamsGetTeams(launchdarklyMcpServer, {});
+  const res = await teamsList(launchDarkly, {});
 
   if (!res.ok) {
     throw res.error;
@@ -115,7 +105,7 @@ run();
 
 ### Response
 
-**Promise\<[models.Teams](../../models/teams.md)\>**
+**Promise\<[components.Teams](../../models/components/teams.md)\>**
 
 ### Errors
 
@@ -126,7 +116,7 @@ run();
 | errors.RateLimitedErrorRep      | 429                             | application/json                |
 | errors.APIError                 | 4XX, 5XX                        | \*/\*                           |
 
-## postTeam
+## create
 
 Create a team. To learn more, read [Creating a team](https://launchdarkly.com/docs/home/account/create-teams).
 
@@ -146,14 +136,14 @@ For example, `expand=members,roles` includes the `members` and `roles` fields in
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.teams.postTeam({
+  const result = await launchDarkly.teams.create({
     teamPostInput: {
       customRoleKeys: [
         "example-role1",
@@ -180,17 +170,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { teamsPostTeam } from "@launchdarkly/mcp-server/funcs/teamsPostTeam.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { teamsCreate } from "@launchdarkly/mcp-server/funcs/teamsCreate.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await teamsPostTeam(launchdarklyMcpServer, {
+  const res = await teamsCreate(launchDarkly, {
     teamPostInput: {
       customRoleKeys: [
         "example-role1",
@@ -229,7 +219,7 @@ run();
 
 ### Response
 
-**Promise\<[models.Team](../../models/team.md)\>**
+**Promise\<[components.Team](../../models/components/team.md)\>**
 
 ### Errors
 
@@ -241,7 +231,7 @@ run();
 | errors.RateLimitedErrorRep      | 429                             | application/json                |
 | errors.APIError                 | 4XX, 5XX                        | \*/\*                           |
 
-## getTeam
+## get
 
 Fetch a team by key.
 
@@ -262,14 +252,14 @@ For example, `expand=members,roles` includes the `members` and `roles` fields in
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.teams.getTeam({
+  const result = await launchDarkly.teams.get({
     teamKey: "<value>",
   });
 
@@ -285,17 +275,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { teamsGetTeam } from "@launchdarkly/mcp-server/funcs/teamsGetTeam.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { teamsGet } from "@launchdarkly/mcp-server/funcs/teamsGet.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await teamsGetTeam(launchdarklyMcpServer, {
+  const res = await teamsGet(launchDarkly, {
     teamKey: "<value>",
   });
 
@@ -323,7 +313,7 @@ run();
 
 ### Response
 
-**Promise\<[models.Team](../../models/team.md)\>**
+**Promise\<[components.Team](../../models/components/team.md)\>**
 
 ### Errors
 
@@ -337,84 +327,7 @@ run();
 | errors.RateLimitedErrorRep      | 429                             | application/json                |
 | errors.APIError                 | 4XX, 5XX                        | \*/\*                           |
 
-## deleteTeam
-
-Delete a team by key. To learn more, read [Deleting teams](https://launchdarkly.com/docs/home/account/delete-teams).
-
-### Example Usage
-
-```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
-
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
-});
-
-async function run() {
-  await launchdarklyMcpServer.teams.deleteTeam({
-    teamKey: "<value>",
-  });
-
-
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { teamsDeleteTeam } from "@launchdarkly/mcp-server/funcs/teamsDeleteTeam.js";
-
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
-});
-
-async function run() {
-  const res = await teamsDeleteTeam(launchdarklyMcpServer, {
-    teamKey: "<value>",
-  });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.DeleteTeamRequest](../../models/operations/deleteteamrequest.md)                                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<void\>**
-
-### Errors
-
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.UnauthorizedErrorRep | 401                         | application/json            |
-| errors.NotFoundErrorRep     | 404                         | application/json            |
-| errors.RateLimitedErrorRep  | 429                         | application/json            |
-| errors.APIError             | 4XX, 5XX                    | \*/\*                       |
-
-## patchTeam
+## patch
 
 Perform a partial update to a team. Updating a team uses the semantic patch format.
 
@@ -710,14 +623,14 @@ For example, `expand=members,roles` includes the `members` and `roles` fields in
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.teams.patchTeam({
+  const result = await launchDarkly.teams.patch({
     teamKey: "<value>",
     teamPatchInput: {
       comment: "Optional comment about the update",
@@ -742,17 +655,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { teamsPatchTeam } from "@launchdarkly/mcp-server/funcs/teamsPatchTeam.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { teamsPatch } from "@launchdarkly/mcp-server/funcs/teamsPatch.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await teamsPatchTeam(launchdarklyMcpServer, {
+  const res = await teamsPatch(launchDarkly, {
     teamKey: "<value>",
     teamPatchInput: {
       comment: "Optional comment about the update",
@@ -789,7 +702,7 @@ run();
 
 ### Response
 
-**Promise\<[models.Team](../../models/team.md)\>**
+**Promise\<[components.Team](../../models/components/team.md)\>**
 
 ### Errors
 
@@ -803,21 +716,98 @@ run();
 | errors.RateLimitedErrorRep      | 429                             | application/json                |
 | errors.APIError                 | 4XX, 5XX                        | \*/\*                           |
 
-## getTeamMaintainers
+## delete
+
+Delete a team by key. To learn more, read [Deleting teams](https://launchdarkly.com/docs/home/account/delete-teams).
+
+### Example Usage
+
+```typescript
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
+
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
+});
+
+async function run() {
+  await launchDarkly.teams.delete({
+    teamKey: "<value>",
+  });
+
+
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { teamsDelete } from "@launchdarkly/mcp-server/funcs/teamsDelete.js";
+
+// Use `LaunchDarklyCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
+});
+
+async function run() {
+  const res = await teamsDelete(launchDarkly, {
+    teamKey: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.DeleteTeamRequest](../../models/operations/deleteteamrequest.md)                                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<void\>**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.UnauthorizedErrorRep | 401                         | application/json            |
+| errors.NotFoundErrorRep     | 404                         | application/json            |
+| errors.RateLimitedErrorRep  | 429                         | application/json            |
+| errors.APIError             | 4XX, 5XX                    | \*/\*                       |
+
+## getMaintainers
 
 Fetch the maintainers that have been assigned to the team. To learn more, read [Managing team maintainers](https://launchdarkly.com/docs/home/account/team-maintainers).
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.teams.getTeamMaintainers({
+  const result = await launchDarkly.teams.getMaintainers({
     teamKey: "<value>",
   });
 
@@ -833,17 +823,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { teamsGetTeamMaintainers } from "@launchdarkly/mcp-server/funcs/teamsGetTeamMaintainers.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { teamsGetMaintainers } from "@launchdarkly/mcp-server/funcs/teamsGetMaintainers.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await teamsGetTeamMaintainers(launchdarklyMcpServer, {
+  const res = await teamsGetMaintainers(launchDarkly, {
     teamKey: "<value>",
   });
 
@@ -871,7 +861,7 @@ run();
 
 ### Response
 
-**Promise\<[models.TeamMaintainers](../../models/teammaintainers.md)\>**
+**Promise\<[components.TeamMaintainers](../../models/components/teammaintainers.md)\>**
 
 ### Errors
 
@@ -885,7 +875,7 @@ run();
 | errors.RateLimitedErrorRep      | 429                             | application/json                |
 | errors.APIError                 | 4XX, 5XX                        | \*/\*                           |
 
-## postTeamMembers
+## addMembers
 
 Add multiple members to an existing team by uploading a CSV file of member email addresses. Your CSV file must include email addresses in the first column. You can include data in additional columns, but LaunchDarkly ignores all data outside the first column. Headers are optional. To learn more, read [Manage team members](https://launchdarkly.com/docs/home/account/manage-teams#manage-team-members).
 
@@ -951,14 +941,14 @@ No emails belong to members of your LaunchDarkly organization | None of the emai
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.teams.postTeamMembers({
+  const result = await launchDarkly.teams.addMembers({
     teamKey: "<value>",
     requestBody: {},
   });
@@ -975,17 +965,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { teamsPostTeamMembers } from "@launchdarkly/mcp-server/funcs/teamsPostTeamMembers.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { teamsAddMembers } from "@launchdarkly/mcp-server/funcs/teamsAddMembers.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await teamsPostTeamMembers(launchdarklyMcpServer, {
+  const res = await teamsAddMembers(launchDarkly, {
     teamKey: "<value>",
     requestBody: {},
   });
@@ -1014,7 +1004,7 @@ run();
 
 ### Response
 
-**Promise\<[models.TeamImportsRep](../../models/teamimportsrep.md)\>**
+**Promise\<[components.TeamImportsRep](../../models/components/teamimportsrep.md)\>**
 
 ### Errors
 
@@ -1026,21 +1016,21 @@ run();
 | errors.RateLimitedErrorRep      | 429                             | application/json                |
 | errors.APIError                 | 4XX, 5XX                        | \*/\*                           |
 
-## getTeamRoles
+## getRoles
 
 Fetch the custom roles that have been assigned to the team. To learn more, read [Managing team permissions](https://launchdarkly.com/docs/home/account/team-permissions).
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.teams.getTeamRoles({
+  const result = await launchDarkly.teams.getRoles({
     teamKey: "<value>",
   });
 
@@ -1056,17 +1046,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { teamsGetTeamRoles } from "@launchdarkly/mcp-server/funcs/teamsGetTeamRoles.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { teamsGetRoles } from "@launchdarkly/mcp-server/funcs/teamsGetRoles.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await teamsGetTeamRoles(launchdarklyMcpServer, {
+  const res = await teamsGetRoles(launchDarkly, {
     teamKey: "<value>",
   });
 
@@ -1094,7 +1084,7 @@ run();
 
 ### Response
 
-**Promise\<[models.TeamCustomRoles](../../models/teamcustomroles.md)\>**
+**Promise\<[components.TeamCustomRoles](../../models/components/teamcustomroles.md)\>**
 
 ### Errors
 
@@ -1107,3 +1097,177 @@ run();
 | errors.MethodNotAllowedErrorRep | 405                             | application/json                |
 | errors.RateLimitedErrorRep      | 429                             | application/json                |
 | errors.APIError                 | 4XX, 5XX                        | \*/\*                           |
+
+## update
+
+Perform a partial update to multiple teams. Updating teams uses the semantic patch format.
+
+To make a semantic patch request, you must append `domain-model=launchdarkly.semanticpatch` to your `Content-Type` header. To learn more, read [Updates using semantic patch](https://launchdarkly.com/docs/api#updates-using-semantic-patch).
+
+### Instructions
+
+Semantic patch requests support the following `kind` instructions for updating teams.
+
+<details>
+<summary>Click to expand instructions for <strong>updating teams</strong></summary>
+
+#### addMembersToTeams
+
+Add the members to teams.
+
+##### Parameters
+
+- `memberIDs`: List of member IDs to add.
+- `teamKeys`: List of teams to update.
+
+Here's an example:
+
+```json
+{
+  "instructions": [{
+    "kind": "addMembersToTeams",
+    "memberIDs": [
+      "1234a56b7c89d012345e678f"
+    ],
+    "teamKeys": [
+      "example-team-1",
+      "example-team-2"
+    ]
+  }]
+}
+```
+
+#### addAllMembersToTeams
+
+Add all members to the team. Members that match any of the filters are **excluded** from the update.
+
+##### Parameters
+
+- `teamKeys`: List of teams to update.
+- `filterLastSeen`: (Optional) A JSON object with one of the following formats:
+  - `{"never": true}` - Members that have never been active, such as those who have not accepted their invitation to LaunchDarkly, or have not logged in after being provisioned via SCIM.
+  - `{"noData": true}` - Members that have not been active since LaunchDarkly began recording last seen timestamps.
+  - `{"before": 1608672063611}` - Members that have not been active since the provided value, which should be a timestamp in Unix epoch milliseconds.
+- `filterQuery`: (Optional) A string that matches against the members' emails and names. It is not case sensitive.
+- `filterRoles`: (Optional) A `|` separated list of roles and custom roles. For the purposes of this filtering, `Owner` counts as `Admin`.
+- `filterTeamKey`: (Optional) A string that matches against the key of the team the members belong to. It is not case sensitive.
+- `ignoredMemberIDs`: (Optional) A list of member IDs.
+
+Here's an example:
+
+```json
+{
+  "instructions": [{
+    "kind": "addAllMembersToTeams",
+    "teamKeys": [
+      "example-team-1",
+      "example-team-2"
+    ],
+    "filterLastSeen": { "never": true }
+  }]
+}
+```
+
+</details>
+
+
+### Example Usage
+
+```typescript
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
+
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
+});
+
+async function run() {
+  const result = await launchDarkly.teams.update({
+    comment: "Optional comment about the update",
+    instructions: [
+      {
+        "kind": "addMembersToTeams",
+        "memberIDs": [
+          "1234a56b7c89d012345e678f",
+        ],
+        "teamKeys": [
+          "example-team-1",
+          "example-team-2",
+        ],
+      },
+    ],
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { teamsUpdate } from "@launchdarkly/mcp-server/funcs/teamsUpdate.js";
+
+// Use `LaunchDarklyCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
+});
+
+async function run() {
+  const res = await teamsUpdate(launchDarkly, {
+    comment: "Optional comment about the update",
+    instructions: [
+      {
+        "kind": "addMembersToTeams",
+        "memberIDs": [
+          "1234a56b7c89d012345e678f",
+        ],
+        "teamKeys": [
+          "example-team-1",
+          "example-team-2",
+        ],
+      },
+    ],
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [components.TeamsPatchInput](../../models/components/teamspatchinput.md)                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[components.BulkEditTeamsRep](../../models/components/bulkeditteamsrep.md)\>**
+
+### Errors
+
+| Error Type                    | Status Code                   | Content Type                  |
+| ----------------------------- | ----------------------------- | ----------------------------- |
+| errors.InvalidRequestErrorRep | 400                           | application/json              |
+| errors.UnauthorizedErrorRep   | 401                           | application/json              |
+| errors.ForbiddenErrorRep      | 403                           | application/json              |
+| errors.StatusConflictErrorRep | 409                           | application/json              |
+| errors.RateLimitedErrorRep    | 429                           | application/json              |
+| errors.APIError               | 4XX, 5XX                      | \*/\*                         |

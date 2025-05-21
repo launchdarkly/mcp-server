@@ -6,15 +6,15 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type UpdateAnnouncementPublicRequest = {
   announcementId: string;
   /**
    * Update announcement request body
    */
-  requestBody: Array<models.AnnouncementPatchOperation>;
+  requestBody: Array<components.AnnouncementPatchOperation>;
 };
 
 /** @internal */
@@ -24,7 +24,7 @@ export const UpdateAnnouncementPublicRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   announcementId: z.string(),
-  RequestBody: z.array(models.AnnouncementPatchOperation$inboundSchema),
+  RequestBody: z.array(components.AnnouncementPatchOperation$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
     "RequestBody": "requestBody",
@@ -34,7 +34,7 @@ export const UpdateAnnouncementPublicRequest$inboundSchema: z.ZodType<
 /** @internal */
 export type UpdateAnnouncementPublicRequest$Outbound = {
   announcementId: string;
-  RequestBody: Array<models.AnnouncementPatchOperation$Outbound>;
+  RequestBody: Array<components.AnnouncementPatchOperation$Outbound>;
 };
 
 /** @internal */
@@ -44,7 +44,7 @@ export const UpdateAnnouncementPublicRequest$outboundSchema: z.ZodType<
   UpdateAnnouncementPublicRequest
 > = z.object({
   announcementId: z.string(),
-  requestBody: z.array(models.AnnouncementPatchOperation$outboundSchema),
+  requestBody: z.array(components.AnnouncementPatchOperation$outboundSchema),
 }).transform((v) => {
   return remap$(v, {
     requestBody: "RequestBody",

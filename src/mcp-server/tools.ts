@@ -6,7 +6,7 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { RequestHandlerExtra } from "@modelcontextprotocol/sdk/shared/protocol.js";
 import { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
 import { objectOutputType, ZodRawShape, ZodTypeAny } from "zod";
-import { LaunchdarklyMcpServerCore } from "../core.js";
+import { LaunchDarklyCore } from "../core.js";
 import { ConsoleLogger } from "./console-logger.js";
 import { MCPScope } from "./scopes.js";
 import { isAsyncIterable, isBinaryData, valueToBase64 } from "./shared.js";
@@ -18,7 +18,7 @@ export type ToolDefinition<Args extends undefined | ZodRawShape = undefined> =
       scopes?: MCPScope[];
       args: Args;
       tool: (
-        client: LaunchdarklyMcpServerCore,
+        client: LaunchDarklyCore,
         args: objectOutputType<Args, ZodTypeAny>,
         extra: RequestHandlerExtra,
       ) => CallToolResult | Promise<CallToolResult>;
@@ -29,7 +29,7 @@ export type ToolDefinition<Args extends undefined | ZodRawShape = undefined> =
       scopes?: MCPScope[];
       args?: undefined;
       tool: (
-        client: LaunchdarklyMcpServerCore,
+        client: LaunchDarklyCore,
         extra: RequestHandlerExtra,
       ) => CallToolResult | Promise<CallToolResult>;
     };
@@ -93,7 +93,7 @@ async function consumeSSE(
 export function createRegisterTool(
   logger: ConsoleLogger,
   server: McpServer,
-  sdk: LaunchdarklyMcpServerCore,
+  sdk: LaunchDarklyCore,
   allowedScopes: Set<MCPScope>,
   allowedTools?: Set<string>,
 ): <A extends ZodRawShape | undefined>(tool: ToolDefinition<A>) => void {

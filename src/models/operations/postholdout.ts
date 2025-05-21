@@ -6,8 +6,8 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type PostHoldoutRequest = {
   /**
@@ -18,7 +18,7 @@ export type PostHoldoutRequest = {
    * The environment key
    */
   environmentKey: string;
-  holdoutPostRequest: models.HoldoutPostRequest;
+  holdoutPostRequest: components.HoldoutPostRequest;
 };
 
 /** @internal */
@@ -29,7 +29,7 @@ export const PostHoldoutRequest$inboundSchema: z.ZodType<
 > = z.object({
   projectKey: z.string(),
   environmentKey: z.string(),
-  HoldoutPostRequest: models.HoldoutPostRequest$inboundSchema,
+  HoldoutPostRequest: components.HoldoutPostRequest$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "HoldoutPostRequest": "holdoutPostRequest",
@@ -40,7 +40,7 @@ export const PostHoldoutRequest$inboundSchema: z.ZodType<
 export type PostHoldoutRequest$Outbound = {
   projectKey: string;
   environmentKey: string;
-  HoldoutPostRequest: models.HoldoutPostRequest$Outbound;
+  HoldoutPostRequest: components.HoldoutPostRequest$Outbound;
 };
 
 /** @internal */
@@ -51,7 +51,7 @@ export const PostHoldoutRequest$outboundSchema: z.ZodType<
 > = z.object({
   projectKey: z.string(),
   environmentKey: z.string(),
-  holdoutPostRequest: models.HoldoutPostRequest$outboundSchema,
+  holdoutPostRequest: components.HoldoutPostRequest$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     holdoutPostRequest: "HoldoutPostRequest",

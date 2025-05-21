@@ -6,8 +6,8 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type PostFlagConfigScheduledChangesRequest = {
   /**
@@ -26,7 +26,7 @@ export type PostFlagConfigScheduledChangesRequest = {
    * Whether to succeed (`true`) or fail (`false`) when these instructions conflict with existing scheduled changes
    */
   ignoreConflicts?: boolean | undefined;
-  postFlagScheduledChangesInput: models.PostFlagScheduledChangesInput;
+  postFlagScheduledChangesInput: components.PostFlagScheduledChangesInput;
 };
 
 /** @internal */
@@ -40,7 +40,7 @@ export const PostFlagConfigScheduledChangesRequest$inboundSchema: z.ZodType<
   environmentKey: z.string(),
   ignoreConflicts: z.boolean().optional(),
   PostFlagScheduledChangesInput:
-    models.PostFlagScheduledChangesInput$inboundSchema,
+    components.PostFlagScheduledChangesInput$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "PostFlagScheduledChangesInput": "postFlagScheduledChangesInput",
@@ -53,7 +53,8 @@ export type PostFlagConfigScheduledChangesRequest$Outbound = {
   featureFlagKey: string;
   environmentKey: string;
   ignoreConflicts?: boolean | undefined;
-  PostFlagScheduledChangesInput: models.PostFlagScheduledChangesInput$Outbound;
+  PostFlagScheduledChangesInput:
+    components.PostFlagScheduledChangesInput$Outbound;
 };
 
 /** @internal */
@@ -67,7 +68,7 @@ export const PostFlagConfigScheduledChangesRequest$outboundSchema: z.ZodType<
   environmentKey: z.string(),
   ignoreConflicts: z.boolean().optional(),
   postFlagScheduledChangesInput:
-    models.PostFlagScheduledChangesInput$outboundSchema,
+    components.PostFlagScheduledChangesInput$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     postFlagScheduledChangesInput: "PostFlagScheduledChangesInput",

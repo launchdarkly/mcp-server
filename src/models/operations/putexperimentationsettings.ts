@@ -6,15 +6,15 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type PutExperimentationSettingsRequest = {
   /**
    * The project key
    */
   projectKey: string;
-  randomizationSettingsPut: models.RandomizationSettingsPut;
+  randomizationSettingsPut: components.RandomizationSettingsPut;
 };
 
 /** @internal */
@@ -24,7 +24,7 @@ export const PutExperimentationSettingsRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   projectKey: z.string(),
-  RandomizationSettingsPut: models.RandomizationSettingsPut$inboundSchema,
+  RandomizationSettingsPut: components.RandomizationSettingsPut$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "RandomizationSettingsPut": "randomizationSettingsPut",
@@ -34,7 +34,7 @@ export const PutExperimentationSettingsRequest$inboundSchema: z.ZodType<
 /** @internal */
 export type PutExperimentationSettingsRequest$Outbound = {
   projectKey: string;
-  RandomizationSettingsPut: models.RandomizationSettingsPut$Outbound;
+  RandomizationSettingsPut: components.RandomizationSettingsPut$Outbound;
 };
 
 /** @internal */
@@ -44,7 +44,7 @@ export const PutExperimentationSettingsRequest$outboundSchema: z.ZodType<
   PutExperimentationSettingsRequest
 > = z.object({
   projectKey: z.string(),
-  randomizationSettingsPut: models.RandomizationSettingsPut$outboundSchema,
+  randomizationSettingsPut: components.RandomizationSettingsPut$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     randomizationSettingsPut: "RandomizationSettingsPut",

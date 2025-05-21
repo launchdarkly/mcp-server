@@ -21,14 +21,14 @@ Get all of the resource categories the API supports. In the sandbox, click 'Play
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.other.getRoot();
+  const result = await launchDarkly.other.getRoot();
 
   // Handle the result
   console.log(result);
@@ -42,17 +42,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
 import { otherGetRoot } from "@launchdarkly/mcp-server/funcs/otherGetRoot.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await otherGetRoot(launchdarklyMcpServer);
+  const res = await otherGetRoot(launchDarkly);
 
   if (!res.ok) {
     throw res.error;
@@ -77,7 +77,7 @@ run();
 
 ### Response
 
-**Promise\<[models.RootResponse](../../models/rootresponse.md)\>**
+**Promise\<[components.RootResponse](../../models/components/rootresponse.md)\>**
 
 ### Errors
 
@@ -93,14 +93,14 @@ Get basic information about the identity used (session cookie, API token, SDK ke
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.other.getCallerIdentity();
+  const result = await launchDarkly.other.getCallerIdentity();
 
   // Handle the result
   console.log(result);
@@ -114,17 +114,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
 import { otherGetCallerIdentity } from "@launchdarkly/mcp-server/funcs/otherGetCallerIdentity.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await otherGetCallerIdentity(launchdarklyMcpServer);
+  const res = await otherGetCallerIdentity(launchDarkly);
 
   if (!res.ok) {
     throw res.error;
@@ -149,7 +149,7 @@ run();
 
 ### Response
 
-**Promise\<[models.CallerIdentityRep](../../models/calleridentityrep.md)\>**
+**Promise\<[components.CallerIdentityRep](../../models/components/calleridentityrep.md)\>**
 
 ### Errors
 
@@ -166,14 +166,14 @@ Get the latest version of the OpenAPI specification for LaunchDarkly's API in JS
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  await launchdarklyMcpServer.other.getOpenapiSpec();
+  await launchDarkly.other.getOpenapiSpec();
 
 
 }
@@ -186,17 +186,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
 import { otherGetOpenapiSpec } from "@launchdarkly/mcp-server/funcs/otherGetOpenapiSpec.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await otherGetOpenapiSpec(launchdarklyMcpServer);
+  const res = await otherGetOpenapiSpec(launchDarkly);
 
   if (!res.ok) {
     throw res.error;
@@ -236,14 +236,14 @@ Get a list of IP ranges the LaunchDarkly service uses. You can use this list to 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.other.getIps();
+  const result = await launchDarkly.other.getIps();
 
   // Handle the result
   console.log(result);
@@ -257,17 +257,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
 import { otherGetIps } from "@launchdarkly/mcp-server/funcs/otherGetIps.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await otherGetIps(launchdarklyMcpServer);
+  const res = await otherGetIps(launchDarkly);
 
   if (!res.ok) {
     throw res.error;
@@ -292,7 +292,7 @@ run();
 
 ### Response
 
-**Promise\<[models.IpList](../../models/iplist.md)\>**
+**Promise\<[components.IpList](../../models/components/iplist.md)\>**
 
 ### Errors
 
@@ -308,14 +308,14 @@ Get the latest API version, the list of valid API versions in ascending order, a
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.other.getVersions();
+  const result = await launchDarkly.other.getVersions();
 
   // Handle the result
   console.log(result);
@@ -329,17 +329,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
 import { otherGetVersions } from "@launchdarkly/mcp-server/funcs/otherGetVersions.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await otherGetVersions(launchdarklyMcpServer);
+  const res = await otherGetVersions(launchDarkly);
 
   if (!res.ok) {
     throw res.error;
@@ -364,7 +364,7 @@ run();
 
 ### Response
 
-**Promise\<[models.VersionsRep](../../models/versionsrep.md)\>**
+**Promise\<[components.VersionsRep](../../models/components/versionsrep.md)\>**
 
 ### Errors
 

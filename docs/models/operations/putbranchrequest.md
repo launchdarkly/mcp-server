@@ -37,8 +37,8 @@ let value: PutBranchRequest = {
 
 ## Fields
 
-| Field                                         | Type                                          | Required                                      | Description                                   |
-| --------------------------------------------- | --------------------------------------------- | --------------------------------------------- | --------------------------------------------- |
-| `repo`                                        | *string*                                      | :heavy_check_mark:                            | The repository name                           |
-| `branch`                                      | *string*                                      | :heavy_check_mark:                            | The URL-encoded branch name                   |
-| `putBranch`                                   | [models.PutBranch](../../models/putbranch.md) | :heavy_check_mark:                            | N/A                                           |
+| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `repo`                                                       | *string*                                                     | :heavy_check_mark:                                           | The repository name                                          |
+| `branch`                                                     | *string*                                                     | :heavy_check_mark:                                           | The URL-encoded branch name                                  |
+| `putBranch`                                                  | [components.PutBranch](../../models/components/putbranch.md) | :heavy_check_mark:                                           | N/A                                                          |

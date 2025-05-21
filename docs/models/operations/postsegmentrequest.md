@@ -23,8 +23,8 @@ let value: PostSegmentRequest = {
 
 ## Fields
 
-| Field                                             | Type                                              | Required                                          | Description                                       |
-| ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
-| `projectKey`                                      | *string*                                          | :heavy_check_mark:                                | The project key                                   |
-| `environmentKey`                                  | *string*                                          | :heavy_check_mark:                                | The environment key                               |
-| `segmentBody`                                     | [models.SegmentBody](../../models/segmentbody.md) | :heavy_check_mark:                                | N/A                                               |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `projectKey`                                                     | *string*                                                         | :heavy_check_mark:                                               | The project key                                                  |
+| `environmentKey`                                                 | *string*                                                         | :heavy_check_mark:                                               | The environment key                                              |
+| `segmentBody`                                                    | [components.SegmentBody](../../models/components/segmentbody.md) | :heavy_check_mark:                                               | N/A                                                              |

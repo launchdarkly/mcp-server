@@ -1,0 +1,18 @@
+# MigrationSafetyIssueRep
+
+## Example Usage
+
+```typescript
+import { MigrationSafetyIssueRep } from "@launchdarkly/mcp-server/models/components";
+
+let value: MigrationSafetyIssueRep = {};
+```
+
+## Fields
+
+| Field                                                                                                                               | Type                                                                                                                                | Required                                                                                                                            | Description                                                                                                                         |
+| ----------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `causingRuleId`                                                                                                                     | *string*                                                                                                                            | :heavy_minus_sign:                                                                                                                  | The ID of the rule which caused this issue                                                                                          |
+| `affectedRuleIds`                                                                                                                   | *string*[]                                                                                                                          | :heavy_minus_sign:                                                                                                                  | A list of the IDs of the rules which are affected by this issue. <code>fallthrough</code> is a sentinel value for the default rule. |
+| `issue`                                                                                                                             | *string*                                                                                                                            | :heavy_minus_sign:                                                                                                                  | A description of the issue that <code>causingRuleId</code> has caused for <code>affectedRuleIds</code>.                             |
+| `oldSystemAffected`                                                                                                                 | *boolean*                                                                                                                           | :heavy_minus_sign:                                                                                                                  | Whether the changes caused by <code>causingRuleId</code> bring inconsistency to the old system                                      |

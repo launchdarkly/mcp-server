@@ -6,8 +6,8 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type PutReleasePipelineRequest = {
   /**
@@ -18,7 +18,7 @@ export type PutReleasePipelineRequest = {
    * The release pipeline key
    */
   pipelineKey: string;
-  updateReleasePipelineInput: models.UpdateReleasePipelineInput;
+  updateReleasePipelineInput: components.UpdateReleasePipelineInput;
 };
 
 /** @internal */
@@ -29,7 +29,8 @@ export const PutReleasePipelineRequest$inboundSchema: z.ZodType<
 > = z.object({
   projectKey: z.string(),
   pipelineKey: z.string(),
-  UpdateReleasePipelineInput: models.UpdateReleasePipelineInput$inboundSchema,
+  UpdateReleasePipelineInput:
+    components.UpdateReleasePipelineInput$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "UpdateReleasePipelineInput": "updateReleasePipelineInput",
@@ -40,7 +41,7 @@ export const PutReleasePipelineRequest$inboundSchema: z.ZodType<
 export type PutReleasePipelineRequest$Outbound = {
   projectKey: string;
   pipelineKey: string;
-  UpdateReleasePipelineInput: models.UpdateReleasePipelineInput$Outbound;
+  UpdateReleasePipelineInput: components.UpdateReleasePipelineInput$Outbound;
 };
 
 /** @internal */
@@ -51,7 +52,8 @@ export const PutReleasePipelineRequest$outboundSchema: z.ZodType<
 > = z.object({
   projectKey: z.string(),
   pipelineKey: z.string(),
-  updateReleasePipelineInput: models.UpdateReleasePipelineInput$outboundSchema,
+  updateReleasePipelineInput:
+    components.UpdateReleasePipelineInput$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     updateReleasePipelineInput: "UpdateReleasePipelineInput",

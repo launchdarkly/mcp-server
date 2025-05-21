@@ -22,8 +22,8 @@ let value: UpdateLayerRequest = {
 
 ## Fields
 
-| Field                                                     | Type                                                      | Required                                                  | Description                                               |
-| --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
-| `projectKey`                                              | *string*                                                  | :heavy_check_mark:                                        | The project key                                           |
-| `layerKey`                                                | *string*                                                  | :heavy_check_mark:                                        | The layer key                                             |
-| `layerPatchInput`                                         | [models.LayerPatchInput](../../models/layerpatchinput.md) | :heavy_check_mark:                                        | N/A                                                       |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `projectKey`                                                             | *string*                                                                 | :heavy_check_mark:                                                       | The project key                                                          |
+| `layerKey`                                                               | *string*                                                                 | :heavy_check_mark:                                                       | The layer key                                                            |
+| `layerPatchInput`                                                        | [components.LayerPatchInput](../../models/components/layerpatchinput.md) | :heavy_check_mark:                                                       | N/A                                                                      |

@@ -18,7 +18,7 @@ let value: CreateLayerRequest = {
 
 ## Fields
 
-| Field                                         | Type                                          | Required                                      | Description                                   |
-| --------------------------------------------- | --------------------------------------------- | --------------------------------------------- | --------------------------------------------- |
-| `projectKey`                                  | *string*                                      | :heavy_check_mark:                            | The project key                               |
-| `layerPost`                                   | [models.LayerPost](../../models/layerpost.md) | :heavy_check_mark:                            | N/A                                           |
+| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `projectKey`                                                 | *string*                                                     | :heavy_check_mark:                                           | The project key                                              |
+| `layerPost`                                                  | [components.LayerPost](../../models/components/layerpost.md) | :heavy_check_mark:                                           | N/A                                                          |

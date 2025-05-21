@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod";
-import { LaunchdarklyMcpServerCore } from "../core.js";
+import { LaunchDarklyCore } from "../core.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
@@ -29,7 +29,7 @@ import { Result } from "../types/fp.js";
  * Get the latest version of the OpenAPI specification for LaunchDarkly's API in JSON format. In the sandbox, click 'Play' and enter any string in the 'Authorization' field to test this endpoint.
  */
 export function otherGetOpenapiSpec(
-  client: LaunchdarklyMcpServerCore,
+  client: LaunchDarklyCore,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -51,7 +51,7 @@ export function otherGetOpenapiSpec(
 }
 
 async function $do(
-  client: LaunchdarklyMcpServerCore,
+  client: LaunchDarklyCore,
   options?: RequestOptions,
 ): Promise<
   [

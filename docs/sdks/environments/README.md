@@ -8,15 +8,15 @@ Environments allow you to maintain separate rollout rules in different contexts,
 
 ### Available Operations
 
-* [getEnvironmentsByProject](#getenvironmentsbyproject) - List environments
-* [postEnvironment](#postenvironment) - Create environment
-* [getEnvironment](#getenvironment) - Get environment
-* [deleteEnvironment](#deleteenvironment) - Delete environment
-* [patchEnvironment](#patchenvironment) - Update environment
-* [resetEnvironmentSDKKey](#resetenvironmentsdkkey) - Reset environment SDK key
-* [resetEnvironmentMobileKey](#resetenvironmentmobilekey) - Reset environment mobile SDK key
+* [listByProject](#listbyproject) - List environments
+* [create](#create) - Create environment
+* [get](#get) - Get environment
+* [patch](#patch) - Update environment
+* [delete](#delete) - Delete environment
+* [resetSDKKey](#resetsdkkey) - Reset environment SDK key
+* [resetMobileKey](#resetmobilekey) - Reset environment mobile SDK key
 
-## getEnvironmentsByProject
+## listByProject
 
 Return a list of environments for the specified project.
 
@@ -46,14 +46,14 @@ For example, `sort=name` sorts the response by environment name in ascending ord
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.environments.getEnvironmentsByProject({
+  const result = await launchDarkly.environments.listByProject({
     projectKey: "<value>",
   });
 
@@ -69,17 +69,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { environmentsGetEnvironmentsByProject } from "@launchdarkly/mcp-server/funcs/environmentsGetEnvironmentsByProject.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { environmentsListByProject } from "@launchdarkly/mcp-server/funcs/environmentsListByProject.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await environmentsGetEnvironmentsByProject(launchdarklyMcpServer, {
+  const res = await environmentsListByProject(launchDarkly, {
     projectKey: "<value>",
   });
 
@@ -107,7 +107,7 @@ run();
 
 ### Response
 
-**Promise\<[models.Environments](../../models/environments.md)\>**
+**Promise\<[components.Environments](../../models/components/environments.md)\>**
 
 ### Errors
 
@@ -121,7 +121,7 @@ run();
 | errors.RateLimitedErrorRep      | 429                             | application/json                |
 | errors.APIError                 | 4XX, 5XX                        | \*/\*                           |
 
-## postEnvironment
+## create
 
 > ### Approval settings
 >
@@ -135,14 +135,14 @@ Create a new environment in a specified project with a given name, key, swatch c
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.environments.postEnvironment({
+  const result = await launchDarkly.environments.create({
     projectKey: "<value>",
     environmentPost: {
       name: "My Environment",
@@ -163,17 +163,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { environmentsPostEnvironment } from "@launchdarkly/mcp-server/funcs/environmentsPostEnvironment.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { environmentsCreate } from "@launchdarkly/mcp-server/funcs/environmentsCreate.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await environmentsPostEnvironment(launchdarklyMcpServer, {
+  const res = await environmentsCreate(launchDarkly, {
     projectKey: "<value>",
     environmentPost: {
       name: "My Environment",
@@ -206,7 +206,7 @@ run();
 
 ### Response
 
-**Promise\<[models.Environment](../../models/environment.md)\>**
+**Promise\<[components.Environment](../../models/components/environment.md)\>**
 
 ### Errors
 
@@ -220,7 +220,7 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## getEnvironment
+## get
 
 > ### Approval settings
 >
@@ -232,14 +232,14 @@ Get an environment given a project and key.
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.environments.getEnvironment({
+  const result = await launchDarkly.environments.get({
     projectKey: "<value>",
     environmentKey: "<value>",
   });
@@ -256,17 +256,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { environmentsGetEnvironment } from "@launchdarkly/mcp-server/funcs/environmentsGetEnvironment.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { environmentsGet } from "@launchdarkly/mcp-server/funcs/environmentsGet.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await environmentsGetEnvironment(launchdarklyMcpServer, {
+  const res = await environmentsGet(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
   });
@@ -295,7 +295,7 @@ run();
 
 ### Response
 
-**Promise\<[models.Environment](../../models/environment.md)\>**
+**Promise\<[components.Environment](../../models/components/environment.md)\>**
 
 ### Errors
 
@@ -307,21 +307,130 @@ run();
 | errors.RateLimitedErrorRep  | 429                         | application/json            |
 | errors.APIError             | 4XX, 5XX                    | \*/\*                       |
 
-## deleteEnvironment
+## patch
+
+
+Update an environment. Updating an environment uses a [JSON patch](https://datatracker.ietf.org/doc/html/rfc6902) representation of the desired changes. To learn more, read [Updates](https://launchdarkly.com/docs/api#updates).
+
+To update fields in the environment object that are arrays, set the `path` to the name of the field and then append `/<array index>`. Using `/0` appends to the beginning of the array.
+
+### Approval settings
+
+This request only returns the `approvalSettings` key if the [approvals](https://launchdarkly.com/docs/home/releases/approvals/) feature is enabled.
+
+Only the `canReviewOwnRequest`, `canApplyDeclinedChanges`, `minNumApprovals`, `required` and `requiredApprovalTagsfields` are editable.
+
+If you try to patch the environment by setting both `required` and `requiredApprovalTags`, the request fails and an error appears. You can specify either required approvals for all flags in an environment or those with specific tags, but not both.
+
+
+### Example Usage
+
+```typescript
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
+
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
+});
+
+async function run() {
+  const result = await launchDarkly.environments.patch({
+    projectKey: "<value>",
+    environmentKey: "<value>",
+    requestBody: [
+      {
+        op: "replace",
+        path: "/requireComments",
+        value: true,
+      },
+    ],
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { environmentsPatch } from "@launchdarkly/mcp-server/funcs/environmentsPatch.js";
+
+// Use `LaunchDarklyCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
+});
+
+async function run() {
+  const res = await environmentsPatch(launchDarkly, {
+    projectKey: "<value>",
+    environmentKey: "<value>",
+    requestBody: [
+      {
+        op: "replace",
+        path: "/requireComments",
+        value: true,
+      },
+    ],
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.PatchEnvironmentRequest](../../models/operations/patchenvironmentrequest.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[components.Environment](../../models/components/environment.md)\>**
+
+### Errors
+
+| Error Type                    | Status Code                   | Content Type                  |
+| ----------------------------- | ----------------------------- | ----------------------------- |
+| errors.InvalidRequestErrorRep | 400                           | application/json              |
+| errors.UnauthorizedErrorRep   | 401                           | application/json              |
+| errors.NotFoundErrorRep       | 404                           | application/json              |
+| errors.StatusConflictErrorRep | 409                           | application/json              |
+| errors.RateLimitedErrorRep    | 429                           | application/json              |
+| errors.APIError               | 4XX, 5XX                      | \*/\*                         |
+
+## delete
 
 Delete a environment by key.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  await launchdarklyMcpServer.environments.deleteEnvironment({
+  await launchDarkly.environments.delete({
     projectKey: "<value>",
     environmentKey: "<value>",
   });
@@ -337,17 +446,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { environmentsDeleteEnvironment } from "@launchdarkly/mcp-server/funcs/environmentsDeleteEnvironment.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { environmentsDelete } from "@launchdarkly/mcp-server/funcs/environmentsDelete.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await environmentsDeleteEnvironment(launchdarklyMcpServer, {
+  const res = await environmentsDelete(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
   });
@@ -387,130 +496,21 @@ run();
 | errors.RateLimitedErrorRep  | 429                         | application/json            |
 | errors.APIError             | 4XX, 5XX                    | \*/\*                       |
 
-## patchEnvironment
-
-
-Update an environment. Updating an environment uses a [JSON patch](https://datatracker.ietf.org/doc/html/rfc6902) representation of the desired changes. To learn more, read [Updates](https://launchdarkly.com/docs/api#updates).
-
-To update fields in the environment object that are arrays, set the `path` to the name of the field and then append `/<array index>`. Using `/0` appends to the beginning of the array.
-
-### Approval settings
-
-This request only returns the `approvalSettings` key if the [approvals](https://launchdarkly.com/docs/home/releases/approvals/) feature is enabled.
-
-Only the `canReviewOwnRequest`, `canApplyDeclinedChanges`, `minNumApprovals`, `required` and `requiredApprovalTagsfields` are editable.
-
-If you try to patch the environment by setting both `required` and `requiredApprovalTags`, the request fails and an error appears. You can specify either required approvals for all flags in an environment or those with specific tags, but not both.
-
-
-### Example Usage
-
-```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
-
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
-});
-
-async function run() {
-  const result = await launchdarklyMcpServer.environments.patchEnvironment({
-    projectKey: "<value>",
-    environmentKey: "<value>",
-    requestBody: [
-      {
-        op: "replace",
-        path: "/requireComments",
-        value: true,
-      },
-    ],
-  });
-
-  // Handle the result
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { environmentsPatchEnvironment } from "@launchdarkly/mcp-server/funcs/environmentsPatchEnvironment.js";
-
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
-});
-
-async function run() {
-  const res = await environmentsPatchEnvironment(launchdarklyMcpServer, {
-    projectKey: "<value>",
-    environmentKey: "<value>",
-    requestBody: [
-      {
-        op: "replace",
-        path: "/requireComments",
-        value: true,
-      },
-    ],
-  });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.PatchEnvironmentRequest](../../models/operations/patchenvironmentrequest.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[models.Environment](../../models/environment.md)\>**
-
-### Errors
-
-| Error Type                    | Status Code                   | Content Type                  |
-| ----------------------------- | ----------------------------- | ----------------------------- |
-| errors.InvalidRequestErrorRep | 400                           | application/json              |
-| errors.UnauthorizedErrorRep   | 401                           | application/json              |
-| errors.NotFoundErrorRep       | 404                           | application/json              |
-| errors.StatusConflictErrorRep | 409                           | application/json              |
-| errors.RateLimitedErrorRep    | 429                           | application/json              |
-| errors.APIError               | 4XX, 5XX                      | \*/\*                         |
-
-## resetEnvironmentSDKKey
+## resetSDKKey
 
 Reset an environment's SDK key with an optional expiry time for the old key.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.environments.resetEnvironmentSDKKey({
+  const result = await launchDarkly.environments.resetSDKKey({
     projectKey: "<value>",
     environmentKey: "<value>",
   });
@@ -527,17 +527,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { environmentsResetEnvironmentSDKKey } from "@launchdarkly/mcp-server/funcs/environmentsResetEnvironmentSDKKey.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { environmentsResetSDKKey } from "@launchdarkly/mcp-server/funcs/environmentsResetSDKKey.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await environmentsResetEnvironmentSDKKey(launchdarklyMcpServer, {
+  const res = await environmentsResetSDKKey(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
   });
@@ -566,7 +566,7 @@ run();
 
 ### Response
 
-**Promise\<[models.Environment](../../models/environment.md)\>**
+**Promise\<[components.Environment](../../models/components/environment.md)\>**
 
 ### Errors
 
@@ -580,21 +580,21 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## resetEnvironmentMobileKey
+## resetMobileKey
 
 Reset an environment's mobile key. The optional expiry for the old key is deprecated for this endpoint, so the old key will always expire immediately.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.environments.resetEnvironmentMobileKey({
+  const result = await launchDarkly.environments.resetMobileKey({
     projectKey: "<value>",
     environmentKey: "<value>",
   });
@@ -611,17 +611,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { environmentsResetEnvironmentMobileKey } from "@launchdarkly/mcp-server/funcs/environmentsResetEnvironmentMobileKey.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { environmentsResetMobileKey } from "@launchdarkly/mcp-server/funcs/environmentsResetMobileKey.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await environmentsResetEnvironmentMobileKey(launchdarklyMcpServer, {
+  const res = await environmentsResetMobileKey(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
   });
@@ -650,7 +650,7 @@ run();
 
 ### Response
 
-**Promise\<[models.Environment](../../models/environment.md)\>**
+**Promise\<[components.Environment](../../models/components/environment.md)\>**
 
 ### Errors
 

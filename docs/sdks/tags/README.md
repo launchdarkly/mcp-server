@@ -10,23 +10,23 @@ Using the tags API, you can list existing tags for resources.
 
 ### Available Operations
 
-* [getTags](#gettags) - List tags
+* [list](#list) - List tags
 
-## getTags
+## list
 
 Get a list of tags.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.tags.getTags({});
+  const result = await launchDarkly.tags.list({});
 
   // Handle the result
   console.log(result);
@@ -40,17 +40,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { tagsGetTags } from "@launchdarkly/mcp-server/funcs/tagsGetTags.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { tagsList } from "@launchdarkly/mcp-server/funcs/tagsList.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await tagsGetTags(launchdarklyMcpServer, {});
+  const res = await tagsList(launchDarkly, {});
 
   if (!res.ok) {
     throw res.error;
@@ -76,7 +76,7 @@ run();
 
 ### Response
 
-**Promise\<[models.TagsCollection](../../models/tagscollection.md)\>**
+**Promise\<[components.TagsCollection](../../models/components/tagscollection.md)\>**
 
 ### Errors
 

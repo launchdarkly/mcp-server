@@ -5,15 +5,15 @@
 import * as z from "zod";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type CreateSubscriptionRequest = {
   /**
    * The integration key
    */
   integrationKey: string;
-  subscriptionPost: models.SubscriptionPost;
+  subscriptionPost: components.SubscriptionPost;
 };
 
 /** @internal */
@@ -23,13 +23,13 @@ export const CreateSubscriptionRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   integrationKey: z.string(),
-  subscriptionPost: models.SubscriptionPost$inboundSchema,
+  subscriptionPost: components.SubscriptionPost$inboundSchema,
 });
 
 /** @internal */
 export type CreateSubscriptionRequest$Outbound = {
   integrationKey: string;
-  subscriptionPost: models.SubscriptionPost$Outbound;
+  subscriptionPost: components.SubscriptionPost$Outbound;
 };
 
 /** @internal */
@@ -39,7 +39,7 @@ export const CreateSubscriptionRequest$outboundSchema: z.ZodType<
   CreateSubscriptionRequest
 > = z.object({
   integrationKey: z.string(),
-  subscriptionPost: models.SubscriptionPost$outboundSchema,
+  subscriptionPost: components.SubscriptionPost$outboundSchema,
 });
 
 /**

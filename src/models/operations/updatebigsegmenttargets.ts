@@ -6,8 +6,8 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type UpdateBigSegmentTargetsRequest = {
   /**
@@ -22,7 +22,7 @@ export type UpdateBigSegmentTargetsRequest = {
    * The segment key
    */
   segmentKey: string;
-  segmentUserState: models.SegmentUserState;
+  segmentUserState: components.SegmentUserState;
 };
 
 /** @internal */
@@ -34,7 +34,7 @@ export const UpdateBigSegmentTargetsRequest$inboundSchema: z.ZodType<
   projectKey: z.string(),
   environmentKey: z.string(),
   segmentKey: z.string(),
-  SegmentUserState: models.SegmentUserState$inboundSchema,
+  SegmentUserState: components.SegmentUserState$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "SegmentUserState": "segmentUserState",
@@ -46,7 +46,7 @@ export type UpdateBigSegmentTargetsRequest$Outbound = {
   projectKey: string;
   environmentKey: string;
   segmentKey: string;
-  SegmentUserState: models.SegmentUserState$Outbound;
+  SegmentUserState: components.SegmentUserState$Outbound;
 };
 
 /** @internal */
@@ -58,7 +58,7 @@ export const UpdateBigSegmentTargetsRequest$outboundSchema: z.ZodType<
   projectKey: z.string(),
   environmentKey: z.string(),
   segmentKey: z.string(),
-  segmentUserState: models.SegmentUserState$outboundSchema,
+  segmentUserState: components.SegmentUserState$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     segmentUserState: "SegmentUserState",

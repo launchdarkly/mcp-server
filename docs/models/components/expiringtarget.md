@@ -1,0 +1,35 @@
+# ExpiringTarget
+
+## Example Usage
+
+```typescript
+import { ExpiringTarget } from "@launchdarkly/mcp-server/models/components";
+
+let value: ExpiringTarget = {
+  id: "12ab3c45de678910abc12345",
+  version: 1,
+  expirationDate: 862238,
+  contextKind: "user",
+  contextKey: "context-key-123abc",
+  targetType: "included",
+  variationId: "cc4332e2-bd4d-4fe0-b509-dfd2caf8dd73",
+  resourceId: {
+    environmentKey: "environment-key-123abc",
+    key: "segment-key-123abc",
+    projectKey: "project-key-123abc",
+  },
+};
+```
+
+## Fields
+
+| Field                                                                                                                             | Type                                                                                                                              | Required                                                                                                                          | Description                                                                                                                       | Example                                                                                                                           |
+| --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `id`                                                                                                                              | *string*                                                                                                                          | :heavy_check_mark:                                                                                                                | The ID of this expiring target                                                                                                    | 12ab3c45de678910abc12345                                                                                                          |
+| `version`                                                                                                                         | *number*                                                                                                                          | :heavy_check_mark:                                                                                                                | The version of this expiring target                                                                                               | 1                                                                                                                                 |
+| `expirationDate`                                                                                                                  | *number*                                                                                                                          | :heavy_check_mark:                                                                                                                | N/A                                                                                                                               |                                                                                                                                   |
+| `contextKind`                                                                                                                     | *string*                                                                                                                          | :heavy_check_mark:                                                                                                                | The context kind of the context to be removed                                                                                     | user                                                                                                                              |
+| `contextKey`                                                                                                                      | *string*                                                                                                                          | :heavy_check_mark:                                                                                                                | A unique key used to represent the context to be removed                                                                          | context-key-123abc                                                                                                                |
+| `targetType`                                                                                                                      | *string*                                                                                                                          | :heavy_minus_sign:                                                                                                                | A segment's target type, <code>included</code> or <code>excluded</code>. Included when expiring targets are updated on a segment. | included                                                                                                                          |
+| `variationId`                                                                                                                     | *string*                                                                                                                          | :heavy_minus_sign:                                                                                                                | A unique ID used to represent the flag variation. Included when expiring targets are updated on a feature flag.                   | cc4332e2-bd4d-4fe0-b509-dfd2caf8dd73                                                                                              |
+| `resourceId`                                                                                                                      | [components.ResourceId](../../models/components/resourceid.md)                                                                    | :heavy_check_mark:                                                                                                                | N/A                                                                                                                               |                                                                                                                                   |

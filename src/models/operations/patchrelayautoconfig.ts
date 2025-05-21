@@ -6,15 +6,15 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type PatchRelayAutoConfigRequest = {
   /**
    * The relay auto config id
    */
   id: string;
-  patchWithComment: models.PatchWithComment;
+  patchWithComment: components.PatchWithComment;
 };
 
 /** @internal */
@@ -24,7 +24,7 @@ export const PatchRelayAutoConfigRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   id: z.string(),
-  PatchWithComment: models.PatchWithComment$inboundSchema,
+  PatchWithComment: components.PatchWithComment$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "PatchWithComment": "patchWithComment",
@@ -34,7 +34,7 @@ export const PatchRelayAutoConfigRequest$inboundSchema: z.ZodType<
 /** @internal */
 export type PatchRelayAutoConfigRequest$Outbound = {
   id: string;
-  PatchWithComment: models.PatchWithComment$Outbound;
+  PatchWithComment: components.PatchWithComment$Outbound;
 };
 
 /** @internal */
@@ -44,7 +44,7 @@ export const PatchRelayAutoConfigRequest$outboundSchema: z.ZodType<
   PatchRelayAutoConfigRequest
 > = z.object({
   id: z.string(),
-  patchWithComment: models.PatchWithComment$outboundSchema,
+  patchWithComment: components.PatchWithComment$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     patchWithComment: "PatchWithComment",

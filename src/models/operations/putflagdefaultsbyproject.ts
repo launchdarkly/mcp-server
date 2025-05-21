@@ -6,15 +6,15 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type PutFlagDefaultsByProjectRequest = {
   /**
    * The project key
    */
   projectKey: string;
-  upsertFlagDefaultsPayload: models.UpsertFlagDefaultsPayload;
+  upsertFlagDefaultsPayload: components.UpsertFlagDefaultsPayload;
 };
 
 /** @internal */
@@ -24,7 +24,7 @@ export const PutFlagDefaultsByProjectRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   projectKey: z.string(),
-  UpsertFlagDefaultsPayload: models.UpsertFlagDefaultsPayload$inboundSchema,
+  UpsertFlagDefaultsPayload: components.UpsertFlagDefaultsPayload$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "UpsertFlagDefaultsPayload": "upsertFlagDefaultsPayload",
@@ -34,7 +34,7 @@ export const PutFlagDefaultsByProjectRequest$inboundSchema: z.ZodType<
 /** @internal */
 export type PutFlagDefaultsByProjectRequest$Outbound = {
   projectKey: string;
-  UpsertFlagDefaultsPayload: models.UpsertFlagDefaultsPayload$Outbound;
+  UpsertFlagDefaultsPayload: components.UpsertFlagDefaultsPayload$Outbound;
 };
 
 /** @internal */
@@ -44,7 +44,8 @@ export const PutFlagDefaultsByProjectRequest$outboundSchema: z.ZodType<
   PutFlagDefaultsByProjectRequest
 > = z.object({
   projectKey: z.string(),
-  upsertFlagDefaultsPayload: models.UpsertFlagDefaultsPayload$outboundSchema,
+  upsertFlagDefaultsPayload:
+    components.UpsertFlagDefaultsPayload$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     upsertFlagDefaultsPayload: "UpsertFlagDefaultsPayload",

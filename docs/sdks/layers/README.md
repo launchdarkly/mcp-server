@@ -16,25 +16,25 @@ To learn more, read [Mutually exclusive experiments](https://launchdarkly.com/do
 
 ### Available Operations
 
-* [getLayers](#getlayers) - Get layers
-* [createLayer](#createlayer) - Create layer
-* [updateLayer](#updatelayer) - Update layer
+* [list](#list) - Get layers
+* [create](#create) - Create layer
+* [update](#update) - Update layer
 
-## getLayers
+## list
 
 Get a collection of all layers for a project
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.layers.getLayers({
+  const result = await launchDarkly.layers.list({
     projectKey: "<value>",
   });
 
@@ -50,17 +50,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { layersGetLayers } from "@launchdarkly/mcp-server/funcs/layersGetLayers.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { layersList } from "@launchdarkly/mcp-server/funcs/layersList.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await layersGetLayers(launchdarklyMcpServer, {
+  const res = await layersList(launchDarkly, {
     projectKey: "<value>",
   });
 
@@ -88,7 +88,7 @@ run();
 
 ### Response
 
-**Promise\<[models.LayerCollectionRep](../../models/layercollectionrep.md)\>**
+**Promise\<[components.LayerCollectionRep](../../models/components/layercollectionrep.md)\>**
 
 ### Errors
 
@@ -100,7 +100,7 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## createLayer
+## create
 
 Create a layer. Experiments running in the same layer are granted mutually-exclusive traffic.
 
@@ -108,14 +108,14 @@ Create a layer. Experiments running in the same layer are granted mutually-exclu
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.layers.createLayer({
+  const result = await launchDarkly.layers.create({
     projectKey: "<value>",
     layerPost: {
       key: "checkout-flow",
@@ -136,17 +136,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { layersCreateLayer } from "@launchdarkly/mcp-server/funcs/layersCreateLayer.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { layersCreate } from "@launchdarkly/mcp-server/funcs/layersCreate.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await layersCreateLayer(launchdarklyMcpServer, {
+  const res = await layersCreate(launchDarkly, {
     projectKey: "<value>",
     layerPost: {
       key: "checkout-flow",
@@ -179,7 +179,7 @@ run();
 
 ### Response
 
-**Promise\<[models.LayerRep](../../models/layerrep.md)\>**
+**Promise\<[components.LayerRep](../../models/components/layerrep.md)\>**
 
 ### Errors
 
@@ -191,7 +191,7 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## updateLayer
+## update
 
 Update a layer by adding, changing, or removing traffic reservations for experiments, or by changing layer name or description.
 Updating a layer uses the semantic patch format.
@@ -291,14 +291,14 @@ Here's an example:
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.layers.updateLayer({
+  const result = await launchDarkly.layers.update({
     projectKey: "<value>",
     layerKey: "<value>",
     layerPatchInput: {
@@ -326,17 +326,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { layersUpdateLayer } from "@launchdarkly/mcp-server/funcs/layersUpdateLayer.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { layersUpdate } from "@launchdarkly/mcp-server/funcs/layersUpdate.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await layersUpdateLayer(launchdarklyMcpServer, {
+  const res = await layersUpdate(launchDarkly, {
     projectKey: "<value>",
     layerKey: "<value>",
     layerPatchInput: {
@@ -376,7 +376,7 @@ run();
 
 ### Response
 
-**Promise\<[models.LayerRep](../../models/layerrep.md)\>**
+**Promise\<[components.LayerRep](../../models/components/layerrep.md)\>**
 
 ### Errors
 

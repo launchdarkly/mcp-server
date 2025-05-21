@@ -19,6 +19,10 @@ export const ServerList = [
    *  Federal
    */
   "https://app.launchdarkly.us",
+  /**
+   * Prod API server
+   */
+  "https://app.launchdarkly.com",
 ] as const;
 
 export type SDKOptions = {
@@ -61,8 +65,8 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
 export const SDK_METADATA = {
   language: "typescript",
   openapiDocVersion: "2.0",
-  sdkVersion: "0.0.1",
+  sdkVersion: "0.1.0",
   genVersion: "2.605.6",
   userAgent:
-    "speakeasy-sdk/typescript 0.0.1 2.605.6 2.0 @launchdarkly/mcp-server",
+    "speakeasy-sdk/typescript 0.1.0 2.605.6 2.0 @launchdarkly/mcp-server",
 } as const;

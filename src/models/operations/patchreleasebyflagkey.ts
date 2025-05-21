@@ -6,8 +6,8 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type PatchReleaseByFlagKeyRequest = {
   /**
@@ -18,7 +18,7 @@ export type PatchReleaseByFlagKeyRequest = {
    * The flag key
    */
   flagKey: string;
-  requestBody: Array<models.PatchOperation>;
+  requestBody: Array<components.PatchOperation>;
 };
 
 /** @internal */
@@ -29,7 +29,7 @@ export const PatchReleaseByFlagKeyRequest$inboundSchema: z.ZodType<
 > = z.object({
   projectKey: z.string(),
   flagKey: z.string(),
-  RequestBody: z.array(models.PatchOperation$inboundSchema),
+  RequestBody: z.array(components.PatchOperation$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
     "RequestBody": "requestBody",
@@ -40,7 +40,7 @@ export const PatchReleaseByFlagKeyRequest$inboundSchema: z.ZodType<
 export type PatchReleaseByFlagKeyRequest$Outbound = {
   projectKey: string;
   flagKey: string;
-  RequestBody: Array<models.PatchOperation$Outbound>;
+  RequestBody: Array<components.PatchOperation$Outbound>;
 };
 
 /** @internal */
@@ -51,7 +51,7 @@ export const PatchReleaseByFlagKeyRequest$outboundSchema: z.ZodType<
 > = z.object({
   projectKey: z.string(),
   flagKey: z.string(),
-  requestBody: z.array(models.PatchOperation$outboundSchema),
+  requestBody: z.array(components.PatchOperation$outboundSchema),
 }).transform((v) => {
   return remap$(v, {
     requestBody: "RequestBody",

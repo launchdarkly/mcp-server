@@ -59,8 +59,8 @@ let value: CreateExperimentRequest = {
 
 ## Fields
 
-| Field                                                   | Type                                                    | Required                                                | Description                                             |
-| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| `projectKey`                                            | *string*                                                | :heavy_check_mark:                                      | The project key                                         |
-| `environmentKey`                                        | *string*                                                | :heavy_check_mark:                                      | The environment key                                     |
-| `experimentPost`                                        | [models.ExperimentPost](../../models/experimentpost.md) | :heavy_check_mark:                                      | N/A                                                     |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `projectKey`                                                           | *string*                                                               | :heavy_check_mark:                                                     | The project key                                                        |
+| `environmentKey`                                                       | *string*                                                               | :heavy_check_mark:                                                     | The environment key                                                    |
+| `experimentPost`                                                       | [components.ExperimentPost](../../models/components/experimentpost.md) | :heavy_check_mark:                                                     | N/A                                                                    |

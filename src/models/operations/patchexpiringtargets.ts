@@ -5,8 +5,8 @@
 import * as z from "zod";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type PatchExpiringTargetsRequest = {
   /**
@@ -21,7 +21,7 @@ export type PatchExpiringTargetsRequest = {
    * The feature flag key
    */
   featureFlagKey: string;
-  patchFlagsRequest: models.PatchFlagsRequest;
+  patchFlagsRequest: components.PatchFlagsRequest;
 };
 
 /** @internal */
@@ -33,7 +33,7 @@ export const PatchExpiringTargetsRequest$inboundSchema: z.ZodType<
   projectKey: z.string(),
   environmentKey: z.string(),
   featureFlagKey: z.string(),
-  patchFlagsRequest: models.PatchFlagsRequest$inboundSchema,
+  patchFlagsRequest: components.PatchFlagsRequest$inboundSchema,
 });
 
 /** @internal */
@@ -41,7 +41,7 @@ export type PatchExpiringTargetsRequest$Outbound = {
   projectKey: string;
   environmentKey: string;
   featureFlagKey: string;
-  patchFlagsRequest: models.PatchFlagsRequest$Outbound;
+  patchFlagsRequest: components.PatchFlagsRequest$Outbound;
 };
 
 /** @internal */
@@ -53,7 +53,7 @@ export const PatchExpiringTargetsRequest$outboundSchema: z.ZodType<
   projectKey: z.string(),
   environmentKey: z.string(),
   featureFlagKey: z.string(),
-  patchFlagsRequest: models.PatchFlagsRequest$outboundSchema,
+  patchFlagsRequest: components.PatchFlagsRequest$outboundSchema,
 });
 
 /**

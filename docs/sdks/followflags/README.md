@@ -3,33 +3,28 @@
 
 ## Overview
 
-Follow flags to receive email updates about targeting changes to a flag in a project and environment.
-
-Several of the endpoints in the follow flags API require a member ID. The member ID is returned as part of the [Invite new members](https://launchdarkly.com/docs/api/account-members/post-members) and [List account members](https://launchdarkly.com/docs/api/account-members/get-members) responses. It is the `_id` field of each element in the `items` array.
-
-
 ### Available Operations
 
-* [getFollowersByProjEnv](#getfollowersbyprojenv) - Get followers of all flags in a given project and environment
-* [getFlagFollowers](#getflagfollowers) - Get followers of a flag in a project and environment
-* [putFlagFollower](#putflagfollower) - Add a member as a follower of a flag in a project and environment
-* [deleteFlagFollower](#deleteflagfollower) - Remove a member as a follower of a flag in a project and environment
+* [getFollowers](#getfollowers) - Get followers of all flags in a given project and environment
+* [listFollowers](#listfollowers) - Get followers of a flag in a project and environment
+* [addFollower](#addfollower) - Add a member as a follower of a flag in a project and environment
+* [deleteFollower](#deletefollower) - Remove a member as a follower of a flag in a project and environment
 
-## getFollowersByProjEnv
+## getFollowers
 
 Get followers of all flags in a given environment and project
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.followFlags.getFollowersByProjEnv({
+  const result = await launchDarkly.followFlags.getFollowers({
     projectKey: "<value>",
     environmentKey: "<value>",
   });
@@ -46,17 +41,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { followFlagsGetFollowersByProjEnv } from "@launchdarkly/mcp-server/funcs/followFlagsGetFollowersByProjEnv.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { followFlagsGetFollowers } from "@launchdarkly/mcp-server/funcs/followFlagsGetFollowers.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await followFlagsGetFollowersByProjEnv(launchdarklyMcpServer, {
+  const res = await followFlagsGetFollowers(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
   });
@@ -85,7 +80,7 @@ run();
 
 ### Response
 
-**Promise\<[models.FlagFollowersByProjEnvGetRep](../../models/flagfollowersbyprojenvgetrep.md)\>**
+**Promise\<[components.FlagFollowersByProjEnvGetRep](../../models/components/flagfollowersbyprojenvgetrep.md)\>**
 
 ### Errors
 
@@ -97,21 +92,21 @@ run();
 | errors.NotFoundErrorRep       | 404                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## getFlagFollowers
+## listFollowers
 
 Get a list of members following a flag in a project and environment
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.followFlags.getFlagFollowers({
+  const result = await launchDarkly.followFlags.listFollowers({
     projectKey: "<value>",
     featureFlagKey: "<value>",
     environmentKey: "<value>",
@@ -129,17 +124,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { followFlagsGetFlagFollowers } from "@launchdarkly/mcp-server/funcs/followFlagsGetFlagFollowers.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { followFlagsListFollowers } from "@launchdarkly/mcp-server/funcs/followFlagsListFollowers.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await followFlagsGetFlagFollowers(launchdarklyMcpServer, {
+  const res = await followFlagsListFollowers(launchDarkly, {
     projectKey: "<value>",
     featureFlagKey: "<value>",
     environmentKey: "<value>",
@@ -169,7 +164,7 @@ run();
 
 ### Response
 
-**Promise\<[models.FlagFollowersGetRep](../../models/flagfollowersgetrep.md)\>**
+**Promise\<[components.FlagFollowersGetRep](../../models/components/flagfollowersgetrep.md)\>**
 
 ### Errors
 
@@ -181,21 +176,21 @@ run();
 | errors.NotFoundErrorRep       | 404                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## putFlagFollower
+## addFollower
 
 Add a member as a follower to a flag in a project and environment
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  await launchdarklyMcpServer.followFlags.putFlagFollower({
+  await launchDarkly.followFlags.addFollower({
     projectKey: "<value>",
     featureFlagKey: "<value>",
     environmentKey: "<value>",
@@ -213,17 +208,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { followFlagsPutFlagFollower } from "@launchdarkly/mcp-server/funcs/followFlagsPutFlagFollower.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { followFlagsAddFollower } from "@launchdarkly/mcp-server/funcs/followFlagsAddFollower.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await followFlagsPutFlagFollower(launchdarklyMcpServer, {
+  const res = await followFlagsAddFollower(launchDarkly, {
     projectKey: "<value>",
     featureFlagKey: "<value>",
     environmentKey: "<value>",
@@ -265,21 +260,21 @@ run();
 | errors.NotFoundErrorRep       | 404                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## deleteFlagFollower
+## deleteFollower
 
 Remove a member as a follower to a flag in a project and environment
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  await launchdarklyMcpServer.followFlags.deleteFlagFollower({
+  await launchDarkly.followFlags.deleteFollower({
     projectKey: "<value>",
     featureFlagKey: "<value>",
     environmentKey: "<value>",
@@ -297,17 +292,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { followFlagsDeleteFlagFollower } from "@launchdarkly/mcp-server/funcs/followFlagsDeleteFlagFollower.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { followFlagsDeleteFollower } from "@launchdarkly/mcp-server/funcs/followFlagsDeleteFollower.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await followFlagsDeleteFlagFollower(launchdarklyMcpServer, {
+  const res = await followFlagsDeleteFollower(launchDarkly, {
     projectKey: "<value>",
     featureFlagKey: "<value>",
     environmentKey: "<value>",

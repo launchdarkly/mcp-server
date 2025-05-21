@@ -7,8 +7,8 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 /**
  * Version of the endpoint.
@@ -32,7 +32,7 @@ export type PostAIConfigRequest = {
   /**
    * AI Config object to create
    */
-  aiConfigPost: models.AIConfigPost;
+  aiConfigPost: components.AIConfigPost;
 };
 
 /** @internal */
@@ -64,7 +64,7 @@ export const PostAIConfigRequest$inboundSchema: z.ZodType<
 > = z.object({
   "LD-API-Version": PostAIConfigLDAPIVersion$inboundSchema,
   projectKey: z.string(),
-  AIConfigPost: models.AIConfigPost$inboundSchema,
+  AIConfigPost: components.AIConfigPost$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "LD-API-Version": "ldAPIVersion",
@@ -76,7 +76,7 @@ export const PostAIConfigRequest$inboundSchema: z.ZodType<
 export type PostAIConfigRequest$Outbound = {
   "LD-API-Version": string;
   projectKey: string;
-  AIConfigPost: models.AIConfigPost$Outbound;
+  AIConfigPost: components.AIConfigPost$Outbound;
 };
 
 /** @internal */
@@ -87,7 +87,7 @@ export const PostAIConfigRequest$outboundSchema: z.ZodType<
 > = z.object({
   ldAPIVersion: PostAIConfigLDAPIVersion$outboundSchema,
   projectKey: z.string(),
-  aiConfigPost: models.AIConfigPost$outboundSchema,
+  aiConfigPost: components.AIConfigPost$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     ldAPIVersion: "LD-API-Version",

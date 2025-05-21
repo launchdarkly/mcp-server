@@ -6,15 +6,15 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type PostMemberTeamsRequest = {
   /**
    * The member ID
    */
   id: string;
-  memberTeamsPostInput: models.MemberTeamsPostInput;
+  memberTeamsPostInput: components.MemberTeamsPostInput;
 };
 
 /** @internal */
@@ -24,7 +24,7 @@ export const PostMemberTeamsRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   id: z.string(),
-  MemberTeamsPostInput: models.MemberTeamsPostInput$inboundSchema,
+  MemberTeamsPostInput: components.MemberTeamsPostInput$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "MemberTeamsPostInput": "memberTeamsPostInput",
@@ -34,7 +34,7 @@ export const PostMemberTeamsRequest$inboundSchema: z.ZodType<
 /** @internal */
 export type PostMemberTeamsRequest$Outbound = {
   id: string;
-  MemberTeamsPostInput: models.MemberTeamsPostInput$Outbound;
+  MemberTeamsPostInput: components.MemberTeamsPostInput$Outbound;
 };
 
 /** @internal */
@@ -44,7 +44,7 @@ export const PostMemberTeamsRequest$outboundSchema: z.ZodType<
   PostMemberTeamsRequest
 > = z.object({
   id: z.string(),
-  memberTeamsPostInput: models.MemberTeamsPostInput$outboundSchema,
+  memberTeamsPostInput: components.MemberTeamsPostInput$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     memberTeamsPostInput: "MemberTeamsPostInput",

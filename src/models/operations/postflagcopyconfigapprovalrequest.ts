@@ -5,8 +5,8 @@
 import * as z from "zod";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type PostFlagCopyConfigApprovalRequestRequest = {
   /**
@@ -22,7 +22,7 @@ export type PostFlagCopyConfigApprovalRequestRequest = {
    */
   environmentKey: string;
   createCopyFlagConfigApprovalRequestRequest:
-    models.CreateCopyFlagConfigApprovalRequestRequest;
+    components.CreateCopyFlagConfigApprovalRequestRequest;
 };
 
 /** @internal */
@@ -35,7 +35,7 @@ export const PostFlagCopyConfigApprovalRequestRequest$inboundSchema: z.ZodType<
   featureFlagKey: z.string(),
   environmentKey: z.string(),
   createCopyFlagConfigApprovalRequestRequest:
-    models.CreateCopyFlagConfigApprovalRequestRequest$inboundSchema,
+    components.CreateCopyFlagConfigApprovalRequestRequest$inboundSchema,
 });
 
 /** @internal */
@@ -44,7 +44,7 @@ export type PostFlagCopyConfigApprovalRequestRequest$Outbound = {
   featureFlagKey: string;
   environmentKey: string;
   createCopyFlagConfigApprovalRequestRequest:
-    models.CreateCopyFlagConfigApprovalRequestRequest$Outbound;
+    components.CreateCopyFlagConfigApprovalRequestRequest$Outbound;
 };
 
 /** @internal */
@@ -57,7 +57,7 @@ export const PostFlagCopyConfigApprovalRequestRequest$outboundSchema: z.ZodType<
   featureFlagKey: z.string(),
   environmentKey: z.string(),
   createCopyFlagConfigApprovalRequestRequest:
-    models.CreateCopyFlagConfigApprovalRequestRequest$outboundSchema,
+    components.CreateCopyFlagConfigApprovalRequestRequest$outboundSchema,
 });
 
 /**

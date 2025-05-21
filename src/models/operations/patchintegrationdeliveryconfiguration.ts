@@ -6,8 +6,8 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type PatchIntegrationDeliveryConfigurationRequest = {
   /**
@@ -26,7 +26,7 @@ export type PatchIntegrationDeliveryConfigurationRequest = {
    * The configuration ID
    */
   id: string;
-  requestBody: Array<models.PatchOperation>;
+  requestBody: Array<components.PatchOperation>;
 };
 
 /** @internal */
@@ -40,7 +40,7 @@ export const PatchIntegrationDeliveryConfigurationRequest$inboundSchema:
     environmentKey: z.string(),
     integrationKey: z.string(),
     id: z.string(),
-    RequestBody: z.array(models.PatchOperation$inboundSchema),
+    RequestBody: z.array(components.PatchOperation$inboundSchema),
   }).transform((v) => {
     return remap$(v, {
       "RequestBody": "requestBody",
@@ -53,7 +53,7 @@ export type PatchIntegrationDeliveryConfigurationRequest$Outbound = {
   environmentKey: string;
   integrationKey: string;
   id: string;
-  RequestBody: Array<models.PatchOperation$Outbound>;
+  RequestBody: Array<components.PatchOperation$Outbound>;
 };
 
 /** @internal */
@@ -67,7 +67,7 @@ export const PatchIntegrationDeliveryConfigurationRequest$outboundSchema:
     environmentKey: z.string(),
     integrationKey: z.string(),
     id: z.string(),
-    requestBody: z.array(models.PatchOperation$outboundSchema),
+    requestBody: z.array(components.PatchOperation$outboundSchema),
   }).transform((v) => {
     return remap$(v, {
       requestBody: "RequestBody",

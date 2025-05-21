@@ -39,7 +39,7 @@ let value: PostMetricRequest = {
 
 ## Fields
 
-| Field                                           | Type                                            | Required                                        | Description                                     |
-| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| `projectKey`                                    | *string*                                        | :heavy_check_mark:                              | The project key                                 |
-| `metricPost`                                    | [models.MetricPost](../../models/metricpost.md) | :heavy_check_mark:                              | N/A                                             |
+| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `projectKey`                                                   | *string*                                                       | :heavy_check_mark:                                             | The project key                                                |
+| `metricPost`                                                   | [components.MetricPost](../../models/components/metricpost.md) | :heavy_check_mark:                                             | N/A                                                            |

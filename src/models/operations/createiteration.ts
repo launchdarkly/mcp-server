@@ -6,8 +6,8 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type CreateIterationRequest = {
   /**
@@ -22,7 +22,7 @@ export type CreateIterationRequest = {
    * The experiment key
    */
   experimentKey: string;
-  iterationInput: models.IterationInput;
+  iterationInput: components.IterationInput;
 };
 
 /** @internal */
@@ -34,7 +34,7 @@ export const CreateIterationRequest$inboundSchema: z.ZodType<
   projectKey: z.string(),
   environmentKey: z.string(),
   experimentKey: z.string(),
-  IterationInput: models.IterationInput$inboundSchema,
+  IterationInput: components.IterationInput$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "IterationInput": "iterationInput",
@@ -46,7 +46,7 @@ export type CreateIterationRequest$Outbound = {
   projectKey: string;
   environmentKey: string;
   experimentKey: string;
-  IterationInput: models.IterationInput$Outbound;
+  IterationInput: components.IterationInput$Outbound;
 };
 
 /** @internal */
@@ -58,7 +58,7 @@ export const CreateIterationRequest$outboundSchema: z.ZodType<
   projectKey: z.string(),
   environmentKey: z.string(),
   experimentKey: z.string(),
-  iterationInput: models.IterationInput$outboundSchema,
+  iterationInput: components.IterationInput$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     iterationInput: "IterationInput",

@@ -7,15 +7,15 @@ import { dlv } from "./dlv.js";
 import * as z from "zod";
 
 export interface Env {
-  LAUNCHDARKLYMCPSERVER_API_KEY?: string | undefined;
+  LAUNCHDARKLY_API_KEY?: string | undefined;
 
-  LAUNCHDARKLYMCPSERVER_DEBUG?: boolean | undefined;
+  LAUNCHDARKLY_DEBUG?: boolean | undefined;
 }
 
 export const envSchema: z.ZodType<Env, z.ZodTypeDef, unknown> = z.object({
-  LAUNCHDARKLYMCPSERVER_API_KEY: z.string().optional(),
+  LAUNCHDARKLY_API_KEY: z.string().optional(),
 
-  LAUNCHDARKLYMCPSERVER_DEBUG: z.coerce.boolean().optional(),
+  LAUNCHDARKLY_DEBUG: z.coerce.boolean().optional(),
 });
 
 let envMemo: Env | undefined = undefined;

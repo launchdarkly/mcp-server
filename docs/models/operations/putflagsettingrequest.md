@@ -19,10 +19,10 @@ let value: PutFlagSettingRequest = {
 
 ## Fields
 
-| Field                                       | Type                                        | Required                                    | Description                                 |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| `projectKey`                                | *string*                                    | :heavy_check_mark:                          | The project key                             |
-| `environmentKey`                            | *string*                                    | :heavy_check_mark:                          | The environment key                         |
-| `userKey`                                   | *string*                                    | :heavy_check_mark:                          | The user key                                |
-| `featureFlagKey`                            | *string*                                    | :heavy_check_mark:                          | The feature flag key                        |
-| `valuePut`                                  | [models.ValuePut](../../models/valueput.md) | :heavy_check_mark:                          | N/A                                         |
+| Field                                                      | Type                                                       | Required                                                   | Description                                                |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| `projectKey`                                               | *string*                                                   | :heavy_check_mark:                                         | The project key                                            |
+| `environmentKey`                                           | *string*                                                   | :heavy_check_mark:                                         | The environment key                                        |
+| `userKey`                                                  | *string*                                                   | :heavy_check_mark:                                         | The user key                                               |
+| `featureFlagKey`                                           | *string*                                                   | :heavy_check_mark:                                         | The feature flag key                                       |
+| `valuePut`                                                 | [components.ValuePut](../../models/components/valueput.md) | :heavy_check_mark:                                         | N/A                                                        |

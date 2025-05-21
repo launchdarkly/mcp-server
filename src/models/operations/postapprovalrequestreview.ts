@@ -5,15 +5,15 @@
 import * as z from "zod";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type PostApprovalRequestReviewRequest = {
   /**
    * The approval request ID
    */
   id: string;
-  postApprovalRequestReviewRequest: models.PostApprovalRequestReviewRequest;
+  postApprovalRequestReviewRequest: components.PostApprovalRequestReviewRequest;
 };
 
 /** @internal */
@@ -24,14 +24,14 @@ export const PostApprovalRequestReviewRequest$inboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   postApprovalRequestReviewRequest:
-    models.PostApprovalRequestReviewRequest$inboundSchema,
+    components.PostApprovalRequestReviewRequest$inboundSchema,
 });
 
 /** @internal */
 export type PostApprovalRequestReviewRequest$Outbound = {
   id: string;
   postApprovalRequestReviewRequest:
-    models.PostApprovalRequestReviewRequest$Outbound;
+    components.PostApprovalRequestReviewRequest$Outbound;
 };
 
 /** @internal */
@@ -42,7 +42,7 @@ export const PostApprovalRequestReviewRequest$outboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   postApprovalRequestReviewRequest:
-    models.PostApprovalRequestReviewRequest$outboundSchema,
+    components.PostApprovalRequestReviewRequest$outboundSchema,
 });
 
 /**

@@ -6,8 +6,8 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type PutContextKindRequest = {
   /**
@@ -18,7 +18,7 @@ export type PutContextKindRequest = {
    * The context kind key
    */
   key: string;
-  upsertContextKindPayload: models.UpsertContextKindPayload;
+  upsertContextKindPayload: components.UpsertContextKindPayload;
 };
 
 /** @internal */
@@ -29,7 +29,7 @@ export const PutContextKindRequest$inboundSchema: z.ZodType<
 > = z.object({
   projectKey: z.string(),
   key: z.string(),
-  UpsertContextKindPayload: models.UpsertContextKindPayload$inboundSchema,
+  UpsertContextKindPayload: components.UpsertContextKindPayload$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "UpsertContextKindPayload": "upsertContextKindPayload",
@@ -40,7 +40,7 @@ export const PutContextKindRequest$inboundSchema: z.ZodType<
 export type PutContextKindRequest$Outbound = {
   projectKey: string;
   key: string;
-  UpsertContextKindPayload: models.UpsertContextKindPayload$Outbound;
+  UpsertContextKindPayload: components.UpsertContextKindPayload$Outbound;
 };
 
 /** @internal */
@@ -51,7 +51,7 @@ export const PutContextKindRequest$outboundSchema: z.ZodType<
 > = z.object({
   projectKey: z.string(),
   key: z.string(),
-  upsertContextKindPayload: models.UpsertContextKindPayload$outboundSchema,
+  upsertContextKindPayload: components.UpsertContextKindPayload$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     upsertContextKindPayload: "UpsertContextKindPayload",

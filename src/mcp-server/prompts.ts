@@ -12,7 +12,7 @@ import {
   ZodTypeAny,
   ZodTypeDef,
 } from "zod";
-import { LaunchdarklyMcpServerCore } from "../core.js";
+import { LaunchDarklyCore } from "../core.js";
 import { ConsoleLogger } from "./console-logger.js";
 import { MCPScope } from "./scopes.js";
 
@@ -31,7 +31,7 @@ export type PromptDefinition<
     scopes?: MCPScope[];
     args: Args;
     prompt: (
-      client: LaunchdarklyMcpServerCore,
+      client: LaunchDarklyCore,
       args: objectOutputType<Args, ZodTypeAny>,
       extra: RequestHandlerExtra,
     ) => GetPromptResult | Promise<GetPromptResult>;
@@ -42,7 +42,7 @@ export type PromptDefinition<
     scopes?: MCPScope[];
     args?: undefined;
     prompt: (
-      client: LaunchdarklyMcpServerCore,
+      client: LaunchDarklyCore,
       extra: RequestHandlerExtra,
     ) => GetPromptResult | Promise<GetPromptResult>;
   };
@@ -65,7 +65,7 @@ export async function formatResult(value: string): Promise<GetPromptResult> {
 export function createRegisterPrompt(
   logger: ConsoleLogger,
   server: McpServer,
-  sdk: LaunchdarklyMcpServerCore,
+  sdk: LaunchDarklyCore,
   allowedScopes: Set<MCPScope>,
 ): <A extends PromptArgsRawShape | undefined>(
   prompt: PromptDefinition<A>,

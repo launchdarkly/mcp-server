@@ -6,8 +6,8 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type PostExtinctionRequest = {
   /**
@@ -18,7 +18,7 @@ export type PostExtinctionRequest = {
    * The URL-encoded branch name
    */
   branch: string;
-  requestBody: Array<models.Extinction>;
+  requestBody: Array<components.Extinction>;
 };
 
 /** @internal */
@@ -29,7 +29,7 @@ export const PostExtinctionRequest$inboundSchema: z.ZodType<
 > = z.object({
   repo: z.string(),
   branch: z.string(),
-  RequestBody: z.array(models.Extinction$inboundSchema),
+  RequestBody: z.array(components.Extinction$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
     "RequestBody": "requestBody",
@@ -40,7 +40,7 @@ export const PostExtinctionRequest$inboundSchema: z.ZodType<
 export type PostExtinctionRequest$Outbound = {
   repo: string;
   branch: string;
-  RequestBody: Array<models.Extinction$Outbound>;
+  RequestBody: Array<components.Extinction$Outbound>;
 };
 
 /** @internal */
@@ -51,7 +51,7 @@ export const PostExtinctionRequest$outboundSchema: z.ZodType<
 > = z.object({
   repo: z.string(),
   branch: z.string(),
-  requestBody: z.array(models.Extinction$outboundSchema),
+  requestBody: z.array(components.Extinction$outboundSchema),
 }).transform((v) => {
   return remap$(v, {
     requestBody: "RequestBody",

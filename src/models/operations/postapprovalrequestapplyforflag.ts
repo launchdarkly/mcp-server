@@ -5,8 +5,8 @@
 import * as z from "zod";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type PostApprovalRequestApplyForFlagRequest = {
   /**
@@ -25,7 +25,7 @@ export type PostApprovalRequestApplyForFlagRequest = {
    * The feature flag approval request ID
    */
   id: string;
-  postApprovalRequestApplyRequest: models.PostApprovalRequestApplyRequest;
+  postApprovalRequestApplyRequest: components.PostApprovalRequestApplyRequest;
 };
 
 /** @internal */
@@ -39,7 +39,7 @@ export const PostApprovalRequestApplyForFlagRequest$inboundSchema: z.ZodType<
   environmentKey: z.string(),
   id: z.string(),
   postApprovalRequestApplyRequest:
-    models.PostApprovalRequestApplyRequest$inboundSchema,
+    components.PostApprovalRequestApplyRequest$inboundSchema,
 });
 
 /** @internal */
@@ -49,7 +49,7 @@ export type PostApprovalRequestApplyForFlagRequest$Outbound = {
   environmentKey: string;
   id: string;
   postApprovalRequestApplyRequest:
-    models.PostApprovalRequestApplyRequest$Outbound;
+    components.PostApprovalRequestApplyRequest$Outbound;
 };
 
 /** @internal */
@@ -63,7 +63,7 @@ export const PostApprovalRequestApplyForFlagRequest$outboundSchema: z.ZodType<
   environmentKey: z.string(),
   id: z.string(),
   postApprovalRequestApplyRequest:
-    models.PostApprovalRequestApplyRequest$outboundSchema,
+    components.PostApprovalRequestApplyRequest$outboundSchema,
 });
 
 /**

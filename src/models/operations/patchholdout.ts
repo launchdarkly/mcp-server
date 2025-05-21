@@ -6,8 +6,8 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type PatchHoldoutRequest = {
   /**
@@ -22,7 +22,7 @@ export type PatchHoldoutRequest = {
    * The holdout key
    */
   holdoutKey: string;
-  holdoutPatchInput: models.HoldoutPatchInput;
+  holdoutPatchInput: components.HoldoutPatchInput;
 };
 
 /** @internal */
@@ -34,7 +34,7 @@ export const PatchHoldoutRequest$inboundSchema: z.ZodType<
   projectKey: z.string(),
   environmentKey: z.string(),
   holdoutKey: z.string(),
-  HoldoutPatchInput: models.HoldoutPatchInput$inboundSchema,
+  HoldoutPatchInput: components.HoldoutPatchInput$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "HoldoutPatchInput": "holdoutPatchInput",
@@ -46,7 +46,7 @@ export type PatchHoldoutRequest$Outbound = {
   projectKey: string;
   environmentKey: string;
   holdoutKey: string;
-  HoldoutPatchInput: models.HoldoutPatchInput$Outbound;
+  HoldoutPatchInput: components.HoldoutPatchInput$Outbound;
 };
 
 /** @internal */
@@ -58,7 +58,7 @@ export const PatchHoldoutRequest$outboundSchema: z.ZodType<
   projectKey: z.string(),
   environmentKey: z.string(),
   holdoutKey: z.string(),
-  holdoutPatchInput: models.HoldoutPatchInput$outboundSchema,
+  holdoutPatchInput: components.HoldoutPatchInput$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     holdoutPatchInput: "HoldoutPatchInput",

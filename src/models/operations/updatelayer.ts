@@ -6,8 +6,8 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type UpdateLayerRequest = {
   /**
@@ -18,7 +18,7 @@ export type UpdateLayerRequest = {
    * The layer key
    */
   layerKey: string;
-  layerPatchInput: models.LayerPatchInput;
+  layerPatchInput: components.LayerPatchInput;
 };
 
 /** @internal */
@@ -29,7 +29,7 @@ export const UpdateLayerRequest$inboundSchema: z.ZodType<
 > = z.object({
   projectKey: z.string(),
   layerKey: z.string(),
-  LayerPatchInput: models.LayerPatchInput$inboundSchema,
+  LayerPatchInput: components.LayerPatchInput$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "LayerPatchInput": "layerPatchInput",
@@ -40,7 +40,7 @@ export const UpdateLayerRequest$inboundSchema: z.ZodType<
 export type UpdateLayerRequest$Outbound = {
   projectKey: string;
   layerKey: string;
-  LayerPatchInput: models.LayerPatchInput$Outbound;
+  LayerPatchInput: components.LayerPatchInput$Outbound;
 };
 
 /** @internal */
@@ -51,7 +51,7 @@ export const UpdateLayerRequest$outboundSchema: z.ZodType<
 > = z.object({
   projectKey: z.string(),
   layerKey: z.string(),
-  layerPatchInput: models.LayerPatchInput$outboundSchema,
+  layerPatchInput: components.LayerPatchInput$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     layerPatchInput: "LayerPatchInput",

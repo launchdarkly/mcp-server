@@ -10,26 +10,26 @@ To learn more, read [Organization announcements](https://launchdarkly.com/docs/h
 
 ### Available Operations
 
-* [getAnnouncementsPublic](#getannouncementspublic) - Get announcements
-* [createAnnouncementPublic](#createannouncementpublic) - Create an announcement
-* [deleteAnnouncementPublic](#deleteannouncementpublic) - Delete an announcement
-* [updateAnnouncementPublic](#updateannouncementpublic) - Update an announcement
+* [list](#list) - Get announcements
+* [create](#create) - Create an announcement
+* [delete](#delete) - Delete an announcement
+* [update](#update) - Update an announcement
 
-## getAnnouncementsPublic
+## list
 
 Get announcements
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.announcements.getAnnouncementsPublic({
+  const result = await launchDarkly.announcements.list({
     status: "active",
   });
 
@@ -45,17 +45,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { announcementsGetAnnouncementsPublic } from "@launchdarkly/mcp-server/funcs/announcementsGetAnnouncementsPublic.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { announcementsList } from "@launchdarkly/mcp-server/funcs/announcementsList.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await announcementsGetAnnouncementsPublic(launchdarklyMcpServer, {
+  const res = await announcementsList(launchDarkly, {
     status: "active",
   });
 
@@ -83,7 +83,7 @@ run();
 
 ### Response
 
-**Promise\<[models.GetAnnouncementsPublic200Response](../../models/getannouncementspublic200response.md)\>**
+**Promise\<[components.GetAnnouncementsPublic200Response](../../models/components/getannouncementspublic200response.md)\>**
 
 ### Errors
 
@@ -93,21 +93,21 @@ run();
 | errors.ErrorT      | 500                | application/json   |
 | errors.APIError    | 4XX, 5XX           | \*/\*              |
 
-## createAnnouncementPublic
+## create
 
 Create an announcement
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.announcements.createAnnouncementPublic({
+  const result = await launchDarkly.announcements.create({
     isDismissible: true,
     title: "System Maintenance Notice",
     message: "**Important Update:**\n" +
@@ -130,17 +130,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { announcementsCreateAnnouncementPublic } from "@launchdarkly/mcp-server/funcs/announcementsCreateAnnouncementPublic.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { announcementsCreate } from "@launchdarkly/mcp-server/funcs/announcementsCreate.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await announcementsCreateAnnouncementPublic(launchdarklyMcpServer, {
+  const res = await announcementsCreate(launchDarkly, {
     isDismissible: true,
     title: "System Maintenance Notice",
     message: "**Important Update:**\n" +
@@ -168,14 +168,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [models.CreateAnnouncementBody](../../models/createannouncementbody.md)                                                                                                        | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [components.CreateAnnouncementBody](../../models/components/createannouncementbody.md)                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.AnnouncementResponse](../../models/announcementresponse.md)\>**
+**Promise\<[components.AnnouncementResponse](../../models/components/announcementresponse.md)\>**
 
 ### Errors
 
@@ -185,21 +185,21 @@ run();
 | errors.ErrorT      | 500                | application/json   |
 | errors.APIError    | 4XX, 5XX           | \*/\*              |
 
-## deleteAnnouncementPublic
+## delete
 
 Delete an announcement
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  await launchdarklyMcpServer.announcements.deleteAnnouncementPublic({
+  await launchDarkly.announcements.delete({
     announcementId: "1234567890",
   });
 
@@ -214,17 +214,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { announcementsDeleteAnnouncementPublic } from "@launchdarkly/mcp-server/funcs/announcementsDeleteAnnouncementPublic.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { announcementsDelete } from "@launchdarkly/mcp-server/funcs/announcementsDelete.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await announcementsDeleteAnnouncementPublic(launchdarklyMcpServer, {
+  const res = await announcementsDelete(launchDarkly, {
     announcementId: "1234567890",
   });
 
@@ -261,21 +261,21 @@ run();
 | errors.ErrorT    | 500              | application/json |
 | errors.APIError  | 4XX, 5XX         | \*/\*            |
 
-## updateAnnouncementPublic
+## update
 
 Update an announcement
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.announcements.updateAnnouncementPublic({
+  const result = await launchDarkly.announcements.update({
     announcementId: "1234567890",
     requestBody: [
       {
@@ -298,17 +298,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { announcementsUpdateAnnouncementPublic } from "@launchdarkly/mcp-server/funcs/announcementsUpdateAnnouncementPublic.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { announcementsUpdate } from "@launchdarkly/mcp-server/funcs/announcementsUpdate.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await announcementsUpdateAnnouncementPublic(launchdarklyMcpServer, {
+  const res = await announcementsUpdate(launchDarkly, {
     announcementId: "1234567890",
     requestBody: [
       {
@@ -343,7 +343,7 @@ run();
 
 ### Response
 
-**Promise\<[models.AnnouncementResponse](../../models/announcementresponse.md)\>**
+**Promise\<[components.AnnouncementResponse](../../models/components/announcementresponse.md)\>**
 
 ### Errors
 

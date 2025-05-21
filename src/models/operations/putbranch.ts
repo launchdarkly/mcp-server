@@ -5,8 +5,8 @@
 import * as z from "zod";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type PutBranchRequest = {
   /**
@@ -17,7 +17,7 @@ export type PutBranchRequest = {
    * The URL-encoded branch name
    */
   branch: string;
-  putBranch: models.PutBranch;
+  putBranch: components.PutBranch;
 };
 
 /** @internal */
@@ -28,14 +28,14 @@ export const PutBranchRequest$inboundSchema: z.ZodType<
 > = z.object({
   repo: z.string(),
   branch: z.string(),
-  putBranch: z.lazy(() => models.PutBranch$inboundSchema),
+  putBranch: z.lazy(() => components.PutBranch$inboundSchema),
 });
 
 /** @internal */
 export type PutBranchRequest$Outbound = {
   repo: string;
   branch: string;
-  putBranch: models.PutBranch$Outbound;
+  putBranch: components.PutBranch$Outbound;
 };
 
 /** @internal */
@@ -46,7 +46,7 @@ export const PutBranchRequest$outboundSchema: z.ZodType<
 > = z.object({
   repo: z.string(),
   branch: z.string(),
-  putBranch: z.lazy(() => models.PutBranch$outboundSchema),
+  putBranch: z.lazy(() => components.PutBranch$outboundSchema),
 });
 
 /**

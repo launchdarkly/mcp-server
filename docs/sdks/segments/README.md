@@ -29,40 +29,40 @@ You can find other APIs for working with big segments under [Persistent store in
 
 ### Available Operations
 
-* [getContextInstanceSegmentsMembershipByEnv](#getcontextinstancesegmentsmembershipbyenv) - List segment memberships for context instance
-* [getSegments](#getsegments) - List segments
-* [postSegment](#postsegment) - Create segment
-* [getSegment](#getsegment) - Get segment
-* [deleteSegment](#deletesegment) - Delete segment
-* [patchSegment](#patchsegment) - Patch segment
-* [updateBigSegmentContextTargets](#updatebigsegmentcontexttargets) - Update context targets on a big segment
-* [getSegmentMembershipForContext](#getsegmentmembershipforcontext) - Get big segment membership for context
-* [createBigSegmentExport](#createbigsegmentexport) - Create big segment export
-* [getBigSegmentExport](#getbigsegmentexport) - Get big segment export
-* [createBigSegmentImport](#createbigsegmentimport) - Create big segment import
-* [getBigSegmentImport](#getbigsegmentimport) - Get big segment import
-* [updateBigSegmentTargets](#updatebigsegmenttargets) - Update user context targets on a big segment
-* [getSegmentMembershipForUser](#getsegmentmembershipforuser) - Get big segment membership for user
-* [getExpiringTargetsForSegment](#getexpiringtargetsforsegment) - Get expiring targets for segment
-* [patchExpiringTargetsForSegment](#patchexpiringtargetsforsegment) - Update expiring targets for segment
-* [getExpiringUserTargetsForSegment](#getexpiringusertargetsforsegment) - Get expiring user targets for segment
-* [patchExpiringUserTargetsForSegment](#patchexpiringusertargetsforsegment) - Update expiring user targets for segment
+* [evaluateMembership](#evaluatemembership) - List segment memberships for context instance
+* [list](#list) - List segments
+* [create](#create) - Create segment
+* [get](#get) - Get segment
+* [patch](#patch) - Patch segment
+* [delete](#delete) - Delete segment
+* [updateContextTargets](#updatecontexttargets) - Update context targets on a big segment
+* [getMembershipForContext](#getmembershipforcontext) - Get big segment membership for context
+* [createBigExport](#createbigexport) - Create big segment export
+* [getExport](#getexport) - Get big segment export
+* [createBigImport](#createbigimport) - Create big segment import
+* [getImport](#getimport) - Get big segment import
+* [updateBigTargets](#updatebigtargets) - Update user context targets on a big segment
+* [getMembershipForUser](#getmembershipforuser) - Get big segment membership for user
+* [getExpiringTargets](#getexpiringtargets) - Get expiring targets for segment
+* [patchExpiringTargets](#patchexpiringtargets) - Update expiring targets for segment
+* [getExpiringUserTargets](#getexpiringusertargets) - Get expiring user targets for segment
+* [patchExpiringUserTargets](#patchexpiringusertargets) - Update expiring user targets for segment
 
-## getContextInstanceSegmentsMembershipByEnv
+## evaluateMembership
 
 For a given context instance with attributes, get membership details for all segments. In the request body, pass in the context instance.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.segments.getContextInstanceSegmentsMembershipByEnv({
+  const result = await launchDarkly.segments.evaluateMembership({
     projectKey: "<value>",
     environmentKey: "<value>",
     requestBody: {
@@ -89,17 +89,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { segmentsGetContextInstanceSegmentsMembershipByEnv } from "@launchdarkly/mcp-server/funcs/segmentsGetContextInstanceSegmentsMembershipByEnv.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { segmentsEvaluateMembership } from "@launchdarkly/mcp-server/funcs/segmentsEvaluateMembership.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await segmentsGetContextInstanceSegmentsMembershipByEnv(launchdarklyMcpServer, {
+  const res = await segmentsEvaluateMembership(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
     requestBody: {
@@ -138,7 +138,7 @@ run();
 
 ### Response
 
-**Promise\<[models.ContextInstanceSegmentMemberships](../../models/contextinstancesegmentmemberships.md)\>**
+**Promise\<[components.ContextInstanceSegmentMemberships](../../models/components/contextinstancesegmentmemberships.md)\>**
 
 ### Errors
 
@@ -149,7 +149,7 @@ run();
 | errors.NotFoundErrorRep       | 404                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## getSegments
+## list
 
 Get a list of all segments in the given project.
 
@@ -192,14 +192,14 @@ The documented values for `filter` query parameters are prior to URL encoding. F
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.segments.getSegments({
+  const result = await launchDarkly.segments.list({
     projectKey: "<value>",
     environmentKey: "<value>",
   });
@@ -216,17 +216,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { segmentsGetSegments } from "@launchdarkly/mcp-server/funcs/segmentsGetSegments.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { segmentsList } from "@launchdarkly/mcp-server/funcs/segmentsList.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await segmentsGetSegments(launchdarklyMcpServer, {
+  const res = await segmentsList(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
   });
@@ -255,7 +255,7 @@ run();
 
 ### Response
 
-**Promise\<[models.UserSegments](../../models/usersegments.md)\>**
+**Promise\<[components.UserSegments](../../models/components/usersegments.md)\>**
 
 ### Errors
 
@@ -265,21 +265,21 @@ run();
 | errors.NotFoundErrorRep     | 404                         | application/json            |
 | errors.APIError             | 4XX, 5XX                    | \*/\*                       |
 
-## postSegment
+## create
 
 Create a new segment.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.segments.postSegment({
+  const result = await launchDarkly.segments.create({
     projectKey: "<value>",
     environmentKey: "<value>",
     segmentBody: {
@@ -306,17 +306,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { segmentsPostSegment } from "@launchdarkly/mcp-server/funcs/segmentsPostSegment.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { segmentsCreate } from "@launchdarkly/mcp-server/funcs/segmentsCreate.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await segmentsPostSegment(launchdarklyMcpServer, {
+  const res = await segmentsCreate(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
     segmentBody: {
@@ -355,7 +355,7 @@ run();
 
 ### Response
 
-**Promise\<[models.UserSegment](../../models/usersegment.md)\>**
+**Promise\<[components.UserSegment](../../models/components/usersegment.md)\>**
 
 ### Errors
 
@@ -368,21 +368,21 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## getSegment
+## get
 
 Get a single segment by key.<br/><br/>Segments can be rule-based, list-based, or synced. Big segments include larger list-based segments and synced segments. Some fields in the response only apply to big segments.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.segments.getSegment({
+  const result = await launchDarkly.segments.get({
     projectKey: "<value>",
     environmentKey: "<value>",
     segmentKey: "<value>",
@@ -400,17 +400,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { segmentsGetSegment } from "@launchdarkly/mcp-server/funcs/segmentsGetSegment.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { segmentsGet } from "@launchdarkly/mcp-server/funcs/segmentsGet.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await segmentsGetSegment(launchdarklyMcpServer, {
+  const res = await segmentsGet(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
     segmentKey: "<value>",
@@ -440,7 +440,7 @@ run();
 
 ### Response
 
-**Promise\<[models.UserSegment](../../models/usersegment.md)\>**
+**Promise\<[components.UserSegment](../../models/components/usersegment.md)\>**
 
 ### Errors
 
@@ -451,90 +451,7 @@ run();
 | errors.RateLimitedErrorRep  | 429                         | application/json            |
 | errors.APIError             | 4XX, 5XX                    | \*/\*                       |
 
-## deleteSegment
-
-Delete a segment.
-
-### Example Usage
-
-```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
-
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
-});
-
-async function run() {
-  await launchdarklyMcpServer.segments.deleteSegment({
-    projectKey: "<value>",
-    environmentKey: "<value>",
-    segmentKey: "<value>",
-  });
-
-
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { segmentsDeleteSegment } from "@launchdarkly/mcp-server/funcs/segmentsDeleteSegment.js";
-
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
-});
-
-async function run() {
-  const res = await segmentsDeleteSegment(launchdarklyMcpServer, {
-    projectKey: "<value>",
-    environmentKey: "<value>",
-    segmentKey: "<value>",
-  });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.DeleteSegmentRequest](../../models/operations/deletesegmentrequest.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<void\>**
-
-### Errors
-
-| Error Type                    | Status Code                   | Content Type                  |
-| ----------------------------- | ----------------------------- | ----------------------------- |
-| errors.UnauthorizedErrorRep   | 401                           | application/json              |
-| errors.ForbiddenErrorRep      | 403                           | application/json              |
-| errors.NotFoundErrorRep       | 404                           | application/json              |
-| errors.StatusConflictErrorRep | 409                           | application/json              |
-| errors.RateLimitedErrorRep    | 429                           | application/json              |
-| errors.APIError               | 4XX, 5XX                      | \*/\*                         |
-
-## patchSegment
+## patch
 
 Update a segment. The request body must be a valid semantic patch, JSON patch, or JSON merge patch. To learn more the different formats, read [Updates](https://launchdarkly.com/docs/api#updates).
 
@@ -1165,14 +1082,14 @@ To add or remove targets from segments, we recommend using semantic patch. Seman
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.segments.patchSegment({
+  const result = await launchDarkly.segments.patch({
     projectKey: "<value>",
     environmentKey: "<value>",
     segmentKey: "<value>",
@@ -1204,17 +1121,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { segmentsPatchSegment } from "@launchdarkly/mcp-server/funcs/segmentsPatchSegment.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { segmentsPatch } from "@launchdarkly/mcp-server/funcs/segmentsPatch.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await segmentsPatchSegment(launchdarklyMcpServer, {
+  const res = await segmentsPatch(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
     segmentKey: "<value>",
@@ -1258,7 +1175,7 @@ run();
 
 ### Response
 
-**Promise\<[models.UserSegment](../../models/usersegment.md)\>**
+**Promise\<[components.UserSegment](../../models/components/usersegment.md)\>**
 
 ### Errors
 
@@ -1272,21 +1189,104 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## updateBigSegmentContextTargets
+## delete
+
+Delete a segment.
+
+### Example Usage
+
+```typescript
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
+
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
+});
+
+async function run() {
+  await launchDarkly.segments.delete({
+    projectKey: "<value>",
+    environmentKey: "<value>",
+    segmentKey: "<value>",
+  });
+
+
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { segmentsDelete } from "@launchdarkly/mcp-server/funcs/segmentsDelete.js";
+
+// Use `LaunchDarklyCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
+});
+
+async function run() {
+  const res = await segmentsDelete(launchDarkly, {
+    projectKey: "<value>",
+    environmentKey: "<value>",
+    segmentKey: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.DeleteSegmentRequest](../../models/operations/deletesegmentrequest.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<void\>**
+
+### Errors
+
+| Error Type                    | Status Code                   | Content Type                  |
+| ----------------------------- | ----------------------------- | ----------------------------- |
+| errors.UnauthorizedErrorRep   | 401                           | application/json              |
+| errors.ForbiddenErrorRep      | 403                           | application/json              |
+| errors.NotFoundErrorRep       | 404                           | application/json              |
+| errors.StatusConflictErrorRep | 409                           | application/json              |
+| errors.RateLimitedErrorRep    | 429                           | application/json              |
+| errors.APIError               | 4XX, 5XX                      | \*/\*                         |
+
+## updateContextTargets
 
 Update context targets included or excluded in a big segment. Big segments include larger list-based segments and synced segments. This operation does not support standard segments.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  await launchdarklyMcpServer.segments.updateBigSegmentContextTargets({
+  await launchDarkly.segments.updateContextTargets({
     projectKey: "<value>",
     environmentKey: "<value>",
     segmentKey: "<value>",
@@ -1304,17 +1304,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { segmentsUpdateBigSegmentContextTargets } from "@launchdarkly/mcp-server/funcs/segmentsUpdateBigSegmentContextTargets.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { segmentsUpdateContextTargets } from "@launchdarkly/mcp-server/funcs/segmentsUpdateContextTargets.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await segmentsUpdateBigSegmentContextTargets(launchdarklyMcpServer, {
+  const res = await segmentsUpdateContextTargets(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
     segmentKey: "<value>",
@@ -1356,21 +1356,21 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## getSegmentMembershipForContext
+## getMembershipForContext
 
 Get the membership status (included/excluded) for a given context in this big segment. Big segments include larger list-based segments and synced segments. This operation does not support standard segments.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.segments.getSegmentMembershipForContext({
+  const result = await launchDarkly.segments.getMembershipForContext({
     projectKey: "<value>",
     environmentKey: "<value>",
     segmentKey: "<value>",
@@ -1389,17 +1389,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { segmentsGetSegmentMembershipForContext } from "@launchdarkly/mcp-server/funcs/segmentsGetSegmentMembershipForContext.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { segmentsGetMembershipForContext } from "@launchdarkly/mcp-server/funcs/segmentsGetMembershipForContext.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await segmentsGetSegmentMembershipForContext(launchdarklyMcpServer, {
+  const res = await segmentsGetMembershipForContext(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
     segmentKey: "<value>",
@@ -1430,7 +1430,7 @@ run();
 
 ### Response
 
-**Promise\<[models.BigSegmentTarget](../../models/bigsegmenttarget.md)\>**
+**Promise\<[components.BigSegmentTarget](../../models/components/bigsegmenttarget.md)\>**
 
 ### Errors
 
@@ -1442,21 +1442,21 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## createBigSegmentExport
+## createBigExport
 
 Starts a new export process for a big segment. This is an export for a synced segment or a list-based segment that can include more than 15,000 entries.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  await launchdarklyMcpServer.segments.createBigSegmentExport({
+  await launchDarkly.segments.createBigExport({
     projectKey: "<value>",
     environmentKey: "<value>",
     segmentKey: "<value>",
@@ -1473,17 +1473,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { segmentsCreateBigSegmentExport } from "@launchdarkly/mcp-server/funcs/segmentsCreateBigSegmentExport.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { segmentsCreateBigExport } from "@launchdarkly/mcp-server/funcs/segmentsCreateBigExport.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await segmentsCreateBigSegmentExport(launchdarklyMcpServer, {
+  const res = await segmentsCreateBigExport(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
     segmentKey: "<value>",
@@ -1524,21 +1524,21 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## getBigSegmentExport
+## getExport
 
 Returns information about a big segment export process. This is an export for a synced segment or a list-based segment that can include more than 15,000 entries.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.segments.getBigSegmentExport({
+  const result = await launchDarkly.segments.getExport({
     projectKey: "<value>",
     environmentKey: "<value>",
     segmentKey: "<value>",
@@ -1557,17 +1557,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { segmentsGetBigSegmentExport } from "@launchdarkly/mcp-server/funcs/segmentsGetBigSegmentExport.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { segmentsGetExport } from "@launchdarkly/mcp-server/funcs/segmentsGetExport.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await segmentsGetBigSegmentExport(launchdarklyMcpServer, {
+  const res = await segmentsGetExport(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
     segmentKey: "<value>",
@@ -1598,7 +1598,7 @@ run();
 
 ### Response
 
-**Promise\<[models.Export](../../models/export.md)\>**
+**Promise\<[components.Export](../../models/components/export.md)\>**
 
 ### Errors
 
@@ -1609,21 +1609,21 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## createBigSegmentImport
+## createBigImport
 
 Start a new import process for a big segment. This is an import for a list-based segment that can include more than 15,000 entries.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  await launchdarklyMcpServer.segments.createBigSegmentImport({
+  await launchDarkly.segments.createBigImport({
     projectKey: "<value>",
     environmentKey: "<value>",
     segmentKey: "<value>",
@@ -1641,17 +1641,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { segmentsCreateBigSegmentImport } from "@launchdarkly/mcp-server/funcs/segmentsCreateBigSegmentImport.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { segmentsCreateBigImport } from "@launchdarkly/mcp-server/funcs/segmentsCreateBigImport.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await segmentsCreateBigSegmentImport(launchdarklyMcpServer, {
+  const res = await segmentsCreateBigImport(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
     segmentKey: "<value>",
@@ -1694,21 +1694,21 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## getBigSegmentImport
+## getImport
 
 Returns information about a big segment import process. This is the import of a list-based segment that can include more than 15,000 entries.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.segments.getBigSegmentImport({
+  const result = await launchDarkly.segments.getImport({
     projectKey: "<value>",
     environmentKey: "<value>",
     segmentKey: "<value>",
@@ -1727,17 +1727,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { segmentsGetBigSegmentImport } from "@launchdarkly/mcp-server/funcs/segmentsGetBigSegmentImport.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { segmentsGetImport } from "@launchdarkly/mcp-server/funcs/segmentsGetImport.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await segmentsGetBigSegmentImport(launchdarklyMcpServer, {
+  const res = await segmentsGetImport(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
     segmentKey: "<value>",
@@ -1768,7 +1768,7 @@ run();
 
 ### Response
 
-**Promise\<[models.Import](../../models/import.md)\>**
+**Promise\<[components.Import](../../models/components/import.md)\>**
 
 ### Errors
 
@@ -1779,21 +1779,21 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## updateBigSegmentTargets
+## updateBigTargets
 
 Update user context targets included or excluded in a big segment. Big segments include larger list-based segments and synced segments. This operation does not support standard segments.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  await launchdarklyMcpServer.segments.updateBigSegmentTargets({
+  await launchDarkly.segments.updateBigTargets({
     projectKey: "<value>",
     environmentKey: "<value>",
     segmentKey: "<value>",
@@ -1811,17 +1811,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { segmentsUpdateBigSegmentTargets } from "@launchdarkly/mcp-server/funcs/segmentsUpdateBigSegmentTargets.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { segmentsUpdateBigTargets } from "@launchdarkly/mcp-server/funcs/segmentsUpdateBigTargets.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await segmentsUpdateBigSegmentTargets(launchdarklyMcpServer, {
+  const res = await segmentsUpdateBigTargets(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
     segmentKey: "<value>",
@@ -1863,7 +1863,7 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## getSegmentMembershipForUser
+## getMembershipForUser
 
 > ### Contexts are now available
 >
@@ -1875,14 +1875,14 @@ Get the membership status (included/excluded) for a given user in this big segme
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.segments.getSegmentMembershipForUser({
+  const result = await launchDarkly.segments.getMembershipForUser({
     projectKey: "<value>",
     environmentKey: "<value>",
     segmentKey: "<value>",
@@ -1901,17 +1901,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { segmentsGetSegmentMembershipForUser } from "@launchdarkly/mcp-server/funcs/segmentsGetSegmentMembershipForUser.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { segmentsGetMembershipForUser } from "@launchdarkly/mcp-server/funcs/segmentsGetMembershipForUser.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await segmentsGetSegmentMembershipForUser(launchdarklyMcpServer, {
+  const res = await segmentsGetMembershipForUser(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
     segmentKey: "<value>",
@@ -1942,7 +1942,7 @@ run();
 
 ### Response
 
-**Promise\<[models.BigSegmentTarget](../../models/bigsegmenttarget.md)\>**
+**Promise\<[components.BigSegmentTarget](../../models/components/bigsegmenttarget.md)\>**
 
 ### Errors
 
@@ -1954,21 +1954,21 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## getExpiringTargetsForSegment
+## getExpiringTargets
 
 Get a list of a segment's context targets that are scheduled for removal.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.segments.getExpiringTargetsForSegment({
+  const result = await launchDarkly.segments.getExpiringTargets({
     projectKey: "<value>",
     environmentKey: "<value>",
     segmentKey: "<value>",
@@ -1986,17 +1986,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { segmentsGetExpiringTargetsForSegment } from "@launchdarkly/mcp-server/funcs/segmentsGetExpiringTargetsForSegment.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { segmentsGetExpiringTargets } from "@launchdarkly/mcp-server/funcs/segmentsGetExpiringTargets.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await segmentsGetExpiringTargetsForSegment(launchdarklyMcpServer, {
+  const res = await segmentsGetExpiringTargets(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
     segmentKey: "<value>",
@@ -2026,7 +2026,7 @@ run();
 
 ### Response
 
-**Promise\<[models.ExpiringTargetGetResponse](../../models/expiringtargetgetresponse.md)\>**
+**Promise\<[components.ExpiringTargetGetResponse](../../models/components/expiringtargetgetresponse.md)\>**
 
 ### Errors
 
@@ -2037,7 +2037,7 @@ run();
 | errors.RateLimitedErrorRep  | 429                         | application/json            |
 | errors.APIError             | 4XX, 5XX                    | \*/\*                       |
 
-## patchExpiringTargetsForSegment
+## patchExpiringTargets
 
 
 Update expiring context targets for a segment. Updating a context target expiration uses the semantic patch format.
@@ -2133,14 +2133,14 @@ Here's an example:
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.segments.patchExpiringTargetsForSegment({
+  const result = await launchDarkly.segments.patchExpiringTargets({
     projectKey: "<value>",
     environmentKey: "<value>",
     segmentKey: "<value>",
@@ -2171,17 +2171,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { segmentsPatchExpiringTargetsForSegment } from "@launchdarkly/mcp-server/funcs/segmentsPatchExpiringTargetsForSegment.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { segmentsPatchExpiringTargets } from "@launchdarkly/mcp-server/funcs/segmentsPatchExpiringTargets.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await segmentsPatchExpiringTargetsForSegment(launchdarklyMcpServer, {
+  const res = await segmentsPatchExpiringTargets(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
     segmentKey: "<value>",
@@ -2224,7 +2224,7 @@ run();
 
 ### Response
 
-**Promise\<[models.ExpiringTargetPatchResponse](../../models/expiringtargetpatchresponse.md)\>**
+**Promise\<[components.ExpiringTargetPatchResponse](../../models/components/expiringtargetpatchresponse.md)\>**
 
 ### Errors
 
@@ -2238,7 +2238,7 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## getExpiringUserTargetsForSegment
+## getExpiringUserTargets
 
 > ### Contexts are now available
 >
@@ -2250,14 +2250,14 @@ Get a list of a segment's user targets that are scheduled for removal.
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.segments.getExpiringUserTargetsForSegment({
+  const result = await launchDarkly.segments.getExpiringUserTargets({
     projectKey: "<value>",
     environmentKey: "<value>",
     segmentKey: "<value>",
@@ -2275,17 +2275,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { segmentsGetExpiringUserTargetsForSegment } from "@launchdarkly/mcp-server/funcs/segmentsGetExpiringUserTargetsForSegment.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { segmentsGetExpiringUserTargets } from "@launchdarkly/mcp-server/funcs/segmentsGetExpiringUserTargets.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await segmentsGetExpiringUserTargetsForSegment(launchdarklyMcpServer, {
+  const res = await segmentsGetExpiringUserTargets(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
     segmentKey: "<value>",
@@ -2315,7 +2315,7 @@ run();
 
 ### Response
 
-**Promise\<[models.ExpiringUserTargetGetResponse](../../models/expiringusertargetgetresponse.md)\>**
+**Promise\<[components.ExpiringUserTargetGetResponse](../../models/components/expiringusertargetgetresponse.md)\>**
 
 ### Errors
 
@@ -2326,7 +2326,7 @@ run();
 | errors.RateLimitedErrorRep  | 429                         | application/json            |
 | errors.APIError             | 4XX, 5XX                    | \*/\*                       |
 
-## patchExpiringUserTargetsForSegment
+## patchExpiringUserTargets
 
 
 > ### Contexts are now available
@@ -2382,14 +2382,14 @@ Removes the scheduled expiration for the user in the segment.
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.segments.patchExpiringUserTargetsForSegment({
+  const result = await launchDarkly.segments.patchExpiringUserTargets({
     projectKey: "<value>",
     environmentKey: "<value>",
     segmentKey: "<value>",
@@ -2419,17 +2419,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { segmentsPatchExpiringUserTargetsForSegment } from "@launchdarkly/mcp-server/funcs/segmentsPatchExpiringUserTargetsForSegment.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { segmentsPatchExpiringUserTargets } from "@launchdarkly/mcp-server/funcs/segmentsPatchExpiringUserTargets.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await segmentsPatchExpiringUserTargetsForSegment(launchdarklyMcpServer, {
+  const res = await segmentsPatchExpiringUserTargets(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
     segmentKey: "<value>",
@@ -2471,7 +2471,7 @@ run();
 
 ### Response
 
-**Promise\<[models.ExpiringUserTargetPatchResponse](../../models/expiringusertargetpatchresponse.md)\>**
+**Promise\<[components.ExpiringUserTargetPatchResponse](../../models/components/expiringusertargetpatchresponse.md)\>**
 
 ### Errors
 

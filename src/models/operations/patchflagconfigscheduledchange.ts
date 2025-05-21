@@ -6,8 +6,8 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type PatchFlagConfigScheduledChangeRequest = {
   /**
@@ -30,7 +30,7 @@ export type PatchFlagConfigScheduledChangeRequest = {
    * Whether to succeed (`true`) or fail (`false`) when these new instructions conflict with existing scheduled changes
    */
   ignoreConflicts?: boolean | undefined;
-  flagScheduledChangesInput: models.FlagScheduledChangesInput;
+  flagScheduledChangesInput: components.FlagScheduledChangesInput;
 };
 
 /** @internal */
@@ -44,7 +44,7 @@ export const PatchFlagConfigScheduledChangeRequest$inboundSchema: z.ZodType<
   environmentKey: z.string(),
   id: z.string(),
   ignoreConflicts: z.boolean().optional(),
-  FlagScheduledChangesInput: models.FlagScheduledChangesInput$inboundSchema,
+  FlagScheduledChangesInput: components.FlagScheduledChangesInput$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "FlagScheduledChangesInput": "flagScheduledChangesInput",
@@ -58,7 +58,7 @@ export type PatchFlagConfigScheduledChangeRequest$Outbound = {
   environmentKey: string;
   id: string;
   ignoreConflicts?: boolean | undefined;
-  FlagScheduledChangesInput: models.FlagScheduledChangesInput$Outbound;
+  FlagScheduledChangesInput: components.FlagScheduledChangesInput$Outbound;
 };
 
 /** @internal */
@@ -72,7 +72,8 @@ export const PatchFlagConfigScheduledChangeRequest$outboundSchema: z.ZodType<
   environmentKey: z.string(),
   id: z.string(),
   ignoreConflicts: z.boolean().optional(),
-  flagScheduledChangesInput: models.FlagScheduledChangesInput$outboundSchema,
+  flagScheduledChangesInput:
+    components.FlagScheduledChangesInput$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     flagScheduledChangesInput: "FlagScheduledChangesInput",

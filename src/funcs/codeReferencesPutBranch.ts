@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod";
-import { LaunchdarklyMcpServerCore } from "../core.js";
+import { LaunchDarklyCore } from "../core.js";
 import { encodeJSON, encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
@@ -32,7 +32,7 @@ import { Result } from "../types/fp.js";
  * Create a new branch if it doesn't exist, or update the branch if it already exists.
  */
 export function codeReferencesPutBranch(
-  client: LaunchdarklyMcpServerCore,
+  client: LaunchDarklyCore,
   request: operations.PutBranchRequest,
   options?: RequestOptions,
 ): APIPromise<
@@ -61,7 +61,7 @@ export function codeReferencesPutBranch(
 }
 
 async function $do(
-  client: LaunchdarklyMcpServerCore,
+  client: LaunchDarklyCore,
   request: operations.PutBranchRequest,
   options?: RequestOptions,
 ): Promise<

@@ -6,8 +6,8 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type PutFlagSettingRequest = {
   /**
@@ -26,7 +26,7 @@ export type PutFlagSettingRequest = {
    * The feature flag key
    */
   featureFlagKey: string;
-  valuePut: models.ValuePut;
+  valuePut: components.ValuePut;
 };
 
 /** @internal */
@@ -39,7 +39,7 @@ export const PutFlagSettingRequest$inboundSchema: z.ZodType<
   environmentKey: z.string(),
   userKey: z.string(),
   featureFlagKey: z.string(),
-  ValuePut: models.ValuePut$inboundSchema,
+  ValuePut: components.ValuePut$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "ValuePut": "valuePut",
@@ -52,7 +52,7 @@ export type PutFlagSettingRequest$Outbound = {
   environmentKey: string;
   userKey: string;
   featureFlagKey: string;
-  ValuePut: models.ValuePut$Outbound;
+  ValuePut: components.ValuePut$Outbound;
 };
 
 /** @internal */
@@ -65,7 +65,7 @@ export const PutFlagSettingRequest$outboundSchema: z.ZodType<
   environmentKey: z.string(),
   userKey: z.string(),
   featureFlagKey: z.string(),
-  valuePut: models.ValuePut$outboundSchema,
+  valuePut: components.ValuePut$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     valuePut: "ValuePut",

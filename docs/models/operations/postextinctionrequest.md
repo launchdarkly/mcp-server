@@ -22,8 +22,8 @@ let value: PostExtinctionRequest = {
 
 ## Fields
 
-| Field                                             | Type                                              | Required                                          | Description                                       |
-| ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
-| `repo`                                            | *string*                                          | :heavy_check_mark:                                | The repository name                               |
-| `branch`                                          | *string*                                          | :heavy_check_mark:                                | The URL-encoded branch name                       |
-| `requestBody`                                     | [models.Extinction](../../models/extinction.md)[] | :heavy_check_mark:                                | N/A                                               |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `repo`                                                           | *string*                                                         | :heavy_check_mark:                                               | The repository name                                              |
+| `branch`                                                         | *string*                                                         | :heavy_check_mark:                                               | The URL-encoded branch name                                      |
+| `requestBody`                                                    | [components.Extinction](../../models/components/extinction.md)[] | :heavy_check_mark:                                               | N/A                                                              |

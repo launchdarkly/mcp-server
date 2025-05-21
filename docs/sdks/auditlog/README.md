@@ -3,20 +3,13 @@
 
 ## Overview
 
-LaunchDarkly maintains a record of all the changes made to any resource in the system. You can access this history using the audit log API, including filtering by timestamps, or using a custom policy to select which entries to receive.
-
-Several of the endpoints in the audit log API require an audit log entry ID. The audit log entry ID is returned as part of the [List audit log entries](https://launchdarkly.com/docs/api/audit-log/get-audit-log-entries) response. It is the `_id` field of each element in the `items` array.
-
-In the LaunchDarkly UI, this information appears on the **Change history** page. To learn more, read [Change history](https://launchdarkly.com/docs/home/observability/change-history).
-
-
 ### Available Operations
 
-* [getAuditLogEntries](#getauditlogentries) - List audit log entries
-* [postAuditLogEntries](#postauditlogentries) - Search audit log entries
-* [getAuditLogEntry](#getauditlogentry) - Get audit log entry
+* [listEntries](#listentries) - List audit log entries
+* [searchEntries](#searchentries) - Search audit log entries
+* [getEntry](#getentry) - Get audit log entry
 
-## getAuditLogEntries
+## listEntries
 
 Get a list of all audit log entries. The query parameters let you restrict the results that return by date ranges, resource specifiers, or a full-text search query.
 
@@ -26,14 +19,14 @@ LaunchDarkly uses a resource specifier syntax to name resources or collections o
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.auditLog.getAuditLogEntries({});
+  const result = await launchDarkly.auditLog.listEntries({});
 
   // Handle the result
   console.log(result);
@@ -47,17 +40,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { auditLogGetAuditLogEntries } from "@launchdarkly/mcp-server/funcs/auditLogGetAuditLogEntries.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { auditLogListEntries } from "@launchdarkly/mcp-server/funcs/auditLogListEntries.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await auditLogGetAuditLogEntries(launchdarklyMcpServer, {});
+  const res = await auditLogListEntries(launchDarkly, {});
 
   if (!res.ok) {
     throw res.error;
@@ -83,7 +76,7 @@ run();
 
 ### Response
 
-**Promise\<[models.AuditLogEntryListingRepCollection](../../models/auditlogentrylistingrepcollection.md)\>**
+**Promise\<[components.AuditLogEntryListingRepCollection](../../models/components/auditlogentrylistingrepcollection.md)\>**
 
 ### Errors
 
@@ -95,7 +88,7 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## postAuditLogEntries
+## searchEntries
 
 Search your audit log entries. The query parameters let you restrict the results that return by date ranges, or a full-text search query. The request body lets you restrict the results that return by resource specifiers.
 
@@ -105,14 +98,14 @@ LaunchDarkly uses a resource specifier syntax to name resources or collections o
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.auditLog.postAuditLogEntries({
+  const result = await launchDarkly.auditLog.searchEntries({
     requestBody: [
       {
         resources: [
@@ -156,17 +149,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { auditLogPostAuditLogEntries } from "@launchdarkly/mcp-server/funcs/auditLogPostAuditLogEntries.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { auditLogSearchEntries } from "@launchdarkly/mcp-server/funcs/auditLogSearchEntries.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await auditLogPostAuditLogEntries(launchdarklyMcpServer, {
+  const res = await auditLogSearchEntries(launchDarkly, {
     requestBody: [
       {
         resources: [
@@ -222,7 +215,7 @@ run();
 
 ### Response
 
-**Promise\<[models.AuditLogEntryListingRepCollection](../../models/auditlogentrylistingrepcollection.md)\>**
+**Promise\<[components.AuditLogEntryListingRepCollection](../../models/components/auditlogentrylistingrepcollection.md)\>**
 
 ### Errors
 
@@ -234,7 +227,7 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## getAuditLogEntry
+## getEntry
 
 Fetch a detailed audit log entry representation. The detailed representation includes several fields that are not present in the summary representation, including:
 
@@ -246,14 +239,14 @@ Fetch a detailed audit log entry representation. The detailed representation inc
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.auditLog.getAuditLogEntry({
+  const result = await launchDarkly.auditLog.getEntry({
     id: "<value>",
   });
 
@@ -269,17 +262,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { auditLogGetAuditLogEntry } from "@launchdarkly/mcp-server/funcs/auditLogGetAuditLogEntry.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { auditLogGetEntry } from "@launchdarkly/mcp-server/funcs/auditLogGetEntry.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await auditLogGetAuditLogEntry(launchdarklyMcpServer, {
+  const res = await auditLogGetEntry(launchDarkly, {
     id: "<value>",
   });
 
@@ -307,7 +300,7 @@ run();
 
 ### Response
 
-**Promise\<[models.AuditLogEntryRep](../../models/auditlogentryrep.md)\>**
+**Promise\<[components.AuditLogEntryRep](../../models/components/auditlogentryrep.md)\>**
 
 ### Errors
 

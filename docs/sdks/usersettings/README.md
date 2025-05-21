@@ -3,24 +3,15 @@
 
 ## Overview
 
-> ### Contexts are now available
->
-> After you have upgraded your LaunchDarkly SDK to use contexts instead of users, you should use [Contexts](https://launchdarkly.com/docs/api/contexts) instead of the user settings API. To learn more, read [Contexts](https://launchdarkly.com/docs/home/observability/contexts).
-
-LaunchDarkly's user settings API provides a picture of all feature flags and their current values for a specific user. This gives you instant visibility into how a particular user experiences your site or application. To learn more, read [View and manage contexts](https://launchdarkly.com/docs/home/observability/context-attributes#view-and-manage-contexts).
-
-You can also use the user settings API to assign a user to a specific variation for any feature flag.
-
-
 ### Available Operations
 
-* [~~getUserFlagSettings~~](#getuserflagsettings) - List flag settings for user :warning: **Deprecated**
-* [~~getUserFlagSetting~~](#getuserflagsetting) - Get flag setting for user :warning: **Deprecated**
-* [~~putFlagSetting~~](#putflagsetting) - Update flag settings for user :warning: **Deprecated**
+* [~~listFlags~~](#listflags) - List flag settings for user :warning: **Deprecated**
+* [~~getFlagSetting~~](#getflagsetting) - Get flag setting for user :warning: **Deprecated**
+* [~~updateFlagSetting~~](#updateflagsetting) - Update flag settings for user :warning: **Deprecated**
 * [~~getExpiringFlagsForUser~~](#getexpiringflagsforuser) - Get expiring dates on flags for user :warning: **Deprecated**
-* [~~patchExpiringFlagsForUser~~](#patchexpiringflagsforuser) - Update expiring user target for flags :warning: **Deprecated**
+* [~~updateExpiringTargets~~](#updateexpiringtargets) - Update expiring user target for flags :warning: **Deprecated**
 
-## ~~getUserFlagSettings~~
+## ~~listFlags~~
 
 Get the current flag settings for a given user. <br /><br />The `_value` is the flag variation that the user receives. The `setting` indicates whether you've explicitly targeted a user to receive a particular variation. For example, if you have turned off a feature flag for a user, this setting will be `false`. The example response indicates that the user `Abbie_Braun` has the `sort.order` flag enabled and the `alternate.page` flag disabled, and that the user has not been explicitly targeted to receive a particular variation.
 
@@ -29,14 +20,14 @@ Get the current flag settings for a given user. <br /><br />The `_value` is the 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.userSettings.getUserFlagSettings({
+  const result = await launchDarkly.userSettings.listFlags({
     projectKey: "<value>",
     environmentKey: "<value>",
     userKey: "<value>",
@@ -54,17 +45,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { userSettingsGetUserFlagSettings } from "@launchdarkly/mcp-server/funcs/userSettingsGetUserFlagSettings.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { userSettingsListFlags } from "@launchdarkly/mcp-server/funcs/userSettingsListFlags.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await userSettingsGetUserFlagSettings(launchdarklyMcpServer, {
+  const res = await userSettingsListFlags(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
     userKey: "<value>",
@@ -94,7 +85,7 @@ run();
 
 ### Response
 
-**Promise\<[models.UserFlagSettings](../../models/userflagsettings.md)\>**
+**Promise\<[components.UserFlagSettings](../../models/components/userflagsettings.md)\>**
 
 ### Errors
 
@@ -107,7 +98,7 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## ~~getUserFlagSetting~~
+## ~~getFlagSetting~~
 
 Get a single flag setting for a user by flag key. <br /><br />The `_value` is the flag variation that the user receives. The `setting` indicates whether you've explicitly targeted a user to receive a particular variation. For example, if you have turned off a feature flag for a user, this setting will be `false`. The example response indicates that the user `Abbie_Braun` has the `sort.order` flag enabled.
 
@@ -116,14 +107,14 @@ Get a single flag setting for a user by flag key. <br /><br />The `_value` is th
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.userSettings.getUserFlagSetting({
+  const result = await launchDarkly.userSettings.getFlagSetting({
     projectKey: "<value>",
     environmentKey: "<value>",
     userKey: "<value>",
@@ -142,17 +133,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { userSettingsGetUserFlagSetting } from "@launchdarkly/mcp-server/funcs/userSettingsGetUserFlagSetting.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { userSettingsGetFlagSetting } from "@launchdarkly/mcp-server/funcs/userSettingsGetFlagSetting.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await userSettingsGetUserFlagSetting(launchdarklyMcpServer, {
+  const res = await userSettingsGetFlagSetting(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
     userKey: "<value>",
@@ -183,7 +174,7 @@ run();
 
 ### Response
 
-**Promise\<[models.UserFlagSetting](../../models/userflagsetting.md)\>**
+**Promise\<[components.UserFlagSetting](../../models/components/userflagsetting.md)\>**
 
 ### Errors
 
@@ -196,7 +187,7 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## ~~putFlagSetting~~
+## ~~updateFlagSetting~~
 
 Enable or disable a feature flag for a user based on their key.
 
@@ -210,14 +201,14 @@ If you previously patched the flag, and the patch included the user's data, Laun
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  await launchdarklyMcpServer.userSettings.putFlagSetting({
+  await launchDarkly.userSettings.updateFlagSetting({
     projectKey: "<value>",
     environmentKey: "<value>",
     userKey: "<value>",
@@ -239,17 +230,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { userSettingsPutFlagSetting } from "@launchdarkly/mcp-server/funcs/userSettingsPutFlagSetting.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { userSettingsUpdateFlagSetting } from "@launchdarkly/mcp-server/funcs/userSettingsUpdateFlagSetting.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await userSettingsPutFlagSetting(launchdarklyMcpServer, {
+  const res = await userSettingsUpdateFlagSetting(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
     userKey: "<value>",
@@ -305,14 +296,14 @@ Get a list of flags for which the given user is scheduled for removal.
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.userSettings.getExpiringFlagsForUser({
+  const result = await launchDarkly.userSettings.getExpiringFlagsForUser({
     projectKey: "<value>",
     userKey: "<value>",
     environmentKey: "<value>",
@@ -330,17 +321,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
 import { userSettingsGetExpiringFlagsForUser } from "@launchdarkly/mcp-server/funcs/userSettingsGetExpiringFlagsForUser.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await userSettingsGetExpiringFlagsForUser(launchdarklyMcpServer, {
+  const res = await userSettingsGetExpiringFlagsForUser(launchDarkly, {
     projectKey: "<value>",
     userKey: "<value>",
     environmentKey: "<value>",
@@ -370,7 +361,7 @@ run();
 
 ### Response
 
-**Promise\<[models.ExpiringUserTargetGetResponse](../../models/expiringusertargetgetresponse.md)\>**
+**Promise\<[components.ExpiringUserTargetGetResponse](../../models/components/expiringusertargetgetresponse.md)\>**
 
 ### Errors
 
@@ -382,7 +373,7 @@ run();
 | errors.RateLimitedErrorRep  | 429                         | application/json            |
 | errors.APIError             | 4XX, 5XX                    | \*/\*                       |
 
-## ~~patchExpiringFlagsForUser~~
+## ~~updateExpiringTargets~~
 
 Schedule the specified user for removal from individual targeting on one or more flags. The user must already be individually targeted for each flag.
 
@@ -435,14 +426,14 @@ Removes the scheduled removal of the user from the flag's individual targeting. 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.userSettings.patchExpiringFlagsForUser({
+  const result = await launchDarkly.userSettings.updateExpiringTargets({
     projectKey: "<value>",
     userKey: "<value>",
     environmentKey: "<value>",
@@ -472,17 +463,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { userSettingsPatchExpiringFlagsForUser } from "@launchdarkly/mcp-server/funcs/userSettingsPatchExpiringFlagsForUser.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { userSettingsUpdateExpiringTargets } from "@launchdarkly/mcp-server/funcs/userSettingsUpdateExpiringTargets.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await userSettingsPatchExpiringFlagsForUser(launchdarklyMcpServer, {
+  const res = await userSettingsUpdateExpiringTargets(launchDarkly, {
     projectKey: "<value>",
     userKey: "<value>",
     environmentKey: "<value>",
@@ -524,7 +515,7 @@ run();
 
 ### Response
 
-**Promise\<[models.ExpiringUserTargetPatchResponse](../../models/expiringusertargetpatchresponse.md)\>**
+**Promise\<[components.ExpiringUserTargetPatchResponse](../../models/components/expiringusertargetpatchresponse.md)\>**
 
 ### Errors
 

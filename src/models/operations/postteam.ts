@@ -5,15 +5,15 @@
 import * as z from "zod";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type PostTeamRequest = {
   /**
    * A comma-separated list of properties that can reveal additional information in the response. Supported fields are explained above.
    */
   expand?: string | undefined;
-  teamPostInput: models.TeamPostInput;
+  teamPostInput: components.TeamPostInput;
 };
 
 /** @internal */
@@ -23,13 +23,13 @@ export const PostTeamRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   expand: z.string().optional(),
-  teamPostInput: models.TeamPostInput$inboundSchema,
+  teamPostInput: components.TeamPostInput$inboundSchema,
 });
 
 /** @internal */
 export type PostTeamRequest$Outbound = {
   expand?: string | undefined;
-  teamPostInput: models.TeamPostInput$Outbound;
+  teamPostInput: components.TeamPostInput$Outbound;
 };
 
 /** @internal */
@@ -39,7 +39,7 @@ export const PostTeamRequest$outboundSchema: z.ZodType<
   PostTeamRequest
 > = z.object({
   expand: z.string().optional(),
-  teamPostInput: models.TeamPostInput$outboundSchema,
+  teamPostInput: components.TeamPostInput$outboundSchema,
 });
 
 /**

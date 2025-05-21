@@ -5,8 +5,8 @@
 import * as z from "zod";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type CreateFlagLinkRequest = {
   /**
@@ -17,7 +17,7 @@ export type CreateFlagLinkRequest = {
    * The feature flag key
    */
   featureFlagKey: string;
-  flagLinkPost: models.FlagLinkPost;
+  flagLinkPost: components.FlagLinkPost;
 };
 
 /** @internal */
@@ -28,14 +28,14 @@ export const CreateFlagLinkRequest$inboundSchema: z.ZodType<
 > = z.object({
   projectKey: z.string(),
   featureFlagKey: z.string(),
-  flagLinkPost: models.FlagLinkPost$inboundSchema,
+  flagLinkPost: components.FlagLinkPost$inboundSchema,
 });
 
 /** @internal */
 export type CreateFlagLinkRequest$Outbound = {
   projectKey: string;
   featureFlagKey: string;
-  flagLinkPost: models.FlagLinkPost$Outbound;
+  flagLinkPost: components.FlagLinkPost$Outbound;
 };
 
 /** @internal */
@@ -46,7 +46,7 @@ export const CreateFlagLinkRequest$outboundSchema: z.ZodType<
 > = z.object({
   projectKey: z.string(),
   featureFlagKey: z.string(),
-  flagLinkPost: models.FlagLinkPost$outboundSchema,
+  flagLinkPost: components.FlagLinkPost$outboundSchema,
 });
 
 /**

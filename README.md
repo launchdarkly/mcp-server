@@ -530,7 +530,7 @@ Add the following server definition to your `claude_desktop_config.json` file:
 ```json
 {
   "mcpServers": {
-    "LaunchdarklyMcpServer": {
+    "LaunchDarkly": {
       "command": "npx",
       "args": [
         "-y", "--package", "@launchdarkly/mcp-server",
@@ -553,7 +553,7 @@ Create a `.cursor/mcp.json` file in your project root with the following content
 ```json
 {
   "mcpServers": {
-    "LaunchdarklyMcpServer": {
+    "LaunchDarkly": {
       "command": "npx",
       "args": [
         "-y", "--package", "@launchdarkly/mcp-server",
@@ -611,14 +611,14 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 ### Example
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.other.getRoot();
+  const result = await launchDarkly.other.getRoot();
 
   // Handle the result
   console.log(result);
@@ -636,20 +636,20 @@ run();
 
 This SDK supports the following security scheme globally:
 
-| Name     | Type   | Scheme  | Environment Variable            |
-| -------- | ------ | ------- | ------------------------------- |
-| `apiKey` | apiKey | API key | `LAUNCHDARKLYMCPSERVER_API_KEY` |
+| Name     | Type   | Scheme  | Environment Variable   |
+| -------- | ------ | ------- | ---------------------- |
+| `apiKey` | apiKey | API key | `LAUNCHDARKLY_API_KEY` |
 
 To authenticate with the API the `apiKey` parameter must be set when initializing the SDK client instance. For example:
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.other.getRoot();
+  const result = await launchDarkly.other.getRoot();
 
   // Handle the result
   console.log(result);
@@ -668,332 +668,328 @@ run();
 
 ### [accessTokens](docs/sdks/accesstokens/README.md)
 
-* [getTokens](docs/sdks/accesstokens/README.md#gettokens) - List access tokens
-* [postToken](docs/sdks/accesstokens/README.md#posttoken) - Create access token
-* [getToken](docs/sdks/accesstokens/README.md#gettoken) - Get access token
-* [deleteToken](docs/sdks/accesstokens/README.md#deletetoken) - Delete access token
-* [patchToken](docs/sdks/accesstokens/README.md#patchtoken) - Patch access token
-* [resetToken](docs/sdks/accesstokens/README.md#resettoken) - Reset access token
+* [list](docs/sdks/accesstokens/README.md#list) - List access tokens
+* [create](docs/sdks/accesstokens/README.md#create) - Create access token
+* [get](docs/sdks/accesstokens/README.md#get) - Get access token
+* [patch](docs/sdks/accesstokens/README.md#patch) - Patch access token
+* [reset](docs/sdks/accesstokens/README.md#reset) - Reset access token
 
 ### [accountMembers](docs/sdks/accountmembers/README.md)
 
-* [getMembers](docs/sdks/accountmembers/README.md#getmembers) - List account members
-* [postMembers](docs/sdks/accountmembers/README.md#postmembers) - Invite new members
-* [getMember](docs/sdks/accountmembers/README.md#getmember) - Get account member
-* [deleteMember](docs/sdks/accountmembers/README.md#deletemember) - Delete account member
-* [patchMember](docs/sdks/accountmembers/README.md#patchmember) - Modify an account member
-* [postMemberTeams](docs/sdks/accountmembers/README.md#postmemberteams) - Add a member to teams
+* [list](docs/sdks/accountmembers/README.md#list) - List account members
+* [invite](docs/sdks/accountmembers/README.md#invite) - Invite new members
+* [patch](docs/sdks/accountmembers/README.md#patch) - Modify account members
+* [get](docs/sdks/accountmembers/README.md#get) - Get account member
+* [update](docs/sdks/accountmembers/README.md#update) - Modify an account member
+* [delete](docs/sdks/accountmembers/README.md#delete) - Delete account member
+* [addToTeam](docs/sdks/accountmembers/README.md#addtoteam) - Add a member to teams
 
-### [accountMembersBeta](docs/sdks/accountmembersbeta/README.md)
+### [accountUsage](docs/sdks/accountusage/README.md)
 
-* [patchMembers](docs/sdks/accountmembersbeta/README.md#patchmembers) - Modify account members
+* [getDataExportEvents](docs/sdks/accountusage/README.md#getdataexportevents) - Get data export events usage
+* [getEvaluations](docs/sdks/accountusage/README.md#getevaluations) - Get evaluations usage
+* [getEventsUsage](docs/sdks/accountusage/README.md#geteventsusage) - Get events usage
+* [getExperimentationKeys](docs/sdks/accountusage/README.md#getexperimentationkeys) - Get experimentation keys usage
+* [getExperimentationUnits](docs/sdks/accountusage/README.md#getexperimentationunits) - Get experimentation units usage
+* [getMau](docs/sdks/accountusage/README.md#getmau) - Get MAU usage
+* [getMauByCategory](docs/sdks/accountusage/README.md#getmaubycategory) - Get MAU usage by category
+* [getMauSdks](docs/sdks/accountusage/README.md#getmausdks) - Get MAU SDKs by type
+* [getServiceConnectionUsage](docs/sdks/accountusage/README.md#getserviceconnectionusage) - Get service connection usage
+* [getStreamUsage](docs/sdks/accountusage/README.md#getstreamusage) - Get stream usage
+* [getStreamUsageSDKVersions](docs/sdks/accountusage/README.md#getstreamusagesdkversions) - Get stream usage SDK versions
 
 ### [accountUsageBeta](docs/sdks/accountusagebeta/README.md)
 
-* [getDataExportEventsUsage](docs/sdks/accountusagebeta/README.md#getdataexporteventsusage) - Get data export events usage
-* [getEvaluationsUsage](docs/sdks/accountusagebeta/README.md#getevaluationsusage) - Get evaluations usage
-* [getEventsUsage](docs/sdks/accountusagebeta/README.md#geteventsusage) - Get events usage
-* [getExperimentationKeysUsage](docs/sdks/accountusagebeta/README.md#getexperimentationkeysusage) - Get experimentation keys usage
-* [getExperimentationUnitsUsage](docs/sdks/accountusagebeta/README.md#getexperimentationunitsusage) - Get experimentation units usage
-* [getMauUsage](docs/sdks/accountusagebeta/README.md#getmauusage) - Get MAU usage
-* [getMauUsageByCategory](docs/sdks/accountusagebeta/README.md#getmauusagebycategory) - Get MAU usage by category
-* [getMauSdksByType](docs/sdks/accountusagebeta/README.md#getmausdksbytype) - Get MAU SDKs by type
-* [getServiceConnectionUsage](docs/sdks/accountusagebeta/README.md#getserviceconnectionusage) - Get service connection usage
-* [getStreamUsage](docs/sdks/accountusagebeta/README.md#getstreamusage) - Get stream usage
-* [getStreamUsageBySDKVersion](docs/sdks/accountusagebeta/README.md#getstreamusagebysdkversion) - Get stream usage by SDK version
-* [getStreamUsageSdkversion](docs/sdks/accountusagebeta/README.md#getstreamusagesdkversion) - Get stream usage SDK versions
+* [retrieveStreamUsage](docs/sdks/accountusagebeta/README.md#retrievestreamusage) - Get stream usage by SDK version
 
-### [aiConfigsBeta](docs/sdks/aiconfigsbeta/README.md)
+### [aiConfigs](docs/sdks/aiconfigs/README.md)
 
-* [getAIConfigs](docs/sdks/aiconfigsbeta/README.md#getaiconfigs) - List AI Configs
-* [postAIConfig](docs/sdks/aiconfigsbeta/README.md#postaiconfig) - Create new AI Config
-* [getAIConfig](docs/sdks/aiconfigsbeta/README.md#getaiconfig) - Get AI Config
-* [deleteAIConfig](docs/sdks/aiconfigsbeta/README.md#deleteaiconfig) - Delete AI Config
-* [patchAIConfig](docs/sdks/aiconfigsbeta/README.md#patchaiconfig) - Update AI Config
-* [postAIConfigVariation](docs/sdks/aiconfigsbeta/README.md#postaiconfigvariation) - Create AI Config variation
-* [getAIConfigVariation](docs/sdks/aiconfigsbeta/README.md#getaiconfigvariation) - Get AI Config variation
-* [deleteAIConfigVariation](docs/sdks/aiconfigsbeta/README.md#deleteaiconfigvariation) - Delete AI Config variation
-* [patchAIConfigVariation](docs/sdks/aiconfigsbeta/README.md#patchaiconfigvariation) - Update AI Config variation
-* [getAIConfigMetrics](docs/sdks/aiconfigsbeta/README.md#getaiconfigmetrics) - Get AI Config metrics
-* [getAIConfigMetricsByVariation](docs/sdks/aiconfigsbeta/README.md#getaiconfigmetricsbyvariation) - Get AI Config metrics by variation
-* [postRestrictedModels](docs/sdks/aiconfigsbeta/README.md#postrestrictedmodels) - Add AI models to the restricted list
-* [deleteRestrictedModels](docs/sdks/aiconfigsbeta/README.md#deleterestrictedmodels) - Remove AI models from the restricted list
-* [listModelConfigs](docs/sdks/aiconfigsbeta/README.md#listmodelconfigs) - List AI model configs
-* [postModelConfig](docs/sdks/aiconfigsbeta/README.md#postmodelconfig) - Create an AI model config
-* [getModelConfig](docs/sdks/aiconfigsbeta/README.md#getmodelconfig) - Get AI model config
-* [deleteModelConfig](docs/sdks/aiconfigsbeta/README.md#deletemodelconfig) - Delete an AI model config
+* [list](docs/sdks/aiconfigs/README.md#list) - List AI Configs
+* [create](docs/sdks/aiconfigs/README.md#create) - Create new AI Config
+* [delete](docs/sdks/aiconfigs/README.md#delete) - Delete AI Config
+* [get](docs/sdks/aiconfigs/README.md#get) - Get AI Config
+* [update](docs/sdks/aiconfigs/README.md#update) - Update AI Config
+* [createVariation](docs/sdks/aiconfigs/README.md#createvariation) - Create AI Config variation
+* [deleteVariation](docs/sdks/aiconfigs/README.md#deletevariation) - Delete AI Config variation
+* [getVariation](docs/sdks/aiconfigs/README.md#getvariation) - Get AI Config variation
+* [updateVariation](docs/sdks/aiconfigs/README.md#updatevariation) - Update AI Config variation
+* [getMetrics](docs/sdks/aiconfigs/README.md#getmetrics) - Get AI Config metrics
+* [getMetricsByVariation](docs/sdks/aiconfigs/README.md#getmetricsbyvariation) - Get AI Config metrics by variation
+* [deleteRestrictedModels](docs/sdks/aiconfigs/README.md#deleterestrictedmodels) - Remove AI models from the restricted list
+* [addRestrictedModels](docs/sdks/aiconfigs/README.md#addrestrictedmodels) - Add AI models to the restricted list
+* [listModels](docs/sdks/aiconfigs/README.md#listmodels) - List AI model configs
+* [createModelConfig](docs/sdks/aiconfigs/README.md#createmodelconfig) - Create an AI model config
+* [deleteModelConfig](docs/sdks/aiconfigs/README.md#deletemodelconfig) - Delete an AI model config
+* [getModelConfig](docs/sdks/aiconfigs/README.md#getmodelconfig) - Get AI model config
 
 ### [announcements](docs/sdks/announcements/README.md)
 
-* [getAnnouncementsPublic](docs/sdks/announcements/README.md#getannouncementspublic) - Get announcements
-* [createAnnouncementPublic](docs/sdks/announcements/README.md#createannouncementpublic) - Create an announcement
-* [deleteAnnouncementPublic](docs/sdks/announcements/README.md#deleteannouncementpublic) - Delete an announcement
-* [updateAnnouncementPublic](docs/sdks/announcements/README.md#updateannouncementpublic) - Update an announcement
+* [list](docs/sdks/announcements/README.md#list) - Get announcements
+* [create](docs/sdks/announcements/README.md#create) - Create an announcement
+* [delete](docs/sdks/announcements/README.md#delete) - Delete an announcement
+* [update](docs/sdks/announcements/README.md#update) - Update an announcement
+
+### [applications](docs/sdks/applications/README.md)
+
+* [get](docs/sdks/applications/README.md#get) - Get application by key
+* [update](docs/sdks/applications/README.md#update) - Update application
+* [delete](docs/sdks/applications/README.md#delete) - Delete application
+* [getVersions](docs/sdks/applications/README.md#getversions) - Get application versions by application key
+* [updateVersion](docs/sdks/applications/README.md#updateversion) - Update application version
 
 ### [applicationsBeta](docs/sdks/applicationsbeta/README.md)
 
-* [getApplications](docs/sdks/applicationsbeta/README.md#getapplications) - Get applications
-* [getApplication](docs/sdks/applicationsbeta/README.md#getapplication) - Get application by key
-* [deleteApplication](docs/sdks/applicationsbeta/README.md#deleteapplication) - Delete application
-* [patchApplication](docs/sdks/applicationsbeta/README.md#patchapplication) - Update application
-* [getApplicationVersions](docs/sdks/applicationsbeta/README.md#getapplicationversions) - Get application versions by application key
-* [deleteApplicationVersion](docs/sdks/applicationsbeta/README.md#deleteapplicationversion) - Delete application version
-* [patchApplicationVersion](docs/sdks/applicationsbeta/README.md#patchapplicationversion) - Update application version
+* [fetch](docs/sdks/applicationsbeta/README.md#fetch) - Get applications
+* [deleteVersion](docs/sdks/applicationsbeta/README.md#deleteversion) - Delete application version
 
 ### [approvals](docs/sdks/approvals/README.md)
 
-* [getApprovalRequests](docs/sdks/approvals/README.md#getapprovalrequests) - List approval requests
-* [postApprovalRequest](docs/sdks/approvals/README.md#postapprovalrequest) - Create approval request
-* [getApprovalRequest](docs/sdks/approvals/README.md#getapprovalrequest) - Get approval request
-* [deleteApprovalRequest](docs/sdks/approvals/README.md#deleteapprovalrequest) - Delete approval request
-* [postApprovalRequestApply](docs/sdks/approvals/README.md#postapprovalrequestapply) - Apply approval request
-* [postApprovalRequestReview](docs/sdks/approvals/README.md#postapprovalrequestreview) - Review approval request
-* [getApprovalsForFlag](docs/sdks/approvals/README.md#getapprovalsforflag) - List approval requests for a flag
-* [postApprovalRequestForFlag](docs/sdks/approvals/README.md#postapprovalrequestforflag) - Create approval request for a flag
-* [postFlagCopyConfigApprovalRequest](docs/sdks/approvals/README.md#postflagcopyconfigapprovalrequest) - Create approval request to copy flag configurations across environments
-* [getApprovalForFlag](docs/sdks/approvals/README.md#getapprovalforflag) - Get approval request for a flag
-* [deleteApprovalRequestForFlag](docs/sdks/approvals/README.md#deleteapprovalrequestforflag) - Delete approval request for a flag
-* [postApprovalRequestApplyForFlag](docs/sdks/approvals/README.md#postapprovalrequestapplyforflag) - Apply approval request for a flag
-* [postApprovalRequestReviewForFlag](docs/sdks/approvals/README.md#postapprovalrequestreviewforflag) - Review approval request for a flag
-
-### [approvalsBeta](docs/sdks/approvalsbeta/README.md)
-
-* [patchApprovalRequest](docs/sdks/approvalsbeta/README.md#patchapprovalrequest) - Update approval request
-* [patchFlagConfigApprovalRequest](docs/sdks/approvalsbeta/README.md#patchflagconfigapprovalrequest) - Update flag approval request
+* [list](docs/sdks/approvals/README.md#list) - List approval requests
+* [create](docs/sdks/approvals/README.md#create) - Create approval request
+* [getRequest](docs/sdks/approvals/README.md#getrequest) - Get approval request
+* [deleteRequest](docs/sdks/approvals/README.md#deleterequest) - Delete approval request
+* [apply](docs/sdks/approvals/README.md#apply) - Apply approval request
+* [reviewRequest](docs/sdks/approvals/README.md#reviewrequest) - Review approval request
+* [listForFlag](docs/sdks/approvals/README.md#listforflag) - List approval requests for a flag
+* [createRequest](docs/sdks/approvals/README.md#createrequest) - Create approval request for a flag
+* [createCopyConfigRequest](docs/sdks/approvals/README.md#createcopyconfigrequest) - Create approval request to copy flag configurations across environments
+* [getForFlag](docs/sdks/approvals/README.md#getforflag) - Get approval request for a flag
+* [deleteFlagRequest](docs/sdks/approvals/README.md#deleteflagrequest) - Delete approval request for a flag
+* [applyRequest](docs/sdks/approvals/README.md#applyrequest) - Apply approval request for a flag
+* [reviewFlagRequest](docs/sdks/approvals/README.md#reviewflagrequest) - Review approval request for a flag
+* [patchRequest](docs/sdks/approvals/README.md#patchrequest) - Update approval request
+* [patchFlagConfigApprovalRequest](docs/sdks/approvals/README.md#patchflagconfigapprovalrequest) - Update flag approval request
 
 ### [auditLog](docs/sdks/auditlog/README.md)
 
-* [getAuditLogEntries](docs/sdks/auditlog/README.md#getauditlogentries) - List audit log entries
-* [postAuditLogEntries](docs/sdks/auditlog/README.md#postauditlogentries) - Search audit log entries
-* [getAuditLogEntry](docs/sdks/auditlog/README.md#getauditlogentry) - Get audit log entry
+* [listEntries](docs/sdks/auditlog/README.md#listentries) - List audit log entries
+* [searchEntries](docs/sdks/auditlog/README.md#searchentries) - Search audit log entries
+* [getEntry](docs/sdks/auditlog/README.md#getentry) - Get audit log entry
 
-### [codeReferences](docs/sdks/codereferences/README.md)
+### [codereferences](docs/sdks/codereferences1/README.md)
 
-* [getExtinctions](docs/sdks/codereferences/README.md#getextinctions) - List extinctions
-* [getRepositories](docs/sdks/codereferences/README.md#getrepositories) - List repositories
-* [postRepository](docs/sdks/codereferences/README.md#postrepository) - Create repository
-* [getRepository](docs/sdks/codereferences/README.md#getrepository) - Get repository
-* [deleteRepository](docs/sdks/codereferences/README.md#deleterepository) - Delete repository
-* [patchRepository](docs/sdks/codereferences/README.md#patchrepository) - Update repository
-* [deleteBranches](docs/sdks/codereferences/README.md#deletebranches) - Delete branches
-* [getBranches](docs/sdks/codereferences/README.md#getbranches) - List branches
-* [getBranch](docs/sdks/codereferences/README.md#getbranch) - Get branch
-* [putBranch](docs/sdks/codereferences/README.md#putbranch) - Upsert branch
-* [postExtinction](docs/sdks/codereferences/README.md#postextinction) - Create extinction
-* [getRootStatistic](docs/sdks/codereferences/README.md#getrootstatistic) - Get links to code reference repositories for each project
-* [getStatistics](docs/sdks/codereferences/README.md#getstatistics) - Get code references statistics for flags
+* [listExtinctions](docs/sdks/codereferences1/README.md#listextinctions) - List extinctions
+
+### [codeReferences](docs/sdks/codereferences2/README.md)
+
+* [listRepositories](docs/sdks/codereferences2/README.md#listrepositories) - List repositories
+* [createRepository](docs/sdks/codereferences2/README.md#createrepository) - Create repository
+* [get](docs/sdks/codereferences2/README.md#get) - Get repository
+* [update](docs/sdks/codereferences2/README.md#update) - Update repository
+* [deleteRepository](docs/sdks/codereferences2/README.md#deleterepository) - Delete repository
+* [deleteBranches](docs/sdks/codereferences2/README.md#deletebranches) - Delete branches
+* [getBranches](docs/sdks/codereferences2/README.md#getbranches) - List branches
+* [getBranch](docs/sdks/codereferences2/README.md#getbranch) - Get branch
+* [putBranch](docs/sdks/codereferences2/README.md#putbranch) - Upsert branch
+* [createExtinctionEvent](docs/sdks/codereferences2/README.md#createextinctionevent) - Create extinction
+* [getLinks](docs/sdks/codereferences2/README.md#getlinks) - Get links to code reference repositories for each project
+* [getStatistics](docs/sdks/codereferences2/README.md#getstatistics) - Get code references statistics for flags
 
 ### [contexts](docs/sdks/contexts/README.md)
 
-* [getContextKindsByProjectKey](docs/sdks/contexts/README.md#getcontextkindsbyprojectkey) - Get context kinds
-* [putContextKind](docs/sdks/contexts/README.md#putcontextkind) - Create or update context kind
-* [getContextAttributeNames](docs/sdks/contexts/README.md#getcontextattributenames) - Get context attribute names
-* [getContextAttributeValues](docs/sdks/contexts/README.md#getcontextattributevalues) - Get context attribute values
-* [searchContextInstances](docs/sdks/contexts/README.md#searchcontextinstances) - Search for context instances
-* [getContextInstances](docs/sdks/contexts/README.md#getcontextinstances) - Get context instances
-* [deleteContextInstances](docs/sdks/contexts/README.md#deletecontextinstances) - Delete context instances
-* [searchContexts](docs/sdks/contexts/README.md#searchcontexts) - Search for contexts
-* [getContexts](docs/sdks/contexts/README.md#getcontexts) - Get contexts
-* [evaluateContextInstance](docs/sdks/contexts/README.md#evaluatecontextinstance) - Evaluate flags for context instance
+* [listKinds](docs/sdks/contexts/README.md#listkinds) - Get context kinds
+* [putKind](docs/sdks/contexts/README.md#putkind) - Create or update context kind
+* [getAttributes](docs/sdks/contexts/README.md#getattributes) - Get context attribute names
+* [getAttributeValues](docs/sdks/contexts/README.md#getattributevalues) - Get context attribute values
+* [search](docs/sdks/contexts/README.md#search) - Search for context instances
+* [getInstances](docs/sdks/contexts/README.md#getinstances) - Get context instances
+* [deleteInstances](docs/sdks/contexts/README.md#deleteinstances) - Delete context instances
+* [performSearch](docs/sdks/contexts/README.md#performsearch) - Search for contexts
+* [get](docs/sdks/contexts/README.md#get) - Get contexts
+* [evaluateFlags](docs/sdks/contexts/README.md#evaluateflags) - Evaluate flags for context instance
 
 ### [contextSettings](docs/sdks/contextsettings/README.md)
 
-* [putContextFlagSetting](docs/sdks/contextsettings/README.md#putcontextflagsetting) - Update flag settings for context
+* [updateFlag](docs/sdks/contextsettings/README.md#updateflag) - Update flag settings for context
 
 ### [customRoles](docs/sdks/customroles/README.md)
 
-* [getCustomRoles](docs/sdks/customroles/README.md#getcustomroles) - List custom roles
-* [postCustomRole](docs/sdks/customroles/README.md#postcustomrole) - Create custom role
-* [getCustomRole](docs/sdks/customroles/README.md#getcustomrole) - Get custom role
-* [deleteCustomRole](docs/sdks/customroles/README.md#deletecustomrole) - Delete custom role
-* [patchCustomRole](docs/sdks/customroles/README.md#patchcustomrole) - Update custom role
+* [list](docs/sdks/customroles/README.md#list) - List custom roles
+* [create](docs/sdks/customroles/README.md#create) - Create custom role
+* [get](docs/sdks/customroles/README.md#get) - Get custom role
+* [patch](docs/sdks/customroles/README.md#patch) - Update custom role
+* [delete](docs/sdks/customroles/README.md#delete) - Delete custom role
 
 ### [dataExportDestinations](docs/sdks/dataexportdestinations/README.md)
 
-* [getDestinations](docs/sdks/dataexportdestinations/README.md#getdestinations) - List destinations
-* [postGenerateWarehouseDestinationKeyPair](docs/sdks/dataexportdestinations/README.md#postgeneratewarehousedestinationkeypair) - Generate Snowflake destination key pair
-* [postDestination](docs/sdks/dataexportdestinations/README.md#postdestination) - Create Data Export destination
-* [getDestination](docs/sdks/dataexportdestinations/README.md#getdestination) - Get destination
-* [deleteDestination](docs/sdks/dataexportdestinations/README.md#deletedestination) - Delete Data Export destination
-* [patchDestination](docs/sdks/dataexportdestinations/README.md#patchdestination) - Update Data Export destination
+* [list](docs/sdks/dataexportdestinations/README.md#list) - List destinations
+* [generateWarehouseDestinationKeyPair](docs/sdks/dataexportdestinations/README.md#generatewarehousedestinationkeypair) - Generate Snowflake destination key pair
+* [create](docs/sdks/dataexportdestinations/README.md#create) - Create Data Export destination
+* [get](docs/sdks/dataexportdestinations/README.md#get) - Get destination
+* [update](docs/sdks/dataexportdestinations/README.md#update) - Update Data Export destination
+* [delete](docs/sdks/dataexportdestinations/README.md#delete) - Delete Data Export destination
 
 ### [environments](docs/sdks/environments/README.md)
 
-* [getEnvironmentsByProject](docs/sdks/environments/README.md#getenvironmentsbyproject) - List environments
-* [postEnvironment](docs/sdks/environments/README.md#postenvironment) - Create environment
-* [getEnvironment](docs/sdks/environments/README.md#getenvironment) - Get environment
-* [deleteEnvironment](docs/sdks/environments/README.md#deleteenvironment) - Delete environment
-* [patchEnvironment](docs/sdks/environments/README.md#patchenvironment) - Update environment
-* [resetEnvironmentSDKKey](docs/sdks/environments/README.md#resetenvironmentsdkkey) - Reset environment SDK key
-* [resetEnvironmentMobileKey](docs/sdks/environments/README.md#resetenvironmentmobilekey) - Reset environment mobile SDK key
+* [listByProject](docs/sdks/environments/README.md#listbyproject) - List environments
+* [create](docs/sdks/environments/README.md#create) - Create environment
+* [get](docs/sdks/environments/README.md#get) - Get environment
+* [patch](docs/sdks/environments/README.md#patch) - Update environment
+* [delete](docs/sdks/environments/README.md#delete) - Delete environment
+* [resetSDKKey](docs/sdks/environments/README.md#resetsdkkey) - Reset environment SDK key
+* [resetMobileKey](docs/sdks/environments/README.md#resetmobilekey) - Reset environment mobile SDK key
 
 ### [experiments](docs/sdks/experiments/README.md)
 
-* [getExperiments](docs/sdks/experiments/README.md#getexperiments) - Get experiments
-* [createExperiment](docs/sdks/experiments/README.md#createexperiment) - Create experiment
-* [getExperiment](docs/sdks/experiments/README.md#getexperiment) - Get experiment
-* [patchExperiment](docs/sdks/experiments/README.md#patchexperiment) - Patch experiment
+* [list](docs/sdks/experiments/README.md#list) - Get experiments
+* [create](docs/sdks/experiments/README.md#create) - Create experiment
+* [get](docs/sdks/experiments/README.md#get) - Get experiment
+* [patch](docs/sdks/experiments/README.md#patch) - Patch experiment
 * [createIteration](docs/sdks/experiments/README.md#createiteration) - Create iteration
-* [~~getExperimentResultsForMetricGroup~~](docs/sdks/experiments/README.md#getexperimentresultsformetricgroup) - Get experiment results for metric group (Deprecated) :warning: **Deprecated**
-* [~~getExperimentResults~~](docs/sdks/experiments/README.md#getexperimentresults) - Get experiment results (Deprecated) :warning: **Deprecated**
-* [getExperimentationSettings](docs/sdks/experiments/README.md#getexperimentationsettings) - Get experimentation settings
-* [putExperimentationSettings](docs/sdks/experiments/README.md#putexperimentationsettings) - Update experimentation settings
+* [~~getResultsForMetricGroup~~](docs/sdks/experiments/README.md#getresultsformetricgroup) - Get experiment results for metric group (Deprecated) :warning: **Deprecated**
+* [~~getResults~~](docs/sdks/experiments/README.md#getresults) - Get experiment results (Deprecated) :warning: **Deprecated**
+* [getSettings](docs/sdks/experiments/README.md#getsettings) - Get experimentation settings
+* [updateSettings](docs/sdks/experiments/README.md#updatesettings) - Update experimentation settings
 
 ### [featureFlags](docs/sdks/featureflags/README.md)
 
-* [getFeatureFlagStatusAcrossEnvironments](docs/sdks/featureflags/README.md#getfeatureflagstatusacrossenvironments) - Get flag status across environments
-* [getFeatureFlagStatuses](docs/sdks/featureflags/README.md#getfeatureflagstatuses) - List feature flag statuses
-* [getFeatureFlagStatus](docs/sdks/featureflags/README.md#getfeatureflagstatus) - Get feature flag status
-* [getFeatureFlags](docs/sdks/featureflags/README.md#getfeatureflags) - List feature flags
-* [postFeatureFlag](docs/sdks/featureflags/README.md#postfeatureflag) - Create a feature flag
-* [getFeatureFlag](docs/sdks/featureflags/README.md#getfeatureflag) - Get feature flag
-* [deleteFeatureFlag](docs/sdks/featureflags/README.md#deletefeatureflag) - Delete feature flag
-* [patchFeatureFlag](docs/sdks/featureflags/README.md#patchfeatureflag) - Update feature flag
-* [copyFeatureFlag](docs/sdks/featureflags/README.md#copyfeatureflag) - Copy feature flag
-* [getExpiringContextTargets](docs/sdks/featureflags/README.md#getexpiringcontexttargets) - Get expiring context targets for feature flag
-* [patchExpiringTargets](docs/sdks/featureflags/README.md#patchexpiringtargets) - Update expiring context targets on feature flag
+* [getStatus](docs/sdks/featureflags/README.md#getstatus) - Get flag status across environments
+* [listStatuses](docs/sdks/featureflags/README.md#liststatuses) - List feature flag statuses
+* [status](docs/sdks/featureflags/README.md#status) - Get feature flag status
+* [list](docs/sdks/featureflags/README.md#list) - List feature flags
+* [create](docs/sdks/featureflags/README.md#create) - Create a feature flag
+* [getDependentByEnv](docs/sdks/featureflags/README.md#getdependentbyenv) - List dependent feature flags by environment
+* [get](docs/sdks/featureflags/README.md#get) - Get feature flag
+* [patch](docs/sdks/featureflags/README.md#patch) - Update feature flag
+* [delete](docs/sdks/featureflags/README.md#delete) - Delete feature flag
+* [copy](docs/sdks/featureflags/README.md#copy) - Copy feature flag
+* [listDependentFlags](docs/sdks/featureflags/README.md#listdependentflags) - List dependent feature flags
+* [getExpiringTargets](docs/sdks/featureflags/README.md#getexpiringtargets) - Get expiring context targets for feature flag
+* [updateExpiringTargets](docs/sdks/featureflags/README.md#updateexpiringtargets) - Update expiring context targets on feature flag
 * [getExpiringUserTargets](docs/sdks/featureflags/README.md#getexpiringusertargets) - Get expiring user targets for feature flag
 * [patchExpiringUserTargets](docs/sdks/featureflags/README.md#patchexpiringusertargets) - Update expiring user targets on feature flag
-* [postMigrationSafetyIssues](docs/sdks/featureflags/README.md#postmigrationsafetyissues) - Get migration safety issues
+* [getMigrationSafetyIssues](docs/sdks/featureflags/README.md#getmigrationsafetyissues) - Get migration safety issues
 
-### [featureFlagsBeta](docs/sdks/featureflagsbeta/README.md)
+### [flagImportConfigurations](docs/sdks/flagimportconfigurations/README.md)
 
-* [getDependentFlagsByEnv](docs/sdks/featureflagsbeta/README.md#getdependentflagsbyenv) - List dependent feature flags by environment
-* [getDependentFlags](docs/sdks/featureflagsbeta/README.md#getdependentflags) - List dependent feature flags
+* [list](docs/sdks/flagimportconfigurations/README.md#list) - List all flag import configurations
+* [create](docs/sdks/flagimportconfigurations/README.md#create) - Create a flag import configuration
+* [get](docs/sdks/flagimportconfigurations/README.md#get) - Get a single flag import configuration
+* [update](docs/sdks/flagimportconfigurations/README.md#update) - Update a flag import configuration
+* [delete](docs/sdks/flagimportconfigurations/README.md#delete) - Delete a flag import configuration
+* [triggerJob](docs/sdks/flagimportconfigurations/README.md#triggerjob) - Trigger a single flag import run
 
-### [flagImportConfigurationsBeta](docs/sdks/flagimportconfigurationsbeta/README.md)
+### [flagLinks](docs/sdks/flaglinks/README.md)
 
-* [getFlagImportConfigurations](docs/sdks/flagimportconfigurationsbeta/README.md#getflagimportconfigurations) - List all flag import configurations
-* [createFlagImportConfiguration](docs/sdks/flagimportconfigurationsbeta/README.md#createflagimportconfiguration) - Create a flag import configuration
-* [getFlagImportConfiguration](docs/sdks/flagimportconfigurationsbeta/README.md#getflagimportconfiguration) - Get a single flag import configuration
-* [deleteFlagImportConfiguration](docs/sdks/flagimportconfigurationsbeta/README.md#deleteflagimportconfiguration) - Delete a flag import configuration
-* [patchFlagImportConfiguration](docs/sdks/flagimportconfigurationsbeta/README.md#patchflagimportconfiguration) - Update a flag import configuration
-* [triggerFlagImportJob](docs/sdks/flagimportconfigurationsbeta/README.md#triggerflagimportjob) - Trigger a single flag import run
-
-### [flagLinksBeta](docs/sdks/flaglinksbeta/README.md)
-
-* [getFlagLinks](docs/sdks/flaglinksbeta/README.md#getflaglinks) - List flag links
-* [createFlagLink](docs/sdks/flaglinksbeta/README.md#createflaglink) - Create flag link
-* [deleteFlagLink](docs/sdks/flaglinksbeta/README.md#deleteflaglink) - Delete flag link
-* [updateFlagLink](docs/sdks/flaglinksbeta/README.md#updateflaglink) - Update flag link
+* [list](docs/sdks/flaglinks/README.md#list) - List flag links
+* [create](docs/sdks/flaglinks/README.md#create) - Create flag link
+* [update](docs/sdks/flaglinks/README.md#update) - Update flag link
+* [delete](docs/sdks/flaglinks/README.md#delete) - Delete flag link
 
 ### [flagTriggers](docs/sdks/flagtriggers/README.md)
 
-* [getTriggerWorkflows](docs/sdks/flagtriggers/README.md#gettriggerworkflows) - List flag triggers
-* [createTriggerWorkflow](docs/sdks/flagtriggers/README.md#createtriggerworkflow) - Create flag trigger
-* [getTriggerWorkflowById](docs/sdks/flagtriggers/README.md#gettriggerworkflowbyid) - Get flag trigger by ID
-* [deleteTriggerWorkflow](docs/sdks/flagtriggers/README.md#deletetriggerworkflow) - Delete flag trigger
-* [patchTriggerWorkflow](docs/sdks/flagtriggers/README.md#patchtriggerworkflow) - Update flag trigger
+* [list](docs/sdks/flagtriggers/README.md#list) - List flag triggers
+* [create](docs/sdks/flagtriggers/README.md#create) - Create flag trigger
+* [getById](docs/sdks/flagtriggers/README.md#getbyid) - Get flag trigger by ID
+* [patchWorkflow](docs/sdks/flagtriggers/README.md#patchworkflow) - Update flag trigger
+* [delete](docs/sdks/flagtriggers/README.md#delete) - Delete flag trigger
 
 ### [followFlags](docs/sdks/followflags/README.md)
 
-* [getFollowersByProjEnv](docs/sdks/followflags/README.md#getfollowersbyprojenv) - Get followers of all flags in a given project and environment
-* [getFlagFollowers](docs/sdks/followflags/README.md#getflagfollowers) - Get followers of a flag in a project and environment
-* [putFlagFollower](docs/sdks/followflags/README.md#putflagfollower) - Add a member as a follower of a flag in a project and environment
-* [deleteFlagFollower](docs/sdks/followflags/README.md#deleteflagfollower) - Remove a member as a follower of a flag in a project and environment
+* [getFollowers](docs/sdks/followflags/README.md#getfollowers) - Get followers of all flags in a given project and environment
+* [listFollowers](docs/sdks/followflags/README.md#listfollowers) - Get followers of a flag in a project and environment
+* [addFollower](docs/sdks/followflags/README.md#addfollower) - Add a member as a follower of a flag in a project and environment
+* [deleteFollower](docs/sdks/followflags/README.md#deletefollower) - Remove a member as a follower of a flag in a project and environment
 
-### [holdoutsBeta](docs/sdks/holdoutsbeta/README.md)
+### [holdouts](docs/sdks/holdouts/README.md)
 
-* [getAllHoldouts](docs/sdks/holdoutsbeta/README.md#getallholdouts) - Get all holdouts
-* [postHoldout](docs/sdks/holdoutsbeta/README.md#postholdout) - Create holdout
-* [getHoldoutById](docs/sdks/holdoutsbeta/README.md#getholdoutbyid) - Get Holdout by Id
-* [getHoldout](docs/sdks/holdoutsbeta/README.md#getholdout) - Get holdout
-* [patchHoldout](docs/sdks/holdoutsbeta/README.md#patchholdout) - Patch holdout
+* [getAll](docs/sdks/holdouts/README.md#getall) - Get all holdouts
+* [create](docs/sdks/holdouts/README.md#create) - Create holdout
+* [getById](docs/sdks/holdouts/README.md#getbyid) - Get Holdout by Id
+* [get](docs/sdks/holdouts/README.md#get) - Get holdout
+* [update](docs/sdks/holdouts/README.md#update) - Patch holdout
 
-### [insightsChartsBeta](docs/sdks/insightschartsbeta/README.md)
+### [insightsCharts](docs/sdks/insightscharts/README.md)
 
-* [getDeploymentFrequencyChart](docs/sdks/insightschartsbeta/README.md#getdeploymentfrequencychart) - Get deployment frequency chart data
-* [getStaleFlagsChart](docs/sdks/insightschartsbeta/README.md#getstaleflagschart) - Get stale flags chart data
-* [getFlagStatusChart](docs/sdks/insightschartsbeta/README.md#getflagstatuschart) - Get flag status chart data
-* [getLeadTimeChart](docs/sdks/insightschartsbeta/README.md#getleadtimechart) - Get lead time chart data
-* [getReleaseFrequencyChart](docs/sdks/insightschartsbeta/README.md#getreleasefrequencychart) - Get release frequency chart data
+* [getDeploymentFrequencyChart](docs/sdks/insightscharts/README.md#getdeploymentfrequencychart) - Get deployment frequency chart data
+* [getStaleFlagsChart](docs/sdks/insightscharts/README.md#getstaleflagschart) - Get stale flags chart data
+* [getFlagStatus](docs/sdks/insightscharts/README.md#getflagstatus) - Get flag status chart data
+* [getLeadTime](docs/sdks/insightscharts/README.md#getleadtime) - Get lead time chart data
+* [getReleaseFrequencyChart](docs/sdks/insightscharts/README.md#getreleasefrequencychart) - Get release frequency chart data
 
-### [insightsDeploymentsBeta](docs/sdks/insightsdeploymentsbeta/README.md)
+### [insightsDeployments](docs/sdks/insightsdeployments/README.md)
 
-* [createDeploymentEvent](docs/sdks/insightsdeploymentsbeta/README.md#createdeploymentevent) - Create deployment event
-* [getDeployments](docs/sdks/insightsdeploymentsbeta/README.md#getdeployments) - List deployments
-* [getDeployment](docs/sdks/insightsdeploymentsbeta/README.md#getdeployment) - Get deployment
-* [updateDeployment](docs/sdks/insightsdeploymentsbeta/README.md#updatedeployment) - Update deployment
+* [createEvent](docs/sdks/insightsdeployments/README.md#createevent) - Create deployment event
+* [list](docs/sdks/insightsdeployments/README.md#list) - List deployments
+* [get](docs/sdks/insightsdeployments/README.md#get) - Get deployment
+* [update](docs/sdks/insightsdeployments/README.md#update) - Update deployment
 
-### [insightsFlagEventsBeta](docs/sdks/insightsflageventsbeta/README.md)
+### [insightsFlagEvents](docs/sdks/insightsflagevents/README.md)
 
-* [getFlagEvents](docs/sdks/insightsflageventsbeta/README.md#getflagevents) - List flag events
+* [list](docs/sdks/insightsflagevents/README.md#list) - List flag events
 
-### [insightsPullRequestsBeta](docs/sdks/insightspullrequestsbeta/README.md)
+### [insightsPullRequests](docs/sdks/insightspullrequests/README.md)
 
-* [getPullRequests](docs/sdks/insightspullrequestsbeta/README.md#getpullrequests) - List pull requests
+* [list](docs/sdks/insightspullrequests/README.md#list) - List pull requests
 
-### [insightsRepositoriesBeta](docs/sdks/insightsrepositoriesbeta/README.md)
+### [insightsRepositories](docs/sdks/insightsrepositories/README.md)
 
-* [getInsightsRepositories](docs/sdks/insightsrepositoriesbeta/README.md#getinsightsrepositories) - List repositories
-* [associateRepositoriesAndProjects](docs/sdks/insightsrepositoriesbeta/README.md#associaterepositoriesandprojects) - Associate repositories with projects
-* [deleteRepositoryProject](docs/sdks/insightsrepositoriesbeta/README.md#deleterepositoryproject) - Remove repository project association
+* [list](docs/sdks/insightsrepositories/README.md#list) - List repositories
+* [associate](docs/sdks/insightsrepositories/README.md#associate) - Associate repositories with projects
+* [removeProjectAssociation](docs/sdks/insightsrepositories/README.md#removeprojectassociation) - Remove repository project association
 
-### [insightsScoresBeta](docs/sdks/insightsscoresbeta/README.md)
+### [insightsScores](docs/sdks/insightsscores/README.md)
 
-* [createInsightGroup](docs/sdks/insightsscoresbeta/README.md#createinsightgroup) - Create insight group
-* [getInsightGroups](docs/sdks/insightsscoresbeta/README.md#getinsightgroups) - List insight groups
-* [getInsightGroup](docs/sdks/insightsscoresbeta/README.md#getinsightgroup) - Get insight group
-* [deleteInsightGroup](docs/sdks/insightsscoresbeta/README.md#deleteinsightgroup) - Delete insight group
-* [patchInsightGroup](docs/sdks/insightsscoresbeta/README.md#patchinsightgroup) - Patch insight group
-* [getInsightsScores](docs/sdks/insightsscoresbeta/README.md#getinsightsscores) - Get insight scores
+* [createGroup](docs/sdks/insightsscores/README.md#creategroup) - Create insight group
+* [list](docs/sdks/insightsscores/README.md#list) - List insight groups
+* [getGroup](docs/sdks/insightsscores/README.md#getgroup) - Get insight group
+* [updateGroup](docs/sdks/insightsscores/README.md#updategroup) - Patch insight group
+* [deleteGroup](docs/sdks/insightsscores/README.md#deletegroup) - Delete insight group
+* [get](docs/sdks/insightsscores/README.md#get) - Get insight scores
 
 ### [integrationAuditLogSubscriptions](docs/sdks/integrationauditlogsubscriptions/README.md)
 
-* [getSubscriptions](docs/sdks/integrationauditlogsubscriptions/README.md#getsubscriptions) - Get audit log subscriptions by integration
-* [createSubscription](docs/sdks/integrationauditlogsubscriptions/README.md#createsubscription) - Create audit log subscription
-* [getSubscriptionByID](docs/sdks/integrationauditlogsubscriptions/README.md#getsubscriptionbyid) - Get audit log subscription by ID
-* [deleteSubscription](docs/sdks/integrationauditlogsubscriptions/README.md#deletesubscription) - Delete audit log subscription
-* [updateSubscription](docs/sdks/integrationauditlogsubscriptions/README.md#updatesubscription) - Update audit log subscription
+* [get](docs/sdks/integrationauditlogsubscriptions/README.md#get) - Get audit log subscriptions by integration
+* [create](docs/sdks/integrationauditlogsubscriptions/README.md#create) - Create audit log subscription
+* [getSubscription](docs/sdks/integrationauditlogsubscriptions/README.md#getsubscription) - Get audit log subscription by ID
+* [update](docs/sdks/integrationauditlogsubscriptions/README.md#update) - Update audit log subscription
+* [delete](docs/sdks/integrationauditlogsubscriptions/README.md#delete) - Delete audit log subscription
 
-### [integrationDeliveryConfigurationsBeta](docs/sdks/integrationdeliveryconfigurationsbeta/README.md)
+### [integrationDeliveryConfigurations](docs/sdks/integrationdeliveryconfigurations/README.md)
 
-* [getIntegrationDeliveryConfigurations](docs/sdks/integrationdeliveryconfigurationsbeta/README.md#getintegrationdeliveryconfigurations) - List all delivery configurations
-* [getIntegrationDeliveryConfigurationByEnvironment](docs/sdks/integrationdeliveryconfigurationsbeta/README.md#getintegrationdeliveryconfigurationbyenvironment) - Get delivery configurations by environment
-* [createIntegrationDeliveryConfiguration](docs/sdks/integrationdeliveryconfigurationsbeta/README.md#createintegrationdeliveryconfiguration) - Create delivery configuration
-* [getIntegrationDeliveryConfigurationById](docs/sdks/integrationdeliveryconfigurationsbeta/README.md#getintegrationdeliveryconfigurationbyid) - Get delivery configuration by ID
-* [deleteIntegrationDeliveryConfiguration](docs/sdks/integrationdeliveryconfigurationsbeta/README.md#deleteintegrationdeliveryconfiguration) - Delete delivery configuration
-* [patchIntegrationDeliveryConfiguration](docs/sdks/integrationdeliveryconfigurationsbeta/README.md#patchintegrationdeliveryconfiguration) - Update delivery configuration
-* [validateIntegrationDeliveryConfiguration](docs/sdks/integrationdeliveryconfigurationsbeta/README.md#validateintegrationdeliveryconfiguration) - Validate delivery configuration
+* [list](docs/sdks/integrationdeliveryconfigurations/README.md#list) - List all delivery configurations
+* [getByEnvironment](docs/sdks/integrationdeliveryconfigurations/README.md#getbyenvironment) - Get delivery configurations by environment
+* [create](docs/sdks/integrationdeliveryconfigurations/README.md#create) - Create delivery configuration
+* [getById](docs/sdks/integrationdeliveryconfigurations/README.md#getbyid) - Get delivery configuration by ID
+* [update](docs/sdks/integrationdeliveryconfigurations/README.md#update) - Update delivery configuration
+* [delete](docs/sdks/integrationdeliveryconfigurations/README.md#delete) - Delete delivery configuration
+* [validate](docs/sdks/integrationdeliveryconfigurations/README.md#validate) - Validate delivery configuration
 
-### [integrationsBeta](docs/sdks/integrationsbeta/README.md)
+### [integrations](docs/sdks/integrations/README.md)
 
-* [getAllIntegrationConfigurations](docs/sdks/integrationsbeta/README.md#getallintegrationconfigurations) - Get all configurations for the integration
-* [createIntegrationConfiguration](docs/sdks/integrationsbeta/README.md#createintegrationconfiguration) - Create integration configuration
-* [getIntegrationConfiguration](docs/sdks/integrationsbeta/README.md#getintegrationconfiguration) - Get an integration configuration
-* [deleteIntegrationConfiguration](docs/sdks/integrationsbeta/README.md#deleteintegrationconfiguration) - Delete integration configuration
-* [updateIntegrationConfiguration](docs/sdks/integrationsbeta/README.md#updateintegrationconfiguration) - Update integration configuration
+* [getConfigurations](docs/sdks/integrations/README.md#getconfigurations) - Get all configurations for the integration
+* [createConfiguration](docs/sdks/integrations/README.md#createconfiguration) - Create integration configuration
+* [getConfiguration](docs/sdks/integrations/README.md#getconfiguration) - Get an integration configuration
+* [updateConfiguration](docs/sdks/integrations/README.md#updateconfiguration) - Update integration configuration
+* [deleteConfiguration](docs/sdks/integrations/README.md#deleteconfiguration) - Delete integration configuration
 
 
 ### [layers](docs/sdks/layers/README.md)
 
-* [getLayers](docs/sdks/layers/README.md#getlayers) - Get layers
-* [createLayer](docs/sdks/layers/README.md#createlayer) - Create layer
-* [updateLayer](docs/sdks/layers/README.md#updatelayer) - Update layer
+* [list](docs/sdks/layers/README.md#list) - Get layers
+* [create](docs/sdks/layers/README.md#create) - Create layer
+* [update](docs/sdks/layers/README.md#update) - Update layer
 
 ### [metrics](docs/sdks/metrics/README.md)
 
-* [getMetrics](docs/sdks/metrics/README.md#getmetrics) - List metrics
-* [postMetric](docs/sdks/metrics/README.md#postmetric) - Create metric
-* [getMetric](docs/sdks/metrics/README.md#getmetric) - Get metric
-* [deleteMetric](docs/sdks/metrics/README.md#deletemetric) - Delete metric
-* [patchMetric](docs/sdks/metrics/README.md#patchmetric) - Update metric
+* [list](docs/sdks/metrics/README.md#list) - List metrics
+* [create](docs/sdks/metrics/README.md#create) - Create metric
+* [get](docs/sdks/metrics/README.md#get) - Get metric
+* [patch](docs/sdks/metrics/README.md#patch) - Update metric
+* [delete](docs/sdks/metrics/README.md#delete) - Delete metric
+* [listGroups](docs/sdks/metrics/README.md#listgroups) - List metric groups
+* [createGroup](docs/sdks/metrics/README.md#creategroup) - Create metric group
+* [getMetricGroup](docs/sdks/metrics/README.md#getmetricgroup) - Get metric group
+* [patchMetricGroup](docs/sdks/metrics/README.md#patchmetricgroup) - Patch metric group
+* [deleteGroup](docs/sdks/metrics/README.md#deletegroup) - Delete metric group
 
-### [metricsBeta](docs/sdks/metricsbeta/README.md)
+### [oauth2Clients](docs/sdks/oauth2clients/README.md)
 
-* [getMetricGroups](docs/sdks/metricsbeta/README.md#getmetricgroups) - List metric groups
-* [createMetricGroup](docs/sdks/metricsbeta/README.md#createmetricgroup) - Create metric group
-* [getMetricGroup](docs/sdks/metricsbeta/README.md#getmetricgroup) - Get metric group
-* [deleteMetricGroup](docs/sdks/metricsbeta/README.md#deletemetricgroup) - Delete metric group
-* [patchMetricGroup](docs/sdks/metricsbeta/README.md#patchmetricgroup) - Patch metric group
-
-### [oAuth2Clients](docs/sdks/oauth2clients/README.md)
-
-* [getOAuthClients](docs/sdks/oauth2clients/README.md#getoauthclients) - Get clients
-* [createOAuth2Client](docs/sdks/oauth2clients/README.md#createoauth2client) - Create a LaunchDarkly OAuth 2.0 client
-* [getOAuthClientById](docs/sdks/oauth2clients/README.md#getoauthclientbyid) - Get client by ID
-* [deleteOAuthClient](docs/sdks/oauth2clients/README.md#deleteoauthclient) - Delete OAuth 2.0 client
-* [patchOAuthClient](docs/sdks/oauth2clients/README.md#patchoauthclient) - Patch client by ID
+* [get](docs/sdks/oauth2clients/README.md#get) - Get clients
+* [create](docs/sdks/oauth2clients/README.md#create) - Create a LaunchDarkly OAuth 2.0 client
+* [getById](docs/sdks/oauth2clients/README.md#getbyid) - Get client by ID
+* [patch](docs/sdks/oauth2clients/README.md#patch) - Patch client by ID
+* [delete](docs/sdks/oauth2clients/README.md#delete) - Delete OAuth 2.0 client
 
 ### [other](docs/sdks/other/README.md)
 
@@ -1003,138 +999,136 @@ run();
 * [getIps](docs/sdks/other/README.md#getips) - Gets the public IP list
 * [getVersions](docs/sdks/other/README.md#getversions) - Get version information
 
-### [persistentStoreIntegrationsBeta](docs/sdks/persistentstoreintegrationsbeta/README.md)
+### [persistentStoreIntegrations](docs/sdks/persistentstoreintegrations/README.md)
 
-* [getBigSegmentStoreIntegrations](docs/sdks/persistentstoreintegrationsbeta/README.md#getbigsegmentstoreintegrations) - List all big segment store integrations
-* [createBigSegmentStoreIntegration](docs/sdks/persistentstoreintegrationsbeta/README.md#createbigsegmentstoreintegration) - Create big segment store integration
-* [getBigSegmentStoreIntegration](docs/sdks/persistentstoreintegrationsbeta/README.md#getbigsegmentstoreintegration) - Get big segment store integration by ID
-* [deleteBigSegmentStoreIntegration](docs/sdks/persistentstoreintegrationsbeta/README.md#deletebigsegmentstoreintegration) - Delete big segment store integration
-* [patchBigSegmentStoreIntegration](docs/sdks/persistentstoreintegrationsbeta/README.md#patchbigsegmentstoreintegration) - Update big segment store integration
+* [listBigSegmentStores](docs/sdks/persistentstoreintegrations/README.md#listbigsegmentstores) - List all big segment store integrations
+* [create](docs/sdks/persistentstoreintegrations/README.md#create) - Create big segment store integration
+* [getIntegration](docs/sdks/persistentstoreintegrations/README.md#getintegration) - Get big segment store integration by ID
+* [patchBigSegmentStore](docs/sdks/persistentstoreintegrations/README.md#patchbigsegmentstore) - Update big segment store integration
+* [delete](docs/sdks/persistentstoreintegrations/README.md#delete) - Delete big segment store integration
 
 ### [projects](docs/sdks/projects/README.md)
 
-* [getProjects](docs/sdks/projects/README.md#getprojects) - List projects
-* [postProject](docs/sdks/projects/README.md#postproject) - Create project
-* [getProject](docs/sdks/projects/README.md#getproject) - Get project
-* [deleteProject](docs/sdks/projects/README.md#deleteproject) - Delete project
-* [patchProject](docs/sdks/projects/README.md#patchproject) - Update project
-* [getFlagDefaultsByProject](docs/sdks/projects/README.md#getflagdefaultsbyproject) - Get flag defaults for project
-* [putFlagDefaultsByProject](docs/sdks/projects/README.md#putflagdefaultsbyproject) - Create or update flag defaults for project
-* [patchFlagDefaultsByProject](docs/sdks/projects/README.md#patchflagdefaultsbyproject) - Update flag default for project
+* [list](docs/sdks/projects/README.md#list) - List projects
+* [create](docs/sdks/projects/README.md#create) - Create project
+* [get](docs/sdks/projects/README.md#get) - Get project
+* [update](docs/sdks/projects/README.md#update) - Update project
+* [delete](docs/sdks/projects/README.md#delete) - Delete project
+* [getFlagDefaults](docs/sdks/projects/README.md#getflagdefaults) - Get flag defaults for project
+* [patchFlagDefaults](docs/sdks/projects/README.md#patchflagdefaults) - Update flag default for project
+* [setFlagDefaults](docs/sdks/projects/README.md#setflagdefaults) - Create or update flag defaults for project
 
 ### [relayProxyConfigurations](docs/sdks/relayproxyconfigurations/README.md)
 
-* [getRelayProxyConfigs](docs/sdks/relayproxyconfigurations/README.md#getrelayproxyconfigs) - List Relay Proxy configs
-* [postRelayAutoConfig](docs/sdks/relayproxyconfigurations/README.md#postrelayautoconfig) - Create a new Relay Proxy config
-* [getRelayProxyConfig](docs/sdks/relayproxyconfigurations/README.md#getrelayproxyconfig) - Get Relay Proxy config
-* [deleteRelayAutoConfig](docs/sdks/relayproxyconfigurations/README.md#deleterelayautoconfig) - Delete Relay Proxy config by ID
-* [patchRelayAutoConfig](docs/sdks/relayproxyconfigurations/README.md#patchrelayautoconfig) - Update a Relay Proxy config
-* [resetRelayAutoConfig](docs/sdks/relayproxyconfigurations/README.md#resetrelayautoconfig) - Reset Relay Proxy configuration key
+* [list](docs/sdks/relayproxyconfigurations/README.md#list) - List Relay Proxy configs
+* [create](docs/sdks/relayproxyconfigurations/README.md#create) - Create a new Relay Proxy config
+* [getConfig](docs/sdks/relayproxyconfigurations/README.md#getconfig) - Get Relay Proxy config
+* [update](docs/sdks/relayproxyconfigurations/README.md#update) - Update a Relay Proxy config
+* [delete](docs/sdks/relayproxyconfigurations/README.md#delete) - Delete Relay Proxy config by ID
+* [reset](docs/sdks/relayproxyconfigurations/README.md#reset) - Reset Relay Proxy configuration key
 
-### [releasePipelinesBeta](docs/sdks/releasepipelinesbeta/README.md)
+### [releasePipelines](docs/sdks/releasepipelines/README.md)
 
-* [getAllReleasePipelines](docs/sdks/releasepipelinesbeta/README.md#getallreleasepipelines) - Get all release pipelines
-* [postReleasePipeline](docs/sdks/releasepipelinesbeta/README.md#postreleasepipeline) - Create a release pipeline
-* [getReleasePipelineByKey](docs/sdks/releasepipelinesbeta/README.md#getreleasepipelinebykey) - Get release pipeline by key
-* [putReleasePipeline](docs/sdks/releasepipelinesbeta/README.md#putreleasepipeline) - Update a release pipeline
-* [deleteReleasePipeline](docs/sdks/releasepipelinesbeta/README.md#deletereleasepipeline) - Delete release pipeline
-* [getAllReleaseProgressionsForReleasePipeline](docs/sdks/releasepipelinesbeta/README.md#getallreleaseprogressionsforreleasepipeline) - Get release progressions for release pipeline
+* [getAll](docs/sdks/releasepipelines/README.md#getall) - Get all release pipelines
+* [create](docs/sdks/releasepipelines/README.md#create) - Create a release pipeline
+* [getByKey](docs/sdks/releasepipelines/README.md#getbykey) - Get release pipeline by key
+* [update](docs/sdks/releasepipelines/README.md#update) - Update a release pipeline
+* [delete](docs/sdks/releasepipelines/README.md#delete) - Delete release pipeline
+* [getAllReleaseProgressions](docs/sdks/releasepipelines/README.md#getallreleaseprogressions) - Get release progressions for release pipeline
 
-### [releasesBeta](docs/sdks/releasesbeta/README.md)
+### [releases](docs/sdks/releases/README.md)
 
-* [getReleaseByFlagKey](docs/sdks/releasesbeta/README.md#getreleasebyflagkey) - Get release for flag
-* [deleteReleaseByFlagKey](docs/sdks/releasesbeta/README.md#deletereleasebyflagkey) - Delete a release for flag
-* [patchReleaseByFlagKey](docs/sdks/releasesbeta/README.md#patchreleasebyflagkey) - Patch release for flag
-* [createReleaseForFlag](docs/sdks/releasesbeta/README.md#createreleaseforflag) - Create a new release for flag
-* [updatePhaseStatus](docs/sdks/releasesbeta/README.md#updatephasestatus) - Update phase status for release
+* [getByFlagKey](docs/sdks/releases/README.md#getbyflagkey) - Get release for flag
+* [patchByFlagKey](docs/sdks/releases/README.md#patchbyflagkey) - Patch release for flag
+* [deleteByFlagKey](docs/sdks/releases/README.md#deletebyflagkey) - Delete a release for flag
+* [create](docs/sdks/releases/README.md#create) - Create a new release for flag
+* [updatePhaseStatus](docs/sdks/releases/README.md#updatephasestatus) - Update phase status for release
 
 ### [scheduledChanges](docs/sdks/scheduledchanges/README.md)
 
-* [getFlagConfigScheduledChanges](docs/sdks/scheduledchanges/README.md#getflagconfigscheduledchanges) - List scheduled changes
-* [postFlagConfigScheduledChanges](docs/sdks/scheduledchanges/README.md#postflagconfigscheduledchanges) - Create scheduled changes workflow
-* [getFeatureFlagScheduledChange](docs/sdks/scheduledchanges/README.md#getfeatureflagscheduledchange) - Get a scheduled change
-* [deleteFlagConfigScheduledChanges](docs/sdks/scheduledchanges/README.md#deleteflagconfigscheduledchanges) - Delete scheduled changes workflow
-* [patchFlagConfigScheduledChange](docs/sdks/scheduledchanges/README.md#patchflagconfigscheduledchange) - Update scheduled changes workflow
+* [list](docs/sdks/scheduledchanges/README.md#list) - List scheduled changes
+* [create](docs/sdks/scheduledchanges/README.md#create) - Create scheduled changes workflow
+* [get](docs/sdks/scheduledchanges/README.md#get) - Get a scheduled change
+* [update](docs/sdks/scheduledchanges/README.md#update) - Update scheduled changes workflow
+* [delete](docs/sdks/scheduledchanges/README.md#delete) - Delete scheduled changes workflow
 
 ### [segments](docs/sdks/segments/README.md)
 
-* [getContextInstanceSegmentsMembershipByEnv](docs/sdks/segments/README.md#getcontextinstancesegmentsmembershipbyenv) - List segment memberships for context instance
-* [getSegments](docs/sdks/segments/README.md#getsegments) - List segments
-* [postSegment](docs/sdks/segments/README.md#postsegment) - Create segment
-* [getSegment](docs/sdks/segments/README.md#getsegment) - Get segment
-* [deleteSegment](docs/sdks/segments/README.md#deletesegment) - Delete segment
-* [patchSegment](docs/sdks/segments/README.md#patchsegment) - Patch segment
-* [updateBigSegmentContextTargets](docs/sdks/segments/README.md#updatebigsegmentcontexttargets) - Update context targets on a big segment
-* [getSegmentMembershipForContext](docs/sdks/segments/README.md#getsegmentmembershipforcontext) - Get big segment membership for context
-* [createBigSegmentExport](docs/sdks/segments/README.md#createbigsegmentexport) - Create big segment export
-* [getBigSegmentExport](docs/sdks/segments/README.md#getbigsegmentexport) - Get big segment export
-* [createBigSegmentImport](docs/sdks/segments/README.md#createbigsegmentimport) - Create big segment import
-* [getBigSegmentImport](docs/sdks/segments/README.md#getbigsegmentimport) - Get big segment import
-* [updateBigSegmentTargets](docs/sdks/segments/README.md#updatebigsegmenttargets) - Update user context targets on a big segment
-* [getSegmentMembershipForUser](docs/sdks/segments/README.md#getsegmentmembershipforuser) - Get big segment membership for user
-* [getExpiringTargetsForSegment](docs/sdks/segments/README.md#getexpiringtargetsforsegment) - Get expiring targets for segment
-* [patchExpiringTargetsForSegment](docs/sdks/segments/README.md#patchexpiringtargetsforsegment) - Update expiring targets for segment
-* [getExpiringUserTargetsForSegment](docs/sdks/segments/README.md#getexpiringusertargetsforsegment) - Get expiring user targets for segment
-* [patchExpiringUserTargetsForSegment](docs/sdks/segments/README.md#patchexpiringusertargetsforsegment) - Update expiring user targets for segment
+* [evaluateMembership](docs/sdks/segments/README.md#evaluatemembership) - List segment memberships for context instance
+* [list](docs/sdks/segments/README.md#list) - List segments
+* [create](docs/sdks/segments/README.md#create) - Create segment
+* [get](docs/sdks/segments/README.md#get) - Get segment
+* [patch](docs/sdks/segments/README.md#patch) - Patch segment
+* [delete](docs/sdks/segments/README.md#delete) - Delete segment
+* [updateContextTargets](docs/sdks/segments/README.md#updatecontexttargets) - Update context targets on a big segment
+* [getMembershipForContext](docs/sdks/segments/README.md#getmembershipforcontext) - Get big segment membership for context
+* [createBigExport](docs/sdks/segments/README.md#createbigexport) - Create big segment export
+* [getExport](docs/sdks/segments/README.md#getexport) - Get big segment export
+* [createBigImport](docs/sdks/segments/README.md#createbigimport) - Create big segment import
+* [getImport](docs/sdks/segments/README.md#getimport) - Get big segment import
+* [updateBigTargets](docs/sdks/segments/README.md#updatebigtargets) - Update user context targets on a big segment
+* [getMembershipForUser](docs/sdks/segments/README.md#getmembershipforuser) - Get big segment membership for user
+* [getExpiringTargets](docs/sdks/segments/README.md#getexpiringtargets) - Get expiring targets for segment
+* [patchExpiringTargets](docs/sdks/segments/README.md#patchexpiringtargets) - Update expiring targets for segment
+* [getExpiringUserTargets](docs/sdks/segments/README.md#getexpiringusertargets) - Get expiring user targets for segment
+* [patchExpiringUserTargets](docs/sdks/segments/README.md#patchexpiringusertargets) - Update expiring user targets for segment
 
 ### [tags](docs/sdks/tags/README.md)
 
-* [getTags](docs/sdks/tags/README.md#gettags) - List tags
+* [list](docs/sdks/tags/README.md#list) - List tags
 
 ### [teams](docs/sdks/teams/README.md)
 
-* [getTeams](docs/sdks/teams/README.md#getteams) - List teams
-* [postTeam](docs/sdks/teams/README.md#postteam) - Create team
-* [getTeam](docs/sdks/teams/README.md#getteam) - Get team
-* [deleteTeam](docs/sdks/teams/README.md#deleteteam) - Delete team
-* [patchTeam](docs/sdks/teams/README.md#patchteam) - Update team
-* [getTeamMaintainers](docs/sdks/teams/README.md#getteammaintainers) - Get team maintainers
-* [postTeamMembers](docs/sdks/teams/README.md#postteammembers) - Add multiple members to team
-* [getTeamRoles](docs/sdks/teams/README.md#getteamroles) - Get team custom roles
+* [list](docs/sdks/teams/README.md#list) - List teams
+* [create](docs/sdks/teams/README.md#create) - Create team
+* [get](docs/sdks/teams/README.md#get) - Get team
+* [patch](docs/sdks/teams/README.md#patch) - Update team
+* [delete](docs/sdks/teams/README.md#delete) - Delete team
+* [getMaintainers](docs/sdks/teams/README.md#getmaintainers) - Get team maintainers
+* [addMembers](docs/sdks/teams/README.md#addmembers) - Add multiple members to team
+* [getRoles](docs/sdks/teams/README.md#getroles) - Get team custom roles
+* [update](docs/sdks/teams/README.md#update) - Update teams
 
-### [teamsBeta](docs/sdks/teamsbeta/README.md)
+### [tokens](docs/sdks/tokens/README.md)
 
-* [patchTeams](docs/sdks/teamsbeta/README.md#patchteams) - Update teams
+* [delete](docs/sdks/tokens/README.md#delete) - Delete access token
 
 ### [~~users~~](docs/sdks/users/README.md)
 
-* [~~getSearchUsers~~](docs/sdks/users/README.md#getsearchusers) - Find users :warning: **Deprecated**
-* [~~getUsers~~](docs/sdks/users/README.md#getusers) - List users :warning: **Deprecated**
-* [~~getUser~~](docs/sdks/users/README.md#getuser) - Get user :warning: **Deprecated**
-* [~~deleteUser~~](docs/sdks/users/README.md#deleteuser) - Delete user :warning: **Deprecated**
-
-### [~~usersBeta~~](docs/sdks/usersbeta/README.md)
-
-* [~~getUserAttributeNames~~](docs/sdks/usersbeta/README.md#getuserattributenames) - Get user attribute names :warning: **Deprecated**
+* [~~getAttributeNames~~](docs/sdks/users/README.md#getattributenames) - Get user attribute names :warning: **Deprecated**
+* [~~search~~](docs/sdks/users/README.md#search) - Find users :warning: **Deprecated**
+* [~~list~~](docs/sdks/users/README.md#list) - List users :warning: **Deprecated**
+* [~~get~~](docs/sdks/users/README.md#get) - Get user :warning: **Deprecated**
+* [~~delete~~](docs/sdks/users/README.md#delete) - Delete user :warning: **Deprecated**
 
 ### [~~userSettings~~](docs/sdks/usersettings/README.md)
 
-* [~~getUserFlagSettings~~](docs/sdks/usersettings/README.md#getuserflagsettings) - List flag settings for user :warning: **Deprecated**
-* [~~getUserFlagSetting~~](docs/sdks/usersettings/README.md#getuserflagsetting) - Get flag setting for user :warning: **Deprecated**
-* [~~putFlagSetting~~](docs/sdks/usersettings/README.md#putflagsetting) - Update flag settings for user :warning: **Deprecated**
+* [~~listFlags~~](docs/sdks/usersettings/README.md#listflags) - List flag settings for user :warning: **Deprecated**
+* [~~getFlagSetting~~](docs/sdks/usersettings/README.md#getflagsetting) - Get flag setting for user :warning: **Deprecated**
+* [~~updateFlagSetting~~](docs/sdks/usersettings/README.md#updateflagsetting) - Update flag settings for user :warning: **Deprecated**
 * [~~getExpiringFlagsForUser~~](docs/sdks/usersettings/README.md#getexpiringflagsforuser) - Get expiring dates on flags for user :warning: **Deprecated**
-* [~~patchExpiringFlagsForUser~~](docs/sdks/usersettings/README.md#patchexpiringflagsforuser) - Update expiring user target for flags :warning: **Deprecated**
+* [~~updateExpiringTargets~~](docs/sdks/usersettings/README.md#updateexpiringtargets) - Update expiring user target for flags :warning: **Deprecated**
 
 ### [webhooks](docs/sdks/webhooks/README.md)
 
-* [getAllWebhooks](docs/sdks/webhooks/README.md#getallwebhooks) - List webhooks
-* [postWebhook](docs/sdks/webhooks/README.md#postwebhook) - Creates a webhook
-* [getWebhook](docs/sdks/webhooks/README.md#getwebhook) - Get webhook
-* [deleteWebhook](docs/sdks/webhooks/README.md#deletewebhook) - Delete webhook
-* [patchWebhook](docs/sdks/webhooks/README.md#patchwebhook) - Update webhook
+* [list](docs/sdks/webhooks/README.md#list) - List webhooks
+* [create](docs/sdks/webhooks/README.md#create) - Creates a webhook
+* [get](docs/sdks/webhooks/README.md#get) - Get webhook
+* [update](docs/sdks/webhooks/README.md#update) - Update webhook
+* [delete](docs/sdks/webhooks/README.md#delete) - Delete webhook
 
 ### [workflows](docs/sdks/workflows/README.md)
 
-* [getWorkflows](docs/sdks/workflows/README.md#getworkflows) - Get workflows
-* [postWorkflow](docs/sdks/workflows/README.md#postworkflow) - Create workflow
-* [getCustomWorkflow](docs/sdks/workflows/README.md#getcustomworkflow) - Get custom workflow
-* [deleteWorkflow](docs/sdks/workflows/README.md#deleteworkflow) - Delete workflow
+* [get](docs/sdks/workflows/README.md#get) - Get workflows
+* [create](docs/sdks/workflows/README.md#create) - Create workflow
+* [fetchById](docs/sdks/workflows/README.md#fetchbyid) - Get custom workflow
+* [delete](docs/sdks/workflows/README.md#delete) - Delete workflow
 
 ### [workflowTemplates](docs/sdks/workflowtemplates/README.md)
 
-* [getWorkflowTemplates](docs/sdks/workflowtemplates/README.md#getworkflowtemplates) - Get workflow templates
-* [createWorkflowTemplate](docs/sdks/workflowtemplates/README.md#createworkflowtemplate) - Create workflow template
-* [deleteWorkflowTemplate](docs/sdks/workflowtemplates/README.md#deleteworkflowtemplate) - Delete workflow template
+* [list](docs/sdks/workflowtemplates/README.md#list) - Get workflow templates
+* [create](docs/sdks/workflowtemplates/README.md#create) - Create workflow template
+* [delete](docs/sdks/workflowtemplates/README.md#delete) - Delete workflow template
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
@@ -1154,313 +1148,313 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 <summary>Available standalone functions</summary>
 
-- [`accessTokensDeleteToken`](docs/sdks/accesstokens/README.md#deletetoken) - Delete access token
-- [`accessTokensGetToken`](docs/sdks/accesstokens/README.md#gettoken) - Get access token
-- [`accessTokensGetTokens`](docs/sdks/accesstokens/README.md#gettokens) - List access tokens
-- [`accessTokensPatchToken`](docs/sdks/accesstokens/README.md#patchtoken) - Patch access token
-- [`accessTokensPostToken`](docs/sdks/accesstokens/README.md#posttoken) - Create access token
-- [`accessTokensResetToken`](docs/sdks/accesstokens/README.md#resettoken) - Reset access token
-- [`accountMembersBetaPatchMembers`](docs/sdks/accountmembersbeta/README.md#patchmembers) - Modify account members
-- [`accountMembersDeleteMember`](docs/sdks/accountmembers/README.md#deletemember) - Delete account member
-- [`accountMembersGetMember`](docs/sdks/accountmembers/README.md#getmember) - Get account member
-- [`accountMembersGetMembers`](docs/sdks/accountmembers/README.md#getmembers) - List account members
-- [`accountMembersPatchMember`](docs/sdks/accountmembers/README.md#patchmember) - Modify an account member
-- [`accountMembersPostMembers`](docs/sdks/accountmembers/README.md#postmembers) - Invite new members
-- [`accountMembersPostMemberTeams`](docs/sdks/accountmembers/README.md#postmemberteams) - Add a member to teams
-- [`accountUsageBetaGetDataExportEventsUsage`](docs/sdks/accountusagebeta/README.md#getdataexporteventsusage) - Get data export events usage
-- [`accountUsageBetaGetEvaluationsUsage`](docs/sdks/accountusagebeta/README.md#getevaluationsusage) - Get evaluations usage
-- [`accountUsageBetaGetEventsUsage`](docs/sdks/accountusagebeta/README.md#geteventsusage) - Get events usage
-- [`accountUsageBetaGetExperimentationKeysUsage`](docs/sdks/accountusagebeta/README.md#getexperimentationkeysusage) - Get experimentation keys usage
-- [`accountUsageBetaGetExperimentationUnitsUsage`](docs/sdks/accountusagebeta/README.md#getexperimentationunitsusage) - Get experimentation units usage
-- [`accountUsageBetaGetMauSdksByType`](docs/sdks/accountusagebeta/README.md#getmausdksbytype) - Get MAU SDKs by type
-- [`accountUsageBetaGetMauUsage`](docs/sdks/accountusagebeta/README.md#getmauusage) - Get MAU usage
-- [`accountUsageBetaGetMauUsageByCategory`](docs/sdks/accountusagebeta/README.md#getmauusagebycategory) - Get MAU usage by category
-- [`accountUsageBetaGetServiceConnectionUsage`](docs/sdks/accountusagebeta/README.md#getserviceconnectionusage) - Get service connection usage
-- [`accountUsageBetaGetStreamUsage`](docs/sdks/accountusagebeta/README.md#getstreamusage) - Get stream usage
-- [`accountUsageBetaGetStreamUsageBySDKVersion`](docs/sdks/accountusagebeta/README.md#getstreamusagebysdkversion) - Get stream usage by SDK version
-- [`accountUsageBetaGetStreamUsageSdkversion`](docs/sdks/accountusagebeta/README.md#getstreamusagesdkversion) - Get stream usage SDK versions
-- [`aiConfigsBetaDeleteAIConfig`](docs/sdks/aiconfigsbeta/README.md#deleteaiconfig) - Delete AI Config
-- [`aiConfigsBetaDeleteAIConfigVariation`](docs/sdks/aiconfigsbeta/README.md#deleteaiconfigvariation) - Delete AI Config variation
-- [`aiConfigsBetaDeleteModelConfig`](docs/sdks/aiconfigsbeta/README.md#deletemodelconfig) - Delete an AI model config
-- [`aiConfigsBetaDeleteRestrictedModels`](docs/sdks/aiconfigsbeta/README.md#deleterestrictedmodels) - Remove AI models from the restricted list
-- [`aiConfigsBetaGetAIConfig`](docs/sdks/aiconfigsbeta/README.md#getaiconfig) - Get AI Config
-- [`aiConfigsBetaGetAIConfigMetrics`](docs/sdks/aiconfigsbeta/README.md#getaiconfigmetrics) - Get AI Config metrics
-- [`aiConfigsBetaGetAIConfigMetricsByVariation`](docs/sdks/aiconfigsbeta/README.md#getaiconfigmetricsbyvariation) - Get AI Config metrics by variation
-- [`aiConfigsBetaGetAIConfigs`](docs/sdks/aiconfigsbeta/README.md#getaiconfigs) - List AI Configs
-- [`aiConfigsBetaGetAIConfigVariation`](docs/sdks/aiconfigsbeta/README.md#getaiconfigvariation) - Get AI Config variation
-- [`aiConfigsBetaGetModelConfig`](docs/sdks/aiconfigsbeta/README.md#getmodelconfig) - Get AI model config
-- [`aiConfigsBetaListModelConfigs`](docs/sdks/aiconfigsbeta/README.md#listmodelconfigs) - List AI model configs
-- [`aiConfigsBetaPatchAIConfig`](docs/sdks/aiconfigsbeta/README.md#patchaiconfig) - Update AI Config
-- [`aiConfigsBetaPatchAIConfigVariation`](docs/sdks/aiconfigsbeta/README.md#patchaiconfigvariation) - Update AI Config variation
-- [`aiConfigsBetaPostAIConfig`](docs/sdks/aiconfigsbeta/README.md#postaiconfig) - Create new AI Config
-- [`aiConfigsBetaPostAIConfigVariation`](docs/sdks/aiconfigsbeta/README.md#postaiconfigvariation) - Create AI Config variation
-- [`aiConfigsBetaPostModelConfig`](docs/sdks/aiconfigsbeta/README.md#postmodelconfig) - Create an AI model config
-- [`aiConfigsBetaPostRestrictedModels`](docs/sdks/aiconfigsbeta/README.md#postrestrictedmodels) - Add AI models to the restricted list
-- [`announcementsCreateAnnouncementPublic`](docs/sdks/announcements/README.md#createannouncementpublic) - Create an announcement
-- [`announcementsDeleteAnnouncementPublic`](docs/sdks/announcements/README.md#deleteannouncementpublic) - Delete an announcement
-- [`announcementsGetAnnouncementsPublic`](docs/sdks/announcements/README.md#getannouncementspublic) - Get announcements
-- [`announcementsUpdateAnnouncementPublic`](docs/sdks/announcements/README.md#updateannouncementpublic) - Update an announcement
-- [`applicationsBetaDeleteApplication`](docs/sdks/applicationsbeta/README.md#deleteapplication) - Delete application
-- [`applicationsBetaDeleteApplicationVersion`](docs/sdks/applicationsbeta/README.md#deleteapplicationversion) - Delete application version
-- [`applicationsBetaGetApplication`](docs/sdks/applicationsbeta/README.md#getapplication) - Get application by key
-- [`applicationsBetaGetApplications`](docs/sdks/applicationsbeta/README.md#getapplications) - Get applications
-- [`applicationsBetaGetApplicationVersions`](docs/sdks/applicationsbeta/README.md#getapplicationversions) - Get application versions by application key
-- [`applicationsBetaPatchApplication`](docs/sdks/applicationsbeta/README.md#patchapplication) - Update application
-- [`applicationsBetaPatchApplicationVersion`](docs/sdks/applicationsbeta/README.md#patchapplicationversion) - Update application version
-- [`approvalsBetaPatchApprovalRequest`](docs/sdks/approvalsbeta/README.md#patchapprovalrequest) - Update approval request
-- [`approvalsBetaPatchFlagConfigApprovalRequest`](docs/sdks/approvalsbeta/README.md#patchflagconfigapprovalrequest) - Update flag approval request
-- [`approvalsDeleteApprovalRequest`](docs/sdks/approvals/README.md#deleteapprovalrequest) - Delete approval request
-- [`approvalsDeleteApprovalRequestForFlag`](docs/sdks/approvals/README.md#deleteapprovalrequestforflag) - Delete approval request for a flag
-- [`approvalsGetApprovalForFlag`](docs/sdks/approvals/README.md#getapprovalforflag) - Get approval request for a flag
-- [`approvalsGetApprovalRequest`](docs/sdks/approvals/README.md#getapprovalrequest) - Get approval request
-- [`approvalsGetApprovalRequests`](docs/sdks/approvals/README.md#getapprovalrequests) - List approval requests
-- [`approvalsGetApprovalsForFlag`](docs/sdks/approvals/README.md#getapprovalsforflag) - List approval requests for a flag
-- [`approvalsPostApprovalRequest`](docs/sdks/approvals/README.md#postapprovalrequest) - Create approval request
-- [`approvalsPostApprovalRequestApply`](docs/sdks/approvals/README.md#postapprovalrequestapply) - Apply approval request
-- [`approvalsPostApprovalRequestApplyForFlag`](docs/sdks/approvals/README.md#postapprovalrequestapplyforflag) - Apply approval request for a flag
-- [`approvalsPostApprovalRequestForFlag`](docs/sdks/approvals/README.md#postapprovalrequestforflag) - Create approval request for a flag
-- [`approvalsPostApprovalRequestReview`](docs/sdks/approvals/README.md#postapprovalrequestreview) - Review approval request
-- [`approvalsPostApprovalRequestReviewForFlag`](docs/sdks/approvals/README.md#postapprovalrequestreviewforflag) - Review approval request for a flag
-- [`approvalsPostFlagCopyConfigApprovalRequest`](docs/sdks/approvals/README.md#postflagcopyconfigapprovalrequest) - Create approval request to copy flag configurations across environments
-- [`auditLogGetAuditLogEntries`](docs/sdks/auditlog/README.md#getauditlogentries) - List audit log entries
-- [`auditLogGetAuditLogEntry`](docs/sdks/auditlog/README.md#getauditlogentry) - Get audit log entry
-- [`auditLogPostAuditLogEntries`](docs/sdks/auditlog/README.md#postauditlogentries) - Search audit log entries
-- [`codeReferencesDeleteBranches`](docs/sdks/codereferences/README.md#deletebranches) - Delete branches
-- [`codeReferencesDeleteRepository`](docs/sdks/codereferences/README.md#deleterepository) - Delete repository
-- [`codeReferencesGetBranch`](docs/sdks/codereferences/README.md#getbranch) - Get branch
-- [`codeReferencesGetBranches`](docs/sdks/codereferences/README.md#getbranches) - List branches
-- [`codeReferencesGetExtinctions`](docs/sdks/codereferences/README.md#getextinctions) - List extinctions
-- [`codeReferencesGetRepositories`](docs/sdks/codereferences/README.md#getrepositories) - List repositories
-- [`codeReferencesGetRepository`](docs/sdks/codereferences/README.md#getrepository) - Get repository
-- [`codeReferencesGetRootStatistic`](docs/sdks/codereferences/README.md#getrootstatistic) - Get links to code reference repositories for each project
-- [`codeReferencesGetStatistics`](docs/sdks/codereferences/README.md#getstatistics) - Get code references statistics for flags
-- [`codeReferencesPatchRepository`](docs/sdks/codereferences/README.md#patchrepository) - Update repository
-- [`codeReferencesPostExtinction`](docs/sdks/codereferences/README.md#postextinction) - Create extinction
-- [`codeReferencesPostRepository`](docs/sdks/codereferences/README.md#postrepository) - Create repository
-- [`codeReferencesPutBranch`](docs/sdks/codereferences/README.md#putbranch) - Upsert branch
-- [`contextsDeleteContextInstances`](docs/sdks/contexts/README.md#deletecontextinstances) - Delete context instances
-- [`contextSettingsPutContextFlagSetting`](docs/sdks/contextsettings/README.md#putcontextflagsetting) - Update flag settings for context
-- [`contextsEvaluateContextInstance`](docs/sdks/contexts/README.md#evaluatecontextinstance) - Evaluate flags for context instance
-- [`contextsGetContextAttributeNames`](docs/sdks/contexts/README.md#getcontextattributenames) - Get context attribute names
-- [`contextsGetContextAttributeValues`](docs/sdks/contexts/README.md#getcontextattributevalues) - Get context attribute values
-- [`contextsGetContextInstances`](docs/sdks/contexts/README.md#getcontextinstances) - Get context instances
-- [`contextsGetContextKindsByProjectKey`](docs/sdks/contexts/README.md#getcontextkindsbyprojectkey) - Get context kinds
-- [`contextsGetContexts`](docs/sdks/contexts/README.md#getcontexts) - Get contexts
-- [`contextsPutContextKind`](docs/sdks/contexts/README.md#putcontextkind) - Create or update context kind
-- [`contextsSearchContextInstances`](docs/sdks/contexts/README.md#searchcontextinstances) - Search for context instances
-- [`contextsSearchContexts`](docs/sdks/contexts/README.md#searchcontexts) - Search for contexts
-- [`customRolesDeleteCustomRole`](docs/sdks/customroles/README.md#deletecustomrole) - Delete custom role
-- [`customRolesGetCustomRole`](docs/sdks/customroles/README.md#getcustomrole) - Get custom role
-- [`customRolesGetCustomRoles`](docs/sdks/customroles/README.md#getcustomroles) - List custom roles
-- [`customRolesPatchCustomRole`](docs/sdks/customroles/README.md#patchcustomrole) - Update custom role
-- [`customRolesPostCustomRole`](docs/sdks/customroles/README.md#postcustomrole) - Create custom role
-- [`dataExportDestinationsDeleteDestination`](docs/sdks/dataexportdestinations/README.md#deletedestination) - Delete Data Export destination
-- [`dataExportDestinationsGetDestination`](docs/sdks/dataexportdestinations/README.md#getdestination) - Get destination
-- [`dataExportDestinationsGetDestinations`](docs/sdks/dataexportdestinations/README.md#getdestinations) - List destinations
-- [`dataExportDestinationsPatchDestination`](docs/sdks/dataexportdestinations/README.md#patchdestination) - Update Data Export destination
-- [`dataExportDestinationsPostDestination`](docs/sdks/dataexportdestinations/README.md#postdestination) - Create Data Export destination
-- [`dataExportDestinationsPostGenerateWarehouseDestinationKeyPair`](docs/sdks/dataexportdestinations/README.md#postgeneratewarehousedestinationkeypair) - Generate Snowflake destination key pair
-- [`environmentsDeleteEnvironment`](docs/sdks/environments/README.md#deleteenvironment) - Delete environment
-- [`environmentsGetEnvironment`](docs/sdks/environments/README.md#getenvironment) - Get environment
-- [`environmentsGetEnvironmentsByProject`](docs/sdks/environments/README.md#getenvironmentsbyproject) - List environments
-- [`environmentsPatchEnvironment`](docs/sdks/environments/README.md#patchenvironment) - Update environment
-- [`environmentsPostEnvironment`](docs/sdks/environments/README.md#postenvironment) - Create environment
-- [`environmentsResetEnvironmentMobileKey`](docs/sdks/environments/README.md#resetenvironmentmobilekey) - Reset environment mobile SDK key
-- [`environmentsResetEnvironmentSDKKey`](docs/sdks/environments/README.md#resetenvironmentsdkkey) - Reset environment SDK key
-- [`experimentsCreateExperiment`](docs/sdks/experiments/README.md#createexperiment) - Create experiment
+- [`accessTokensCreate`](docs/sdks/accesstokens/README.md#create) - Create access token
+- [`accessTokensGet`](docs/sdks/accesstokens/README.md#get) - Get access token
+- [`accessTokensList`](docs/sdks/accesstokens/README.md#list) - List access tokens
+- [`accessTokensPatch`](docs/sdks/accesstokens/README.md#patch) - Patch access token
+- [`accessTokensReset`](docs/sdks/accesstokens/README.md#reset) - Reset access token
+- [`accountMembersAddToTeam`](docs/sdks/accountmembers/README.md#addtoteam) - Add a member to teams
+- [`accountMembersDelete`](docs/sdks/accountmembers/README.md#delete) - Delete account member
+- [`accountMembersGet`](docs/sdks/accountmembers/README.md#get) - Get account member
+- [`accountMembersInvite`](docs/sdks/accountmembers/README.md#invite) - Invite new members
+- [`accountMembersList`](docs/sdks/accountmembers/README.md#list) - List account members
+- [`accountMembersPatch`](docs/sdks/accountmembers/README.md#patch) - Modify account members
+- [`accountMembersUpdate`](docs/sdks/accountmembers/README.md#update) - Modify an account member
+- [`accountUsageBetaRetrieveStreamUsage`](docs/sdks/accountusagebeta/README.md#retrievestreamusage) - Get stream usage by SDK version
+- [`accountUsageGetDataExportEvents`](docs/sdks/accountusage/README.md#getdataexportevents) - Get data export events usage
+- [`accountUsageGetEvaluations`](docs/sdks/accountusage/README.md#getevaluations) - Get evaluations usage
+- [`accountUsageGetEventsUsage`](docs/sdks/accountusage/README.md#geteventsusage) - Get events usage
+- [`accountUsageGetExperimentationKeys`](docs/sdks/accountusage/README.md#getexperimentationkeys) - Get experimentation keys usage
+- [`accountUsageGetExperimentationUnits`](docs/sdks/accountusage/README.md#getexperimentationunits) - Get experimentation units usage
+- [`accountUsageGetMau`](docs/sdks/accountusage/README.md#getmau) - Get MAU usage
+- [`accountUsageGetMauByCategory`](docs/sdks/accountusage/README.md#getmaubycategory) - Get MAU usage by category
+- [`accountUsageGetMauSdks`](docs/sdks/accountusage/README.md#getmausdks) - Get MAU SDKs by type
+- [`accountUsageGetServiceConnectionUsage`](docs/sdks/accountusage/README.md#getserviceconnectionusage) - Get service connection usage
+- [`accountUsageGetStreamUsage`](docs/sdks/accountusage/README.md#getstreamusage) - Get stream usage
+- [`accountUsageGetStreamUsageSDKVersions`](docs/sdks/accountusage/README.md#getstreamusagesdkversions) - Get stream usage SDK versions
+- [`aiConfigsAddRestrictedModels`](docs/sdks/aiconfigs/README.md#addrestrictedmodels) - Add AI models to the restricted list
+- [`aiConfigsCreate`](docs/sdks/aiconfigs/README.md#create) - Create new AI Config
+- [`aiConfigsCreateModelConfig`](docs/sdks/aiconfigs/README.md#createmodelconfig) - Create an AI model config
+- [`aiConfigsCreateVariation`](docs/sdks/aiconfigs/README.md#createvariation) - Create AI Config variation
+- [`aiConfigsDelete`](docs/sdks/aiconfigs/README.md#delete) - Delete AI Config
+- [`aiConfigsDeleteModelConfig`](docs/sdks/aiconfigs/README.md#deletemodelconfig) - Delete an AI model config
+- [`aiConfigsDeleteRestrictedModels`](docs/sdks/aiconfigs/README.md#deleterestrictedmodels) - Remove AI models from the restricted list
+- [`aiConfigsDeleteVariation`](docs/sdks/aiconfigs/README.md#deletevariation) - Delete AI Config variation
+- [`aiConfigsGet`](docs/sdks/aiconfigs/README.md#get) - Get AI Config
+- [`aiConfigsGetMetrics`](docs/sdks/aiconfigs/README.md#getmetrics) - Get AI Config metrics
+- [`aiConfigsGetMetricsByVariation`](docs/sdks/aiconfigs/README.md#getmetricsbyvariation) - Get AI Config metrics by variation
+- [`aiConfigsGetModelConfig`](docs/sdks/aiconfigs/README.md#getmodelconfig) - Get AI model config
+- [`aiConfigsGetVariation`](docs/sdks/aiconfigs/README.md#getvariation) - Get AI Config variation
+- [`aiConfigsList`](docs/sdks/aiconfigs/README.md#list) - List AI Configs
+- [`aiConfigsListModels`](docs/sdks/aiconfigs/README.md#listmodels) - List AI model configs
+- [`aiConfigsUpdate`](docs/sdks/aiconfigs/README.md#update) - Update AI Config
+- [`aiConfigsUpdateVariation`](docs/sdks/aiconfigs/README.md#updatevariation) - Update AI Config variation
+- [`announcementsCreate`](docs/sdks/announcements/README.md#create) - Create an announcement
+- [`announcementsDelete`](docs/sdks/announcements/README.md#delete) - Delete an announcement
+- [`announcementsList`](docs/sdks/announcements/README.md#list) - Get announcements
+- [`announcementsUpdate`](docs/sdks/announcements/README.md#update) - Update an announcement
+- [`applicationsBetaDeleteVersion`](docs/sdks/applicationsbeta/README.md#deleteversion) - Delete application version
+- [`applicationsBetaFetch`](docs/sdks/applicationsbeta/README.md#fetch) - Get applications
+- [`applicationsDelete`](docs/sdks/applications/README.md#delete) - Delete application
+- [`applicationsGet`](docs/sdks/applications/README.md#get) - Get application by key
+- [`applicationsGetVersions`](docs/sdks/applications/README.md#getversions) - Get application versions by application key
+- [`applicationsUpdate`](docs/sdks/applications/README.md#update) - Update application
+- [`applicationsUpdateVersion`](docs/sdks/applications/README.md#updateversion) - Update application version
+- [`approvalsApply`](docs/sdks/approvals/README.md#apply) - Apply approval request
+- [`approvalsApplyRequest`](docs/sdks/approvals/README.md#applyrequest) - Apply approval request for a flag
+- [`approvalsCreate`](docs/sdks/approvals/README.md#create) - Create approval request
+- [`approvalsCreateCopyConfigRequest`](docs/sdks/approvals/README.md#createcopyconfigrequest) - Create approval request to copy flag configurations across environments
+- [`approvalsCreateRequest`](docs/sdks/approvals/README.md#createrequest) - Create approval request for a flag
+- [`approvalsDeleteFlagRequest`](docs/sdks/approvals/README.md#deleteflagrequest) - Delete approval request for a flag
+- [`approvalsDeleteRequest`](docs/sdks/approvals/README.md#deleterequest) - Delete approval request
+- [`approvalsGetForFlag`](docs/sdks/approvals/README.md#getforflag) - Get approval request for a flag
+- [`approvalsGetRequest`](docs/sdks/approvals/README.md#getrequest) - Get approval request
+- [`approvalsList`](docs/sdks/approvals/README.md#list) - List approval requests
+- [`approvalsListForFlag`](docs/sdks/approvals/README.md#listforflag) - List approval requests for a flag
+- [`approvalsPatchFlagConfigApprovalRequest`](docs/sdks/approvals/README.md#patchflagconfigapprovalrequest) - Update flag approval request
+- [`approvalsPatchRequest`](docs/sdks/approvals/README.md#patchrequest) - Update approval request
+- [`approvalsReviewFlagRequest`](docs/sdks/approvals/README.md#reviewflagrequest) - Review approval request for a flag
+- [`approvalsReviewRequest`](docs/sdks/approvals/README.md#reviewrequest) - Review approval request
+- [`auditLogGetEntry`](docs/sdks/auditlog/README.md#getentry) - Get audit log entry
+- [`auditLogListEntries`](docs/sdks/auditlog/README.md#listentries) - List audit log entries
+- [`auditLogSearchEntries`](docs/sdks/auditlog/README.md#searchentries) - Search audit log entries
+- [`codeReferencesCreateExtinctionEvent`](docs/sdks/codereferences2/README.md#createextinctionevent) - Create extinction
+- [`codeReferencesCreateRepository`](docs/sdks/codereferences2/README.md#createrepository) - Create repository
+- [`codeReferencesDeleteBranches`](docs/sdks/codereferences2/README.md#deletebranches) - Delete branches
+- [`codeReferencesDeleteRepository`](docs/sdks/codereferences2/README.md#deleterepository) - Delete repository
+- [`codeReferencesGet`](docs/sdks/codereferences2/README.md#get) - Get repository
+- [`codeReferencesGetBranch`](docs/sdks/codereferences2/README.md#getbranch) - Get branch
+- [`codeReferencesGetBranches`](docs/sdks/codereferences2/README.md#getbranches) - List branches
+- [`codeReferencesGetLinks`](docs/sdks/codereferences2/README.md#getlinks) - Get links to code reference repositories for each project
+- [`codeReferencesGetStatistics`](docs/sdks/codereferences2/README.md#getstatistics) - Get code references statistics for flags
+- [`codereferencesListExtinctions`](docs/sdks/codereferences1/README.md#listextinctions) - List extinctions
+- [`codeReferencesListRepositories`](docs/sdks/codereferences2/README.md#listrepositories) - List repositories
+- [`codeReferencesPutBranch`](docs/sdks/codereferences2/README.md#putbranch) - Upsert branch
+- [`codeReferencesUpdate`](docs/sdks/codereferences2/README.md#update) - Update repository
+- [`contextsDeleteInstances`](docs/sdks/contexts/README.md#deleteinstances) - Delete context instances
+- [`contextSettingsUpdateFlag`](docs/sdks/contextsettings/README.md#updateflag) - Update flag settings for context
+- [`contextsEvaluateFlags`](docs/sdks/contexts/README.md#evaluateflags) - Evaluate flags for context instance
+- [`contextsGet`](docs/sdks/contexts/README.md#get) - Get contexts
+- [`contextsGetAttributes`](docs/sdks/contexts/README.md#getattributes) - Get context attribute names
+- [`contextsGetAttributeValues`](docs/sdks/contexts/README.md#getattributevalues) - Get context attribute values
+- [`contextsGetInstances`](docs/sdks/contexts/README.md#getinstances) - Get context instances
+- [`contextsListKinds`](docs/sdks/contexts/README.md#listkinds) - Get context kinds
+- [`contextsPerformSearch`](docs/sdks/contexts/README.md#performsearch) - Search for contexts
+- [`contextsPutKind`](docs/sdks/contexts/README.md#putkind) - Create or update context kind
+- [`contextsSearch`](docs/sdks/contexts/README.md#search) - Search for context instances
+- [`customRolesCreate`](docs/sdks/customroles/README.md#create) - Create custom role
+- [`customRolesDelete`](docs/sdks/customroles/README.md#delete) - Delete custom role
+- [`customRolesGet`](docs/sdks/customroles/README.md#get) - Get custom role
+- [`customRolesList`](docs/sdks/customroles/README.md#list) - List custom roles
+- [`customRolesPatch`](docs/sdks/customroles/README.md#patch) - Update custom role
+- [`dataExportDestinationsCreate`](docs/sdks/dataexportdestinations/README.md#create) - Create Data Export destination
+- [`dataExportDestinationsDelete`](docs/sdks/dataexportdestinations/README.md#delete) - Delete Data Export destination
+- [`dataExportDestinationsGenerateWarehouseDestinationKeyPair`](docs/sdks/dataexportdestinations/README.md#generatewarehousedestinationkeypair) - Generate Snowflake destination key pair
+- [`dataExportDestinationsGet`](docs/sdks/dataexportdestinations/README.md#get) - Get destination
+- [`dataExportDestinationsList`](docs/sdks/dataexportdestinations/README.md#list) - List destinations
+- [`dataExportDestinationsUpdate`](docs/sdks/dataexportdestinations/README.md#update) - Update Data Export destination
+- [`environmentsCreate`](docs/sdks/environments/README.md#create) - Create environment
+- [`environmentsDelete`](docs/sdks/environments/README.md#delete) - Delete environment
+- [`environmentsGet`](docs/sdks/environments/README.md#get) - Get environment
+- [`environmentsListByProject`](docs/sdks/environments/README.md#listbyproject) - List environments
+- [`environmentsPatch`](docs/sdks/environments/README.md#patch) - Update environment
+- [`environmentsResetMobileKey`](docs/sdks/environments/README.md#resetmobilekey) - Reset environment mobile SDK key
+- [`environmentsResetSDKKey`](docs/sdks/environments/README.md#resetsdkkey) - Reset environment SDK key
+- [`experimentsCreate`](docs/sdks/experiments/README.md#create) - Create experiment
 - [`experimentsCreateIteration`](docs/sdks/experiments/README.md#createiteration) - Create iteration
-- [`experimentsGetExperiment`](docs/sdks/experiments/README.md#getexperiment) - Get experiment
-- [`experimentsGetExperimentationSettings`](docs/sdks/experiments/README.md#getexperimentationsettings) - Get experimentation settings
-- [`experimentsGetExperiments`](docs/sdks/experiments/README.md#getexperiments) - Get experiments
-- [`experimentsPatchExperiment`](docs/sdks/experiments/README.md#patchexperiment) - Patch experiment
-- [`experimentsPutExperimentationSettings`](docs/sdks/experiments/README.md#putexperimentationsettings) - Update experimentation settings
-- [`featureFlagsBetaGetDependentFlags`](docs/sdks/featureflagsbeta/README.md#getdependentflags) - List dependent feature flags
-- [`featureFlagsBetaGetDependentFlagsByEnv`](docs/sdks/featureflagsbeta/README.md#getdependentflagsbyenv) - List dependent feature flags by environment
-- [`featureFlagsCopyFeatureFlag`](docs/sdks/featureflags/README.md#copyfeatureflag) - Copy feature flag
-- [`featureFlagsDeleteFeatureFlag`](docs/sdks/featureflags/README.md#deletefeatureflag) - Delete feature flag
-- [`featureFlagsGetExpiringContextTargets`](docs/sdks/featureflags/README.md#getexpiringcontexttargets) - Get expiring context targets for feature flag
+- [`experimentsGet`](docs/sdks/experiments/README.md#get) - Get experiment
+- [`experimentsGetSettings`](docs/sdks/experiments/README.md#getsettings) - Get experimentation settings
+- [`experimentsList`](docs/sdks/experiments/README.md#list) - Get experiments
+- [`experimentsPatch`](docs/sdks/experiments/README.md#patch) - Patch experiment
+- [`experimentsUpdateSettings`](docs/sdks/experiments/README.md#updatesettings) - Update experimentation settings
+- [`featureFlagsCopy`](docs/sdks/featureflags/README.md#copy) - Copy feature flag
+- [`featureFlagsCreate`](docs/sdks/featureflags/README.md#create) - Create a feature flag
+- [`featureFlagsDelete`](docs/sdks/featureflags/README.md#delete) - Delete feature flag
+- [`featureFlagsGet`](docs/sdks/featureflags/README.md#get) - Get feature flag
+- [`featureFlagsGetDependentByEnv`](docs/sdks/featureflags/README.md#getdependentbyenv) - List dependent feature flags by environment
+- [`featureFlagsGetExpiringTargets`](docs/sdks/featureflags/README.md#getexpiringtargets) - Get expiring context targets for feature flag
 - [`featureFlagsGetExpiringUserTargets`](docs/sdks/featureflags/README.md#getexpiringusertargets) - Get expiring user targets for feature flag
-- [`featureFlagsGetFeatureFlag`](docs/sdks/featureflags/README.md#getfeatureflag) - Get feature flag
-- [`featureFlagsGetFeatureFlags`](docs/sdks/featureflags/README.md#getfeatureflags) - List feature flags
-- [`featureFlagsGetFeatureFlagStatus`](docs/sdks/featureflags/README.md#getfeatureflagstatus) - Get feature flag status
-- [`featureFlagsGetFeatureFlagStatusAcrossEnvironments`](docs/sdks/featureflags/README.md#getfeatureflagstatusacrossenvironments) - Get flag status across environments
-- [`featureFlagsGetFeatureFlagStatuses`](docs/sdks/featureflags/README.md#getfeatureflagstatuses) - List feature flag statuses
-- [`featureFlagsPatchExpiringTargets`](docs/sdks/featureflags/README.md#patchexpiringtargets) - Update expiring context targets on feature flag
+- [`featureFlagsGetMigrationSafetyIssues`](docs/sdks/featureflags/README.md#getmigrationsafetyissues) - Get migration safety issues
+- [`featureFlagsGetStatus`](docs/sdks/featureflags/README.md#getstatus) - Get flag status across environments
+- [`featureFlagsList`](docs/sdks/featureflags/README.md#list) - List feature flags
+- [`featureFlagsListDependentFlags`](docs/sdks/featureflags/README.md#listdependentflags) - List dependent feature flags
+- [`featureFlagsListStatuses`](docs/sdks/featureflags/README.md#liststatuses) - List feature flag statuses
+- [`featureFlagsPatch`](docs/sdks/featureflags/README.md#patch) - Update feature flag
 - [`featureFlagsPatchExpiringUserTargets`](docs/sdks/featureflags/README.md#patchexpiringusertargets) - Update expiring user targets on feature flag
-- [`featureFlagsPatchFeatureFlag`](docs/sdks/featureflags/README.md#patchfeatureflag) - Update feature flag
-- [`featureFlagsPostFeatureFlag`](docs/sdks/featureflags/README.md#postfeatureflag) - Create a feature flag
-- [`featureFlagsPostMigrationSafetyIssues`](docs/sdks/featureflags/README.md#postmigrationsafetyissues) - Get migration safety issues
-- [`flagImportConfigurationsBetaCreateFlagImportConfiguration`](docs/sdks/flagimportconfigurationsbeta/README.md#createflagimportconfiguration) - Create a flag import configuration
-- [`flagImportConfigurationsBetaDeleteFlagImportConfiguration`](docs/sdks/flagimportconfigurationsbeta/README.md#deleteflagimportconfiguration) - Delete a flag import configuration
-- [`flagImportConfigurationsBetaGetFlagImportConfiguration`](docs/sdks/flagimportconfigurationsbeta/README.md#getflagimportconfiguration) - Get a single flag import configuration
-- [`flagImportConfigurationsBetaGetFlagImportConfigurations`](docs/sdks/flagimportconfigurationsbeta/README.md#getflagimportconfigurations) - List all flag import configurations
-- [`flagImportConfigurationsBetaPatchFlagImportConfiguration`](docs/sdks/flagimportconfigurationsbeta/README.md#patchflagimportconfiguration) - Update a flag import configuration
-- [`flagImportConfigurationsBetaTriggerFlagImportJob`](docs/sdks/flagimportconfigurationsbeta/README.md#triggerflagimportjob) - Trigger a single flag import run
-- [`flagLinksBetaCreateFlagLink`](docs/sdks/flaglinksbeta/README.md#createflaglink) - Create flag link
-- [`flagLinksBetaDeleteFlagLink`](docs/sdks/flaglinksbeta/README.md#deleteflaglink) - Delete flag link
-- [`flagLinksBetaGetFlagLinks`](docs/sdks/flaglinksbeta/README.md#getflaglinks) - List flag links
-- [`flagLinksBetaUpdateFlagLink`](docs/sdks/flaglinksbeta/README.md#updateflaglink) - Update flag link
-- [`flagTriggersCreateTriggerWorkflow`](docs/sdks/flagtriggers/README.md#createtriggerworkflow) - Create flag trigger
-- [`flagTriggersDeleteTriggerWorkflow`](docs/sdks/flagtriggers/README.md#deletetriggerworkflow) - Delete flag trigger
-- [`flagTriggersGetTriggerWorkflowById`](docs/sdks/flagtriggers/README.md#gettriggerworkflowbyid) - Get flag trigger by ID
-- [`flagTriggersGetTriggerWorkflows`](docs/sdks/flagtriggers/README.md#gettriggerworkflows) - List flag triggers
-- [`flagTriggersPatchTriggerWorkflow`](docs/sdks/flagtriggers/README.md#patchtriggerworkflow) - Update flag trigger
-- [`followFlagsDeleteFlagFollower`](docs/sdks/followflags/README.md#deleteflagfollower) - Remove a member as a follower of a flag in a project and environment
-- [`followFlagsGetFlagFollowers`](docs/sdks/followflags/README.md#getflagfollowers) - Get followers of a flag in a project and environment
-- [`followFlagsGetFollowersByProjEnv`](docs/sdks/followflags/README.md#getfollowersbyprojenv) - Get followers of all flags in a given project and environment
-- [`followFlagsPutFlagFollower`](docs/sdks/followflags/README.md#putflagfollower) - Add a member as a follower of a flag in a project and environment
-- [`holdoutsBetaGetAllHoldouts`](docs/sdks/holdoutsbeta/README.md#getallholdouts) - Get all holdouts
-- [`holdoutsBetaGetHoldout`](docs/sdks/holdoutsbeta/README.md#getholdout) - Get holdout
-- [`holdoutsBetaGetHoldoutById`](docs/sdks/holdoutsbeta/README.md#getholdoutbyid) - Get Holdout by Id
-- [`holdoutsBetaPatchHoldout`](docs/sdks/holdoutsbeta/README.md#patchholdout) - Patch holdout
-- [`holdoutsBetaPostHoldout`](docs/sdks/holdoutsbeta/README.md#postholdout) - Create holdout
-- [`insightsChartsBetaGetDeploymentFrequencyChart`](docs/sdks/insightschartsbeta/README.md#getdeploymentfrequencychart) - Get deployment frequency chart data
-- [`insightsChartsBetaGetFlagStatusChart`](docs/sdks/insightschartsbeta/README.md#getflagstatuschart) - Get flag status chart data
-- [`insightsChartsBetaGetLeadTimeChart`](docs/sdks/insightschartsbeta/README.md#getleadtimechart) - Get lead time chart data
-- [`insightsChartsBetaGetReleaseFrequencyChart`](docs/sdks/insightschartsbeta/README.md#getreleasefrequencychart) - Get release frequency chart data
-- [`insightsChartsBetaGetStaleFlagsChart`](docs/sdks/insightschartsbeta/README.md#getstaleflagschart) - Get stale flags chart data
-- [`insightsDeploymentsBetaCreateDeploymentEvent`](docs/sdks/insightsdeploymentsbeta/README.md#createdeploymentevent) - Create deployment event
-- [`insightsDeploymentsBetaGetDeployment`](docs/sdks/insightsdeploymentsbeta/README.md#getdeployment) - Get deployment
-- [`insightsDeploymentsBetaGetDeployments`](docs/sdks/insightsdeploymentsbeta/README.md#getdeployments) - List deployments
-- [`insightsDeploymentsBetaUpdateDeployment`](docs/sdks/insightsdeploymentsbeta/README.md#updatedeployment) - Update deployment
-- [`insightsFlagEventsBetaGetFlagEvents`](docs/sdks/insightsflageventsbeta/README.md#getflagevents) - List flag events
-- [`insightsPullRequestsBetaGetPullRequests`](docs/sdks/insightspullrequestsbeta/README.md#getpullrequests) - List pull requests
-- [`insightsRepositoriesBetaAssociateRepositoriesAndProjects`](docs/sdks/insightsrepositoriesbeta/README.md#associaterepositoriesandprojects) - Associate repositories with projects
-- [`insightsRepositoriesBetaDeleteRepositoryProject`](docs/sdks/insightsrepositoriesbeta/README.md#deleterepositoryproject) - Remove repository project association
-- [`insightsRepositoriesBetaGetInsightsRepositories`](docs/sdks/insightsrepositoriesbeta/README.md#getinsightsrepositories) - List repositories
-- [`insightsScoresBetaCreateInsightGroup`](docs/sdks/insightsscoresbeta/README.md#createinsightgroup) - Create insight group
-- [`insightsScoresBetaDeleteInsightGroup`](docs/sdks/insightsscoresbeta/README.md#deleteinsightgroup) - Delete insight group
-- [`insightsScoresBetaGetInsightGroup`](docs/sdks/insightsscoresbeta/README.md#getinsightgroup) - Get insight group
-- [`insightsScoresBetaGetInsightGroups`](docs/sdks/insightsscoresbeta/README.md#getinsightgroups) - List insight groups
-- [`insightsScoresBetaGetInsightsScores`](docs/sdks/insightsscoresbeta/README.md#getinsightsscores) - Get insight scores
-- [`insightsScoresBetaPatchInsightGroup`](docs/sdks/insightsscoresbeta/README.md#patchinsightgroup) - Patch insight group
-- [`integrationAuditLogSubscriptionsCreateSubscription`](docs/sdks/integrationauditlogsubscriptions/README.md#createsubscription) - Create audit log subscription
-- [`integrationAuditLogSubscriptionsDeleteSubscription`](docs/sdks/integrationauditlogsubscriptions/README.md#deletesubscription) - Delete audit log subscription
-- [`integrationAuditLogSubscriptionsGetSubscriptionByID`](docs/sdks/integrationauditlogsubscriptions/README.md#getsubscriptionbyid) - Get audit log subscription by ID
-- [`integrationAuditLogSubscriptionsGetSubscriptions`](docs/sdks/integrationauditlogsubscriptions/README.md#getsubscriptions) - Get audit log subscriptions by integration
-- [`integrationAuditLogSubscriptionsUpdateSubscription`](docs/sdks/integrationauditlogsubscriptions/README.md#updatesubscription) - Update audit log subscription
-- [`integrationDeliveryConfigurationsBetaCreateIntegrationDeliveryConfiguration`](docs/sdks/integrationdeliveryconfigurationsbeta/README.md#createintegrationdeliveryconfiguration) - Create delivery configuration
-- [`integrationDeliveryConfigurationsBetaDeleteIntegrationDeliveryConfiguration`](docs/sdks/integrationdeliveryconfigurationsbeta/README.md#deleteintegrationdeliveryconfiguration) - Delete delivery configuration
-- [`integrationDeliveryConfigurationsBetaGetIntegrationDeliveryConfigurationByEnvironment`](docs/sdks/integrationdeliveryconfigurationsbeta/README.md#getintegrationdeliveryconfigurationbyenvironment) - Get delivery configurations by environment
-- [`integrationDeliveryConfigurationsBetaGetIntegrationDeliveryConfigurationById`](docs/sdks/integrationdeliveryconfigurationsbeta/README.md#getintegrationdeliveryconfigurationbyid) - Get delivery configuration by ID
-- [`integrationDeliveryConfigurationsBetaGetIntegrationDeliveryConfigurations`](docs/sdks/integrationdeliveryconfigurationsbeta/README.md#getintegrationdeliveryconfigurations) - List all delivery configurations
-- [`integrationDeliveryConfigurationsBetaPatchIntegrationDeliveryConfiguration`](docs/sdks/integrationdeliveryconfigurationsbeta/README.md#patchintegrationdeliveryconfiguration) - Update delivery configuration
-- [`integrationDeliveryConfigurationsBetaValidateIntegrationDeliveryConfiguration`](docs/sdks/integrationdeliveryconfigurationsbeta/README.md#validateintegrationdeliveryconfiguration) - Validate delivery configuration
-- [`integrationsBetaCreateIntegrationConfiguration`](docs/sdks/integrationsbeta/README.md#createintegrationconfiguration) - Create integration configuration
-- [`integrationsBetaDeleteIntegrationConfiguration`](docs/sdks/integrationsbeta/README.md#deleteintegrationconfiguration) - Delete integration configuration
-- [`integrationsBetaGetAllIntegrationConfigurations`](docs/sdks/integrationsbeta/README.md#getallintegrationconfigurations) - Get all configurations for the integration
-- [`integrationsBetaGetIntegrationConfiguration`](docs/sdks/integrationsbeta/README.md#getintegrationconfiguration) - Get an integration configuration
-- [`integrationsBetaUpdateIntegrationConfiguration`](docs/sdks/integrationsbeta/README.md#updateintegrationconfiguration) - Update integration configuration
-- [`layersCreateLayer`](docs/sdks/layers/README.md#createlayer) - Create layer
-- [`layersGetLayers`](docs/sdks/layers/README.md#getlayers) - Get layers
-- [`layersUpdateLayer`](docs/sdks/layers/README.md#updatelayer) - Update layer
-- [`metricsBetaCreateMetricGroup`](docs/sdks/metricsbeta/README.md#createmetricgroup) - Create metric group
-- [`metricsBetaDeleteMetricGroup`](docs/sdks/metricsbeta/README.md#deletemetricgroup) - Delete metric group
-- [`metricsBetaGetMetricGroup`](docs/sdks/metricsbeta/README.md#getmetricgroup) - Get metric group
-- [`metricsBetaGetMetricGroups`](docs/sdks/metricsbeta/README.md#getmetricgroups) - List metric groups
-- [`metricsBetaPatchMetricGroup`](docs/sdks/metricsbeta/README.md#patchmetricgroup) - Patch metric group
-- [`metricsDeleteMetric`](docs/sdks/metrics/README.md#deletemetric) - Delete metric
-- [`metricsGetMetric`](docs/sdks/metrics/README.md#getmetric) - Get metric
-- [`metricsGetMetrics`](docs/sdks/metrics/README.md#getmetrics) - List metrics
-- [`metricsPatchMetric`](docs/sdks/metrics/README.md#patchmetric) - Update metric
-- [`metricsPostMetric`](docs/sdks/metrics/README.md#postmetric) - Create metric
-- [`oAuth2ClientsCreateOAuth2Client`](docs/sdks/oauth2clients/README.md#createoauth2client) - Create a LaunchDarkly OAuth 2.0 client
-- [`oAuth2ClientsDeleteOAuthClient`](docs/sdks/oauth2clients/README.md#deleteoauthclient) - Delete OAuth 2.0 client
-- [`oAuth2ClientsGetOAuthClientById`](docs/sdks/oauth2clients/README.md#getoauthclientbyid) - Get client by ID
-- [`oAuth2ClientsGetOAuthClients`](docs/sdks/oauth2clients/README.md#getoauthclients) - Get clients
-- [`oAuth2ClientsPatchOAuthClient`](docs/sdks/oauth2clients/README.md#patchoauthclient) - Patch client by ID
+- [`featureFlagsStatus`](docs/sdks/featureflags/README.md#status) - Get feature flag status
+- [`featureFlagsUpdateExpiringTargets`](docs/sdks/featureflags/README.md#updateexpiringtargets) - Update expiring context targets on feature flag
+- [`flagImportConfigurationsCreate`](docs/sdks/flagimportconfigurations/README.md#create) - Create a flag import configuration
+- [`flagImportConfigurationsDelete`](docs/sdks/flagimportconfigurations/README.md#delete) - Delete a flag import configuration
+- [`flagImportConfigurationsGet`](docs/sdks/flagimportconfigurations/README.md#get) - Get a single flag import configuration
+- [`flagImportConfigurationsList`](docs/sdks/flagimportconfigurations/README.md#list) - List all flag import configurations
+- [`flagImportConfigurationsTriggerJob`](docs/sdks/flagimportconfigurations/README.md#triggerjob) - Trigger a single flag import run
+- [`flagImportConfigurationsUpdate`](docs/sdks/flagimportconfigurations/README.md#update) - Update a flag import configuration
+- [`flagLinksCreate`](docs/sdks/flaglinks/README.md#create) - Create flag link
+- [`flagLinksDelete`](docs/sdks/flaglinks/README.md#delete) - Delete flag link
+- [`flagLinksList`](docs/sdks/flaglinks/README.md#list) - List flag links
+- [`flagLinksUpdate`](docs/sdks/flaglinks/README.md#update) - Update flag link
+- [`flagTriggersCreate`](docs/sdks/flagtriggers/README.md#create) - Create flag trigger
+- [`flagTriggersDelete`](docs/sdks/flagtriggers/README.md#delete) - Delete flag trigger
+- [`flagTriggersGetById`](docs/sdks/flagtriggers/README.md#getbyid) - Get flag trigger by ID
+- [`flagTriggersList`](docs/sdks/flagtriggers/README.md#list) - List flag triggers
+- [`flagTriggersPatchWorkflow`](docs/sdks/flagtriggers/README.md#patchworkflow) - Update flag trigger
+- [`followFlagsAddFollower`](docs/sdks/followflags/README.md#addfollower) - Add a member as a follower of a flag in a project and environment
+- [`followFlagsDeleteFollower`](docs/sdks/followflags/README.md#deletefollower) - Remove a member as a follower of a flag in a project and environment
+- [`followFlagsGetFollowers`](docs/sdks/followflags/README.md#getfollowers) - Get followers of all flags in a given project and environment
+- [`followFlagsListFollowers`](docs/sdks/followflags/README.md#listfollowers) - Get followers of a flag in a project and environment
+- [`holdoutsCreate`](docs/sdks/holdouts/README.md#create) - Create holdout
+- [`holdoutsGet`](docs/sdks/holdouts/README.md#get) - Get holdout
+- [`holdoutsGetAll`](docs/sdks/holdouts/README.md#getall) - Get all holdouts
+- [`holdoutsGetById`](docs/sdks/holdouts/README.md#getbyid) - Get Holdout by Id
+- [`holdoutsUpdate`](docs/sdks/holdouts/README.md#update) - Patch holdout
+- [`insightsChartsGetDeploymentFrequencyChart`](docs/sdks/insightscharts/README.md#getdeploymentfrequencychart) - Get deployment frequency chart data
+- [`insightsChartsGetFlagStatus`](docs/sdks/insightscharts/README.md#getflagstatus) - Get flag status chart data
+- [`insightsChartsGetLeadTime`](docs/sdks/insightscharts/README.md#getleadtime) - Get lead time chart data
+- [`insightsChartsGetReleaseFrequencyChart`](docs/sdks/insightscharts/README.md#getreleasefrequencychart) - Get release frequency chart data
+- [`insightsChartsGetStaleFlagsChart`](docs/sdks/insightscharts/README.md#getstaleflagschart) - Get stale flags chart data
+- [`insightsDeploymentsCreateEvent`](docs/sdks/insightsdeployments/README.md#createevent) - Create deployment event
+- [`insightsDeploymentsGet`](docs/sdks/insightsdeployments/README.md#get) - Get deployment
+- [`insightsDeploymentsList`](docs/sdks/insightsdeployments/README.md#list) - List deployments
+- [`insightsDeploymentsUpdate`](docs/sdks/insightsdeployments/README.md#update) - Update deployment
+- [`insightsFlagEventsList`](docs/sdks/insightsflagevents/README.md#list) - List flag events
+- [`insightsPullRequestsList`](docs/sdks/insightspullrequests/README.md#list) - List pull requests
+- [`insightsRepositoriesAssociate`](docs/sdks/insightsrepositories/README.md#associate) - Associate repositories with projects
+- [`insightsRepositoriesList`](docs/sdks/insightsrepositories/README.md#list) - List repositories
+- [`insightsRepositoriesRemoveProjectAssociation`](docs/sdks/insightsrepositories/README.md#removeprojectassociation) - Remove repository project association
+- [`insightsScoresCreateGroup`](docs/sdks/insightsscores/README.md#creategroup) - Create insight group
+- [`insightsScoresDeleteGroup`](docs/sdks/insightsscores/README.md#deletegroup) - Delete insight group
+- [`insightsScoresGet`](docs/sdks/insightsscores/README.md#get) - Get insight scores
+- [`insightsScoresGetGroup`](docs/sdks/insightsscores/README.md#getgroup) - Get insight group
+- [`insightsScoresList`](docs/sdks/insightsscores/README.md#list) - List insight groups
+- [`insightsScoresUpdateGroup`](docs/sdks/insightsscores/README.md#updategroup) - Patch insight group
+- [`integrationAuditLogSubscriptionsCreate`](docs/sdks/integrationauditlogsubscriptions/README.md#create) - Create audit log subscription
+- [`integrationAuditLogSubscriptionsDelete`](docs/sdks/integrationauditlogsubscriptions/README.md#delete) - Delete audit log subscription
+- [`integrationAuditLogSubscriptionsGet`](docs/sdks/integrationauditlogsubscriptions/README.md#get) - Get audit log subscriptions by integration
+- [`integrationAuditLogSubscriptionsGetSubscription`](docs/sdks/integrationauditlogsubscriptions/README.md#getsubscription) - Get audit log subscription by ID
+- [`integrationAuditLogSubscriptionsUpdate`](docs/sdks/integrationauditlogsubscriptions/README.md#update) - Update audit log subscription
+- [`integrationDeliveryConfigurationsCreate`](docs/sdks/integrationdeliveryconfigurations/README.md#create) - Create delivery configuration
+- [`integrationDeliveryConfigurationsDelete`](docs/sdks/integrationdeliveryconfigurations/README.md#delete) - Delete delivery configuration
+- [`integrationDeliveryConfigurationsGetByEnvironment`](docs/sdks/integrationdeliveryconfigurations/README.md#getbyenvironment) - Get delivery configurations by environment
+- [`integrationDeliveryConfigurationsGetById`](docs/sdks/integrationdeliveryconfigurations/README.md#getbyid) - Get delivery configuration by ID
+- [`integrationDeliveryConfigurationsList`](docs/sdks/integrationdeliveryconfigurations/README.md#list) - List all delivery configurations
+- [`integrationDeliveryConfigurationsUpdate`](docs/sdks/integrationdeliveryconfigurations/README.md#update) - Update delivery configuration
+- [`integrationDeliveryConfigurationsValidate`](docs/sdks/integrationdeliveryconfigurations/README.md#validate) - Validate delivery configuration
+- [`integrationsCreateConfiguration`](docs/sdks/integrations/README.md#createconfiguration) - Create integration configuration
+- [`integrationsDeleteConfiguration`](docs/sdks/integrations/README.md#deleteconfiguration) - Delete integration configuration
+- [`integrationsGetConfiguration`](docs/sdks/integrations/README.md#getconfiguration) - Get an integration configuration
+- [`integrationsGetConfigurations`](docs/sdks/integrations/README.md#getconfigurations) - Get all configurations for the integration
+- [`integrationsUpdateConfiguration`](docs/sdks/integrations/README.md#updateconfiguration) - Update integration configuration
+- [`layersCreate`](docs/sdks/layers/README.md#create) - Create layer
+- [`layersList`](docs/sdks/layers/README.md#list) - Get layers
+- [`layersUpdate`](docs/sdks/layers/README.md#update) - Update layer
+- [`metricsCreate`](docs/sdks/metrics/README.md#create) - Create metric
+- [`metricsCreateGroup`](docs/sdks/metrics/README.md#creategroup) - Create metric group
+- [`metricsDelete`](docs/sdks/metrics/README.md#delete) - Delete metric
+- [`metricsDeleteGroup`](docs/sdks/metrics/README.md#deletegroup) - Delete metric group
+- [`metricsGet`](docs/sdks/metrics/README.md#get) - Get metric
+- [`metricsGetMetricGroup`](docs/sdks/metrics/README.md#getmetricgroup) - Get metric group
+- [`metricsList`](docs/sdks/metrics/README.md#list) - List metrics
+- [`metricsListGroups`](docs/sdks/metrics/README.md#listgroups) - List metric groups
+- [`metricsPatch`](docs/sdks/metrics/README.md#patch) - Update metric
+- [`metricsPatchMetricGroup`](docs/sdks/metrics/README.md#patchmetricgroup) - Patch metric group
+- [`oauth2ClientsCreate`](docs/sdks/oauth2clients/README.md#create) - Create a LaunchDarkly OAuth 2.0 client
+- [`oauth2ClientsDelete`](docs/sdks/oauth2clients/README.md#delete) - Delete OAuth 2.0 client
+- [`oauth2ClientsGet`](docs/sdks/oauth2clients/README.md#get) - Get clients
+- [`oauth2ClientsGetById`](docs/sdks/oauth2clients/README.md#getbyid) - Get client by ID
+- [`oauth2ClientsPatch`](docs/sdks/oauth2clients/README.md#patch) - Patch client by ID
 - [`otherGetCallerIdentity`](docs/sdks/other/README.md#getcalleridentity) - Identify the caller
 - [`otherGetIps`](docs/sdks/other/README.md#getips) - Gets the public IP list
 - [`otherGetOpenapiSpec`](docs/sdks/other/README.md#getopenapispec) - Gets the OpenAPI spec in json
 - [`otherGetRoot`](docs/sdks/other/README.md#getroot) - Root resource
 - [`otherGetVersions`](docs/sdks/other/README.md#getversions) - Get version information
-- [`persistentStoreIntegrationsBetaCreateBigSegmentStoreIntegration`](docs/sdks/persistentstoreintegrationsbeta/README.md#createbigsegmentstoreintegration) - Create big segment store integration
-- [`persistentStoreIntegrationsBetaDeleteBigSegmentStoreIntegration`](docs/sdks/persistentstoreintegrationsbeta/README.md#deletebigsegmentstoreintegration) - Delete big segment store integration
-- [`persistentStoreIntegrationsBetaGetBigSegmentStoreIntegration`](docs/sdks/persistentstoreintegrationsbeta/README.md#getbigsegmentstoreintegration) - Get big segment store integration by ID
-- [`persistentStoreIntegrationsBetaGetBigSegmentStoreIntegrations`](docs/sdks/persistentstoreintegrationsbeta/README.md#getbigsegmentstoreintegrations) - List all big segment store integrations
-- [`persistentStoreIntegrationsBetaPatchBigSegmentStoreIntegration`](docs/sdks/persistentstoreintegrationsbeta/README.md#patchbigsegmentstoreintegration) - Update big segment store integration
-- [`projectsDeleteProject`](docs/sdks/projects/README.md#deleteproject) - Delete project
-- [`projectsGetFlagDefaultsByProject`](docs/sdks/projects/README.md#getflagdefaultsbyproject) - Get flag defaults for project
-- [`projectsGetProject`](docs/sdks/projects/README.md#getproject) - Get project
-- [`projectsGetProjects`](docs/sdks/projects/README.md#getprojects) - List projects
-- [`projectsPatchFlagDefaultsByProject`](docs/sdks/projects/README.md#patchflagdefaultsbyproject) - Update flag default for project
-- [`projectsPatchProject`](docs/sdks/projects/README.md#patchproject) - Update project
-- [`projectsPostProject`](docs/sdks/projects/README.md#postproject) - Create project
-- [`projectsPutFlagDefaultsByProject`](docs/sdks/projects/README.md#putflagdefaultsbyproject) - Create or update flag defaults for project
-- [`relayProxyConfigurationsDeleteRelayAutoConfig`](docs/sdks/relayproxyconfigurations/README.md#deleterelayautoconfig) - Delete Relay Proxy config by ID
-- [`relayProxyConfigurationsGetRelayProxyConfig`](docs/sdks/relayproxyconfigurations/README.md#getrelayproxyconfig) - Get Relay Proxy config
-- [`relayProxyConfigurationsGetRelayProxyConfigs`](docs/sdks/relayproxyconfigurations/README.md#getrelayproxyconfigs) - List Relay Proxy configs
-- [`relayProxyConfigurationsPatchRelayAutoConfig`](docs/sdks/relayproxyconfigurations/README.md#patchrelayautoconfig) - Update a Relay Proxy config
-- [`relayProxyConfigurationsPostRelayAutoConfig`](docs/sdks/relayproxyconfigurations/README.md#postrelayautoconfig) - Create a new Relay Proxy config
-- [`relayProxyConfigurationsResetRelayAutoConfig`](docs/sdks/relayproxyconfigurations/README.md#resetrelayautoconfig) - Reset Relay Proxy configuration key
-- [`releasePipelinesBetaDeleteReleasePipeline`](docs/sdks/releasepipelinesbeta/README.md#deletereleasepipeline) - Delete release pipeline
-- [`releasePipelinesBetaGetAllReleasePipelines`](docs/sdks/releasepipelinesbeta/README.md#getallreleasepipelines) - Get all release pipelines
-- [`releasePipelinesBetaGetAllReleaseProgressionsForReleasePipeline`](docs/sdks/releasepipelinesbeta/README.md#getallreleaseprogressionsforreleasepipeline) - Get release progressions for release pipeline
-- [`releasePipelinesBetaGetReleasePipelineByKey`](docs/sdks/releasepipelinesbeta/README.md#getreleasepipelinebykey) - Get release pipeline by key
-- [`releasePipelinesBetaPostReleasePipeline`](docs/sdks/releasepipelinesbeta/README.md#postreleasepipeline) - Create a release pipeline
-- [`releasePipelinesBetaPutReleasePipeline`](docs/sdks/releasepipelinesbeta/README.md#putreleasepipeline) - Update a release pipeline
-- [`releasesBetaCreateReleaseForFlag`](docs/sdks/releasesbeta/README.md#createreleaseforflag) - Create a new release for flag
-- [`releasesBetaDeleteReleaseByFlagKey`](docs/sdks/releasesbeta/README.md#deletereleasebyflagkey) - Delete a release for flag
-- [`releasesBetaGetReleaseByFlagKey`](docs/sdks/releasesbeta/README.md#getreleasebyflagkey) - Get release for flag
-- [`releasesBetaPatchReleaseByFlagKey`](docs/sdks/releasesbeta/README.md#patchreleasebyflagkey) - Patch release for flag
-- [`releasesBetaUpdatePhaseStatus`](docs/sdks/releasesbeta/README.md#updatephasestatus) - Update phase status for release
-- [`scheduledChangesDeleteFlagConfigScheduledChanges`](docs/sdks/scheduledchanges/README.md#deleteflagconfigscheduledchanges) - Delete scheduled changes workflow
-- [`scheduledChangesGetFeatureFlagScheduledChange`](docs/sdks/scheduledchanges/README.md#getfeatureflagscheduledchange) - Get a scheduled change
-- [`scheduledChangesGetFlagConfigScheduledChanges`](docs/sdks/scheduledchanges/README.md#getflagconfigscheduledchanges) - List scheduled changes
-- [`scheduledChangesPatchFlagConfigScheduledChange`](docs/sdks/scheduledchanges/README.md#patchflagconfigscheduledchange) - Update scheduled changes workflow
-- [`scheduledChangesPostFlagConfigScheduledChanges`](docs/sdks/scheduledchanges/README.md#postflagconfigscheduledchanges) - Create scheduled changes workflow
-- [`segmentsCreateBigSegmentExport`](docs/sdks/segments/README.md#createbigsegmentexport) - Create big segment export
-- [`segmentsCreateBigSegmentImport`](docs/sdks/segments/README.md#createbigsegmentimport) - Create big segment import
-- [`segmentsDeleteSegment`](docs/sdks/segments/README.md#deletesegment) - Delete segment
-- [`segmentsGetBigSegmentExport`](docs/sdks/segments/README.md#getbigsegmentexport) - Get big segment export
-- [`segmentsGetBigSegmentImport`](docs/sdks/segments/README.md#getbigsegmentimport) - Get big segment import
-- [`segmentsGetContextInstanceSegmentsMembershipByEnv`](docs/sdks/segments/README.md#getcontextinstancesegmentsmembershipbyenv) - List segment memberships for context instance
-- [`segmentsGetExpiringTargetsForSegment`](docs/sdks/segments/README.md#getexpiringtargetsforsegment) - Get expiring targets for segment
-- [`segmentsGetExpiringUserTargetsForSegment`](docs/sdks/segments/README.md#getexpiringusertargetsforsegment) - Get expiring user targets for segment
-- [`segmentsGetSegment`](docs/sdks/segments/README.md#getsegment) - Get segment
-- [`segmentsGetSegmentMembershipForContext`](docs/sdks/segments/README.md#getsegmentmembershipforcontext) - Get big segment membership for context
-- [`segmentsGetSegmentMembershipForUser`](docs/sdks/segments/README.md#getsegmentmembershipforuser) - Get big segment membership for user
-- [`segmentsGetSegments`](docs/sdks/segments/README.md#getsegments) - List segments
-- [`segmentsPatchExpiringTargetsForSegment`](docs/sdks/segments/README.md#patchexpiringtargetsforsegment) - Update expiring targets for segment
-- [`segmentsPatchExpiringUserTargetsForSegment`](docs/sdks/segments/README.md#patchexpiringusertargetsforsegment) - Update expiring user targets for segment
-- [`segmentsPatchSegment`](docs/sdks/segments/README.md#patchsegment) - Patch segment
-- [`segmentsPostSegment`](docs/sdks/segments/README.md#postsegment) - Create segment
-- [`segmentsUpdateBigSegmentContextTargets`](docs/sdks/segments/README.md#updatebigsegmentcontexttargets) - Update context targets on a big segment
-- [`segmentsUpdateBigSegmentTargets`](docs/sdks/segments/README.md#updatebigsegmenttargets) - Update user context targets on a big segment
-- [`tagsGetTags`](docs/sdks/tags/README.md#gettags) - List tags
-- [`teamsBetaPatchTeams`](docs/sdks/teamsbeta/README.md#patchteams) - Update teams
-- [`teamsDeleteTeam`](docs/sdks/teams/README.md#deleteteam) - Delete team
-- [`teamsGetTeam`](docs/sdks/teams/README.md#getteam) - Get team
-- [`teamsGetTeamMaintainers`](docs/sdks/teams/README.md#getteammaintainers) - Get team maintainers
-- [`teamsGetTeamRoles`](docs/sdks/teams/README.md#getteamroles) - Get team custom roles
-- [`teamsGetTeams`](docs/sdks/teams/README.md#getteams) - List teams
-- [`teamsPatchTeam`](docs/sdks/teams/README.md#patchteam) - Update team
-- [`teamsPostTeam`](docs/sdks/teams/README.md#postteam) - Create team
-- [`teamsPostTeamMembers`](docs/sdks/teams/README.md#postteammembers) - Add multiple members to team
-- [`webhooksDeleteWebhook`](docs/sdks/webhooks/README.md#deletewebhook) - Delete webhook
-- [`webhooksGetAllWebhooks`](docs/sdks/webhooks/README.md#getallwebhooks) - List webhooks
-- [`webhooksGetWebhook`](docs/sdks/webhooks/README.md#getwebhook) - Get webhook
-- [`webhooksPatchWebhook`](docs/sdks/webhooks/README.md#patchwebhook) - Update webhook
-- [`webhooksPostWebhook`](docs/sdks/webhooks/README.md#postwebhook) - Creates a webhook
-- [`workflowsDeleteWorkflow`](docs/sdks/workflows/README.md#deleteworkflow) - Delete workflow
-- [`workflowsGetCustomWorkflow`](docs/sdks/workflows/README.md#getcustomworkflow) - Get custom workflow
-- [`workflowsGetWorkflows`](docs/sdks/workflows/README.md#getworkflows) - Get workflows
-- [`workflowsPostWorkflow`](docs/sdks/workflows/README.md#postworkflow) - Create workflow
-- [`workflowTemplatesCreateWorkflowTemplate`](docs/sdks/workflowtemplates/README.md#createworkflowtemplate) - Create workflow template
-- [`workflowTemplatesDeleteWorkflowTemplate`](docs/sdks/workflowtemplates/README.md#deleteworkflowtemplate) - Delete workflow template
-- [`workflowTemplatesGetWorkflowTemplates`](docs/sdks/workflowtemplates/README.md#getworkflowtemplates) - Get workflow templates
-- ~~[`experimentsGetExperimentResults`](docs/sdks/experiments/README.md#getexperimentresults)~~ - Get experiment results (Deprecated) :warning: **Deprecated**
-- ~~[`experimentsGetExperimentResultsForMetricGroup`](docs/sdks/experiments/README.md#getexperimentresultsformetricgroup)~~ - Get experiment results for metric group (Deprecated) :warning: **Deprecated**
-- ~~[`usersBetaGetUserAttributeNames`](docs/sdks/usersbeta/README.md#getuserattributenames)~~ - Get user attribute names :warning: **Deprecated**
-- ~~[`usersDeleteUser`](docs/sdks/users/README.md#deleteuser)~~ - Delete user :warning: **Deprecated**
+- [`persistentStoreIntegrationsCreate`](docs/sdks/persistentstoreintegrations/README.md#create) - Create big segment store integration
+- [`persistentStoreIntegrationsDelete`](docs/sdks/persistentstoreintegrations/README.md#delete) - Delete big segment store integration
+- [`persistentStoreIntegrationsGetIntegration`](docs/sdks/persistentstoreintegrations/README.md#getintegration) - Get big segment store integration by ID
+- [`persistentStoreIntegrationsListBigSegmentStores`](docs/sdks/persistentstoreintegrations/README.md#listbigsegmentstores) - List all big segment store integrations
+- [`persistentStoreIntegrationsPatchBigSegmentStore`](docs/sdks/persistentstoreintegrations/README.md#patchbigsegmentstore) - Update big segment store integration
+- [`projectsCreate`](docs/sdks/projects/README.md#create) - Create project
+- [`projectsDelete`](docs/sdks/projects/README.md#delete) - Delete project
+- [`projectsGet`](docs/sdks/projects/README.md#get) - Get project
+- [`projectsGetFlagDefaults`](docs/sdks/projects/README.md#getflagdefaults) - Get flag defaults for project
+- [`projectsList`](docs/sdks/projects/README.md#list) - List projects
+- [`projectsPatchFlagDefaults`](docs/sdks/projects/README.md#patchflagdefaults) - Update flag default for project
+- [`projectsSetFlagDefaults`](docs/sdks/projects/README.md#setflagdefaults) - Create or update flag defaults for project
+- [`projectsUpdate`](docs/sdks/projects/README.md#update) - Update project
+- [`relayProxyConfigurationsCreate`](docs/sdks/relayproxyconfigurations/README.md#create) - Create a new Relay Proxy config
+- [`relayProxyConfigurationsDelete`](docs/sdks/relayproxyconfigurations/README.md#delete) - Delete Relay Proxy config by ID
+- [`relayProxyConfigurationsGetConfig`](docs/sdks/relayproxyconfigurations/README.md#getconfig) - Get Relay Proxy config
+- [`relayProxyConfigurationsList`](docs/sdks/relayproxyconfigurations/README.md#list) - List Relay Proxy configs
+- [`relayProxyConfigurationsReset`](docs/sdks/relayproxyconfigurations/README.md#reset) - Reset Relay Proxy configuration key
+- [`relayProxyConfigurationsUpdate`](docs/sdks/relayproxyconfigurations/README.md#update) - Update a Relay Proxy config
+- [`releasePipelinesCreate`](docs/sdks/releasepipelines/README.md#create) - Create a release pipeline
+- [`releasePipelinesDelete`](docs/sdks/releasepipelines/README.md#delete) - Delete release pipeline
+- [`releasePipelinesGetAll`](docs/sdks/releasepipelines/README.md#getall) - Get all release pipelines
+- [`releasePipelinesGetAllReleaseProgressions`](docs/sdks/releasepipelines/README.md#getallreleaseprogressions) - Get release progressions for release pipeline
+- [`releasePipelinesGetByKey`](docs/sdks/releasepipelines/README.md#getbykey) - Get release pipeline by key
+- [`releasePipelinesUpdate`](docs/sdks/releasepipelines/README.md#update) - Update a release pipeline
+- [`releasesCreate`](docs/sdks/releases/README.md#create) - Create a new release for flag
+- [`releasesDeleteByFlagKey`](docs/sdks/releases/README.md#deletebyflagkey) - Delete a release for flag
+- [`releasesGetByFlagKey`](docs/sdks/releases/README.md#getbyflagkey) - Get release for flag
+- [`releasesPatchByFlagKey`](docs/sdks/releases/README.md#patchbyflagkey) - Patch release for flag
+- [`releasesUpdatePhaseStatus`](docs/sdks/releases/README.md#updatephasestatus) - Update phase status for release
+- [`scheduledChangesCreate`](docs/sdks/scheduledchanges/README.md#create) - Create scheduled changes workflow
+- [`scheduledChangesDelete`](docs/sdks/scheduledchanges/README.md#delete) - Delete scheduled changes workflow
+- [`scheduledChangesGet`](docs/sdks/scheduledchanges/README.md#get) - Get a scheduled change
+- [`scheduledChangesList`](docs/sdks/scheduledchanges/README.md#list) - List scheduled changes
+- [`scheduledChangesUpdate`](docs/sdks/scheduledchanges/README.md#update) - Update scheduled changes workflow
+- [`segmentsCreate`](docs/sdks/segments/README.md#create) - Create segment
+- [`segmentsCreateBigExport`](docs/sdks/segments/README.md#createbigexport) - Create big segment export
+- [`segmentsCreateBigImport`](docs/sdks/segments/README.md#createbigimport) - Create big segment import
+- [`segmentsDelete`](docs/sdks/segments/README.md#delete) - Delete segment
+- [`segmentsEvaluateMembership`](docs/sdks/segments/README.md#evaluatemembership) - List segment memberships for context instance
+- [`segmentsGet`](docs/sdks/segments/README.md#get) - Get segment
+- [`segmentsGetExpiringTargets`](docs/sdks/segments/README.md#getexpiringtargets) - Get expiring targets for segment
+- [`segmentsGetExpiringUserTargets`](docs/sdks/segments/README.md#getexpiringusertargets) - Get expiring user targets for segment
+- [`segmentsGetExport`](docs/sdks/segments/README.md#getexport) - Get big segment export
+- [`segmentsGetImport`](docs/sdks/segments/README.md#getimport) - Get big segment import
+- [`segmentsGetMembershipForContext`](docs/sdks/segments/README.md#getmembershipforcontext) - Get big segment membership for context
+- [`segmentsGetMembershipForUser`](docs/sdks/segments/README.md#getmembershipforuser) - Get big segment membership for user
+- [`segmentsList`](docs/sdks/segments/README.md#list) - List segments
+- [`segmentsPatch`](docs/sdks/segments/README.md#patch) - Patch segment
+- [`segmentsPatchExpiringTargets`](docs/sdks/segments/README.md#patchexpiringtargets) - Update expiring targets for segment
+- [`segmentsPatchExpiringUserTargets`](docs/sdks/segments/README.md#patchexpiringusertargets) - Update expiring user targets for segment
+- [`segmentsUpdateBigTargets`](docs/sdks/segments/README.md#updatebigtargets) - Update user context targets on a big segment
+- [`segmentsUpdateContextTargets`](docs/sdks/segments/README.md#updatecontexttargets) - Update context targets on a big segment
+- [`tagsList`](docs/sdks/tags/README.md#list) - List tags
+- [`teamsAddMembers`](docs/sdks/teams/README.md#addmembers) - Add multiple members to team
+- [`teamsCreate`](docs/sdks/teams/README.md#create) - Create team
+- [`teamsDelete`](docs/sdks/teams/README.md#delete) - Delete team
+- [`teamsGet`](docs/sdks/teams/README.md#get) - Get team
+- [`teamsGetMaintainers`](docs/sdks/teams/README.md#getmaintainers) - Get team maintainers
+- [`teamsGetRoles`](docs/sdks/teams/README.md#getroles) - Get team custom roles
+- [`teamsList`](docs/sdks/teams/README.md#list) - List teams
+- [`teamsPatch`](docs/sdks/teams/README.md#patch) - Update team
+- [`teamsUpdate`](docs/sdks/teams/README.md#update) - Update teams
+- [`tokensDelete`](docs/sdks/tokens/README.md#delete) - Delete access token
+- [`webhooksCreate`](docs/sdks/webhooks/README.md#create) - Creates a webhook
+- [`webhooksDelete`](docs/sdks/webhooks/README.md#delete) - Delete webhook
+- [`webhooksGet`](docs/sdks/webhooks/README.md#get) - Get webhook
+- [`webhooksList`](docs/sdks/webhooks/README.md#list) - List webhooks
+- [`webhooksUpdate`](docs/sdks/webhooks/README.md#update) - Update webhook
+- [`workflowsCreate`](docs/sdks/workflows/README.md#create) - Create workflow
+- [`workflowsDelete`](docs/sdks/workflows/README.md#delete) - Delete workflow
+- [`workflowsFetchById`](docs/sdks/workflows/README.md#fetchbyid) - Get custom workflow
+- [`workflowsGet`](docs/sdks/workflows/README.md#get) - Get workflows
+- [`workflowTemplatesCreate`](docs/sdks/workflowtemplates/README.md#create) - Create workflow template
+- [`workflowTemplatesDelete`](docs/sdks/workflowtemplates/README.md#delete) - Delete workflow template
+- [`workflowTemplatesList`](docs/sdks/workflowtemplates/README.md#list) - Get workflow templates
+- ~~[`experimentsGetResults`](docs/sdks/experiments/README.md#getresults)~~ - Get experiment results (Deprecated) :warning: **Deprecated**
+- ~~[`experimentsGetResultsForMetricGroup`](docs/sdks/experiments/README.md#getresultsformetricgroup)~~ - Get experiment results for metric group (Deprecated) :warning: **Deprecated**
+- ~~[`usersDelete`](docs/sdks/users/README.md#delete)~~ - Delete user :warning: **Deprecated**
 - ~~[`userSettingsGetExpiringFlagsForUser`](docs/sdks/usersettings/README.md#getexpiringflagsforuser)~~ - Get expiring dates on flags for user :warning: **Deprecated**
-- ~~[`userSettingsGetUserFlagSetting`](docs/sdks/usersettings/README.md#getuserflagsetting)~~ - Get flag setting for user :warning: **Deprecated**
-- ~~[`userSettingsGetUserFlagSettings`](docs/sdks/usersettings/README.md#getuserflagsettings)~~ - List flag settings for user :warning: **Deprecated**
-- ~~[`userSettingsPatchExpiringFlagsForUser`](docs/sdks/usersettings/README.md#patchexpiringflagsforuser)~~ - Update expiring user target for flags :warning: **Deprecated**
-- ~~[`userSettingsPutFlagSetting`](docs/sdks/usersettings/README.md#putflagsetting)~~ - Update flag settings for user :warning: **Deprecated**
-- ~~[`usersGetSearchUsers`](docs/sdks/users/README.md#getsearchusers)~~ - Find users :warning: **Deprecated**
-- ~~[`usersGetUser`](docs/sdks/users/README.md#getuser)~~ - Get user :warning: **Deprecated**
-- ~~[`usersGetUsers`](docs/sdks/users/README.md#getusers)~~ - List users :warning: **Deprecated**
+- ~~[`userSettingsGetFlagSetting`](docs/sdks/usersettings/README.md#getflagsetting)~~ - Get flag setting for user :warning: **Deprecated**
+- ~~[`userSettingsListFlags`](docs/sdks/usersettings/README.md#listflags)~~ - List flag settings for user :warning: **Deprecated**
+- ~~[`userSettingsUpdateExpiringTargets`](docs/sdks/usersettings/README.md#updateexpiringtargets)~~ - Update expiring user target for flags :warning: **Deprecated**
+- ~~[`userSettingsUpdateFlagSetting`](docs/sdks/usersettings/README.md#updateflagsetting)~~ - Update flag settings for user :warning: **Deprecated**
+- ~~[`usersGet`](docs/sdks/users/README.md#get)~~ - Get user :warning: **Deprecated**
+- ~~[`usersGetAttributeNames`](docs/sdks/users/README.md#getattributenames)~~ - Get user attribute names :warning: **Deprecated**
+- ~~[`usersList`](docs/sdks/users/README.md#list)~~ - List users :warning: **Deprecated**
+- ~~[`usersSearch`](docs/sdks/users/README.md#search)~~ - Find users :warning: **Deprecated**
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->
@@ -1480,14 +1474,14 @@ Certain SDK methods accept files as part of a multi-part request. It is possible
 > - **Node.js v18:** A file stream can be created using the `fileFrom` helper from [`fetch-blob/from.js`](https://www.npmjs.com/package/fetch-blob).
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  await launchdarklyMcpServer.segments.createBigSegmentImport({
+  await launchDarkly.segments.createBigImport({
     projectKey: "<value>",
     environmentKey: "<value>",
     segmentKey: "<value>",
@@ -1507,14 +1501,14 @@ Some of the endpoints in this SDK support retries.  If you use the SDK without a
 
 To change the default retry strategy for a single API call, simply provide a retryConfig object to the call:
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.other.getRoot({
+  const result = await launchDarkly.other.getRoot({
     retries: {
       strategy: "backoff",
       backoff: {
@@ -1537,9 +1531,9 @@ run();
 
 If you'd like to override the default retry strategy for all operations that support retries, you can provide a retryConfig at SDK initialization:
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
+const launchDarkly = new LaunchDarkly({
   retryConfig: {
     strategy: "backoff",
     backoff: {
@@ -1550,11 +1544,11 @@ const launchdarklyMcpServer = new LaunchdarklyMcpServer({
     },
     retryConnectionErrors: false,
   },
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.other.getRoot();
+  const result = await launchDarkly.other.getRoot();
 
   // Handle the result
   console.log(result);
@@ -1578,20 +1572,20 @@ Some methods specify known errors which can be thrown. All the known errors are 
 If the method throws an error and it is not captured by the known errors, it will default to throwing a `APIError`.
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 import {
   RateLimitedErrorRep,
   SDKValidationError,
 } from "@launchdarkly/mcp-server/models/errors";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
   let result;
   try {
-    result = await launchdarklyMcpServer.other.getRoot();
+    result = await launchDarkly.other.getRoot();
 
     // Handle the result
     console.log(result);
@@ -1642,23 +1636,24 @@ In some rare cases, the SDK can fail to get a response from the server or even m
 
 You can override the default server globally by passing a server index to the `serverIdx: number` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
 
-| #   | Server                         | Description |
-| --- | ------------------------------ | ----------- |
-| 0   | `https://app.launchdarkly.com` |  Default    |
-| 1   | `https://app.launchdarkly.us`  |  Federal    |
+| #   | Server                         | Description     |
+| --- | ------------------------------ | --------------- |
+| 0   | `https://app.launchdarkly.com` |  Default        |
+| 1   | `https://app.launchdarkly.us`  |  Federal        |
+| 2   | `https://app.launchdarkly.com` | Prod API server |
 
 #### Example
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  serverIdx: 1,
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  serverIdx: 2,
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.other.getRoot();
+  const result = await launchDarkly.other.getRoot();
 
   // Handle the result
   console.log(result);
@@ -1672,15 +1667,15 @@ run();
 
 The default server can also be overridden globally by passing a URL to the `serverURL: string` optional parameter when initializing the SDK client instance. For example:
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  serverURL: "https://app.launchdarkly.us",
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  serverURL: "https://app.launchdarkly.com",
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.other.getRoot();
+  const result = await launchDarkly.other.getRoot();
 
   // Handle the result
   console.log(result);
@@ -1709,7 +1704,7 @@ custom header and a timeout to requests and how to use the `"requestError"` hook
 to log errors:
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 import { HTTPClient } from "@launchdarkly/mcp-server/lib/http";
 
 const httpClient = new HTTPClient({
@@ -1736,7 +1731,7 @@ httpClient.addHook("requestError", (error, request) => {
   console.groupEnd();
 });
 
-const sdk = new LaunchdarklyMcpServer({ httpClient });
+const sdk = new LaunchDarkly({ httpClient });
 ```
 <!-- End Custom HTTP Client [http-client] -->
 
@@ -1751,12 +1746,12 @@ You can pass a logger that matches `console`'s interface as an SDK option.
 > Beware that debug logging will reveal secrets, like API tokens in headers, in log messages printed to a console or files. It's recommended to use this feature only during local development and not in production.
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const sdk = new LaunchdarklyMcpServer({ debugLogger: console });
+const sdk = new LaunchDarkly({ debugLogger: console });
 ```
 
-You can also enable a default debug logger by setting an environment variable `LAUNCHDARKLYMCPSERVER_DEBUG` to true.
+You can also enable a default debug logger by setting an environment variable `LAUNCHDARKLY_DEBUG` to true.
 <!-- End Debugging [debug] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->

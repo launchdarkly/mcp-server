@@ -6,15 +6,15 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type CreateIntegrationConfigurationRequest = {
   /**
    * The integration key
    */
   integrationKey: string;
-  integrationConfigurationPost: models.IntegrationConfigurationPost;
+  integrationConfigurationPost: components.IntegrationConfigurationPost;
 };
 
 /** @internal */
@@ -25,7 +25,7 @@ export const CreateIntegrationConfigurationRequest$inboundSchema: z.ZodType<
 > = z.object({
   integrationKey: z.string(),
   IntegrationConfigurationPost:
-    models.IntegrationConfigurationPost$inboundSchema,
+    components.IntegrationConfigurationPost$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "IntegrationConfigurationPost": "integrationConfigurationPost",
@@ -35,7 +35,8 @@ export const CreateIntegrationConfigurationRequest$inboundSchema: z.ZodType<
 /** @internal */
 export type CreateIntegrationConfigurationRequest$Outbound = {
   integrationKey: string;
-  IntegrationConfigurationPost: models.IntegrationConfigurationPost$Outbound;
+  IntegrationConfigurationPost:
+    components.IntegrationConfigurationPost$Outbound;
 };
 
 /** @internal */
@@ -46,7 +47,7 @@ export const CreateIntegrationConfigurationRequest$outboundSchema: z.ZodType<
 > = z.object({
   integrationKey: z.string(),
   integrationConfigurationPost:
-    models.IntegrationConfigurationPost$outboundSchema,
+    components.IntegrationConfigurationPost$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     integrationConfigurationPost: "IntegrationConfigurationPost",

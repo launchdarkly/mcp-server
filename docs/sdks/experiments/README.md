@@ -23,17 +23,17 @@ Several of the endpoints require a treatment ID or a flag rule ID. Treatment IDs
 
 ### Available Operations
 
-* [getExperiments](#getexperiments) - Get experiments
-* [createExperiment](#createexperiment) - Create experiment
-* [getExperiment](#getexperiment) - Get experiment
-* [patchExperiment](#patchexperiment) - Patch experiment
+* [list](#list) - Get experiments
+* [create](#create) - Create experiment
+* [get](#get) - Get experiment
+* [patch](#patch) - Patch experiment
 * [createIteration](#createiteration) - Create iteration
-* [~~getExperimentResultsForMetricGroup~~](#getexperimentresultsformetricgroup) - Get experiment results for metric group (Deprecated) :warning: **Deprecated**
-* [~~getExperimentResults~~](#getexperimentresults) - Get experiment results (Deprecated) :warning: **Deprecated**
-* [getExperimentationSettings](#getexperimentationsettings) - Get experimentation settings
-* [putExperimentationSettings](#putexperimentationsettings) - Update experimentation settings
+* [~~getResultsForMetricGroup~~](#getresultsformetricgroup) - Get experiment results for metric group (Deprecated) :warning: **Deprecated**
+* [~~getResults~~](#getresults) - Get experiment results (Deprecated) :warning: **Deprecated**
+* [getSettings](#getsettings) - Get experimentation settings
+* [updateSettings](#updatesettings) - Update experimentation settings
 
-## getExperiments
+## list
 
 Get details about all experiments in an environment.
 
@@ -64,14 +64,14 @@ For example, `expand=draftIteration,treatments` includes the `draftIteration` an
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.experiments.getExperiments({
+  const result = await launchDarkly.experiments.list({
     projectKey: "<value>",
     environmentKey: "<value>",
   });
@@ -88,17 +88,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { experimentsGetExperiments } from "@launchdarkly/mcp-server/funcs/experimentsGetExperiments.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { experimentsList } from "@launchdarkly/mcp-server/funcs/experimentsList.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await experimentsGetExperiments(launchdarklyMcpServer, {
+  const res = await experimentsList(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
   });
@@ -127,7 +127,7 @@ run();
 
 ### Response
 
-**Promise\<[models.ExperimentCollectionRep](../../models/experimentcollectionrep.md)\>**
+**Promise\<[components.ExperimentCollectionRep](../../models/components/experimentcollectionrep.md)\>**
 
 ### Errors
 
@@ -141,7 +141,7 @@ run();
 | errors.RateLimitedErrorRep      | 429                             | application/json                |
 | errors.APIError                 | 4XX, 5XX                        | \*/\*                           |
 
-## createExperiment
+## create
 
 Create an experiment.
 
@@ -153,14 +153,14 @@ To learn more, read [Creating experiments](https://launchdarkly.com/docs/home/ex
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.experiments.createExperiment({
+  const result = await launchDarkly.experiments.create({
     projectKey: "<value>",
     environmentKey: "<value>",
     experimentPost: {
@@ -282,17 +282,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { experimentsCreateExperiment } from "@launchdarkly/mcp-server/funcs/experimentsCreateExperiment.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { experimentsCreate } from "@launchdarkly/mcp-server/funcs/experimentsCreate.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await experimentsCreateExperiment(launchdarklyMcpServer, {
+  const res = await experimentsCreate(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
     experimentPost: {
@@ -426,7 +426,7 @@ run();
 
 ### Response
 
-**Promise\<[models.Experiment](../../models/experiment.md)\>**
+**Promise\<[components.Experiment](../../models/components/experiment.md)\>**
 
 ### Errors
 
@@ -439,7 +439,7 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## getExperiment
+## get
 
 Get details about an experiment.
 
@@ -460,14 +460,14 @@ For example, `expand=draftIteration,treatments` includes the `draftIteration` an
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.experiments.getExperiment({
+  const result = await launchDarkly.experiments.get({
     projectKey: "<value>",
     environmentKey: "<value>",
     experimentKey: "<value>",
@@ -485,17 +485,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { experimentsGetExperiment } from "@launchdarkly/mcp-server/funcs/experimentsGetExperiment.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { experimentsGet } from "@launchdarkly/mcp-server/funcs/experimentsGet.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await experimentsGetExperiment(launchdarklyMcpServer, {
+  const res = await experimentsGet(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
     experimentKey: "<value>",
@@ -525,7 +525,7 @@ run();
 
 ### Response
 
-**Promise\<[models.Experiment](../../models/experiment.md)\>**
+**Promise\<[components.Experiment](../../models/components/experiment.md)\>**
 
 ### Errors
 
@@ -539,7 +539,7 @@ run();
 | errors.RateLimitedErrorRep      | 429                             | application/json                |
 | errors.APIError                 | 4XX, 5XX                        | \*/\*                           |
 
-## patchExperiment
+## patch
 
 Update an experiment. Updating an experiment uses the semantic patch format.
 
@@ -661,14 +661,14 @@ Here's an example:
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.experiments.patchExperiment({
+  const result = await launchDarkly.experiments.patch({
     projectKey: "<value>",
     environmentKey: "<value>",
     experimentKey: "<value>",
@@ -695,17 +695,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { experimentsPatchExperiment } from "@launchdarkly/mcp-server/funcs/experimentsPatchExperiment.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { experimentsPatch } from "@launchdarkly/mcp-server/funcs/experimentsPatch.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await experimentsPatchExperiment(launchdarklyMcpServer, {
+  const res = await experimentsPatch(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
     experimentKey: "<value>",
@@ -744,7 +744,7 @@ run();
 
 ### Response
 
-**Promise\<[models.Experiment](../../models/experiment.md)\>**
+**Promise\<[components.Experiment](../../models/components/experiment.md)\>**
 
 ### Errors
 
@@ -770,14 +770,14 @@ To learn more, read [Start experiment iterations](https://launchdarkly.com/docs/
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.experiments.createIteration({
+  const result = await launchDarkly.experiments.createIteration({
     projectKey: "<value>",
     environmentKey: "<value>",
     experimentKey: "<value>",
@@ -865,17 +865,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
 import { experimentsCreateIteration } from "@launchdarkly/mcp-server/funcs/experimentsCreateIteration.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await experimentsCreateIteration(launchdarklyMcpServer, {
+  const res = await experimentsCreateIteration(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
     experimentKey: "<value>",
@@ -975,7 +975,7 @@ run();
 
 ### Response
 
-**Promise\<[models.IterationRep](../../models/iterationrep.md)\>**
+**Promise\<[components.IterationRep](../../models/components/iterationrep.md)\>**
 
 ### Errors
 
@@ -988,7 +988,7 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## ~~getExperimentResultsForMetricGroup~~
+## ~~getResultsForMetricGroup~~
 
 Get results from an experiment for a particular metric group.
 
@@ -997,14 +997,14 @@ Get results from an experiment for a particular metric group.
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.experiments.getExperimentResultsForMetricGroup({
+  const result = await launchDarkly.experiments.getResultsForMetricGroup({
     projectKey: "<value>",
     environmentKey: "<value>",
     experimentKey: "<value>",
@@ -1023,17 +1023,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { experimentsGetExperimentResultsForMetricGroup } from "@launchdarkly/mcp-server/funcs/experimentsGetExperimentResultsForMetricGroup.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { experimentsGetResultsForMetricGroup } from "@launchdarkly/mcp-server/funcs/experimentsGetResultsForMetricGroup.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await experimentsGetExperimentResultsForMetricGroup(launchdarklyMcpServer, {
+  const res = await experimentsGetResultsForMetricGroup(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
     experimentKey: "<value>",
@@ -1064,7 +1064,7 @@ run();
 
 ### Response
 
-**Promise\<[models.MetricGroupResultsRep](../../models/metricgroupresultsrep.md)\>**
+**Promise\<[components.MetricGroupResultsRep](../../models/components/metricgroupresultsrep.md)\>**
 
 ### Errors
 
@@ -1077,7 +1077,7 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## ~~getExperimentResults~~
+## ~~getResults~~
 
 Get results from an experiment for a particular metric.
 
@@ -1094,14 +1094,14 @@ For example, `expand=traffic` includes the `traffic` field for the project in th
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.experiments.getExperimentResults({
+  const result = await launchDarkly.experiments.getResults({
     projectKey: "<value>",
     environmentKey: "<value>",
     experimentKey: "<value>",
@@ -1120,17 +1120,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { experimentsGetExperimentResults } from "@launchdarkly/mcp-server/funcs/experimentsGetExperimentResults.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { experimentsGetResults } from "@launchdarkly/mcp-server/funcs/experimentsGetResults.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await experimentsGetExperimentResults(launchdarklyMcpServer, {
+  const res = await experimentsGetResults(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
     experimentKey: "<value>",
@@ -1161,7 +1161,7 @@ run();
 
 ### Response
 
-**Promise\<[models.ExperimentBayesianResultsRep](../../models/experimentbayesianresultsrep.md)\>**
+**Promise\<[components.ExperimentBayesianResultsRep](../../models/components/experimentbayesianresultsrep.md)\>**
 
 ### Errors
 
@@ -1174,21 +1174,21 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## getExperimentationSettings
+## getSettings
 
 Get current experimentation settings for the given project
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.experiments.getExperimentationSettings({
+  const result = await launchDarkly.experiments.getSettings({
     projectKey: "<value>",
   });
 
@@ -1204,17 +1204,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { experimentsGetExperimentationSettings } from "@launchdarkly/mcp-server/funcs/experimentsGetExperimentationSettings.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { experimentsGetSettings } from "@launchdarkly/mcp-server/funcs/experimentsGetSettings.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await experimentsGetExperimentationSettings(launchdarklyMcpServer, {
+  const res = await experimentsGetSettings(launchDarkly, {
     projectKey: "<value>",
   });
 
@@ -1242,7 +1242,7 @@ run();
 
 ### Response
 
-**Promise\<[models.RandomizationSettingsRep](../../models/randomizationsettingsrep.md)\>**
+**Promise\<[components.RandomizationSettingsRep](../../models/components/randomizationsettingsrep.md)\>**
 
 ### Errors
 
@@ -1256,21 +1256,21 @@ run();
 | errors.RateLimitedErrorRep      | 429                             | application/json                |
 | errors.APIError                 | 4XX, 5XX                        | \*/\*                           |
 
-## putExperimentationSettings
+## updateSettings
 
 Update experimentation settings for the given project
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.experiments.putExperimentationSettings({
+  const result = await launchDarkly.experiments.updateSettings({
     projectKey: "<value>",
     randomizationSettingsPut: {
       randomizationUnits: [
@@ -1295,17 +1295,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { experimentsPutExperimentationSettings } from "@launchdarkly/mcp-server/funcs/experimentsPutExperimentationSettings.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { experimentsUpdateSettings } from "@launchdarkly/mcp-server/funcs/experimentsUpdateSettings.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await experimentsPutExperimentationSettings(launchdarklyMcpServer, {
+  const res = await experimentsUpdateSettings(launchDarkly, {
     projectKey: "<value>",
     randomizationSettingsPut: {
       randomizationUnits: [
@@ -1342,7 +1342,7 @@ run();
 
 ### Response
 
-**Promise\<[models.RandomizationSettingsRep](../../models/randomizationsettingsrep.md)\>**
+**Promise\<[components.RandomizationSettingsRep](../../models/components/randomizationsettingsrep.md)\>**
 
 ### Errors
 

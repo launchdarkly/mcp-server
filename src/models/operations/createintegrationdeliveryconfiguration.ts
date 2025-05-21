@@ -6,8 +6,8 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type CreateIntegrationDeliveryConfigurationRequest = {
   /**
@@ -23,7 +23,7 @@ export type CreateIntegrationDeliveryConfigurationRequest = {
    */
   integrationKey: string;
   integrationDeliveryConfigurationPost:
-    models.IntegrationDeliveryConfigurationPost;
+    components.IntegrationDeliveryConfigurationPost;
 };
 
 /** @internal */
@@ -37,7 +37,7 @@ export const CreateIntegrationDeliveryConfigurationRequest$inboundSchema:
     environmentKey: z.string(),
     integrationKey: z.string(),
     IntegrationDeliveryConfigurationPost:
-      models.IntegrationDeliveryConfigurationPost$inboundSchema,
+      components.IntegrationDeliveryConfigurationPost$inboundSchema,
   }).transform((v) => {
     return remap$(v, {
       "IntegrationDeliveryConfigurationPost":
@@ -51,7 +51,7 @@ export type CreateIntegrationDeliveryConfigurationRequest$Outbound = {
   environmentKey: string;
   integrationKey: string;
   IntegrationDeliveryConfigurationPost:
-    models.IntegrationDeliveryConfigurationPost$Outbound;
+    components.IntegrationDeliveryConfigurationPost$Outbound;
 };
 
 /** @internal */
@@ -65,7 +65,7 @@ export const CreateIntegrationDeliveryConfigurationRequest$outboundSchema:
     environmentKey: z.string(),
     integrationKey: z.string(),
     integrationDeliveryConfigurationPost:
-      models.IntegrationDeliveryConfigurationPost$outboundSchema,
+      components.IntegrationDeliveryConfigurationPost$outboundSchema,
   }).transform((v) => {
     return remap$(v, {
       integrationDeliveryConfigurationPost:

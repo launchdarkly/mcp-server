@@ -6,15 +6,15 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type CreateLayerRequest = {
   /**
    * The project key
    */
   projectKey: string;
-  layerPost: models.LayerPost;
+  layerPost: components.LayerPost;
 };
 
 /** @internal */
@@ -24,7 +24,7 @@ export const CreateLayerRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   projectKey: z.string(),
-  LayerPost: models.LayerPost$inboundSchema,
+  LayerPost: components.LayerPost$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "LayerPost": "layerPost",
@@ -34,7 +34,7 @@ export const CreateLayerRequest$inboundSchema: z.ZodType<
 /** @internal */
 export type CreateLayerRequest$Outbound = {
   projectKey: string;
-  LayerPost: models.LayerPost$Outbound;
+  LayerPost: components.LayerPost$Outbound;
 };
 
 /** @internal */
@@ -44,7 +44,7 @@ export const CreateLayerRequest$outboundSchema: z.ZodType<
   CreateLayerRequest
 > = z.object({
   projectKey: z.string(),
-  layerPost: models.LayerPost$outboundSchema,
+  layerPost: components.LayerPost$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     layerPost: "LayerPost",

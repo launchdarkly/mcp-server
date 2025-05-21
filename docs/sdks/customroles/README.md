@@ -3,40 +3,29 @@
 
 ## Overview
 
-> ### Custom roles is an Enterprise feature
->
-> Custom roles is available to customers on an Enterprise plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact Sales](https://launchdarkly.com/contact-sales/).
-
-Custom roles allow you to create flexible policies providing fine-grained access control to everything in LaunchDarkly, including feature flags, environments, and teams. With roles, it's possible to enforce access policies that meet your exact workflow needs.
-
-The custom roles API allows you to create, update, and delete roles. You can also use the API to list all of your roles or get a role by ID. You cannot use this API to update preset roles.
-
-For more information about roles and the syntax for role policies, read the product documentation for [Roles](https://launchdarkly.com/docs/home/account/custom-roles).
-
-
 ### Available Operations
 
-* [getCustomRoles](#getcustomroles) - List custom roles
-* [postCustomRole](#postcustomrole) - Create custom role
-* [getCustomRole](#getcustomrole) - Get custom role
-* [deleteCustomRole](#deletecustomrole) - Delete custom role
-* [patchCustomRole](#patchcustomrole) - Update custom role
+* [list](#list) - List custom roles
+* [create](#create) - Create custom role
+* [get](#get) - Get custom role
+* [patch](#patch) - Update custom role
+* [delete](#delete) - Delete custom role
 
-## getCustomRoles
+## list
 
 Get a complete list of custom roles. Custom roles let you create flexible policies providing fine-grained access control to everything in LaunchDarkly, from feature flags to goals, environments, and teams. With custom roles, it's possible to enforce access policies that meet your exact workflow needs. Custom roles are available to customers on our enterprise plans. If you're interested in learning more about our enterprise plans, contact sales@launchdarkly.com.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.customRoles.getCustomRoles({});
+  const result = await launchDarkly.customRoles.list({});
 
   // Handle the result
   console.log(result);
@@ -50,17 +39,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { customRolesGetCustomRoles } from "@launchdarkly/mcp-server/funcs/customRolesGetCustomRoles.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { customRolesList } from "@launchdarkly/mcp-server/funcs/customRolesList.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await customRolesGetCustomRoles(launchdarklyMcpServer, {});
+  const res = await customRolesList(launchDarkly, {});
 
   if (!res.ok) {
     throw res.error;
@@ -86,7 +75,7 @@ run();
 
 ### Response
 
-**Promise\<[models.CustomRoles](../../models/customroles.md)\>**
+**Promise\<[components.CustomRoles](../../models/components/customroles.md)\>**
 
 ### Errors
 
@@ -97,21 +86,21 @@ run();
 | errors.RateLimitedErrorRep  | 429                         | application/json            |
 | errors.APIError             | 4XX, 5XX                    | \*/\*                       |
 
-## postCustomRole
+## create
 
 Create a new custom role
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.customRoles.postCustomRole({
+  const result = await launchDarkly.customRoles.create({
     name: "Ops team",
     key: "role-key-123abc",
     description: "An example role for members of the ops team",
@@ -141,17 +130,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { customRolesPostCustomRole } from "@launchdarkly/mcp-server/funcs/customRolesPostCustomRole.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { customRolesCreate } from "@launchdarkly/mcp-server/funcs/customRolesCreate.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await customRolesPostCustomRole(launchdarklyMcpServer, {
+  const res = await customRolesCreate(launchDarkly, {
     name: "Ops team",
     key: "role-key-123abc",
     description: "An example role for members of the ops team",
@@ -186,14 +175,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [models.CustomRolePost](../../models/customrolepost.md)                                                                                                                        | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [components.CustomRolePost](../../models/components/customrolepost.md)                                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.CustomRole](../../models/customrole.md)\>**
+**Promise\<[components.CustomRole](../../models/components/customrole.md)\>**
 
 ### Errors
 
@@ -206,21 +195,21 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## getCustomRole
+## get
 
 Get a single custom role by key or ID
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.customRoles.getCustomRole({
+  const result = await launchDarkly.customRoles.get({
     customRoleKey: "<value>",
   });
 
@@ -236,17 +225,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { customRolesGetCustomRole } from "@launchdarkly/mcp-server/funcs/customRolesGetCustomRole.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { customRolesGet } from "@launchdarkly/mcp-server/funcs/customRolesGet.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await customRolesGetCustomRole(launchdarklyMcpServer, {
+  const res = await customRolesGet(launchDarkly, {
     customRoleKey: "<value>",
   });
 
@@ -274,7 +263,7 @@ run();
 
 ### Response
 
-**Promise\<[models.CustomRole](../../models/customrole.md)\>**
+**Promise\<[components.CustomRole](../../models/components/customrole.md)\>**
 
 ### Errors
 
@@ -286,98 +275,21 @@ run();
 | errors.RateLimitedErrorRep  | 429                         | application/json            |
 | errors.APIError             | 4XX, 5XX                    | \*/\*                       |
 
-## deleteCustomRole
-
-Delete a custom role by key
-
-### Example Usage
-
-```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
-
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
-});
-
-async function run() {
-  await launchdarklyMcpServer.customRoles.deleteCustomRole({
-    customRoleKey: "<value>",
-  });
-
-
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { customRolesDeleteCustomRole } from "@launchdarkly/mcp-server/funcs/customRolesDeleteCustomRole.js";
-
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
-});
-
-async function run() {
-  const res = await customRolesDeleteCustomRole(launchdarklyMcpServer, {
-    customRoleKey: "<value>",
-  });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.DeleteCustomRoleRequest](../../models/operations/deletecustomrolerequest.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<void\>**
-
-### Errors
-
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.UnauthorizedErrorRep | 401                         | application/json            |
-| errors.NotFoundErrorRep     | 404                         | application/json            |
-| errors.RateLimitedErrorRep  | 429                         | application/json            |
-| errors.APIError             | 4XX, 5XX                    | \*/\*                       |
-
-## patchCustomRole
+## patch
 
 Update a single custom role. Updating a custom role uses a [JSON patch](https://datatracker.ietf.org/doc/html/rfc6902) or [JSON merge patch](https://datatracker.ietf.org/doc/html/rfc7386) representation of the desired changes. To learn more, read [Updates](https://launchdarkly.com/docs/api#updates).<br/><br/>To add an element to the `policy` array, set the `path` to `/policy` and then append `/<array index>`. Use `/0` to add to the beginning of the array. Use `/-` to add to the end of the array.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.customRoles.patchCustomRole({
+  const result = await launchDarkly.customRoles.patch({
     customRoleKey: "<value>",
     patchWithComment: {
       patch: [
@@ -410,17 +322,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { customRolesPatchCustomRole } from "@launchdarkly/mcp-server/funcs/customRolesPatchCustomRole.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { customRolesPatch } from "@launchdarkly/mcp-server/funcs/customRolesPatch.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await customRolesPatchCustomRole(launchdarklyMcpServer, {
+  const res = await customRolesPatch(launchDarkly, {
     customRoleKey: "<value>",
     patchWithComment: {
       patch: [
@@ -465,7 +377,7 @@ run();
 
 ### Response
 
-**Promise\<[models.CustomRole](../../models/customrole.md)\>**
+**Promise\<[components.CustomRole](../../models/components/customrole.md)\>**
 
 ### Errors
 
@@ -477,3 +389,80 @@ run();
 | errors.StatusConflictErrorRep | 409                           | application/json              |
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
+
+## delete
+
+Delete a custom role by key
+
+### Example Usage
+
+```typescript
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
+
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
+});
+
+async function run() {
+  await launchDarkly.customRoles.delete({
+    customRoleKey: "<value>",
+  });
+
+
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { customRolesDelete } from "@launchdarkly/mcp-server/funcs/customRolesDelete.js";
+
+// Use `LaunchDarklyCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
+});
+
+async function run() {
+  const res = await customRolesDelete(launchDarkly, {
+    customRoleKey: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.DeleteCustomRoleRequest](../../models/operations/deletecustomrolerequest.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<void\>**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.UnauthorizedErrorRep | 401                         | application/json            |
+| errors.NotFoundErrorRep     | 404                         | application/json            |
+| errors.RateLimitedErrorRep  | 429                         | application/json            |
+| errors.APIError             | 4XX, 5XX                    | \*/\*                       |

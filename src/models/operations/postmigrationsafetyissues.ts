@@ -5,8 +5,8 @@
 import * as z from "zod";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type PostMigrationSafetyIssuesRequest = {
   /**
@@ -21,7 +21,7 @@ export type PostMigrationSafetyIssuesRequest = {
    * The environment key
    */
   environmentKey: string;
-  flagSempatch: models.FlagSempatch;
+  flagSempatch: components.FlagSempatch;
 };
 
 /** @internal */
@@ -33,7 +33,7 @@ export const PostMigrationSafetyIssuesRequest$inboundSchema: z.ZodType<
   projectKey: z.string(),
   flagKey: z.string(),
   environmentKey: z.string(),
-  flagSempatch: models.FlagSempatch$inboundSchema,
+  flagSempatch: components.FlagSempatch$inboundSchema,
 });
 
 /** @internal */
@@ -41,7 +41,7 @@ export type PostMigrationSafetyIssuesRequest$Outbound = {
   projectKey: string;
   flagKey: string;
   environmentKey: string;
-  flagSempatch: models.FlagSempatch$Outbound;
+  flagSempatch: components.FlagSempatch$Outbound;
 };
 
 /** @internal */
@@ -53,7 +53,7 @@ export const PostMigrationSafetyIssuesRequest$outboundSchema: z.ZodType<
   projectKey: z.string(),
   flagKey: z.string(),
   environmentKey: z.string(),
-  flagSempatch: models.FlagSempatch$outboundSchema,
+  flagSempatch: components.FlagSempatch$outboundSchema,
 });
 
 /**

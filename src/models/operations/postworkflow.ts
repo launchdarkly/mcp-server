@@ -6,8 +6,8 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type PostWorkflowRequest = {
   /**
@@ -30,7 +30,7 @@ export type PostWorkflowRequest = {
    * The environment key
    */
   environmentKey: string;
-  customWorkflowInput: models.CustomWorkflowInput;
+  customWorkflowInput: components.CustomWorkflowInput;
 };
 
 /** @internal */
@@ -44,7 +44,7 @@ export const PostWorkflowRequest$inboundSchema: z.ZodType<
   projectKey: z.string(),
   featureFlagKey: z.string(),
   environmentKey: z.string(),
-  CustomWorkflowInput: models.CustomWorkflowInput$inboundSchema,
+  CustomWorkflowInput: components.CustomWorkflowInput$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "CustomWorkflowInput": "customWorkflowInput",
@@ -58,7 +58,7 @@ export type PostWorkflowRequest$Outbound = {
   projectKey: string;
   featureFlagKey: string;
   environmentKey: string;
-  CustomWorkflowInput: models.CustomWorkflowInput$Outbound;
+  CustomWorkflowInput: components.CustomWorkflowInput$Outbound;
 };
 
 /** @internal */
@@ -72,7 +72,7 @@ export const PostWorkflowRequest$outboundSchema: z.ZodType<
   projectKey: z.string(),
   featureFlagKey: z.string(),
   environmentKey: z.string(),
-  customWorkflowInput: models.CustomWorkflowInput$outboundSchema,
+  customWorkflowInput: components.CustomWorkflowInput$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     customWorkflowInput: "CustomWorkflowInput",

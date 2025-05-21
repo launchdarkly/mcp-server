@@ -26,7 +26,7 @@ let value: PostEnvironmentRequest = {
 
 ## Fields
 
-| Field                                                     | Type                                                      | Required                                                  | Description                                               |
-| --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
-| `projectKey`                                              | *string*                                                  | :heavy_check_mark:                                        | The project key                                           |
-| `environmentPost`                                         | [models.EnvironmentPost](../../models/environmentpost.md) | :heavy_check_mark:                                        | N/A                                                       |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `projectKey`                                                             | *string*                                                                 | :heavy_check_mark:                                                       | The project key                                                          |
+| `environmentPost`                                                        | [components.EnvironmentPost](../../models/components/environmentpost.md) | :heavy_check_mark:                                                       | N/A                                                                      |

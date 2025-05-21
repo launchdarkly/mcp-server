@@ -3,274 +3,40 @@
 
 ## Overview
 
-The feature flags API allows you to list, create, and modify feature flags and their targeting. For example, you can control percentage rollouts, target specific contexts, or even toggle off a feature flag programmatically.
-
-## Sample feature flag representation
-
-Every feature flag has a set of top-level attributes, as well as an `environments` map containing the flag rollout and targeting rules specific to each environment. To learn more, read [Using feature flags](https://launchdarkly.com/docs/home/flags/create).
-
-<details>
-<summary>Click to expand an example of a <strong>complete feature flag representation</strong></summary>
-
-```json
-{
-  "name": "Alternate product page",
-  "kind": "boolean",
-  "description": "This is a description",
-  "key": "alternate.page",
-  "_version": 2,
-  "creationDate": 1418684722483,
-  "includeInSnippet": true,
-  "clientSideAvailability" {
-    "usingMobileKey": false,
-    "usingEnvironmentId": true,
-  },
-  "variations": [
-    {
-      "value": true,
-      "name": "true",
-      "_id": "86208e6e-468f-4425-b334-7f318397f95c"
-    },
-    {
-      "value": false,
-      "name": "false",
-      "_id": "7b32de80-f346-4276-bb77-28dfa7ddc2d8"
-    }
-  ],
-  "variationJsonSchema": null,
-  "defaults": {
-    "onVariation": 0,
-    "offVariation": 1
-  },
-  "temporary": false,
-  "tags": ["ops", "experiments"],
-  "_links": {
-    "parent": {
-      "href": "/api/v2/flags/default",
-      "type": "application/json"
-    },
-    "self": {
-      "href": "/api/v2/flags/default/alternate.page",
-      "type": "application/json"
-    }
-  },
-  "maintainerId": "548f6741c1efad40031b18ae",
-  "_maintainer": {
-    "_links": {
-      "self": {
-        "href": "/api/v2/members/548f6741c1efad40031b18ae",
-        "type": "application/json"
-      }
-    },
-    "_id": "548f6741c1efad40031b18ae",
-    "firstName": "Ariel",
-    "lastName": "Flores",
-    "role": "reader",
-    "email": "ariel@acme.com"
-  },
-  "goalIds": [],
-  "experiments": {
-    "baselineIdx": 0,
-    "items": []
-  },
-  "environments": {
-    "production": {
-      "on": true,
-      "archived": false,
-      "salt": "YWx0ZXJuYXRlLnBhZ2U=",
-      "sel": "45501b9314dc4641841af774cb038b96",
-      "lastModified": 1469326565348,
-      "version": 61,
-      "targets": [{
-          "values": ["user-key-123abc"],
-          "variation": 0,
-          "contextKind": "user"
-      }],
-      "contextTargets": [{
-        "values": [],
-        "variation": 0,
-        "contextKind": "user"
-        }, {
-        "values": ["org-key-123abc"],
-        "variation": 0,
-        "contextKind": "organization"
-      }],
-      "rules": [
-        {
-          "_id": "f3ea72d0-e473-4e8b-b942-565b790ffe18",
-          "variation": 0,
-          "clauses": [
-            {
-              "_id": "6b81968e-3744-4416-9d64-74547eb0a7d1",
-              "attribute": "groups",
-              "op": "in",
-              "values": ["Top Customers"],
-              "contextKind": "user",
-              "negate": false
-            },
-            {
-              "_id": "9d60165d-82b8-4b9a-9136-f23407ba1718",
-              "attribute": "email",
-              "op": "endsWith",
-              "values": ["gmail.com"],
-              "contextKind": "user",
-              "negate": false
-            }
-          ],
-          "trackEvents": false,
-          "ref": "73257308-472b-4d9c-a556-10aa7adbf857"
-        }
-      ],
-      "fallthrough": {
-        "rollout": {
-          "variations": [
-            {
-              "variation": 0,
-              "weight": 60000
-            },
-            {
-              "variation": 1,
-              "weight": 40000
-            }
-          ],
-          "contextKind": "user"
-        }
-      },
-      "offVariation": 1,
-      "prerequisites": [],
-      "_site": {
-        "href": "/default/production/features/alternate.page",
-        "type": "text/html"
-      },
-      "_environmentName": "Production",
-      "trackEvents": false,
-      "trackEventsFallthrough": false,
-      "_summary": {
-        "variations": {
-          "0": {
-            "rules": 1,
-            "nullRules": 0,
-            "targets": 2,
-            "rollout": 60000
-          },
-          "1": {
-            "rules": 0,
-            "nullRules": 0,
-            "targets": 0,
-            "isOff": true,
-            "rollout": 40000
-          }
-        },
-        "prerequisites": 0
-      }
-    }
-}
-```
-
-</details>
-
-## Anatomy of a feature flag
-
-This section describes the sample feature flag representation in more detail.
-
-### Top-level attributes
-
-Most of the top-level attributes have a straightforward interpretation, for example `name` and `description`.
-
-The `variations` array represents the different variation values that a feature flag has. For a boolean flag, there are two variations: `true` and `false`. Multivariate flags have more variation values, and those values could be any JSON type: numbers, strings, objects, or arrays. In targeting rules, the variations are referred to by their index into this array.
-
-To update these attributes, read [Update feature flag](#operation/patchFeatureFlag), especially the instructions for **updating flag settings**.
-
-### Per-environment configurations
-
-Each entry in the `environments` map contains a JSON object that represents the environment-specific flag configuration data available in the flag's targeting page. To learn more, read [Targeting with flags](https://launchdarkly.com/docs/home/flags/target).
-
-To update per-environment information for a flag, read [Update feature flag](#operation/patchFeatureFlag), especially the instructions for **turning flags on and off** and **working with targeting and variations**.
-
-### Individual context targets
-
-The `targets` and `contextTargets` arrays in the per-environment configuration data correspond to the individual context targeting on the flag's targeting page. To learn more, read [Individual targeting](https://launchdarkly.com/docs/home/flags/individual-targeting).
-
-Each object in the `targets` and `contextTargets` arrays represents a list of context keys assigned to a particular variation. The `targets` array includes contexts with `contextKind` of "user" and the `contextTargets` array includes contexts with context kinds other than "user."
-
-For example:
-
-```json
-{
-  ...
-  "environments" : {
-    "production" : {
-      ...
-      "targets": [
-        {
-          "values": ["user-key-123abc"],
-          "variation": 0,
-          "contextKind": "user"
-        }
-      ],
-      "contextTargets": [
-        {
-          "values": ["org-key-123abc"],
-          "variation": 0,
-          "contextKind": "organization"
-        }
-      ]
-    }
-  }
-}
-```
-
-The `targets` array means that any user context instance with the key `user-key-123abc` receives the first variation listed in the `variations` array. The `contextTargets` array means that any organization context with the key `org-key-123abc` receives the first variation listed in the `variations` array. Recall that the variations are stored at the top level of the flag JSON in an array, and the per-environment configuration rules point to indexes into this array. If this is a boolean flag, both contexts are receiving the `true` variation.
-
-### Targeting rules
-
-The `rules` array corresponds to the rules section of the flag's targeting page. This is where you can express complex rules on attributes with conditions and operators. For example, you might create a rule that specifies "roll out the `true` variation to 80% of contexts whose email address ends with `gmail.com`". To learn more, read [Targeting rules](https://launchdarkly.com/docs/home/flags/targeting-rules).
-
-### The fallthrough rule
-
-The `fallthrough` object is a special rule that contains no conditions. It is the rollout strategy that is applied when none of the individual or custom targeting rules match. In the LaunchDarkly UI, it is called the "Default rule."
-
-### The off variation
-
-The off variation represents the variation to serve if the feature flag targeting is turned off, meaning the `on` attribute is `false`. For boolean flags, this is usually `false`. For multivariate flags, set the off variation to whatever variation represents the control or baseline behavior for your application. If you don't set the off variation, LaunchDarkly will serve the fallback value defined in your code.
-
-### Percentage rollouts
-
-When you work with targeting rules and with the default rule, you can specify either a single variation or a percentage rollout. The `weight` attribute defines the percentage rollout for each variation. Weights range from 0 (a 0% rollout) to 100000 (a 100% rollout). The weights are scaled by a factor of 1000 so that fractions of a percent can be represented without using floating-point. For example, a weight of `60000` means that 60% of contexts will receive that variation. The sum of weights across all variations should be 100%.
-
-
 ### Available Operations
 
-* [getFeatureFlagStatusAcrossEnvironments](#getfeatureflagstatusacrossenvironments) - Get flag status across environments
-* [getFeatureFlagStatuses](#getfeatureflagstatuses) - List feature flag statuses
-* [getFeatureFlagStatus](#getfeatureflagstatus) - Get feature flag status
-* [getFeatureFlags](#getfeatureflags) - List feature flags
-* [postFeatureFlag](#postfeatureflag) - Create a feature flag
-* [getFeatureFlag](#getfeatureflag) - Get feature flag
-* [deleteFeatureFlag](#deletefeatureflag) - Delete feature flag
-* [patchFeatureFlag](#patchfeatureflag) - Update feature flag
-* [copyFeatureFlag](#copyfeatureflag) - Copy feature flag
-* [getExpiringContextTargets](#getexpiringcontexttargets) - Get expiring context targets for feature flag
-* [patchExpiringTargets](#patchexpiringtargets) - Update expiring context targets on feature flag
+* [getStatus](#getstatus) - Get flag status across environments
+* [listStatuses](#liststatuses) - List feature flag statuses
+* [status](#status) - Get feature flag status
+* [list](#list) - List feature flags
+* [create](#create) - Create a feature flag
+* [getDependentByEnv](#getdependentbyenv) - List dependent feature flags by environment
+* [get](#get) - Get feature flag
+* [patch](#patch) - Update feature flag
+* [delete](#delete) - Delete feature flag
+* [copy](#copy) - Copy feature flag
+* [listDependentFlags](#listdependentflags) - List dependent feature flags
+* [getExpiringTargets](#getexpiringtargets) - Get expiring context targets for feature flag
+* [updateExpiringTargets](#updateexpiringtargets) - Update expiring context targets on feature flag
 * [getExpiringUserTargets](#getexpiringusertargets) - Get expiring user targets for feature flag
 * [patchExpiringUserTargets](#patchexpiringusertargets) - Update expiring user targets on feature flag
-* [postMigrationSafetyIssues](#postmigrationsafetyissues) - Get migration safety issues
+* [getMigrationSafetyIssues](#getmigrationsafetyissues) - Get migration safety issues
 
-## getFeatureFlagStatusAcrossEnvironments
+## getStatus
 
 Get the status for a particular feature flag across environments.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.featureFlags.getFeatureFlagStatusAcrossEnvironments({
+  const result = await launchDarkly.featureFlags.getStatus({
     projectKey: "<value>",
     featureFlagKey: "<value>",
   });
@@ -287,17 +53,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { featureFlagsGetFeatureFlagStatusAcrossEnvironments } from "@launchdarkly/mcp-server/funcs/featureFlagsGetFeatureFlagStatusAcrossEnvironments.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { featureFlagsGetStatus } from "@launchdarkly/mcp-server/funcs/featureFlagsGetStatus.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await featureFlagsGetFeatureFlagStatusAcrossEnvironments(launchdarklyMcpServer, {
+  const res = await featureFlagsGetStatus(launchDarkly, {
     projectKey: "<value>",
     featureFlagKey: "<value>",
   });
@@ -326,7 +92,7 @@ run();
 
 ### Response
 
-**Promise\<[models.FeatureFlagStatusAcrossEnvironments](../../models/featureflagstatusacrossenvironments.md)\>**
+**Promise\<[components.FeatureFlagStatusAcrossEnvironments](../../models/components/featureflagstatusacrossenvironments.md)\>**
 
 ### Errors
 
@@ -338,7 +104,7 @@ run();
 | errors.RateLimitedErrorRep  | 429                         | application/json            |
 | errors.APIError             | 4XX, 5XX                    | \*/\*                       |
 
-## getFeatureFlagStatuses
+## listStatuses
 
 Get a list of statuses for all feature flags. The status includes the last time the feature flag was requested, as well as a state, which is one of the following:
 
@@ -353,14 +119,14 @@ To learn more, read [Flag statuses](https://launchdarkly.com/docs/home/observabi
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.featureFlags.getFeatureFlagStatuses({
+  const result = await launchDarkly.featureFlags.listStatuses({
     projectKey: "<value>",
     environmentKey: "<value>",
   });
@@ -377,17 +143,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { featureFlagsGetFeatureFlagStatuses } from "@launchdarkly/mcp-server/funcs/featureFlagsGetFeatureFlagStatuses.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { featureFlagsListStatuses } from "@launchdarkly/mcp-server/funcs/featureFlagsListStatuses.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await featureFlagsGetFeatureFlagStatuses(launchdarklyMcpServer, {
+  const res = await featureFlagsListStatuses(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
   });
@@ -416,7 +182,7 @@ run();
 
 ### Response
 
-**Promise\<[models.FeatureFlagStatuses](../../models/featureflagstatuses.md)\>**
+**Promise\<[components.FeatureFlagStatuses](../../models/components/featureflagstatuses.md)\>**
 
 ### Errors
 
@@ -428,21 +194,21 @@ run();
 | errors.RateLimitedErrorRep  | 429                         | application/json            |
 | errors.APIError             | 4XX, 5XX                    | \*/\*                       |
 
-## getFeatureFlagStatus
+## status
 
 Get the status for a particular feature flag.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.featureFlags.getFeatureFlagStatus({
+  const result = await launchDarkly.featureFlags.status({
     projectKey: "<value>",
     environmentKey: "<value>",
     featureFlagKey: "<value>",
@@ -460,17 +226,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { featureFlagsGetFeatureFlagStatus } from "@launchdarkly/mcp-server/funcs/featureFlagsGetFeatureFlagStatus.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { featureFlagsStatus } from "@launchdarkly/mcp-server/funcs/featureFlagsStatus.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await featureFlagsGetFeatureFlagStatus(launchdarklyMcpServer, {
+  const res = await featureFlagsStatus(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
     featureFlagKey: "<value>",
@@ -500,7 +266,7 @@ run();
 
 ### Response
 
-**Promise\<[models.FlagStatusRep](../../models/flagstatusrep.md)\>**
+**Promise\<[components.FlagStatusRep](../../models/components/flagstatusrep.md)\>**
 
 ### Errors
 
@@ -512,7 +278,7 @@ run();
 | errors.RateLimitedErrorRep  | 429                         | application/json            |
 | errors.APIError             | 4XX, 5XX                    | \*/\*                       |
 
-## getFeatureFlags
+## list
 
 Get a list of all feature flags in the given project. You can include information specific to different environments by adding `env` query parameter. For example, setting `env=production` adds configuration details about your production environment to the response. You can also filter feature flags by tag with the `tag` query parameter.
 
@@ -583,14 +349,14 @@ To learn more, read [Migration Flags](https://launchdarkly.com/docs/home/flags/m
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.featureFlags.getFeatureFlags({
+  const result = await launchDarkly.featureFlags.list({
     projectKey: "<value>",
   });
 
@@ -606,17 +372,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { featureFlagsGetFeatureFlags } from "@launchdarkly/mcp-server/funcs/featureFlagsGetFeatureFlags.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { featureFlagsList } from "@launchdarkly/mcp-server/funcs/featureFlagsList.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await featureFlagsGetFeatureFlags(launchdarklyMcpServer, {
+  const res = await featureFlagsList(launchDarkly, {
     projectKey: "<value>",
   });
 
@@ -644,7 +410,7 @@ run();
 
 ### Response
 
-**Promise\<[models.FeatureFlags](../../models/featureflags.md)\>**
+**Promise\<[components.FeatureFlags](../../models/components/featureflags.md)\>**
 
 ### Errors
 
@@ -657,7 +423,7 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## postFeatureFlag
+## create
 
 Create a feature flag with the given name, key, and variations.
 
@@ -691,14 +457,14 @@ To learn more, read [Migration Flags](https://launchdarkly.com/docs/home/flags/m
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.featureFlags.postFeatureFlag({
+  const result = await launchDarkly.featureFlags.create({
     projectKey: "<value>",
     featureFlagBody: {
       name: "My Flag",
@@ -722,17 +488,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { featureFlagsPostFeatureFlag } from "@launchdarkly/mcp-server/funcs/featureFlagsPostFeatureFlag.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { featureFlagsCreate } from "@launchdarkly/mcp-server/funcs/featureFlagsCreate.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await featureFlagsPostFeatureFlag(launchdarklyMcpServer, {
+  const res = await featureFlagsCreate(launchDarkly, {
     projectKey: "<value>",
     featureFlagBody: {
       name: "My Flag",
@@ -768,7 +534,7 @@ run();
 
 ### Response
 
-**Promise\<[models.FeatureFlag](../../models/featureflag.md)\>**
+**Promise\<[components.FeatureFlag](../../models/components/featureflag.md)\>**
 
 ### Errors
 
@@ -780,7 +546,96 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## getFeatureFlag
+## getDependentByEnv
+
+> ### Flag prerequisites is an Enterprise feature
+>
+> Flag prerequisites is available to customers on an Enterprise plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact Sales](https://launchdarkly.com/contact-sales/).
+
+List dependent flags across all environments for the flag specified in the path parameters. A dependent flag is a flag that uses another flag as a prerequisite. To learn more, read [Flag prerequisites](https://launchdarkly.com/docs/home/flags/prereqs).
+
+
+### Example Usage
+
+```typescript
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
+
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
+});
+
+async function run() {
+  const result = await launchDarkly.featureFlags.getDependentByEnv({
+    projectKey: "<value>",
+    environmentKey: "<value>",
+    featureFlagKey: "<value>",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { featureFlagsGetDependentByEnv } from "@launchdarkly/mcp-server/funcs/featureFlagsGetDependentByEnv.js";
+
+// Use `LaunchDarklyCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
+});
+
+async function run() {
+  const res = await featureFlagsGetDependentByEnv(launchDarkly, {
+    projectKey: "<value>",
+    environmentKey: "<value>",
+    featureFlagKey: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.GetDependentFlagsByEnvRequest](../../models/operations/getdependentflagsbyenvrequest.md)                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[components.DependentFlagsByEnvironment](../../models/components/dependentflagsbyenvironment.md)\>**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.UnauthorizedErrorRep | 401                         | application/json            |
+| errors.ForbiddenErrorRep    | 403                         | application/json            |
+| errors.NotFoundErrorRep     | 404                         | application/json            |
+| errors.RateLimitedErrorRep  | 429                         | application/json            |
+| errors.APIError             | 4XX, 5XX                    | \*/\*                       |
+
+## get
 
 Get a single feature flag by key. By default, this returns the configurations for all environments. You can filter environments with the `env` query parameter. For example, setting `env=production` restricts the returned configurations to just the `production` environment.
 
@@ -801,14 +656,14 @@ For example, `expand=evaluation` includes the `evaluation` field in the response
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.featureFlags.getFeatureFlag({
+  const result = await launchDarkly.featureFlags.get({
     projectKey: "<value>",
     featureFlagKey: "<value>",
   });
@@ -825,17 +680,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { featureFlagsGetFeatureFlag } from "@launchdarkly/mcp-server/funcs/featureFlagsGetFeatureFlag.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { featureFlagsGet } from "@launchdarkly/mcp-server/funcs/featureFlagsGet.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await featureFlagsGetFeatureFlag(launchdarklyMcpServer, {
+  const res = await featureFlagsGet(launchDarkly, {
     projectKey: "<value>",
     featureFlagKey: "<value>",
   });
@@ -864,7 +719,7 @@ run();
 
 ### Response
 
-**Promise\<[models.FeatureFlag](../../models/featureflag.md)\>**
+**Promise\<[components.FeatureFlag](../../models/components/featureflag.md)\>**
 
 ### Errors
 
@@ -876,87 +731,7 @@ run();
 | errors.RateLimitedErrorRep  | 429                         | application/json            |
 | errors.APIError             | 4XX, 5XX                    | \*/\*                       |
 
-## deleteFeatureFlag
-
-Delete a feature flag in all environments. Use with caution: only delete feature flags your application no longer uses.
-
-### Example Usage
-
-```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
-
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
-});
-
-async function run() {
-  await launchdarklyMcpServer.featureFlags.deleteFeatureFlag({
-    projectKey: "<value>",
-    featureFlagKey: "<value>",
-  });
-
-
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { featureFlagsDeleteFeatureFlag } from "@launchdarkly/mcp-server/funcs/featureFlagsDeleteFeatureFlag.js";
-
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
-});
-
-async function run() {
-  const res = await featureFlagsDeleteFeatureFlag(launchdarklyMcpServer, {
-    projectKey: "<value>",
-    featureFlagKey: "<value>",
-  });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.DeleteFeatureFlagRequest](../../models/operations/deletefeatureflagrequest.md)                                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<void\>**
-
-### Errors
-
-| Error Type                    | Status Code                   | Content Type                  |
-| ----------------------------- | ----------------------------- | ----------------------------- |
-| errors.UnauthorizedErrorRep   | 401                           | application/json              |
-| errors.NotFoundErrorRep       | 404                           | application/json              |
-| errors.StatusConflictErrorRep | 409                           | application/json              |
-| errors.RateLimitedErrorRep    | 429                           | application/json              |
-| errors.APIError               | 4XX, 5XX                      | \*/\*                         |
-
-## patchFeatureFlag
+## patch
 
 Perform a partial update to a feature flag. The request body must be a valid semantic patch, JSON patch, or JSON merge patch. To learn more the different formats, read [Updates](https://launchdarkly.com/docs/api#updates).
 
@@ -2152,14 +1927,14 @@ To learn more, read [Migration flags](https://launchdarkly.com/docs/home/flags/m
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.featureFlags.patchFeatureFlag({
+  const result = await launchDarkly.featureFlags.patch({
     projectKey: "<value>",
     featureFlagKey: "<value>",
     patchWithComment: {
@@ -2185,17 +1960,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { featureFlagsPatchFeatureFlag } from "@launchdarkly/mcp-server/funcs/featureFlagsPatchFeatureFlag.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { featureFlagsPatch } from "@launchdarkly/mcp-server/funcs/featureFlagsPatch.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await featureFlagsPatchFeatureFlag(launchdarklyMcpServer, {
+  const res = await featureFlagsPatch(launchDarkly, {
     projectKey: "<value>",
     featureFlagKey: "<value>",
     patchWithComment: {
@@ -2233,7 +2008,7 @@ run();
 
 ### Response
 
-**Promise\<[models.FeatureFlag](../../models/featureflag.md)\>**
+**Promise\<[components.FeatureFlag](../../models/components/featureflag.md)\>**
 
 ### Errors
 
@@ -2247,7 +2022,87 @@ run();
 | errors.RateLimitedErrorRep      | 429                             | application/json                |
 | errors.APIError                 | 4XX, 5XX                        | \*/\*                           |
 
-## copyFeatureFlag
+## delete
+
+Delete a feature flag in all environments. Use with caution: only delete feature flags your application no longer uses.
+
+### Example Usage
+
+```typescript
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
+
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
+});
+
+async function run() {
+  await launchDarkly.featureFlags.delete({
+    projectKey: "<value>",
+    featureFlagKey: "<value>",
+  });
+
+
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { featureFlagsDelete } from "@launchdarkly/mcp-server/funcs/featureFlagsDelete.js";
+
+// Use `LaunchDarklyCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
+});
+
+async function run() {
+  const res = await featureFlagsDelete(launchDarkly, {
+    projectKey: "<value>",
+    featureFlagKey: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.DeleteFeatureFlagRequest](../../models/operations/deletefeatureflagrequest.md)                                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<void\>**
+
+### Errors
+
+| Error Type                    | Status Code                   | Content Type                  |
+| ----------------------------- | ----------------------------- | ----------------------------- |
+| errors.UnauthorizedErrorRep   | 401                           | application/json              |
+| errors.NotFoundErrorRep       | 404                           | application/json              |
+| errors.StatusConflictErrorRep | 409                           | application/json              |
+| errors.RateLimitedErrorRep    | 429                           | application/json              |
+| errors.APIError               | 4XX, 5XX                      | \*/\*                         |
+
+## copy
 
 
 > ### Copying flag settings is an Enterprise feature
@@ -2264,14 +2119,14 @@ If you provide the optional `currentVersion` of a flag, this operation tests to 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.featureFlags.copyFeatureFlag({
+  const result = await launchDarkly.featureFlags.copy({
     projectKey: "<value>",
     featureFlagKey: "<value>",
     flagCopyConfigPost: {
@@ -2299,17 +2154,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { featureFlagsCopyFeatureFlag } from "@launchdarkly/mcp-server/funcs/featureFlagsCopyFeatureFlag.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { featureFlagsCopy } from "@launchdarkly/mcp-server/funcs/featureFlagsCopy.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await featureFlagsCopyFeatureFlag(launchdarklyMcpServer, {
+  const res = await featureFlagsCopy(launchDarkly, {
     projectKey: "<value>",
     featureFlagKey: "<value>",
     flagCopyConfigPost: {
@@ -2349,7 +2204,7 @@ run();
 
 ### Response
 
-**Promise\<[models.FeatureFlag](../../models/featureflag.md)\>**
+**Promise\<[components.FeatureFlag](../../models/components/featureflag.md)\>**
 
 ### Errors
 
@@ -2362,21 +2217,108 @@ run();
 | errors.RateLimitedErrorRep      | 429                             | application/json                |
 | errors.APIError                 | 4XX, 5XX                        | \*/\*                           |
 
-## getExpiringContextTargets
+## listDependentFlags
+
+> ### Flag prerequisites is an Enterprise feature
+>
+> Flag prerequisites is available to customers on an Enterprise plan. To learn more, [read about our pricing](https://launchdarkly.com/pricing/). To upgrade your plan, [contact Sales](https://launchdarkly.com/contact-sales/).
+
+List dependent flags across all environments for the flag specified in the path parameters. A dependent flag is a flag that uses another flag as a prerequisite. To learn more, read [Flag prerequisites](https://launchdarkly.com/docs/home/flags/prereqs).
+
+
+### Example Usage
+
+```typescript
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
+
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
+});
+
+async function run() {
+  const result = await launchDarkly.featureFlags.listDependentFlags({
+    projectKey: "<value>",
+    featureFlagKey: "<value>",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { featureFlagsListDependentFlags } from "@launchdarkly/mcp-server/funcs/featureFlagsListDependentFlags.js";
+
+// Use `LaunchDarklyCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
+});
+
+async function run() {
+  const res = await featureFlagsListDependentFlags(launchDarkly, {
+    projectKey: "<value>",
+    featureFlagKey: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.GetDependentFlagsRequest](../../models/operations/getdependentflagsrequest.md)                                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[components.MultiEnvironmentDependentFlags](../../models/components/multienvironmentdependentflags.md)\>**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.UnauthorizedErrorRep | 401                         | application/json            |
+| errors.ForbiddenErrorRep    | 403                         | application/json            |
+| errors.NotFoundErrorRep     | 404                         | application/json            |
+| errors.RateLimitedErrorRep  | 429                         | application/json            |
+| errors.APIError             | 4XX, 5XX                    | \*/\*                       |
+
+## getExpiringTargets
 
 Get a list of context targets on a feature flag that are scheduled for removal.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.featureFlags.getExpiringContextTargets({
+  const result = await launchDarkly.featureFlags.getExpiringTargets({
     projectKey: "<value>",
     environmentKey: "<value>",
     featureFlagKey: "<value>",
@@ -2394,17 +2336,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { featureFlagsGetExpiringContextTargets } from "@launchdarkly/mcp-server/funcs/featureFlagsGetExpiringContextTargets.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { featureFlagsGetExpiringTargets } from "@launchdarkly/mcp-server/funcs/featureFlagsGetExpiringTargets.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await featureFlagsGetExpiringContextTargets(launchdarklyMcpServer, {
+  const res = await featureFlagsGetExpiringTargets(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
     featureFlagKey: "<value>",
@@ -2434,7 +2376,7 @@ run();
 
 ### Response
 
-**Promise\<[models.ExpiringTargetGetResponse](../../models/expiringtargetgetresponse.md)\>**
+**Promise\<[components.ExpiringTargetGetResponse](../../models/components/expiringtargetgetresponse.md)\>**
 
 ### Errors
 
@@ -2446,7 +2388,7 @@ run();
 | errors.RateLimitedErrorRep  | 429                         | application/json            |
 | errors.APIError             | 4XX, 5XX                    | \*/\*                       |
 
-## patchExpiringTargets
+## updateExpiringTargets
 
 Schedule a context for removal from individual targeting on a feature flag. The flag must already individually target the context.
 
@@ -2541,14 +2483,14 @@ Here's an example:
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.featureFlags.patchExpiringTargets({
+  const result = await launchDarkly.featureFlags.updateExpiringTargets({
     projectKey: "<value>",
     environmentKey: "<value>",
     featureFlagKey: "<value>",
@@ -2577,17 +2519,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { featureFlagsPatchExpiringTargets } from "@launchdarkly/mcp-server/funcs/featureFlagsPatchExpiringTargets.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { featureFlagsUpdateExpiringTargets } from "@launchdarkly/mcp-server/funcs/featureFlagsUpdateExpiringTargets.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await featureFlagsPatchExpiringTargets(launchdarklyMcpServer, {
+  const res = await featureFlagsUpdateExpiringTargets(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
     featureFlagKey: "<value>",
@@ -2628,7 +2570,7 @@ run();
 
 ### Response
 
-**Promise\<[models.ExpiringTargetPatchResponse](../../models/expiringtargetpatchresponse.md)\>**
+**Promise\<[components.ExpiringTargetPatchResponse](../../models/components/expiringtargetpatchresponse.md)\>**
 
 ### Errors
 
@@ -2654,14 +2596,14 @@ Get a list of user targets on a feature flag that are scheduled for removal.
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.featureFlags.getExpiringUserTargets({
+  const result = await launchDarkly.featureFlags.getExpiringUserTargets({
     projectKey: "<value>",
     environmentKey: "<value>",
     featureFlagKey: "<value>",
@@ -2679,17 +2621,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
 import { featureFlagsGetExpiringUserTargets } from "@launchdarkly/mcp-server/funcs/featureFlagsGetExpiringUserTargets.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await featureFlagsGetExpiringUserTargets(launchdarklyMcpServer, {
+  const res = await featureFlagsGetExpiringUserTargets(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
     featureFlagKey: "<value>",
@@ -2719,7 +2661,7 @@ run();
 
 ### Response
 
-**Promise\<[models.ExpiringUserTargetGetResponse](../../models/expiringusertargetgetresponse.md)\>**
+**Promise\<[components.ExpiringUserTargetGetResponse](../../models/components/expiringusertargetgetresponse.md)\>**
 
 ### Errors
 
@@ -2786,14 +2728,14 @@ Removes the scheduled removal of the user from the flag's individual targeting. 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.featureFlags.patchExpiringUserTargets({
+  const result = await launchDarkly.featureFlags.patchExpiringUserTargets({
     projectKey: "<value>",
     environmentKey: "<value>",
     featureFlagKey: "<value>",
@@ -2822,17 +2764,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
 import { featureFlagsPatchExpiringUserTargets } from "@launchdarkly/mcp-server/funcs/featureFlagsPatchExpiringUserTargets.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await featureFlagsPatchExpiringUserTargets(launchdarklyMcpServer, {
+  const res = await featureFlagsPatchExpiringUserTargets(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
     featureFlagKey: "<value>",
@@ -2873,7 +2815,7 @@ run();
 
 ### Response
 
-**Promise\<[models.ExpiringUserTargetPatchResponse](../../models/expiringusertargetpatchresponse.md)\>**
+**Promise\<[components.ExpiringUserTargetPatchResponse](../../models/components/expiringusertargetpatchresponse.md)\>**
 
 ### Errors
 
@@ -2886,21 +2828,21 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## postMigrationSafetyIssues
+## getMigrationSafetyIssues
 
 Returns the migration safety issues that are associated with the POSTed flag patch. The patch must use the semantic patch format for updating feature flags.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.featureFlags.postMigrationSafetyIssues({
+  const result = await launchDarkly.featureFlags.getMigrationSafetyIssues({
     projectKey: "<value>",
     flagKey: "<value>",
     environmentKey: "<value>",
@@ -2926,17 +2868,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { featureFlagsPostMigrationSafetyIssues } from "@launchdarkly/mcp-server/funcs/featureFlagsPostMigrationSafetyIssues.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { featureFlagsGetMigrationSafetyIssues } from "@launchdarkly/mcp-server/funcs/featureFlagsGetMigrationSafetyIssues.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await featureFlagsPostMigrationSafetyIssues(launchdarklyMcpServer, {
+  const res = await featureFlagsGetMigrationSafetyIssues(launchDarkly, {
     projectKey: "<value>",
     flagKey: "<value>",
     environmentKey: "<value>",
@@ -2974,7 +2916,7 @@ run();
 
 ### Response
 
-**Promise\<[models.MigrationSafetyIssueRep[]](../../models/.md)\>**
+**Promise\<[components.MigrationSafetyIssueRep[]](../../models/.md)\>**
 
 ### Errors
 

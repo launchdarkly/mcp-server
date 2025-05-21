@@ -21,7 +21,7 @@ let value: PatchRelayAutoConfigRequest = {
 
 ## Fields
 
-| Field                                                       | Type                                                        | Required                                                    | Description                                                 |
-| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
-| `id`                                                        | *string*                                                    | :heavy_check_mark:                                          | The relay auto config id                                    |
-| `patchWithComment`                                          | [models.PatchWithComment](../../models/patchwithcomment.md) | :heavy_check_mark:                                          | N/A                                                         |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `id`                                                                       | *string*                                                                   | :heavy_check_mark:                                                         | The relay auto config id                                                   |
+| `patchWithComment`                                                         | [components.PatchWithComment](../../models/components/patchwithcomment.md) | :heavy_check_mark:                                                         | N/A                                                                        |

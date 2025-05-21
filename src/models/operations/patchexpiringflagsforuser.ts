@@ -5,8 +5,8 @@
 import * as z from "zod";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type PatchExpiringFlagsForUserRequest = {
   /**
@@ -21,7 +21,7 @@ export type PatchExpiringFlagsForUserRequest = {
    * The environment key
    */
   environmentKey: string;
-  patchUsersRequest: models.PatchUsersRequest;
+  patchUsersRequest: components.PatchUsersRequest;
 };
 
 /** @internal */
@@ -33,7 +33,7 @@ export const PatchExpiringFlagsForUserRequest$inboundSchema: z.ZodType<
   projectKey: z.string(),
   userKey: z.string(),
   environmentKey: z.string(),
-  patchUsersRequest: models.PatchUsersRequest$inboundSchema,
+  patchUsersRequest: components.PatchUsersRequest$inboundSchema,
 });
 
 /** @internal */
@@ -41,7 +41,7 @@ export type PatchExpiringFlagsForUserRequest$Outbound = {
   projectKey: string;
   userKey: string;
   environmentKey: string;
-  patchUsersRequest: models.PatchUsersRequest$Outbound;
+  patchUsersRequest: components.PatchUsersRequest$Outbound;
 };
 
 /** @internal */
@@ -53,7 +53,7 @@ export const PatchExpiringFlagsForUserRequest$outboundSchema: z.ZodType<
   projectKey: z.string(),
   userKey: z.string(),
   environmentKey: z.string(),
-  patchUsersRequest: models.PatchUsersRequest$outboundSchema,
+  patchUsersRequest: components.PatchUsersRequest$outboundSchema,
 });
 
 /**

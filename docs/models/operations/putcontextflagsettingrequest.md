@@ -20,11 +20,11 @@ let value: PutContextFlagSettingRequest = {
 
 ## Fields
 
-| Field                                       | Type                                        | Required                                    | Description                                 |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| `projectKey`                                | *string*                                    | :heavy_check_mark:                          | The project key                             |
-| `environmentKey`                            | *string*                                    | :heavy_check_mark:                          | The environment key                         |
-| `contextKind`                               | *string*                                    | :heavy_check_mark:                          | The context kind                            |
-| `contextKey`                                | *string*                                    | :heavy_check_mark:                          | The context key                             |
-| `featureFlagKey`                            | *string*                                    | :heavy_check_mark:                          | The feature flag key                        |
-| `valuePut`                                  | [models.ValuePut](../../models/valueput.md) | :heavy_check_mark:                          | N/A                                         |
+| Field                                                      | Type                                                       | Required                                                   | Description                                                |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| `projectKey`                                               | *string*                                                   | :heavy_check_mark:                                         | The project key                                            |
+| `environmentKey`                                           | *string*                                                   | :heavy_check_mark:                                         | The environment key                                        |
+| `contextKind`                                              | *string*                                                   | :heavy_check_mark:                                         | The context kind                                           |
+| `contextKey`                                               | *string*                                                   | :heavy_check_mark:                                         | The context key                                            |
+| `featureFlagKey`                                           | *string*                                                   | :heavy_check_mark:                                         | The feature flag key                                       |
+| `valuePut`                                                 | [components.ValuePut](../../models/components/valueput.md) | :heavy_check_mark:                                         | N/A                                                        |

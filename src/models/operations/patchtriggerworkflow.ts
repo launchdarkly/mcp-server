@@ -6,8 +6,8 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type PatchTriggerWorkflowRequest = {
   /**
@@ -26,7 +26,7 @@ export type PatchTriggerWorkflowRequest = {
    * The flag trigger ID
    */
   id: string;
-  flagTriggerInput: models.FlagTriggerInput;
+  flagTriggerInput: components.FlagTriggerInput;
 };
 
 /** @internal */
@@ -39,7 +39,7 @@ export const PatchTriggerWorkflowRequest$inboundSchema: z.ZodType<
   environmentKey: z.string(),
   featureFlagKey: z.string(),
   id: z.string(),
-  FlagTriggerInput: models.FlagTriggerInput$inboundSchema,
+  FlagTriggerInput: components.FlagTriggerInput$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "FlagTriggerInput": "flagTriggerInput",
@@ -52,7 +52,7 @@ export type PatchTriggerWorkflowRequest$Outbound = {
   environmentKey: string;
   featureFlagKey: string;
   id: string;
-  FlagTriggerInput: models.FlagTriggerInput$Outbound;
+  FlagTriggerInput: components.FlagTriggerInput$Outbound;
 };
 
 /** @internal */
@@ -65,7 +65,7 @@ export const PatchTriggerWorkflowRequest$outboundSchema: z.ZodType<
   environmentKey: z.string(),
   featureFlagKey: z.string(),
   id: z.string(),
-  flagTriggerInput: models.FlagTriggerInput$outboundSchema,
+  flagTriggerInput: components.FlagTriggerInput$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     flagTriggerInput: "FlagTriggerInput",

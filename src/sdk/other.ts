@@ -8,7 +8,7 @@ import { otherGetOpenapiSpec } from "../funcs/otherGetOpenapiSpec.js";
 import { otherGetRoot } from "../funcs/otherGetRoot.js";
 import { otherGetVersions } from "../funcs/otherGetVersions.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as models from "../models/index.js";
+import * as components from "../models/components/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Other extends ClientSDK {
@@ -20,7 +20,7 @@ export class Other extends ClientSDK {
    */
   async getRoot(
     options?: RequestOptions,
-  ): Promise<models.RootResponse> {
+  ): Promise<components.RootResponse> {
     return unwrapAsync(otherGetRoot(
       this,
       options,
@@ -35,7 +35,7 @@ export class Other extends ClientSDK {
    */
   async getCallerIdentity(
     options?: RequestOptions,
-  ): Promise<models.CallerIdentityRep> {
+  ): Promise<components.CallerIdentityRep> {
     return unwrapAsync(otherGetCallerIdentity(
       this,
       options,
@@ -65,7 +65,7 @@ export class Other extends ClientSDK {
    */
   async getIps(
     options?: RequestOptions,
-  ): Promise<models.IpList> {
+  ): Promise<components.IpList> {
     return unwrapAsync(otherGetIps(
       this,
       options,
@@ -80,7 +80,7 @@ export class Other extends ClientSDK {
    */
   async getVersions(
     options?: RequestOptions,
-  ): Promise<models.VersionsRep> {
+  ): Promise<components.VersionsRep> {
     return unwrapAsync(otherGetVersions(
       this,
       options,

@@ -19,18 +19,18 @@ specific category of applications.
 ## Example
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
 import { otherGetRoot } from "@launchdarkly/mcp-server/funcs/otherGetRoot.js";
 import { SDKValidationError } from "@launchdarkly/mcp-server/models/errors/sdkvalidationerror.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await otherGetRoot(launchdarklyMcpServer);
+  const res = await otherGetRoot(launchDarkly);
 
   switch (true) {
     case res.ok:

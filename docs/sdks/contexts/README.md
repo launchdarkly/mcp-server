@@ -137,32 +137,32 @@ When searching for [context instances](https://launchdarkly.com/docs/api/context
 
 ### Available Operations
 
-* [getContextKindsByProjectKey](#getcontextkindsbyprojectkey) - Get context kinds
-* [putContextKind](#putcontextkind) - Create or update context kind
-* [getContextAttributeNames](#getcontextattributenames) - Get context attribute names
-* [getContextAttributeValues](#getcontextattributevalues) - Get context attribute values
-* [searchContextInstances](#searchcontextinstances) - Search for context instances
-* [getContextInstances](#getcontextinstances) - Get context instances
-* [deleteContextInstances](#deletecontextinstances) - Delete context instances
-* [searchContexts](#searchcontexts) - Search for contexts
-* [getContexts](#getcontexts) - Get contexts
-* [evaluateContextInstance](#evaluatecontextinstance) - Evaluate flags for context instance
+* [listKinds](#listkinds) - Get context kinds
+* [putKind](#putkind) - Create or update context kind
+* [getAttributes](#getattributes) - Get context attribute names
+* [getAttributeValues](#getattributevalues) - Get context attribute values
+* [search](#search) - Search for context instances
+* [getInstances](#getinstances) - Get context instances
+* [deleteInstances](#deleteinstances) - Delete context instances
+* [performSearch](#performsearch) - Search for contexts
+* [get](#get) - Get contexts
+* [evaluateFlags](#evaluateflags) - Evaluate flags for context instance
 
-## getContextKindsByProjectKey
+## listKinds
 
 Get all context kinds for a given project.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.contexts.getContextKindsByProjectKey({
+  const result = await launchDarkly.contexts.listKinds({
     projectKey: "<value>",
   });
 
@@ -178,17 +178,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { contextsGetContextKindsByProjectKey } from "@launchdarkly/mcp-server/funcs/contextsGetContextKindsByProjectKey.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { contextsListKinds } from "@launchdarkly/mcp-server/funcs/contextsListKinds.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await contextsGetContextKindsByProjectKey(launchdarklyMcpServer, {
+  const res = await contextsListKinds(launchDarkly, {
     projectKey: "<value>",
   });
 
@@ -216,7 +216,7 @@ run();
 
 ### Response
 
-**Promise\<[models.ContextKindsCollectionRep](../../models/contextkindscollectionrep.md)\>**
+**Promise\<[components.ContextKindsCollectionRep](../../models/components/contextkindscollectionrep.md)\>**
 
 ### Errors
 
@@ -227,21 +227,21 @@ run();
 | errors.NotFoundErrorRep     | 404                         | application/json            |
 | errors.APIError             | 4XX, 5XX                    | \*/\*                       |
 
-## putContextKind
+## putKind
 
 Create or update a context kind by key. Only the included fields will be updated.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.contexts.putContextKind({
+  const result = await launchDarkly.contexts.putKind({
     projectKey: "<value>",
     key: "<value>",
     upsertContextKindPayload: {
@@ -265,17 +265,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { contextsPutContextKind } from "@launchdarkly/mcp-server/funcs/contextsPutContextKind.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { contextsPutKind } from "@launchdarkly/mcp-server/funcs/contextsPutKind.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await contextsPutContextKind(launchdarklyMcpServer, {
+  const res = await contextsPutKind(launchDarkly, {
     projectKey: "<value>",
     key: "<value>",
     upsertContextKindPayload: {
@@ -311,7 +311,7 @@ run();
 
 ### Response
 
-**Promise\<[models.UpsertResponseRep](../../models/upsertresponserep.md)\>**
+**Promise\<[components.UpsertResponseRep](../../models/components/upsertresponserep.md)\>**
 
 ### Errors
 
@@ -323,21 +323,21 @@ run();
 | errors.NotFoundErrorRep       | 404                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## getContextAttributeNames
+## getAttributes
 
 Get context attribute names.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.contexts.getContextAttributeNames({
+  const result = await launchDarkly.contexts.getAttributes({
     projectKey: "<value>",
     environmentKey: "<value>",
   });
@@ -354,17 +354,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { contextsGetContextAttributeNames } from "@launchdarkly/mcp-server/funcs/contextsGetContextAttributeNames.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { contextsGetAttributes } from "@launchdarkly/mcp-server/funcs/contextsGetAttributes.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await contextsGetContextAttributeNames(launchdarklyMcpServer, {
+  const res = await contextsGetAttributes(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
   });
@@ -393,7 +393,7 @@ run();
 
 ### Response
 
-**Promise\<[models.ContextAttributeNamesCollection](../../models/contextattributenamescollection.md)\>**
+**Promise\<[components.ContextAttributeNamesCollection](../../models/components/contextattributenamescollection.md)\>**
 
 ### Errors
 
@@ -405,21 +405,21 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## getContextAttributeValues
+## getAttributeValues
 
 Get context attribute values.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.contexts.getContextAttributeValues({
+  const result = await launchDarkly.contexts.getAttributeValues({
     projectKey: "<value>",
     environmentKey: "<value>",
     attributeName: "<value>",
@@ -437,17 +437,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { contextsGetContextAttributeValues } from "@launchdarkly/mcp-server/funcs/contextsGetContextAttributeValues.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { contextsGetAttributeValues } from "@launchdarkly/mcp-server/funcs/contextsGetAttributeValues.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await contextsGetContextAttributeValues(launchdarklyMcpServer, {
+  const res = await contextsGetAttributeValues(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
     attributeName: "<value>",
@@ -477,7 +477,7 @@ run();
 
 ### Response
 
-**Promise\<[models.ContextAttributeValuesCollection](../../models/contextattributevaluescollection.md)\>**
+**Promise\<[components.ContextAttributeValuesCollection](../../models/components/contextattributevaluescollection.md)\>**
 
 ### Errors
 
@@ -489,7 +489,7 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## searchContextInstances
+## search
 
 
 Search for context instances.
@@ -502,14 +502,14 @@ To learn more about the filter syntax, read [Filtering contexts and context inst
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.contexts.searchContextInstances({
+  const result = await launchDarkly.contexts.search({
     projectKey: "<value>",
     environmentKey: "<value>",
     contextInstanceSearch: {
@@ -532,17 +532,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { contextsSearchContextInstances } from "@launchdarkly/mcp-server/funcs/contextsSearchContextInstances.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { contextsSearch } from "@launchdarkly/mcp-server/funcs/contextsSearch.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await contextsSearchContextInstances(launchdarklyMcpServer, {
+  const res = await contextsSearch(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
     contextInstanceSearch: {
@@ -577,7 +577,7 @@ run();
 
 ### Response
 
-**Promise\<[models.ContextInstances](../../models/contextinstances.md)\>**
+**Promise\<[components.ContextInstances](../../models/components/contextinstances.md)\>**
 
 ### Errors
 
@@ -589,21 +589,21 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## getContextInstances
+## getInstances
 
 Get context instances by ID.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.contexts.getContextInstances({
+  const result = await launchDarkly.contexts.getInstances({
     projectKey: "<value>",
     environmentKey: "<value>",
     id: "<value>",
@@ -621,17 +621,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { contextsGetContextInstances } from "@launchdarkly/mcp-server/funcs/contextsGetContextInstances.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { contextsGetInstances } from "@launchdarkly/mcp-server/funcs/contextsGetInstances.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await contextsGetContextInstances(launchdarklyMcpServer, {
+  const res = await contextsGetInstances(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
     id: "<value>",
@@ -661,7 +661,7 @@ run();
 
 ### Response
 
-**Promise\<[models.ContextInstances](../../models/contextinstances.md)\>**
+**Promise\<[components.ContextInstances](../../models/components/contextinstances.md)\>**
 
 ### Errors
 
@@ -673,21 +673,21 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## deleteContextInstances
+## deleteInstances
 
 Delete context instances by ID.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  await launchdarklyMcpServer.contexts.deleteContextInstances({
+  await launchDarkly.contexts.deleteInstances({
     projectKey: "<value>",
     environmentKey: "<value>",
     id: "<value>",
@@ -704,17 +704,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { contextsDeleteContextInstances } from "@launchdarkly/mcp-server/funcs/contextsDeleteContextInstances.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { contextsDeleteInstances } from "@launchdarkly/mcp-server/funcs/contextsDeleteInstances.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await contextsDeleteContextInstances(launchdarklyMcpServer, {
+  const res = await contextsDeleteInstances(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
     id: "<value>",
@@ -756,7 +756,7 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## searchContexts
+## performSearch
 
 
 Search for contexts.
@@ -769,14 +769,14 @@ To learn more about the filter syntax, read [Filtering contexts and context inst
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.contexts.searchContexts({
+  const result = await launchDarkly.contexts.performSearch({
     projectKey: "<value>",
     environmentKey: "<value>",
     contextSearch: {
@@ -799,17 +799,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { contextsSearchContexts } from "@launchdarkly/mcp-server/funcs/contextsSearchContexts.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { contextsPerformSearch } from "@launchdarkly/mcp-server/funcs/contextsPerformSearch.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await contextsSearchContexts(launchdarklyMcpServer, {
+  const res = await contextsPerformSearch(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
     contextSearch: {
@@ -844,7 +844,7 @@ run();
 
 ### Response
 
-**Promise\<[models.Contexts](../../models/contexts.md)\>**
+**Promise\<[components.Contexts](../../models/components/contexts.md)\>**
 
 ### Errors
 
@@ -856,21 +856,21 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## getContexts
+## get
 
 Get contexts based on kind and key.
 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.contexts.getContexts({
+  const result = await launchDarkly.contexts.get({
     projectKey: "<value>",
     environmentKey: "<value>",
     kind: "<value>",
@@ -889,17 +889,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { contextsGetContexts } from "@launchdarkly/mcp-server/funcs/contextsGetContexts.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { contextsGet } from "@launchdarkly/mcp-server/funcs/contextsGet.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await contextsGetContexts(launchdarklyMcpServer, {
+  const res = await contextsGet(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
     kind: "<value>",
@@ -930,7 +930,7 @@ run();
 
 ### Response
 
-**Promise\<[models.Contexts](../../models/contexts.md)\>**
+**Promise\<[components.Contexts](../../models/components/contexts.md)\>**
 
 ### Errors
 
@@ -942,7 +942,7 @@ run();
 | errors.RateLimitedErrorRep    | 429                           | application/json              |
 | errors.APIError               | 4XX, 5XX                      | \*/\*                         |
 
-## evaluateContextInstance
+## evaluateFlags
 
 Evaluate flags for a context instance, for example, to determine the expected flag variation. **Do not use this API instead of an SDK.** The LaunchDarkly SDKs are specialized for the tasks of evaluating feature flags in your application at scale and generating analytics events based on those evaluations. This API is not designed for that use case. Any evaluations you perform with this API will not be reflected in features such as flag statuses and flag insights. Context instances evaluated by this API will not appear in the Contexts list. To learn more, read [Comparing LaunchDarkly's SDKs and REST API](https://launchdarkly.com/docs/guides/api/comparing-sdk-rest-api).
 
@@ -959,14 +959,14 @@ You can also apply multiple filters at once. For example, setting `filter=query 
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const result = await launchdarklyMcpServer.contexts.evaluateContextInstance({
+  const result = await launchDarkly.contexts.evaluateFlags({
     projectKey: "<value>",
     environmentKey: "<value>",
     requestBody: {
@@ -988,17 +988,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { contextsEvaluateContextInstance } from "@launchdarkly/mcp-server/funcs/contextsEvaluateContextInstance.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { contextsEvaluateFlags } from "@launchdarkly/mcp-server/funcs/contextsEvaluateFlags.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await contextsEvaluateContextInstance(launchdarklyMcpServer, {
+  const res = await contextsEvaluateFlags(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
     requestBody: {
@@ -1032,7 +1032,7 @@ run();
 
 ### Response
 
-**Promise\<[models.ContextInstanceEvaluations](../../models/contextinstanceevaluations.md)\>**
+**Promise\<[components.ContextInstanceEvaluations](../../models/components/contextinstanceevaluations.md)\>**
 
 ### Errors
 

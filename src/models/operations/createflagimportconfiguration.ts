@@ -6,8 +6,8 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type CreateFlagImportConfigurationRequest = {
   /**
@@ -18,7 +18,7 @@ export type CreateFlagImportConfigurationRequest = {
    * The integration key
    */
   integrationKey: string;
-  flagImportConfigurationPost: models.FlagImportConfigurationPost;
+  flagImportConfigurationPost: components.FlagImportConfigurationPost;
 };
 
 /** @internal */
@@ -29,7 +29,8 @@ export const CreateFlagImportConfigurationRequest$inboundSchema: z.ZodType<
 > = z.object({
   projectKey: z.string(),
   integrationKey: z.string(),
-  FlagImportConfigurationPost: models.FlagImportConfigurationPost$inboundSchema,
+  FlagImportConfigurationPost:
+    components.FlagImportConfigurationPost$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "FlagImportConfigurationPost": "flagImportConfigurationPost",
@@ -40,7 +41,7 @@ export const CreateFlagImportConfigurationRequest$inboundSchema: z.ZodType<
 export type CreateFlagImportConfigurationRequest$Outbound = {
   projectKey: string;
   integrationKey: string;
-  FlagImportConfigurationPost: models.FlagImportConfigurationPost$Outbound;
+  FlagImportConfigurationPost: components.FlagImportConfigurationPost$Outbound;
 };
 
 /** @internal */
@@ -52,7 +53,7 @@ export const CreateFlagImportConfigurationRequest$outboundSchema: z.ZodType<
   projectKey: z.string(),
   integrationKey: z.string(),
   flagImportConfigurationPost:
-    models.FlagImportConfigurationPost$outboundSchema,
+    components.FlagImportConfigurationPost$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     flagImportConfigurationPost: "FlagImportConfigurationPost",

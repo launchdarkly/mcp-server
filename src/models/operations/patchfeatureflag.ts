@@ -6,8 +6,8 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type PatchFeatureFlagRequest = {
   /**
@@ -22,7 +22,7 @@ export type PatchFeatureFlagRequest = {
    * If true, the patch will be applied even if it causes a pending scheduled change or approval request to fail.
    */
   ignoreConflicts?: boolean | undefined;
-  patchWithComment: models.PatchWithComment;
+  patchWithComment: components.PatchWithComment;
 };
 
 /** @internal */
@@ -34,7 +34,7 @@ export const PatchFeatureFlagRequest$inboundSchema: z.ZodType<
   projectKey: z.string(),
   featureFlagKey: z.string(),
   ignoreConflicts: z.boolean().optional(),
-  PatchWithComment: models.PatchWithComment$inboundSchema,
+  PatchWithComment: components.PatchWithComment$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "PatchWithComment": "patchWithComment",
@@ -46,7 +46,7 @@ export type PatchFeatureFlagRequest$Outbound = {
   projectKey: string;
   featureFlagKey: string;
   ignoreConflicts?: boolean | undefined;
-  PatchWithComment: models.PatchWithComment$Outbound;
+  PatchWithComment: components.PatchWithComment$Outbound;
 };
 
 /** @internal */
@@ -58,7 +58,7 @@ export const PatchFeatureFlagRequest$outboundSchema: z.ZodType<
   projectKey: z.string(),
   featureFlagKey: z.string(),
   ignoreConflicts: z.boolean().optional(),
-  patchWithComment: models.PatchWithComment$outboundSchema,
+  patchWithComment: components.PatchWithComment$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     patchWithComment: "PatchWithComment",

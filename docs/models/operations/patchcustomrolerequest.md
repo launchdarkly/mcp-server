@@ -21,7 +21,7 @@ let value: PatchCustomRoleRequest = {
 
 ## Fields
 
-| Field                                                       | Type                                                        | Required                                                    | Description                                                 |
-| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
-| `customRoleKey`                                             | *string*                                                    | :heavy_check_mark:                                          | The custom role key                                         |
-| `patchWithComment`                                          | [models.PatchWithComment](../../models/patchwithcomment.md) | :heavy_check_mark:                                          | N/A                                                         |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `customRoleKey`                                                            | *string*                                                                   | :heavy_check_mark:                                                         | The custom role key                                                        |
+| `patchWithComment`                                                         | [components.PatchWithComment](../../models/components/patchwithcomment.md) | :heavy_check_mark:                                                         | N/A                                                                        |

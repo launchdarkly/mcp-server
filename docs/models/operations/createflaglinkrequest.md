@@ -19,8 +19,8 @@ let value: CreateFlagLinkRequest = {
 
 ## Fields
 
-| Field                                               | Type                                                | Required                                            | Description                                         |
-| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
-| `projectKey`                                        | *string*                                            | :heavy_check_mark:                                  | The project key                                     |
-| `featureFlagKey`                                    | *string*                                            | :heavy_check_mark:                                  | The feature flag key                                |
-| `flagLinkPost`                                      | [models.FlagLinkPost](../../models/flaglinkpost.md) | :heavy_check_mark:                                  | N/A                                                 |
+| Field                                                              | Type                                                               | Required                                                           | Description                                                        |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `projectKey`                                                       | *string*                                                           | :heavy_check_mark:                                                 | The project key                                                    |
+| `featureFlagKey`                                                   | *string*                                                           | :heavy_check_mark:                                                 | The feature flag key                                               |
+| `flagLinkPost`                                                     | [components.FlagLinkPost](../../models/components/flaglinkpost.md) | :heavy_check_mark:                                                 | N/A                                                                |

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod";
-import { LaunchdarklyMcpServerCore } from "../core.js";
+import { LaunchDarklyCore } from "../core.js";
 import { encodeJSON, encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
@@ -32,7 +32,7 @@ import { Result } from "../types/fp.js";
  * Asynchronously delete a number of branches.
  */
 export function codeReferencesDeleteBranches(
-  client: LaunchdarklyMcpServerCore,
+  client: LaunchDarklyCore,
   request: operations.DeleteBranchesRequest,
   options?: RequestOptions,
 ): APIPromise<
@@ -60,7 +60,7 @@ export function codeReferencesDeleteBranches(
 }
 
 async function $do(
-  client: LaunchdarklyMcpServerCore,
+  client: LaunchDarklyCore,
   request: operations.DeleteBranchesRequest,
   options?: RequestOptions,
 ): Promise<

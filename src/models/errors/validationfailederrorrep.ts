@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod";
-import * as models from "../index.js";
+import * as components from "../components/index.js";
 
 export type ValidationFailedErrorRepData = {
   /**
@@ -17,7 +17,7 @@ export type ValidationFailedErrorRepData = {
   /**
    * List of validation errors
    */
-  errors: Array<models.FailureReasonRep>;
+  errors: Array<components.FailureReasonRep>;
 };
 
 export class ValidationFailedErrorRep extends Error {
@@ -28,7 +28,7 @@ export class ValidationFailedErrorRep extends Error {
   /**
    * List of validation errors
    */
-  errors: Array<models.FailureReasonRep>;
+  errors: Array<components.FailureReasonRep>;
 
   /** The original data that was passed to this error instance. */
   data$: ValidationFailedErrorRepData;
@@ -55,7 +55,7 @@ export const ValidationFailedErrorRep$inboundSchema: z.ZodType<
 > = z.object({
   code: z.string(),
   message: z.string(),
-  errors: z.array(models.FailureReasonRep$inboundSchema),
+  errors: z.array(components.FailureReasonRep$inboundSchema),
 })
   .transform((v) => {
     return new ValidationFailedErrorRep(v);
@@ -65,7 +65,7 @@ export const ValidationFailedErrorRep$inboundSchema: z.ZodType<
 export type ValidationFailedErrorRep$Outbound = {
   code: string;
   message: string;
-  errors: Array<models.FailureReasonRep$Outbound>;
+  errors: Array<components.FailureReasonRep$Outbound>;
 };
 
 /** @internal */
@@ -78,7 +78,7 @@ export const ValidationFailedErrorRep$outboundSchema: z.ZodType<
   .pipe(z.object({
     code: z.string(),
     message: z.string(),
-    errors: z.array(models.FailureReasonRep$outboundSchema),
+    errors: z.array(components.FailureReasonRep$outboundSchema),
   }));
 
 /**

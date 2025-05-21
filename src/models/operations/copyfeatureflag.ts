@@ -6,8 +6,8 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type CopyFeatureFlagRequest = {
   /**
@@ -18,7 +18,7 @@ export type CopyFeatureFlagRequest = {
    * The feature flag key. The key identifies the flag in your code.
    */
   featureFlagKey: string;
-  flagCopyConfigPost: models.FlagCopyConfigPost;
+  flagCopyConfigPost: components.FlagCopyConfigPost;
 };
 
 /** @internal */
@@ -29,7 +29,7 @@ export const CopyFeatureFlagRequest$inboundSchema: z.ZodType<
 > = z.object({
   projectKey: z.string(),
   featureFlagKey: z.string(),
-  FlagCopyConfigPost: models.FlagCopyConfigPost$inboundSchema,
+  FlagCopyConfigPost: components.FlagCopyConfigPost$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "FlagCopyConfigPost": "flagCopyConfigPost",
@@ -40,7 +40,7 @@ export const CopyFeatureFlagRequest$inboundSchema: z.ZodType<
 export type CopyFeatureFlagRequest$Outbound = {
   projectKey: string;
   featureFlagKey: string;
-  FlagCopyConfigPost: models.FlagCopyConfigPost$Outbound;
+  FlagCopyConfigPost: components.FlagCopyConfigPost$Outbound;
 };
 
 /** @internal */
@@ -51,7 +51,7 @@ export const CopyFeatureFlagRequest$outboundSchema: z.ZodType<
 > = z.object({
   projectKey: z.string(),
   featureFlagKey: z.string(),
-  flagCopyConfigPost: models.FlagCopyConfigPost$outboundSchema,
+  flagCopyConfigPost: components.FlagCopyConfigPost$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     flagCopyConfigPost: "FlagCopyConfigPost",

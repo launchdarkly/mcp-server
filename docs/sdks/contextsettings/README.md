@@ -3,14 +3,11 @@
 
 ## Overview
 
-You can use the context settings API to assign a context to a specific variation for any feature flag. To learn more, read [View and manage contexts](https://launchdarkly.com/docs/home/observability/context-attributes#view-and-manage-contexts).
-
-
 ### Available Operations
 
-* [putContextFlagSetting](#putcontextflagsetting) - Update flag settings for context
+* [updateFlag](#updateflag) - Update flag settings for context
 
-## putContextFlagSetting
+## updateFlag
 
 
 Enable or disable a feature flag for a context based on its context kind and key.
@@ -23,14 +20,14 @@ If you previously patched the flag, and the patch included the context's data, L
 ### Example Usage
 
 ```typescript
-import { LaunchdarklyMcpServer } from "@launchdarkly/mcp-server";
+import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
-const launchdarklyMcpServer = new LaunchdarklyMcpServer({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarkly({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  await launchdarklyMcpServer.contextSettings.putContextFlagSetting({
+  await launchDarkly.contextSettings.updateFlag({
     projectKey: "<value>",
     environmentKey: "<value>",
     contextKind: "<value>",
@@ -53,17 +50,17 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LaunchdarklyMcpServerCore } from "@launchdarkly/mcp-server/core.js";
-import { contextSettingsPutContextFlagSetting } from "@launchdarkly/mcp-server/funcs/contextSettingsPutContextFlagSetting.js";
+import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
+import { contextSettingsUpdateFlag } from "@launchdarkly/mcp-server/funcs/contextSettingsUpdateFlag.js";
 
-// Use `LaunchdarklyMcpServerCore` for best tree-shaking performance.
+// Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const launchdarklyMcpServer = new LaunchdarklyMcpServerCore({
-  apiKey: process.env["LAUNCHDARKLYMCPSERVER_API_KEY"] ?? "",
+const launchDarkly = new LaunchDarklyCore({
+  apiKey: process.env["LAUNCHDARKLY_API_KEY"] ?? "",
 });
 
 async function run() {
-  const res = await contextSettingsPutContextFlagSetting(launchdarklyMcpServer, {
+  const res = await contextSettingsUpdateFlag(launchDarkly, {
     projectKey: "<value>",
     environmentKey: "<value>",
     contextKind: "<value>",

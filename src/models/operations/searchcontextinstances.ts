@@ -6,8 +6,8 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type SearchContextInstancesRequest = {
   /**
@@ -38,7 +38,7 @@ export type SearchContextInstancesRequest = {
    * Specifies whether to include or omit the total count of matching context instances. Defaults to true.
    */
   includeTotalCount?: boolean | undefined;
-  contextInstanceSearch: models.ContextInstanceSearch;
+  contextInstanceSearch: components.ContextInstanceSearch;
 };
 
 /** @internal */
@@ -54,7 +54,7 @@ export const SearchContextInstancesRequest$inboundSchema: z.ZodType<
   sort: z.string().optional(),
   filter: z.string().optional(),
   includeTotalCount: z.boolean().optional(),
-  ContextInstanceSearch: models.ContextInstanceSearch$inboundSchema,
+  ContextInstanceSearch: components.ContextInstanceSearch$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "ContextInstanceSearch": "contextInstanceSearch",
@@ -70,7 +70,7 @@ export type SearchContextInstancesRequest$Outbound = {
   sort?: string | undefined;
   filter?: string | undefined;
   includeTotalCount?: boolean | undefined;
-  ContextInstanceSearch: models.ContextInstanceSearch$Outbound;
+  ContextInstanceSearch: components.ContextInstanceSearch$Outbound;
 };
 
 /** @internal */
@@ -86,7 +86,7 @@ export const SearchContextInstancesRequest$outboundSchema: z.ZodType<
   sort: z.string().optional(),
   filter: z.string().optional(),
   includeTotalCount: z.boolean().optional(),
-  contextInstanceSearch: models.ContextInstanceSearch$outboundSchema,
+  contextInstanceSearch: components.ContextInstanceSearch$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     contextInstanceSearch: "ContextInstanceSearch",

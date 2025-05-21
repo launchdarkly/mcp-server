@@ -6,15 +6,15 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type PostReleasePipelineRequest = {
   /**
    * The project key
    */
   projectKey: string;
-  createReleasePipelineInput: models.CreateReleasePipelineInput;
+  createReleasePipelineInput: components.CreateReleasePipelineInput;
 };
 
 /** @internal */
@@ -24,7 +24,8 @@ export const PostReleasePipelineRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   projectKey: z.string(),
-  CreateReleasePipelineInput: models.CreateReleasePipelineInput$inboundSchema,
+  CreateReleasePipelineInput:
+    components.CreateReleasePipelineInput$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "CreateReleasePipelineInput": "createReleasePipelineInput",
@@ -34,7 +35,7 @@ export const PostReleasePipelineRequest$inboundSchema: z.ZodType<
 /** @internal */
 export type PostReleasePipelineRequest$Outbound = {
   projectKey: string;
-  CreateReleasePipelineInput: models.CreateReleasePipelineInput$Outbound;
+  CreateReleasePipelineInput: components.CreateReleasePipelineInput$Outbound;
 };
 
 /** @internal */
@@ -44,7 +45,8 @@ export const PostReleasePipelineRequest$outboundSchema: z.ZodType<
   PostReleasePipelineRequest
 > = z.object({
   projectKey: z.string(),
-  createReleasePipelineInput: models.CreateReleasePipelineInput$outboundSchema,
+  createReleasePipelineInput:
+    components.CreateReleasePipelineInput$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     createReleasePipelineInput: "CreateReleasePipelineInput",

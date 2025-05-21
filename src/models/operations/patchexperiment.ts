@@ -6,8 +6,8 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type PatchExperimentRequest = {
   /**
@@ -22,7 +22,7 @@ export type PatchExperimentRequest = {
    * The experiment key
    */
   experimentKey: string;
-  experimentPatchInput: models.ExperimentPatchInput;
+  experimentPatchInput: components.ExperimentPatchInput;
 };
 
 /** @internal */
@@ -34,7 +34,7 @@ export const PatchExperimentRequest$inboundSchema: z.ZodType<
   projectKey: z.string(),
   environmentKey: z.string(),
   experimentKey: z.string(),
-  ExperimentPatchInput: models.ExperimentPatchInput$inboundSchema,
+  ExperimentPatchInput: components.ExperimentPatchInput$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "ExperimentPatchInput": "experimentPatchInput",
@@ -46,7 +46,7 @@ export type PatchExperimentRequest$Outbound = {
   projectKey: string;
   environmentKey: string;
   experimentKey: string;
-  ExperimentPatchInput: models.ExperimentPatchInput$Outbound;
+  ExperimentPatchInput: components.ExperimentPatchInput$Outbound;
 };
 
 /** @internal */
@@ -58,7 +58,7 @@ export const PatchExperimentRequest$outboundSchema: z.ZodType<
   projectKey: z.string(),
   environmentKey: z.string(),
   experimentKey: z.string(),
-  experimentPatchInput: models.ExperimentPatchInput$outboundSchema,
+  experimentPatchInput: components.ExperimentPatchInput$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     experimentPatchInput: "ExperimentPatchInput",

@@ -21,9 +21,9 @@ let value: PostMigrationSafetyIssuesRequest = {
 
 ## Fields
 
-| Field                                               | Type                                                | Required                                            | Description                                         |
-| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
-| `projectKey`                                        | *string*                                            | :heavy_check_mark:                                  | The project key                                     |
-| `flagKey`                                           | *string*                                            | :heavy_check_mark:                                  | The migration flag key                              |
-| `environmentKey`                                    | *string*                                            | :heavy_check_mark:                                  | The environment key                                 |
-| `flagSempatch`                                      | [models.FlagSempatch](../../models/flagsempatch.md) | :heavy_check_mark:                                  | N/A                                                 |
+| Field                                                              | Type                                                               | Required                                                           | Description                                                        |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `projectKey`                                                       | *string*                                                           | :heavy_check_mark:                                                 | The project key                                                    |
+| `flagKey`                                                          | *string*                                                           | :heavy_check_mark:                                                 | The migration flag key                                             |
+| `environmentKey`                                                   | *string*                                                           | :heavy_check_mark:                                                 | The environment key                                                |
+| `flagSempatch`                                                     | [components.FlagSempatch](../../models/components/flagsempatch.md) | :heavy_check_mark:                                                 | N/A                                                                |

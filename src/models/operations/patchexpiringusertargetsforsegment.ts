@@ -5,8 +5,8 @@
 import * as z from "zod";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type PatchExpiringUserTargetsForSegmentRequest = {
   /**
@@ -21,7 +21,7 @@ export type PatchExpiringUserTargetsForSegmentRequest = {
    * The segment key
    */
   segmentKey: string;
-  patchSegmentRequest: models.PatchSegmentRequest;
+  patchSegmentRequest: components.PatchSegmentRequest;
 };
 
 /** @internal */
@@ -33,7 +33,7 @@ export const PatchExpiringUserTargetsForSegmentRequest$inboundSchema: z.ZodType<
   projectKey: z.string(),
   environmentKey: z.string(),
   segmentKey: z.string(),
-  patchSegmentRequest: models.PatchSegmentRequest$inboundSchema,
+  patchSegmentRequest: components.PatchSegmentRequest$inboundSchema,
 });
 
 /** @internal */
@@ -41,7 +41,7 @@ export type PatchExpiringUserTargetsForSegmentRequest$Outbound = {
   projectKey: string;
   environmentKey: string;
   segmentKey: string;
-  patchSegmentRequest: models.PatchSegmentRequest$Outbound;
+  patchSegmentRequest: components.PatchSegmentRequest$Outbound;
 };
 
 /** @internal */
@@ -54,7 +54,7 @@ export const PatchExpiringUserTargetsForSegmentRequest$outboundSchema:
     projectKey: z.string(),
     environmentKey: z.string(),
     segmentKey: z.string(),
-    patchSegmentRequest: models.PatchSegmentRequest$outboundSchema,
+    patchSegmentRequest: components.PatchSegmentRequest$outboundSchema,
   });
 
 /**

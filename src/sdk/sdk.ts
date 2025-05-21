@@ -5,15 +5,16 @@
 import { ClientSDK } from "../lib/sdks.js";
 import { AccessTokens } from "./accesstokens.js";
 import { AccountMembers } from "./accountmembers.js";
-import { AccountMembersBeta } from "./accountmembersbeta.js";
+import { AccountUsage } from "./accountusage.js";
 import { AccountUsageBeta } from "./accountusagebeta.js";
-import { AIConfigsBeta } from "./aiconfigsbeta.js";
+import { AiConfigs } from "./aiconfigs.js";
 import { Announcements } from "./announcements.js";
+import { Applications } from "./applications.js";
 import { ApplicationsBeta } from "./applicationsbeta.js";
 import { Approvals } from "./approvals.js";
-import { ApprovalsBeta } from "./approvalsbeta.js";
 import { AuditLog } from "./auditlog.js";
-import { CodeReferences } from "./codereferences.js";
+import { Codereferences1 } from "./codereferences1.js";
+import { CodeReferences2 } from "./codereferences2.js";
 import { Contexts } from "./contexts.js";
 import { ContextSettings } from "./contextsettings.js";
 import { CustomRoles } from "./customroles.js";
@@ -21,44 +22,41 @@ import { DataExportDestinations } from "./dataexportdestinations.js";
 import { Environments } from "./environments.js";
 import { Experiments } from "./experiments.js";
 import { FeatureFlags } from "./featureflags.js";
-import { FeatureFlagsBeta } from "./featureflagsbeta.js";
-import { FlagImportConfigurationsBeta } from "./flagimportconfigurationsbeta.js";
-import { FlagLinksBeta } from "./flaglinksbeta.js";
+import { FlagImportConfigurations } from "./flagimportconfigurations.js";
+import { FlagLinks } from "./flaglinks.js";
 import { FlagTriggers } from "./flagtriggers.js";
 import { FollowFlags } from "./followflags.js";
-import { HoldoutsBeta } from "./holdoutsbeta.js";
-import { InsightsChartsBeta } from "./insightschartsbeta.js";
-import { InsightsDeploymentsBeta } from "./insightsdeploymentsbeta.js";
-import { InsightsFlagEventsBeta } from "./insightsflageventsbeta.js";
-import { InsightsPullRequestsBeta } from "./insightspullrequestsbeta.js";
-import { InsightsRepositoriesBeta } from "./insightsrepositoriesbeta.js";
-import { InsightsScoresBeta } from "./insightsscoresbeta.js";
+import { Holdouts } from "./holdouts.js";
+import { InsightsCharts } from "./insightscharts.js";
+import { InsightsDeployments } from "./insightsdeployments.js";
+import { InsightsFlagEvents } from "./insightsflagevents.js";
+import { InsightsPullRequests } from "./insightspullrequests.js";
+import { InsightsRepositories } from "./insightsrepositories.js";
+import { InsightsScores } from "./insightsscores.js";
 import { IntegrationAuditLogSubscriptions } from "./integrationauditlogsubscriptions.js";
-import { IntegrationDeliveryConfigurationsBeta } from "./integrationdeliveryconfigurationsbeta.js";
-import { IntegrationsBeta } from "./integrationsbeta.js";
+import { IntegrationDeliveryConfigurations } from "./integrationdeliveryconfigurations.js";
+import { Integrations } from "./integrations.js";
 import { Layers } from "./layers.js";
 import { Metrics } from "./metrics.js";
-import { MetricsBeta } from "./metricsbeta.js";
-import { OAuth2Clients } from "./oauth2clients.js";
+import { Oauth2Clients } from "./oauth2clients.js";
 import { Other } from "./other.js";
-import { PersistentStoreIntegrationsBeta } from "./persistentstoreintegrationsbeta.js";
+import { PersistentStoreIntegrations } from "./persistentstoreintegrations.js";
 import { Projects } from "./projects.js";
 import { RelayProxyConfigurations } from "./relayproxyconfigurations.js";
-import { ReleasePipelinesBeta } from "./releasepipelinesbeta.js";
-import { ReleasesBeta } from "./releasesbeta.js";
+import { ReleasePipelines } from "./releasepipelines.js";
+import { Releases } from "./releases.js";
 import { ScheduledChanges } from "./scheduledchanges.js";
 import { Segments } from "./segments.js";
 import { Tags } from "./tags.js";
 import { Teams } from "./teams.js";
-import { TeamsBeta } from "./teamsbeta.js";
+import { Tokens } from "./tokens.js";
 import { Users } from "./users.js";
-import { UsersBeta } from "./usersbeta.js";
 import { UserSettings } from "./usersettings.js";
 import { Webhooks } from "./webhooks.js";
 import { Workflows } from "./workflows.js";
 import { WorkflowTemplates } from "./workflowtemplates.js";
 
-export class LaunchdarklyMcpServer extends ClientSDK {
+export class LaunchDarkly extends ClientSDK {
   private _other?: Other;
   get other(): Other {
     return (this._other ??= new Other(this._options));
@@ -76,14 +74,14 @@ export class LaunchdarklyMcpServer extends ClientSDK {
     return (this._applicationsBeta ??= new ApplicationsBeta(this._options));
   }
 
+  private _applications?: Applications;
+  get applications(): Applications {
+    return (this._applications ??= new Applications(this._options));
+  }
+
   private _approvals?: Approvals;
   get approvals(): Approvals {
     return (this._approvals ??= new Approvals(this._options));
-  }
-
-  private _approvalsBeta?: ApprovalsBeta;
-  get approvalsBeta(): ApprovalsBeta {
-    return (this._approvalsBeta ??= new ApprovalsBeta(this._options));
   }
 
   private _auditLog?: AuditLog;
@@ -91,9 +89,14 @@ export class LaunchdarklyMcpServer extends ClientSDK {
     return (this._auditLog ??= new AuditLog(this._options));
   }
 
-  private _codeReferences?: CodeReferences;
-  get codeReferences(): CodeReferences {
-    return (this._codeReferences ??= new CodeReferences(this._options));
+  private _codereferences1?: Codereferences1;
+  get codereferences1(): Codereferences1 {
+    return (this._codereferences1 ??= new Codereferences1(this._options));
+  }
+
+  private _codeReferences2?: CodeReferences2;
+  get codeReferences2(): CodeReferences2 {
+    return (this._codeReferences2 ??= new CodeReferences2(this._options));
   }
 
   private _dataExportDestinations?: DataExportDestinations;
@@ -103,9 +106,9 @@ export class LaunchdarklyMcpServer extends ClientSDK {
     ));
   }
 
-  private _flagLinksBeta?: FlagLinksBeta;
-  get flagLinksBeta(): FlagLinksBeta {
-    return (this._flagLinksBeta ??= new FlagLinksBeta(this._options));
+  private _flagLinks?: FlagLinks;
+  get flagLinks(): FlagLinks {
+    return (this._flagLinks ??= new FlagLinks(this._options));
   }
 
   private _featureFlags?: FeatureFlags;
@@ -113,43 +116,39 @@ export class LaunchdarklyMcpServer extends ClientSDK {
     return (this._featureFlags ??= new FeatureFlags(this._options));
   }
 
-  private _featureFlagsBeta?: FeatureFlagsBeta;
-  get featureFlagsBeta(): FeatureFlagsBeta {
-    return (this._featureFlagsBeta ??= new FeatureFlagsBeta(this._options));
-  }
-
   private _flagTriggers?: FlagTriggers;
   get flagTriggers(): FlagTriggers {
     return (this._flagTriggers ??= new FlagTriggers(this._options));
   }
 
-  private _releasesBeta?: ReleasesBeta;
-  get releasesBeta(): ReleasesBeta {
-    return (this._releasesBeta ??= new ReleasesBeta(this._options));
+  private _releases?: Releases;
+  get releases(): Releases {
+    return (this._releases ??= new Releases(this._options));
   }
 
-  private _persistentStoreIntegrationsBeta?: PersistentStoreIntegrationsBeta;
-  get persistentStoreIntegrationsBeta(): PersistentStoreIntegrationsBeta {
-    return (this._persistentStoreIntegrationsBeta ??=
-      new PersistentStoreIntegrationsBeta(this._options));
+  private _persistentStoreIntegrations?: PersistentStoreIntegrations;
+  get persistentStoreIntegrations(): PersistentStoreIntegrations {
+    return (this._persistentStoreIntegrations ??=
+      new PersistentStoreIntegrations(this._options));
   }
 
-  private _integrationDeliveryConfigurationsBeta?:
-    IntegrationDeliveryConfigurationsBeta;
-  get integrationDeliveryConfigurationsBeta(): IntegrationDeliveryConfigurationsBeta {
-    return (this._integrationDeliveryConfigurationsBeta ??=
-      new IntegrationDeliveryConfigurationsBeta(this._options));
+  private _integrationDeliveryConfigurations?:
+    IntegrationDeliveryConfigurations;
+  get integrationDeliveryConfigurations(): IntegrationDeliveryConfigurations {
+    return (this._integrationDeliveryConfigurations ??=
+      new IntegrationDeliveryConfigurations(this._options));
   }
 
-  private _flagImportConfigurationsBeta?: FlagImportConfigurationsBeta;
-  get flagImportConfigurationsBeta(): FlagImportConfigurationsBeta {
-    return (this._flagImportConfigurationsBeta ??=
-      new FlagImportConfigurationsBeta(this._options));
+  private _flagImportConfigurations?: FlagImportConfigurations;
+  get flagImportConfigurations(): FlagImportConfigurations {
+    return (this._flagImportConfigurations ??= new FlagImportConfigurations(
+      this._options,
+    ));
   }
 
-  private _integrationsBeta?: IntegrationsBeta;
-  get integrationsBeta(): IntegrationsBeta {
-    return (this._integrationsBeta ??= new IntegrationsBeta(this._options));
+  private _integrations?: Integrations;
+  get integrations(): Integrations {
+    return (this._integrations ??= new Integrations(this._options));
   }
 
   private _integrationAuditLogSubscriptions?: IntegrationAuditLogSubscriptions;
@@ -163,19 +162,14 @@ export class LaunchdarklyMcpServer extends ClientSDK {
     return (this._accountMembers ??= new AccountMembers(this._options));
   }
 
-  private _accountMembersBeta?: AccountMembersBeta;
-  get accountMembersBeta(): AccountMembersBeta {
-    return (this._accountMembersBeta ??= new AccountMembersBeta(this._options));
-  }
-
   private _metrics?: Metrics;
   get metrics(): Metrics {
     return (this._metrics ??= new Metrics(this._options));
   }
 
-  private _oAuth2Clients?: OAuth2Clients;
-  get oAuth2Clients(): OAuth2Clients {
-    return (this._oAuth2Clients ??= new OAuth2Clients(this._options));
+  private _oauth2Clients?: Oauth2Clients;
+  get oauth2Clients(): Oauth2Clients {
+    return (this._oauth2Clients ??= new Oauth2Clients(this._options));
   }
 
   private _projects?: Projects;
@@ -208,9 +202,9 @@ export class LaunchdarklyMcpServer extends ClientSDK {
     return (this._followFlags ??= new FollowFlags(this._options));
   }
 
-  private _holdoutsBeta?: HoldoutsBeta;
-  get holdoutsBeta(): HoldoutsBeta {
-    return (this._holdoutsBeta ??= new HoldoutsBeta(this._options));
+  private _holdouts?: Holdouts;
+  get holdouts(): Holdouts {
+    return (this._holdouts ??= new Holdouts(this._options));
   }
 
   private _segments?: Segments;
@@ -233,16 +227,9 @@ export class LaunchdarklyMcpServer extends ClientSDK {
     return (this._layers ??= new Layers(this._options));
   }
 
-  private _metricsBeta?: MetricsBeta;
-  get metricsBeta(): MetricsBeta {
-    return (this._metricsBeta ??= new MetricsBeta(this._options));
-  }
-
-  private _releasePipelinesBeta?: ReleasePipelinesBeta;
-  get releasePipelinesBeta(): ReleasePipelinesBeta {
-    return (this._releasePipelinesBeta ??= new ReleasePipelinesBeta(
-      this._options,
-    ));
+  private _releasePipelines?: ReleasePipelines;
+  get releasePipelines(): ReleasePipelines {
+    return (this._releasePipelines ??= new ReleasePipelines(this._options));
   }
 
   private _customRoles?: CustomRoles;
@@ -255,11 +242,6 @@ export class LaunchdarklyMcpServer extends ClientSDK {
     return (this._teams ??= new Teams(this._options));
   }
 
-  private _teamsBeta?: TeamsBeta;
-  get teamsBeta(): TeamsBeta {
-    return (this._teamsBeta ??= new TeamsBeta(this._options));
-  }
-
   private _workflowTemplates?: WorkflowTemplates;
   get workflowTemplates(): WorkflowTemplates {
     return (this._workflowTemplates ??= new WorkflowTemplates(this._options));
@@ -270,14 +252,19 @@ export class LaunchdarklyMcpServer extends ClientSDK {
     return (this._accessTokens ??= new AccessTokens(this._options));
   }
 
+  private _tokens?: Tokens;
+  get tokens(): Tokens {
+    return (this._tokens ??= new Tokens(this._options));
+  }
+
+  private _accountUsage?: AccountUsage;
+  get accountUsage(): AccountUsage {
+    return (this._accountUsage ??= new AccountUsage(this._options));
+  }
+
   private _accountUsageBeta?: AccountUsageBeta;
   get accountUsageBeta(): AccountUsageBeta {
     return (this._accountUsageBeta ??= new AccountUsageBeta(this._options));
-  }
-
-  private _usersBeta?: UsersBeta;
-  get usersBeta(): UsersBeta {
-    return (this._usersBeta ??= new UsersBeta(this._options));
   }
 
   private _users?: Users;
@@ -300,9 +287,9 @@ export class LaunchdarklyMcpServer extends ClientSDK {
     return (this._tags ??= new Tags(this._options));
   }
 
-  private _aiConfigsBeta?: AIConfigsBeta;
-  get aiConfigsBeta(): AIConfigsBeta {
-    return (this._aiConfigsBeta ??= new AIConfigsBeta(this._options));
+  private _aiConfigs?: AiConfigs;
+  get aiConfigs(): AiConfigs {
+    return (this._aiConfigs ??= new AiConfigs(this._options));
   }
 
   private _announcements?: Announcements;
@@ -310,40 +297,38 @@ export class LaunchdarklyMcpServer extends ClientSDK {
     return (this._announcements ??= new Announcements(this._options));
   }
 
-  private _insightsChartsBeta?: InsightsChartsBeta;
-  get insightsChartsBeta(): InsightsChartsBeta {
-    return (this._insightsChartsBeta ??= new InsightsChartsBeta(this._options));
+  private _insightsCharts?: InsightsCharts;
+  get insightsCharts(): InsightsCharts {
+    return (this._insightsCharts ??= new InsightsCharts(this._options));
   }
 
-  private _insightsDeploymentsBeta?: InsightsDeploymentsBeta;
-  get insightsDeploymentsBeta(): InsightsDeploymentsBeta {
-    return (this._insightsDeploymentsBeta ??= new InsightsDeploymentsBeta(
+  private _insightsDeployments?: InsightsDeployments;
+  get insightsDeployments(): InsightsDeployments {
+    return (this._insightsDeployments ??= new InsightsDeployments(
       this._options,
     ));
   }
 
-  private _insightsFlagEventsBeta?: InsightsFlagEventsBeta;
-  get insightsFlagEventsBeta(): InsightsFlagEventsBeta {
-    return (this._insightsFlagEventsBeta ??= new InsightsFlagEventsBeta(
+  private _insightsFlagEvents?: InsightsFlagEvents;
+  get insightsFlagEvents(): InsightsFlagEvents {
+    return (this._insightsFlagEvents ??= new InsightsFlagEvents(this._options));
+  }
+
+  private _insightsScores?: InsightsScores;
+  get insightsScores(): InsightsScores {
+    return (this._insightsScores ??= new InsightsScores(this._options));
+  }
+
+  private _insightsPullRequests?: InsightsPullRequests;
+  get insightsPullRequests(): InsightsPullRequests {
+    return (this._insightsPullRequests ??= new InsightsPullRequests(
       this._options,
     ));
   }
 
-  private _insightsScoresBeta?: InsightsScoresBeta;
-  get insightsScoresBeta(): InsightsScoresBeta {
-    return (this._insightsScoresBeta ??= new InsightsScoresBeta(this._options));
-  }
-
-  private _insightsPullRequestsBeta?: InsightsPullRequestsBeta;
-  get insightsPullRequestsBeta(): InsightsPullRequestsBeta {
-    return (this._insightsPullRequestsBeta ??= new InsightsPullRequestsBeta(
-      this._options,
-    ));
-  }
-
-  private _insightsRepositoriesBeta?: InsightsRepositoriesBeta;
-  get insightsRepositoriesBeta(): InsightsRepositoriesBeta {
-    return (this._insightsRepositoriesBeta ??= new InsightsRepositoriesBeta(
+  private _insightsRepositories?: InsightsRepositories;
+  get insightsRepositories(): InsightsRepositories {
+    return (this._insightsRepositories ??= new InsightsRepositories(
       this._options,
     ));
   }

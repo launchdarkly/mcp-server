@@ -6,15 +6,15 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type PostMetricRequest = {
   /**
    * The project key
    */
   projectKey: string;
-  metricPost: models.MetricPost;
+  metricPost: components.MetricPost;
 };
 
 /** @internal */
@@ -24,7 +24,7 @@ export const PostMetricRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   projectKey: z.string(),
-  MetricPost: models.MetricPost$inboundSchema,
+  MetricPost: components.MetricPost$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "MetricPost": "metricPost",
@@ -34,7 +34,7 @@ export const PostMetricRequest$inboundSchema: z.ZodType<
 /** @internal */
 export type PostMetricRequest$Outbound = {
   projectKey: string;
-  MetricPost: models.MetricPost$Outbound;
+  MetricPost: components.MetricPost$Outbound;
 };
 
 /** @internal */
@@ -44,7 +44,7 @@ export const PostMetricRequest$outboundSchema: z.ZodType<
   PostMetricRequest
 > = z.object({
   projectKey: z.string(),
-  metricPost: models.MetricPost$outboundSchema,
+  metricPost: components.MetricPost$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     metricPost: "MetricPost",

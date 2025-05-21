@@ -6,8 +6,8 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type CreateReleaseForFlagRequest = {
   /**
@@ -18,7 +18,7 @@ export type CreateReleaseForFlagRequest = {
    * The flag key
    */
   flagKey: string;
-  createReleaseInput: models.CreateReleaseInput;
+  createReleaseInput: components.CreateReleaseInput;
 };
 
 /** @internal */
@@ -29,7 +29,7 @@ export const CreateReleaseForFlagRequest$inboundSchema: z.ZodType<
 > = z.object({
   projectKey: z.string(),
   flagKey: z.string(),
-  CreateReleaseInput: models.CreateReleaseInput$inboundSchema,
+  CreateReleaseInput: components.CreateReleaseInput$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "CreateReleaseInput": "createReleaseInput",
@@ -40,7 +40,7 @@ export const CreateReleaseForFlagRequest$inboundSchema: z.ZodType<
 export type CreateReleaseForFlagRequest$Outbound = {
   projectKey: string;
   flagKey: string;
-  CreateReleaseInput: models.CreateReleaseInput$Outbound;
+  CreateReleaseInput: components.CreateReleaseInput$Outbound;
 };
 
 /** @internal */
@@ -51,7 +51,7 @@ export const CreateReleaseForFlagRequest$outboundSchema: z.ZodType<
 > = z.object({
   projectKey: z.string(),
   flagKey: z.string(),
-  createReleaseInput: models.CreateReleaseInput$outboundSchema,
+  createReleaseInput: components.CreateReleaseInput$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     createReleaseInput: "CreateReleaseInput",

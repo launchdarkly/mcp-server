@@ -5,8 +5,8 @@
 import * as z from "zod";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
+import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import * as models from "../index.js";
 
 export type PatchTeamRequest = {
   /**
@@ -17,7 +17,7 @@ export type PatchTeamRequest = {
    * A comma-separated list of properties that can reveal additional information in the response. Supported fields are explained above.
    */
   expand?: string | undefined;
-  teamPatchInput: models.TeamPatchInput;
+  teamPatchInput: components.TeamPatchInput;
 };
 
 /** @internal */
@@ -28,14 +28,14 @@ export const PatchTeamRequest$inboundSchema: z.ZodType<
 > = z.object({
   teamKey: z.string(),
   expand: z.string().optional(),
-  teamPatchInput: models.TeamPatchInput$inboundSchema,
+  teamPatchInput: components.TeamPatchInput$inboundSchema,
 });
 
 /** @internal */
 export type PatchTeamRequest$Outbound = {
   teamKey: string;
   expand?: string | undefined;
-  teamPatchInput: models.TeamPatchInput$Outbound;
+  teamPatchInput: components.TeamPatchInput$Outbound;
 };
 
 /** @internal */
@@ -46,7 +46,7 @@ export const PatchTeamRequest$outboundSchema: z.ZodType<
 > = z.object({
   teamKey: z.string(),
   expand: z.string().optional(),
-  teamPatchInput: models.TeamPatchInput$outboundSchema,
+  teamPatchInput: components.TeamPatchInput$outboundSchema,
 });
 
 /**
