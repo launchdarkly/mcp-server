@@ -1,6 +1,6 @@
 {
   "name": "@launchdarkly/mcp-server",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": "LaunchDarkly",
   "type": "module",
   "bin": {
@@ -22,6 +22,10 @@
     }
   },
   "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/launchdarkly-labs/mcp-server.git"
+  },
   "scripts": {
     "lint": "eslint --cache --max-warnings=0 src",
     "build:mcp": "bun src/mcp-server/build.mts",
