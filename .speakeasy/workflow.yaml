@@ -9,14 +9,17 @@ sources:
             - location: ./schemas/mcp-enable-tools.yaml
             - location: ./schemas/suggestions.yaml
         registry:
-            location: registry.speakeasyapi.dev/launchdarkly/mcp/launch-darkly-rest-api
+            location: registry.speakeasyapi.dev/launchdarkly/mcp/launchdarkly-rest-api
 targets:
     launchdarkly-mcp-server:
         target: typescript
         source: LaunchDarkly REST API
+        publish:
+            npm:
+                token: $npm_token
         codeSamples:
             registry:
-                location: registry.speakeasyapi.dev/launchdarkly/mcp/launch-darkly-rest-api-typescript-code-samples
+                location: registry.speakeasyapi.dev/launchdarkly/mcp/launchdarkly-rest-api-typescript-code-samples
             labelOverride:
                 fixedValue: Typescript (SDK)
             blocking: false
