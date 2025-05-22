@@ -9,10 +9,6 @@ The official [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) se
     </a>
 </div>
 
-<br /><br />
-> [!IMPORTANT]
-> This SDK is not yet ready for production use. To complete setup please follow the steps outlined in your [workspace](https://app.speakeasy.com/org/launchdarkly/mcp). Delete this section before > publishing to a package manager.
-
 <!-- No Summary [summary] -->
 
 <!-- Start Table of Contents [toc] -->
@@ -36,74 +32,12 @@ The official [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) se
 
 <!-- End Table of Contents [toc] -->
 
-<!-- Start SDK Installation [installation] -->
-## SDK Installation
+<!-- No SDK Installation [installation] -->
+## Installation
 
-The SDK can be installed with either [npm](https://www.npmjs.com/), [pnpm](https://pnpm.io/), [bun](https://bun.sh/) or [yarn](https://classic.yarnpkg.com/en/) package managers.
+This MCP server can be installed in any AI client that supports the MCP protocol. Refer to your AI client's instructions if it isn't listed here.
 
-### NPM
-
-```bash
-npm add @launchdarkly/mcp-server
-```
-
-### PNPM
-
-```bash
-pnpm add @launchdarkly/mcp-server
-```
-
-### Bun
-
-```bash
-bun add @launchdarkly/mcp-server
-```
-
-### Yarn
-
-```bash
-yarn add @launchdarkly/mcp-server zod
-
-# Note that Yarn does not install peer dependencies automatically. You will need
-# to install zod as shown above.
-```
-
-> [!NOTE]
-> This package is published with CommonJS and ES Modules (ESM) support.
-
-
-### Model Context Protocol (MCP) Server
-
-This SDK is also an installable MCP server where the various SDK methods are
-exposed as tools that can be invoked by AI applications.
-
-> Node.js v20 or greater is required to run the MCP server from npm.
-
-<details>
-<summary>Claude installation steps</summary>
-
-Add the following server definition to your `claude_desktop_config.json` file:
-
-```json
-{
-  "mcpServers": {
-    "LaunchDarkly": {
-      "command": "npx",
-      "args": [
-        "-y", "--package", "@launchdarkly/mcp-server",
-        "--",
-        "mcp", "start",
-        "--api-key", "..."
-      ]
-    }
-  }
-}
-```
-
-</details>
-
-<details>
-<summary>Cursor installation steps</summary>
+### Cursor installation steps
 
 Create a `.cursor/mcp.json` file in your project root with the following content:
 
@@ -114,47 +48,46 @@ Create a `.cursor/mcp.json` file in your project root with the following content
       "command": "npx",
       "args": [
         "-y", "--package", "@launchdarkly/mcp-server",
-        "--",
-        "mcp", "start",
-        "--api-key", "..."
+        "--", "mcp", "start",
+        "--api-key", "api-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
       ]
     }
   }
 }
 ```
 
-</details>
+Specify your API key as found on LaunchDarkly's Authorization page.
 
-You can also run MCP servers as a standalone binary with no additional dependencies. You must pull these binaries from available Github releases:
+### Claude installation steps
 
-```bash
-curl -L -o mcp-server \
-    https://github.com/{org}/{repo}/releases/download/{tag}/mcp-server-bun-darwin-arm64 && \
-chmod +x mcp-server
-```
-
-If the repo is a private repo you must add your Github PAT to download a release `-H "Authorization: Bearer {GITHUB_PAT}"`.
-
+Add the following server definition to your `claude_desktop_config.json` file:
 
 ```json
 {
   "mcpServers": {
-    "Todos": {
-      "command": "./DOWNLOAD/PATH/mcp-server",
+    "LaunchDarkly": {
+      "command": "npx",
       "args": [
-        "start"
+        "-y", "--package", "@launchdarkly/mcp-server",
+        "--", "mcp", "start",
+        "--api-key", "api-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
       ]
     }
   }
 }
 ```
 
-For a full list of server arguments, run:
+Specify your API key as found on LaunchDarkly's Authorization page.
 
-```sh
-npx -y --package @launchdarkly/mcp-server -- mcp start --help
+### Standalone binary installation steps
+
+You can also run the MCP server as a standalone binary with no additional dependencies. You must pull these binaries from available Github releases while specifying the appropriate `tag` value:
+
+```bash
+curl -L -o mcp-server \
+    https://github.com/launchdarkly/mcp-server/releases/download/{tag}/mcp-server-bun-darwin-arm64 && \
+chmod +x mcp-server
 ```
-<!-- End SDK Installation [installation] -->
 
 <!-- Start Requirements [requirements] -->
 ## Requirements
