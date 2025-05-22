@@ -15,3 +15,13 @@ Based on:
 - Speakeasy CLI 1.549.1 (2.607.1) https://github.com/speakeasy-api/speakeasy
 ### Generated
 - [typescript v0.2.2] .
+
+## 2025-05-22 21:34:56
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.550.0 (2.610.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.2.3] .
+### Releases
+- [NPM v0.2.3] https://www.npmjs.com/package/@launchdarkly/mcp-server/v/0.2.3 - .

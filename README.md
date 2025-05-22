@@ -19,7 +19,7 @@ The official [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) se
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
 <!-- $toc-max-depth=2 -->
-* [@launchdarkly/mcp-server](#launchdarklymcp-server)
+* [LaunchDarkly's Model Context Protocol (MCP) Server](#launchdarklys-model-context-protocol-mcp-server)
   * [SDK Installation](#sdk-installation)
   * [Requirements](#requirements)
   * [SDK Example Usage](#sdk-example-usage)
@@ -40,34 +40,30 @@ The official [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) se
 <!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
-> [!TIP]
-> To finish publishing your SDK to npm and others you must [run your first generation action](https://www.speakeasy.com/docs/github-setup#step-by-step-guide).
-
-
 The SDK can be installed with either [npm](https://www.npmjs.com/), [pnpm](https://pnpm.io/), [bun](https://bun.sh/) or [yarn](https://classic.yarnpkg.com/en/) package managers.
 
 ### NPM
 
 ```bash
-npm add https://github.com/launchdarkly/mcp-server
+npm add @launchdarkly/mcp-server
 ```
 
 ### PNPM
 
 ```bash
-pnpm add https://github.com/launchdarkly/mcp-server
+pnpm add @launchdarkly/mcp-server
 ```
 
 ### Bun
 
 ```bash
-bun add https://github.com/launchdarkly/mcp-server
+bun add @launchdarkly/mcp-server
 ```
 
 ### Yarn
 
 ```bash
-yarn add https://github.com/launchdarkly/mcp-server zod
+yarn add @launchdarkly/mcp-server zod
 
 # Note that Yarn does not install peer dependencies automatically. You will need
 # to install zod as shown above.
