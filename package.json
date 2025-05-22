@@ -24,7 +24,7 @@
   "sideEffects": false,
   "repository": {
     "type": "git",
-    "url": "https://github.com/launchdarkly-labs/mcp-server.git"
+    "url": "https://github.com/launchdarkly/mcp-server.git"
   },
   "scripts": {
     "lint": "eslint --cache --max-warnings=0 src",

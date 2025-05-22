@@ -49,25 +49,25 @@ The SDK can be installed with either [npm](https://www.npmjs.com/), [pnpm](https
 ### NPM
 
 ```bash
-npm add https://github.com/launchdarkly-labs/mcp-server
+npm add https://github.com/launchdarkly/mcp-server
 ```
 
 ### PNPM
 
 ```bash
-pnpm add https://github.com/launchdarkly-labs/mcp-server
+pnpm add https://github.com/launchdarkly/mcp-server
 ```
 
 ### Bun
 
 ```bash
-bun add https://github.com/launchdarkly-labs/mcp-server
+bun add https://github.com/launchdarkly/mcp-server
 ```
 
 ### Yarn
 
 ```bash
-yarn add https://github.com/launchdarkly-labs/mcp-server zod
+yarn add https://github.com/launchdarkly/mcp-server zod
 
 # Note that Yarn does not install peer dependencies automatically. You will need
 # to install zod as shown above.

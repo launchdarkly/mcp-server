@@ -7,8 +7,8 @@ management:
   generationVersion: 2.607.1
   releaseVersion: 0.2.2
   configChecksum: 05c9f47ff4c559452502fef8d87b6efa
-  repoURL: https://github.com/launchdarkly-labs/mcp-server.git
-  installationURL: https://github.com/launchdarkly-labs/mcp-server
+  repoURL: https://github.com/launchdarkly/mcp-server.git
+  installationURL: https://github.com/launchdarkly/mcp-server
 features:
   typescript:
     additionalDependencies: 0.1.0
