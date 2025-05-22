@@ -81,7 +81,7 @@ Specify your API key as found on LaunchDarkly's Authorization page.
 
 ### Standalone binary installation steps
 
-You can also run the MCP server as a standalone binary with no additional dependencies. You must pull these binaries from available Github releases while specifying the appropriate `tag` value:
+You can also run the MCP server as a standalone binary with no additional dependencies. You must pull these binaries from available GitHub releases while specifying the appropriate `tag` value:
 
 ```bash
 curl -L -o mcp-server \
