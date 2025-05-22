@@ -1,0 +1,32 @@
+# PatchAIConfigRequest
+
+## Example Usage
+
+```typescript
+import { PatchAIConfigRequest } from "@launchdarkly/mcp-server/models/operations";
+
+let value: PatchAIConfigRequest = {
+  ldAPIVersion: "beta",
+  projectKey: "<value>",
+  configKey: "<value>",
+  aiConfigPatch: {
+    description: "description",
+    maintainerId: "maintainerId",
+    maintainerTeamKey: "maintainerTeamKey",
+    name: "name",
+    tags: [
+      "tags",
+      "tags",
+    ],
+  },
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                  | Type                                                                                                                                                   | Required                                                                                                                                               | Description                                                                                                                                            | Example                                                                                                                                                |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `ldAPIVersion`                                                                                                                                         | [operations.PatchAIConfigLDAPIVersion](../../models/operations/patchaiconfigldapiversion.md)                                                           | :heavy_check_mark:                                                                                                                                     | Version of the endpoint.                                                                                                                               |                                                                                                                                                        |
+| `projectKey`                                                                                                                                           | *string*                                                                                                                                               | :heavy_check_mark:                                                                                                                                     | N/A                                                                                                                                                    |                                                                                                                                                        |
+| `configKey`                                                                                                                                            | *string*                                                                                                                                               | :heavy_check_mark:                                                                                                                                     | N/A                                                                                                                                                    |                                                                                                                                                        |
+| `aiConfigPatch`                                                                                                                                        | [components.AIConfigPatch](../../models/components/aiconfigpatch.md)                                                                                   | :heavy_minus_sign:                                                                                                                                     | AI Config object to update                                                                                                                             | {<br/>"maintainerId": "maintainerId",<br/>"maintainerTeamKey": "maintainerTeamKey",<br/>"name": "name",<br/>"description": "description",<br/>"tags": [<br/>"tags",<br/>"tags"<br/>]<br/>} |

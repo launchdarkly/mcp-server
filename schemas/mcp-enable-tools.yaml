@@ -1,0 +1,142 @@
+info:
+  title: MCP Enable Overlay for Feature Flag Tools
+  version: 0.0.1
+overlay: 1.0.0
+actions:
+  - target: $
+    update: 
+      servers: 
+        - url: https://app.launchdarkly.com
+          description: Prod API server
+  - target: $["paths"]["/api/v2/flags/{projectKey}"]["get"]
+    update:
+      x-speakeasy-mcp:
+        description: Retrieves all feature flags within a project, including metadata
+          and targeting rules. Enables AI agents to enumerate existing flags for inspection,
+          configuration analysis, or generating flag usage reports across environments.
+        disabled: false
+        name: list-feature-flags
+        scopes:
+          - read
+  - target: $["paths"]["/api/v2/flags/{projectKey}"]["post"]
+    update:
+      x-speakeasy-mcp:
+        description: Creates a new feature flag within a project. AI agents can use
+          this operation to define feature toggles for controlled rollouts, experimentation,
+          or gated features, automating the flag setup process.
+        disabled: false
+        name: create-feature-flag
+        scopes:
+          - write
+  - target: $["paths"]["/api/v2/flags/{projectKey}/{featureFlagKey}"]["get"]
+    update:
+      x-speakeasy-mcp:
+        description: Fetches the full configuration for a specific feature flag, including
+          environments, variations, and targeting rules. Useful for agents auditing
+          or managing specific feature toggles in a detailed, contextual manner.
+        disabled: false
+        name: get-feature-flag
+        scopes:
+          - read
+  - target: $["paths"]["/api/v2/flags/{projectKey}/{featureFlagKey}"]["patch"]
+    update:
+      x-speakeasy-mcp:
+        description: Updates the configuration of an existing feature flag. Enables
+          agents to change targeting rules, modify variations, or adapt rollout strategies
+          dynamically in response to user behavior or experiment results.
+        disabled: false
+        name: update-feature-flag
+        scopes:
+          - write
+  - target: $["paths"]["/api/v2/flags/{projectKey}/{featureFlagKey}"]["delete"]
+    update:
+      x-speakeasy-mcp:
+        description: Removes a feature flag from the project. Used by AI agents to clean
+          up deprecated toggles that are no longer in use, improving system hygiene
+          and maintainability.
+        disabled: false
+        name: delete-feature-flag
+        scopes:
+          - write
+  - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs"]["get"]
+    update:
+      x-speakeasy-mcp:
+        description: Retrieves AI configuration settings for a specific project. This
+          endpoint allows agents to access and modify AI-related configurations, ensuring
+          that the AI's behavior aligns with project requirements and user expectations.
+        disabled: false
+        name: get-ai-configs
+        scopes:
+          - read
+  - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs"]["post"]
+    update:
+      x-speakeasy-mcp:
+        name: create-ai-config
+        description: Creates a new AI Config within a project. Useful for setting up LLM configurations programmatically.
+        disabled: false
+        scopes:
+          - write
+  - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs"]["get"]
+    update:
+      x-speakeasy-mcp:
+        name: list-ai-configs
+        description: Lists all AI Configs in a project, allowing agents to enumerate available configurations for analysis or testing.
+        disabled: false
+        scopes:
+          - read
+  - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs/{aiConfigKey}"]["get"]
+    update:
+      x-speakeasy-mcp:
+        name: get-ai-config
+        description: Retrieves details of a specific AI Config, including variations and model settings.
+        disabled: false
+        scopes:
+          - read
+  - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs/{aiConfigKey}"]["patch"]
+    update:
+      x-speakeasy-mcp:
+        name: update-ai-config
+        description: Updates metadata or configuration of an existing AI Config.
+        disabled: false
+        scopes:
+          - write
+  - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs/{aiConfigKey}"]["delete"]
+    update:
+      x-speakeasy-mcp:
+        name: delete-ai-config
+        description: Deletes an AI Config and its associated variations. Intended for cleanup or deprecation workflows.
+        disabled: false
+        scopes:
+          - write
+  - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs/{aiConfigKey}/variations/{variationKey}"]["get"]
+    update:
+      x-speakeasy-mcp:
+        name: get-ai-config-variation
+        description: Retrieves an AI configuration variation.
+        disabled: false
+        scopes:
+          - read
+  - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs/{aiConfigKey}/variations"]["post"]
+    update:
+      x-speakeasy-mcp:
+        name: create-ai-config-variation
+        description: Adds a new variation to an AI Config, supporting experimentation or multi-model strategies.
+        disabled: false
+        scopes:
+          - write
+  - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs/{aiConfigKey}/variations/{variationKey}"]["patch"]
+    update:
+      x-speakeasy-mcp:
+        name: update-ai-config-variation
+        description: Updates a specific variation within an AI Config. Enables fine-tuned control of model behavior.
+        disabled: false
+        scopes:
+          - write
+  - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs/{aiConfigKey}/variations/{variationKey}"]["delete"]
+    update:
+      x-speakeasy-mcp:
+        name: delete-ai-config-variation
+        description: Deletes an AI Config variation.
+        disabled: false
+        scopes:
+          - write
