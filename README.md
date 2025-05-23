@@ -162,6 +162,6 @@ We look forward to hearing your feedback. Feel free to open a PR or an issue wit
 - Explore LaunchDarkly
   - [https://app.launchdarkly.com/signup](Sign up for a free LaunchDarkly account here)
   - [launchdarkly.com](https://www.launchdarkly.com/ 'LaunchDarkly Main Website') for more information
-  - [docs.launchdarkly.com](https://launchdarkly.com/docs/home 'LaunchDarkly Documentation') for our documentation and SDK reference guides
-  - [apidocs.launchdarkly.com](https://launchdarkly.com/docs/api 'LaunchDarkly API Documentation') for our API documentation
+  - [launchdarkly.com/docs](https://launchdarkly.com/docs/home 'LaunchDarkly Documentation') for our documentation and SDK reference guides
+  - [launchdarkly.com/docs/api](https://launchdarkly.com/docs/api 'LaunchDarkly API Documentation') for our API documentation
   - [blog.launchdarkly.com](https://launchdarkly.com/blog/ 'LaunchDarkly Blog Documentation') for the latest product updates
