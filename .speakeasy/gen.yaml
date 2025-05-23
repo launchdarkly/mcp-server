@@ -24,7 +24,14 @@ typescript:
     dependencies: {}
     devDependencies: {}
     peerDependencies: {}
-  additionalPackageJSON: {}
+  additionalPackageJSON:
+    license: MIT
+    keywords:
+      - feature-flags
+      - feature-toggles
+      - launchdarkly
+      - mcp
+      - modelcontextprotocol
   author: LaunchDarkly
   clientServerStatusCodesAsErrors: true
   defaultErrorName: APIError
