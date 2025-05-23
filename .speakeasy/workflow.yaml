@@ -4,10 +4,13 @@ sources:
     LaunchDarkly REST API:
         inputs:
             - location: ./schemas/openapi.json
+            - location: ./schemas/openapi-dev-server.yaml
         overlays:
             - location: ./schemas/mcp-disable-tools.yaml
             - location: ./schemas/mcp-enable-tools.yaml
             - location: ./schemas/suggestions.yaml
+            - location: ./schemas/mcp-disable-tools-dev-server.yaml
+            - location: ./schemas/mcp-enable-tools-dev-server.yaml
         registry:
             location: registry.speakeasyapi.dev/launchdarkly/mcp/launchdarkly-rest-api
 targets:

@@ -1,0 +1,341 @@
+openapi: 3.0.3
+info:
+  title: LaunchDarkly Dev Server
+  description: |
+    LaunchDarkly Dev Server provides a simplified, local feature flagging server that can be used with LanchDarkly SDKs.
+    This API allows for the syncing of flags with a remote LaunchDarkly project and to configure local overrides of 
+    those flags.
+  version: 1.0.0
+servers:
+  - url: "http"
+paths:
+  /dev/backup:
+    get:
+      summary: get the backup
+      operationId: getBackup
+      responses:
+        200:
+          $ref: "#/components/responses/DbBackup"
+    post:
+      summary: post backup
+      operationId: restoreBackup
+      requestBody:
+        content:
+          application/vnd.sqlite3:
+            schema:
+              type: string
+              format: binary
+      responses:
+        200:
+          description: 'Backup restored'
+  /dev/projects:
+    get:
+      summary: lists all projects that have been configured for the dev server
+      operationId: getProjects
+      responses:
+        200:
+          description: OK. List of projects
+          content:
+            application/json:
+              schema:
+                description: list of project keys.
+                type: array
+                items:
+                  type: string
+                uniqueItems: true
+  /dev/projects/{projectKey}:
+    get:
+      summary: get the specified project and its configuration for syncing from the LaunchDarkly Service
+      operationId: getProject
+      parameters:
+        - $ref: "#/components/parameters/projectKey"
+        - $ref: "#/components/parameters/projectExpand"
+      responses:
+        200:
+          $ref: "#/components/responses/Project"
+        404:
+          description: No project found
+    patch:
+      summary: updates the project context or sourceEnvironmentKey then syncs.  Input an empty body to only force a sync.
+      operationId: patchProject
+      parameters:
+        - $ref: "#/components/parameters/projectKey"
+        - $ref: "#/components/parameters/projectExpand"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                sourceEnvironmentKey:
+                  type: string
+                  description: environment to copy flag values from
+                context:
+                  $ref: "#/components/schemas/Context"
+      responses:
+        200:
+          $ref: "#/components/responses/Project"
+        404:
+          description: No project found
+    delete:
+      summary: remove the specified project from the dev server
+      operationId: deleteProject
+      parameters:
+        - $ref: "#/components/parameters/projectKey"
+      responses:
+        204:
+          description: OK. Project & overrides were removed
+        404:
+          $ref: "#/components/responses/ErrorResponse"
+    post:
+      summary: Add the project to the dev server
+      operationId: postAddProject
+      parameters:
+        - $ref: "#/components/parameters/projectKey"
+        - $ref: "#/components/parameters/projectExpand"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - sourceEnvironmentKey
+              properties:
+                sourceEnvironmentKey:
+                  type: string
+                  description: environment to copy flag values from
+                context:
+                  $ref: "#/components/schemas/Context"
+      responses:
+        201:
+          $ref: "#/components/responses/Project"
+        400:
+          $ref: "#/components/responses/ErrorResponse"
+        409:
+          $ref: "#/components/responses/ErrorResponse"
+  /dev/projects/{projectKey}/overrides:
+    delete:
+      summary: remove all overrides for the given project
+      operationId: deleteOverrides
+      parameters:
+        - $ref: "#/components/parameters/projectKey"
+      responses:
+        204:
+          description: OK. All overrides were removed
+        404:
+          $ref: "#/components/responses/ErrorResponse"        
+  /dev/projects/{projectKey}/overrides/{flagKey}:
+    put:
+      summary: override flag value with value provided in the body
+      operationId: putOverrideFlag
+      parameters:
+        - $ref: "#/components/parameters/projectKey"
+        - $ref: "#/components/parameters/flagKey"
+      requestBody:
+        required: true
+        description: flag value to override flag with. The json representation of the variation value.
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FlagValue"
+      responses:
+        200:
+          $ref: "#/components/responses/FlagOverride"
+        400:
+          $ref: "#/components/responses/ErrorResponse"
+
+    delete:
+      summary: remove override for flag
+      operationId: deleteFlagOverride
+      parameters:
+        - $ref: "#/components/parameters/projectKey"
+        - $ref: "#/components/parameters/flagKey"
+      responses:
+        204:
+          description: OK. override removed
+        404:
+          description: no matching override found
+  /dev/projects/{projectKey}/environments:
+    get:
+      operationId: getEnvironments
+      summary: list all environments for the given project
+      parameters:
+        - $ref: "#/components/parameters/projectKey"
+        - name: name
+          in: query
+          description: filter by environment name
+          required: false
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: limit the number of environments returned
+          required: false
+          schema:
+            type: integer
+      responses:
+        200:
+          description: OK. List of environments
+          content:
+            application/json:
+              schema:
+                description: list of environments
+                type: array
+                items:
+                  $ref: "#/components/schemas/Environment"
+                uniqueItems: true
+        404:
+          $ref: "#/components/responses/ErrorResponse"
+        400:
+          $ref: "#/components/responses/ErrorResponse"
+components:
+  parameters:
+    flagKey:
+      name: flagKey
+      in: path
+      required: true
+      schema:
+        type: string
+    projectKey:
+      name: projectKey
+      in: path
+      required: true
+      schema:
+        type: string
+    projectExpand:
+      name: expand
+      description: Available expand options for this endpoint.
+      in: query
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - overrides
+            - availableVariations
+  schemas:
+    FlagValue:
+      description: value of a feature flag variation
+      oneOf:
+        - type: string
+        - type: boolean
+        - type: number
+        - type: object
+      x-go-type: ldvalue.Value
+      x-go-type-import:
+        path: github.com/launchdarkly/go-sdk-common/v3/ldvalue
+    Context:
+      type: object
+      description: context object to use when evaluating flags in source environment
+      x-go-type: ldcontext.Context
+      x-go-type-import:
+        path: github.com/launchdarkly/go-sdk-common/v3/ldcontext
+      default:
+        key: "dev-environment"
+        kind: "user"
+    Variation:
+      description: variation of a flag
+      required:
+        - _id
+        - value
+      properties:
+        _id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        value:
+          $ref: '#/components/schemas/FlagValue'
+    Project:
+      description: Project
+      type: object
+      required:
+        - sourceEnvironmentKey
+        - context
+        - _lastSyncedFromSource
+      properties:
+        context:
+          $ref: "#/components/schemas/Context"
+        sourceEnvironmentKey:
+          type: string
+          description: environment to copy flag values from
+        flagsState:
+          type: object
+          description: flags and their values and version for a given project in the source environment
+          x-go-type: model.FlagsState
+          x-go-type-import:
+            path: github.com/launchdarkly/ldcli/internal/dev_server/model
+        overrides:
+          type: object
+          description: overridden flags for the project
+          x-go-type: model.FlagsState
+          x-go-type-import:
+            path: github.com/launchdarkly/ldcli/internal/dev_server/model
+        availableVariations:
+          type: object
+          description: variations
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/Variation'
+        _lastSyncedFromSource:
+          type: integer
+          x-go-type: int64
+          description: unix timestamp for the lat time the flag values were synced from the source environment
+    Environment:
+      description: Environment
+      type: object
+      required:
+        - key
+        - name
+      properties:
+        key:
+          type: string
+        name:
+          type: string
+  responses:
+    FlagOverride:
+      description: Flag override
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - override
+              - value
+            properties:
+              value:
+                $ref: "#/components/schemas/FlagValue"
+              override:
+                type: boolean
+                description: whether or not this is an overridden value or one from the source environment
+    Project:
+      description: Project
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Project"
+    DbBackup:
+      description: A backup of the local sqlite database
+      content:
+        application/vnd.sqlite3:
+          schema:
+            type: string
+            format: binary
+    ErrorResponse:
+      description: Error response object
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - code
+              - message
+            properties:
+              code:
+                type: string
+                description: specific error code encountered
+              message:
+                type: string
+                description: description of the error

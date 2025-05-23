@@ -1,0 +1,40 @@
+overlay: 1.0.0
+x-speakeasy-jsonpath: rfc9535
+info:
+  title: Disable MCP Localhost Dev Server Tools 
+  version: 0.0.1
+actions:
+  - target: $["paths"]["/dev/backup"]["get"]
+    update:
+      x-speakeasy-mcp:
+        disabled: true
+  - target: $["paths"]["/dev/backup"]["post"]
+    update:
+      x-speakeasy-mcp:
+        disabled: true
+  - target: $["paths"]["/dev/projects"]["get"]
+    update:
+      x-speakeasy-mcp:
+        disabled: true
+  - target: $["paths"]["/dev/projects/{projectKey}"]["get"]
+    update:
+      x-speakeasy-mcp:
+        disabled: true
+  - target: $["paths"]["/dev/projects/{projectKey}"]["patch"]
+    update:
+      x-speakeasy-mcp:
+        disabled: true
+  - target: $["paths"]["/dev/projects/{projectKey}"]["delete"]
+    update:
+      x-speakeasy-mcp:
+        disabled: true
+  - target: $["paths"]["/dev/projects/{projectKey}"]["post"]
+    update:
+      x-speakeasy-mcp:
+        disabled: true
+  - target: $["paths"]["/dev/projects/{projectKey}/environments"]["get"]
+    update:
+      x-speakeasy-mcp:
+        disabled: true
+  - target: $.paths.*[?@['x-speakeasy-mcp'].disabled == true]
+    remove: true

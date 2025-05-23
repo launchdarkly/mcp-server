@@ -1,0 +1,34 @@
+info:
+  title: MCP Enable Overlay for Localhost Dev Server
+  version: 0.0.1
+overlay: 1.0.0
+actions:
+  - target: $
+    update: 
+      servers: 
+        - url: http://localhost:8765
+          description: Localhost Dev Server
+  - target: $["paths"]["/dev/projects/{projectKey}/overrides/{flagKey}"]["put"]
+    update:
+      x-speakeasy-mcp:
+        description: Sets a local feature flag value override. This facilitates local development and testing in isolation.
+        disabled: false
+        name: set-feature-flag-value-override
+        scopes:
+          - write
+  - target: $["paths"]["/dev/projects/{projectKey}/overrides/{flagKey}"]["delete"]
+    update:
+      x-speakeasy-mcp:
+        description: Deletes a local feature flag value override. This resets the feature flag to its original value.
+        disabled: false
+        name: delete-feature-flag-value-override
+        scopes:
+          - write
+  - target: $["paths"]["/dev/projects/{projectKey}/overrides"]["delete"]
+    update:
+      x-speakeasy-mcp:
+        description: Deletes all local feature flag value overrides for a specified project. This resets all feature flags in the project to their original values.
+        disabled: false
+        name: delete-feature-flag-value-overrides
+        scopes:
+          - write
