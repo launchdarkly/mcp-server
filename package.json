@@ -27,9 +27,11 @@
     "url": "https://github.com/launchdarkly/mcp-server.git"
   },
   "keywords": [
+    "feature-flags",
+    "feature-toggles",
     "launchdarkly",
-    "modelcontextprotocol",
-    "mcp"
+    "mcp",
+    "modelcontextprotocol"
   ],
   "license": "MIT",
   "scripts": {
