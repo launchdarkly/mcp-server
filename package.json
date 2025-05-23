@@ -1,6 +1,6 @@
 {
   "name": "@launchdarkly/mcp-server",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "author": "LaunchDarkly",
   "type": "module",
   "bin": {
@@ -26,14 +26,6 @@
     "type": "git",
     "url": "https://github.com/launchdarkly/mcp-server.git"
   },
-  "keywords": [
-    "feature-flags",
-    "feature-toggles",
-    "launchdarkly",
-    "mcp",
-    "modelcontextprotocol"
-  ],
-  "license": "MIT",
   "scripts": {
     "lint": "eslint --cache --max-warnings=0 src",
     "build:mcp": "bun src/mcp-server/build.mts",
