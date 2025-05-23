@@ -159,7 +159,7 @@ We look forward to hearing your feedback. Feel free to open a PR or an issue wit
   - Disable parts of your application to facilitate maintenance, without taking everything offline.
 - LaunchDarkly provides feature flag SDKs for a wide variety of languages and technologies. Read [our documentation](https://launchdarkly.com/docs/sdk) for a complete list.
 - Explore LaunchDarkly
-  - [https://app.launchdarkly.com/signup](Sign up for a free LaunchDarkly account here)
+  - [Sign up for a free LaunchDarkly account](https://app.launchdarkly.com/signup)
   - [launchdarkly.com](https://www.launchdarkly.com/ 'LaunchDarkly Main Website') for more information
   - [launchdarkly.com/docs](https://launchdarkly.com/docs/home 'LaunchDarkly Documentation') for our documentation and SDK reference guides
   - [launchdarkly.com/docs/api](https://launchdarkly.com/docs/api 'LaunchDarkly API Documentation') for our API documentation
