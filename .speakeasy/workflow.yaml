@@ -11,6 +11,7 @@ sources:
             - location: ./schemas/suggestions.yaml
             - location: ./schemas/mcp-disable-tools-dev-server.yaml
             - location: ./schemas/mcp-enable-tools-dev-server.yaml
+            - location: ./schemas/suggestions-dev-server.yaml
         registry:
             location: registry.speakeasyapi.dev/launchdarkly/mcp/launchdarkly-rest-api
 targets:

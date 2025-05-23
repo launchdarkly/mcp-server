@@ -1,0 +1,17 @@
+overlay: 1.0.0
+info:
+  title: Speakeasy Suggestions - Localhost Dev Server
+  version: 0.0.1
+actions:
+  - target: $["paths"]["/dev/projects/{projectKey}/overrides/{flagKey}"]["delete"]
+    update:
+      x-speakeasy-name-override: deleteOverride
+      x-speakeasy-group: devServer
+  - target: $["paths"]["/dev/projects/{projectKey}/overrides/{flagKey}"]["put"]
+    update:
+      x-speakeasy-name-override: updateOverride
+      x-speakeasy-group: devServer
+  - target: $["paths"]["/dev/projects/{projectKey}/overrides"]["delete"]
+    update:
+      x-speakeasy-name-override: deleteOverrides
+      x-speakeasy-group: devServer
