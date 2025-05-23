@@ -19,19 +19,19 @@ generation:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
 typescript:
-  version: 0.2.4
+  version: 0.2.5
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
     peerDependencies: {}
   additionalPackageJSON:
-    license: MIT
     keywords:
       - feature-flags
       - feature-toggles
       - launchdarkly
       - mcp
       - modelcontextprotocol
+    license: MIT
   author: LaunchDarkly
   clientServerStatusCodesAsErrors: true
   defaultErrorName: APIError
