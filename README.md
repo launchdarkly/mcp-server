@@ -137,7 +137,7 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 
 ## Available environments
 
-Most customer accounts run on LaunchDarkly's commercial (default) environment. Customers on other environments can specify the `--server-url` argument to connect to the appropriate environment. For example, customers on LaunchDarkly's Federal environment should specify `--server-url https://app.launchdarkly.us` when starting their MCP server.
+Most customer accounts run on LaunchDarkly's commercial (default) environment. Customers on other environments can specify the `--server-url` argument to connect to the appropriate environment. For example, customers on LaunchDarkly's Federal environment should specify the `--server-url https://app.launchdarkly.us` argument when starting their MCP server.
 
 | Environment          | Server URL                        |
 | -------------------- | --------------------------------- |
