@@ -3,10 +3,10 @@ id: cc3a5766-8b39-40da-a0be-fff57173d8e1
 management:
   docChecksum: 9a79a89268ca29fb15df4d65a80a94bb
   docVersion: "2.0"
-  speakeasyVersion: 1.550.0
+  speakeasyVersion: 1.551.0
   generationVersion: 2.610.0
-  releaseVersion: 0.2.5
-  configChecksum: de4fdba86237967290a29367a43c3bdc
+  releaseVersion: 0.2.6
+  configChecksum: be3e95e5fa3d5de16924655484435eea
   repoURL: https://github.com/launchdarkly/mcp-server.git
   installationURL: https://github.com/launchdarkly/mcp-server
   published: true
