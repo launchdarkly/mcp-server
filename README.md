@@ -100,12 +100,12 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 
 * [list](docs/sdks/aiconfigs/README.md#list) - List AI Configs
 * [create](docs/sdks/aiconfigs/README.md#create) - Create new AI Config
-* [delete](docs/sdks/aiconfigs/README.md#delete) - Delete AI Config
 * [get](docs/sdks/aiconfigs/README.md#get) - Get AI Config
+* [delete](docs/sdks/aiconfigs/README.md#delete) - Delete AI Config
 * [update](docs/sdks/aiconfigs/README.md#update) - Update AI Config
 * [createVariation](docs/sdks/aiconfigs/README.md#createvariation) - Create AI Config variation
-* [deleteVariation](docs/sdks/aiconfigs/README.md#deletevariation) - Delete AI Config variation
 * [getVariation](docs/sdks/aiconfigs/README.md#getvariation) - Get AI Config variation
+* [deleteVariation](docs/sdks/aiconfigs/README.md#deletevariation) - Delete AI Config variation
 * [updateVariation](docs/sdks/aiconfigs/README.md#updatevariation) - Update AI Config variation
 
 ### [featureFlags](docs/sdks/featureflags/README.md)
@@ -113,9 +113,14 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 * [list](docs/sdks/featureflags/README.md#list) - List feature flags
 * [create](docs/sdks/featureflags/README.md#create) - Create a feature flag
 * [get](docs/sdks/featureflags/README.md#get) - Get feature flag
-* [patch](docs/sdks/featureflags/README.md#patch) - Update feature flag
 * [delete](docs/sdks/featureflags/README.md#delete) - Delete feature flag
+* [patch](docs/sdks/featureflags/README.md#patch) - Update feature flag
 
+### [LaunchDarkly SDK](docs/sdks/launchdarkly/README.md)
+
+* [deleteOverrides](docs/sdks/launchdarkly/README.md#deleteoverrides) - remove all overrides for the given project
+* [putOverrideFlag](docs/sdks/launchdarkly/README.md#putoverrideflag) - override flag value with value provided in the body
+* [deleteFlagOverride](docs/sdks/launchdarkly/README.md#deleteflagoverride) - remove override for flag
 
 </details>
 <!-- End Available Resources and Operations [operations] -->

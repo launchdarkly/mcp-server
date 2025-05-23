@@ -7,6 +7,17 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+export const GetFeatureFlagsServerList = [
+  /**
+   *  Default
+   */
+  "https://app.launchdarkly.com",
+  /**
+   *  Federal
+   */
+  "https://app.launchdarkly.us",
+] as const;
+
 export type GetFeatureFlagsRequest = {
   /**
    * The project key

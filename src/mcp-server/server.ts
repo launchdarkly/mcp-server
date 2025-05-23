@@ -22,11 +22,14 @@ import { tool$aiConfigsGetVariation } from "./tools/aiConfigsGetVariation.js";
 import { tool$aiConfigsList } from "./tools/aiConfigsList.js";
 import { tool$aiConfigsUpdate } from "./tools/aiConfigsUpdate.js";
 import { tool$aiConfigsUpdateVariation } from "./tools/aiConfigsUpdateVariation.js";
+import { tool$deleteFlagOverride } from "./tools/deleteFlagOverride.js";
+import { tool$deleteOverrides } from "./tools/deleteOverrides.js";
 import { tool$featureFlagsCreate } from "./tools/featureFlagsCreate.js";
 import { tool$featureFlagsDelete } from "./tools/featureFlagsDelete.js";
 import { tool$featureFlagsGet } from "./tools/featureFlagsGet.js";
 import { tool$featureFlagsList } from "./tools/featureFlagsList.js";
 import { tool$featureFlagsPatch } from "./tools/featureFlagsPatch.js";
+import { tool$putOverrideFlag } from "./tools/putOverrideFlag.js";
 
 export function createMCPServer(deps: {
   logger: ConsoleLogger;
@@ -38,7 +41,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "LaunchDarkly",
-    version: "0.2.6",
+    version: "0.3.0",
   });
 
   const client = new LaunchDarklyCore({
@@ -68,19 +71,22 @@ export function createMCPServer(deps: {
   const register = { tool, resource, resourceTemplate, prompt };
   void register; // suppress unused warnings
 
+  tool(tool$deleteOverrides);
+  tool(tool$putOverrideFlag);
+  tool(tool$deleteFlagOverride);
   tool(tool$featureFlagsList);
   tool(tool$featureFlagsCreate);
   tool(tool$featureFlagsGet);
-  tool(tool$featureFlagsPatch);
   tool(tool$featureFlagsDelete);
+  tool(tool$featureFlagsPatch);
   tool(tool$aiConfigsList);
   tool(tool$aiConfigsCreate);
-  tool(tool$aiConfigsDelete);
   tool(tool$aiConfigsGet);
+  tool(tool$aiConfigsDelete);
   tool(tool$aiConfigsUpdate);
   tool(tool$aiConfigsCreateVariation);
-  tool(tool$aiConfigsDeleteVariation);
   tool(tool$aiConfigsGetVariation);
+  tool(tool$aiConfigsDeleteVariation);
   tool(tool$aiConfigsUpdateVariation);
 
   return server;

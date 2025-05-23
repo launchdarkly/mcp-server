@@ -22,6 +22,7 @@ import {
 import * as errors from "../models/errors/index.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
+import { PostAIConfigServerList } from "../models/operations/postaiconfig.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -88,6 +89,9 @@ async function $do(
   const payload = parsed.value;
   const body = encodeJSON("body", payload.AIConfigPost, { explode: true });
 
+  const baseURL = options?.serverURL
+    || pathToFunc(PostAIConfigServerList[0], { charEncoding: "percent" })();
+
   const pathParams = {
     projectKey: encodeSimple("projectKey", payload.projectKey, {
       explode: false,
@@ -114,7 +118,7 @@ async function $do(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
-    baseURL: options?.serverURL ?? client._baseURL ?? "",
+    baseURL: baseURL ?? "",
     operationID: "postAIConfig",
     oAuth2Scopes: [],
 
@@ -130,7 +134,7 @@ async function $do(
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
     method: "POST",
-    baseURL: options?.serverURL,
+    baseURL: baseURL,
     path: path,
     headers: headers,
     body: body,

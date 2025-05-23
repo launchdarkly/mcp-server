@@ -21,6 +21,7 @@ import {
 } from "../models/errors/httpclienterrors.js";
 import * as errors from "../models/errors/index.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
+import { DeleteAIConfigServerList } from "../models/operations/deleteaiconfig.js";
 import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
@@ -88,6 +89,9 @@ async function $do(
   const payload = parsed.value;
   const body = null;
 
+  const baseURL = options?.serverURL
+    || pathToFunc(DeleteAIConfigServerList[0], { charEncoding: "percent" })();
+
   const pathParams = {
     configKey: encodeSimple("configKey", payload.configKey, {
       explode: false,
@@ -117,7 +121,7 @@ async function $do(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
-    baseURL: options?.serverURL ?? client._baseURL ?? "",
+    baseURL: baseURL ?? "",
     operationID: "deleteAIConfig",
     oAuth2Scopes: [],
 
@@ -133,7 +137,7 @@ async function $do(
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
     method: "DELETE",
-    baseURL: options?.serverURL,
+    baseURL: baseURL,
     path: path,
     headers: headers,
     body: body,

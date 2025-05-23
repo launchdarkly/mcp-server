@@ -7,12 +7,9 @@ const launchDarkly = new LaunchDarkly({
 });
 
 async function run() {
-  const result = await launchDarkly.featureFlags.list({
+  await launchDarkly.deleteOverrides({
     projectKey: "<value>",
   });
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

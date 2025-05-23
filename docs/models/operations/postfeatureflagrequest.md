@@ -17,9 +17,11 @@ let value: PostFeatureFlagRequest = {
     },
     variations: [
       {
+        id: "<id>",
         value: true,
       },
       {
+        id: "<id>",
         value: false,
       },
     ],

@@ -1,20 +1,23 @@
 # Variation
 
+variation of a flag
+
 ## Example Usage
 
 ```typescript
 import { Variation } from "@launchdarkly/mcp-server/models/components";
 
 let value: Variation = {
-  value: "<value>",
+  id: "<id>",
+  value: false,
 };
 ```
 
 ## Fields
 
-| Field                                                                                                                                                                      | Type                                                                                                                                                                       | Required                                                                                                                                                                   | Description                                                                                                                                                                |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `id`                                                                                                                                                                       | *string*                                                                                                                                                                   | :heavy_minus_sign:                                                                                                                                                         | The ID of the variation. Leave empty when you are creating a flag.                                                                                                         |
-| `value`                                                                                                                                                                    | *any*                                                                                                                                                                      | :heavy_check_mark:                                                                                                                                                         | The value of the variation. For boolean flags, this must be <code>true</code> or <code>false</code>. For multivariate flags, this may be a string, number, or JSON object. |
-| `description`                                                                                                                                                              | *string*                                                                                                                                                                   | :heavy_minus_sign:                                                                                                                                                         | Description of the variation. Defaults to an empty string, but is omitted from the response if not set.                                                                    |
-| `name`                                                                                                                                                                     | *string*                                                                                                                                                                   | :heavy_minus_sign:                                                                                                                                                         | A human-friendly name for the variation. Defaults to an empty string, but is omitted from the response if not set.                                                         |
+| Field                             | Type                              | Required                          | Description                       |
+| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
+| `id`                              | *string*                          | :heavy_check_mark:                | N/A                               |
+| `name`                            | *string*                          | :heavy_minus_sign:                | N/A                               |
+| `description`                     | *string*                          | :heavy_minus_sign:                | N/A                               |
+| `value`                           | *components.FlagValueUnion*       | :heavy_check_mark:                | value of a feature flag variation |

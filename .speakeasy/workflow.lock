@@ -2,20 +2,20 @@ speakeasyVersion: 1.551.0
 sources:
     LaunchDarkly REST API:
         sourceNamespace: launchdarkly-rest-api
-        sourceRevisionDigest: sha256:9529ff00b6ac78766fa008b23033cfa76520b063fa1d2cc9815fdcdfdaac10b1
-        sourceBlobDigest: sha256:4469027627d647200a0f45a7aaa0819385301da942482381f6ea27eb28c63b5e
+        sourceRevisionDigest: sha256:c66f6ade6519c18365876c006c76447a990d5ee9c8dacb6b77b84339f7c3ef0a
+        sourceBlobDigest: sha256:bdf2bc78f3a56dd829bdaecacd895cda6db2288fddbb75f63573691c1119955d
         tags:
             - latest
-            - speakeasy-sdk-regen-1748029792
-            - "2.0"
+            - speakeasy-sdk-regen-1748043322
+            - 1.0.0
 targets:
     launchdarkly-mcp-server:
         source: LaunchDarkly REST API
         sourceNamespace: launchdarkly-rest-api
-        sourceRevisionDigest: sha256:9529ff00b6ac78766fa008b23033cfa76520b063fa1d2cc9815fdcdfdaac10b1
-        sourceBlobDigest: sha256:4469027627d647200a0f45a7aaa0819385301da942482381f6ea27eb28c63b5e
+        sourceRevisionDigest: sha256:c66f6ade6519c18365876c006c76447a990d5ee9c8dacb6b77b84339f7c3ef0a
+        sourceBlobDigest: sha256:bdf2bc78f3a56dd829bdaecacd895cda6db2288fddbb75f63573691c1119955d
         codeSamplesNamespace: launchdarkly-rest-api-typescript-code-samples
-        codeSamplesRevisionDigest: sha256:9b7a3926563465c42a3ea01a27b837a15e6550665bdcbeec02dd0a46dc740500
+        codeSamplesRevisionDigest: sha256:bce0da8ac2b52d9238c58434bf610aaad61a1219565c0d61371f32adb2a7f077
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -23,10 +23,13 @@ workflow:
         LaunchDarkly REST API:
             inputs:
                 - location: ./schemas/openapi.json
+                - location: ./schemas/openapi-dev-server.yaml
             overlays:
                 - location: ./schemas/mcp-disable-tools.yaml
                 - location: ./schemas/mcp-enable-tools.yaml
                 - location: ./schemas/suggestions.yaml
+                - location: ./schemas/mcp-disable-tools-dev-server.yaml
+                - location: ./schemas/mcp-enable-tools-dev-server.yaml
             registry:
                 location: registry.speakeasyapi.dev/launchdarkly/mcp/launchdarkly-rest-api
     targets:

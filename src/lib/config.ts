@@ -12,17 +12,13 @@ import { Params, pathToFunc } from "./url.js";
  */
 export const ServerList = [
   /**
-   *  Default
-   */
-  "https://app.launchdarkly.com",
-  /**
-   *  Federal
-   */
-  "https://app.launchdarkly.us",
-  /**
    * Prod API server
    */
   "https://app.launchdarkly.com",
+  /**
+   * Localhost Dev Server
+   */
+  "http://localhost:8765",
 ] as const;
 
 export type SDKOptions = {
@@ -64,9 +60,9 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
 
 export const SDK_METADATA = {
   language: "typescript",
-  openapiDocVersion: "2.0",
-  sdkVersion: "0.2.6",
+  openapiDocVersion: "1.0.0",
+  sdkVersion: "0.3.0",
   genVersion: "2.610.0",
   userAgent:
-    "speakeasy-sdk/typescript 0.2.6 2.610.0 2.0 @launchdarkly/mcp-server",
+    "speakeasy-sdk/typescript 0.3.0 2.610.0 1.0.0 @launchdarkly/mcp-server",
 } as const;

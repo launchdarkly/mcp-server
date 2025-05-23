@@ -7,24 +7,24 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  FlagValueUnion,
+  FlagValueUnion$inboundSchema,
+  FlagValueUnion$Outbound,
+  FlagValueUnion$outboundSchema,
+} from "./flagvalueunion.js";
 
+/**
+ * variation of a flag
+ */
 export type Variation = {
-  /**
-   * The ID of the variation. Leave empty when you are creating a flag.
-   */
-  id?: string | undefined;
-  /**
-   * The value of the variation. For boolean flags, this must be <code>true</code> or <code>false</code>. For multivariate flags, this may be a string, number, or JSON object.
-   */
-  value?: any | undefined;
-  /**
-   * Description of the variation. Defaults to an empty string, but is omitted from the response if not set.
-   */
+  id: string;
+  name?: string | undefined;
   description?: string | undefined;
   /**
-   * A human-friendly name for the variation. Defaults to an empty string, but is omitted from the response if not set.
+   * value of a feature flag variation
    */
-  name?: string | undefined;
+  value: FlagValueUnion;
 };
 
 /** @internal */
@@ -33,10 +33,10 @@ export const Variation$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  _id: z.string().optional(),
-  value: z.any().optional(),
-  description: z.string().optional(),
+  _id: z.string(),
   name: z.string().optional(),
+  description: z.string().optional(),
+  value: FlagValueUnion$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "_id": "id",
@@ -45,10 +45,10 @@ export const Variation$inboundSchema: z.ZodType<
 
 /** @internal */
 export type Variation$Outbound = {
-  _id?: string | undefined;
-  value?: any | undefined;
-  description?: string | undefined;
+  _id: string;
   name?: string | undefined;
+  description?: string | undefined;
+  value: FlagValueUnion$Outbound;
 };
 
 /** @internal */
@@ -57,10 +57,10 @@ export const Variation$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Variation
 > = z.object({
-  id: z.string().optional(),
-  value: z.any().optional(),
-  description: z.string().optional(),
+  id: z.string(),
   name: z.string().optional(),
+  description: z.string().optional(),
+  value: FlagValueUnion$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     id: "_id",

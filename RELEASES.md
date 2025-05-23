@@ -55,3 +55,13 @@ Based on:
 - [typescript v0.2.6] .
 ### Releases
 - [NPM v0.2.6] https://www.npmjs.com/package/@launchdarkly/mcp-server/v/0.2.6 - .
+
+## 2025-05-23 23:35:05
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.551.0 (2.610.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.3.0] .
+### Releases
+- [NPM v0.3.0] https://www.npmjs.com/package/@launchdarkly/mcp-server/v/0.3.0 - .

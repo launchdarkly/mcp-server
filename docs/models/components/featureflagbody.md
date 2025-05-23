@@ -15,9 +15,11 @@ let value: FeatureFlagBody = {
   },
   variations: [
     {
+      id: "<id>",
       value: true,
     },
     {
+      id: "<id>",
       value: false,
     },
   ],
