@@ -5,8 +5,8 @@ management:
   docVersion: "2.0"
   speakeasyVersion: 1.551.0
   generationVersion: 2.610.0
-  releaseVersion: 0.2.6
-  configChecksum: be3e95e5fa3d5de16924655484435eea
+  releaseVersion: 0.2.7
+  configChecksum: 50fa0a3247532e965fd4cecaabf027d0
   repoURL: https://github.com/launchdarkly/mcp-server.git
   installationURL: https://github.com/launchdarkly/mcp-server
   published: true
