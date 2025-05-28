@@ -38,8 +38,7 @@ Create a `.cursor/mcp.json` file in your project root with the following content
     "LaunchDarkly": {
       "command": "npx",
       "args": [
-        "-y", "--package", "@launchdarkly/mcp-server",
-        "--", "mcp", "start",
+        "-y", "--package", "@launchdarkly/mcp-server", "--", "mcp", "start",
         "--api-key", "api-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
       ]
     }
@@ -59,8 +58,7 @@ Add the following server definition to your `claude_desktop_config.json` file:
     "LaunchDarkly": {
       "command": "npx",
       "args": [
-        "-y", "--package", "@launchdarkly/mcp-server",
-        "--", "mcp", "start",
+        "-y", "--package", "@launchdarkly/mcp-server", "--", "mcp", "start",
         "--api-key", "api-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
       ]
     }
@@ -75,9 +73,28 @@ Specify your API key as found on LaunchDarkly's Authorization page.
 You can also run the MCP server as a standalone binary with no additional dependencies. You must pull these binaries from available GitHub releases while specifying the appropriate `tag` value:
 
 ```bash
-curl -L -o mcp-server \
-    https://github.com/launchdarkly/mcp-server/releases/download/{tag}/mcp-server-bun-darwin-arm64 && \
+curl -L -o mcp-server https://github.com/launchdarkly/mcp-server/releases/download/{tag}/mcp-server-bun-darwin-arm64 && \
 chmod +x mcp-server
+```
+
+### Installation steps from a local clone
+
+You can also run the MCP server locally by cloning this repository. Once cloned, you'll need to install dependencies (`npm install`) and build the server (`npm run build`).
+
+Then, configure your server definition to reference your local clone. For example:
+
+```json
+{
+  "mcpServers": {
+    "launchdarkly": {
+      "command": "node",
+      "args": [
+        "/path/to/mcp-server/bin/mcp-server.js", "start",
+        "--api-key", "api-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+      ]
+    }
+  }
+}
 ```
 
 <!-- Start Requirements [requirements] -->
