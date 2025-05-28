@@ -56,7 +56,7 @@ Based on:
 ### Releases
 - [NPM v0.2.6] https://www.npmjs.com/package/@launchdarkly/mcp-server/v/0.2.6 - .
 
-## 2025-05-28 19:15:57
+## 2025-05-28 19:38:06
 ### Changes
 Based on:
 - OpenAPI Doc  

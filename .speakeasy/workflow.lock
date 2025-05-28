@@ -6,7 +6,7 @@ sources:
         sourceBlobDigest: sha256:4469027627d647200a0f45a7aaa0819385301da942482381f6ea27eb28c63b5e
         tags:
             - latest
-            - speakeasy-sdk-regen-1748043968
+            - speakeasy-sdk-regen-1748461102
             - "2.0"
 targets:
     launchdarkly-mcp-server:
