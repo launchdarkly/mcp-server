@@ -36,5 +36,3 @@ actions:
     update:
       x-speakeasy-mcp:
         disabled: true
-  - target: $.paths.*[?@['x-speakeasy-mcp'].disabled == true]
-    remove: true
