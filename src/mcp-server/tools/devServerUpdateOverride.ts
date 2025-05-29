@@ -14,7 +14,7 @@ export const tool$devServerUpdateOverride: ToolDefinition<typeof args> = {
   name: "set-feature-flag-value-override",
   description:
     `Sets a local feature flag value override. This facilitates local development and testing in isolation.`,
-  scopes: ["write"],
+  scopes: ["write", "dev-server"],
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await devServerUpdateOverride(

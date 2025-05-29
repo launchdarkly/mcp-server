@@ -14,7 +14,7 @@ export const tool$featureFlagsList: ToolDefinition<typeof args> = {
   name: "list-feature-flags",
   description:
     `Retrieves all feature flags within a project, including metadata and targeting rules. Enables AI agents to enumerate existing flags for inspection, configuration analysis, or generating flag usage reports across environments.`,
-  scopes: ["read"],
+  scopes: ["read", "feature-flags"],
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await featureFlagsList(

@@ -14,7 +14,7 @@ export const tool$devServerDeleteOverrides: ToolDefinition<typeof args> = {
   name: "delete-feature-flag-value-overrides",
   description:
     `Deletes all local feature flag value overrides for a specified project. This resets all feature flags in the project to their original values.`,
-  scopes: ["write"],
+  scopes: ["write", "dev-server"],
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await devServerDeleteOverrides(

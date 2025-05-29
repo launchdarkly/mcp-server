@@ -16,6 +16,7 @@ actions:
         name: set-feature-flag-value-override
         scopes:
           - write
+          - dev-server
   - target: $["paths"]["/dev/projects/{projectKey}/overrides/{flagKey}"]["delete"]
     update:
       x-speakeasy-mcp:
@@ -24,6 +25,7 @@ actions:
         name: delete-feature-flag-value-override
         scopes:
           - write
+          - dev-server
   - target: $["paths"]["/dev/projects/{projectKey}/overrides"]["delete"]
     update:
       x-speakeasy-mcp:
@@ -32,3 +34,4 @@ actions:
         name: delete-feature-flag-value-overrides
         scopes:
           - write
+          - dev-server

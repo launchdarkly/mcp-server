@@ -3,6 +3,9 @@
  */
 
 export const mcpScopes = [
+  "ai-configs",
+  "dev-server",
+  "feature-flags",
   "read",
   "write",
 ] as const;
