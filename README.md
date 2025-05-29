@@ -17,7 +17,7 @@ The official [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) se
   * [Installation](#installation)
   * [Requirements](#requirements)
   * [Available Resources and Operations](#available-resources-and-operations)
-  * [Available environments](#available-environments)
+  * [Available Environments](#available-environments)
   * [Contributions](#contributions)
   * [About LaunchDarkly](#about-launchdarkly)
 
@@ -117,21 +117,27 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 
 * [list](docs/sdks/aiconfigs/README.md#list) - List AI Configs
 * [create](docs/sdks/aiconfigs/README.md#create) - Create new AI Config
-* [delete](docs/sdks/aiconfigs/README.md#delete) - Delete AI Config
 * [get](docs/sdks/aiconfigs/README.md#get) - Get AI Config
+* [delete](docs/sdks/aiconfigs/README.md#delete) - Delete AI Config
 * [update](docs/sdks/aiconfigs/README.md#update) - Update AI Config
 * [createVariation](docs/sdks/aiconfigs/README.md#createvariation) - Create AI Config variation
-* [deleteVariation](docs/sdks/aiconfigs/README.md#deletevariation) - Delete AI Config variation
 * [getVariation](docs/sdks/aiconfigs/README.md#getvariation) - Get AI Config variation
+* [deleteVariation](docs/sdks/aiconfigs/README.md#deletevariation) - Delete AI Config variation
 * [updateVariation](docs/sdks/aiconfigs/README.md#updatevariation) - Update AI Config variation
+
+### [devServer](docs/sdks/devserver/README.md)
+
+* [deleteOverrides](docs/sdks/devserver/README.md#deleteoverrides) - remove all overrides for the given project
+* [updateOverride](docs/sdks/devserver/README.md#updateoverride) - override flag value with value provided in the body
+* [deleteOverride](docs/sdks/devserver/README.md#deleteoverride) - remove override for flag
 
 ### [featureFlags](docs/sdks/featureflags/README.md)
 
 * [list](docs/sdks/featureflags/README.md#list) - List feature flags
 * [create](docs/sdks/featureflags/README.md#create) - Create a feature flag
 * [get](docs/sdks/featureflags/README.md#get) - Get feature flag
-* [patch](docs/sdks/featureflags/README.md#patch) - Update feature flag
 * [delete](docs/sdks/featureflags/README.md#delete) - Delete feature flag
+* [patch](docs/sdks/featureflags/README.md#patch) - Update feature flag
 
 
 </details>

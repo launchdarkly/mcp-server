@@ -4,9 +4,15 @@
 
 import { ClientSDK } from "../lib/sdks.js";
 import { AiConfigs } from "./aiconfigs.js";
+import { DevServer } from "./devserver.js";
 import { FeatureFlags } from "./featureflags.js";
 
 export class LaunchDarkly extends ClientSDK {
+  private _devServer?: DevServer;
+  get devServer(): DevServer {
+    return (this._devServer ??= new DevServer(this._options));
+  }
+
   private _featureFlags?: FeatureFlags;
   get featureFlags(): FeatureFlags {
     return (this._featureFlags ??= new FeatureFlags(this._options));

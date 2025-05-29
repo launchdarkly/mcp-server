@@ -9,6 +9,17 @@ import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+export const GetAIConfigServerList = [
+  /**
+   *  Default
+   */
+  "https://app.launchdarkly.com",
+  /**
+   *  Federal
+   */
+  "https://app.launchdarkly.us",
+] as const;
+
 /**
  * Version of the endpoint.
  */

@@ -22,6 +22,7 @@ import {
 import * as errors from "../models/errors/index.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import * as operations from "../models/operations/index.js";
+import { PostFeatureFlagServerList } from "../models/operations/postfeatureflag.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -118,6 +119,9 @@ async function $do(
   const payload = parsed.value;
   const body = encodeJSON("body", payload.FeatureFlagBody, { explode: true });
 
+  const baseURL = options?.serverURL
+    || pathToFunc(PostFeatureFlagServerList[0], { charEncoding: "percent" })();
+
   const pathParams = {
     projectKey: encodeSimple("projectKey", payload.projectKey, {
       explode: false,
@@ -141,7 +145,8 @@ async function $do(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
-    baseURL: options?.serverURL ?? client._baseURL ?? "",
+    options: client._options,
+    baseURL: baseURL ?? "",
     operationID: "postFeatureFlag",
     oAuth2Scopes: [],
 
@@ -157,11 +162,12 @@ async function $do(
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
     method: "POST",
-    baseURL: options?.serverURL,
+    baseURL: baseURL,
     path: path,
     headers: headers,
     query: query,
     body: body,
+    userAgent: client._options.userAgent,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {

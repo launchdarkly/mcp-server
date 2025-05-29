@@ -52,23 +52,6 @@ export class AiConfigs extends ClientSDK {
   }
 
   /**
-   * Delete AI Config
-   *
-   * @remarks
-   * Delete an existing AI Config.
-   */
-  async delete(
-    request: operations.DeleteAIConfigRequest,
-    options?: RequestOptions,
-  ): Promise<void> {
-    return unwrapAsync(aiConfigsDelete(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
    * Get AI Config
    *
    * @remarks
@@ -79,6 +62,23 @@ export class AiConfigs extends ClientSDK {
     options?: RequestOptions,
   ): Promise<components.AIConfig> {
     return unwrapAsync(aiConfigsGet(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Delete AI Config
+   *
+   * @remarks
+   * Delete an existing AI Config.
+   */
+  async delete(
+    request: operations.DeleteAIConfigRequest,
+    options?: RequestOptions,
+  ): Promise<void> {
+    return unwrapAsync(aiConfigsDelete(
       this,
       request,
       options,
@@ -141,23 +141,6 @@ export class AiConfigs extends ClientSDK {
   }
 
   /**
-   * Delete AI Config variation
-   *
-   * @remarks
-   * Delete a specific variation of an AI Config by config key and variation key.
-   */
-  async deleteVariation(
-    request: operations.DeleteAIConfigVariationRequest,
-    options?: RequestOptions,
-  ): Promise<void> {
-    return unwrapAsync(aiConfigsDeleteVariation(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
    * Get AI Config variation
    *
    * @remarks
@@ -168,6 +151,23 @@ export class AiConfigs extends ClientSDK {
     options?: RequestOptions,
   ): Promise<components.AIConfigVariationsResponse> {
     return unwrapAsync(aiConfigsGetVariation(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Delete AI Config variation
+   *
+   * @remarks
+   * Delete a specific variation of an AI Config by config key and variation key.
+   */
+  async deleteVariation(
+    request: operations.DeleteAIConfigVariationRequest,
+    options?: RequestOptions,
+  ): Promise<void> {
+    return unwrapAsync(aiConfigsDeleteVariation(
       this,
       request,
       options,

@@ -5,6 +5,8 @@
 export * from "./deleteaiconfig.js";
 export * from "./deleteaiconfigvariation.js";
 export * from "./deletefeatureflag.js";
+export * from "./deleteflagoverride.js";
+export * from "./deleteoverrides.js";
 export * from "./getaiconfig.js";
 export * from "./getaiconfigs.js";
 export * from "./getaiconfigvariation.js";
@@ -16,3 +18,4 @@ export * from "./patchfeatureflag.js";
 export * from "./postaiconfig.js";
 export * from "./postaiconfigvariation.js";
 export * from "./postfeatureflag.js";
+export * from "./putoverrideflag.js";

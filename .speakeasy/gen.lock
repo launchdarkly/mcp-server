@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: cc3a5766-8b39-40da-a0be-fff57173d8e1
 management:
-  docChecksum: 9a79a89268ca29fb15df4d65a80a94bb
+  docChecksum: 116be555ebe0f9416c78fb500131bbbe
   docVersion: "2.0"
-  speakeasyVersion: 1.552.0
-  generationVersion: 2.610.0
-  releaseVersion: 0.2.7
-  configChecksum: 50fa0a3247532e965fd4cecaabf027d0
+  speakeasyVersion: 1.554.1
+  generationVersion: 2.616.1
+  releaseVersion: 0.4.2
+  configChecksum: 1bd5b1b99ca5b8b3ae73efea06b734db
   repoURL: https://github.com/launchdarkly/mcp-server.git
   installationURL: https://github.com/launchdarkly/mcp-server
   published: true
@@ -26,10 +26,11 @@ features:
     globalServerURLs: 2.82.5
     groups: 2.81.2
     mcpServer: 0.9.2
+    methodServerURLs: 2.82.1
     nameOverrides: 2.81.2
     responseFormat: 0.2.3
     retries: 2.83.0
-    sdkHooks: 0.2.0
+    sdkHooks: 0.3.0
     unions: 2.85.8
 generatedFiles:
   - .devcontainer/README.md
@@ -89,8 +90,11 @@ generatedFiles:
   - docs/models/components/flagconfigevaluation.md
   - docs/models/components/flagconfigmigrationsettingsrep.md
   - docs/models/components/flagmigrationsettingsrep.md
+  - docs/models/components/flagoverride.md
   - docs/models/components/flagprerequisitepost.md
   - docs/models/components/flagsummary.md
+  - docs/models/components/flagvalue.md
+  - docs/models/components/flagvalueunion.md
   - docs/models/components/legacyexperimentrep.md
   - docs/models/components/link.md
   - docs/models/components/maintainermember.md
@@ -120,6 +124,7 @@ generatedFiles:
   - docs/models/components/variationorrolloutrep.md
   - docs/models/components/variationsummary.md
   - docs/models/components/weightedvariation.md
+  - docs/models/errors/errorresponse.md
   - docs/models/errors/errort.md
   - docs/models/errors/forbiddenerrorrep.md
   - docs/models/errors/invalidrequesterrorrep.md
@@ -133,6 +138,8 @@ generatedFiles:
   - docs/models/operations/deleteaiconfigvariationldapiversion.md
   - docs/models/operations/deleteaiconfigvariationrequest.md
   - docs/models/operations/deletefeatureflagrequest.md
+  - docs/models/operations/deleteflagoverriderequest.md
+  - docs/models/operations/deleteoverridesrequest.md
   - docs/models/operations/getaiconfigldapiversion.md
   - docs/models/operations/getaiconfigrequest.md
   - docs/models/operations/getaiconfigsldapiversion.md
@@ -151,7 +158,9 @@ generatedFiles:
   - docs/models/operations/postaiconfigvariationldapiversion.md
   - docs/models/operations/postaiconfigvariationrequest.md
   - docs/models/operations/postfeatureflagrequest.md
+  - docs/models/operations/putoverrideflagrequest.md
   - docs/sdks/aiconfigs/README.md
+  - docs/sdks/devserver/README.md
   - docs/sdks/featureflags/README.md
   - docs/sdks/launchdarkly/README.md
   - eslint.config.mjs
@@ -167,6 +176,9 @@ generatedFiles:
   - src/funcs/aiConfigsList.ts
   - src/funcs/aiConfigsUpdate.ts
   - src/funcs/aiConfigsUpdateVariation.ts
+  - src/funcs/devServerDeleteOverride.ts
+  - src/funcs/devServerDeleteOverrides.ts
+  - src/funcs/devServerUpdateOverride.ts
   - src/funcs/featureFlagsCreate.ts
   - src/funcs/featureFlagsDelete.ts
   - src/funcs/featureFlagsGet.ts
@@ -214,6 +226,9 @@ generatedFiles:
   - src/mcp-server/tools/aiConfigsList.ts
   - src/mcp-server/tools/aiConfigsUpdate.ts
   - src/mcp-server/tools/aiConfigsUpdateVariation.ts
+  - src/mcp-server/tools/devServerDeleteOverride.ts
+  - src/mcp-server/tools/devServerDeleteOverrides.ts
+  - src/mcp-server/tools/devServerUpdateOverride.ts
   - src/mcp-server/tools/featureFlagsCreate.ts
   - src/mcp-server/tools/featureFlagsDelete.ts
   - src/mcp-server/tools/featureFlagsGet.ts
@@ -257,8 +272,10 @@ generatedFiles:
   - src/models/components/flagconfigevaluation.ts
   - src/models/components/flagconfigmigrationsettingsrep.ts
   - src/models/components/flagmigrationsettingsrep.ts
+  - src/models/components/flagoverride.ts
   - src/models/components/flagprerequisitepost.ts
   - src/models/components/flagsummary.ts
+  - src/models/components/flagvalueunion.ts
   - src/models/components/index.ts
   - src/models/components/legacyexperimentrep.ts
   - src/models/components/link.ts
@@ -285,6 +302,7 @@ generatedFiles:
   - src/models/components/weightedvariation.ts
   - src/models/errors/apierror.ts
   - src/models/errors/error.ts
+  - src/models/errors/errorresponse.ts
   - src/models/errors/forbiddenerrorrep.ts
   - src/models/errors/httpclienterrors.ts
   - src/models/errors/index.ts
@@ -298,6 +316,8 @@ generatedFiles:
   - src/models/operations/deleteaiconfig.ts
   - src/models/operations/deleteaiconfigvariation.ts
   - src/models/operations/deletefeatureflag.ts
+  - src/models/operations/deleteflagoverride.ts
+  - src/models/operations/deleteoverrides.ts
   - src/models/operations/getaiconfig.ts
   - src/models/operations/getaiconfigs.ts
   - src/models/operations/getaiconfigvariation.ts
@@ -310,7 +330,9 @@ generatedFiles:
   - src/models/operations/postaiconfig.ts
   - src/models/operations/postaiconfigvariation.ts
   - src/models/operations/postfeatureflag.ts
+  - src/models/operations/putoverrideflag.ts
   - src/sdk/aiconfigs.ts
+  - src/sdk/devserver.ts
   - src/sdk/featureflags.ts
   - src/sdk/index.ts
   - src/sdk/sdk.ts
@@ -5707,5 +5729,32 @@ examples:
           application/json: {"code": "not_found", "message": "Invalid resource identifier"}
         "429":
           application/json: {"code": "rate_limited", "message": "You've exceeded the API rate limit. Try again later."}
+  deleteOverrides:
+    speakeasy-default-delete-overrides:
+      parameters:
+        path:
+          projectKey: "<value>"
+      responses:
+        "404":
+          application/json: {"code": "<value>", "message": "<value>"}
+  putOverrideFlag:
+    speakeasy-default-put-override-flag:
+      parameters:
+        path:
+          projectKey: "<value>"
+          flagKey: "<value>"
+      requestBody:
+        application/json: 6989.4
+      responses:
+        "200":
+          application/json: {"value": {}, "override": false}
+        "400":
+          application/json: {"code": "<value>", "message": "<value>"}
+  deleteFlagOverride:
+    speakeasy-default-delete-flag-override:
+      parameters:
+        path:
+          projectKey: "<value>"
+          flagKey: "<value>"
 examplesVersion: 1.0.2
 generatedTests: {}

@@ -167,6 +167,23 @@ export class FeatureFlags extends ClientSDK {
   }
 
   /**
+   * Delete feature flag
+   *
+   * @remarks
+   * Delete a feature flag in all environments. Use with caution: only delete feature flags your application no longer uses.
+   */
+  async delete(
+    request: operations.DeleteFeatureFlagRequest,
+    options?: RequestOptions,
+  ): Promise<void> {
+    return unwrapAsync(featureFlagsDelete(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * Update feature flag
    *
    * @remarks
@@ -1365,23 +1382,6 @@ export class FeatureFlags extends ClientSDK {
     options?: RequestOptions,
   ): Promise<components.FeatureFlag> {
     return unwrapAsync(featureFlagsPatch(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Delete feature flag
-   *
-   * @remarks
-   * Delete a feature flag in all environments. Use with caution: only delete feature flags your application no longer uses.
-   */
-  async delete(
-    request: operations.DeleteFeatureFlagRequest,
-    options?: RequestOptions,
-  ): Promise<void> {
-    return unwrapAsync(featureFlagsDelete(
       this,
       request,
       options,

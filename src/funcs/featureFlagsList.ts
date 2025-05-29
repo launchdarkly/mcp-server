@@ -21,6 +21,7 @@ import {
 } from "../models/errors/httpclienterrors.js";
 import * as errors from "../models/errors/index.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
+import { GetFeatureFlagsServerList } from "../models/operations/getfeatureflags.js";
 import * as operations from "../models/operations/index.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
@@ -157,6 +158,9 @@ async function $do(
   const payload = parsed.value;
   const body = null;
 
+  const baseURL = options?.serverURL
+    || pathToFunc(GetFeatureFlagsServerList[0], { charEncoding: "percent" })();
+
   const pathParams = {
     projectKey: encodeSimple("projectKey", payload.projectKey, {
       explode: false,
@@ -188,7 +192,8 @@ async function $do(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
-    baseURL: options?.serverURL ?? client._baseURL ?? "",
+    options: client._options,
+    baseURL: baseURL ?? "",
     operationID: "getFeatureFlags",
     oAuth2Scopes: [],
 
@@ -204,11 +209,12 @@ async function $do(
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
     method: "GET",
-    baseURL: options?.serverURL,
+    baseURL: baseURL,
     path: path,
     headers: headers,
     query: query,
     body: body,
+    userAgent: client._options.userAgent,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {

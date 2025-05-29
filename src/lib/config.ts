@@ -12,17 +12,13 @@ import { Params, pathToFunc } from "./url.js";
  */
 export const ServerList = [
   /**
-   *  Default
-   */
-  "https://app.launchdarkly.com",
-  /**
-   *  Federal
-   */
-  "https://app.launchdarkly.us",
-  /**
    * Prod API server
    */
   "https://app.launchdarkly.com",
+  /**
+   * Localhost Dev Server
+   */
+  "http://localhost:8765",
 ] as const;
 
 export type SDKOptions = {
@@ -37,6 +33,10 @@ export type SDKOptions = {
    * Allows overriding the default server URL used by the SDK
    */
   serverURL?: string | undefined;
+  /**
+   * Allows overriding the default user agent used by the SDK
+   */
+  userAgent?: string | undefined;
   /**
    * Allows overriding the default retry config used by the SDK
    */
@@ -65,8 +65,8 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
 export const SDK_METADATA = {
   language: "typescript",
   openapiDocVersion: "2.0",
-  sdkVersion: "0.2.7",
-  genVersion: "2.610.0",
+  sdkVersion: "0.4.2",
+  genVersion: "2.616.1",
   userAgent:
-    "speakeasy-sdk/typescript 0.2.7 2.610.0 2.0 @launchdarkly/mcp-server",
+    "speakeasy-sdk/typescript 0.4.2 2.616.1 2.0 @launchdarkly/mcp-server",
 } as const;
