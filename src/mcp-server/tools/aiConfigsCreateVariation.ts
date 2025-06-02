@@ -11,22 +11,11 @@ const args = {
 };
 
 export const tool$aiConfigsCreateVariation: ToolDefinition<typeof args> = {
-  name: "ai-configs-create-variation",
-  description: `Create AI Config variation
-
-Create a new variation for a given AI Config.
-
-The <code>model</code> in the request body requires a <code>modelName</code> and <code>parameters</code>, for example:
-
-\`\`\`
-  "model": {
-    "modelName": "claude-3-opus-20240229",
-    "parameters": {
-      "max_tokens": 1024
-    }
-  }
-\`\`\`
+  name: "create-ai-config-variation",
+  description:
+    `Adds a new variation to an AI Config, supporting experimentation or multi-model strategies.
 `,
+  scopes: ["write"],
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await aiConfigsCreateVariation(

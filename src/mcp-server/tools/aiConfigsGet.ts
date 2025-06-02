@@ -11,10 +11,10 @@ const args = {
 };
 
 export const tool$aiConfigsGet: ToolDefinition<typeof args> = {
-  name: "ai-configs-get",
-  description: `Get AI Config
-
-Retrieve a specific AI Config by its key.`,
+  name: "get-ai-config",
+  description:
+    `Retrieves details of a specific AI Config, including variations and model settings.`,
+  scopes: ["read"],
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await aiConfigsGet(

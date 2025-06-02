@@ -1,25 +1,24 @@
 workflowVersion: 1.0.0
 speakeasyVersion: latest
 sources:
-    LaunchDarkly REST API:
-        inputs:
-            - location: ./schemas/openapi.json
-        overlays:
-            - location: ./schemas/mcp-disable-tools.yaml
-            - location: ./schemas/mcp-enable-tools.yaml
-            - location: ./schemas/suggestions.yaml
-        registry:
-            location: registry.speakeasyapi.dev/launchdarkly/mcp/launchdarkly-rest-api
+  LaunchDarkly REST API:
+    inputs:
+      - location: ./schemas/openapi.json
+    overlays:
+      - location: ./schemas/mcp-enable-tools.yaml
+      - location: ./schemas/suggestions.yaml
+    registry:
+      location: registry.speakeasyapi.dev/launchdarkly/mcp/launchdarkly-rest-api
 targets:
-    launchdarkly-mcp-server:
-        target: typescript
-        source: LaunchDarkly REST API
-        publish:
-            npm:
-                token: $npm_token
-        codeSamples:
-            registry:
-                location: registry.speakeasyapi.dev/launchdarkly/mcp/launchdarkly-rest-api-typescript-code-samples
-            labelOverride:
-                fixedValue: Typescript (SDK)
-            blocking: false
+  launchdarkly-mcp-server:
+    target: typescript
+    source: LaunchDarkly REST API
+    publish:
+      npm:
+        token: $npm_token
+    codeSamples:
+      registry:
+        location: registry.speakeasyapi.dev/launchdarkly/mcp/launchdarkly-rest-api-typescript-code-samples
+      labelOverride:
+        fixedValue: Typescript (SDK)
+      blocking: false

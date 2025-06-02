@@ -11,10 +11,11 @@ const args = {
 };
 
 export const tool$aiConfigsDelete: ToolDefinition<typeof args> = {
-  name: "ai-configs-delete",
-  description: `Delete AI Config
-
-Delete an existing AI Config.`,
+  name: "delete-ai-config",
+  description:
+    `Deletes an AI Config and its associated variations. Intended for cleanup or deprecation workflows.
+`,
+  scopes: ["write"],
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await aiConfigsDelete(
