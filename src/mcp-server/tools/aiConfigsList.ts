@@ -14,7 +14,7 @@ export const tool$aiConfigsList: ToolDefinition<typeof args> = {
   name: "list-ai-configs",
   description:
     `Lists all AI Configs in a project, allowing agents to enumerate available configurations for analysis or testing.`,
-  scopes: ["read", "ai-configs", "read", "ai-configs"],
+  scopes: ["read", "ai-configs"],
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await aiConfigsList(
