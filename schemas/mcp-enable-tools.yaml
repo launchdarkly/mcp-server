@@ -20,6 +20,7 @@ actions:
         name: list-feature-flags
         scopes:
           - read
+          - feature-flags
   - target: $["paths"]["/api/v2/flags/{projectKey}"]["post"]
     update:
       x-speakeasy-mcp:
@@ -31,6 +32,7 @@ actions:
         name: create-feature-flag
         scopes:
           - write
+          - feature-flags
   - target: $["paths"]["/api/v2/flags/{projectKey}/{featureFlagKey}"]["get"]
     update:
       x-speakeasy-mcp:
@@ -42,6 +44,7 @@ actions:
         name: get-feature-flag
         scopes:
           - read
+          - feature-flags
   - target: $["paths"]["/api/v2/flags/{projectKey}/{featureFlagKey}"]["patch"]
     update:
       x-speakeasy-mcp:
@@ -53,6 +56,7 @@ actions:
         name: update-feature-flag
         scopes:
           - write
+          - feature-flags
   - target: $["paths"]["/api/v2/flags/{projectKey}/{featureFlagKey}"]["delete"]
     update:
       x-speakeasy-mcp:
@@ -64,6 +68,7 @@ actions:
         name: delete-feature-flag
         scopes:
           - write
+          - feature-flags
   - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs"]["get"]
     update:
       x-speakeasy-mcp:
@@ -75,6 +80,7 @@ actions:
         name: list-ai-configs
         scopes:
           - read
+          - ai-configs
   - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs"]["post"]
     update:
       x-speakeasy-mcp:
@@ -85,6 +91,7 @@ actions:
         disabled: false
         scopes:
           - write
+          - ai-configs
   - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs/{configKey}"]["get"]
     update:
       x-speakeasy-mcp:
@@ -93,6 +100,7 @@ actions:
         disabled: false
         scopes:
           - read
+          - ai-configs
   - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs/{configKey}"]["patch"]
     update:
       x-speakeasy-mcp:
@@ -101,6 +109,7 @@ actions:
         disabled: false
         scopes:
           - write
+          - ai-configs
   - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs/{configKey}"]["delete"]
     update:
       x-speakeasy-mcp:
@@ -111,6 +120,7 @@ actions:
         disabled: false
         scopes:
           - write
+          - ai-configs
   - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs/{configKey}/variations/{variationKey}"]["get"]
     update:
       x-speakeasy-mcp:
@@ -119,6 +129,7 @@ actions:
         disabled: false
         scopes:
           - read
+          - ai-configs
   - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs/{configKey}/variations"]["post"]
     update:
       x-speakeasy-mcp:
@@ -129,6 +140,7 @@ actions:
         disabled: false
         scopes:
           - write
+          - ai-configs
   - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs/{configKey}/variations/{variationKey}"]["patch"]
     update:
       x-speakeasy-mcp:
@@ -139,6 +151,7 @@ actions:
         disabled: false
         scopes:
           - write
+          - ai-configs
   - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs/{configKey}/variations/{variationKey}"]["delete"]
     update:
       x-speakeasy-mcp:
@@ -147,6 +160,7 @@ actions:
         disabled: false
         scopes:
           - write
+          - ai-configs
   - target: $.paths.*[?@['x-speakeasy-mcp'].disabled != false]
     remove: true
 

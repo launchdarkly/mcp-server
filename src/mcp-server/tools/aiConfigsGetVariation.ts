@@ -13,7 +13,7 @@ const args = {
 export const tool$aiConfigsGetVariation: ToolDefinition<typeof args> = {
   name: "get-ai-config-variation",
   description: `Retrieves an AI configuration variation.`,
-  scopes: ["read"],
+  scopes: ["read", "ai-configs"],
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await aiConfigsGetVariation(

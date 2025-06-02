@@ -15,7 +15,7 @@ export const tool$featureFlagsDelete: ToolDefinition<typeof args> = {
   description:
     `Removes a feature flag from the project. Used by AI agents to clean up deprecated toggles that are no longer in use, improving system hygiene and maintainability.
 `,
-  scopes: ["write"],
+  scopes: ["write", "feature-flags"],
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await featureFlagsDelete(

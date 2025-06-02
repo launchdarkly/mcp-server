@@ -15,7 +15,7 @@ export const tool$aiConfigsDelete: ToolDefinition<typeof args> = {
   description:
     `Deletes an AI Config and its associated variations. Intended for cleanup or deprecation workflows.
 `,
-  scopes: ["write"],
+  scopes: ["write", "ai-configs"],
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await aiConfigsDelete(

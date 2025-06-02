@@ -15,7 +15,7 @@ export const tool$featureFlagsGet: ToolDefinition<typeof args> = {
   description:
     `Fetches the full configuration for a specific feature flag, including environments, variations, and targeting rules. Useful for agents auditing or managing specific feature toggles in a detailed, contextual manner.
 `,
-  scopes: ["read"],
+  scopes: ["read", "feature-flags"],
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await featureFlagsGet(

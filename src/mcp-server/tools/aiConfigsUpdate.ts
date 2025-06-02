@@ -13,7 +13,7 @@ const args = {
 export const tool$aiConfigsUpdate: ToolDefinition<typeof args> = {
   name: "update-ai-config",
   description: `Updates metadata or configuration of an existing AI Config.`,
-  scopes: ["write"],
+  scopes: ["write", "ai-configs"],
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await aiConfigsUpdate(

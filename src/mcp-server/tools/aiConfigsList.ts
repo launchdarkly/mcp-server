@@ -15,7 +15,7 @@ export const tool$aiConfigsList: ToolDefinition<typeof args> = {
   description:
     `Retrieves AI configuration settings for a specific project. This endpoint allows agents to access and modify AI-related configurations, ensuring that the AI's behavior aligns with project requirements and user expectations.
 `,
-  scopes: ["read"],
+  scopes: ["read", "ai-configs"],
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await aiConfigsList(

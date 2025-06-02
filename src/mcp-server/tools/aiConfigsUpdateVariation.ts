@@ -15,7 +15,7 @@ export const tool$aiConfigsUpdateVariation: ToolDefinition<typeof args> = {
   description:
     `Updates a specific variation within an AI Config. Enables fine-tuned control of model behavior.
 `,
-  scopes: ["write"],
+  scopes: ["write", "ai-configs"],
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await aiConfigsUpdateVariation(
