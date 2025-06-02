@@ -72,7 +72,7 @@ actions:
           endpoint allows agents to access and modify AI-related configurations, ensuring
           that the AI's behavior aligns with project requirements and user expectations.
         disabled: false
-        name: get-ai-configs
+        name: list-ai-configs
         scopes:
           - read
   - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs"]["post"]

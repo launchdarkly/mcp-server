@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$aiConfigsList: ToolDefinition<typeof args> = {
-  name: "get-ai-configs",
+  name: "list-ai-configs",
   description:
     `Retrieves AI configuration settings for a specific project. This endpoint allows agents to access and modify AI-related configurations, ensuring that the AI's behavior aligns with project requirements and user expectations.
 `,

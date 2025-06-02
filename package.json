@@ -1,6 +1,6 @@
 {
   "name": "@launchdarkly/mcp-server",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "author": "LaunchDarkly",
   "keywords": [
     "feature-flags",
