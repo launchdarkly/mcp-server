@@ -11,21 +11,9 @@ const args = {
 };
 
 export const tool$aiConfigsUpdate: ToolDefinition<typeof args> = {
-  name: "ai-configs-update",
-  description: `Update AI Config
-
-Edit an existing AI Config.
-
-The request body must be a JSON object of the fields to update. The values you include replace the existing values for the fields.
-
-Here's an example:
-  \`\`\`
-    {
-      "description": "Example updated description",
-      "tags": ["new-tag"]
-    }
-  \`\`\`
-`,
+  name: "update-ai-config",
+  description: `Updates metadata or configuration of an existing AI Config.`,
+  scopes: ["write"],
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await aiConfigsUpdate(

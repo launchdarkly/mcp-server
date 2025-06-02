@@ -13,7 +13,8 @@ const args = {
 export const tool$featureFlagsCreate: ToolDefinition<typeof args> = {
   name: "create-feature-flag",
   description:
-    `Creates a new feature flag within a project. AI agents can use this operation to define feature toggles for controlled rollouts, experimentation, or gated features, automating the flag setup process.`,
+    `Creates a new feature flag within a project. AI agents can use this operation to define feature toggles for controlled rollouts, experimentation, or gated features, automating the flag setup process.
+`,
   scopes: ["write"],
   args,
   tool: async (client, args, ctx) => {

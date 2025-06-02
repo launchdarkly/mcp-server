@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: cc3a5766-8b39-40da-a0be-fff57173d8e1
 management:
-  docChecksum: 9a79a89268ca29fb15df4d65a80a94bb
+  docChecksum: 02373e722820216310bc5644890ab105
   docVersion: "2.0"
-  speakeasyVersion: 1.552.0
-  generationVersion: 2.610.0
-  releaseVersion: 0.2.7
-  configChecksum: 50fa0a3247532e965fd4cecaabf027d0
+  speakeasyVersion: 1.554.0
+  generationVersion: 2.616.1
+  releaseVersion: 0.3.0
+  configChecksum: d91b794f7cd3b4603f0fb5c095ab5c95
   repoURL: https://github.com/launchdarkly/mcp-server.git
   installationURL: https://github.com/launchdarkly/mcp-server
   published: true
@@ -29,7 +29,7 @@ features:
     nameOverrides: 2.81.2
     responseFormat: 0.2.3
     retries: 2.83.0
-    sdkHooks: 0.2.0
+    sdkHooks: 0.3.0
     unions: 2.85.8
 generatedFiles:
   - .devcontainer/README.md

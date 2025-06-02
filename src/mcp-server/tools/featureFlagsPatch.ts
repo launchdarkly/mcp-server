@@ -13,7 +13,8 @@ const args = {
 export const tool$featureFlagsPatch: ToolDefinition<typeof args> = {
   name: "update-feature-flag",
   description:
-    `Updates the configuration of an existing feature flag. Enables agents to change targeting rules, modify variations, or adapt rollout strategies dynamically in response to user behavior or experiment results.`,
+    `Updates the configuration of an existing feature flag. Enables agents to change targeting rules, modify variations, or adapt rollout strategies dynamically in response to user behavior or experiment results.
+`,
   scopes: ["write"],
   args,
   tool: async (client, args, ctx) => {

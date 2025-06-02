@@ -13,7 +13,8 @@ const args = {
 export const tool$aiConfigsCreate: ToolDefinition<typeof args> = {
   name: "create-ai-config",
   description:
-    `Creates a new AI Config within a project. Useful for setting up LLM configurations programmatically.`,
+    `Creates a new AI Config within a project. Useful for setting up LLM configurations programmatically.
+`,
   scopes: ["write"],
   args,
   tool: async (client, args, ctx) => {

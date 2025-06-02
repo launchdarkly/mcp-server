@@ -11,10 +11,9 @@ const args = {
 };
 
 export const tool$aiConfigsGetVariation: ToolDefinition<typeof args> = {
-  name: "ai-configs-get-variation",
-  description: `Get AI Config variation
-
-Get an AI Config variation by key. The response includes all variation versions for the given variation key.`,
+  name: "get-ai-config-variation",
+  description: `Retrieves an AI configuration variation.`,
+  scopes: ["read"],
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await aiConfigsGetVariation(
