@@ -5,7 +5,6 @@ sources:
         inputs:
             - location: ./schemas/openapi.json
         overlays:
-            - location: ./schemas/mcp-disable-tools.yaml
             - location: ./schemas/mcp-enable-tools.yaml
             - location: ./schemas/suggestions.yaml
         registry:

@@ -13,7 +13,8 @@ const args = {
 export const tool$featureFlagsList: ToolDefinition<typeof args> = {
   name: "list-feature-flags",
   description:
-    `Retrieves all feature flags within a project, including metadata and targeting rules. Enables AI agents to enumerate existing flags for inspection, configuration analysis, or generating flag usage reports across environments.`,
+    `Retrieves all feature flags within a project, including metadata and targeting rules. Enables AI agents to enumerate existing flags for inspection, configuration analysis, or generating flag usage reports across environments.
+`,
   scopes: ["read"],
   args,
   tool: async (client, args, ctx) => {

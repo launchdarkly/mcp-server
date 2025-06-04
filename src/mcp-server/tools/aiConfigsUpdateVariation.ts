@@ -11,25 +11,11 @@ const args = {
 };
 
 export const tool$aiConfigsUpdateVariation: ToolDefinition<typeof args> = {
-  name: "ai-configs-update-variation",
-  description: `Update AI Config variation
-
-Edit an existing variation of an AI Config. This creates a new version of the variation.
-
-The request body must be a JSON object of the fields to update. The values you include replace the existing values for the fields.
-
-Here's an example:
-\`\`\`
-  {
-    "messages": [
-      {
-        "role": "system",
-        "content": "The new message"
-      }
-    ]
-  }
-\`\`\`
+  name: "update-ai-config-variation",
+  description:
+    `Updates a specific variation within an AI Config. Enables fine-tuned control of model behavior.
 `,
+  scopes: ["write"],
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await aiConfigsUpdateVariation(

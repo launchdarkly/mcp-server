@@ -17,7 +17,7 @@ The official [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) se
   * [Installation](#installation)
   * [Requirements](#requirements)
   * [Available Resources and Operations](#available-resources-and-operations)
-  * [Available environments](#available-environments)
+  * [Available Environments](#available-environments)
   * [Contributions](#contributions)
   * [About LaunchDarkly](#about-launchdarkly)
 

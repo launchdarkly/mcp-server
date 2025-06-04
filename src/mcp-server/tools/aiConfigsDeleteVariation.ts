@@ -11,10 +11,9 @@ const args = {
 };
 
 export const tool$aiConfigsDeleteVariation: ToolDefinition<typeof args> = {
-  name: "ai-configs-delete-variation",
-  description: `Delete AI Config variation
-
-Delete a specific variation of an AI Config by config key and variation key.`,
+  name: "delete-ai-config-variation",
+  description: `Deletes an AI Config variation.`,
+  scopes: ["write"],
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await aiConfigsDeleteVariation(
