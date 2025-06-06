@@ -68,6 +68,31 @@ Add the following server definition to your `claude_desktop_config.json` file:
 
 Specify your API key as found on LaunchDarkly's Authorization page.
 
+### Qodo Gen installation steps
+
+1. Open [Qodo Gen](https://docs.qodo.ai/qodo-documentation/qodo-gen) chat panel in VSCode or IntelliJ.
+2. Click `Connect more tools`.
+3. Click `+ Add new MCP`.
+4. Add the following configuration:
+
+```json
+{
+  "mcpServers": {
+    "LaunchDarkly": {
+      "command": "npx",
+      "args": [
+        "-y", "--package", "@launchdarkly/mcp-server", "--", "mcp", "start",
+        "--api-key", "api-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+      ]
+    }
+  }
+}
+```
+
+Specify your API key as found on LaunchDarkly's Authorization page.
+
+5. Click `Save`.
+
 ### Standalone binary installation steps
 
 You can also run the MCP server as a standalone binary with no additional dependencies. You must pull these binaries from available GitHub releases while specifying the appropriate `tag` value:
