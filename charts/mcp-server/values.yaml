@@ -1,0 +1,71 @@
+# Default values for mcp-server Helm chart.
+# This file can be overridden during installation, e.g. `helm install -f my-values.yaml ...`.
+
+# -- Image settings
+image:
+  # -- Repository URI of the container image
+  repository: ghcr.io/launchdarkly/mcp-server
+  # -- Override the image tag (defaults to appVersion defined in Chart.yaml)
+  tag: ""
+  # -- Image pull policy
+  pullPolicy: IfNotPresent
+  # -- Image pull secrets
+  pullSecrets: []
+
+# -- Number of mcp-server replicas
+replicaCount: 1
+
+# -- Transport type for MCP server (`stdio` or `sse`)
+transport: sse
+
+# -- Log level for server (`debug`, `info`, `warn`, `error`, `fatal`)
+logLevel: info
+
+# -- Service configuration
+service:
+  type: ClusterIP
+  port: 2718
+
+# -- Environment variables passed to the container
+# Use for sensitive values via `secretKeyRef` or non-sensitive via `value`.
+env:
+  # Example of static env var
+  # LAUNCHDARKLY_DEBUG:
+  #   value: "true"
+  # Example of secret-based env var
+  # LAUNCHDARKLY_API_KEY:
+  #   secretKeyRef:
+  #     name: launchdarkly-secret
+  #     key: apiKey
+  {}
+
+# -- Additional CLI flags, expressed as a list
+# e.g. ["--tool", "exampleTool", "--scope", "read"]
+extraArgs: []
+
+# -- Resource limits/requests
+resources:
+  limits:
+    cpu: 200m
+    memory: 256Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+# -- Node selector
+nodeSelector: {}
+
+# -- Tolerations
+tolerations: []
+
+# -- Affinity rules
+affinity: {}
+
+# -- Pod annotations
+podAnnotations: {}
+
+# -- ServiceAccount customization
+serviceAccount:
+  create: true
+  annotations: {}
+  name: "" 
