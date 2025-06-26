@@ -1,4 +1,4 @@
-FROM node:24-bookworm-slim AS builder
+FROM oven/bun:1-debian AS builder
 
 WORKDIR /app
 
