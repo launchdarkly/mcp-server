@@ -1,6 +1,8 @@
 name: Docker Build and Push
 on:
   push:
+    branches:
+      - main
 
 env:
   ECR_REGISTRY: "709825985650.dkr.ecr.us-east-1.amazonaws.com/launchdarkly/mcp"
