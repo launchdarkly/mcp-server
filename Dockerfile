@@ -2,15 +2,13 @@ FROM oven/bun:1-debian AS builder
 
 WORKDIR /app
 
-RUN npm install -g bun
-
 COPY package*.json ./
 
 RUN bun install 
 
 COPY . .
 
-RUN npm run build
+RUN bun run build
 
 FROM gcr.io/distroless/nodejs24-debian12:970bec506fed86941afb61c21983f25b3b3fe68c
 
