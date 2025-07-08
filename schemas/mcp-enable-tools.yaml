@@ -111,6 +111,22 @@ actions:
         disabled: false
         scopes:
           - write
+  - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs/{configKey}/targeting"]["get"]
+    update:
+      x-speakeasy-mcp:
+        name: get-ai-config-targeting
+        description: Retrieves the targeting details of a specific AI Config, including individual targets, rules, and rollouts.
+        disabled: false
+        scopes:
+          - read
+  - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs/{configKey}/targeting"]["patch"]
+    update:
+      x-speakeasy-mcp:
+        name: update-ai-config-targeting
+        description: Updates the targeting of an existing AI Config.
+        disabled: false
+        scopes:
+          - write
   - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs/{configKey}/variations/{variationKey}"]["get"]
     update:
       x-speakeasy-mcp:

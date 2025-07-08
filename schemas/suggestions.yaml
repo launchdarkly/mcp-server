@@ -132,6 +132,22 @@ actions:
       after: sdk.aiConfigs.delete()
       before: sdk.AI Configs (beta).deleteAIConfig()
       type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs/{configKey}/targeting"]["get"]
+    update:
+      x-speakeasy-group: aiConfigs
+      x-speakeasy-name-override: getTargeting
+    x-speakeasy-metadata:
+      after: sdk.aiConfigs.getTargeting()
+      before: sdk.AI Configs (beta).getAIConfigTargeting()
+      type: method-name
+  - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs/{configKey}/targeting"]["patch"]
+    update:
+      x-speakeasy-group: aiConfigs
+      x-speakeasy-name-override: updateTargeting
+    x-speakeasy-metadata:
+      after: sdk.aiConfigs.updateTargeting()
+      before: sdk.AI Configs (beta).patchAIConfigTargeting()
+      type: method-name
   - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs/{configKey}/metrics-by-variation"]["get"]
     update:
       x-speakeasy-group: aiConfigs

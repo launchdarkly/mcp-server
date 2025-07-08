@@ -1,9 +1,9 @@
-speakeasyVersion: 1.555.0
+speakeasyVersion: 1.580.0
 sources:
     LaunchDarkly REST API:
         sourceNamespace: launchdarkly-rest-api
-        sourceRevisionDigest: sha256:030c63ce6ce08a429368e5f07f4165a41a0c3e4061f4b25a48a22d85aad5f9fd
-        sourceBlobDigest: sha256:711d86389bbe8ab1c41572b67f44e5bb3c37c8057f02f42bc7f22ea70ba0ce29
+        sourceRevisionDigest: sha256:667150cae7854e824a91a3ea68fc1e92bdfa475bdc24a89722778a0493d53b4f
+        sourceBlobDigest: sha256:2a2d6840880d11e156b354f916820df9b75048fe92fda6203ee6d0aaf0f21227
         tags:
             - latest
             - "2.0"
@@ -25,6 +25,7 @@ workflow:
             overlays:
                 - location: ./schemas/mcp-enable-tools.yaml
                 - location: ./schemas/suggestions.yaml
+            output: ./schemas/output.json
             registry:
                 location: registry.speakeasyapi.dev/launchdarkly/mcp/launchdarkly-rest-api
     targets:
