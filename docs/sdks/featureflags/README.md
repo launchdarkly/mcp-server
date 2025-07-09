@@ -93,7 +93,6 @@ async function run() {
     projectKey: "<value>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -118,15 +117,12 @@ async function run() {
   const res = await featureFlagsList(launchDarkly, {
     projectKey: "<value>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("featureFlagsList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -209,7 +205,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -242,15 +237,12 @@ async function run() {
       },
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("featureFlagsCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -312,7 +304,6 @@ async function run() {
     featureFlagKey: "<value>",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -338,15 +329,12 @@ async function run() {
     projectKey: "<value>",
     featureFlagKey: "<value>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("featureFlagsGet failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1592,7 +1580,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -1627,15 +1614,12 @@ async function run() {
       ],
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("featureFlagsPatch failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -1710,14 +1694,12 @@ async function run() {
     projectKey: "<value>",
     featureFlagKey: "<value>",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("featureFlagsDelete failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  
 }
 
 run();

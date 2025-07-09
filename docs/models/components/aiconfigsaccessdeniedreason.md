@@ -17,8 +17,8 @@ let value: AiConfigsAccessDeniedReason = {
     "*",
   ],
   notActions: [
-    null,
-    null,
+    "<value 1>",
+    "<value 2>",
   ],
   effect: "allow",
   roleName: "role_name",

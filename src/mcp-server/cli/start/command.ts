@@ -37,18 +37,13 @@ export const startCommand = buildCommand({
           return z.string().parse(value);
         },
       },
-      ...(mcpScopes.length
-        ? {
-          scope: {
-            kind: "enum",
-            brief:
-              "Mount tools/resources that match given scope (repeatable flag)",
-            values: mcpScopes,
-            variadic: true,
-            optional: true,
-          },
-        }
-        : {}),
+      scope: {
+        kind: "enum",
+        brief: "Mount tools/resources that match given scope (repeatable flag)",
+        values: mcpScopes,
+        variadic: true,
+        optional: true,
+      },
       "api-key": {
         kind: "parsed",
         brief: "Sets the apiKey auth field for the API",

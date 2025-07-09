@@ -1,20 +1,20 @@
 lockVersion: 2.0.0
 id: cc3a5766-8b39-40da-a0be-fff57173d8e1
 management:
-  docChecksum: 4b277094ae39c703aed0c796d12ca53b
+  docChecksum: 2e0929fc035a4d91d9fbf708633ca988
   docVersion: "2.0"
-  speakeasyVersion: 1.555.0
-  generationVersion: 2.618.0
-  releaseVersion: 0.3.1
-  configChecksum: 12da62b5a1fc78db9be5edece4b3242e
+  speakeasyVersion: 1.580.0
+  generationVersion: 2.654.2
+  releaseVersion: 0.4.0
+  configChecksum: 941cd2dd2f7c5a28dd935c935f7e8ac2
   repoURL: https://github.com/launchdarkly/mcp-server.git
   installationURL: https://github.com/launchdarkly/mcp-server
   published: true
 features:
   typescript:
     additionalDependencies: 0.1.0
-    constsAndDefaults: 0.1.11
-    core: 3.21.10
+    constsAndDefaults: 0.1.12
+    core: 3.21.13
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     devContainers: 2.90.0
@@ -25,12 +25,13 @@ features:
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.5
     groups: 2.81.2
-    mcpServer: 0.9.2
+    ignores: 2.81.1
+    mcpServer: 0.9.3
     nameOverrides: 2.81.2
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.3.0
-    unions: 2.85.8
+    unions: 2.85.11
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
@@ -50,8 +51,10 @@ generatedFiles:
   - docs/models/components/accessdeniedreasoneffect.md
   - docs/models/components/aiconfig.md
   - docs/models/components/aiconfigmaintainer.md
+  - docs/models/components/aiconfigmode.md
   - docs/models/components/aiconfigpatch.md
   - docs/models/components/aiconfigpost.md
+  - docs/models/components/aiconfigpostmode.md
   - docs/models/components/aiconfigs.md
   - docs/models/components/aiconfigsaccess.md
   - docs/models/components/aiconfigsaccessallowedreason.md
@@ -60,8 +63,36 @@ generatedFiles:
   - docs/models/components/aiconfigsaccessdenied.md
   - docs/models/components/aiconfigsaccessdeniedreason.md
   - docs/models/components/aiconfigsaccessdeniedreasoneffect.md
+  - docs/models/components/aiconfigsexperimentenabledperiodrep.md
+  - docs/models/components/aiconfigsexperimentenvironmentsettingrep.md
+  - docs/models/components/aiconfigsexperimentinforep.md
+  - docs/models/components/aiconfigsfilter.md
+  - docs/models/components/aiconfigsfiltertype.md
+  - docs/models/components/aiconfigslegacyexperimentrep.md
   - docs/models/components/aiconfigslink.md
   - docs/models/components/aiconfigsmaintainerteam.md
+  - docs/models/components/aiconfigsmembersummary.md
+  - docs/models/components/aiconfigsmetriceventdefaultrep.md
+  - docs/models/components/aiconfigsmetriclistingrep.md
+  - docs/models/components/aiconfigsmetriclistingrepanalysistype.md
+  - docs/models/components/aiconfigsmetriclistingrepkind.md
+  - docs/models/components/aiconfigsmetriclistingrepsuccesscriteria.md
+  - docs/models/components/aiconfigsmetriclistingrepunitaggregationtype.md
+  - docs/models/components/aiconfigsmodification.md
+  - docs/models/components/aiconfigtargeting.md
+  - docs/models/components/aiconfigtargetingdefaults.md
+  - docs/models/components/aiconfigtargetingenvironment.md
+  - docs/models/components/aiconfigtargetingenvironmentfallthrough.md
+  - docs/models/components/aiconfigtargetingenvironmentfallthroughrollout.md
+  - docs/models/components/aiconfigtargetingenvironmentfallthroughrolloutexperimentationallocation.md
+  - docs/models/components/aiconfigtargetingenvironmentfallthroughrolloutvariation.md
+  - docs/models/components/aiconfigtargetingenvironmentrule.md
+  - docs/models/components/aiconfigtargetingenvironmentruleclause.md
+  - docs/models/components/aiconfigtargetingenvironmenttarget.md
+  - docs/models/components/aiconfigtargetingpatch.md
+  - docs/models/components/aiconfigtargetingvariation.md
+  - docs/models/components/aiconfigtargetingvariationjson.md
+  - docs/models/components/aiconfigtargetingvariationvalue.md
   - docs/models/components/aiconfigvariation.md
   - docs/models/components/aiconfigvariationmodel.md
   - docs/models/components/aiconfigvariationpatch.md
@@ -69,7 +100,6 @@ generatedFiles:
   - docs/models/components/aiconfigvariationpost.md
   - docs/models/components/aiconfigvariationpostmodel.md
   - docs/models/components/aiconfigvariationsresponse.md
-  - docs/models/components/analysistype.md
   - docs/models/components/clause.md
   - docs/models/components/clientsideavailability.md
   - docs/models/components/clientsideavailabilitypost.md
@@ -86,6 +116,7 @@ generatedFiles:
   - docs/models/components/featureflagkind.md
   - docs/models/components/featureflags.md
   - docs/models/components/filter.md
+  - docs/models/components/filtertype.md
   - docs/models/components/flagconfigevaluation.md
   - docs/models/components/flagconfigmigrationsettingsrep.md
   - docs/models/components/flagmigrationsettingsrep.md
@@ -99,7 +130,10 @@ generatedFiles:
   - docs/models/components/message.md
   - docs/models/components/metriceventdefaultrep.md
   - docs/models/components/metriclistingrep.md
+  - docs/models/components/metriclistingrepanalysistype.md
   - docs/models/components/metriclistingrepkind.md
+  - docs/models/components/metriclistingrepsuccesscriteria.md
+  - docs/models/components/metriclistingrepunitaggregationtype.md
   - docs/models/components/migrationsettingspost.md
   - docs/models/components/modification.md
   - docs/models/components/paginatedlinks.md
@@ -112,10 +146,7 @@ generatedFiles:
   - docs/models/components/rollout.md
   - docs/models/components/rule.md
   - docs/models/components/security.md
-  - docs/models/components/successcriteria.md
   - docs/models/components/target.md
-  - docs/models/components/type.md
-  - docs/models/components/unitaggregationtype.md
   - docs/models/components/variation.md
   - docs/models/components/variationorrolloutrep.md
   - docs/models/components/variationsummary.md
@@ -137,12 +168,16 @@ generatedFiles:
   - docs/models/operations/getaiconfigrequest.md
   - docs/models/operations/getaiconfigsldapiversion.md
   - docs/models/operations/getaiconfigsrequest.md
+  - docs/models/operations/getaiconfigtargetingldapiversion.md
+  - docs/models/operations/getaiconfigtargetingrequest.md
   - docs/models/operations/getaiconfigvariationldapiversion.md
   - docs/models/operations/getaiconfigvariationrequest.md
   - docs/models/operations/getfeatureflagrequest.md
   - docs/models/operations/getfeatureflagsrequest.md
   - docs/models/operations/patchaiconfigldapiversion.md
   - docs/models/operations/patchaiconfigrequest.md
+  - docs/models/operations/patchaiconfigtargetingldapiversion.md
+  - docs/models/operations/patchaiconfigtargetingrequest.md
   - docs/models/operations/patchaiconfigvariationldapiversion.md
   - docs/models/operations/patchaiconfigvariationrequest.md
   - docs/models/operations/patchfeatureflagrequest.md
@@ -155,6 +190,10 @@ generatedFiles:
   - docs/sdks/featureflags/README.md
   - docs/sdks/launchdarkly/README.md
   - eslint.config.mjs
+  - examples/.env.template
+  - examples/README.md
+  - examples/featureFlagsList.example.ts
+  - examples/package.json
   - jsr.json
   - package.json
   - src/core.ts
@@ -163,9 +202,11 @@ generatedFiles:
   - src/funcs/aiConfigsDelete.ts
   - src/funcs/aiConfigsDeleteVariation.ts
   - src/funcs/aiConfigsGet.ts
+  - src/funcs/aiConfigsGetTargeting.ts
   - src/funcs/aiConfigsGetVariation.ts
   - src/funcs/aiConfigsList.ts
   - src/funcs/aiConfigsUpdate.ts
+  - src/funcs/aiConfigsUpdateTargeting.ts
   - src/funcs/aiConfigsUpdateVariation.ts
   - src/funcs/featureFlagsCreate.ts
   - src/funcs/featureFlagsDelete.ts
@@ -210,9 +251,11 @@ generatedFiles:
   - src/mcp-server/tools/aiConfigsDelete.ts
   - src/mcp-server/tools/aiConfigsDeleteVariation.ts
   - src/mcp-server/tools/aiConfigsGet.ts
+  - src/mcp-server/tools/aiConfigsGetTargeting.ts
   - src/mcp-server/tools/aiConfigsGetVariation.ts
   - src/mcp-server/tools/aiConfigsList.ts
   - src/mcp-server/tools/aiConfigsUpdate.ts
+  - src/mcp-server/tools/aiConfigsUpdateTargeting.ts
   - src/mcp-server/tools/aiConfigsUpdateVariation.ts
   - src/mcp-server/tools/featureFlagsCreate.ts
   - src/mcp-server/tools/featureFlagsDelete.ts
@@ -234,7 +277,30 @@ generatedFiles:
   - src/models/components/aiconfigsaccessallowedrep.ts
   - src/models/components/aiconfigsaccessdenied.ts
   - src/models/components/aiconfigsaccessdeniedreason.ts
+  - src/models/components/aiconfigsexperimentenabledperiodrep.ts
+  - src/models/components/aiconfigsexperimentenvironmentsettingrep.ts
+  - src/models/components/aiconfigsexperimentinforep.ts
+  - src/models/components/aiconfigsfilter.ts
+  - src/models/components/aiconfigslegacyexperimentrep.ts
   - src/models/components/aiconfigslink.ts
+  - src/models/components/aiconfigsmembersummary.ts
+  - src/models/components/aiconfigsmetriceventdefaultrep.ts
+  - src/models/components/aiconfigsmetriclistingrep.ts
+  - src/models/components/aiconfigsmodification.ts
+  - src/models/components/aiconfigtargeting.ts
+  - src/models/components/aiconfigtargetingdefaults.ts
+  - src/models/components/aiconfigtargetingenvironment.ts
+  - src/models/components/aiconfigtargetingenvironmentfallthrough.ts
+  - src/models/components/aiconfigtargetingenvironmentfallthroughrollout.ts
+  - src/models/components/aiconfigtargetingenvironmentfallthroughrolloutexperimentationallocation.ts
+  - src/models/components/aiconfigtargetingenvironmentfallthroughrolloutvariation.ts
+  - src/models/components/aiconfigtargetingenvironmentrule.ts
+  - src/models/components/aiconfigtargetingenvironmentruleclause.ts
+  - src/models/components/aiconfigtargetingenvironmenttarget.ts
+  - src/models/components/aiconfigtargetingpatch.ts
+  - src/models/components/aiconfigtargetingvariation.ts
+  - src/models/components/aiconfigtargetingvariationjson.ts
+  - src/models/components/aiconfigtargetingvariationvalue.ts
   - src/models/components/aiconfigvariation.ts
   - src/models/components/aiconfigvariationpatch.ts
   - src/models/components/aiconfigvariationpost.ts
@@ -289,9 +355,11 @@ generatedFiles:
   - src/models/errors/httpclienterrors.ts
   - src/models/errors/index.ts
   - src/models/errors/invalidrequesterrorrep.ts
+  - src/models/errors/launchdarklyerror.ts
   - src/models/errors/methodnotallowederrorrep.ts
   - src/models/errors/notfounderrorrep.ts
   - src/models/errors/ratelimitederrorrep.ts
+  - src/models/errors/responsevalidationerror.ts
   - src/models/errors/sdkvalidationerror.ts
   - src/models/errors/statusconflicterrorrep.ts
   - src/models/errors/unauthorizederrorrep.ts
@@ -300,11 +368,13 @@ generatedFiles:
   - src/models/operations/deletefeatureflag.ts
   - src/models/operations/getaiconfig.ts
   - src/models/operations/getaiconfigs.ts
+  - src/models/operations/getaiconfigtargeting.ts
   - src/models/operations/getaiconfigvariation.ts
   - src/models/operations/getfeatureflag.ts
   - src/models/operations/getfeatureflags.ts
   - src/models/operations/index.ts
   - src/models/operations/patchaiconfig.ts
+  - src/models/operations/patchaiconfigtargeting.ts
   - src/models/operations/patchaiconfigvariation.ts
   - src/models/operations/patchfeatureflag.ts
   - src/models/operations/postaiconfig.ts
@@ -1388,6 +1458,23 @@ examples:
           application/json: {"code": "optimistic_locking_error", "message": "Conflict. Optimistic lock error. Try again later."}
         "429":
           application/json: {"code": "rate_limited", "message": "You've exceeded the API rate limit. Try again later."}
+    speakeasy-default-post-feature-flag:
+      parameters:
+        path:
+          projectKey: "<value>"
+      requestBody:
+        application/json: {"name": "My flag", "key": "flag-key-123abc", "description": "This flag controls the example widgets", "clientSideAvailability": {"usingEnvironmentId": true, "usingMobileKey": true}, "variations": [{"value": true}, {"value": false}], "temporary": false, "tags": ["example-tag"], "customProperties": {"key": {"name": "Jira issues", "value": ["is-123", "is-456"]}}, "defaults": {"onVariation": 0, "offVariation": 1}, "purpose": "migration", "maintainerId": "12ab3c45de678910fgh12345", "maintainerTeamKey": "team-1"}
+      responses:
+        "201":
+          application/json: {"name": "My Flag", "kind": "boolean", "description": "This flag controls the example widgets", "key": "flag-key-123abc", "_version": 1, "creationDate": 758807, "variations": [{"_id": "e432f62b-55f6-49dd-a02f-eb24acf39d05", "value": true}, {"_id": "a00bf58d-d252-476c-b915-15a74becacb4", "value": false}], "temporary": true, "tags": ["example-tag"], "_links": {"parent": {"href": "/api/v2/flags/my-project", "type": "application/json"}, "self": {"href": "/api/v2/flags/my-project/my-flag", "type": "application/json"}}, "maintainerId": "569f183514f4432160000007", "_maintainer": {"_links": {"self": {"href": "/api/v2/members/569f183514f4432160000007", "type": "application/json"}}, "_id": "569f183514f4432160000007", "firstName": "Ariel", "lastName": "Flores", "role": "admin", "email": "ariel@acme.com"}, "maintainerTeamKey": "team-1", "_maintainerTeam": {"key": "team-key-123abc", "name": "Example team", "_links": {"parent": {"href": "/api/v2/teams", "type": "application/json"}, "roles": {"href": "/api/v2/teams/example-team/roles", "type": "application/json"}, "self": {"href": "/api/v2/teams/example-team", "type": "application/json"}}}, "experiments": {"baselineIdx": 484144, "items": [{"metricKey": "my-metric", "_metric": {"experimentCount": 0, "metricGroupCount": 0, "_id": "5902deadbeef667524a01290", "_versionId": "version-id-123abc", "key": "metric-key-123abc", "name": "My metric", "kind": "custom", "_attachedFlagCount": 0, "_links": {"parent": {"href": "/api/v2/metrics/my-project", "type": "application/json"}, "self": {"href": "/api/v2/metrics/my-project/my-metric", "type": "application/json"}}, "_access": {"denied": [], "allowed": [{"action": "<value>", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "actions": ["*"], "effect": "allow"}}]}, "tags": [], "_creationDate": 564975, "lastModified": {"date": "2021-08-05T19:46:31.148082Z"}, "maintainerId": "569fdeadbeef1644facecafe", "_maintainer": {"_links": {"self": {"href": "/api/v2/members/569f183514f4432160000007", "type": "application/json"}}, "_id": "569f183514f4432160000007", "firstName": "Ariel", "lastName": "Flores", "role": "admin", "email": "ariel@acme.com"}, "category": "Error monitoring", "isNumeric": true, "eventKey": "Order placed", "randomizationUnits": ["user"], "filters": {"type": "contextAttribute", "attribute": "country", "op": "<value>", "values": ["JP"], "contextKind": "user", "negate": false}, "unitAggregationType": "average", "analysisType": "mean", "percentileValue": 95, "eventDefault": {"value": 0}}, "environments": ["production", "test", "my-environment"]}]}, "customProperties": {"key": {"name": "Jira issues", "value": ["is-123", "is-456"]}}, "archived": false, "deprecated": false, "defaults": {"onVariation": 0, "offVariation": 1}, "migrationSettings": {"contextKind": "device", "stageCount": 6}, "environments": {"my-environment": {"on": false, "archived": false, "salt": "61eddeadbeef4da1facecafe3a60a397", "sel": "810edeadbeef4844facecafe438f2999492", "lastModified": 1627071171347, "version": 1, "targets": [{"values": ["user-key-123abc"], "variation": 0, "contextKind": "user"}], "contextTargets": [{"values": ["device-key-123abc"], "variation": 0, "contextKind": "device"}], "rules": [], "fallthrough": {"variation": 0}, "offVariation": 1, "prerequisites": [], "_site": {"href": "/default/my-environment/features/client-side-flag", "type": "text/html"}, "_environmentName": "My Environment", "trackEvents": false, "trackEventsFallthrough": false, "_summary": {"variations": {"0": {"rules": 0, "nullRules": 0, "targets": 1, "contextTargets": 1, "isFallthrough": true}, "1": {"rules": 0, "nullRules": 0, "targets": 0, "contextTargets": 715434, "isOff": true}}, "prerequisites": 0}}}}
+        "400":
+          application/json: {"code": "invalid_request", "message": "Invalid request body"}
+        "401":
+          application/json: {"code": "unauthorized", "message": "Invalid access token"}
+        "409":
+          application/json: {"code": "optimistic_locking_error", "message": "Conflict. Optimistic lock error. Try again later."}
+        "429":
+          application/json: {"code": "rate_limited", "message": "You've exceeded the API rate limit. Try again later."}
   getFeatureFlag:
     speakeasy-default-get-feature-flag:
       parameters:
@@ -1431,6 +1518,28 @@ examples:
       responses:
         "200":
           application/json: {"name": "My Flag", "kind": "boolean", "description": "This flag controls the example widgets", "key": "flag-key-123abc", "_version": 1, "creationDate": 205200, "variations": [{"_id": "e432f62b-55f6-49dd-a02f-eb24acf39d05", "value": true}, {"_id": "a00bf58d-d252-476c-b915-15a74becacb4", "value": false}], "temporary": true, "tags": ["example-tag"], "_links": {"parent": {"href": "/api/v2/flags/my-project", "type": "application/json"}, "self": {"href": "/api/v2/flags/my-project/my-flag", "type": "application/json"}}, "maintainerId": "569f183514f4432160000007", "_maintainer": {"_links": {"self": {"href": "/api/v2/members/569f183514f4432160000007", "type": "application/json"}}, "_id": "569f183514f4432160000007", "firstName": "Ariel", "lastName": "Flores", "role": "admin", "email": "ariel@acme.com"}, "maintainerTeamKey": "team-1", "_maintainerTeam": {"key": "team-key-123abc", "name": "Example team", "_links": {"parent": {"href": "/api/v2/teams", "type": "application/json"}, "roles": {"href": "/api/v2/teams/example-team/roles", "type": "application/json"}, "self": {"href": "/api/v2/teams/example-team", "type": "application/json"}}}, "experiments": {"baselineIdx": 60812, "items": []}, "customProperties": {"key": {"name": "Jira issues", "value": ["is-123", "is-456"]}}, "archived": false, "deprecated": false, "defaults": {"onVariation": 0, "offVariation": 1}, "migrationSettings": {"contextKind": "device", "stageCount": 6}, "environments": {"my-environment": {"on": false, "archived": false, "salt": "61eddeadbeef4da1facecafe3a60a397", "sel": "810edeadbeef4844facecafe438f2999492", "lastModified": 1627071171347, "version": 1, "targets": [{"values": ["user-key-123abc"], "variation": 0, "contextKind": "user"}], "contextTargets": [{"values": ["device-key-123abc"], "variation": 0, "contextKind": "device"}], "rules": [], "fallthrough": {"variation": 0}, "offVariation": 1, "prerequisites": [], "_site": {"href": "/default/my-environment/features/client-side-flag", "type": "text/html"}, "_environmentName": "My Environment", "trackEvents": false, "trackEventsFallthrough": false, "_summary": {"variations": {"0": {"rules": 0, "nullRules": 0, "targets": 1, "contextTargets": 1, "isFallthrough": true}, "1": {"rules": 0, "nullRules": 0, "targets": 0, "contextTargets": 896494, "isOff": true}}, "prerequisites": 0}}}}
+        "400":
+          application/json: {"code": "invalid_request", "message": "Invalid request body"}
+        "401":
+          application/json: {"code": "unauthorized", "message": "Invalid access token"}
+        "404":
+          application/json: {"code": "not_found", "message": "Invalid resource identifier"}
+        "405":
+          application/json: {"code": "method_not_allowed", "message": "Method not allowed"}
+        "409":
+          application/json: {"code": "optimistic_locking_error", "message": "Conflict. Optimistic lock error. Try again later."}
+        "429":
+          application/json: {"code": "rate_limited", "message": "You've exceeded the API rate limit. Try again later."}
+    speakeasy-default-patch-feature-flag:
+      parameters:
+        path:
+          projectKey: "<value>"
+          featureFlagKey: "<value>"
+      requestBody:
+        application/json: {"patch": []}
+      responses:
+        "200":
+          application/json: {"name": "My Flag", "kind": "boolean", "description": "This flag controls the example widgets", "key": "flag-key-123abc", "_version": 1, "creationDate": 60812, "variations": [{"_id": "e432f62b-55f6-49dd-a02f-eb24acf39d05", "value": true}, {"_id": "a00bf58d-d252-476c-b915-15a74becacb4", "value": false}], "temporary": true, "tags": ["example-tag"], "_links": {"parent": {"href": "/api/v2/flags/my-project", "type": "application/json"}, "self": {"href": "/api/v2/flags/my-project/my-flag", "type": "application/json"}}, "maintainerId": "569f183514f4432160000007", "_maintainer": {"_links": {"self": {"href": "/api/v2/members/569f183514f4432160000007", "type": "application/json"}}, "_id": "569f183514f4432160000007", "firstName": "Ariel", "lastName": "Flores", "role": "admin", "email": "ariel@acme.com"}, "maintainerTeamKey": "team-1", "_maintainerTeam": {"key": "team-key-123abc", "name": "Example team", "_links": {"parent": {"href": "/api/v2/teams", "type": "application/json"}, "roles": {"href": "/api/v2/teams/example-team/roles", "type": "application/json"}, "self": {"href": "/api/v2/teams/example-team", "type": "application/json"}}}, "experiments": {"baselineIdx": 219455, "items": []}, "customProperties": {"key": {"name": "Jira issues", "value": ["is-123", "is-456"]}}, "archived": false, "deprecated": false, "defaults": {"onVariation": 0, "offVariation": 1}, "migrationSettings": {"contextKind": "device", "stageCount": 6}, "environments": {"my-environment": {"on": false, "archived": false, "salt": "61eddeadbeef4da1facecafe3a60a397", "sel": "810edeadbeef4844facecafe438f2999492", "lastModified": 1627071171347, "version": 1, "targets": [{"values": ["user-key-123abc"], "variation": 0, "contextKind": "user"}], "contextTargets": [{"values": ["device-key-123abc"], "variation": 0, "contextKind": "device"}], "rules": [], "fallthrough": {"variation": 0}, "offVariation": 1, "prerequisites": [], "_site": {"href": "/default/my-environment/features/client-side-flag", "type": "text/html"}, "_environmentName": "My Environment", "trackEvents": false, "trackEventsFallthrough": false, "_summary": {"variations": {"0": {"rules": 0, "nullRules": 0, "targets": 1, "contextTargets": 1, "isFallthrough": true}, "1": {"rules": 0, "nullRules": 0, "targets": 0, "contextTargets": 410797, "isOff": true}}, "prerequisites": 0}}}}
         "400":
           application/json: {"code": "invalid_request", "message": "Invalid request body"}
         "401":
@@ -5055,6 +5164,19 @@ examples:
           application/json: {"message": "message", "code": "code"}
         "500":
           application/json: {"message": "message", "code": "code"}
+    speakeasy-default-get-AI-configs:
+      parameters:
+        path:
+          projectKey: "default"
+        header:
+          LD-API-Version: "beta"
+      responses:
+        "200":
+          application/json: {"_links": {"first": {"href": "href", "type": "type"}, "last": {"href": "href", "type": "type"}, "next": {"href": "href", "type": "type"}, "prev": {"href": "href", "type": "type"}, "self": {"href": "href", "type": "type"}}, "items": [{"_access": {"denied": [{"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}, {"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}], "allowed": [{"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}, {"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}]}, "_links": {"self": {"href": "href", "type": "type"}, "parent": {"href": "href", "type": "type"}}, "description": "description", "key": "key", "_maintainer": {"key": "<key>", "name": "<value>", "kind": "kind"}, "mode": "completion", "name": "name", "tags": ["tags", "tags"], "version": 0, "variations": [{"_links": {"parent": {"href": "href", "type": "type"}}, "color": "color", "comment": "comment", "description": "description", "instructions": "instructions", "key": "key", "_id": "_id", "messages": [{"content": "content", "role": "role"}, {"content": "content", "role": "role"}], "model": {}, "modelConfigKey": "modelConfigKey", "name": "name", "createdAt": 6, "version": 1, "state": "state", "_archivedAt": 5, "_publishedAt": 5}, {"_links": {"parent": {"href": "href", "type": "type"}}, "color": "color", "comment": "comment", "description": "description", "instructions": "instructions", "key": "key", "_id": "_id", "messages": [{"content": "content", "role": "role"}, {"content": "content", "role": "role"}], "model": {}, "modelConfigKey": "modelConfigKey", "name": "name", "createdAt": 6, "version": 1, "state": "state", "_archivedAt": 5, "_publishedAt": 5}], "createdAt": 2, "updatedAt": 7}, {"_access": {"denied": [{"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}, {"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}], "allowed": [{"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}, {"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}]}, "_links": {"self": {"href": "href", "type": "type"}, "parent": {"href": "href", "type": "type"}}, "description": "description", "key": "key", "_maintainer": {"_id": "<id>", "email": "Rory_Green@hotmail.com", "role": "<value>", "kind": "kind"}, "mode": "completion", "name": "name", "tags": ["tags", "tags"], "version": 0, "variations": [{"_links": {"parent": {"href": "href", "type": "type"}}, "color": "color", "comment": "comment", "description": "description", "instructions": "instructions", "key": "key", "_id": "_id", "messages": [{"content": "content", "role": "role"}, {"content": "content", "role": "role"}], "model": {}, "modelConfigKey": "modelConfigKey", "name": "name", "createdAt": 6, "version": 1, "state": "state", "_archivedAt": 5, "_publishedAt": 5}, {"_links": {"parent": {"href": "href", "type": "type"}}, "color": "color", "comment": "comment", "description": "description", "instructions": "instructions", "key": "key", "_id": "_id", "messages": [{"content": "content", "role": "role"}, {"content": "content", "role": "role"}], "model": {}, "modelConfigKey": "modelConfigKey", "name": "name", "createdAt": 6, "version": 1, "state": "state", "_archivedAt": 5, "_publishedAt": 5}], "createdAt": 2, "updatedAt": 7}], "totalCount": 9}
+        "400":
+          application/json: {"message": "message", "code": "code"}
+        "500":
+          application/json: {"message": "message", "code": "code"}
   postAIConfig:
     speakeasy-default-post-AI-config:
       parameters:
@@ -5063,10 +5185,10 @@ examples:
         header:
           LD-API-Version: "beta"
       requestBody:
-        application/json: {"description": "", "key": "key", "maintainerId": "maintainerId", "maintainerTeamKey": "maintainerTeamKey", "name": "name", "tags": ["tags", "tags"]}
+        application/json: {"description": "", "key": "key", "maintainerId": "maintainerId", "maintainerTeamKey": "maintainerTeamKey", "mode": "completion", "name": "name", "tags": ["tags", "tags"]}
       responses:
         "201":
-          application/json: {"_access": {"denied": [{"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}, {"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}], "allowed": [{"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}, {"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}]}, "_links": {"self": {"href": "href", "type": "type"}, "parent": {"href": "href", "type": "type"}}, "description": "description", "key": "key", "_maintainer": {"key": "<key>", "name": "<value>", "kind": "kind"}, "name": "name", "tags": ["tags", "tags"], "version": 0, "variations": [{"_links": {"parent": {"href": "href", "type": "type"}}, "color": "color", "comment": "comment", "key": "key", "messages": [{"content": "content", "role": "role"}, {"content": "content", "role": "role"}], "model": {}, "modelConfigKey": "modelConfigKey", "name": "name", "createdAt": 6, "version": 1, "state": "state", "_archivedAt": 5, "_publishedAt": 5}, {"_links": {"parent": {"href": "href", "type": "type"}}, "color": "color", "comment": "comment", "key": "key", "messages": [{"content": "content", "role": "role"}, {"content": "content", "role": "role"}], "model": {}, "modelConfigKey": "modelConfigKey", "name": "name", "createdAt": 6, "version": 1, "state": "state", "_archivedAt": 5, "_publishedAt": 5}], "createdAt": 2, "updatedAt": 7}
+          application/json: {"_access": {"denied": [{"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}, {"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}], "allowed": [{"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}, {"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}]}, "_links": {"self": {"href": "href", "type": "type"}, "parent": {"href": "href", "type": "type"}}, "description": "description", "key": "key", "_maintainer": {"key": "<key>", "name": "<value>", "kind": "kind"}, "mode": "completion", "name": "name", "tags": ["tags", "tags"], "version": 0, "variations": [{"_links": {"parent": {"href": "href", "type": "type"}}, "color": "color", "comment": "comment", "description": "description", "instructions": "instructions", "key": "key", "_id": "_id", "messages": [{"content": "content", "role": "role"}, {"content": "content", "role": "role"}], "model": {}, "modelConfigKey": "modelConfigKey", "name": "name", "createdAt": 6, "version": 1, "state": "state", "_archivedAt": 5, "_publishedAt": 5}, {"_links": {"parent": {"href": "href", "type": "type"}}, "color": "color", "comment": "comment", "description": "description", "instructions": "instructions", "key": "key", "_id": "_id", "messages": [{"content": "content", "role": "role"}, {"content": "content", "role": "role"}], "model": {}, "modelConfigKey": "modelConfigKey", "name": "name", "createdAt": 6, "version": 1, "state": "state", "_archivedAt": 5, "_publishedAt": 5}], "createdAt": 2, "updatedAt": 7}
         "400":
           application/json: {"message": "message", "code": "code"}
         "500":
@@ -5081,13 +5203,25 @@ examples:
           LD-API-Version: "beta"
       responses:
         "200":
-          application/json: {"_access": {"denied": [{"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}, {"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}], "allowed": [{"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}, {"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}]}, "_links": {"self": {"href": "href", "type": "type"}, "parent": {"href": "href", "type": "type"}}, "description": "description", "key": "key", "_maintainer": {"key": "<key>", "name": "<value>", "kind": "kind"}, "name": "name", "tags": ["tags", "tags"], "version": 0, "variations": [{"_links": {"parent": {"href": "href", "type": "type"}}, "color": "color", "comment": "comment", "key": "key", "messages": [{"content": "content", "role": "role"}, {"content": "content", "role": "role"}], "model": {}, "modelConfigKey": "modelConfigKey", "name": "name", "createdAt": 6, "version": 1, "state": "state", "_archivedAt": 5, "_publishedAt": 5}, {"_links": {"parent": {"href": "href", "type": "type"}}, "color": "color", "comment": "comment", "key": "key", "messages": [{"content": "content", "role": "role"}, {"content": "content", "role": "role"}], "model": {}, "modelConfigKey": "modelConfigKey", "name": "name", "createdAt": 6, "version": 1, "state": "state", "_archivedAt": 5, "_publishedAt": 5}], "createdAt": 2, "updatedAt": 7}
+          application/json: {"_access": {"denied": [{"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}, {"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}], "allowed": [{"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}, {"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}]}, "_links": {"self": {"href": "href", "type": "type"}, "parent": {"href": "href", "type": "type"}}, "description": "description", "key": "key", "_maintainer": {"key": "<key>", "name": "<value>", "kind": "kind"}, "mode": "completion", "name": "name", "tags": ["tags", "tags"], "version": 0, "variations": [{"_links": {"parent": {"href": "href", "type": "type"}}, "color": "color", "comment": "comment", "description": "description", "instructions": "instructions", "key": "key", "_id": "_id", "messages": [{"content": "content", "role": "role"}, {"content": "content", "role": "role"}], "model": {}, "modelConfigKey": "modelConfigKey", "name": "name", "createdAt": 6, "version": 1, "state": "state", "_archivedAt": 5, "_publishedAt": 5}, {"_links": {"parent": {"href": "href", "type": "type"}}, "color": "color", "comment": "comment", "description": "description", "instructions": "instructions", "key": "key", "_id": "_id", "messages": [{"content": "content", "role": "role"}, {"content": "content", "role": "role"}], "model": {}, "modelConfigKey": "modelConfigKey", "name": "name", "createdAt": 6, "version": 1, "state": "state", "_archivedAt": 5, "_publishedAt": 5}], "createdAt": 2, "updatedAt": 7}
         "400":
           application/json: {"message": "message", "code": "code"}
         "500":
           application/json: {"message": "message", "code": "code"}
   deleteAIConfig:
     "":
+      parameters:
+        path:
+          projectKey: "default"
+          configKey: "<value>"
+        header:
+          LD-API-Version: "beta"
+      responses:
+        "400":
+          application/json: {"message": "message", "code": "code"}
+        "500":
+          application/json: {"message": "message", "code": "code"}
+    speakeasy-default-delete-AI-config:
       parameters:
         path:
           projectKey: "default"
@@ -5111,7 +5245,7 @@ examples:
         application/json: {"description": "description", "maintainerId": "maintainerId", "maintainerTeamKey": "maintainerTeamKey", "name": "name", "tags": ["tags", "tags"]}
       responses:
         "200":
-          application/json: {"_access": {"denied": [{"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}, {"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}], "allowed": [{"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}, {"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}]}, "_links": {"self": {"href": "href", "type": "type"}, "parent": {"href": "href", "type": "type"}}, "description": "description", "key": "key", "_maintainer": {"key": "<key>", "name": "<value>", "kind": "kind"}, "name": "name", "tags": ["tags", "tags"], "version": 0, "variations": [{"_links": {"parent": {"href": "href", "type": "type"}}, "color": "color", "comment": "comment", "key": "key", "messages": [{"content": "content", "role": "role"}, {"content": "content", "role": "role"}], "model": {}, "modelConfigKey": "modelConfigKey", "name": "name", "createdAt": 6, "version": 1, "state": "state", "_archivedAt": 5, "_publishedAt": 5}, {"_links": {"parent": {"href": "href", "type": "type"}}, "color": "color", "comment": "comment", "key": "key", "messages": [{"content": "content", "role": "role"}, {"content": "content", "role": "role"}], "model": {}, "modelConfigKey": "modelConfigKey", "name": "name", "createdAt": 6, "version": 1, "state": "state", "_archivedAt": 5, "_publishedAt": 5}], "createdAt": 2, "updatedAt": 7}
+          application/json: {"_access": {"denied": [{"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}, {"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}], "allowed": [{"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}, {"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}]}, "_links": {"self": {"href": "href", "type": "type"}, "parent": {"href": "href", "type": "type"}}, "description": "description", "key": "key", "_maintainer": {"key": "<key>", "name": "<value>", "kind": "kind"}, "mode": "completion", "name": "name", "tags": ["tags", "tags"], "version": 0, "variations": [{"_links": {"parent": {"href": "href", "type": "type"}}, "color": "color", "comment": "comment", "description": "description", "instructions": "instructions", "key": "key", "_id": "_id", "messages": [{"content": "content", "role": "role"}, {"content": "content", "role": "role"}], "model": {}, "modelConfigKey": "modelConfigKey", "name": "name", "createdAt": 6, "version": 1, "state": "state", "_archivedAt": 5, "_publishedAt": 5}, {"_links": {"parent": {"href": "href", "type": "type"}}, "color": "color", "comment": "comment", "description": "description", "instructions": "instructions", "key": "key", "_id": "_id", "messages": [{"content": "content", "role": "role"}, {"content": "content", "role": "role"}], "model": {}, "modelConfigKey": "modelConfigKey", "name": "name", "createdAt": 6, "version": 1, "state": "state", "_archivedAt": 5, "_publishedAt": 5}], "createdAt": 2, "updatedAt": 7}
         "400":
           application/json: {"message": "message", "code": "code"}
         "500":
@@ -5125,10 +5259,10 @@ examples:
         header:
           LD-API-Version: "beta"
       requestBody:
-        application/json: {"key": "key", "messages": [{"content": "content", "role": "role"}, {"content": "content", "role": "role"}], "model": {}, "name": "name", "modelConfigKey": "modelConfigKey", "comment": "comment"}
+        application/json: {"comment": "comment", "description": "description", "instructions": "instructions", "key": "key", "messages": [{"content": "content", "role": "role"}, {"content": "content", "role": "role"}], "model": {}, "name": "name", "modelConfigKey": "modelConfigKey"}
       responses:
         "201":
-          application/json: {"_links": {"parent": {"href": "href", "type": "type"}}, "color": "color", "comment": "comment", "key": "key", "messages": [{"content": "content", "role": "role"}, {"content": "content", "role": "role"}], "model": {}, "modelConfigKey": "modelConfigKey", "name": "name", "createdAt": 6, "version": 1, "state": "state", "_archivedAt": 5, "_publishedAt": 5}
+          application/json: {"_links": {"parent": {"href": "href", "type": "type"}}, "color": "color", "comment": "comment", "description": "description", "instructions": "instructions", "key": "key", "_id": "_id", "messages": [{"content": "content", "role": "role"}, {"content": "content", "role": "role"}], "model": {}, "modelConfigKey": "modelConfigKey", "name": "name", "createdAt": 6, "version": 1, "state": "state", "_archivedAt": 5, "_publishedAt": 5}
         "400":
           application/json: {"message": "message", "code": "code"}
         "500":
@@ -5145,6 +5279,21 @@ examples:
       responses:
         "200":
           application/json: {"items": [{"_links": {"parent": {"href": "href", "type": "type"}}, "color": "color", "comment": "comment", "key": "key", "messages": [{"content": "content", "role": "role"}, {"content": "content", "role": "role"}], "model": {}, "modelConfigKey": "modelConfigKey", "name": "name", "createdAt": 6, "version": 1, "state": "state", "_archivedAt": 5, "_publishedAt": 5}, {"_links": {"parent": {"href": "href", "type": "type"}}, "color": "color", "comment": "comment", "key": "key", "messages": [{"content": "content", "role": "role"}, {"content": "content", "role": "role"}], "model": {}, "modelConfigKey": "modelConfigKey", "name": "name", "createdAt": 6, "version": 1, "state": "state", "_archivedAt": 5, "_publishedAt": 5}], "totalCount": 0}
+        "400":
+          application/json: {"message": "message", "code": "code"}
+        "500":
+          application/json: {"message": "message", "code": "code"}
+    speakeasy-default-get-AI-config-variation:
+      parameters:
+        path:
+          projectKey: "default"
+          configKey: "default"
+          variationKey: "default"
+        header:
+          LD-API-Version: "beta"
+      responses:
+        "200":
+          application/json: {"items": [{"_links": {"parent": {"href": "href", "type": "type"}}, "color": "color", "comment": "comment", "description": "description", "instructions": "instructions", "key": "key", "_id": "_id", "messages": [{"content": "content", "role": "role"}, {"content": "content", "role": "role"}], "model": {}, "modelConfigKey": "modelConfigKey", "name": "name", "createdAt": 6, "version": 1, "state": "state", "_archivedAt": 5, "_publishedAt": 5}, {"_links": {"parent": {"href": "href", "type": "type"}}, "color": "color", "comment": "comment", "description": "description", "instructions": "instructions", "key": "key", "_id": "_id", "messages": [{"content": "content", "role": "role"}, {"content": "content", "role": "role"}], "model": {}, "modelConfigKey": "modelConfigKey", "name": "name", "createdAt": 6, "version": 1, "state": "state", "_archivedAt": 5, "_publishedAt": 5}], "totalCount": 0}
         "400":
           application/json: {"message": "message", "code": "code"}
         "500":
@@ -5173,10 +5322,10 @@ examples:
         header:
           LD-API-Version: "beta"
       requestBody:
-        application/json: {"messages": [{"content": "content", "role": "role"}, {"content": "content", "role": "role"}], "model": {}, "modelConfigKey": "modelConfigKey", "name": "name", "published": true, "state": "state", "comment": "comment"}
+        application/json: {"comment": "comment", "description": "description", "instructions": "instructions", "messages": [{"content": "content", "role": "role"}, {"content": "content", "role": "role"}], "model": {}, "modelConfigKey": "modelConfigKey", "name": "name", "published": true, "state": "state"}
       responses:
         "200":
-          application/json: {"_links": {"parent": {"href": "href", "type": "type"}}, "color": "color", "comment": "comment", "key": "key", "messages": [{"content": "content", "role": "role"}, {"content": "content", "role": "role"}], "model": {}, "modelConfigKey": "modelConfigKey", "name": "name", "createdAt": 6, "version": 1, "state": "state", "_archivedAt": 5, "_publishedAt": 5}
+          application/json: {"_links": {"parent": {"href": "href", "type": "type"}}, "color": "color", "comment": "comment", "description": "description", "instructions": "instructions", "key": "key", "_id": "_id", "messages": [{"content": "content", "role": "role"}, {"content": "content", "role": "role"}], "model": {}, "modelConfigKey": "modelConfigKey", "name": "name", "createdAt": 6, "version": 1, "state": "state", "_archivedAt": 5, "_publishedAt": 5}
         "400":
           application/json: {"message": "message", "code": "code"}
         "500":
@@ -5707,5 +5856,37 @@ examples:
           application/json: {"code": "not_found", "message": "Invalid resource identifier"}
         "429":
           application/json: {"code": "rate_limited", "message": "You've exceeded the API rate limit. Try again later."}
+  getAIConfigTargeting:
+    speakeasy-default-get-AI-config-targeting:
+      parameters:
+        path:
+          projectKey: "<value>"
+          configKey: "<value>"
+        header:
+          LD-API-Version: "beta"
+      responses:
+        "200":
+          application/json: {"createdAt": 0, "defaults": {"onVariation": 6, "offVariation": 1}, "environments": {"key": {"contextTargets": [{"contextKind": "contextKind", "values": ["values", "values"], "variation": 5}, {"contextKind": "contextKind", "values": ["values", "values"], "variation": 5}], "enabled": true, "fallthrough": {"variation": 5, "rollout": {"bucketBy": "bucketBy", "contextKind": "contextKind", "experimentAllocation": {"canReshuffle": true, "defaultVariation": 2, "type": "type"}, "seed": 7, "variations": [{"_untracked": true, "variation": 9, "weight": 3}, {"_untracked": true, "variation": 9, "weight": 3}]}}, "lastModified": 2, "offVariation": 4, "rules": [{"clauses": [{"attribute": "attribute", "id": "id", "negate": true, "op": "op", "values": ["", ""]}, {"attribute": "attribute", "id": "id", "negate": true, "op": "op", "values": ["", ""]}], "trackEvents": true}, {"clauses": [{"attribute": "attribute", "id": "id", "negate": true, "op": "op", "values": ["", ""]}, {"attribute": "attribute", "id": "id", "negate": true, "op": "op", "values": ["", ""]}], "trackEvents": true}], "targets": [{"contextKind": "contextKind", "values": ["values", "values"], "variation": 5}, {"contextKind": "contextKind", "values": ["values", "values"], "variation": 5}], "trackEvents": true, "trackEventsFallthrough": true, "_environmentName": "_environmentName", "_version": 7}}, "experiments": {"baselineIdx": 1, "items": [{"metricKey": "my-metric", "_metric": {"experimentCount": 0, "metricGroupCount": 0, "guardedRolloutCount": 0, "_id": "5902deadbeef667524a01290", "_versionId": "version-id-123abc", "key": "metric-key-123abc", "name": "My metric", "kind": "custom", "_attachedFlagCount": 0, "_links": {"parent": {"href": "/api/v2/metrics/my-project", "type": "application/json"}, "self": {"href": "/api/v2/metrics/my-project/my-metric", "type": "application/json"}}, "_site": {"href": "href", "type": "type"}, "_access": {"denied": [{"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}, {"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}], "allowed": [{"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}, {"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}]}, "tags": [], "_creationDate": 1, "lastModified": {"date": "2021-08-05T19:46:31.148Z"}, "maintainerId": "569fdeadbeef1644facecafe", "_maintainer": {"_links": {"self": {"href": "/api/v2/members/569f183514f4432160000007", "type": "application/json"}}, "_id": "569f183514f4432160000007", "firstName": "Ariel", "lastName": "Flores", "role": "admin", "email": "ariel@acme.com"}, "description": "description", "category": "Error monitoring", "isNumeric": true, "successCriteria": "HigherThanBaseline", "unit": "unit", "eventKey": "Order placed", "randomizationUnits": ["user"], "filters": {"type": "contextAttribute", "attribute": "country", "op": "op", "values": ["JP"], "contextKind": "user", "negate": false}, "unitAggregationType": "average", "analysisType": "mean", "percentileValue": 95, "eventDefault": {"disabled": true, "value": 0}}, "environments": ["production", "test", "my-environment"], "_environmentSettings": {"key": {"startDate": 1, "stopDate": 6, "enabledPeriods": [{"startDate": 7, "stopDate": 1}, {"startDate": 7, "stopDate": 1}]}}}, {"metricKey": "my-metric", "_metric": {"experimentCount": 0, "metricGroupCount": 0, "guardedRolloutCount": 0, "_id": "5902deadbeef667524a01290", "_versionId": "version-id-123abc", "key": "metric-key-123abc", "name": "My metric", "kind": "custom", "_attachedFlagCount": 0, "_links": {"parent": {"href": "/api/v2/metrics/my-project", "type": "application/json"}, "self": {"href": "/api/v2/metrics/my-project/my-metric", "type": "application/json"}}, "_site": {"href": "href", "type": "type"}, "_access": {"denied": [{"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}, {"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}], "allowed": [{"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}, {"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}]}, "tags": [], "_creationDate": 1, "lastModified": {"date": "2021-08-05T19:46:31.148Z"}, "maintainerId": "569fdeadbeef1644facecafe", "_maintainer": {"_links": {"self": {"href": "/api/v2/members/569f183514f4432160000007", "type": "application/json"}}, "_id": "569f183514f4432160000007", "firstName": "Ariel", "lastName": "Flores", "role": "admin", "email": "ariel@acme.com"}, "description": "description", "category": "Error monitoring", "isNumeric": true, "successCriteria": "HigherThanBaseline", "unit": "unit", "eventKey": "Order placed", "randomizationUnits": ["user"], "filters": {"type": "contextAttribute", "attribute": "country", "op": "op", "values": ["JP"], "contextKind": "user", "negate": false}, "unitAggregationType": "average", "analysisType": "mean", "percentileValue": 95, "eventDefault": {"disabled": true, "value": 0}}, "environments": ["production", "test", "my-environment"], "_environmentSettings": {"key": {"startDate": 1, "stopDate": 6, "enabledPeriods": [{"startDate": 7, "stopDate": 1}, {"startDate": 7, "stopDate": 1}]}}}]}, "key": "key", "name": "name", "tags": ["tags", "tags"], "variations": [{"_id": "_id", "description": "description", "name": "name", "value": "<value>"}, {"_id": "_id", "description": "description", "name": "name", "value": 7691.52}], "_version": 4}
+        "403":
+          application/json: {"message": "message", "code": "code"}
+        "500":
+          application/json: {"message": "message", "code": "code"}
+  patchAIConfigTargeting:
+    speakeasy-default-patch-AI-config-targeting:
+      parameters:
+        path:
+          projectKey: "<value>"
+          configKey: "<value>"
+        header:
+          LD-API-Version: "beta"
+      requestBody:
+        application/json: {"comment": "comment", "environmentKey": "environmentKey", "instructions": [{"key": ""}, {"key": ""}]}
+      responses:
+        "200":
+          application/json: {"createdAt": 0, "defaults": {"onVariation": 6, "offVariation": 1}, "environments": {"key": {"contextTargets": [{"contextKind": "contextKind", "values": ["values", "values"], "variation": 5}, {"contextKind": "contextKind", "values": ["values", "values"], "variation": 5}], "enabled": true, "fallthrough": {"variation": 5, "rollout": {"bucketBy": "bucketBy", "contextKind": "contextKind", "experimentAllocation": {"canReshuffle": true, "defaultVariation": 2, "type": "type"}, "seed": 7, "variations": [{"_untracked": true, "variation": 9, "weight": 3}, {"_untracked": true, "variation": 9, "weight": 3}]}}, "lastModified": 2, "offVariation": 4, "rules": [{"clauses": [{"attribute": "attribute", "id": "id", "negate": true, "op": "op", "values": ["", ""]}, {"attribute": "attribute", "id": "id", "negate": true, "op": "op", "values": ["", ""]}], "trackEvents": true}, {"clauses": [{"attribute": "attribute", "id": "id", "negate": true, "op": "op", "values": ["", ""]}, {"attribute": "attribute", "id": "id", "negate": true, "op": "op", "values": ["", ""]}], "trackEvents": true}], "targets": [{"contextKind": "contextKind", "values": ["values", "values"], "variation": 5}, {"contextKind": "contextKind", "values": ["values", "values"], "variation": 5}], "trackEvents": true, "trackEventsFallthrough": true, "_environmentName": "_environmentName", "_version": 7}}, "experiments": {"baselineIdx": 1, "items": [{"metricKey": "my-metric", "_metric": {"experimentCount": 0, "metricGroupCount": 0, "guardedRolloutCount": 0, "_id": "5902deadbeef667524a01290", "_versionId": "version-id-123abc", "key": "metric-key-123abc", "name": "My metric", "kind": "custom", "_attachedFlagCount": 0, "_links": {"parent": {"href": "/api/v2/metrics/my-project", "type": "application/json"}, "self": {"href": "/api/v2/metrics/my-project/my-metric", "type": "application/json"}}, "_site": {"href": "href", "type": "type"}, "_access": {"denied": [{"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}, {"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}], "allowed": [{"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}, {"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}]}, "tags": [], "_creationDate": 1, "lastModified": {"date": "2021-08-05T19:46:31.148Z"}, "maintainerId": "569fdeadbeef1644facecafe", "_maintainer": {"_links": {"self": {"href": "/api/v2/members/569f183514f4432160000007", "type": "application/json"}}, "_id": "569f183514f4432160000007", "firstName": "Ariel", "lastName": "Flores", "role": "admin", "email": "ariel@acme.com"}, "description": "description", "category": "Error monitoring", "isNumeric": true, "successCriteria": "HigherThanBaseline", "unit": "unit", "eventKey": "Order placed", "randomizationUnits": ["user"], "filters": {"type": "contextAttribute", "attribute": "country", "op": "op", "values": ["JP"], "contextKind": "user", "negate": false}, "unitAggregationType": "average", "analysisType": "mean", "percentileValue": 95, "eventDefault": {"disabled": true, "value": 0}}, "environments": ["production", "test", "my-environment"], "_environmentSettings": {"key": {"startDate": 1, "stopDate": 6, "enabledPeriods": [{"startDate": 7, "stopDate": 1}, {"startDate": 7, "stopDate": 1}]}}}, {"metricKey": "my-metric", "_metric": {"experimentCount": 0, "metricGroupCount": 0, "guardedRolloutCount": 0, "_id": "5902deadbeef667524a01290", "_versionId": "version-id-123abc", "key": "metric-key-123abc", "name": "My metric", "kind": "custom", "_attachedFlagCount": 0, "_links": {"parent": {"href": "/api/v2/metrics/my-project", "type": "application/json"}, "self": {"href": "/api/v2/metrics/my-project/my-metric", "type": "application/json"}}, "_site": {"href": "href", "type": "type"}, "_access": {"denied": [{"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}, {"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}], "allowed": [{"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}, {"action": "action", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "notResources": ["notResources", "notResources"], "actions": ["*"], "notActions": ["<value 1>", "<value 2>"], "effect": "allow", "role_name": "role_name"}}]}, "tags": [], "_creationDate": 1, "lastModified": {"date": "2021-08-05T19:46:31.148Z"}, "maintainerId": "569fdeadbeef1644facecafe", "_maintainer": {"_links": {"self": {"href": "/api/v2/members/569f183514f4432160000007", "type": "application/json"}}, "_id": "569f183514f4432160000007", "firstName": "Ariel", "lastName": "Flores", "role": "admin", "email": "ariel@acme.com"}, "description": "description", "category": "Error monitoring", "isNumeric": true, "successCriteria": "HigherThanBaseline", "unit": "unit", "eventKey": "Order placed", "randomizationUnits": ["user"], "filters": {"type": "contextAttribute", "attribute": "country", "op": "op", "values": ["JP"], "contextKind": "user", "negate": false}, "unitAggregationType": "average", "analysisType": "mean", "percentileValue": 95, "eventDefault": {"disabled": true, "value": 0}}, "environments": ["production", "test", "my-environment"], "_environmentSettings": {"key": {"startDate": 1, "stopDate": 6, "enabledPeriods": [{"startDate": 7, "stopDate": 1}, {"startDate": 7, "stopDate": 1}]}}}]}, "key": "key", "name": "name", "tags": ["tags", "tags"], "variations": [{"_id": "_id", "description": "description", "name": "name", "value": false}, {"_id": "_id", "description": "description", "name": "name", "value": {}}], "_version": 4}
+        "400":
+          application/json: {"message": "message", "code": "code"}
+        "500":
+          application/json: {"message": "message", "code": "code"}
 examplesVersion: 1.0.2
 generatedTests: {}

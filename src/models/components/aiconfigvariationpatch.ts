@@ -16,6 +16,18 @@ import {
 export type AIConfigVariationPatchModel = {};
 
 export type AIConfigVariationPatch = {
+  /**
+   * Human-readable description of what this patch changes
+   */
+  comment?: string | undefined;
+  /**
+   * Description for agent when AI Config is in agent mode.
+   */
+  description?: string | undefined;
+  /**
+   * Instructions for agent when AI Config is in agent mode.
+   */
+  instructions?: string | undefined;
   messages?: Array<Message> | undefined;
   model?: AIConfigVariationPatchModel | undefined;
   modelConfigKey?: string | undefined;
@@ -25,10 +37,6 @@ export type AIConfigVariationPatch = {
    * One of 'archived', 'published'
    */
   state?: string | undefined;
-  /**
-   * Human-readable description of what this patch changes
-   */
-  comment?: string | undefined;
 };
 
 /** @internal */
@@ -87,24 +95,28 @@ export const AIConfigVariationPatch$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  comment: z.string().optional(),
+  description: z.string().optional(),
+  instructions: z.string().optional(),
   messages: z.array(Message$inboundSchema).optional(),
   model: z.lazy(() => AIConfigVariationPatchModel$inboundSchema).optional(),
   modelConfigKey: z.string().optional(),
   name: z.string().optional(),
   published: z.boolean().optional(),
   state: z.string().optional(),
-  comment: z.string().optional(),
 });
 
 /** @internal */
 export type AIConfigVariationPatch$Outbound = {
+  comment?: string | undefined;
+  description?: string | undefined;
+  instructions?: string | undefined;
   messages?: Array<Message$Outbound> | undefined;
   model?: AIConfigVariationPatchModel$Outbound | undefined;
   modelConfigKey?: string | undefined;
   name?: string | undefined;
   published?: boolean | undefined;
   state?: string | undefined;
-  comment?: string | undefined;
 };
 
 /** @internal */
@@ -113,13 +125,15 @@ export const AIConfigVariationPatch$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AIConfigVariationPatch
 > = z.object({
+  comment: z.string().optional(),
+  description: z.string().optional(),
+  instructions: z.string().optional(),
   messages: z.array(Message$outboundSchema).optional(),
   model: z.lazy(() => AIConfigVariationPatchModel$outboundSchema).optional(),
   modelConfigKey: z.string().optional(),
   name: z.string().optional(),
   published: z.boolean().optional(),
   state: z.string().optional(),
-  comment: z.string().optional(),
 });
 
 /**

@@ -21,8 +21,8 @@ let value: AiConfigsAccess = {
           "*",
         ],
         notActions: [
-          null,
-          null,
+          "<value 1>",
+          "<value 2>",
         ],
         effect: "allow",
         roleName: "role_name",
@@ -42,8 +42,8 @@ let value: AiConfigsAccess = {
           "*",
         ],
         notActions: [
-          null,
-          null,
+          "<value 1>",
+          "<value 2>",
         ],
         effect: "allow",
         roleName: "role_name",
@@ -65,8 +65,8 @@ let value: AiConfigsAccess = {
           "*",
         ],
         notActions: [
-          null,
-          null,
+          "<value 1>",
+          "<value 2>",
         ],
         effect: "allow",
         roleName: "role_name",
@@ -86,8 +86,8 @@ let value: AiConfigsAccess = {
           "*",
         ],
         notActions: [
-          null,
-          null,
+          "<value 1>",
+          "<value 2>",
         ],
         effect: "allow",
         roleName: "role_name",

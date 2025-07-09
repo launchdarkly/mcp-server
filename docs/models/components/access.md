@@ -6,20 +6,7 @@
 import { Access } from "@launchdarkly/mcp-server/models/components";
 
 let value: Access = {
-  denied: [
-    {
-      action: "<value>",
-      reason: {
-        resources: [
-          "proj/*:env/*;qa_*:/flag/*",
-        ],
-        actions: [
-          "*",
-        ],
-        effect: "allow",
-      },
-    },
-  ],
+  denied: [],
   allowed: [
     {
       action: "<value>",

@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod";
+import { LaunchDarklyError } from "./launchdarklyerror.js";
 
 export type UnauthorizedErrorRepData = {
   /**
@@ -15,7 +16,7 @@ export type UnauthorizedErrorRepData = {
   message: string;
 };
 
-export class UnauthorizedErrorRep extends Error {
+export class UnauthorizedErrorRep extends LaunchDarklyError {
   /**
    * Specific error code encountered
    */
@@ -24,13 +25,13 @@ export class UnauthorizedErrorRep extends Error {
   /** The original data that was passed to this error instance. */
   data$: UnauthorizedErrorRepData;
 
-  constructor(err: UnauthorizedErrorRepData) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+  constructor(
+    err: UnauthorizedErrorRepData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
     this.code = err.code;
 
     this.name = "UnauthorizedErrorRep";
@@ -45,9 +46,16 @@ export const UnauthorizedErrorRep$inboundSchema: z.ZodType<
 > = z.object({
   code: z.string(),
   message: z.string(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
-    return new UnauthorizedErrorRep(v);
+    return new UnauthorizedErrorRep(v, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */

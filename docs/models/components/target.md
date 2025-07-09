@@ -7,9 +7,11 @@ import { Target } from "@launchdarkly/mcp-server/models/components";
 
 let value: Target = {
   values: [
-    "<value>",
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
   ],
-  variation: 970406,
+  variation: 240112,
 };
 ```
 

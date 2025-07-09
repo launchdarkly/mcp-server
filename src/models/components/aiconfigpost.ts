@@ -4,17 +4,46 @@
 
 import * as z from "zod";
 import { safeParse } from "../../lib/schemas.js";
+import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+
+export const AIConfigPostMode = {
+  Agent: "agent",
+  Completion: "completion",
+} as const;
+export type AIConfigPostMode = ClosedEnum<typeof AIConfigPostMode>;
 
 export type AIConfigPost = {
   description?: string | undefined;
   key: string;
   maintainerId?: string | undefined;
   maintainerTeamKey?: string | undefined;
+  mode?: AIConfigPostMode | undefined;
   name: string;
   tags?: Array<string> | undefined;
 };
+
+/** @internal */
+export const AIConfigPostMode$inboundSchema: z.ZodNativeEnum<
+  typeof AIConfigPostMode
+> = z.nativeEnum(AIConfigPostMode);
+
+/** @internal */
+export const AIConfigPostMode$outboundSchema: z.ZodNativeEnum<
+  typeof AIConfigPostMode
+> = AIConfigPostMode$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace AIConfigPostMode$ {
+  /** @deprecated use `AIConfigPostMode$inboundSchema` instead. */
+  export const inboundSchema = AIConfigPostMode$inboundSchema;
+  /** @deprecated use `AIConfigPostMode$outboundSchema` instead. */
+  export const outboundSchema = AIConfigPostMode$outboundSchema;
+}
 
 /** @internal */
 export const AIConfigPost$inboundSchema: z.ZodType<
@@ -26,6 +55,7 @@ export const AIConfigPost$inboundSchema: z.ZodType<
   key: z.string(),
   maintainerId: z.string().optional(),
   maintainerTeamKey: z.string().optional(),
+  mode: AIConfigPostMode$inboundSchema.default("completion"),
   name: z.string(),
   tags: z.array(z.string()).optional(),
 });
@@ -36,6 +66,7 @@ export type AIConfigPost$Outbound = {
   key: string;
   maintainerId?: string | undefined;
   maintainerTeamKey?: string | undefined;
+  mode: string;
   name: string;
   tags?: Array<string> | undefined;
 };
@@ -50,6 +81,7 @@ export const AIConfigPost$outboundSchema: z.ZodType<
   key: z.string(),
   maintainerId: z.string().optional(),
   maintainerTeamKey: z.string().optional(),
+  mode: AIConfigPostMode$outboundSchema.default("completion"),
   name: z.string(),
   tags: z.array(z.string()).optional(),
 });

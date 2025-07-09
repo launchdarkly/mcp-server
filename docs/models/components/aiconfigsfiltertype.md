@@ -1,13 +1,13 @@
-# Type
+# AiConfigsFilterType
 
 Filter type. One of [contextAttribute, eventProperty, group]
 
 ## Example Usage
 
 ```typescript
-import { Type } from "@launchdarkly/mcp-server/models/components";
+import { AiConfigsFilterType } from "@launchdarkly/mcp-server/models/components";
 
-let value: Type = "contextAttribute";
+let value: AiConfigsFilterType = "contextAttribute";
 ```
 
 ## Values

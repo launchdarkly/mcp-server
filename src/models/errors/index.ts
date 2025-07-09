@@ -10,6 +10,7 @@ export * from "./invalidrequesterrorrep.js";
 export * from "./methodnotallowederrorrep.js";
 export * from "./notfounderrorrep.js";
 export * from "./ratelimitederrorrep.js";
+export * from "./responsevalidationerror.js";
 export * from "./sdkvalidationerror.js";
 export * from "./statusconflicterrorrep.js";
 export * from "./unauthorizederrorrep.js";

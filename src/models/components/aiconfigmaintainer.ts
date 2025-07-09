@@ -23,7 +23,7 @@ export type MaintainerMember = {
   kind: string;
 };
 
-export type AIConfigMaintainer = AiConfigsMaintainerTeam | MaintainerMember;
+export type AIConfigMaintainer = MaintainerMember | AiConfigsMaintainerTeam;
 
 /** @internal */
 export const AiConfigsMaintainerTeam$inboundSchema: z.ZodType<
@@ -168,14 +168,14 @@ export const AIConfigMaintainer$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => AiConfigsMaintainerTeam$inboundSchema),
   z.lazy(() => MaintainerMember$inboundSchema),
+  z.lazy(() => AiConfigsMaintainerTeam$inboundSchema),
 ]);
 
 /** @internal */
 export type AIConfigMaintainer$Outbound =
-  | AiConfigsMaintainerTeam$Outbound
-  | MaintainerMember$Outbound;
+  | MaintainerMember$Outbound
+  | AiConfigsMaintainerTeam$Outbound;
 
 /** @internal */
 export const AIConfigMaintainer$outboundSchema: z.ZodType<
@@ -183,8 +183,8 @@ export const AIConfigMaintainer$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AIConfigMaintainer
 > = z.union([
-  z.lazy(() => AiConfigsMaintainerTeam$outboundSchema),
   z.lazy(() => MaintainerMember$outboundSchema),
+  z.lazy(() => AiConfigsMaintainerTeam$outboundSchema),
 ]);
 
 /**

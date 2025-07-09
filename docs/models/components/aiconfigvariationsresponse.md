@@ -16,7 +16,10 @@ let value: AIConfigVariationsResponse = {
       },
       color: "color",
       comment: "comment",
+      description: "description",
+      instructions: "instructions",
       key: "key",
+      id: "_id",
       messages: [
         {
           content: "content",
@@ -45,7 +48,10 @@ let value: AIConfigVariationsResponse = {
       },
       color: "color",
       comment: "comment",
+      description: "description",
+      instructions: "instructions",
       key: "key",
+      id: "_id",
       messages: [
         {
           content: "content",

@@ -26,8 +26,17 @@ export type AIConfigVariation = {
   links?: ParentLink | undefined;
   color?: string | undefined;
   comment?: string | undefined;
+  /**
+   * Returns the description for the agent. This is only returned for agent variations.
+   */
+  description?: string | undefined;
+  /**
+   * Returns the instructions for the agent. This is only returned for agent variations.
+   */
+  instructions?: string | undefined;
   key: string;
-  messages: Array<Message>;
+  id: string;
+  messages?: Array<Message> | undefined;
   model: AIConfigVariationModel;
   modelConfigKey?: string | undefined;
   name: string;
@@ -95,8 +104,11 @@ export const AIConfigVariation$inboundSchema: z.ZodType<
   _links: ParentLink$inboundSchema.optional(),
   color: z.string().optional(),
   comment: z.string().optional(),
+  description: z.string().optional(),
+  instructions: z.string().optional(),
   key: z.string(),
-  messages: z.array(Message$inboundSchema),
+  _id: z.string(),
+  messages: z.array(Message$inboundSchema).optional(),
   model: z.lazy(() => AIConfigVariationModel$inboundSchema),
   modelConfigKey: z.string().optional(),
   name: z.string(),
@@ -108,6 +120,7 @@ export const AIConfigVariation$inboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     "_links": "links",
+    "_id": "id",
     "_archivedAt": "archivedAt",
     "_publishedAt": "publishedAt",
   });
@@ -118,8 +131,11 @@ export type AIConfigVariation$Outbound = {
   _links?: ParentLink$Outbound | undefined;
   color?: string | undefined;
   comment?: string | undefined;
+  description?: string | undefined;
+  instructions?: string | undefined;
   key: string;
-  messages: Array<Message$Outbound>;
+  _id: string;
+  messages?: Array<Message$Outbound> | undefined;
   model: AIConfigVariationModel$Outbound;
   modelConfigKey?: string | undefined;
   name: string;
@@ -139,8 +155,11 @@ export const AIConfigVariation$outboundSchema: z.ZodType<
   links: ParentLink$outboundSchema.optional(),
   color: z.string().optional(),
   comment: z.string().optional(),
+  description: z.string().optional(),
+  instructions: z.string().optional(),
   key: z.string(),
-  messages: z.array(Message$outboundSchema),
+  id: z.string(),
+  messages: z.array(Message$outboundSchema).optional(),
   model: z.lazy(() => AIConfigVariationModel$outboundSchema),
   modelConfigKey: z.string().optional(),
   name: z.string(),
@@ -152,6 +171,7 @@ export const AIConfigVariation$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     links: "_links",
+    id: "_id",
     archivedAt: "_archivedAt",
     publishedAt: "_publishedAt",
   });

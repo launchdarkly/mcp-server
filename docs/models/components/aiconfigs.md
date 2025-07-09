@@ -46,8 +46,8 @@ let value: AIConfigs = {
                 "*",
               ],
               notActions: [
-                null,
-                null,
+                "<value 1>",
+                "<value 2>",
               ],
               effect: "allow",
               roleName: "role_name",
@@ -67,8 +67,8 @@ let value: AIConfigs = {
                 "*",
               ],
               notActions: [
-                null,
-                null,
+                "<value 1>",
+                "<value 2>",
               ],
               effect: "allow",
               roleName: "role_name",
@@ -90,8 +90,8 @@ let value: AIConfigs = {
                 "*",
               ],
               notActions: [
-                null,
-                null,
+                "<value 1>",
+                "<value 2>",
               ],
               effect: "allow",
               roleName: "role_name",
@@ -111,8 +111,8 @@ let value: AIConfigs = {
                 "*",
               ],
               notActions: [
-                null,
-                null,
+                "<value 1>",
+                "<value 2>",
               ],
               effect: "allow",
               roleName: "role_name",
@@ -153,7 +153,10 @@ let value: AIConfigs = {
           },
           color: "color",
           comment: "comment",
+          description: "description",
+          instructions: "instructions",
           key: "key",
+          id: "_id",
           messages: [
             {
               content: "content",
@@ -182,7 +185,10 @@ let value: AIConfigs = {
           },
           color: "color",
           comment: "comment",
+          description: "description",
+          instructions: "instructions",
           key: "key",
+          id: "_id",
           messages: [
             {
               content: "content",
@@ -223,8 +229,8 @@ let value: AIConfigs = {
                 "*",
               ],
               notActions: [
-                null,
-                null,
+                "<value 1>",
+                "<value 2>",
               ],
               effect: "allow",
               roleName: "role_name",
@@ -244,8 +250,8 @@ let value: AIConfigs = {
                 "*",
               ],
               notActions: [
-                null,
-                null,
+                "<value 1>",
+                "<value 2>",
               ],
               effect: "allow",
               roleName: "role_name",
@@ -267,8 +273,8 @@ let value: AIConfigs = {
                 "*",
               ],
               notActions: [
-                null,
-                null,
+                "<value 1>",
+                "<value 2>",
               ],
               effect: "allow",
               roleName: "role_name",
@@ -288,8 +294,8 @@ let value: AIConfigs = {
                 "*",
               ],
               notActions: [
-                null,
-                null,
+                "<value 1>",
+                "<value 2>",
               ],
               effect: "allow",
               roleName: "role_name",
@@ -331,7 +337,10 @@ let value: AIConfigs = {
           },
           color: "color",
           comment: "comment",
+          description: "description",
+          instructions: "instructions",
           key: "key",
+          id: "_id",
           messages: [
             {
               content: "content",
@@ -360,7 +369,10 @@ let value: AIConfigs = {
           },
           color: "color",
           comment: "comment",
+          description: "description",
+          instructions: "instructions",
           key: "key",
+          id: "_id",
           messages: [
             {
               content: "content",

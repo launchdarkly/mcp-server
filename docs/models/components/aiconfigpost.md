@@ -19,11 +19,12 @@ let value: AIConfigPost = {
 
 ## Fields
 
-| Field               | Type                | Required            | Description         |
-| ------------------- | ------------------- | ------------------- | ------------------- |
-| `description`       | *string*            | :heavy_minus_sign:  | N/A                 |
-| `key`               | *string*            | :heavy_check_mark:  | N/A                 |
-| `maintainerId`      | *string*            | :heavy_minus_sign:  | N/A                 |
-| `maintainerTeamKey` | *string*            | :heavy_minus_sign:  | N/A                 |
-| `name`              | *string*            | :heavy_check_mark:  | N/A                 |
-| `tags`              | *string*[]          | :heavy_minus_sign:  | N/A                 |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `description`                                                              | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `key`                                                                      | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `maintainerId`                                                             | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `maintainerTeamKey`                                                        | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `mode`                                                                     | [components.AIConfigPostMode](../../models/components/aiconfigpostmode.md) | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `name`                                                                     | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `tags`                                                                     | *string*[]                                                                 | :heavy_minus_sign:                                                         | N/A                                                                        |
