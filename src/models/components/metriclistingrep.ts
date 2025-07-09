@@ -61,38 +61,44 @@ export type MetricListingRepKind = ClosedEnum<typeof MetricListingRepKind>;
 /**
  * For custom metrics, the success criteria
  */
-export const SuccessCriteria = {
+export const MetricListingRepSuccessCriteria = {
   HigherThanBaseline: "HigherThanBaseline",
   LowerThanBaseline: "LowerThanBaseline",
 } as const;
 /**
  * For custom metrics, the success criteria
  */
-export type SuccessCriteria = ClosedEnum<typeof SuccessCriteria>;
+export type MetricListingRepSuccessCriteria = ClosedEnum<
+  typeof MetricListingRepSuccessCriteria
+>;
 
 /**
  * The method by which multiple unit event values are aggregated
  */
-export const UnitAggregationType = {
+export const MetricListingRepUnitAggregationType = {
   Average: "average",
   Sum: "sum",
 } as const;
 /**
  * The method by which multiple unit event values are aggregated
  */
-export type UnitAggregationType = ClosedEnum<typeof UnitAggregationType>;
+export type MetricListingRepUnitAggregationType = ClosedEnum<
+  typeof MetricListingRepUnitAggregationType
+>;
 
 /**
  * The method for analyzing metric events
  */
-export const AnalysisType = {
+export const MetricListingRepAnalysisType = {
   Mean: "mean",
   Percentile: "percentile",
 } as const;
 /**
  * The method for analyzing metric events
  */
-export type AnalysisType = ClosedEnum<typeof AnalysisType>;
+export type MetricListingRepAnalysisType = ClosedEnum<
+  typeof MetricListingRepAnalysisType
+>;
 
 export type MetricListingRep = {
   /**
@@ -159,7 +165,7 @@ export type MetricListingRep = {
   /**
    * For custom metrics, the success criteria
    */
-  successCriteria?: SuccessCriteria | undefined;
+  successCriteria?: MetricListingRepSuccessCriteria | undefined;
   /**
    * For numeric custom metrics, the unit of measure
    */
@@ -176,11 +182,11 @@ export type MetricListingRep = {
   /**
    * The method by which multiple unit event values are aggregated
    */
-  unitAggregationType?: UnitAggregationType | undefined;
+  unitAggregationType?: MetricListingRepUnitAggregationType | undefined;
   /**
    * The method for analyzing metric events
    */
-  analysisType?: AnalysisType | undefined;
+  analysisType?: MetricListingRepAnalysisType | undefined;
   /**
    * The percentile for the analysis method. An integer denoting the target percentile between 0 and 100. Required when <code>analysisType</code> is <code>percentile</code>.
    */
@@ -210,64 +216,68 @@ export namespace MetricListingRepKind$ {
 }
 
 /** @internal */
-export const SuccessCriteria$inboundSchema: z.ZodNativeEnum<
-  typeof SuccessCriteria
-> = z.nativeEnum(SuccessCriteria);
+export const MetricListingRepSuccessCriteria$inboundSchema: z.ZodNativeEnum<
+  typeof MetricListingRepSuccessCriteria
+> = z.nativeEnum(MetricListingRepSuccessCriteria);
 
 /** @internal */
-export const SuccessCriteria$outboundSchema: z.ZodNativeEnum<
-  typeof SuccessCriteria
-> = SuccessCriteria$inboundSchema;
+export const MetricListingRepSuccessCriteria$outboundSchema: z.ZodNativeEnum<
+  typeof MetricListingRepSuccessCriteria
+> = MetricListingRepSuccessCriteria$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace SuccessCriteria$ {
-  /** @deprecated use `SuccessCriteria$inboundSchema` instead. */
-  export const inboundSchema = SuccessCriteria$inboundSchema;
-  /** @deprecated use `SuccessCriteria$outboundSchema` instead. */
-  export const outboundSchema = SuccessCriteria$outboundSchema;
+export namespace MetricListingRepSuccessCriteria$ {
+  /** @deprecated use `MetricListingRepSuccessCriteria$inboundSchema` instead. */
+  export const inboundSchema = MetricListingRepSuccessCriteria$inboundSchema;
+  /** @deprecated use `MetricListingRepSuccessCriteria$outboundSchema` instead. */
+  export const outboundSchema = MetricListingRepSuccessCriteria$outboundSchema;
 }
 
 /** @internal */
-export const UnitAggregationType$inboundSchema: z.ZodNativeEnum<
-  typeof UnitAggregationType
-> = z.nativeEnum(UnitAggregationType);
+export const MetricListingRepUnitAggregationType$inboundSchema: z.ZodNativeEnum<
+  typeof MetricListingRepUnitAggregationType
+> = z.nativeEnum(MetricListingRepUnitAggregationType);
 
 /** @internal */
-export const UnitAggregationType$outboundSchema: z.ZodNativeEnum<
-  typeof UnitAggregationType
-> = UnitAggregationType$inboundSchema;
+export const MetricListingRepUnitAggregationType$outboundSchema:
+  z.ZodNativeEnum<typeof MetricListingRepUnitAggregationType> =
+    MetricListingRepUnitAggregationType$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace UnitAggregationType$ {
-  /** @deprecated use `UnitAggregationType$inboundSchema` instead. */
-  export const inboundSchema = UnitAggregationType$inboundSchema;
-  /** @deprecated use `UnitAggregationType$outboundSchema` instead. */
-  export const outboundSchema = UnitAggregationType$outboundSchema;
+export namespace MetricListingRepUnitAggregationType$ {
+  /** @deprecated use `MetricListingRepUnitAggregationType$inboundSchema` instead. */
+  export const inboundSchema =
+    MetricListingRepUnitAggregationType$inboundSchema;
+  /** @deprecated use `MetricListingRepUnitAggregationType$outboundSchema` instead. */
+  export const outboundSchema =
+    MetricListingRepUnitAggregationType$outboundSchema;
 }
 
 /** @internal */
-export const AnalysisType$inboundSchema: z.ZodNativeEnum<typeof AnalysisType> =
-  z.nativeEnum(AnalysisType);
+export const MetricListingRepAnalysisType$inboundSchema: z.ZodNativeEnum<
+  typeof MetricListingRepAnalysisType
+> = z.nativeEnum(MetricListingRepAnalysisType);
 
 /** @internal */
-export const AnalysisType$outboundSchema: z.ZodNativeEnum<typeof AnalysisType> =
-  AnalysisType$inboundSchema;
+export const MetricListingRepAnalysisType$outboundSchema: z.ZodNativeEnum<
+  typeof MetricListingRepAnalysisType
+> = MetricListingRepAnalysisType$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace AnalysisType$ {
-  /** @deprecated use `AnalysisType$inboundSchema` instead. */
-  export const inboundSchema = AnalysisType$inboundSchema;
-  /** @deprecated use `AnalysisType$outboundSchema` instead. */
-  export const outboundSchema = AnalysisType$outboundSchema;
+export namespace MetricListingRepAnalysisType$ {
+  /** @deprecated use `MetricListingRepAnalysisType$inboundSchema` instead. */
+  export const inboundSchema = MetricListingRepAnalysisType$inboundSchema;
+  /** @deprecated use `MetricListingRepAnalysisType$outboundSchema` instead. */
+  export const outboundSchema = MetricListingRepAnalysisType$outboundSchema;
 }
 
 /** @internal */
@@ -295,13 +305,14 @@ export const MetricListingRep$inboundSchema: z.ZodType<
   description: z.string().optional(),
   category: z.string().optional(),
   isNumeric: z.boolean().optional(),
-  successCriteria: SuccessCriteria$inboundSchema.optional(),
+  successCriteria: MetricListingRepSuccessCriteria$inboundSchema.optional(),
   unit: z.string().optional(),
   eventKey: z.string().optional(),
   randomizationUnits: z.array(z.string()).optional(),
   filters: Filter$inboundSchema.optional(),
-  unitAggregationType: UnitAggregationType$inboundSchema.optional(),
-  analysisType: AnalysisType$inboundSchema.optional(),
+  unitAggregationType: MetricListingRepUnitAggregationType$inboundSchema
+    .optional(),
+  analysisType: MetricListingRepAnalysisType$inboundSchema.optional(),
   percentileValue: z.number().int().optional(),
   eventDefault: MetricEventDefaultRep$inboundSchema.optional(),
 }).transform((v) => {
@@ -374,13 +385,14 @@ export const MetricListingRep$outboundSchema: z.ZodType<
   description: z.string().optional(),
   category: z.string().optional(),
   isNumeric: z.boolean().optional(),
-  successCriteria: SuccessCriteria$outboundSchema.optional(),
+  successCriteria: MetricListingRepSuccessCriteria$outboundSchema.optional(),
   unit: z.string().optional(),
   eventKey: z.string().optional(),
   randomizationUnits: z.array(z.string()).optional(),
   filters: Filter$outboundSchema.optional(),
-  unitAggregationType: UnitAggregationType$outboundSchema.optional(),
-  analysisType: AnalysisType$outboundSchema.optional(),
+  unitAggregationType: MetricListingRepUnitAggregationType$outboundSchema
+    .optional(),
+  analysisType: MetricListingRepAnalysisType$outboundSchema.optional(),
   percentileValue: z.number().int().optional(),
   eventDefault: MetricEventDefaultRep$outboundSchema.optional(),
 }).transform((v) => {

@@ -140,6 +140,8 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 
 ### [aiConfigs](docs/sdks/aiconfigs/README.md)
 
+* [getTargeting](docs/sdks/aiconfigs/README.md#gettargeting) - Show an AI Config's targeting
+* [updateTargeting](docs/sdks/aiconfigs/README.md#updatetargeting) - Update AI Config targeting
 * [list](docs/sdks/aiconfigs/README.md#list) - List AI Configs
 * [create](docs/sdks/aiconfigs/README.md#create) - Create new AI Config
 * [delete](docs/sdks/aiconfigs/README.md#delete) - Delete AI Config

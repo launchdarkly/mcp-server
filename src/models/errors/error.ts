@@ -3,25 +3,26 @@
  */
 
 import * as z from "zod";
+import { LaunchDarklyError } from "./launchdarklyerror.js";
 
 export type ErrorTData = {
   message: string;
   code: string;
 };
 
-export class ErrorT extends Error {
+export class ErrorT extends LaunchDarklyError {
   code: string;
 
   /** The original data that was passed to this error instance. */
   data$: ErrorTData;
 
-  constructor(err: ErrorTData) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+  constructor(
+    err: ErrorTData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
     this.code = err.code;
 
     this.name = "ErrorT";
@@ -33,9 +34,16 @@ export const ErrorT$inboundSchema: z.ZodType<ErrorT, z.ZodTypeDef, unknown> = z
   .object({
     message: z.string(),
     code: z.string(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
   })
   .transform((v) => {
-    return new ErrorT(v);
+    return new ErrorT(v, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */

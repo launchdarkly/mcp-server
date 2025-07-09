@@ -19,8 +19,12 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
+  tests:
+    generateTests: true
+    generateNewTests: false
+    skipResponseBodyAssertions: false
 typescript:
-  version: 0.3.1
+  version: 0.4.0
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
@@ -34,7 +38,9 @@ typescript:
       - modelcontextprotocol
     license: MIT
   author: LaunchDarkly
+  baseErrorName: LaunchDarklyError
   clientServerStatusCodesAsErrors: true
+  constFieldsAlwaysOptional: true
   defaultErrorName: APIError
   enableCustomCodeRegions: false
   enableMCPServer: true
@@ -43,6 +49,7 @@ typescript:
   envVarPrefix: LAUNCHDARKLY
   flattenGlobalSecurity: true
   flatteningOrder: parameters-first
+  generateExamples: true
   imports:
     option: openapi
     paths:

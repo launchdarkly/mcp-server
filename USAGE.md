@@ -11,7 +11,6 @@ async function run() {
     projectKey: "<value>",
   });
 
-  // Handle the result
   console.log(result);
 }
 

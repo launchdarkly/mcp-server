@@ -9,16 +9,6 @@ let value: PatchAIConfigRequest = {
   ldAPIVersion: "beta",
   projectKey: "<value>",
   configKey: "<value>",
-  aiConfigPatch: {
-    description: "description",
-    maintainerId: "maintainerId",
-    maintainerTeamKey: "maintainerTeamKey",
-    name: "name",
-    tags: [
-      "tags",
-      "tags",
-    ],
-  },
 };
 ```
 

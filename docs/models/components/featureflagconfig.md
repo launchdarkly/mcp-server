@@ -6,46 +6,20 @@
 import { FeatureFlagConfig } from "@launchdarkly/mcp-server/models/components";
 
 let value: FeatureFlagConfig = {
-  on: false,
-  archived: false,
+  on: true,
+  archived: true,
   salt: "<value>",
   sel: "<value>",
-  lastModified: 409856,
-  version: 3,
+  lastModified: 799430,
+  version: 880588,
   site: {},
   access: {
-    denied: [
-      {
-        action: "<value>",
-        reason: {
-          resources: [
-            "proj/*:env/*;qa_*:/flag/*",
-          ],
-          actions: [
-            "*",
-          ],
-          effect: "allow",
-        },
-      },
-    ],
-    allowed: [
-      {
-        action: "<value>",
-        reason: {
-          resources: [
-            "proj/*:env/*;qa_*:/flag/*",
-          ],
-          actions: [
-            "*",
-          ],
-          effect: "allow",
-        },
-      },
-    ],
+    denied: [],
+    allowed: [],
   },
   environmentName: "<value>",
   trackEvents: false,
-  trackEventsFallthrough: false,
+  trackEventsFallthrough: true,
 };
 ```
 

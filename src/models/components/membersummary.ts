@@ -32,7 +32,7 @@ export type MemberSummary = {
    */
   lastName?: string | undefined;
   /**
-   * The member's built-in role. If the member has no custom roles, this role will be in effect.
+   * The member's base role. If the member has no additional roles, this role will be in effect.
    */
   role: string;
   /**

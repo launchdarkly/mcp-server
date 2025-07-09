@@ -8,8 +8,8 @@ import { Rollout } from "@launchdarkly/mcp-server/models/components";
 let value: Rollout = {
   variations: [
     {
-      variation: 786693,
-      weight: 96641,
+      variation: 96641,
+      weight: 669432,
     },
   ],
 };

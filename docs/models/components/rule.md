@@ -6,17 +6,8 @@
 import { Rule } from "@launchdarkly/mcp-server/models/components";
 
 let value: Rule = {
-  clauses: [
-    {
-      attribute: "<value>",
-      op: "<value>",
-      values: [
-        "<value>",
-      ],
-      negate: false,
-    },
-  ],
-  trackEvents: false,
+  clauses: [],
+  trackEvents: true,
 };
 ```
 

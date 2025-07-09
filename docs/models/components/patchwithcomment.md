@@ -6,13 +6,7 @@
 import { PatchWithComment } from "@launchdarkly/mcp-server/models/components";
 
 let value: PatchWithComment = {
-  patch: [
-    {
-      op: "replace",
-      path: "/exampleField",
-      value: "new example value",
-    },
-  ],
+  patch: [],
 };
 ```
 

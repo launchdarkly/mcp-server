@@ -11,7 +11,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Filter type. One of [contextAttribute, eventProperty, group]
  */
-export const Type = {
+export const FilterType = {
   Group: "group",
   ContextAttribute: "contextAttribute",
   EventProperty: "eventProperty",
@@ -19,13 +19,13 @@ export const Type = {
 /**
  * Filter type. One of [contextAttribute, eventProperty, group]
  */
-export type Type = ClosedEnum<typeof Type>;
+export type FilterType = ClosedEnum<typeof FilterType>;
 
 export type Filter = {
   /**
    * Filter type. One of [contextAttribute, eventProperty, group]
    */
-  type: Type;
+  type: FilterType;
   /**
    * If not a group node, the context attribute name or event property name to filter on
    */
@@ -46,29 +46,28 @@ export type Filter = {
 };
 
 /** @internal */
-export const Type$inboundSchema: z.ZodNativeEnum<typeof Type> = z.nativeEnum(
-  Type,
-);
+export const FilterType$inboundSchema: z.ZodNativeEnum<typeof FilterType> = z
+  .nativeEnum(FilterType);
 
 /** @internal */
-export const Type$outboundSchema: z.ZodNativeEnum<typeof Type> =
-  Type$inboundSchema;
+export const FilterType$outboundSchema: z.ZodNativeEnum<typeof FilterType> =
+  FilterType$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Type$ {
-  /** @deprecated use `Type$inboundSchema` instead. */
-  export const inboundSchema = Type$inboundSchema;
-  /** @deprecated use `Type$outboundSchema` instead. */
-  export const outboundSchema = Type$outboundSchema;
+export namespace FilterType$ {
+  /** @deprecated use `FilterType$inboundSchema` instead. */
+  export const inboundSchema = FilterType$inboundSchema;
+  /** @deprecated use `FilterType$outboundSchema` instead. */
+  export const outboundSchema = FilterType$outboundSchema;
 }
 
 /** @internal */
 export const Filter$inboundSchema: z.ZodType<Filter, z.ZodTypeDef, unknown> = z
   .object({
-    type: Type$inboundSchema,
+    type: FilterType$inboundSchema,
     attribute: z.string().optional(),
     op: z.string(),
     values: z.array(z.any()),
@@ -92,7 +91,7 @@ export const Filter$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Filter
 > = z.object({
-  type: Type$outboundSchema,
+  type: FilterType$outboundSchema,
   attribute: z.string().optional(),
   op: z.string(),
   values: z.array(z.any()),

@@ -9,9 +9,9 @@ let value: Clause = {
   attribute: "<value>",
   op: "<value>",
   values: [
-    "<value>",
+    "<value 1>",
   ],
-  negate: false,
+  negate: true,
 };
 ```
 

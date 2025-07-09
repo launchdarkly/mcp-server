@@ -8,13 +8,13 @@ import { FlagSummary } from "@launchdarkly/mcp-server/models/components";
 let value: FlagSummary = {
   variations: {
     "key": {
-      rules: 927330,
-      nullRules: 389323,
-      targets: 584680,
-      contextTargets: 912315,
+      rules: 389323,
+      nullRules: 584680,
+      targets: 912315,
+      contextTargets: 420202,
     },
   },
-  prerequisites: 420202,
+  prerequisites: 668834,
 };
 ```
 

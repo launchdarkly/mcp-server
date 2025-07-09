@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod";
+import { LaunchDarklyError } from "./launchdarklyerror.js";
 
 export type NotFoundErrorRepData = {
   /**
@@ -15,7 +16,7 @@ export type NotFoundErrorRepData = {
   message: string;
 };
 
-export class NotFoundErrorRep extends Error {
+export class NotFoundErrorRep extends LaunchDarklyError {
   /**
    * Specific error code encountered
    */
@@ -24,13 +25,13 @@ export class NotFoundErrorRep extends Error {
   /** The original data that was passed to this error instance. */
   data$: NotFoundErrorRepData;
 
-  constructor(err: NotFoundErrorRepData) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+  constructor(
+    err: NotFoundErrorRepData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
     this.code = err.code;
 
     this.name = "NotFoundErrorRep";
@@ -45,9 +46,16 @@ export const NotFoundErrorRep$inboundSchema: z.ZodType<
 > = z.object({
   code: z.string(),
   message: z.string(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
-    return new NotFoundErrorRep(v);
+    return new NotFoundErrorRep(v, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */

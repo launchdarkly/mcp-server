@@ -27,37 +27,11 @@ let value: LegacyExperimentRep = {
       },
     },
     access: {
-      denied: [
-        {
-          action: "<value>",
-          reason: {
-            resources: [
-              "proj/*:env/*;qa_*:/flag/*",
-            ],
-            actions: [
-              "*",
-            ],
-            effect: "allow",
-          },
-        },
-      ],
-      allowed: [
-        {
-          action: "<value>",
-          reason: {
-            resources: [
-              "proj/*:env/*;qa_*:/flag/*",
-            ],
-            actions: [
-              "*",
-            ],
-            effect: "allow",
-          },
-        },
-      ],
+      denied: [],
+      allowed: [],
     },
     tags: [],
-    creationDate: 324431,
+    creationDate: 522106,
     lastModified: {
       date: new Date("2021-08-05T19:46:31.148082Z"),
     },

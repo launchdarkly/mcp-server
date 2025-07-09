@@ -16,15 +16,23 @@ import {
 export type AIConfigVariationPostModel = {};
 
 export type AIConfigVariationPost = {
-  key: string;
-  messages: Array<Message>;
-  model: AIConfigVariationPostModel;
-  name: string;
-  modelConfigKey?: string | undefined;
   /**
    * Human-readable description of this variation
    */
   comment?: string | undefined;
+  /**
+   * Returns the description for the agent. This is only returned for agent variations.
+   */
+  description?: string | undefined;
+  /**
+   * Returns the instructions for the agent. This is only returned for agent variations.
+   */
+  instructions?: string | undefined;
+  key: string;
+  messages: Array<Message>;
+  model?: AIConfigVariationPostModel | undefined;
+  name: string;
+  modelConfigKey?: string | undefined;
 };
 
 /** @internal */
@@ -81,22 +89,26 @@ export const AIConfigVariationPost$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  comment: z.string().optional(),
+  description: z.string().optional(),
+  instructions: z.string().optional(),
   key: z.string(),
   messages: z.array(Message$inboundSchema),
-  model: z.lazy(() => AIConfigVariationPostModel$inboundSchema),
+  model: z.lazy(() => AIConfigVariationPostModel$inboundSchema).optional(),
   name: z.string(),
   modelConfigKey: z.string().optional(),
-  comment: z.string().optional(),
 });
 
 /** @internal */
 export type AIConfigVariationPost$Outbound = {
+  comment?: string | undefined;
+  description?: string | undefined;
+  instructions?: string | undefined;
   key: string;
   messages: Array<Message$Outbound>;
-  model: AIConfigVariationPostModel$Outbound;
+  model?: AIConfigVariationPostModel$Outbound | undefined;
   name: string;
   modelConfigKey?: string | undefined;
-  comment?: string | undefined;
 };
 
 /** @internal */
@@ -105,12 +117,14 @@ export const AIConfigVariationPost$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AIConfigVariationPost
 > = z.object({
+  comment: z.string().optional(),
+  description: z.string().optional(),
+  instructions: z.string().optional(),
   key: z.string(),
   messages: z.array(Message$outboundSchema),
-  model: z.lazy(() => AIConfigVariationPostModel$outboundSchema),
+  model: z.lazy(() => AIConfigVariationPostModel$outboundSchema).optional(),
   name: z.string(),
   modelConfigKey: z.string().optional(),
-  comment: z.string().optional(),
 });
 
 /**

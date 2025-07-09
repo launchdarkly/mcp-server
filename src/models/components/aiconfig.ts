@@ -5,6 +5,7 @@
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
+import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
@@ -32,6 +33,12 @@ import {
   ParentAndSelfLinks$outboundSchema,
 } from "./parentandselflinks.js";
 
+export const AIConfigMode = {
+  Agent: "agent",
+  Completion: "completion",
+} as const;
+export type AIConfigMode = ClosedEnum<typeof AIConfigMode>;
+
 export type AIConfig = {
   access?: AiConfigsAccess | undefined;
   /**
@@ -41,6 +48,7 @@ export type AIConfig = {
   description: string;
   key: string;
   maintainer?: AIConfigMaintainer | undefined;
+  mode?: AIConfigMode | undefined;
   name: string;
   tags: Array<string>;
   version: number;
@@ -48,6 +56,25 @@ export type AIConfig = {
   createdAt: number;
   updatedAt: number;
 };
+
+/** @internal */
+export const AIConfigMode$inboundSchema: z.ZodNativeEnum<typeof AIConfigMode> =
+  z.nativeEnum(AIConfigMode);
+
+/** @internal */
+export const AIConfigMode$outboundSchema: z.ZodNativeEnum<typeof AIConfigMode> =
+  AIConfigMode$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace AIConfigMode$ {
+  /** @deprecated use `AIConfigMode$inboundSchema` instead. */
+  export const inboundSchema = AIConfigMode$inboundSchema;
+  /** @deprecated use `AIConfigMode$outboundSchema` instead. */
+  export const outboundSchema = AIConfigMode$outboundSchema;
+}
 
 /** @internal */
 export const AIConfig$inboundSchema: z.ZodType<
@@ -60,6 +87,7 @@ export const AIConfig$inboundSchema: z.ZodType<
   description: z.string(),
   key: z.string(),
   _maintainer: AIConfigMaintainer$inboundSchema.optional(),
+  mode: AIConfigMode$inboundSchema.default("completion"),
   name: z.string(),
   tags: z.array(z.string()),
   version: z.number().int(),
@@ -81,6 +109,7 @@ export type AIConfig$Outbound = {
   description: string;
   key: string;
   _maintainer?: AIConfigMaintainer$Outbound | undefined;
+  mode: string;
   name: string;
   tags: Array<string>;
   version: number;
@@ -100,6 +129,7 @@ export const AIConfig$outboundSchema: z.ZodType<
   description: z.string(),
   key: z.string(),
   maintainer: AIConfigMaintainer$outboundSchema.optional(),
+  mode: AIConfigMode$outboundSchema.default("completion"),
   name: z.string(),
   tags: z.array(z.string()),
   version: z.number().int(),
