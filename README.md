@@ -122,6 +122,28 @@ Then, configure your server definition to reference your local clone. For exampl
 }
 ```
 
+### Installation steps for Docker
+
+If installing the MCP server from the AWS Markeplace, pull the image using an authenticated role using the provided instructions in the marketplace listing.
+
+To run the container:
+
+```bash
+docker run --rm -p 8080:8080 709825985650.dkr.ecr.us-east-1.amazonaws.com/launchdarkly/mcp --api-key api-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx 
+```
+
+Then, configure your server definition to reference your local clone. For example:
+
+```json
+{
+  "mcpServers": {
+    "launchdarkly": {
+      "url": "http://localhost:8080/sse"
+    }
+  }
+}
+```
+
 <!-- Start Requirements [requirements] -->
 ## Requirements
 
