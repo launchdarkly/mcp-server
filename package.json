@@ -1,6 +1,6 @@
 {
   "name": "@launchdarkly/mcp-server",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "author": "LaunchDarkly",
   "keywords": [
     "feature-flags",
@@ -42,7 +42,7 @@
   },
   "peerDependencies": {
     "@modelcontextprotocol/sdk": ">=1.5.0 <1.10.0",
-    "zod": ">= 3"
+    "zod": "^3"
   },
   "peerDependenciesMeta": {
     "@modelcontextprotocol/sdk": {
