@@ -152,14 +152,22 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 * [getVariation](docs/sdks/aiconfigs/README.md#getvariation) - Get AI Config variation
 * [updateVariation](docs/sdks/aiconfigs/README.md#updatevariation) - Update AI Config variation
 
+### [codeReferences](docs/sdks/codereferences/README.md)
+
+* [listRepositories](docs/sdks/codereferences/README.md#listrepositories) - List repositories
+
+### [environments](docs/sdks/environments/README.md)
+
+* [listByProject](docs/sdks/environments/README.md#listbyproject) - List environments
+
 ### [featureFlags](docs/sdks/featureflags/README.md)
 
+* [getStatus](docs/sdks/featureflags/README.md#getstatus) - Get flag status across environments
 * [list](docs/sdks/featureflags/README.md#list) - List feature flags
 * [create](docs/sdks/featureflags/README.md#create) - Create a feature flag
 * [get](docs/sdks/featureflags/README.md#get) - Get feature flag
 * [patch](docs/sdks/featureflags/README.md#patch) - Update feature flag
 * [delete](docs/sdks/featureflags/README.md#delete) - Delete feature flag
-
 
 </details>
 <!-- End Available Resources and Operations [operations] -->

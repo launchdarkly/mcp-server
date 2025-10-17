@@ -14,8 +14,8 @@ import {
 } from "./aiconfigtargetingvariationjson.js";
 
 export type AIConfigTargetingVariationValue =
-  | AIConfigTargetingVariationJSON
   | boolean
+  | AIConfigTargetingVariationJSON
   | number
   | string;
 
@@ -25,16 +25,16 @@ export const AIConfigTargetingVariationValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  AIConfigTargetingVariationJSON$inboundSchema,
   z.boolean(),
+  AIConfigTargetingVariationJSON$inboundSchema,
   z.number(),
   z.string(),
 ]);
 
 /** @internal */
 export type AIConfigTargetingVariationValue$Outbound =
-  | AIConfigTargetingVariationJSON$Outbound
   | boolean
+  | AIConfigTargetingVariationJSON$Outbound
   | number
   | string;
 
@@ -44,8 +44,8 @@ export const AIConfigTargetingVariationValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AIConfigTargetingVariationValue
 > = z.union([
-  AIConfigTargetingVariationJSON$outboundSchema,
   z.boolean(),
+  AIConfigTargetingVariationJSON$outboundSchema,
   z.number(),
   z.string(),
 ]);

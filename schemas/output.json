@@ -2683,7 +2683,14 @@
           }
         ],
         "operationId": "getRepositories",
-        "x-speakeasy-ignore": true,
+        "x-speakeasy-mcp": {
+          "description": "Retrieves a lightweight list of repositories that reference specific flags. Helps agents determine cleanup scope and identify multi-repo flag usage.\n",
+          "disabled": false,
+          "name": "get-code-references",
+          "scopes": [
+            "read"
+          ]
+        },
         "x-speakeasy-group": "codeReferences",
         "x-speakeasy-name-override": "listRepositories"
       },
@@ -4801,7 +4808,14 @@
           }
         ],
         "operationId": "getFeatureFlagStatusAcrossEnvironments",
-        "x-speakeasy-ignore": true,
+        "x-speakeasy-mcp": {
+          "description": "Retrieves the lifecycle status of a feature flag across all environments, including usage patterns, evaluation counts, and stability indicators. Essential for determining flag removal readiness based on actual production data.\n",
+          "disabled": false,
+          "name": "get-flag-status-across-environments",
+          "scopes": [
+            "read"
+          ]
+        },
         "x-speakeasy-group": "featureFlags",
         "x-speakeasy-name-override": "getStatus"
       }
@@ -12512,7 +12526,14 @@
           }
         ],
         "operationId": "getEnvironmentsByProject",
-        "x-speakeasy-ignore": true,
+        "x-speakeasy-mcp": {
+          "description": "Retrieves all environments in a project and identifies which are marked as critical. Enables agents to programmatically determine which environments require consistent flag behavior for safe removal.\n",
+          "disabled": false,
+          "name": "get-environments",
+          "scopes": [
+            "read"
+          ]
+        },
         "x-speakeasy-name-override": "listByProject"
       },
       "post": {

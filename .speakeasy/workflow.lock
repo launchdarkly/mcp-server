@@ -1,21 +1,20 @@
-speakeasyVersion: 1.580.0
+speakeasyVersion: 1.637.0
 sources:
     LaunchDarkly REST API:
         sourceNamespace: launchdarkly-rest-api
-        sourceRevisionDigest: sha256:667150cae7854e824a91a3ea68fc1e92bdfa475bdc24a89722778a0493d53b4f
-        sourceBlobDigest: sha256:2a2d6840880d11e156b354f916820df9b75048fe92fda6203ee6d0aaf0f21227
+        sourceRevisionDigest: sha256:2db3b7b6a602d6fb3a6373a96301d8b9bfb6d4e1a13055e7455bd806f6c6f0d0
+        sourceBlobDigest: sha256:07fe7737f0e3bd1fb55248ce8159ce147184075cd36793687677e16f3d0eca04
         tags:
             - latest
-            - speakeasy-sdk-regen-1752019878
             - "2.0"
 targets:
     launchdarkly-mcp-server:
         source: LaunchDarkly REST API
         sourceNamespace: launchdarkly-rest-api
-        sourceRevisionDigest: sha256:667150cae7854e824a91a3ea68fc1e92bdfa475bdc24a89722778a0493d53b4f
-        sourceBlobDigest: sha256:2a2d6840880d11e156b354f916820df9b75048fe92fda6203ee6d0aaf0f21227
+        sourceRevisionDigest: sha256:2db3b7b6a602d6fb3a6373a96301d8b9bfb6d4e1a13055e7455bd806f6c6f0d0
+        sourceBlobDigest: sha256:07fe7737f0e3bd1fb55248ce8159ce147184075cd36793687677e16f3d0eca04
         codeSamplesNamespace: launchdarkly-rest-api-typescript-code-samples
-        codeSamplesRevisionDigest: sha256:7088f7fcad1698616ec4a48146b51f644af8dacef407aa1e013db650dd42e42b
+        codeSamplesRevisionDigest: sha256:cbb7edd595888f46d13195a79ca2698a5cab5bbb30a27054db9c290c40638dda
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
