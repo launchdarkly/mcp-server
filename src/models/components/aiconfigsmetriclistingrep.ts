@@ -33,6 +33,12 @@ import {
   AiConfigsMemberSummary$outboundSchema,
 } from "./aiconfigsmembersummary.js";
 import {
+  AiConfigsMetricDataSourceRefRep,
+  AiConfigsMetricDataSourceRefRep$inboundSchema,
+  AiConfigsMetricDataSourceRefRep$Outbound,
+  AiConfigsMetricDataSourceRefRep$outboundSchema,
+} from "./aiconfigsmetricdatasourcerefrep.js";
+import {
   AiConfigsMetricEventDefaultRep,
   AiConfigsMetricEventDefaultRep$inboundSchema,
   AiConfigsMetricEventDefaultRep$Outbound,
@@ -116,6 +122,14 @@ export type AiConfigsMetricListingRep = {
    */
   guardedRolloutCount?: number | undefined;
   /**
+   * The number of active experiments using this metric
+   */
+  activeExperimentCount?: number | undefined;
+  /**
+   * The number of active guarded rollouts using this metric
+   */
+  activeGuardedRolloutCount?: number | undefined;
+  /**
    * The ID of this metric
    */
   id: string;
@@ -123,6 +137,10 @@ export type AiConfigsMetricListingRep = {
    * The version ID of the metric
    */
   versionId: string;
+  /**
+   * Version of the metric
+   */
+  version?: number | undefined;
   /**
    * A unique key to reference the metric
    */
@@ -200,6 +218,17 @@ export type AiConfigsMetricListingRep = {
    */
   percentileValue?: number | undefined;
   eventDefault?: AiConfigsMetricEventDefaultRep | undefined;
+  dataSource?: AiConfigsMetricDataSourceRefRep | undefined;
+  /**
+   * Whether the metric version is archived
+   */
+  archived?: boolean | undefined;
+  archivedAt?: number | undefined;
+  /**
+   * For click metrics, the CSS selectors
+   */
+  selector?: string | undefined;
+  urls?: Array<{ [k: string]: any }> | undefined;
 };
 
 /** @internal */
@@ -302,8 +331,11 @@ export const AiConfigsMetricListingRep$inboundSchema: z.ZodType<
   experimentCount: z.number().int().optional(),
   metricGroupCount: z.number().int().optional(),
   guardedRolloutCount: z.number().int().optional(),
+  activeExperimentCount: z.number().int().optional(),
+  activeGuardedRolloutCount: z.number().int().optional(),
   _id: z.string(),
   _versionId: z.string(),
+  _version: z.number().int().optional(),
   key: z.string(),
   name: z.string(),
   kind: AiConfigsMetricListingRepKind$inboundSchema,
@@ -330,10 +362,16 @@ export const AiConfigsMetricListingRep$inboundSchema: z.ZodType<
   analysisType: AiConfigsMetricListingRepAnalysisType$inboundSchema.optional(),
   percentileValue: z.number().int().optional(),
   eventDefault: AiConfigsMetricEventDefaultRep$inboundSchema.optional(),
+  dataSource: AiConfigsMetricDataSourceRefRep$inboundSchema.optional(),
+  archived: z.boolean().optional(),
+  archivedAt: z.number().int().optional(),
+  selector: z.string().optional(),
+  urls: z.array(z.record(z.any())).optional(),
 }).transform((v) => {
   return remap$(v, {
     "_id": "id",
     "_versionId": "versionId",
+    "_version": "version",
     "_attachedFlagCount": "attachedFlagCount",
     "_links": "links",
     "_site": "site",
@@ -348,8 +386,11 @@ export type AiConfigsMetricListingRep$Outbound = {
   experimentCount?: number | undefined;
   metricGroupCount?: number | undefined;
   guardedRolloutCount?: number | undefined;
+  activeExperimentCount?: number | undefined;
+  activeGuardedRolloutCount?: number | undefined;
   _id: string;
   _versionId: string;
+  _version?: number | undefined;
   key: string;
   name: string;
   kind: string;
@@ -374,6 +415,11 @@ export type AiConfigsMetricListingRep$Outbound = {
   analysisType?: string | undefined;
   percentileValue?: number | undefined;
   eventDefault?: AiConfigsMetricEventDefaultRep$Outbound | undefined;
+  dataSource?: AiConfigsMetricDataSourceRefRep$Outbound | undefined;
+  archived?: boolean | undefined;
+  archivedAt?: number | undefined;
+  selector?: string | undefined;
+  urls?: Array<{ [k: string]: any }> | undefined;
 };
 
 /** @internal */
@@ -385,8 +431,11 @@ export const AiConfigsMetricListingRep$outboundSchema: z.ZodType<
   experimentCount: z.number().int().optional(),
   metricGroupCount: z.number().int().optional(),
   guardedRolloutCount: z.number().int().optional(),
+  activeExperimentCount: z.number().int().optional(),
+  activeGuardedRolloutCount: z.number().int().optional(),
   id: z.string(),
   versionId: z.string(),
+  version: z.number().int().optional(),
   key: z.string(),
   name: z.string(),
   kind: AiConfigsMetricListingRepKind$outboundSchema,
@@ -413,10 +462,16 @@ export const AiConfigsMetricListingRep$outboundSchema: z.ZodType<
   analysisType: AiConfigsMetricListingRepAnalysisType$outboundSchema.optional(),
   percentileValue: z.number().int().optional(),
   eventDefault: AiConfigsMetricEventDefaultRep$outboundSchema.optional(),
+  dataSource: AiConfigsMetricDataSourceRefRep$outboundSchema.optional(),
+  archived: z.boolean().optional(),
+  archivedAt: z.number().int().optional(),
+  selector: z.string().optional(),
+  urls: z.array(z.record(z.any())).optional(),
 }).transform((v) => {
   return remap$(v, {
     id: "_id",
     versionId: "_versionId",
+    version: "_version",
     attachedFlagCount: "_attachedFlagCount",
     links: "_links",
     site: "_site",

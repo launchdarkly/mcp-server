@@ -175,6 +175,32 @@ let value: AIConfigs = {
           state: "state",
           archivedAt: 5,
           publishedAt: 5,
+          tools: [
+            {
+              key: "key",
+              version: 2,
+            },
+            {
+              key: "key",
+              version: 2,
+            },
+          ],
+          judgeConfiguration: {
+            judges: [
+              {
+                judgeConfigKey: "judgeConfigKey",
+                samplingRate: 0.7061401,
+              },
+              {
+                judgeConfigKey: "judgeConfigKey",
+                samplingRate: 0.7061401,
+              },
+            ],
+          },
+          judgingConfigKeys: [
+            "judgingConfigKeys",
+            "judgingConfigKeys",
+          ],
         },
         {
           links: {
@@ -207,10 +233,36 @@ let value: AIConfigs = {
           state: "state",
           archivedAt: 5,
           publishedAt: 5,
+          tools: [
+            {
+              key: "key",
+              version: 2,
+            },
+            {
+              key: "key",
+              version: 2,
+            },
+          ],
+          judgeConfiguration: {
+            judges: [
+              {
+                judgeConfigKey: "judgeConfigKey",
+                samplingRate: 0.7061401,
+              },
+              {
+                judgeConfigKey: "judgeConfigKey",
+                samplingRate: 0.7061401,
+              },
+            ],
+          },
+          judgingConfigKeys: [
+            "judgingConfigKeys",
+            "judgingConfigKeys",
+          ],
         },
       ],
-      createdAt: 2,
-      updatedAt: 7,
+      createdAt: 9,
+      updatedAt: 3,
     },
     {
       access: {
@@ -359,6 +411,32 @@ let value: AIConfigs = {
           state: "state",
           archivedAt: 5,
           publishedAt: 5,
+          tools: [
+            {
+              key: "key",
+              version: 2,
+            },
+            {
+              key: "key",
+              version: 2,
+            },
+          ],
+          judgeConfiguration: {
+            judges: [
+              {
+                judgeConfigKey: "judgeConfigKey",
+                samplingRate: 0.7061401,
+              },
+              {
+                judgeConfigKey: "judgeConfigKey",
+                samplingRate: 0.7061401,
+              },
+            ],
+          },
+          judgingConfigKeys: [
+            "judgingConfigKeys",
+            "judgingConfigKeys",
+          ],
         },
         {
           links: {
@@ -391,13 +469,39 @@ let value: AIConfigs = {
           state: "state",
           archivedAt: 5,
           publishedAt: 5,
+          tools: [
+            {
+              key: "key",
+              version: 2,
+            },
+            {
+              key: "key",
+              version: 2,
+            },
+          ],
+          judgeConfiguration: {
+            judges: [
+              {
+                judgeConfigKey: "judgeConfigKey",
+                samplingRate: 0.7061401,
+              },
+              {
+                judgeConfigKey: "judgeConfigKey",
+                samplingRate: 0.7061401,
+              },
+            ],
+          },
+          judgingConfigKeys: [
+            "judgingConfigKeys",
+            "judgingConfigKeys",
+          ],
         },
       ],
-      createdAt: 2,
-      updatedAt: 7,
+      createdAt: 9,
+      updatedAt: 3,
     },
   ],
-  totalCount: 9,
+  totalCount: 2,
 };
 ```
 

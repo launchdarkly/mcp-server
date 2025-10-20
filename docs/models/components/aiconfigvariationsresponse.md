@@ -38,6 +38,32 @@ let value: AIConfigVariationsResponse = {
       state: "state",
       archivedAt: 5,
       publishedAt: 5,
+      tools: [
+        {
+          key: "key",
+          version: 2,
+        },
+        {
+          key: "key",
+          version: 2,
+        },
+      ],
+      judgeConfiguration: {
+        judges: [
+          {
+            judgeConfigKey: "judgeConfigKey",
+            samplingRate: 0.7061401,
+          },
+          {
+            judgeConfigKey: "judgeConfigKey",
+            samplingRate: 0.7061401,
+          },
+        ],
+      },
+      judgingConfigKeys: [
+        "judgingConfigKeys",
+        "judgingConfigKeys",
+      ],
     },
     {
       links: {
@@ -70,6 +96,32 @@ let value: AIConfigVariationsResponse = {
       state: "state",
       archivedAt: 5,
       publishedAt: 5,
+      tools: [
+        {
+          key: "key",
+          version: 2,
+        },
+        {
+          key: "key",
+          version: 2,
+        },
+      ],
+      judgeConfiguration: {
+        judges: [
+          {
+            judgeConfigKey: "judgeConfigKey",
+            samplingRate: 0.7061401,
+          },
+          {
+            judgeConfigKey: "judgeConfigKey",
+            samplingRate: 0.7061401,
+          },
+        ],
+      },
+      judgingConfigKeys: [
+        "judgingConfigKeys",
+        "judgingConfigKeys",
+      ],
     },
   ],
   totalCount: 0,

@@ -1240,6 +1240,32 @@ async function run() {
       model: {},
       name: "name",
       modelConfigKey: "modelConfigKey",
+      tools: [
+        {
+          key: "key",
+          version: 0,
+        },
+        {
+          key: "key",
+          version: 0,
+        },
+      ],
+      toolKeys: [
+        "toolKeys",
+        "toolKeys",
+      ],
+      judgeConfiguration: {
+        judges: [
+          {
+            judgeConfigKey: "judgeConfigKey",
+            samplingRate: 0.7061401,
+          },
+          {
+            judgeConfigKey: "judgeConfigKey",
+            samplingRate: 0.7061401,
+          },
+        ],
+      },
     },
   });
 
@@ -1286,6 +1312,32 @@ async function run() {
       model: {},
       name: "name",
       modelConfigKey: "modelConfigKey",
+      tools: [
+        {
+          key: "key",
+          version: 0,
+        },
+        {
+          key: "key",
+          version: 0,
+        },
+      ],
+      toolKeys: [
+        "toolKeys",
+        "toolKeys",
+      ],
+      judgeConfiguration: {
+        judges: [
+          {
+            judgeConfigKey: "judgeConfigKey",
+            samplingRate: 0.7061401,
+          },
+          {
+            judgeConfigKey: "judgeConfigKey",
+            samplingRate: 0.7061401,
+          },
+        ],
+      },
     },
   });
   if (res.ok) {
@@ -1533,6 +1585,32 @@ async function run() {
       name: "name",
       published: true,
       state: "state",
+      tools: [
+        {
+          key: "key",
+          version: 0,
+        },
+        {
+          key: "key",
+          version: 0,
+        },
+      ],
+      toolKeys: [
+        "toolKeys",
+        "toolKeys",
+      ],
+      judgeConfiguration: {
+        judges: [
+          {
+            judgeConfigKey: "judgeConfigKey",
+            samplingRate: 0.7061401,
+          },
+          {
+            judgeConfigKey: "judgeConfigKey",
+            samplingRate: 0.7061401,
+          },
+        ],
+      },
     },
   });
 
@@ -1581,6 +1659,32 @@ async function run() {
       name: "name",
       published: true,
       state: "state",
+      tools: [
+        {
+          key: "key",
+          version: 0,
+        },
+        {
+          key: "key",
+          version: 0,
+        },
+      ],
+      toolKeys: [
+        "toolKeys",
+        "toolKeys",
+      ],
+      judgeConfiguration: {
+        judges: [
+          {
+            judgeConfigKey: "judgeConfigKey",
+            samplingRate: 0.7061401,
+          },
+          {
+            judgeConfigKey: "judgeConfigKey",
+            samplingRate: 0.7061401,
+          },
+        ],
+      },
     },
   });
   if (res.ok) {

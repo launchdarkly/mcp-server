@@ -5,11 +5,11 @@
 ```typescript
 import { AIConfigMode } from "@launchdarkly/mcp-server/models/components";
 
-let value: AIConfigMode = "completion";
+let value: AIConfigMode = "judge";
 ```
 
 ## Values
 
 ```typescript
-"agent" | "completion"
+"agent" | "completion" | "judge"
 ```

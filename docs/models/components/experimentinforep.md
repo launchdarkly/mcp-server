@@ -13,8 +13,11 @@ let value: ExperimentInfoRep = {
       metric: {
         experimentCount: 0,
         metricGroupCount: 0,
+        activeExperimentCount: 2,
+        activeGuardedRolloutCount: 1,
         id: "5902deadbeef667524a01290",
         versionId: "version-id-123abc",
+        version: 1,
         key: "metric-key-123abc",
         name: "My metric",
         kind: "custom",

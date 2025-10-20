@@ -11,6 +11,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 export const AIConfigPostMode = {
   Agent: "agent",
   Completion: "completion",
+  Judge: "judge",
 } as const;
 export type AIConfigPostMode = ClosedEnum<typeof AIConfigPostMode>;
 

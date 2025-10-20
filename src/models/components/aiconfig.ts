@@ -36,6 +36,7 @@ import {
 export const AIConfigMode = {
   Agent: "agent",
   Completion: "completion",
+  Judge: "judge",
 } as const;
 export type AIConfigMode = ClosedEnum<typeof AIConfigMode>;
 

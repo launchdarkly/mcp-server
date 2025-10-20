@@ -11,5 +11,5 @@ let value: AIConfigPostMode = "agent";
 ## Values
 
 ```typescript
-"agent" | "completion"
+"agent" | "completion" | "judge"
 ```

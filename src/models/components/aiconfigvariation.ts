@@ -8,6 +8,12 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  JudgeConfiguration,
+  JudgeConfiguration$inboundSchema,
+  JudgeConfiguration$Outbound,
+  JudgeConfiguration$outboundSchema,
+} from "./judgeconfiguration.js";
+import {
   Message,
   Message$inboundSchema,
   Message$Outbound,
@@ -19,6 +25,12 @@ import {
   ParentLink$Outbound,
   ParentLink$outboundSchema,
 } from "./parentlink.js";
+import {
+  VariationTool,
+  VariationTool$inboundSchema,
+  VariationTool$Outbound,
+  VariationTool$outboundSchema,
+} from "./variationtool.js";
 
 export type AIConfigVariationModel = {};
 
@@ -45,6 +57,9 @@ export type AIConfigVariation = {
   state?: string | undefined;
   archivedAt?: number | undefined;
   publishedAt?: number | undefined;
+  tools?: Array<VariationTool> | undefined;
+  judgeConfiguration?: JudgeConfiguration | undefined;
+  judgingConfigKeys?: Array<string> | undefined;
 };
 
 /** @internal */
@@ -117,6 +132,9 @@ export const AIConfigVariation$inboundSchema: z.ZodType<
   state: z.string().optional(),
   _archivedAt: z.number().int().optional(),
   _publishedAt: z.number().int().optional(),
+  tools: z.array(VariationTool$inboundSchema).optional(),
+  judgeConfiguration: JudgeConfiguration$inboundSchema.optional(),
+  judgingConfigKeys: z.array(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "_links": "links",
@@ -144,6 +162,9 @@ export type AIConfigVariation$Outbound = {
   state?: string | undefined;
   _archivedAt?: number | undefined;
   _publishedAt?: number | undefined;
+  tools?: Array<VariationTool$Outbound> | undefined;
+  judgeConfiguration?: JudgeConfiguration$Outbound | undefined;
+  judgingConfigKeys?: Array<string> | undefined;
 };
 
 /** @internal */
@@ -168,6 +189,9 @@ export const AIConfigVariation$outboundSchema: z.ZodType<
   state: z.string().optional(),
   archivedAt: z.number().int().optional(),
   publishedAt: z.number().int().optional(),
+  tools: z.array(VariationTool$outboundSchema).optional(),
+  judgeConfiguration: JudgeConfiguration$outboundSchema.optional(),
+  judgingConfigKeys: z.array(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     links: "_links",
