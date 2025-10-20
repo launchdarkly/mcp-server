@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: cc3a5766-8b39-40da-a0be-fff57173d8e1
 management:
-  docChecksum: 2e0929fc035a4d91d9fbf708633ca988
+  docChecksum: 0372014a029d3ca9b9ac775262de6c3c
   docVersion: "2.0"
   speakeasyVersion: 1.580.0
   generationVersion: 2.654.2
-  releaseVersion: 0.4.0
-  configChecksum: 941cd2dd2f7c5a28dd935c935f7e8ac2
+  releaseVersion: 0.4.1
+  configChecksum: ba03e6d279042b1bd9d661581831a3a7
   repoURL: https://github.com/launchdarkly/mcp-server.git
   installationURL: https://github.com/launchdarkly/mcp-server
   published: true
@@ -100,12 +100,16 @@ generatedFiles:
   - docs/models/components/aiconfigvariationpost.md
   - docs/models/components/aiconfigvariationpostmodel.md
   - docs/models/components/aiconfigvariationsresponse.md
+  - docs/models/components/approvalsettings.md
+  - docs/models/components/branchrep.md
   - docs/models/components/clause.md
   - docs/models/components/clientsideavailability.md
   - docs/models/components/clientsideavailabilitypost.md
   - docs/models/components/corelink.md
   - docs/models/components/customproperty.md
   - docs/models/components/defaults.md
+  - docs/models/components/environment.md
+  - docs/models/components/environments.md
   - docs/models/components/experimentallocationrep.md
   - docs/models/components/experimentenabledperiodrep.md
   - docs/models/components/experimentenvironmentsettingrep.md
@@ -115,6 +119,8 @@ generatedFiles:
   - docs/models/components/featureflagconfig.md
   - docs/models/components/featureflagkind.md
   - docs/models/components/featureflags.md
+  - docs/models/components/featureflagstatus.md
+  - docs/models/components/featureflagstatusacrossenvironments.md
   - docs/models/components/filter.md
   - docs/models/components/filtertype.md
   - docs/models/components/flagconfigevaluation.md
@@ -122,6 +128,7 @@ generatedFiles:
   - docs/models/components/flagmigrationsettingsrep.md
   - docs/models/components/flagprerequisitepost.md
   - docs/models/components/flagsummary.md
+  - docs/models/components/hunkrep.md
   - docs/models/components/legacyexperimentrep.md
   - docs/models/components/link.md
   - docs/models/components/maintainermember.md
@@ -136,6 +143,7 @@ generatedFiles:
   - docs/models/components/metriclistingrepunitaggregationtype.md
   - docs/models/components/migrationsettingspost.md
   - docs/models/components/modification.md
+  - docs/models/components/name.md
   - docs/models/components/paginatedlinks.md
   - docs/models/components/parentandselflinks.md
   - docs/models/components/parentlink.md
@@ -143,6 +151,10 @@ generatedFiles:
   - docs/models/components/patchwithcomment.md
   - docs/models/components/prerequisite.md
   - docs/models/components/purpose.md
+  - docs/models/components/referencerep.md
+  - docs/models/components/repositorycollectionrep.md
+  - docs/models/components/repositoryrep.md
+  - docs/models/components/repositoryreptype.md
   - docs/models/components/rollout.md
   - docs/models/components/rule.md
   - docs/models/components/security.md
@@ -172,8 +184,11 @@ generatedFiles:
   - docs/models/operations/getaiconfigtargetingrequest.md
   - docs/models/operations/getaiconfigvariationldapiversion.md
   - docs/models/operations/getaiconfigvariationrequest.md
+  - docs/models/operations/getenvironmentsbyprojectrequest.md
   - docs/models/operations/getfeatureflagrequest.md
   - docs/models/operations/getfeatureflagsrequest.md
+  - docs/models/operations/getfeatureflagstatusacrossenvironmentsrequest.md
+  - docs/models/operations/getrepositoriesrequest.md
   - docs/models/operations/patchaiconfigldapiversion.md
   - docs/models/operations/patchaiconfigrequest.md
   - docs/models/operations/patchaiconfigtargetingldapiversion.md
@@ -187,12 +202,14 @@ generatedFiles:
   - docs/models/operations/postaiconfigvariationrequest.md
   - docs/models/operations/postfeatureflagrequest.md
   - docs/sdks/aiconfigs/README.md
+  - docs/sdks/codereferences/README.md
+  - docs/sdks/environments/README.md
   - docs/sdks/featureflags/README.md
   - docs/sdks/launchdarkly/README.md
   - eslint.config.mjs
   - examples/.env.template
   - examples/README.md
-  - examples/featureFlagsList.example.ts
+  - examples/codeReferencesListRepositories.example.ts
   - examples/package.json
   - jsr.json
   - package.json
@@ -208,9 +225,12 @@ generatedFiles:
   - src/funcs/aiConfigsUpdate.ts
   - src/funcs/aiConfigsUpdateTargeting.ts
   - src/funcs/aiConfigsUpdateVariation.ts
+  - src/funcs/codeReferencesListRepositories.ts
+  - src/funcs/environmentsListByProject.ts
   - src/funcs/featureFlagsCreate.ts
   - src/funcs/featureFlagsDelete.ts
   - src/funcs/featureFlagsGet.ts
+  - src/funcs/featureFlagsGetStatus.ts
   - src/funcs/featureFlagsList.ts
   - src/funcs/featureFlagsPatch.ts
   - src/hooks/hooks.ts
@@ -257,9 +277,12 @@ generatedFiles:
   - src/mcp-server/tools/aiConfigsUpdate.ts
   - src/mcp-server/tools/aiConfigsUpdateTargeting.ts
   - src/mcp-server/tools/aiConfigsUpdateVariation.ts
+  - src/mcp-server/tools/codeReferencesListRepositories.ts
+  - src/mcp-server/tools/environmentsListByProject.ts
   - src/mcp-server/tools/featureFlagsCreate.ts
   - src/mcp-server/tools/featureFlagsDelete.ts
   - src/mcp-server/tools/featureFlagsGet.ts
+  - src/mcp-server/tools/featureFlagsGetStatus.ts
   - src/mcp-server/tools/featureFlagsList.ts
   - src/mcp-server/tools/featureFlagsPatch.ts
   - src/models/components/access.ts
@@ -305,12 +328,16 @@ generatedFiles:
   - src/models/components/aiconfigvariationpatch.ts
   - src/models/components/aiconfigvariationpost.ts
   - src/models/components/aiconfigvariationsresponse.ts
+  - src/models/components/approvalsettings.ts
+  - src/models/components/branchrep.ts
   - src/models/components/clause.ts
   - src/models/components/clientsideavailability.ts
   - src/models/components/clientsideavailabilitypost.ts
   - src/models/components/corelink.ts
   - src/models/components/customproperty.ts
   - src/models/components/defaults.ts
+  - src/models/components/environment.ts
+  - src/models/components/environments.ts
   - src/models/components/experimentallocationrep.ts
   - src/models/components/experimentenabledperiodrep.ts
   - src/models/components/experimentenvironmentsettingrep.ts
@@ -319,12 +346,15 @@ generatedFiles:
   - src/models/components/featureflagbody.ts
   - src/models/components/featureflagconfig.ts
   - src/models/components/featureflags.ts
+  - src/models/components/featureflagstatus.ts
+  - src/models/components/featureflagstatusacrossenvironments.ts
   - src/models/components/filter.ts
   - src/models/components/flagconfigevaluation.ts
   - src/models/components/flagconfigmigrationsettingsrep.ts
   - src/models/components/flagmigrationsettingsrep.ts
   - src/models/components/flagprerequisitepost.ts
   - src/models/components/flagsummary.ts
+  - src/models/components/hunkrep.ts
   - src/models/components/index.ts
   - src/models/components/legacyexperimentrep.ts
   - src/models/components/link.ts
@@ -341,6 +371,9 @@ generatedFiles:
   - src/models/components/patchoperation.ts
   - src/models/components/patchwithcomment.ts
   - src/models/components/prerequisite.ts
+  - src/models/components/referencerep.ts
+  - src/models/components/repositorycollectionrep.ts
+  - src/models/components/repositoryrep.ts
   - src/models/components/rollout.ts
   - src/models/components/rule.ts
   - src/models/components/security.ts
@@ -370,8 +403,11 @@ generatedFiles:
   - src/models/operations/getaiconfigs.ts
   - src/models/operations/getaiconfigtargeting.ts
   - src/models/operations/getaiconfigvariation.ts
+  - src/models/operations/getenvironmentsbyproject.ts
   - src/models/operations/getfeatureflag.ts
   - src/models/operations/getfeatureflags.ts
+  - src/models/operations/getfeatureflagstatusacrossenvironments.ts
+  - src/models/operations/getrepositories.ts
   - src/models/operations/index.ts
   - src/models/operations/patchaiconfig.ts
   - src/models/operations/patchaiconfigtargeting.ts
@@ -381,6 +417,8 @@ generatedFiles:
   - src/models/operations/postaiconfigvariation.ts
   - src/models/operations/postfeatureflag.ts
   - src/sdk/aiconfigs.ts
+  - src/sdk/codereferences.ts
+  - src/sdk/environments.ts
   - src/sdk/featureflags.ts
   - src/sdk/index.ts
   - src/sdk/sdk.ts

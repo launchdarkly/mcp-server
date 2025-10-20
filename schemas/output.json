@@ -2683,7 +2683,14 @@
           }
         ],
         "operationId": "getRepositories",
-        "x-speakeasy-ignore": true,
+        "x-speakeasy-mcp": {
+          "description": "Identifies which repositories have code references to a given flag, helping agents determine if they're operating on the correct repository and understand the scope of cleanup (single vs multi-repo).\n",
+          "disabled": false,
+          "name": "get-code-references",
+          "scopes": [
+            "read"
+          ]
+        },
         "x-speakeasy-group": "codeReferences",
         "x-speakeasy-name-override": "listRepositories"
       },
@@ -4801,7 +4808,14 @@
           }
         ],
         "operationId": "getFeatureFlagStatusAcrossEnvironments",
-        "x-speakeasy-ignore": true,
+        "x-speakeasy-mcp": {
+          "description": "Returns lifecycle status (new, active, inactive, launched) based on actual usage patterns, evaluation counts, and configuration stability. This is the key intelligence for removal readiness assessment.\n",
+          "disabled": false,
+          "name": "get-flag-status-across-environments",
+          "scopes": [
+            "read"
+          ]
+        },
         "x-speakeasy-group": "featureFlags",
         "x-speakeasy-name-override": "getStatus"
       }
@@ -12512,7 +12526,14 @@
           }
         ],
         "operationId": "getEnvironmentsByProject",
-        "x-speakeasy-ignore": true,
+        "x-speakeasy-mcp": {
+          "description": "Identifies which environments exist in a project and determines which are marked as \"critical\" (production, staging, etc.). Allows agents to programmatically identify critical environments instead of hardcoding assumptions.\n",
+          "disabled": false,
+          "name": "get-environments",
+          "scopes": [
+            "read"
+          ]
+        },
         "x-speakeasy-name-override": "listByProject"
       },
       "post": {

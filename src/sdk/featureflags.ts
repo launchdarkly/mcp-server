@@ -5,6 +5,7 @@
 import { featureFlagsCreate } from "../funcs/featureFlagsCreate.js";
 import { featureFlagsDelete } from "../funcs/featureFlagsDelete.js";
 import { featureFlagsGet } from "../funcs/featureFlagsGet.js";
+import { featureFlagsGetStatus } from "../funcs/featureFlagsGetStatus.js";
 import { featureFlagsList } from "../funcs/featureFlagsList.js";
 import { featureFlagsPatch } from "../funcs/featureFlagsPatch.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
@@ -13,6 +14,23 @@ import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class FeatureFlags extends ClientSDK {
+  /**
+   * Get flag status across environments
+   *
+   * @remarks
+   * Get the status for a particular feature flag across environments.
+   */
+  async getStatus(
+    request: operations.GetFeatureFlagStatusAcrossEnvironmentsRequest,
+    options?: RequestOptions,
+  ): Promise<components.FeatureFlagStatusAcrossEnvironments> {
+    return unwrapAsync(featureFlagsGetStatus(
+      this,
+      request,
+      options,
+    ));
+  }
+
   /**
    * List feature flags
    *

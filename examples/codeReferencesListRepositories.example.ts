@@ -6,7 +6,7 @@
  * Example usage of the @launchdarkly/mcp-server SDK
  *
  * To run this example from the examples directory:
- * npm run build && npx tsx featureFlagsList.ts
+ * npm run build && npx tsx codeReferencesListRepositories.ts
  */
 
 import { LaunchDarkly } from "@launchdarkly/mcp-server";
@@ -16,9 +16,7 @@ const launchDarkly = new LaunchDarkly({
 });
 
 async function main() {
-  const result = await launchDarkly.list({
-    projectKey: "<value>",
-  });
+  const result = await launchDarkly.listRepositories({});
 
   console.log(result);
 }
