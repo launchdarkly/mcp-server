@@ -4,12 +4,24 @@
 
 import { ClientSDK } from "../lib/sdks.js";
 import { AiConfigs } from "./aiconfigs.js";
+import { CodeReferences } from "./codereferences.js";
+import { Environments } from "./environments.js";
 import { FeatureFlags } from "./featureflags.js";
 
 export class LaunchDarkly extends ClientSDK {
+  private _codeReferences?: CodeReferences;
+  get codeReferences(): CodeReferences {
+    return (this._codeReferences ??= new CodeReferences(this._options));
+  }
+
   private _featureFlags?: FeatureFlags;
   get featureFlags(): FeatureFlags {
     return (this._featureFlags ??= new FeatureFlags(this._options));
+  }
+
+  private _environments?: Environments;
+  get environments(): Environments {
+    return (this._environments ??= new Environments(this._options));
   }
 
   private _aiConfigs?: AiConfigs;

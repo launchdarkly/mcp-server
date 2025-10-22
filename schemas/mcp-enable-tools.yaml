@@ -64,6 +64,39 @@ actions:
         name: delete-feature-flag
         scopes:
           - write
+  - target: $["paths"]["/api/v2/flag-status/{projectKey}/{featureFlagKey}"]["get"]
+    update:
+      x-speakeasy-mcp:
+        description: >
+          Returns lifecycle status (new, active, inactive, launched) based on actual
+          usage patterns, evaluation counts, and configuration stability. This is the
+          key intelligence for removal readiness assessment.
+        disabled: false
+        name: get-flag-status-across-environments
+        scopes:
+          - read
+  - target: $["paths"]["/api/v2/projects/{projectKey}/environments"]["get"]
+    update:
+      x-speakeasy-mcp:
+        description: >
+          Identifies which environments exist in a project and determines which are
+          marked as "critical" (production, staging, etc.). Allows agents to
+          programmatically identify critical environments instead of hardcoding assumptions.
+        disabled: false
+        name: get-environments
+        scopes:
+          - read
+  - target: $["paths"]["/api/v2/code-refs/repositories"]["get"]
+    update:
+      x-speakeasy-mcp:
+        description: >
+          Identifies which repositories have code references to a given flag, helping
+          agents determine if they're operating on the correct repository and understand
+          the scope of cleanup (single vs multi-repo).
+        disabled: false
+        name: get-code-references
+        scopes:
+          - read
   - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs"]["get"]
     update:
       x-speakeasy-mcp:

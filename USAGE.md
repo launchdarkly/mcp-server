@@ -7,9 +7,7 @@ const launchDarkly = new LaunchDarkly({
 });
 
 async function run() {
-  const result = await launchDarkly.featureFlags.list({
-    projectKey: "<value>",
-  });
+  const result = await launchDarkly.codeReferences.listRepositories({});
 
   console.log(result);
 }
