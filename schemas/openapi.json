@@ -37544,6 +37544,7 @@
           "lastRequested": {
             "type": "string",
             "format": "date-time",
+            "nullable": true,
             "description": "Timestamp of last time flag was requested",
             "example": "2020-02-05T18:17:01.514Z"
           },
@@ -38512,6 +38513,7 @@
           "lastRequested": {
             "type": "string",
             "format": "date-time",
+            "nullable": true,
             "description": "Timestamp of last time flag was requested",
             "example": "2020-02-05T18:17:01.514Z"
           },
