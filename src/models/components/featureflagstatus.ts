@@ -30,7 +30,7 @@ export type FeatureFlagStatus = {
   /**
    * Timestamp of last time flag was requested
    */
-  lastRequested?: Date | undefined;
+  lastRequested?: Date | null | undefined;
   /**
    * Default value seen from code
    */
@@ -64,8 +64,8 @@ export const FeatureFlagStatus$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   name: Name$inboundSchema,
-  lastRequested: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
+  lastRequested: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
   default: z.any().optional(),
 });
@@ -73,7 +73,7 @@ export const FeatureFlagStatus$inboundSchema: z.ZodType<
 /** @internal */
 export type FeatureFlagStatus$Outbound = {
   name: string;
-  lastRequested?: string | undefined;
+  lastRequested?: string | null | undefined;
   default?: any | undefined;
 };
 
@@ -84,7 +84,8 @@ export const FeatureFlagStatus$outboundSchema: z.ZodType<
   FeatureFlagStatus
 > = z.object({
   name: Name$outboundSchema,
-  lastRequested: z.date().transform(v => v.toISOString()).optional(),
+  lastRequested: z.nullable(z.date().transform(v => v.toISOString()))
+    .optional(),
   default: z.any().optional(),
 });
 
