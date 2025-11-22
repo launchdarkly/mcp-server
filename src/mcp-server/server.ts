@@ -43,7 +43,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "LaunchDarkly",
-    version: "0.4.2",
+    version: "0.5.0",
   });
 
   const client = new LaunchDarklyCore({

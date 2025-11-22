@@ -13,6 +13,7 @@ Get a list of connected repositories. Optionally, you can include branch metadat
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getRepositories" method="get" path="/api/v2/code-refs/repositories" -->
 ```typescript
 import { LaunchDarkly } from "@launchdarkly/mcp-server";
 

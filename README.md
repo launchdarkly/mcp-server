@@ -222,7 +222,6 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 * [patch](docs/sdks/featureflags/README.md#patch) - Update feature flag
 * [delete](docs/sdks/featureflags/README.md#delete) - Delete feature flag
 
-
 </details>
 <!-- End Available Resources and Operations [operations] -->
 

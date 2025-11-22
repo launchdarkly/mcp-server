@@ -18,6 +18,7 @@ Get the status for a particular feature flag across environments.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getFeatureFlagStatusAcrossEnvironments" method="get" path="/api/v2/flag-status/{projectKey}/{featureFlagKey}" -->
 ```typescript
 import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
@@ -160,6 +161,7 @@ To learn more, read [Migration Flags](https://launchdarkly.com/docs/home/flags/m
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getFeatureFlags" method="get" path="/api/v2/flags/{projectKey}" -->
 ```typescript
 import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
@@ -264,6 +266,7 @@ To learn more, read [Migration Flags](https://launchdarkly.com/docs/home/flags/m
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="postFeatureFlag" method="post" path="/api/v2/flags/{projectKey}" -->
 ```typescript
 import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
@@ -370,6 +373,7 @@ For example, `expand=evaluation` includes the `evaluation` field in the response
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getFeatureFlag" method="get" path="/api/v2/flags/{projectKey}/{featureFlagKey}" -->
 ```typescript
 import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
@@ -1637,6 +1641,7 @@ To learn more, read [Migration flags](https://launchdarkly.com/docs/home/flags/m
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="patchFeatureFlag" method="patch" path="/api/v2/flags/{projectKey}/{featureFlagKey}" -->
 ```typescript
 import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
@@ -1735,6 +1740,7 @@ Delete a feature flag in all environments. Use with caution: only delete feature
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="deleteFeatureFlag" method="delete" path="/api/v2/flags/{projectKey}/{featureFlagKey}" -->
 ```typescript
 import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
