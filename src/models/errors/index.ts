@@ -7,6 +7,7 @@ export * from "./error.js";
 export * from "./forbiddenerrorrep.js";
 export * from "./httpclienterrors.js";
 export * from "./invalidrequesterrorrep.js";
+export * from "./launchdarklyerror.js";
 export * from "./methodnotallowederrorrep.js";
 export * from "./notfounderrorrep.js";
 export * from "./ratelimitederrorrep.js";

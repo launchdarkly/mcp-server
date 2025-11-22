@@ -23,6 +23,7 @@ Retrieves a specific AI Config's targeting by its key
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getAIConfigTargeting" method="get" path="/api/v2/projects/{projectKey}/ai-configs/{configKey}/targeting" -->
 ```typescript
 import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
@@ -659,6 +660,7 @@ Here's an example:
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="patchAIConfigTargeting" method="patch" path="/api/v2/projects/{projectKey}/ai-configs/{configKey}/targeting" -->
 ```typescript
 import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
@@ -761,6 +763,7 @@ Get a list of all AI Configs in the given project.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getAIConfigs" method="get" path="/api/v2/projects/{projectKey}/ai-configs" -->
 ```typescript
 import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
@@ -837,6 +840,7 @@ Create a new AI Config within the given project.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="postAIConfig" method="post" path="/api/v2/projects/{projectKey}/ai-configs" -->
 ```typescript
 import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
@@ -933,6 +937,7 @@ Delete an existing AI Config.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="deleteAIConfig" method="delete" path="/api/v2/projects/{projectKey}/ai-configs/{configKey}" -->
 ```typescript
 import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
@@ -1011,6 +1016,7 @@ Retrieve a specific AI Config by its key.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getAIConfig" method="get" path="/api/v2/projects/{projectKey}/ai-configs/{configKey}" -->
 ```typescript
 import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
@@ -1100,6 +1106,7 @@ Here's an example:
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="patchAIConfig" method="patch" path="/api/v2/projects/{projectKey}/ai-configs/{configKey}" -->
 ```typescript
 import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
@@ -1210,6 +1217,7 @@ The <code>model</code> in the request body requires a <code>modelName</code> and
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="postAIConfigVariation" method="post" path="/api/v2/projects/{projectKey}/ai-configs/{configKey}/variations" -->
 ```typescript
 import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
@@ -1326,6 +1334,7 @@ Delete a specific variation of an AI Config by config key and variation key.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="deleteAIConfigVariation" method="delete" path="/api/v2/projects/{projectKey}/ai-configs/{configKey}/variations/{variationKey}" -->
 ```typescript
 import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
@@ -1406,6 +1415,7 @@ Get an AI Config variation by key. The response includes all variation versions 
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getAIConfigVariation" method="get" path="/api/v2/projects/{projectKey}/ai-configs/{configKey}/variations/{variationKey}" -->
 ```typescript
 import { LaunchDarkly } from "@launchdarkly/mcp-server";
 
@@ -1501,6 +1511,7 @@ Here's an example:
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="patchAIConfigVariation" method="patch" path="/api/v2/projects/{projectKey}/ai-configs/{configKey}/variations/{variationKey}" -->
 ```typescript
 import { LaunchDarkly } from "@launchdarkly/mcp-server";
 

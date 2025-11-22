@@ -3,10 +3,10 @@ id: cc3a5766-8b39-40da-a0be-fff57173d8e1
 management:
   docChecksum: 75d07115da631245e6b9951136727d0f
   docVersion: "2.0"
-  speakeasyVersion: 1.580.0
-  generationVersion: 2.654.2
-  releaseVersion: 0.4.2
-  configChecksum: 024bcd611bb1b466d728403f71b3b046
+  speakeasyVersion: 1.660.0
+  generationVersion: 2.760.2
+  releaseVersion: 0.5.0
+  configChecksum: b5f799162a3ca99445323438767a2cd0
   repoURL: https://github.com/launchdarkly/mcp-server.git
   installationURL: https://github.com/launchdarkly/mcp-server
   published: true
@@ -14,17 +14,17 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.12
-    core: 3.21.13
+    core: 3.26.9
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
-    devContainers: 2.90.0
+    devContainers: 2.90.1
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.1.2
-    globalSecurity: 2.82.13
+    globalSecurity: 2.82.14
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
-    globalServerURLs: 2.82.5
-    groups: 2.81.2
+    globalServerURLs: 2.83.0
+    groups: 2.81.3
     ignores: 2.81.1
     mcpServer: 0.9.3
     nameOverrides: 2.81.2
@@ -32,7 +32,7 @@ features:
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.3.0
-    unions: 2.85.11
+    unions: 2.86.0
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
@@ -206,7 +206,6 @@ generatedFiles:
   - docs/sdks/codereferences/README.md
   - docs/sdks/environments/README.md
   - docs/sdks/featureflags/README.md
-  - docs/sdks/launchdarkly/README.md
   - eslint.config.mjs
   - examples/.env.template
   - examples/README.md
@@ -432,6 +431,7 @@ generatedFiles:
   - src/types/operations.ts
   - src/types/rfcdate.ts
   - src/types/streams.ts
+  - src/types/unrecognized.ts
   - tsconfig.json
 examples:
   getRoot:

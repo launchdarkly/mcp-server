@@ -19,12 +19,17 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
+    hoistGlobalSecurity: true
+  schemas:
+    allOfMergeStrategy: shallowMerge
+  requestBodyFieldName: ""
   tests:
     generateTests: true
     generateNewTests: false
     skipResponseBodyAssertions: false
 typescript:
-  version: 0.4.2
+  version: 0.5.0
+  acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
@@ -37,6 +42,8 @@ typescript:
       - mcp
       - modelcontextprotocol
     license: MIT
+  additionalScripts: {}
+  alwaysIncludeInboundAndOutbound: false
   author: LaunchDarkly
   baseErrorName: LaunchDarklyError
   clientServerStatusCodesAsErrors: true
@@ -47,8 +54,10 @@ typescript:
   enableReactQuery: false
   enumFormat: union
   envVarPrefix: LAUNCHDARKLY
+  exportZodModelNamespace: false
   flattenGlobalSecurity: true
   flatteningOrder: parameters-first
+  forwardCompatibleEnumsByDefault: false
   generateExamples: true
   imports:
     option: openapi
@@ -60,11 +69,17 @@ typescript:
       webhooks: models/webhooks
   inputModelSuffix: input
   jsonpath: rfc9535
+  laxMode: strict
   maxMethodParams: 0
   methodArguments: require-security-and-request
+  modelPropertyCasing: camel
   moduleFormat: dual
   outputModelSuffix: output
   packageName: '@launchdarkly/mcp-server'
   responseFormat: flat
+  sseFlatResponse: false
   templateVersion: v2
+  unionStrategy: left-to-right
+  usageSDKInitImports: []
   useIndexModules: true
+  zodVersion: v3
