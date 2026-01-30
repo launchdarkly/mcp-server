@@ -93,6 +93,34 @@ Specify your API key as found on LaunchDarkly's Authorization page.
 
 5. Click `Save`.
 
+### GitHub Copilot CLI installation steps
+
+Use the Copilot CLI to interactively add the MCP server:
+
+```bash
+/mcp add
+```
+
+Or create/edit `~/.copilot/mcp-config.json` with the following content:
+
+```json
+{
+  "mcpServers": {
+    "LaunchDarkly": {
+      "command": "npx",
+      "args": [
+        "-y", "--package", "@launchdarkly/mcp-server", "--", "mcp", "start",
+        "--api-key", "api-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+      ]
+    }
+  }
+}
+```
+
+Specify your API key as found on LaunchDarkly's Authorization page.
+
+For more information, see the [GitHub Copilot CLI documentation](https://docs.github.com/en/copilot/concepts/agents/about-copilot-cli).
+
 ### Standalone binary installation steps
 
 You can also run the MCP server as a standalone binary with no additional dependencies. You must pull these binaries from available GitHub releases while specifying the appropriate `tag` value:
