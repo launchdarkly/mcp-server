@@ -35,7 +35,7 @@ export type GetFeatureFlagsRequest = {
    */
   archived?: boolean | undefined;
   /**
-   * By default, flags do _not_ include their lists of prerequisites, targets, or rules for each environment. Set `summary=0` to include these fields for each flag returned.
+   * By default, flags do _not_ include their lists of prerequisites, targets, or rules for each environment. Set `summary=0` and include the `env` query parameter to include these fields for each flag returned.
    */
   summary?: boolean | undefined;
   /**

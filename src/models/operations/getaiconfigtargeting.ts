@@ -3,54 +3,14 @@
  */
 
 import * as z from "zod";
-import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-/**
- * Version of the endpoint.
- */
-export const GetAIConfigTargetingLDAPIVersion = {
-  Beta: "beta",
-} as const;
-/**
- * Version of the endpoint.
- */
-export type GetAIConfigTargetingLDAPIVersion = ClosedEnum<
-  typeof GetAIConfigTargetingLDAPIVersion
->;
-
 export type GetAIConfigTargetingRequest = {
-  /**
-   * Version of the endpoint.
-   */
-  ldAPIVersion: GetAIConfigTargetingLDAPIVersion;
   projectKey: string;
   configKey: string;
 };
-
-/** @internal */
-export const GetAIConfigTargetingLDAPIVersion$inboundSchema: z.ZodNativeEnum<
-  typeof GetAIConfigTargetingLDAPIVersion
-> = z.nativeEnum(GetAIConfigTargetingLDAPIVersion);
-
-/** @internal */
-export const GetAIConfigTargetingLDAPIVersion$outboundSchema: z.ZodNativeEnum<
-  typeof GetAIConfigTargetingLDAPIVersion
-> = GetAIConfigTargetingLDAPIVersion$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAIConfigTargetingLDAPIVersion$ {
-  /** @deprecated use `GetAIConfigTargetingLDAPIVersion$inboundSchema` instead. */
-  export const inboundSchema = GetAIConfigTargetingLDAPIVersion$inboundSchema;
-  /** @deprecated use `GetAIConfigTargetingLDAPIVersion$outboundSchema` instead. */
-  export const outboundSchema = GetAIConfigTargetingLDAPIVersion$outboundSchema;
-}
 
 /** @internal */
 export const GetAIConfigTargetingRequest$inboundSchema: z.ZodType<
@@ -58,18 +18,12 @@ export const GetAIConfigTargetingRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "LD-API-Version": GetAIConfigTargetingLDAPIVersion$inboundSchema,
   projectKey: z.string(),
   configKey: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "LD-API-Version": "ldAPIVersion",
-  });
 });
 
 /** @internal */
 export type GetAIConfigTargetingRequest$Outbound = {
-  "LD-API-Version": string;
   projectKey: string;
   configKey: string;
 };
@@ -80,13 +34,8 @@ export const GetAIConfigTargetingRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetAIConfigTargetingRequest
 > = z.object({
-  ldAPIVersion: GetAIConfigTargetingLDAPIVersion$outboundSchema,
   projectKey: z.string(),
   configKey: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    ldAPIVersion: "LD-API-Version",
-  });
 });
 
 /**

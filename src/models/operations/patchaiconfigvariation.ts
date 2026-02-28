@@ -5,29 +5,11 @@
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-/**
- * Version of the endpoint.
- */
-export const PatchAIConfigVariationLDAPIVersion = {
-  Beta: "beta",
-} as const;
-/**
- * Version of the endpoint.
- */
-export type PatchAIConfigVariationLDAPIVersion = ClosedEnum<
-  typeof PatchAIConfigVariationLDAPIVersion
->;
-
 export type PatchAIConfigVariationRequest = {
-  /**
-   * Version of the endpoint.
-   */
-  ldAPIVersion: PatchAIConfigVariationLDAPIVersion;
   projectKey: string;
   configKey: string;
   variationKey: string;
@@ -38,34 +20,11 @@ export type PatchAIConfigVariationRequest = {
 };
 
 /** @internal */
-export const PatchAIConfigVariationLDAPIVersion$inboundSchema: z.ZodNativeEnum<
-  typeof PatchAIConfigVariationLDAPIVersion
-> = z.nativeEnum(PatchAIConfigVariationLDAPIVersion);
-
-/** @internal */
-export const PatchAIConfigVariationLDAPIVersion$outboundSchema: z.ZodNativeEnum<
-  typeof PatchAIConfigVariationLDAPIVersion
-> = PatchAIConfigVariationLDAPIVersion$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchAIConfigVariationLDAPIVersion$ {
-  /** @deprecated use `PatchAIConfigVariationLDAPIVersion$inboundSchema` instead. */
-  export const inboundSchema = PatchAIConfigVariationLDAPIVersion$inboundSchema;
-  /** @deprecated use `PatchAIConfigVariationLDAPIVersion$outboundSchema` instead. */
-  export const outboundSchema =
-    PatchAIConfigVariationLDAPIVersion$outboundSchema;
-}
-
-/** @internal */
 export const PatchAIConfigVariationRequest$inboundSchema: z.ZodType<
   PatchAIConfigVariationRequest,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "LD-API-Version": PatchAIConfigVariationLDAPIVersion$inboundSchema,
   projectKey: z.string(),
   configKey: z.string(),
   variationKey: z.string(),
@@ -73,14 +32,12 @@ export const PatchAIConfigVariationRequest$inboundSchema: z.ZodType<
     .optional(),
 }).transform((v) => {
   return remap$(v, {
-    "LD-API-Version": "ldAPIVersion",
     "AIConfigVariationPatch": "aiConfigVariationPatch",
   });
 });
 
 /** @internal */
 export type PatchAIConfigVariationRequest$Outbound = {
-  "LD-API-Version": string;
   projectKey: string;
   configKey: string;
   variationKey: string;
@@ -95,7 +52,6 @@ export const PatchAIConfigVariationRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PatchAIConfigVariationRequest
 > = z.object({
-  ldAPIVersion: PatchAIConfigVariationLDAPIVersion$outboundSchema,
   projectKey: z.string(),
   configKey: z.string(),
   variationKey: z.string(),
@@ -103,7 +59,6 @@ export const PatchAIConfigVariationRequest$outboundSchema: z.ZodType<
     .optional(),
 }).transform((v) => {
   return remap$(v, {
-    ldAPIVersion: "LD-API-Version",
     aiConfigVariationPatch: "AIConfigVariationPatch",
   });
 });

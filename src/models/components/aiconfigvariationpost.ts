@@ -7,11 +7,23 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  JudgeConfiguration,
+  JudgeConfiguration$inboundSchema,
+  JudgeConfiguration$Outbound,
+  JudgeConfiguration$outboundSchema,
+} from "./judgeconfiguration.js";
+import {
   Message,
   Message$inboundSchema,
   Message$Outbound,
   Message$outboundSchema,
 } from "./message.js";
+import {
+  VariationToolPost,
+  VariationToolPost$inboundSchema,
+  VariationToolPost$Outbound,
+  VariationToolPost$outboundSchema,
+} from "./variationtoolpost.js";
 
 export type AIConfigVariationPostModel = {};
 
@@ -29,10 +41,19 @@ export type AIConfigVariationPost = {
    */
   instructions?: string | undefined;
   key: string;
-  messages: Array<Message>;
+  messages?: Array<Message> | undefined;
   model?: AIConfigVariationPostModel | undefined;
   name: string;
   modelConfigKey?: string | undefined;
+  /**
+   * List of tools to use for this variation. The latest version of the tool will be used.
+   */
+  tools?: Array<VariationToolPost> | undefined;
+  /**
+   * List of tool keys to use for this variation. The latest version of the tool will be used.
+   */
+  toolKeys?: Array<string> | undefined;
+  judgeConfiguration?: JudgeConfiguration | undefined;
 };
 
 /** @internal */
@@ -93,10 +114,13 @@ export const AIConfigVariationPost$inboundSchema: z.ZodType<
   description: z.string().optional(),
   instructions: z.string().optional(),
   key: z.string(),
-  messages: z.array(Message$inboundSchema),
+  messages: z.array(Message$inboundSchema).optional(),
   model: z.lazy(() => AIConfigVariationPostModel$inboundSchema).optional(),
   name: z.string(),
   modelConfigKey: z.string().optional(),
+  tools: z.array(VariationToolPost$inboundSchema).optional(),
+  toolKeys: z.array(z.string()).optional(),
+  judgeConfiguration: JudgeConfiguration$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -105,10 +129,13 @@ export type AIConfigVariationPost$Outbound = {
   description?: string | undefined;
   instructions?: string | undefined;
   key: string;
-  messages: Array<Message$Outbound>;
+  messages?: Array<Message$Outbound> | undefined;
   model?: AIConfigVariationPostModel$Outbound | undefined;
   name: string;
   modelConfigKey?: string | undefined;
+  tools?: Array<VariationToolPost$Outbound> | undefined;
+  toolKeys?: Array<string> | undefined;
+  judgeConfiguration?: JudgeConfiguration$Outbound | undefined;
 };
 
 /** @internal */
@@ -121,10 +148,13 @@ export const AIConfigVariationPost$outboundSchema: z.ZodType<
   description: z.string().optional(),
   instructions: z.string().optional(),
   key: z.string(),
-  messages: z.array(Message$outboundSchema),
+  messages: z.array(Message$outboundSchema).optional(),
   model: z.lazy(() => AIConfigVariationPostModel$outboundSchema).optional(),
   name: z.string(),
   modelConfigKey: z.string().optional(),
+  tools: z.array(VariationToolPost$outboundSchema).optional(),
+  toolKeys: z.array(z.string()).optional(),
+  judgeConfiguration: JudgeConfiguration$outboundSchema.optional(),
 });
 
 /**

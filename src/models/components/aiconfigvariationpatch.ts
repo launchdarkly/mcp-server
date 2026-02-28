@@ -7,11 +7,23 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  JudgeConfiguration,
+  JudgeConfiguration$inboundSchema,
+  JudgeConfiguration$Outbound,
+  JudgeConfiguration$outboundSchema,
+} from "./judgeconfiguration.js";
+import {
   Message,
   Message$inboundSchema,
   Message$Outbound,
   Message$outboundSchema,
 } from "./message.js";
+import {
+  VariationToolPost,
+  VariationToolPost$inboundSchema,
+  VariationToolPost$Outbound,
+  VariationToolPost$outboundSchema,
+} from "./variationtoolpost.js";
 
 export type AIConfigVariationPatchModel = {};
 
@@ -37,6 +49,15 @@ export type AIConfigVariationPatch = {
    * One of 'archived', 'published'
    */
   state?: string | undefined;
+  /**
+   * List of tools to use for this variation. The latest version of the tool will be used.
+   */
+  tools?: Array<VariationToolPost> | undefined;
+  /**
+   * List of tool keys to use for this variation. The latest version of the tool will be used.
+   */
+  toolKeys?: Array<string> | undefined;
+  judgeConfiguration?: JudgeConfiguration | undefined;
 };
 
 /** @internal */
@@ -104,6 +125,9 @@ export const AIConfigVariationPatch$inboundSchema: z.ZodType<
   name: z.string().optional(),
   published: z.boolean().optional(),
   state: z.string().optional(),
+  tools: z.array(VariationToolPost$inboundSchema).optional(),
+  toolKeys: z.array(z.string()).optional(),
+  judgeConfiguration: JudgeConfiguration$inboundSchema.optional(),
 });
 
 /** @internal */
@@ -117,6 +141,9 @@ export type AIConfigVariationPatch$Outbound = {
   name?: string | undefined;
   published?: boolean | undefined;
   state?: string | undefined;
+  tools?: Array<VariationToolPost$Outbound> | undefined;
+  toolKeys?: Array<string> | undefined;
+  judgeConfiguration?: JudgeConfiguration$Outbound | undefined;
 };
 
 /** @internal */
@@ -134,6 +161,9 @@ export const AIConfigVariationPatch$outboundSchema: z.ZodType<
   name: z.string().optional(),
   published: z.boolean().optional(),
   state: z.string().optional(),
+  tools: z.array(VariationToolPost$outboundSchema).optional(),
+  toolKeys: z.array(z.string()).optional(),
+  judgeConfiguration: JudgeConfiguration$outboundSchema.optional(),
 });
 
 /**

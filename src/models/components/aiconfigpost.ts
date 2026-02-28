@@ -7,10 +7,17 @@ import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  AIConfigVariationPost,
+  AIConfigVariationPost$inboundSchema,
+  AIConfigVariationPost$Outbound,
+  AIConfigVariationPost$outboundSchema,
+} from "./aiconfigvariationpost.js";
 
 export const AIConfigPostMode = {
   Agent: "agent",
   Completion: "completion",
+  Judge: "judge",
 } as const;
 export type AIConfigPostMode = ClosedEnum<typeof AIConfigPostMode>;
 
@@ -22,6 +29,15 @@ export type AIConfigPost = {
   mode?: AIConfigPostMode | undefined;
   name: string;
   tags?: Array<string> | undefined;
+  defaultVariation?: AIConfigVariationPost | undefined;
+  /**
+   * Evaluation metric key for this AI Config
+   */
+  evaluationMetricKey?: string | undefined;
+  /**
+   * Whether the evaluation metric is inverted, meaning a lower value is better if set as true
+   */
+  isInverted?: boolean | undefined;
 };
 
 /** @internal */
@@ -58,6 +74,9 @@ export const AIConfigPost$inboundSchema: z.ZodType<
   mode: AIConfigPostMode$inboundSchema.default("completion"),
   name: z.string(),
   tags: z.array(z.string()).optional(),
+  defaultVariation: AIConfigVariationPost$inboundSchema.optional(),
+  evaluationMetricKey: z.string().optional(),
+  isInverted: z.boolean().optional(),
 });
 
 /** @internal */
@@ -69,6 +88,9 @@ export type AIConfigPost$Outbound = {
   mode: string;
   name: string;
   tags?: Array<string> | undefined;
+  defaultVariation?: AIConfigVariationPost$Outbound | undefined;
+  evaluationMetricKey?: string | undefined;
+  isInverted?: boolean | undefined;
 };
 
 /** @internal */
@@ -84,6 +106,9 @@ export const AIConfigPost$outboundSchema: z.ZodType<
   mode: AIConfigPostMode$outboundSchema.default("completion"),
   name: z.string(),
   tags: z.array(z.string()).optional(),
+  defaultVariation: AIConfigVariationPost$outboundSchema.optional(),
+  evaluationMetricKey: z.string().optional(),
+  isInverted: z.boolean().optional(),
 });
 
 /**

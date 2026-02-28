@@ -3,54 +3,14 @@
  */
 
 import * as z from "zod";
-import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-/**
- * Version of the endpoint.
- */
-export const DeleteAIConfigLDAPIVersion = {
-  Beta: "beta",
-} as const;
-/**
- * Version of the endpoint.
- */
-export type DeleteAIConfigLDAPIVersion = ClosedEnum<
-  typeof DeleteAIConfigLDAPIVersion
->;
-
 export type DeleteAIConfigRequest = {
-  /**
-   * Version of the endpoint.
-   */
-  ldAPIVersion: DeleteAIConfigLDAPIVersion;
   projectKey: string;
   configKey: string;
 };
-
-/** @internal */
-export const DeleteAIConfigLDAPIVersion$inboundSchema: z.ZodNativeEnum<
-  typeof DeleteAIConfigLDAPIVersion
-> = z.nativeEnum(DeleteAIConfigLDAPIVersion);
-
-/** @internal */
-export const DeleteAIConfigLDAPIVersion$outboundSchema: z.ZodNativeEnum<
-  typeof DeleteAIConfigLDAPIVersion
-> = DeleteAIConfigLDAPIVersion$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteAIConfigLDAPIVersion$ {
-  /** @deprecated use `DeleteAIConfigLDAPIVersion$inboundSchema` instead. */
-  export const inboundSchema = DeleteAIConfigLDAPIVersion$inboundSchema;
-  /** @deprecated use `DeleteAIConfigLDAPIVersion$outboundSchema` instead. */
-  export const outboundSchema = DeleteAIConfigLDAPIVersion$outboundSchema;
-}
 
 /** @internal */
 export const DeleteAIConfigRequest$inboundSchema: z.ZodType<
@@ -58,18 +18,12 @@ export const DeleteAIConfigRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "LD-API-Version": DeleteAIConfigLDAPIVersion$inboundSchema,
   projectKey: z.string(),
   configKey: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "LD-API-Version": "ldAPIVersion",
-  });
 });
 
 /** @internal */
 export type DeleteAIConfigRequest$Outbound = {
-  "LD-API-Version": string;
   projectKey: string;
   configKey: string;
 };
@@ -80,13 +34,8 @@ export const DeleteAIConfigRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DeleteAIConfigRequest
 > = z.object({
-  ldAPIVersion: DeleteAIConfigLDAPIVersion$outboundSchema,
   projectKey: z.string(),
   configKey: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    ldAPIVersion: "LD-API-Version",
-  });
 });
 
 /**

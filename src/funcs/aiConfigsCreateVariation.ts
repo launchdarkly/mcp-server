@@ -121,11 +121,6 @@ async function $do(
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
     Accept: "application/json",
-    "LD-API-Version": encodeSimple(
-      "LD-API-Version",
-      payload["LD-API-Version"],
-      { explode: false, charEncoding: "none" },
-    ),
   }));
 
   const secConfig = await extractSecurity(client._options.apiKey);

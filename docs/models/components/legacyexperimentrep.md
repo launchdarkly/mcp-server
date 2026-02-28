@@ -10,8 +10,11 @@ let value: LegacyExperimentRep = {
   metric: {
     experimentCount: 0,
     metricGroupCount: 0,
+    activeExperimentCount: 2,
+    activeGuardedRolloutCount: 1,
     id: "5902deadbeef667524a01290",
     versionId: "version-id-123abc",
+    version: 1,
     key: "metric-key-123abc",
     name: "My metric",
     kind: "custom",
@@ -70,6 +73,9 @@ let value: LegacyExperimentRep = {
     percentileValue: 95,
     eventDefault: {
       value: 0,
+    },
+    dataSource: {
+      key: "<key>",
     },
   },
   environments: [
