@@ -1,5 +1,4 @@
 # Environments
-(*environments*)
 
 ## Overview
 
@@ -39,6 +38,7 @@ For example, `sort=name` sorts the response by environment name in ascending ord
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="getEnvironmentsByProject" method="get" path="/api/v2/projects/{projectKey}/environments" -->
 ```typescript
 import { LaunchDarkly } from "@launchdarkly/mcp-server";
 

@@ -13,4 +13,5 @@ await build({
   minify: false,
   throw: true,
   banner: "#!/usr/bin/env node",
+  external: ["@modelcontextprotocol/sdk", "@modelcontextprotocol/sdk/*"],
 });
