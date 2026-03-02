@@ -6,16 +6,16 @@
 import { AiConfigsExperimentEnvironmentSettingRep } from "@launchdarkly/mcp-server/models/components";
 
 let value: AiConfigsExperimentEnvironmentSettingRep = {
-  startDate: 1,
-  stopDate: 6,
+  startDate: 7,
+  stopDate: 1,
   enabledPeriods: [
     {
-      startDate: 7,
-      stopDate: 1,
+      startDate: 4,
+      stopDate: 5,
     },
     {
-      startDate: 7,
-      stopDate: 1,
+      startDate: 4,
+      stopDate: 5,
     },
   ],
 };

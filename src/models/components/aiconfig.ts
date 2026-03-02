@@ -9,6 +9,12 @@ import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  AIConfigDependency,
+  AIConfigDependency$inboundSchema,
+  AIConfigDependency$Outbound,
+  AIConfigDependency$outboundSchema,
+} from "./aiconfigdependency.js";
+import {
   AIConfigMaintainer,
   AIConfigMaintainer$inboundSchema,
   AIConfigMaintainer$Outbound,
@@ -36,6 +42,7 @@ import {
 export const AIConfigMode = {
   Agent: "agent",
   Completion: "completion",
+  Judge: "judge",
 } as const;
 export type AIConfigMode = ClosedEnum<typeof AIConfigMode>;
 
@@ -55,6 +62,24 @@ export type AIConfig = {
   variations: Array<AIConfigVariation>;
   createdAt: number;
   updatedAt: number;
+  /**
+   * Evaluation metric key for this AI Config
+   */
+  evaluationMetricKey?: string | undefined;
+  /**
+   * List of evaluation metric keys for this AI Config
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  evaluationMetricKeys?: Array<string> | undefined;
+  /**
+   * Whether the evaluation metric is inverted, meaning a lower value is better if set as true
+   */
+  isInverted?: boolean | undefined;
+  /**
+   * Resources that depend on this AI Config, grouped by type
+   */
+  dependencies?: Array<AIConfigDependency> | undefined;
 };
 
 /** @internal */
@@ -94,6 +119,10 @@ export const AIConfig$inboundSchema: z.ZodType<
   variations: z.array(AIConfigVariation$inboundSchema),
   createdAt: z.number().int(),
   updatedAt: z.number().int(),
+  evaluationMetricKey: z.string().optional(),
+  evaluationMetricKeys: z.array(z.string()).optional(),
+  isInverted: z.boolean().optional(),
+  dependencies: z.array(AIConfigDependency$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "_access": "access",
@@ -116,6 +145,10 @@ export type AIConfig$Outbound = {
   variations: Array<AIConfigVariation$Outbound>;
   createdAt: number;
   updatedAt: number;
+  evaluationMetricKey?: string | undefined;
+  evaluationMetricKeys?: Array<string> | undefined;
+  isInverted?: boolean | undefined;
+  dependencies?: Array<AIConfigDependency$Outbound> | undefined;
 };
 
 /** @internal */
@@ -136,6 +169,10 @@ export const AIConfig$outboundSchema: z.ZodType<
   variations: z.array(AIConfigVariation$outboundSchema),
   createdAt: z.number().int(),
   updatedAt: z.number().int(),
+  evaluationMetricKey: z.string().optional(),
+  evaluationMetricKeys: z.array(z.string()).optional(),
+  isInverted: z.boolean().optional(),
+  dependencies: z.array(AIConfigDependency$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     access: "_access",

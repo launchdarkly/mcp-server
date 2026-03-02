@@ -175,6 +175,38 @@ let value: AIConfigs = {
           state: "state",
           archivedAt: 5,
           publishedAt: 5,
+          tools: [
+            {
+              key: "key",
+              version: 2,
+              customParameters: {
+                "key": "",
+              },
+            },
+            {
+              key: "key",
+              version: 2,
+              customParameters: {
+                "key": "",
+              },
+            },
+          ],
+          judgeConfiguration: {
+            judges: [
+              {
+                judgeConfigKey: "judgeConfigKey",
+                samplingRate: 0.7061401,
+              },
+              {
+                judgeConfigKey: "judgeConfigKey",
+                samplingRate: 0.7061401,
+              },
+            ],
+          },
+          judgingConfigKeys: [
+            "judgingConfigKeys",
+            "judgingConfigKeys",
+          ],
         },
         {
           links: {
@@ -207,10 +239,58 @@ let value: AIConfigs = {
           state: "state",
           archivedAt: 5,
           publishedAt: 5,
+          tools: [
+            {
+              key: "key",
+              version: 2,
+              customParameters: {
+                "key": "",
+              },
+            },
+            {
+              key: "key",
+              version: 2,
+              customParameters: {
+                "key": "",
+              },
+            },
+          ],
+          judgeConfiguration: {
+            judges: [
+              {
+                judgeConfigKey: "judgeConfigKey",
+                samplingRate: 0.7061401,
+              },
+              {
+                judgeConfigKey: "judgeConfigKey",
+                samplingRate: 0.7061401,
+              },
+            ],
+          },
+          judgingConfigKeys: [
+            "judgingConfigKeys",
+            "judgingConfigKeys",
+          ],
         },
       ],
-      createdAt: 2,
-      updatedAt: 7,
+      createdAt: 9,
+      updatedAt: 3,
+      evaluationMetricKey: "evaluationMetricKey",
+      evaluationMetricKeys: [
+        "evaluationMetricKeys",
+        "evaluationMetricKeys",
+      ],
+      isInverted: true,
+      dependencies: [
+        {
+          type: "agent-graph",
+          key: "key",
+        },
+        {
+          type: "agent-graph",
+          key: "key",
+        },
+      ],
     },
     {
       access: {
@@ -359,6 +439,38 @@ let value: AIConfigs = {
           state: "state",
           archivedAt: 5,
           publishedAt: 5,
+          tools: [
+            {
+              key: "key",
+              version: 2,
+              customParameters: {
+                "key": "",
+              },
+            },
+            {
+              key: "key",
+              version: 2,
+              customParameters: {
+                "key": "",
+              },
+            },
+          ],
+          judgeConfiguration: {
+            judges: [
+              {
+                judgeConfigKey: "judgeConfigKey",
+                samplingRate: 0.7061401,
+              },
+              {
+                judgeConfigKey: "judgeConfigKey",
+                samplingRate: 0.7061401,
+              },
+            ],
+          },
+          judgingConfigKeys: [
+            "judgingConfigKeys",
+            "judgingConfigKeys",
+          ],
         },
         {
           links: {
@@ -391,13 +503,61 @@ let value: AIConfigs = {
           state: "state",
           archivedAt: 5,
           publishedAt: 5,
+          tools: [
+            {
+              key: "key",
+              version: 2,
+              customParameters: {
+                "key": "",
+              },
+            },
+            {
+              key: "key",
+              version: 2,
+              customParameters: {
+                "key": "",
+              },
+            },
+          ],
+          judgeConfiguration: {
+            judges: [
+              {
+                judgeConfigKey: "judgeConfigKey",
+                samplingRate: 0.7061401,
+              },
+              {
+                judgeConfigKey: "judgeConfigKey",
+                samplingRate: 0.7061401,
+              },
+            ],
+          },
+          judgingConfigKeys: [
+            "judgingConfigKeys",
+            "judgingConfigKeys",
+          ],
         },
       ],
-      createdAt: 2,
-      updatedAt: 7,
+      createdAt: 9,
+      updatedAt: 3,
+      evaluationMetricKey: "evaluationMetricKey",
+      evaluationMetricKeys: [
+        "evaluationMetricKeys",
+        "evaluationMetricKeys",
+      ],
+      isInverted: true,
+      dependencies: [
+        {
+          type: "agent-graph",
+          key: "key",
+        },
+        {
+          type: "agent-graph",
+          key: "key",
+        },
+      ],
     },
   ],
-  totalCount: 9,
+  totalCount: 2,
 };
 ```
 

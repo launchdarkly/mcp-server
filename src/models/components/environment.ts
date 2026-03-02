@@ -8,6 +8,12 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  Access,
+  Access$inboundSchema,
+  Access$Outbound,
+  Access$outboundSchema,
+} from "./access.js";
+import {
   ApprovalSettings,
   ApprovalSettings$inboundSchema,
   ApprovalSettings$Outbound,
@@ -57,6 +63,7 @@ export type Environment = {
    * Ensures that one end user of the client-side SDK cannot inspect the variations for another end user
    */
   secureMode: boolean;
+  access?: Access | undefined;
   /**
    * Enables tracking detailed information for new flags by default
    */
@@ -99,6 +106,7 @@ export const Environment$inboundSchema: z.ZodType<
   color: z.string(),
   defaultTtl: z.number().int(),
   secureMode: z.boolean(),
+  _access: Access$inboundSchema.optional(),
   defaultTrackEvents: z.boolean(),
   requireComments: z.boolean(),
   confirmChanges: z.boolean(),
@@ -110,6 +118,7 @@ export const Environment$inboundSchema: z.ZodType<
   return remap$(v, {
     "_links": "links",
     "_id": "id",
+    "_access": "access",
   });
 });
 
@@ -124,6 +133,7 @@ export type Environment$Outbound = {
   color: string;
   defaultTtl: number;
   secureMode: boolean;
+  _access?: Access$Outbound | undefined;
   defaultTrackEvents: boolean;
   requireComments: boolean;
   confirmChanges: boolean;
@@ -150,6 +160,7 @@ export const Environment$outboundSchema: z.ZodType<
   color: z.string(),
   defaultTtl: z.number().int(),
   secureMode: z.boolean(),
+  access: Access$outboundSchema.optional(),
   defaultTrackEvents: z.boolean(),
   requireComments: z.boolean(),
   confirmChanges: z.boolean(),
@@ -162,6 +173,7 @@ export const Environment$outboundSchema: z.ZodType<
   return remap$(v, {
     links: "_links",
     id: "_id",
+    access: "_access",
   });
 });
 

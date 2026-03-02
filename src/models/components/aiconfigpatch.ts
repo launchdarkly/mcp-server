@@ -13,6 +13,14 @@ export type AIConfigPatch = {
   maintainerTeamKey?: string | undefined;
   name?: string | undefined;
   tags?: Array<string> | undefined;
+  /**
+   * Evaluation metric key for this AI Config
+   */
+  evaluationMetricKey?: string | undefined;
+  /**
+   * Whether the evaluation metric is inverted, meaning a lower value is better if set as true
+   */
+  isInverted?: boolean | undefined;
 };
 
 /** @internal */
@@ -26,6 +34,8 @@ export const AIConfigPatch$inboundSchema: z.ZodType<
   maintainerTeamKey: z.string().optional(),
   name: z.string().optional(),
   tags: z.array(z.string()).optional(),
+  evaluationMetricKey: z.string().optional(),
+  isInverted: z.boolean().optional(),
 });
 
 /** @internal */
@@ -35,6 +45,8 @@ export type AIConfigPatch$Outbound = {
   maintainerTeamKey?: string | undefined;
   name?: string | undefined;
   tags?: Array<string> | undefined;
+  evaluationMetricKey?: string | undefined;
+  isInverted?: boolean | undefined;
 };
 
 /** @internal */
@@ -48,6 +60,8 @@ export const AIConfigPatch$outboundSchema: z.ZodType<
   maintainerTeamKey: z.string().optional(),
   name: z.string().optional(),
   tags: z.array(z.string()).optional(),
+  evaluationMetricKey: z.string().optional(),
+  isInverted: z.boolean().optional(),
 });
 
 /**

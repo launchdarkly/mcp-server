@@ -5,29 +5,11 @@
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
-import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-/**
- * Version of the endpoint.
- */
-export const PostAIConfigLDAPIVersion = {
-  Beta: "beta",
-} as const;
-/**
- * Version of the endpoint.
- */
-export type PostAIConfigLDAPIVersion = ClosedEnum<
-  typeof PostAIConfigLDAPIVersion
->;
-
 export type PostAIConfigRequest = {
-  /**
-   * Version of the endpoint.
-   */
-  ldAPIVersion: PostAIConfigLDAPIVersion;
   projectKey: string;
   /**
    * AI Config object to create
@@ -36,45 +18,21 @@ export type PostAIConfigRequest = {
 };
 
 /** @internal */
-export const PostAIConfigLDAPIVersion$inboundSchema: z.ZodNativeEnum<
-  typeof PostAIConfigLDAPIVersion
-> = z.nativeEnum(PostAIConfigLDAPIVersion);
-
-/** @internal */
-export const PostAIConfigLDAPIVersion$outboundSchema: z.ZodNativeEnum<
-  typeof PostAIConfigLDAPIVersion
-> = PostAIConfigLDAPIVersion$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostAIConfigLDAPIVersion$ {
-  /** @deprecated use `PostAIConfigLDAPIVersion$inboundSchema` instead. */
-  export const inboundSchema = PostAIConfigLDAPIVersion$inboundSchema;
-  /** @deprecated use `PostAIConfigLDAPIVersion$outboundSchema` instead. */
-  export const outboundSchema = PostAIConfigLDAPIVersion$outboundSchema;
-}
-
-/** @internal */
 export const PostAIConfigRequest$inboundSchema: z.ZodType<
   PostAIConfigRequest,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  "LD-API-Version": PostAIConfigLDAPIVersion$inboundSchema,
   projectKey: z.string(),
   AIConfigPost: components.AIConfigPost$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    "LD-API-Version": "ldAPIVersion",
     "AIConfigPost": "aiConfigPost",
   });
 });
 
 /** @internal */
 export type PostAIConfigRequest$Outbound = {
-  "LD-API-Version": string;
   projectKey: string;
   AIConfigPost: components.AIConfigPost$Outbound;
 };
@@ -85,12 +43,10 @@ export const PostAIConfigRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PostAIConfigRequest
 > = z.object({
-  ldAPIVersion: PostAIConfigLDAPIVersion$outboundSchema,
   projectKey: z.string(),
   aiConfigPost: components.AIConfigPost$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
-    ldAPIVersion: "LD-API-Version",
     aiConfigPost: "AIConfigPost",
   });
 });

@@ -26,6 +26,10 @@ export type Rule = {
    */
   id?: string | undefined;
   /**
+   * Whether the rule is disabled
+   */
+  disabled?: boolean | undefined;
+  /**
    * The index of the variation, from the array of variations for this flag
    */
   variation?: number | undefined;
@@ -49,6 +53,7 @@ export type Rule = {
 export const Rule$inboundSchema: z.ZodType<Rule, z.ZodTypeDef, unknown> = z
   .object({
     _id: z.string().optional(),
+    disabled: z.boolean().optional(),
     variation: z.number().int().optional(),
     rollout: Rollout$inboundSchema.optional(),
     clauses: z.array(Clause$inboundSchema),
@@ -64,6 +69,7 @@ export const Rule$inboundSchema: z.ZodType<Rule, z.ZodTypeDef, unknown> = z
 /** @internal */
 export type Rule$Outbound = {
   _id?: string | undefined;
+  disabled?: boolean | undefined;
   variation?: number | undefined;
   rollout?: Rollout$Outbound | undefined;
   clauses: Array<Clause$Outbound>;
@@ -76,6 +82,7 @@ export type Rule$Outbound = {
 export const Rule$outboundSchema: z.ZodType<Rule$Outbound, z.ZodTypeDef, Rule> =
   z.object({
     id: z.string().optional(),
+    disabled: z.boolean().optional(),
     variation: z.number().int().optional(),
     rollout: Rollout$outboundSchema.optional(),
     clauses: z.array(Clause$outboundSchema),

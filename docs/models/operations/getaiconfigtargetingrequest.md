@@ -6,7 +6,6 @@
 import { GetAIConfigTargetingRequest } from "@launchdarkly/mcp-server/models/operations";
 
 let value: GetAIConfigTargetingRequest = {
-  ldAPIVersion: "beta",
   projectKey: "<value>",
   configKey: "<value>",
 };
@@ -14,8 +13,7 @@ let value: GetAIConfigTargetingRequest = {
 
 ## Fields
 
-| Field                                                                                                      | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
-| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| `ldAPIVersion`                                                                                             | [operations.GetAIConfigTargetingLDAPIVersion](../../models/operations/getaiconfigtargetingldapiversion.md) | :heavy_check_mark:                                                                                         | Version of the endpoint.                                                                                   |
-| `projectKey`                                                                                               | *string*                                                                                                   | :heavy_check_mark:                                                                                         | N/A                                                                                                        |
-| `configKey`                                                                                                | *string*                                                                                                   | :heavy_check_mark:                                                                                         | N/A                                                                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectKey`       | *string*           | :heavy_check_mark: | N/A                |
+| `configKey`        | *string*           | :heavy_check_mark: | N/A                |

@@ -33,6 +33,12 @@ import {
   MemberSummary$outboundSchema,
 } from "./membersummary.js";
 import {
+  MetricDataSourceRefRep,
+  MetricDataSourceRefRep$inboundSchema,
+  MetricDataSourceRefRep$Outbound,
+  MetricDataSourceRefRep$outboundSchema,
+} from "./metricdatasourcerefrep.js";
+import {
   MetricEventDefaultRep,
   MetricEventDefaultRep$inboundSchema,
   MetricEventDefaultRep$Outbound,
@@ -110,6 +116,14 @@ export type MetricListingRep = {
    */
   metricGroupCount?: number | undefined;
   /**
+   * The number of active experiments using this metric
+   */
+  activeExperimentCount?: number | undefined;
+  /**
+   * The number of active guarded rollouts using this metric
+   */
+  activeGuardedRolloutCount?: number | undefined;
+  /**
    * The ID of this metric
    */
   id: string;
@@ -117,6 +131,10 @@ export type MetricListingRep = {
    * The version ID of the metric
    */
   versionId: string;
+  /**
+   * Version of the metric
+   */
+  version?: number | undefined;
   /**
    * A unique key to reference the metric
    */
@@ -192,6 +210,18 @@ export type MetricListingRep = {
    */
   percentileValue?: number | undefined;
   eventDefault?: MetricEventDefaultRep | undefined;
+  dataSource: MetricDataSourceRefRep;
+  lastSeen?: number | undefined;
+  /**
+   * Whether the metric version is archived
+   */
+  archived?: boolean | undefined;
+  archivedAt?: number | undefined;
+  /**
+   * For click metrics, the CSS selectors
+   */
+  selector?: string | undefined;
+  urls?: Array<{ [k: string]: any }> | undefined;
 };
 
 /** @internal */
@@ -288,8 +318,11 @@ export const MetricListingRep$inboundSchema: z.ZodType<
 > = z.object({
   experimentCount: z.number().int().optional(),
   metricGroupCount: z.number().int().optional(),
+  activeExperimentCount: z.number().int().optional(),
+  activeGuardedRolloutCount: z.number().int().optional(),
   _id: z.string(),
   _versionId: z.string(),
+  _version: z.number().int().optional(),
   key: z.string(),
   name: z.string(),
   kind: MetricListingRepKind$inboundSchema,
@@ -315,10 +348,17 @@ export const MetricListingRep$inboundSchema: z.ZodType<
   analysisType: MetricListingRepAnalysisType$inboundSchema.optional(),
   percentileValue: z.number().int().optional(),
   eventDefault: MetricEventDefaultRep$inboundSchema.optional(),
+  dataSource: MetricDataSourceRefRep$inboundSchema,
+  lastSeen: z.number().int().optional(),
+  archived: z.boolean().optional(),
+  archivedAt: z.number().int().optional(),
+  selector: z.string().optional(),
+  urls: z.array(z.record(z.any())).optional(),
 }).transform((v) => {
   return remap$(v, {
     "_id": "id",
     "_versionId": "versionId",
+    "_version": "version",
     "_attachedFlagCount": "attachedFlagCount",
     "_links": "links",
     "_site": "site",
@@ -332,8 +372,11 @@ export const MetricListingRep$inboundSchema: z.ZodType<
 export type MetricListingRep$Outbound = {
   experimentCount?: number | undefined;
   metricGroupCount?: number | undefined;
+  activeExperimentCount?: number | undefined;
+  activeGuardedRolloutCount?: number | undefined;
   _id: string;
   _versionId: string;
+  _version?: number | undefined;
   key: string;
   name: string;
   kind: string;
@@ -358,6 +401,12 @@ export type MetricListingRep$Outbound = {
   analysisType?: string | undefined;
   percentileValue?: number | undefined;
   eventDefault?: MetricEventDefaultRep$Outbound | undefined;
+  dataSource: MetricDataSourceRefRep$Outbound;
+  lastSeen?: number | undefined;
+  archived?: boolean | undefined;
+  archivedAt?: number | undefined;
+  selector?: string | undefined;
+  urls?: Array<{ [k: string]: any }> | undefined;
 };
 
 /** @internal */
@@ -368,8 +417,11 @@ export const MetricListingRep$outboundSchema: z.ZodType<
 > = z.object({
   experimentCount: z.number().int().optional(),
   metricGroupCount: z.number().int().optional(),
+  activeExperimentCount: z.number().int().optional(),
+  activeGuardedRolloutCount: z.number().int().optional(),
   id: z.string(),
   versionId: z.string(),
+  version: z.number().int().optional(),
   key: z.string(),
   name: z.string(),
   kind: MetricListingRepKind$outboundSchema,
@@ -395,10 +447,17 @@ export const MetricListingRep$outboundSchema: z.ZodType<
   analysisType: MetricListingRepAnalysisType$outboundSchema.optional(),
   percentileValue: z.number().int().optional(),
   eventDefault: MetricEventDefaultRep$outboundSchema.optional(),
+  dataSource: MetricDataSourceRefRep$outboundSchema,
+  lastSeen: z.number().int().optional(),
+  archived: z.boolean().optional(),
+  archivedAt: z.number().int().optional(),
+  selector: z.string().optional(),
+  urls: z.array(z.record(z.any())).optional(),
 }).transform((v) => {
   return remap$(v, {
     id: "_id",
     versionId: "_versionId",
+    version: "_version",
     attachedFlagCount: "_attachedFlagCount",
     links: "_links",
     site: "_site",

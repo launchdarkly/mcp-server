@@ -14,8 +14,12 @@ let value: AiConfigsExperimentInfoRep = {
         experimentCount: 0,
         metricGroupCount: 0,
         guardedRolloutCount: 0,
+        releasePolicyCount: 0,
+        activeExperimentCount: 2,
+        activeGuardedRolloutCount: 1,
         id: "5902deadbeef667524a01290",
         versionId: "version-id-123abc",
+        version: 1,
         key: "metric-key-123abc",
         name: "My metric",
         kind: "custom",
@@ -169,6 +173,24 @@ let value: AiConfigsExperimentInfoRep = {
           disabled: true,
           value: 0,
         },
+        dataSource: {
+          key: "key",
+          environmentKey: "environmentKey",
+          name: "_name",
+          integrationKey: "_integrationKey",
+        },
+        lastSeen: 1,
+        archived: true,
+        archivedAt: 6,
+        selector: "selector",
+        urls: [
+          {
+            "key": "<value>",
+          },
+          {
+            "key": "<value>",
+          },
+        ],
       },
       environments: [
         "production",
@@ -177,16 +199,16 @@ let value: AiConfigsExperimentInfoRep = {
       ],
       environmentSettings: {
         "key": {
-          startDate: 1,
-          stopDate: 6,
+          startDate: 7,
+          stopDate: 1,
           enabledPeriods: [
             {
-              startDate: 7,
-              stopDate: 1,
+              startDate: 4,
+              stopDate: 5,
             },
             {
-              startDate: 7,
-              stopDate: 1,
+              startDate: 4,
+              stopDate: 5,
             },
           ],
         },
@@ -198,8 +220,12 @@ let value: AiConfigsExperimentInfoRep = {
         experimentCount: 0,
         metricGroupCount: 0,
         guardedRolloutCount: 0,
+        releasePolicyCount: 0,
+        activeExperimentCount: 2,
+        activeGuardedRolloutCount: 1,
         id: "5902deadbeef667524a01290",
         versionId: "version-id-123abc",
+        version: 1,
         key: "metric-key-123abc",
         name: "My metric",
         kind: "custom",
@@ -353,6 +379,26 @@ let value: AiConfigsExperimentInfoRep = {
           disabled: true,
           value: 0,
         },
+        dataSource: {
+          key: "key",
+          environmentKey: "environmentKey",
+          name: "_name",
+          integrationKey: "_integrationKey",
+        },
+        lastSeen: 1,
+        archived: true,
+        archivedAt: 6,
+        selector: "selector",
+        urls: [
+          {
+            "key": "<value>",
+          },
+          {
+            "key": "<value>",
+            "key1": "<value>",
+            "key2": "<value>",
+          },
+        ],
       },
       environments: [
         "production",
@@ -361,16 +407,16 @@ let value: AiConfigsExperimentInfoRep = {
       ],
       environmentSettings: {
         "key": {
-          startDate: 1,
-          stopDate: 6,
+          startDate: 7,
+          stopDate: 1,
           enabledPeriods: [
             {
-              startDate: 7,
-              stopDate: 1,
+              startDate: 4,
+              stopDate: 5,
             },
             {
-              startDate: 7,
-              stopDate: 1,
+              startDate: 4,
+              stopDate: 5,
             },
           ],
         },

@@ -22,6 +22,10 @@ export type PatchFeatureFlagRequest = {
    * If true, the patch will be applied even if it causes a pending scheduled change or approval request to fail.
    */
   ignoreConflicts?: boolean | undefined;
+  /**
+   * If true, the patch will be validated but not persisted. Returns a preview of the flag after the patch is applied.
+   */
+  dryRun?: boolean | undefined;
   patchWithComment: components.PatchWithComment;
 };
 
@@ -34,6 +38,7 @@ export const PatchFeatureFlagRequest$inboundSchema: z.ZodType<
   projectKey: z.string(),
   featureFlagKey: z.string(),
   ignoreConflicts: z.boolean().optional(),
+  dryRun: z.boolean().optional(),
   PatchWithComment: components.PatchWithComment$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
@@ -46,6 +51,7 @@ export type PatchFeatureFlagRequest$Outbound = {
   projectKey: string;
   featureFlagKey: string;
   ignoreConflicts?: boolean | undefined;
+  dryRun?: boolean | undefined;
   PatchWithComment: components.PatchWithComment$Outbound;
 };
 
@@ -58,6 +64,7 @@ export const PatchFeatureFlagRequest$outboundSchema: z.ZodType<
   projectKey: z.string(),
   featureFlagKey: z.string(),
   ignoreConflicts: z.boolean().optional(),
+  dryRun: z.boolean().optional(),
   patchWithComment: components.PatchWithComment$outboundSchema,
 }).transform((v) => {
   return remap$(v, {

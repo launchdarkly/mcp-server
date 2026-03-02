@@ -32,7 +32,6 @@ const launchDarkly = new LaunchDarkly({
 
 async function run() {
   const result = await launchDarkly.aiConfigs.getTargeting({
-    ldAPIVersion: "beta",
     projectKey: "<value>",
     configKey: "<value>",
   });
@@ -59,7 +58,6 @@ const launchDarkly = new LaunchDarklyCore({
 
 async function run() {
   const res = await aiConfigsGetTargeting(launchDarkly, {
-    ldAPIVersion: "beta",
     projectKey: "<value>",
     configKey: "<value>",
   });
@@ -668,7 +666,6 @@ const launchDarkly = new LaunchDarkly({
 
 async function run() {
   const result = await launchDarkly.aiConfigs.updateTargeting({
-    ldAPIVersion: "beta",
     projectKey: "<value>",
     configKey: "<value>",
     aiConfigTargetingPatch: {
@@ -707,7 +704,6 @@ const launchDarkly = new LaunchDarklyCore({
 
 async function run() {
   const res = await aiConfigsUpdateTargeting(launchDarkly, {
-    ldAPIVersion: "beta",
     projectKey: "<value>",
     configKey: "<value>",
     aiConfigTargetingPatch: {
@@ -770,7 +766,6 @@ const launchDarkly = new LaunchDarkly({
 
 async function run() {
   const result = await launchDarkly.aiConfigs.list({
-    ldAPIVersion: "beta",
     projectKey: "default",
   });
 
@@ -796,7 +791,6 @@ const launchDarkly = new LaunchDarklyCore({
 
 async function run() {
   const res = await aiConfigsList(launchDarkly, {
-    ldAPIVersion: "beta",
     projectKey: "default",
   });
   if (res.ok) {
@@ -846,17 +840,63 @@ const launchDarkly = new LaunchDarkly({
 
 async function run() {
   const result = await launchDarkly.aiConfigs.create({
-    ldAPIVersion: "beta",
     projectKey: "<value>",
     aiConfigPost: {
       key: "key",
-      maintainerId: "maintainerId",
-      maintainerTeamKey: "maintainerTeamKey",
+      maintainerId: "507f1f77bcf86cd799439011",
+      maintainerTeamKey: "example-team-key",
       name: "name",
       tags: [
         "tags",
         "tags",
       ],
+      defaultVariation: {
+        comment: "comment",
+        description: "description",
+        instructions: "instructions",
+        key: "key",
+        messages: [
+          {
+            content: "content",
+            role: "role",
+          },
+          {
+            content: "content",
+            role: "role",
+          },
+        ],
+        model: {},
+        name: "name",
+        modelConfigKey: "modelConfigKey",
+        tools: [
+          {
+            key: "key",
+            version: 0,
+          },
+          {
+            key: "key",
+            version: 0,
+          },
+        ],
+        toolKeys: [
+          "toolKeys",
+          "toolKeys",
+        ],
+        judgeConfiguration: {
+          judges: [
+            {
+              judgeConfigKey: "judgeConfigKey",
+              samplingRate: 0.7061401,
+            },
+            {
+              judgeConfigKey: "judgeConfigKey",
+              samplingRate: 0.7061401,
+            },
+          ],
+        },
+      },
+      evaluationMetricKey: "evaluationMetricKey",
+      isInverted: true,
     },
   });
 
@@ -882,17 +922,63 @@ const launchDarkly = new LaunchDarklyCore({
 
 async function run() {
   const res = await aiConfigsCreate(launchDarkly, {
-    ldAPIVersion: "beta",
     projectKey: "<value>",
     aiConfigPost: {
       key: "key",
-      maintainerId: "maintainerId",
-      maintainerTeamKey: "maintainerTeamKey",
+      maintainerId: "507f1f77bcf86cd799439011",
+      maintainerTeamKey: "example-team-key",
       name: "name",
       tags: [
         "tags",
         "tags",
       ],
+      defaultVariation: {
+        comment: "comment",
+        description: "description",
+        instructions: "instructions",
+        key: "key",
+        messages: [
+          {
+            content: "content",
+            role: "role",
+          },
+          {
+            content: "content",
+            role: "role",
+          },
+        ],
+        model: {},
+        name: "name",
+        modelConfigKey: "modelConfigKey",
+        tools: [
+          {
+            key: "key",
+            version: 0,
+          },
+          {
+            key: "key",
+            version: 0,
+          },
+        ],
+        toolKeys: [
+          "toolKeys",
+          "toolKeys",
+        ],
+        judgeConfiguration: {
+          judges: [
+            {
+              judgeConfigKey: "judgeConfigKey",
+              samplingRate: 0.7061401,
+            },
+            {
+              judgeConfigKey: "judgeConfigKey",
+              samplingRate: 0.7061401,
+            },
+          ],
+        },
+      },
+      evaluationMetricKey: "evaluationMetricKey",
+      isInverted: true,
     },
   });
   if (res.ok) {
@@ -942,7 +1028,6 @@ const launchDarkly = new LaunchDarkly({
 
 async function run() {
   await launchDarkly.aiConfigs.delete({
-    ldAPIVersion: "beta",
     projectKey: "default",
     configKey: "<value>",
   });
@@ -969,7 +1054,6 @@ const launchDarkly = new LaunchDarklyCore({
 
 async function run() {
   const res = await aiConfigsDelete(launchDarkly, {
-    ldAPIVersion: "beta",
     projectKey: "default",
     configKey: "<value>",
   });
@@ -1020,7 +1104,6 @@ const launchDarkly = new LaunchDarkly({
 
 async function run() {
   const result = await launchDarkly.aiConfigs.get({
-    ldAPIVersion: "beta",
     projectKey: "<value>",
     configKey: "<value>",
   });
@@ -1047,7 +1130,6 @@ const launchDarkly = new LaunchDarklyCore({
 
 async function run() {
   const res = await aiConfigsGet(launchDarkly, {
-    ldAPIVersion: "beta",
     projectKey: "<value>",
     configKey: "<value>",
   });
@@ -1109,18 +1191,19 @@ const launchDarkly = new LaunchDarkly({
 
 async function run() {
   const result = await launchDarkly.aiConfigs.update({
-    ldAPIVersion: "beta",
     projectKey: "<value>",
     configKey: "<value>",
     aiConfigPatch: {
       description: "description",
-      maintainerId: "maintainerId",
-      maintainerTeamKey: "maintainerTeamKey",
+      maintainerId: "507f1f77bcf86cd799439011",
+      maintainerTeamKey: "example-team-key",
       name: "name",
       tags: [
         "tags",
         "tags",
       ],
+      evaluationMetricKey: "evaluationMetricKey",
+      isInverted: true,
     },
   });
 
@@ -1146,18 +1229,19 @@ const launchDarkly = new LaunchDarklyCore({
 
 async function run() {
   const res = await aiConfigsUpdate(launchDarkly, {
-    ldAPIVersion: "beta",
     projectKey: "<value>",
     configKey: "<value>",
     aiConfigPatch: {
       description: "description",
-      maintainerId: "maintainerId",
-      maintainerTeamKey: "maintainerTeamKey",
+      maintainerId: "507f1f77bcf86cd799439011",
+      maintainerTeamKey: "example-team-key",
       name: "name",
       tags: [
         "tags",
         "tags",
       ],
+      evaluationMetricKey: "evaluationMetricKey",
+      isInverted: true,
     },
   });
   if (res.ok) {
@@ -1219,7 +1303,6 @@ const launchDarkly = new LaunchDarkly({
 
 async function run() {
   const result = await launchDarkly.aiConfigs.createVariation({
-    ldAPIVersion: "beta",
     projectKey: "<value>",
     configKey: "<value>",
     aiConfigVariationPost: {
@@ -1240,6 +1323,32 @@ async function run() {
       model: {},
       name: "name",
       modelConfigKey: "modelConfigKey",
+      tools: [
+        {
+          key: "key",
+          version: 0,
+        },
+        {
+          key: "key",
+          version: 0,
+        },
+      ],
+      toolKeys: [
+        "toolKeys",
+        "toolKeys",
+      ],
+      judgeConfiguration: {
+        judges: [
+          {
+            judgeConfigKey: "judgeConfigKey",
+            samplingRate: 0.7061401,
+          },
+          {
+            judgeConfigKey: "judgeConfigKey",
+            samplingRate: 0.7061401,
+          },
+        ],
+      },
     },
   });
 
@@ -1265,7 +1374,6 @@ const launchDarkly = new LaunchDarklyCore({
 
 async function run() {
   const res = await aiConfigsCreateVariation(launchDarkly, {
-    ldAPIVersion: "beta",
     projectKey: "<value>",
     configKey: "<value>",
     aiConfigVariationPost: {
@@ -1286,6 +1394,32 @@ async function run() {
       model: {},
       name: "name",
       modelConfigKey: "modelConfigKey",
+      tools: [
+        {
+          key: "key",
+          version: 0,
+        },
+        {
+          key: "key",
+          version: 0,
+        },
+      ],
+      toolKeys: [
+        "toolKeys",
+        "toolKeys",
+      ],
+      judgeConfiguration: {
+        judges: [
+          {
+            judgeConfigKey: "judgeConfigKey",
+            samplingRate: 0.7061401,
+          },
+          {
+            judgeConfigKey: "judgeConfigKey",
+            samplingRate: 0.7061401,
+          },
+        ],
+      },
     },
   });
   if (res.ok) {
@@ -1335,7 +1469,6 @@ const launchDarkly = new LaunchDarkly({
 
 async function run() {
   await launchDarkly.aiConfigs.deleteVariation({
-    ldAPIVersion: "beta",
     projectKey: "<value>",
     configKey: "<value>",
     variationKey: "<value>",
@@ -1363,7 +1496,6 @@ const launchDarkly = new LaunchDarklyCore({
 
 async function run() {
   const res = await aiConfigsDeleteVariation(launchDarkly, {
-    ldAPIVersion: "beta",
     projectKey: "<value>",
     configKey: "<value>",
     variationKey: "<value>",
@@ -1415,7 +1547,6 @@ const launchDarkly = new LaunchDarkly({
 
 async function run() {
   const result = await launchDarkly.aiConfigs.getVariation({
-    ldAPIVersion: "beta",
     projectKey: "default",
     configKey: "default",
     variationKey: "default",
@@ -1443,7 +1574,6 @@ const launchDarkly = new LaunchDarklyCore({
 
 async function run() {
   const res = await aiConfigsGetVariation(launchDarkly, {
-    ldAPIVersion: "beta",
     projectKey: "default",
     configKey: "default",
     variationKey: "default",
@@ -1510,7 +1640,6 @@ const launchDarkly = new LaunchDarkly({
 
 async function run() {
   const result = await launchDarkly.aiConfigs.updateVariation({
-    ldAPIVersion: "beta",
     projectKey: "<value>",
     configKey: "<value>",
     variationKey: "<value>",
@@ -1533,6 +1662,32 @@ async function run() {
       name: "name",
       published: true,
       state: "state",
+      tools: [
+        {
+          key: "key",
+          version: 0,
+        },
+        {
+          key: "key",
+          version: 0,
+        },
+      ],
+      toolKeys: [
+        "toolKeys",
+        "toolKeys",
+      ],
+      judgeConfiguration: {
+        judges: [
+          {
+            judgeConfigKey: "judgeConfigKey",
+            samplingRate: 0.7061401,
+          },
+          {
+            judgeConfigKey: "judgeConfigKey",
+            samplingRate: 0.7061401,
+          },
+        ],
+      },
     },
   });
 
@@ -1558,7 +1713,6 @@ const launchDarkly = new LaunchDarklyCore({
 
 async function run() {
   const res = await aiConfigsUpdateVariation(launchDarkly, {
-    ldAPIVersion: "beta",
     projectKey: "<value>",
     configKey: "<value>",
     variationKey: "<value>",
@@ -1581,6 +1735,32 @@ async function run() {
       name: "name",
       published: true,
       state: "state",
+      tools: [
+        {
+          key: "key",
+          version: 0,
+        },
+        {
+          key: "key",
+          version: 0,
+        },
+      ],
+      toolKeys: [
+        "toolKeys",
+        "toolKeys",
+      ],
+      judgeConfiguration: {
+        judges: [
+          {
+            judgeConfigKey: "judgeConfigKey",
+            samplingRate: 0.7061401,
+          },
+          {
+            judgeConfigKey: "judgeConfigKey",
+            samplingRate: 0.7061401,
+          },
+        ],
+      },
     },
   });
   if (res.ok) {
