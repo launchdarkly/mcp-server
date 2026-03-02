@@ -196,6 +196,85 @@ actions:
         disabled: false
         scopes:
           - write
+  - target: $["paths"]["/api/v2/approval-requests"]["get"]
+    update:
+      x-speakeasy-mcp:
+        name: list-approval-requests
+        description: >
+          Lists all pending approval requests across the account. Enables AI agents
+          to discover outstanding change requests that need review, providing visibility
+          into the approval pipeline before making flag modifications.
+        disabled: false
+        scopes:
+          - read
+  - target: $["paths"]["/api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests"]["get"]
+    update:
+      x-speakeasy-mcp:
+        name: list-flag-approval-requests
+        description: >
+          Lists all approval requests for a specific feature flag in a given
+          environment. Useful for agents to check if there are pending changes awaiting
+          review before attempting direct modifications.
+        disabled: false
+        scopes:
+          - read
+  - target: $["paths"]["/api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests"]["post"]
+    update:
+      x-speakeasy-mcp:
+        name: create-flag-approval-request
+        description: >
+          Creates an approval request for changes to a feature flag's targeting
+          or variations in a specific environment. Required when the environment has
+          mandatory approvals enabled, allowing agents to submit changes for review
+          instead of applying them directly.
+        disabled: false
+        scopes:
+          - write
+  - target: $["paths"]["/api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{id}"]["get"]
+    update:
+      x-speakeasy-mcp:
+        name: get-flag-approval-request
+        description: >
+          Retrieves details of a specific approval request for a feature flag,
+          including its current status, reviewers, and the proposed changes. Allows
+          agents to inspect pending changes before deciding to review or apply them.
+        disabled: false
+        scopes:
+          - read
+  - target: $["paths"]["/api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{id}"]["delete"]
+    update:
+      x-speakeasy-mcp:
+        name: delete-flag-approval-request
+        description: >
+          Deletes an approval request for a feature flag. Used by agents to
+          withdraw a pending change request that is no longer needed or was created
+          in error.
+        disabled: false
+        scopes:
+          - write
+  - target: $["paths"]["/api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{id}/apply"]["post"]
+    update:
+      x-speakeasy-mcp:
+        name: apply-flag-approval-request
+        description: >
+          Applies an approved approval request, executing the proposed changes
+          to the feature flag. Can only be used after the request has received the
+          required number of approvals. Completes the approval workflow by making
+          the changes live.
+        disabled: false
+        scopes:
+          - write
+  - target: $["paths"]["/api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{id}/reviews"]["post"]
+    update:
+      x-speakeasy-mcp:
+        name: review-flag-approval-request
+        description: >
+          Submits a review (approve, decline, or comment) on a pending approval
+          request for a feature flag. Enables agents to participate in the approval
+          workflow by providing feedback or granting approval for proposed changes.
+        disabled: false
+        scopes:
+          - write
   - target: $.paths.*[?@['x-speakeasy-mcp'].disabled != false]
     update:
       x-speakeasy-ignore: true

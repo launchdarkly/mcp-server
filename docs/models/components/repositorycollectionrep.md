@@ -42,8 +42,34 @@ let value: RepositoryCollectionRep = {
         "key1": "<value>",
       },
       access: {
-        denied: [],
-        allowed: [],
+        denied: [
+          {
+            action: "<value>",
+            reason: {
+              resources: [
+                "proj/*:env/*;qa_*:/flag/*",
+              ],
+              actions: [
+                "*",
+              ],
+              effect: "allow",
+            },
+          },
+        ],
+        allowed: [
+          {
+            action: "<value>",
+            reason: {
+              resources: [
+                "proj/*:env/*;qa_*:/flag/*",
+              ],
+              actions: [
+                "*",
+              ],
+              effect: "allow",
+            },
+          },
+        ],
       },
     },
   ],

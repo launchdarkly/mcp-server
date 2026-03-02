@@ -21,8 +21,34 @@ let value: Environment = {
   defaultTtl: 5,
   secureMode: true,
   access: {
-    denied: [],
-    allowed: [],
+    denied: [
+      {
+        action: "<value>",
+        reason: {
+          resources: [
+            "proj/*:env/*;qa_*:/flag/*",
+          ],
+          actions: [
+            "*",
+          ],
+          effect: "allow",
+        },
+      },
+    ],
+    allowed: [
+      {
+        action: "<value>",
+        reason: {
+          resources: [
+            "proj/*:env/*;qa_*:/flag/*",
+          ],
+          actions: [
+            "*",
+          ],
+          effect: "allow",
+        },
+      },
+    ],
   },
   defaultTrackEvents: false,
   requireComments: true,

@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: cc3a5766-8b39-40da-a0be-fff57173d8e1
 management:
-  docChecksum: 3bf333ffd4b2b0d832c5511a7e7ff173
+  docChecksum: 65d27c3792bbe2f937e9ccf9d6087388
   docVersion: "2.0"
   speakeasyVersion: 1.736.1
   generationVersion: 2.845.15
-  releaseVersion: 0.6.0
-  configChecksum: 976f9a3eab53c25137a5e27a963dcf9f
+  releaseVersion: 0.6.1
+  configChecksum: 2b1a4e81d4d79baeeaa073f49508a590
   repoURL: https://github.com/launchdarkly/mcp-server.git
   installationURL: https://github.com/launchdarkly/mcp-server
   published: true
 persistentEdits:
-  generation_id: c9f94ed6-fdb5-4186-8833-40022a1d0597
-  pristine_commit_hash: ef7273def0d4f9ecedf7c4cd0d65c94dfc01b038
-  pristine_tree_hash: f3ff54d7e32f317060981863152d5cc14567e21a
+  generation_id: 46915945-05e8-4a9d-b158-ca8c81eb7e2e
+  pristine_commit_hash: 508a78c48eb6abee453e48c9a23a0caafe983ec4
+  pristine_tree_hash: 0515909d7516ab1e6863823316a8a53f380430ed
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -59,16 +59,16 @@ trackedFiles:
     pristine_git_object: 134e78a629b846b88e408199011801852bacc600
   FUNCTIONS.md:
     id: 21b9df02aaeb
-    last_write_checksum: sha1:b95097a3daa0d2bcd997ffa44a9ff5a01e924b14
-    pristine_git_object: a9298490035b3bd7c8049e353df76b34a7a2e907
+    last_write_checksum: sha1:21bfac77396cb4ca8f99d60b320c9bd1a91e2a5b
+    pristine_git_object: a22489e92588d536f606e7b9fae50cbd5acb8f49
   RUNTIMES.md:
     id: 620c490847b6
     last_write_checksum: sha1:e45b854f02c357cbcfdb8c3663000e8339e16505
     pristine_git_object: 27731c3b5ace66bedc454ed5acbe15075aacd3dc
   USAGE.md:
     id: 3aed33ce6e6f
-    last_write_checksum: sha1:8ecb34ac6dd2963b590796d9177bbd34265afead
-    pristine_git_object: 261b3550e93fcc422b6894db5a9caabf17200947
+    last_write_checksum: sha1:242b0455d02498205230788a7a2a14de8e72ed73
+    pristine_git_object: 0e860d6e06a645e34d0fe4e322691ace73b9d80b
   docs/lib/utils/retryconfig.md:
     id: 0ce9707cb848
     last_write_checksum: sha1:bc4454e196fcd219f5a78da690375a884f5ed07b
@@ -133,6 +133,10 @@ trackedFiles:
     id: fd6a832e98fc
     last_write_checksum: sha1:9528116dd4184f153c8eec2fbb937b970bd4b2a5
     pristine_git_object: 112d49d82043d390a932fe45cd4e071878a464dd
+  docs/models/components/aiconfigrep.md:
+    id: 36013fe02c36
+    last_write_checksum: sha1:bf8056f99ea81f605141ac569634b9e03c588530
+    pristine_git_object: b390f58636a45504f06337eb28f6114dbda39c67
   docs/models/components/aiconfigs.md:
     id: 939eee65c3a2
     last_write_checksum: sha1:506fd010e5c544eb8144689325e0d798b1d54694
@@ -337,26 +341,74 @@ trackedFiles:
     id: 82af9c0d4a1e
     last_write_checksum: sha1:fb28eb25e55f84c2e2855d5f81db8236707ee302
     pristine_git_object: c50ec86631b51775bfa2462c43cc8b3725d9e63a
+  docs/models/components/conflict.md:
+    id: 022408366b49
+    last_write_checksum: sha1:81c4719f5081d2c105e83bb07e7e7e9165be8edb
+    pristine_git_object: 8eec0e59832daa2ae8fc52bb3473998d0bbcf8fc
+  docs/models/components/copiedfromenv.md:
+    id: ee280318f394
+    last_write_checksum: sha1:3cac449b0a5cafabdbbc4351e889d2b5596b0c84
+    pristine_git_object: 99ceb8114ce13002b970338761ef4926d5f16af7
   docs/models/components/corelink.md:
     id: 2cd512f6e168
     last_write_checksum: sha1:cc7bffbd165151fdbaef69ea15802684de1e7f59
     pristine_git_object: 58d6973ba6a0eca486bff4fc136cf5988fa5667b
+  docs/models/components/createflagconfigapprovalrequestrequest.md:
+    id: ff7ee8bf5b7c
+    last_write_checksum: sha1:bf08085c27eedf799df04bb432e66cf19d63c1d7
+    pristine_git_object: ebe8da6efc0e11028f32db1487d12be9829ca9d4
   docs/models/components/customproperty.md:
     id: c8bee897a039
     last_write_checksum: sha1:a8ae958e014bdf436a299738b9719263d2575b90
     pristine_git_object: d73a6a4df24eb38493ec9a8d542cf8128aa77444
+  docs/models/components/customworkflowmeta.md:
+    id: a5475c0106ef
+    last_write_checksum: sha1:625e93e1add3b2912b1b86f6612c997a0eada5c0
+    pristine_git_object: 1ae9857b6d6ac2edb48e45179d097502a8fe925c
+  docs/models/components/customworkflowstagemeta.md:
+    id: e816f94c62c4
+    last_write_checksum: sha1:7866322d90f3a14e5e19b701b93164191ce38d88
+    pristine_git_object: 3fb634202b5bd90ff505dae084ec7105b76859d3
   docs/models/components/defaults.md:
     id: 2389a1b8a2ac
     last_write_checksum: sha1:6948ddbc3a3c429c5f03b9d556820f745680f068
     pristine_git_object: aa8a17de4f20c10fe11d5933064d162bc88a6fec
   docs/models/components/environment.md:
     id: 2bbd505fcb39
-    last_write_checksum: sha1:7b29b02ef49286d2ea4cc28328987825bbc8b5b5
-    pristine_git_object: dd2b19d25f26ec647caf99a8aca57d06e81dde6a
+    last_write_checksum: sha1:10e59c561a4c8897456ba26fb72d491c36b1f1be
+    pristine_git_object: 899d86f17735822c1b05121d62c2ee13ecbaceef
   docs/models/components/environments.md:
     id: 4c2409d6f530
     last_write_checksum: sha1:68149361d60d78dee0011010d8066536c230b829
     pristine_git_object: 14230d32a9b11a05e5a88011c19191acff8e7781
+  docs/models/components/expandableapprovalrequestresponse.md:
+    id: cdd48318b5dc
+    last_write_checksum: sha1:b5fb3c3162122d8d55f990943126424205364812
+    pristine_git_object: ef0e3ac218a5a4ce2ea52cc9a85da59fff6f4692
+  docs/models/components/expandableapprovalrequestresponsereviewstatus.md:
+    id: 54bd79e334ca
+    last_write_checksum: sha1:bfc8c5c6a55aba1a7b6fbd9fe0c5d9d38a472e57
+    pristine_git_object: 2d0eaa70e41652e00f47445b2985509d3e05ab73
+  docs/models/components/expandableapprovalrequestresponsestatus.md:
+    id: cb525209b861
+    last_write_checksum: sha1:12f057e69d049c58d739cbce50ee804f6433e75a
+    pristine_git_object: a8926441dbc8761aa9ce2082262354f69539e52e
+  docs/models/components/expandableapprovalrequestsresponse.md:
+    id: 8da084524929
+    last_write_checksum: sha1:3d7d2ccb44c3815e078dadf81be66a735d16c009
+    pristine_git_object: 1d64152dc01d97379a8119e4e6773a830b3d72bc
+  docs/models/components/expandedflagrep.md:
+    id: 0dbc85994e12
+    last_write_checksum: sha1:d97d23cd2da5516be80c27cb15b11620fd827d7f
+    pristine_git_object: 4f97ce31362ec8adf0bf017f114e61fd1072ce22
+  docs/models/components/expandedflagrepkind.md:
+    id: 5af33a2266a6
+    last_write_checksum: sha1:0d5e1c810d555f4b2388328bbf9876166f5cdf4b
+    pristine_git_object: 2460b1b11570a5f3f14e5747a886e2d2a7e04928
+  docs/models/components/expandedresourcerep.md:
+    id: a7f251682cc6
+    last_write_checksum: sha1:bf6218fd288545da13626b6d7f5311b515d9330e
+    pristine_git_object: 5e92a20fecd6c4ea6b6df78b7704e0d52482dea9
   docs/models/components/experimentallocationrep.md:
     id: 75a25b7fcabd
     last_write_checksum: sha1:2ad2284c69e56a2a04d33dc1967e749d9198057f
@@ -371,8 +423,8 @@ trackedFiles:
     pristine_git_object: 16dd1d1ae0c3e4ae731465d99a1eaf0531a7f9af
   docs/models/components/experimentinforep.md:
     id: 9ced948a4c0e
-    last_write_checksum: sha1:62729688993bc747f3c66e0842c792ad1e86ace8
-    pristine_git_object: 8823f27f484cc73065e147aebeff015e218ca4d2
+    last_write_checksum: sha1:02064b1b0550f7df4c29f4b9e473e93d1612cd05
+    pristine_git_object: 0957e6c1ddc1132dbe7746c7eb5224815d62b055
   docs/models/components/featureflag.md:
     id: a3171171929d
     last_write_checksum: sha1:b91ea008e999d35c1db32622592fb810a657c0b0
@@ -383,8 +435,8 @@ trackedFiles:
     pristine_git_object: bbaeb9731988d5fb31d5a92b74a25675e2b36b55
   docs/models/components/featureflagconfig.md:
     id: 153c31cea295
-    last_write_checksum: sha1:68bec158d44412e48a983c8e8909f26bb12813cb
-    pristine_git_object: 667e59e63f9015a55f5c80601de04b43d03e5d2a
+    last_write_checksum: sha1:79348c770fc10438aa06cf0a67804436292867e9
+    pristine_git_object: 58a66218bba79715d83ac7968fc6e1c89ff11425
   docs/models/components/featureflagkind.md:
     id: db8ee7215ead
     last_write_checksum: sha1:1255d5b5cd06bab733ca02be5e0ca4b5b55c5166
@@ -409,6 +461,22 @@ trackedFiles:
     id: 333639c9dd1e
     last_write_checksum: sha1:46f98a2b01401be1e7452b64d6b8299d3b0d0b16
     pristine_git_object: 83d10a8efe9ebaa85c75220f66a94d20be3b1d0f
+  docs/models/components/flagconfigapprovalrequestresponse.md:
+    id: 128806f289b1
+    last_write_checksum: sha1:435cc5c273cd392b0c79c62bddd8bb1a1691160b
+    pristine_git_object: c334b31017d694915f3dc5e4b86a085179c860ae
+  docs/models/components/flagconfigapprovalrequestresponsereviewstatus.md:
+    id: 683deb8489bf
+    last_write_checksum: sha1:73e9eb28a7eb25e78bd5fa7d69c0bf24873e1e0b
+    pristine_git_object: f36873380cefb3bca02a78397d38896b7a2595de
+  docs/models/components/flagconfigapprovalrequestresponsestatus.md:
+    id: 34e62b7660f1
+    last_write_checksum: sha1:2b0f85e547efcc72949582cd0d1245fe66bee662
+    pristine_git_object: 98f4bce74e31f202f8adde2e89d455bb184a8120
+  docs/models/components/flagconfigapprovalrequestsresponse.md:
+    id: d413537511bc
+    last_write_checksum: sha1:d3c80089dd286f8816436fbc2a47e1b97a656593
+    pristine_git_object: 53924b4bedf34a38cfa5b64877148390ef9bfb0a
   docs/models/components/flagconfigevaluation.md:
     id: ddf0871969a9
     last_write_checksum: sha1:7275a6cb21c59a694b9dbeae7d1c24142b69279a
@@ -417,6 +485,10 @@ trackedFiles:
     id: 698f0e908d0b
     last_write_checksum: sha1:c1f4f606e883410ed09bf559df234a4bb864c8ed
     pristine_git_object: f144e34727a07642cb2fd1a6c11613ed90abe12f
+  docs/models/components/flaglistingrep.md:
+    id: 85a3880cfa0b
+    last_write_checksum: sha1:bc291c884b84ef4e9ef2d46bfb9b803dcb67717a
+    pristine_git_object: f33fe45014d3ee001e411bd5b27af65f4440595c
   docs/models/components/flagmigrationsettingsrep.md:
     id: baa4d0044d89
     last_write_checksum: sha1:f6ba5294d0bdc1360892bc07509391481aa7fbc8
@@ -433,6 +505,14 @@ trackedFiles:
     id: 1053e1594fe4
     last_write_checksum: sha1:b08c1b35e20442faecd98b7ad4941b335b19b02d
     pristine_git_object: ea7b62ecb845573254e543bf2c1317632a042903
+  docs/models/components/integrationmetadata.md:
+    id: 3950c23bb25f
+    last_write_checksum: sha1:36da84f970cfeffd1c2d6a99e7c69ad37671c3d3
+    pristine_git_object: 845970eedd7fe847fe51fe2654428f9e9750409e
+  docs/models/components/integrationstatus.md:
+    id: d9a7641f6645
+    last_write_checksum: sha1:e39d57fd7436bde0b27b62a318753048048e0b21
+    pristine_git_object: 40106664477c0da62f8f53fceaa9593162541686
   docs/models/components/judgeattachment.md:
     id: 928ca0b7e9cf
     last_write_checksum: sha1:79c9253223af16ca94de45586942e0e3c54bba7d
@@ -443,8 +523,8 @@ trackedFiles:
     pristine_git_object: cda22069e52bd30a260253fba5fc1eaa88507add
   docs/models/components/legacyexperimentrep.md:
     id: 93313def1b12
-    last_write_checksum: sha1:aa9e5cf6245b0fae44f7fe6a289bd6dd21163e88
-    pristine_git_object: 89e8610fab7f53cae11d8015a48055421a31196d
+    last_write_checksum: sha1:d523823dff7ae52584323159fdc93fba8791919e
+    pristine_git_object: 0d5ea5117e961fb1d4ab187ff2614a066b2da127
   docs/models/components/link.md:
     id: 9e6e1afe0cdc
     last_write_checksum: sha1:ba3571df7bab49e1e1c7f05951cf05fe796e42c2
@@ -475,8 +555,8 @@ trackedFiles:
     pristine_git_object: 9bd2b9f4ca3caf28ea68dd6942265e73a48c66f5
   docs/models/components/metriclistingrep.md:
     id: 8fd7b0cabc96
-    last_write_checksum: sha1:91e3433d66d3c6bf3915e70169d0772cbe4418c8
-    pristine_git_object: ecd5131f4d4781c4c6b2bf4de3a30b5602470e19
+    last_write_checksum: sha1:a9819d3849fe97cc733d43bbf8de910d7411e538
+    pristine_git_object: 46e09656ce8c1406d96e30a8127e8c347a687886
   docs/models/components/metriclistingrepanalysistype.md:
     id: 83e55e845186
     last_write_checksum: sha1:7b12bc8f068ec1ee232a86ae7d0d71ede631723d
@@ -525,10 +605,26 @@ trackedFiles:
     id: ce3d65fafd4a
     last_write_checksum: sha1:15643aeddb0b6b7bda4e039939f291b580df9664
     pristine_git_object: 5d089d63e692864c1d19dc92acea6cf3b0aee15f
+  docs/models/components/postapprovalrequestapplyrequest.md:
+    id: 8d81613022e1
+    last_write_checksum: sha1:e3c5dca487ac78b67094a972b8c615434ae61910
+    pristine_git_object: 4675fc8fbc9720e3fcdcd48bc0deaf200e0450bf
+  docs/models/components/postapprovalrequestreviewrequest.md:
+    id: 8efbd51120e7
+    last_write_checksum: sha1:942b08984b306b117184587000338ee08cb53386
+    pristine_git_object: 9f8250fb0be17f370f5586e362857e3a088cdadb
+  docs/models/components/postapprovalrequestreviewrequestkind.md:
+    id: 7f3692b7b89a
+    last_write_checksum: sha1:72242df106fb5bc0a9875a3c48429d1b4d6020b7
+    pristine_git_object: 204063b509d5b7605f85ce3dd8aa11ba24397e7d
   docs/models/components/prerequisite.md:
     id: 0550f93fb00c
     last_write_checksum: sha1:0a221fb5a7be020bb32001276a71960fc79299df
     pristine_git_object: 98aaf9ab803cdd90324e6006a3714dc8022e145f
+  docs/models/components/project.md:
+    id: e6f9abcd3eff
+    last_write_checksum: sha1:c79f4067adbd291c06525e2bf1ff2deafbad0c12
+    pristine_git_object: c5e027801a7540aa485dee75cc10d34ceb6fc77e
   docs/models/components/purpose.md:
     id: 9425b6a9fa5e
     last_write_checksum: sha1:b69cfde46be813fdb21f6021ce37295ac3870d14
@@ -539,16 +635,24 @@ trackedFiles:
     pristine_git_object: 724fdcf892e46b765108f3f8077ab2f573691fa3
   docs/models/components/repositorycollectionrep.md:
     id: 8212304cb054
-    last_write_checksum: sha1:79025a62f105a5f9b11a288af6e073c88f598f59
-    pristine_git_object: 80315327b04320a610519ee0b71b10de20b6dd85
+    last_write_checksum: sha1:e4b283669059418edf1d01f241ec864712bdd0d0
+    pristine_git_object: 74b47465841568f596a21f607ec492699b0332f2
   docs/models/components/repositoryrep.md:
     id: c945f4228da5
-    last_write_checksum: sha1:006a5304b9903d387601ae8e1a46b2a057aaf47a
-    pristine_git_object: 5236c83bdc4910798fe7d67f0bc609182cec7aab
+    last_write_checksum: sha1:c2ff376f227b8045a993bfc08a6341b91f25753a
+    pristine_git_object: c080fcb4c55f5d279a95e1ed98ff441177b4faa2
   docs/models/components/repositoryreptype.md:
     id: 3515ef79e582
     last_write_checksum: sha1:32d0d14decda7133ced5154967ad8bad9736f0ff
     pristine_git_object: c1db573b2f30513f58798ed21345def389c75404
+  docs/models/components/reviewresponse.md:
+    id: 6137caaeda9a
+    last_write_checksum: sha1:d16cdbf131e36a5f2396afc797ee7ec6185c4cb5
+    pristine_git_object: 93d74df35353fa8449833dc006fcf2a5c51d31d2
+  docs/models/components/reviewresponsekind.md:
+    id: 6dd5f31001b5
+    last_write_checksum: sha1:87f6751c0d7cff7af6127ce4fa97bc63ba0783fc
+    pristine_git_object: a39b7cc8511b7b8ac714512404f91b834a2f2f08
   docs/models/components/rollout.md:
     id: 272e34d6ae8f
     last_write_checksum: sha1:458f825709a99251022e6793aa4f99572d179167
@@ -561,10 +665,26 @@ trackedFiles:
     id: 54906b49ea28
     last_write_checksum: sha1:30f9b50db444802ccdafe7b6453b0ea227590ede
     pristine_git_object: df3ba19616399c02e6e7cb4e6e5579459bdeefd6
+  docs/models/components/segmentmetadata.md:
+    id: 2a493da35c71
+    last_write_checksum: sha1:ebb2517ca75b60831ab688c92a2e4b6e36402a1c
+    pristine_git_object: 71d11e3dc1ede14b63bea0613a6f0a013709978c
+  docs/models/components/segmenttarget.md:
+    id: ca5c902be07a
+    last_write_checksum: sha1:0a4100a9b838875a64bbab648017e710e8aef458
+    pristine_git_object: a57cc5fb76bddc75b7fdf17b24ba86030e4ca551
   docs/models/components/target.md:
     id: 6b01d6776a4e
     last_write_checksum: sha1:1dd75078653d39e587c14637d784bc3270b7f9bb
     pristine_git_object: 979126da7cd2392ef7c251988234d54eef1ce006
+  docs/models/components/usersegment.md:
+    id: 2902ecbdc90f
+    last_write_checksum: sha1:48fbf7e7fc28b8be0966779b0fabf1d3f03d81b6
+    pristine_git_object: 367f725c6ab0383cd2e1335c15335b7f977b4a33
+  docs/models/components/usersegmentrule.md:
+    id: e57c598c5e45
+    last_write_checksum: sha1:351937b796b85caa6f5e29fc43ab340fab076d26
+    pristine_git_object: b8301feb448bceaa72a9bcb3b7d9f5cd0d86ba5d
   docs/models/components/variation.md:
     id: 95680a8c739f
     last_write_checksum: sha1:854624b4fa02e09c9651357e1e05361c18c1a65b
@@ -629,6 +749,10 @@ trackedFiles:
     id: 685353a40a17
     last_write_checksum: sha1:996298c68ca7fa5a8def0c25a4dd3e1cf2536097
     pristine_git_object: a4578df4dcba6ae5803c4141afe63965d5f8968e
+  docs/models/operations/deleteapprovalrequestforflagrequest.md:
+    id: d71a1a8248b9
+    last_write_checksum: sha1:f916edaca5a265d8b1d4d2cd9705872b1d6819ab
+    pristine_git_object: dc63787e23752576682e0e40a5e1741b4ee7e2b8
   docs/models/operations/deletefeatureflagrequest.md:
     id: 01394f6e0776
     last_write_checksum: sha1:ebd8b5360fa7ad312d7171923d3a9bd8b2105230
@@ -649,6 +773,18 @@ trackedFiles:
     id: a728e45bb955
     last_write_checksum: sha1:4495b9dccd52600483329c47cdd092a68db8741a
     pristine_git_object: 9a8627dab2535e34a3330f5253930f36e8be2245
+  docs/models/operations/getapprovalforflagrequest.md:
+    id: 35afd4ceb96f
+    last_write_checksum: sha1:1d1a22a4fdc7b9fd96761604fe86d826f7f92c33
+    pristine_git_object: e60bcc14f6e4a692b94a77434491e92b20faaad1
+  docs/models/operations/getapprovalrequestsrequest.md:
+    id: ef0b5c318422
+    last_write_checksum: sha1:d88acc06779ffdba7fc0836fa1d34b82481a78bb
+    pristine_git_object: cb049c02e53c79ce5e330b9f6df806dd274f81de
+  docs/models/operations/getapprovalsforflagrequest.md:
+    id: 323f0b664ac0
+    last_write_checksum: sha1:2ce4f79af10f5240c119b5614be690c1f3d237db
+    pristine_git_object: 28de9a45deb3ddd3838cb0eef32df45a10a0da63
   docs/models/operations/getenvironmentsbyprojectrequest.md:
     id: 9fc1ae07e3cb
     last_write_checksum: sha1:10ec8a7535dd617cc74bed2e6653a3edd34cf227
@@ -693,6 +829,18 @@ trackedFiles:
     id: 380b9d6fe341
     last_write_checksum: sha1:1f95e4c22047925c0b0a4e74d26c9a4969ccc14c
     pristine_git_object: 11cf943c061aab904f68f0fcb883476d9de7291f
+  docs/models/operations/postapprovalrequestapplyforflagrequest.md:
+    id: 29ed99760149
+    last_write_checksum: sha1:a99e8465c9157505eccaca8f1510cfc9da4af2ad
+    pristine_git_object: 2424937fcc8d0efbcb7d9137576683259723469e
+  docs/models/operations/postapprovalrequestforflagrequest.md:
+    id: 37c5da3048b1
+    last_write_checksum: sha1:25ae898cbec4599f2ef9a381c0f918188b989f28
+    pristine_git_object: 8ede1b92ee38eca97bea52e2abfbdad58504b102
+  docs/models/operations/postapprovalrequestreviewforflagrequest.md:
+    id: b87262efe311
+    last_write_checksum: sha1:19719648660fc807e557a893553ef7eb95597601
+    pristine_git_object: c764f5eb9addf7cc593a0fb998d4634571f9c9ed
   docs/models/operations/postfeatureflagrequest.md:
     id: 4b77dcacba74
     last_write_checksum: sha1:b131140d95a7d00ae6abdb5efa46741d5a6145e2
@@ -701,6 +849,10 @@ trackedFiles:
     id: 33e1db755b36
     last_write_checksum: sha1:daa4714482492fdfd120e40dabed6b8f948a616e
     pristine_git_object: 145c051a513de8cbbbdd47866376caba7487c42d
+  docs/sdks/approvals/README.md:
+    id: 560b4bbe7303
+    last_write_checksum: sha1:7f8d8f3c858a3fbe0b3f17a012adb5f1527c96f2
+    pristine_git_object: 1e00230056a1787a1af1ae16b1157723696a1d81
   docs/sdks/codereferences/README.md:
     id: 5aeaba1478ce
     last_write_checksum: sha1:00a003d758bd164b0fe4b7dfd895684fcfd43413
@@ -725,22 +877,22 @@ trackedFiles:
     id: 9d0f69d6e677
     last_write_checksum: sha1:a7bb5dedb2ee9ba274f0507f67a1687d1305464e
     pristine_git_object: 37d8dd45f7990352b95be8e5aac91908798a27c2
-  examples/codeReferencesListRepositories.example.ts:
-    id: 4eec9f2b32b7
-    last_write_checksum: sha1:670220562ea0daab7632b55301633bdaee154cba
-    pristine_git_object: b8dd9cda0788a8cf0c845e7cddb3656857076f8c
+  examples/approvalsList.example.ts:
+    id: 9ba6a16a9c71
+    last_write_checksum: sha1:b9eb12293e52a760949f232920d443009c138972
+    pristine_git_object: 8b9011a71eb542a5bef0386655bacb7fe9d9a7f7
   examples/package.json:
     id: c1d7b0ec8e7e
     last_write_checksum: sha1:7bc4907d34572dbf5ce2bf130db420d3a064ff06
     pristine_git_object: b6d40ae05716a1243a0adf677aef02a56b724541
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:89ed0ca9be634c5a6cdde5a6a0f3132438d58bc7
-    pristine_git_object: 26ca5f132869d2bd2f01bc4464fc7bad5bc46943
+    last_write_checksum: sha1:60bcfa39114c45ed0d9f6cfaffca0bcf28176e4c
+    pristine_git_object: 2bbfb1cad7c598438f86edbf512d39834e500751
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:f429edd953308ae302061d209cd8545d8aec3a30
-    pristine_git_object: e4b50d14b5003c0ea3db3ab4436beec55893fd90
+    last_write_checksum: sha1:5547292855f64b8e58da9cf92f9f347e4e88e195
+    pristine_git_object: 3c1c18fd273d7cae91ac8fe43bfe0346d317f000
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:c5377e0f566bb6fa8c1f40abad8ed8e2afeff228
@@ -789,6 +941,34 @@ trackedFiles:
     id: 9ea8114bf389
     last_write_checksum: sha1:03f87922d414cf09774a8b552f2df1f86cb3fd0c
     pristine_git_object: 60d3ccf6931541c9fc033988126defc18e33bd8d
+  src/funcs/approvalsApplyRequest.ts:
+    id: 9a8ac265214a
+    last_write_checksum: sha1:5c6ee3812ff14f2a85f9f309af7625c60ebeb019
+    pristine_git_object: 96ffe06943b32194b834e74d3c651089b55a4dae
+  src/funcs/approvalsCreateRequest.ts:
+    id: be9fc029b8c9
+    last_write_checksum: sha1:8db7c66f78e1b18f64060d49601491689c83a942
+    pristine_git_object: 2439d842ecdd00483425fe6634a3bb8a45d1d0f7
+  src/funcs/approvalsDeleteFlagRequest.ts:
+    id: 1eefad5a955f
+    last_write_checksum: sha1:f0c90afb5dacade56e67ea0033d7f14006953ce5
+    pristine_git_object: 40f8526b69330bf2044f185303f1a26f484b46a7
+  src/funcs/approvalsGetForFlag.ts:
+    id: bfeab75744d8
+    last_write_checksum: sha1:7964ab02f401064911a73b6054efcd794bc19e45
+    pristine_git_object: ab81f7ec54e58858a1ed5aadb1665159044a7fab
+  src/funcs/approvalsList.ts:
+    id: b33f6c268cca
+    last_write_checksum: sha1:3a68cb8385bc318688328568ae1d330a08a6416f
+    pristine_git_object: aa81ccce98ef768475fafffe366b1d3595f40d55
+  src/funcs/approvalsListForFlag.ts:
+    id: cc8283902c7a
+    last_write_checksum: sha1:03acd7aaae6b452f5ebf19ebc38da108d4a5cfd6
+    pristine_git_object: 84ef6d13e1cc1522485ced9c6735cfbcac2b89e7
+  src/funcs/approvalsReviewFlagRequest.ts:
+    id: 887decee95ef
+    last_write_checksum: sha1:9ad4276ce7a8231bb2c180f0bbf5fc144c469f47
+    pristine_git_object: a8940244bd081dfed0ee56cd270e2d4b203f8fe6
   src/funcs/codeReferencesListRepositories.ts:
     id: 8a43b229d197
     last_write_checksum: sha1:711f7f82f812c7257e344591a713f738854a0f93
@@ -843,8 +1023,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:8060f84ef1eb510133a65b800a8416c65a6756cf
-    pristine_git_object: 51bf16a74bbc1e7e0663e3f6772d8995f7436a91
+    last_write_checksum: sha1:e2872cb8000c5227cc0547ae2c29ce88c27c6982
+    pristine_git_object: adfb0e6a6575e9b99304d1a157fd747760d02a6a
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
@@ -927,8 +1107,8 @@ trackedFiles:
     pristine_git_object: 0955a573c2ce989d63c737410ab8cc28706d9f74
   src/mcp-server/mcp-server.ts:
     id: aabbc4ab07c1
-    last_write_checksum: sha1:14abc2979c582424ede0f99e2472bdf108dda818
-    pristine_git_object: 9b19ebc6ff00562e476a3ff8026ce96010803368
+    last_write_checksum: sha1:3d3374e7a9af9bdf8d737a7eb7726e03d20ea575
+    pristine_git_object: 78af261e961c59a4b6807fe8d5f7a1e3527c39ba
   src/mcp-server/prompts.ts:
     id: 26f3d73cbf31
     last_write_checksum: sha1:d6c2743fa03a583234144acfc5c3a5008a355107
@@ -943,8 +1123,8 @@ trackedFiles:
     pristine_git_object: cb8330e4ae705d283de6ab337eefd3b4b8191fca
   src/mcp-server/server.ts:
     id: 2784dd48e82a
-    last_write_checksum: sha1:48742774d3b4f7b0c129f8b0425302bd0930245a
-    pristine_git_object: ae6587e12709fcc6ff1078a9ead7a8178ca0be04
+    last_write_checksum: sha1:6ef1642a6d9e4358c0a8006123b6a2b82056ae91
+    pristine_git_object: cb8df07807ff7a0cf17e756bb76b48da47ff7a94
   src/mcp-server/shared.ts:
     id: 074e80d4be1e
     last_write_checksum: sha1:56c73d4429691516e35541825e759a0285747a2b
@@ -997,6 +1177,34 @@ trackedFiles:
     id: 6ce420678575
     last_write_checksum: sha1:32234703280f640d61252e4984be7d5e6808f4ac
     pristine_git_object: de063968e4a73fe7575a221ffe8aa24d0c2ec5e7
+  src/mcp-server/tools/approvalsApplyRequest.ts:
+    id: d79e0e79ab32
+    last_write_checksum: sha1:2bd7ab660be97c039fff3bb92915a1ed164916b7
+    pristine_git_object: a47213938fdaf108ee2cbcd854209099db334163
+  src/mcp-server/tools/approvalsCreateRequest.ts:
+    id: 233b1e4ee413
+    last_write_checksum: sha1:9d47305d1c60bb2ffac4182ef405ade2130e56ff
+    pristine_git_object: 3be08244b18113567b3d52569e5fbf8392c23dc4
+  src/mcp-server/tools/approvalsDeleteFlagRequest.ts:
+    id: 6f26a4e2b534
+    last_write_checksum: sha1:d6f2172ed65a582c1e077639b3c58fe7b28006ff
+    pristine_git_object: bc84f3826cf30afe973c27f6d1970bf8adf1a1ef
+  src/mcp-server/tools/approvalsGetForFlag.ts:
+    id: b01870cade2f
+    last_write_checksum: sha1:0f173624b3aaebdd2c6dd0663b91bf29461be1c9
+    pristine_git_object: f99c5a633eda7aad1951aaa932a08ff5b0e35d06
+  src/mcp-server/tools/approvalsList.ts:
+    id: 7c5c5468624a
+    last_write_checksum: sha1:7cfc1787a32c16d5699d68dc938b4d31cc95f41b
+    pristine_git_object: 094b8bd76c7a97fc76966cde4da9632392ab576c
+  src/mcp-server/tools/approvalsListForFlag.ts:
+    id: 197088720d13
+    last_write_checksum: sha1:5810d493e01236449be52f2c1e82b91d17818f71
+    pristine_git_object: 876408b80d12b3d94828484128ced9609be41065
+  src/mcp-server/tools/approvalsReviewFlagRequest.ts:
+    id: 62385749c3c7
+    last_write_checksum: sha1:dfbcf0f9fd6e111f62ddb021d7185b0347dba83d
+    pristine_git_object: b6fe4005f07e6ffde18f93b90c50738851538960
   src/mcp-server/tools/codeReferencesListRepositories.ts:
     id: 1c9f9152f67b
     last_write_checksum: sha1:a022c7bcda69de555bee7f92f45d1b390aa9f2be
@@ -1069,6 +1277,10 @@ trackedFiles:
     id: d6112c658632
     last_write_checksum: sha1:2052511cfae7b6650bf341e7be2ee5bc2864c16f
     pristine_git_object: df02a4b7714e79aea8343a752a54d1cbc77ec689
+  src/models/components/aiconfigrep.ts:
+    id: ff7516ea191d
+    last_write_checksum: sha1:405732f6c08c49345878373a92e916fb70178b9b
+    pristine_git_object: 120196519efcef783fede983a3211b81f9f1dc91
   src/models/components/aiconfigs.ts:
     id: 3d27f63810aa
     last_write_checksum: sha1:3b9386a11975913af70fd7b47b5798f2f8653c80
@@ -1229,14 +1441,34 @@ trackedFiles:
     id: df03b77ebc0b
     last_write_checksum: sha1:f49852f62b2e94c68eb5232ece7b448ee022ca2a
     pristine_git_object: 6881bdeafa19c334a2c7a886d8a16c4e081f817b
+  src/models/components/conflict.ts:
+    id: b168990eed88
+    last_write_checksum: sha1:2fbb516353ea5b5be39df55d313dbff27979683f
+    pristine_git_object: bb8d848319fc70e8bc058d4a2b93da7620bbf611
+  src/models/components/copiedfromenv.ts:
+    id: 57023219de34
+    last_write_checksum: sha1:7d12b2f67ab010f2aeeabfa468b84a3b7bf2f5e4
+    pristine_git_object: 7a0f0c1ff17adfb90b1b9a274a0bd9dffdf659e5
   src/models/components/corelink.ts:
     id: a88c3fb9d248
     last_write_checksum: sha1:232021127cbd109649519f8e76abacff0bd2acfd
     pristine_git_object: 1a74880e07ff2e2ff40278efbf22de839a2e2b2e
+  src/models/components/createflagconfigapprovalrequestrequest.ts:
+    id: 04e1cd0d4ca7
+    last_write_checksum: sha1:6bfcf396e194fe4730617a9e5a2dc1897f4300c5
+    pristine_git_object: b22995a4d03dd72d76ef43a0b1d2265f0306f76a
   src/models/components/customproperty.ts:
     id: b6a6f826fc01
     last_write_checksum: sha1:2770facf5cba9344c1069c4c84796f24b1378fb5
     pristine_git_object: 616ac36f6eb3a3fb42f7148d0646284c149d25b3
+  src/models/components/customworkflowmeta.ts:
+    id: e9eeecfa59e5
+    last_write_checksum: sha1:cc0e4f14e0a3ad974da75841c7f34b133cc75d52
+    pristine_git_object: a142f4a0c000ef34737512ea2e307b5b20ccf958
+  src/models/components/customworkflowstagemeta.ts:
+    id: 163fc9ffa767
+    last_write_checksum: sha1:1ab955952cf13788be59d5e216de3a3f1d0c3923
+    pristine_git_object: 6c5b74db3486ebed1caeb7e546c87e5549985d5b
   src/models/components/defaults.ts:
     id: a776d0fdbf45
     last_write_checksum: sha1:7dfb2f074d8cbfa49a9923a34a96a9fd25270768
@@ -1249,6 +1481,22 @@ trackedFiles:
     id: 0fe02e80bec9
     last_write_checksum: sha1:89011514f4c70315c89bc59150615bfff7b5ef82
     pristine_git_object: adae412c07aad0b19269c87253794ec8729befe5
+  src/models/components/expandableapprovalrequestresponse.ts:
+    id: bbfbd486858f
+    last_write_checksum: sha1:407c9038d318408ff6adc230d3ee38e6469d8a2a
+    pristine_git_object: 3d9750c7171df102d156442445968a8f040d9294
+  src/models/components/expandableapprovalrequestsresponse.ts:
+    id: 82332c3c73d8
+    last_write_checksum: sha1:eedb642c85f8b4a6c38f5b323739bb4be16e0a85
+    pristine_git_object: 46a4912ab95a58700190fd76ff554140ad7e1602
+  src/models/components/expandedflagrep.ts:
+    id: 9fe9c7f33c9b
+    last_write_checksum: sha1:a36173f5ff10474c9ce3fbfbb0d1928eef8df50e
+    pristine_git_object: 1c85e007ba8cb00967454ee43c72cc765fad0ff2
+  src/models/components/expandedresourcerep.ts:
+    id: c07ac61579b8
+    last_write_checksum: sha1:4dc8d40a49d1185f5078abcffb933cb5e88043cb
+    pristine_git_object: 8791db84e8179d17b1f677af72c81cdc259d060b
   src/models/components/experimentallocationrep.ts:
     id: f3f424ebcb27
     last_write_checksum: sha1:35fffee54c7e243e1d9fed58ab17668bde829b6b
@@ -1293,6 +1541,14 @@ trackedFiles:
     id: 7824d6e24147
     last_write_checksum: sha1:a4a566ba7fb85f2429e8b2dacf164d48146f2e66
     pristine_git_object: ee73ee24a49885c01f4c4a60db96f8432180b077
+  src/models/components/flagconfigapprovalrequestresponse.ts:
+    id: d669730251a1
+    last_write_checksum: sha1:c3355de642ca99198dd2f9435bca116658dfd300
+    pristine_git_object: 0f1ba98517ef6908b05ea694c3e2bf78d822b634
+  src/models/components/flagconfigapprovalrequestsresponse.ts:
+    id: 0f0d1f515325
+    last_write_checksum: sha1:e281df5ddb705dbbee67c7c6415b6a3efcffa633
+    pristine_git_object: c5d971e5726d475b1db490611e9822e50c4a2812
   src/models/components/flagconfigevaluation.ts:
     id: bdcd6b18c156
     last_write_checksum: sha1:80d80a92ba6daaca6f3234cf5b72f4751c3ff1b0
@@ -1301,6 +1557,10 @@ trackedFiles:
     id: 8d6cf48f395c
     last_write_checksum: sha1:5ed684b095a2602d0ba898e553a450dd4747911e
     pristine_git_object: e863a17c1d26333d77542c1871cc9b476898fdad
+  src/models/components/flaglistingrep.ts:
+    id: f5756a34034e
+    last_write_checksum: sha1:e81af347229a37dae278419492ae5d34c12b2a7e
+    pristine_git_object: de27c71edb63076f70c9a4c7b7182b5542ad8ac5
   src/models/components/flagmigrationsettingsrep.ts:
     id: 46021c7f0658
     last_write_checksum: sha1:f3e6cf6f7893555a6c54bfdbde164c10bcea585b
@@ -1319,8 +1579,16 @@ trackedFiles:
     pristine_git_object: f79ca268af0bcff8f774e6a8f409e8c0430744de
   src/models/components/index.ts:
     id: 0aa842dce54d
-    last_write_checksum: sha1:9229373918f7f4bb6e43619e93c4f8141a478410
-    pristine_git_object: 8f2cf4a19e8402ef92f70071b8f34dd5de6c6e91
+    last_write_checksum: sha1:d67833e566424ee37fe5348d889f5dde2b25825b
+    pristine_git_object: 9723012e64426c513b09d356c75363fce929e47d
+  src/models/components/integrationmetadata.ts:
+    id: a4fd2ec837b3
+    last_write_checksum: sha1:42ffc9fa25803c1005e9d134ec702c1c2a95c897
+    pristine_git_object: 856b2fb84b45486e8d2c51814179f420eea58c18
+  src/models/components/integrationstatus.ts:
+    id: fdd6166558ac
+    last_write_checksum: sha1:9364583c6ee75eefb8865a7ff86da941974cf75d
+    pristine_git_object: b0e6e13dc5fc05fede19347d3a6422e3a6a250a3
   src/models/components/judgeattachment.ts:
     id: 7db7cd145f8a
     last_write_checksum: sha1:2c149936872d3e4257903aae47951e9bfb01926d
@@ -1389,10 +1657,22 @@ trackedFiles:
     id: e0b41ec8d1ee
     last_write_checksum: sha1:cf695b1ce43110461edacce9111a54a9fe570ab1
     pristine_git_object: 2f29f9ee10b3c54c38bdab3b8e0c3ffe986f1a41
+  src/models/components/postapprovalrequestapplyrequest.ts:
+    id: 375ef3ac4ad2
+    last_write_checksum: sha1:ddbd0948462537be9f2e47b64f52a35be597d7c0
+    pristine_git_object: 959bdb8b86fe8c78e54c76b0f274632be3dfafea
+  src/models/components/postapprovalrequestreviewrequest.ts:
+    id: cf70626979d3
+    last_write_checksum: sha1:194ffdf147b7f7bcf32085e2c67e3b53090ba27d
+    pristine_git_object: ca9fde05578c215cf93a044f98b9d1221c6177c8
   src/models/components/prerequisite.ts:
     id: 15d5461a4e24
     last_write_checksum: sha1:183b324cf0996648fb4b7867d837d853463f1e4e
     pristine_git_object: 946c6e1dfc85ddea6dc3de4698b752821b4e3972
+  src/models/components/project.ts:
+    id: 0a0f965206a3
+    last_write_checksum: sha1:1a2fce10699640004159e93d211474fe3a1c5e5e
+    pristine_git_object: 5b2e74815470b8146dc8a8cb8b9fa33a990121f8
   src/models/components/referencerep.ts:
     id: 03a9f3bd2ccf
     last_write_checksum: sha1:af8a40ce0a2d285d8fbc7f05868da677311ee12c
@@ -1405,6 +1685,10 @@ trackedFiles:
     id: dd0bc2761da2
     last_write_checksum: sha1:badf4924bd6d028e987a534ec20062efc16a1c1a
     pristine_git_object: 202b38b779e7acd7e595c2402e2ad1165751c6cc
+  src/models/components/reviewresponse.ts:
+    id: bbea8e79b0a7
+    last_write_checksum: sha1:2eddecc3116f416cd1d9f1be86e56f3a918117bd
+    pristine_git_object: 1c62fdd8680d3729d922ee3383618802443b7bae
   src/models/components/rollout.ts:
     id: e950821b2b36
     last_write_checksum: sha1:ae7676ab2fb87cb34eb3179558d318da812d7ca1
@@ -1417,10 +1701,26 @@ trackedFiles:
     id: 472dde81bb1c
     last_write_checksum: sha1:009bd7a101e5ec4b52b26eedc0283683d2a1cc66
     pristine_git_object: f452d99fe997c568f3dcf5ccebf44e4e4f249a95
+  src/models/components/segmentmetadata.ts:
+    id: a61718fcf5ea
+    last_write_checksum: sha1:729230c064b9dc3509896b07435c8d6c603ecf72
+    pristine_git_object: c4cf8aa57d6c158f9572a9ea06d65ea66a9ac9f3
+  src/models/components/segmenttarget.ts:
+    id: 666ff522b0ff
+    last_write_checksum: sha1:ea7992ca8834be70ff432f56d4f9f2660423a635
+    pristine_git_object: 9d8bcc42c7b7ec5f538aaedaa4658ce45fb83247
   src/models/components/target.ts:
     id: 8eaaafcaacef
     last_write_checksum: sha1:09c619d29b0e5f571a69526d8537f9a2ccf14b6a
     pristine_git_object: 629a1aa6132bb4229b7bb0e35bbba835f2d4be8b
+  src/models/components/usersegment.ts:
+    id: f29dcb0e52ec
+    last_write_checksum: sha1:8868bc89d8fa61a16fae0c9d142702e26a388efc
+    pristine_git_object: 3467db041d6a2ffa1b7bc25fd84cf84fa2d1ffcc
+  src/models/components/usersegmentrule.ts:
+    id: 265e9e68f0fc
+    last_write_checksum: sha1:70c3f6f1616a26b0cc2fdd6f6d14a48459aa5f98
+    pristine_git_object: 6197af2347b6cb79f242376a4dd342458a3e613a
   src/models/components/variation.ts:
     id: 2927c1e8372f
     last_write_checksum: sha1:8a79fe98ede9968785583984f3e11de18025b3e1
@@ -1509,6 +1809,10 @@ trackedFiles:
     id: 607aca12f714
     last_write_checksum: sha1:46f35c442a658e3f63d6d0159b7328b3c361abd8
     pristine_git_object: da8befd62ca7f84dda9f8f2915b09471368d2d6d
+  src/models/operations/deleteapprovalrequestforflag.ts:
+    id: 368eac90413e
+    last_write_checksum: sha1:bb098b5b43092980ca6bd240f8efeb0d8b6b03b3
+    pristine_git_object: 8e04748e080d2edc2c2ea0edb861ccd13846cf24
   src/models/operations/deletefeatureflag.ts:
     id: 9b374bc750b0
     last_write_checksum: sha1:128fb856350aa8637d2961389985bf33a06fb320
@@ -1529,6 +1833,18 @@ trackedFiles:
     id: 7b8bf3e3a2b8
     last_write_checksum: sha1:0cf2566adf723d404e2665f07cef572f2aca87a0
     pristine_git_object: 917b2b69091dec7e03bf9c3d9e08aadd6b0289b1
+  src/models/operations/getapprovalforflag.ts:
+    id: a54e891206ab
+    last_write_checksum: sha1:37cb92a7116911639e3027e9b4d45b5666eb5998
+    pristine_git_object: 6f244fe95468f3b0a555fbaff90d6f8fb52bbb25
+  src/models/operations/getapprovalrequests.ts:
+    id: fb3990eee0b9
+    last_write_checksum: sha1:c2cfd46305bac51c878a72478585a5e3a7da4ffc
+    pristine_git_object: 5140d873abd5936a3163a9b6e67b7f6bbc18a2c6
+  src/models/operations/getapprovalsforflag.ts:
+    id: 350929974b34
+    last_write_checksum: sha1:9f2c0225e91da4149d9d4dc037de28f32ceaad42
+    pristine_git_object: 717cdccedb7b8d9bd567bcd00a513abd9d24c04b
   src/models/operations/getenvironmentsbyproject.ts:
     id: 12978c05182c
     last_write_checksum: sha1:850485c136b7715a0532328d37095b263e624359
@@ -1551,8 +1867,8 @@ trackedFiles:
     pristine_git_object: fee835a0b59424600ee5c4254c504fb0a477ffeb
   src/models/operations/index.ts:
     id: 0d9ffaf774d2
-    last_write_checksum: sha1:3b596fbfabf90699e26e53d713b1b7c079c136ab
-    pristine_git_object: ae336a9924cf2d02f4d5b97d412c0b8ba2017e84
+    last_write_checksum: sha1:4e936caf3d2b3449c0c9afe0780d3c1a615be181
+    pristine_git_object: 69fe7d3015522e95102a972a8dcb2c12d1370926
   src/models/operations/patchaiconfig.ts:
     id: 7a729862abd6
     last_write_checksum: sha1:566329388f617b0a9f622211bff6352f2995f5f4
@@ -1577,6 +1893,18 @@ trackedFiles:
     id: 0d4783db7278
     last_write_checksum: sha1:af8a81b320c96ea6d7841227a47b3c41f4a7d46d
     pristine_git_object: 1896842cf9e33bb0b947d633896092219370ec3f
+  src/models/operations/postapprovalrequestapplyforflag.ts:
+    id: eea8a58046ec
+    last_write_checksum: sha1:e153146620a4d1ff0ad553fcaea49daecb01a9a0
+    pristine_git_object: ac4920eb58c67d5f5fbba73add5d4f31634721f0
+  src/models/operations/postapprovalrequestforflag.ts:
+    id: f798457aa0aa
+    last_write_checksum: sha1:f73e5465450a6919317ebc52b77a49df7420acee
+    pristine_git_object: c9987cb521489036374530a5ce29ecff38c9199d
+  src/models/operations/postapprovalrequestreviewforflag.ts:
+    id: 50d2f740ae72
+    last_write_checksum: sha1:6b27029cb960f1d084cfc25fcae35257692264c9
+    pristine_git_object: 856bf91ed7c09451603399a94d5cf6dc1973a623
   src/models/operations/postfeatureflag.ts:
     id: e7c7535586e2
     last_write_checksum: sha1:06971ee5850983b089fc2c00d28b7b4e63343982
@@ -1585,6 +1913,10 @@ trackedFiles:
     id: 37e59331bfe5
     last_write_checksum: sha1:10b28837a75334436fb6283f58ce2b3abff4f3a8
     pristine_git_object: 9912ef6dd7d9d80ec3ca2f24c60ea2e8c11ef60b
+  src/sdk/approvals.ts:
+    id: fa2eea1d44e5
+    last_write_checksum: sha1:459b17a2a1e5a216118b53c2a1885c54d3104f55
+    pristine_git_object: bd079fcd6489caf075608f97eca2afab5fdfa772
   src/sdk/codereferences.ts:
     id: 7c1554a57788
     last_write_checksum: sha1:18ae11c1bc019136480460aa9227cc7f69bc0f90
@@ -1603,8 +1935,8 @@ trackedFiles:
     pristine_git_object: ecac2264817bb369ff2dbf0f0e9029807e67ff77
   src/sdk/sdk.ts:
     id: 784571af2f69
-    last_write_checksum: sha1:41238a864fa60d05fc423bdd90c7340afad1f9e1
-    pristine_git_object: 0e739d4c1033f53fa29e1a6ab2b87ffc7c2a6f7d
+    last_write_checksum: sha1:a2a6fdfce39958cef0584e16282eaeb06bb230b3
+    pristine_git_object: 823e5f1921d15fd8b2ef6a37d9e9b112206e2cf6
   src/types/async.ts:
     id: fac8da972f86
     last_write_checksum: sha1:3ff07b3feaf390ec1aeb18ff938e139c6c4a9585
@@ -1906,7 +2238,7 @@ examples:
     speakeasy-default-get-approval-requests:
       responses:
         "200":
-          application/json: {"items": [{"_id": "12ab3c45de678910abc12345", "_version": 1, "creationDate": 542910, "serviceKind": "<value>", "requestorId": "12ab3c45de678910abc12345", "description": "example: request approval from someone", "reviewStatus": "pending", "allReviews": [], "notifyMemberIds": ["1234a56b7c89d012345e678f"], "appliedByMemberId": "1234a56b7c89d012345e678f", "appliedByServiceTokenId": "1234a56b7c89d012345e678f", "status": "pending", "instructions": [{"key": "<value>", "key1": "<value>"}, {"key": "<value>"}], "conflicts": [{}, {}], "_links": {"key": "<value>"}, "operatingOnId": "12ab3c45de678910abc12345", "source": {"key": "source-flag-key-123abc", "version": 1}, "customWorkflowMetadata": {"name": "Example workflow name", "stage": {"index": 0, "name": "Stage 1"}}, "approvalSettings": {"required": true, "bypassApprovalsForPendingChanges": false, "minNumApprovals": 1, "canReviewOwnRequest": false, "canApplyDeclinedChanges": true, "autoApplyApprovedChanges": true, "serviceKind": "launchdarkly", "serviceConfig": {}, "requiredApprovalTags": ["require-approval"], "serviceKindConfigurationId": "1ef45a85-218f-4428-a8b2-a97e5f56c258"}, "project": {"_links": {"environments": {"href": "/api/v2/projects/my-project/environments", "type": "application/json"}, "self": {"href": "/api/v2/projects/my-project", "type": "application/json"}}, "_id": "57be1db38b75bf0772d11383", "key": "project-key-123abc", "includeInSnippetByDefault": true, "name": "My Project", "_access": {"denied": [{"action": "<value>", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "actions": ["*"], "effect": "allow"}}, {"action": "<value>", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "actions": ["*"], "effect": "allow"}}, {"action": "<value>", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "actions": ["*"], "effect": "allow"}}], "allowed": [{"action": "<value>", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "actions": ["*"], "effect": "allow"}}, {"action": "<value>", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "actions": ["*"], "effect": "allow"}}]}, "tags": ["ops"], "environments": {"totalCount": 2, "items": []}}, "environments": [{"_links": {"self": {"href": "/api/v2/projects/my-project/environments/my-environment", "type": "application/json"}}, "_id": "57be1db38b75bf0772d11384", "key": "environment-key-123abc", "name": "My Environment", "apiKey": "sdk-xxx", "mobileKey": "mob-xxx", "color": "F5A623", "defaultTtl": 5, "secureMode": true, "defaultTrackEvents": false, "requireComments": true, "confirmChanges": true, "tags": ["ops"], "approvalSettings": {"required": true, "bypassApprovalsForPendingChanges": false, "minNumApprovals": 1, "canReviewOwnRequest": false, "canApplyDeclinedChanges": true, "autoApplyApprovedChanges": true, "serviceKind": "launchdarkly", "serviceConfig": {}, "requiredApprovalTags": ["require-approval"], "serviceKindConfigurationId": "1ef45a85-218f-4428-a8b2-a97e5f56c258"}, "resourceApprovalSettings": {"key": {"required": true, "bypassApprovalsForPendingChanges": false, "minNumApprovals": 1, "canReviewOwnRequest": false, "canApplyDeclinedChanges": true, "autoApplyApprovedChanges": true, "serviceKind": "launchdarkly", "serviceConfig": {}, "requiredApprovalTags": ["require-approval"], "serviceKindConfigurationId": "1ef45a85-218f-4428-a8b2-a97e5f56c258"}, "key1": {"required": true, "bypassApprovalsForPendingChanges": false, "minNumApprovals": 1, "canReviewOwnRequest": false, "canApplyDeclinedChanges": true, "autoApplyApprovedChanges": true, "serviceKind": "launchdarkly", "serviceConfig": {}, "requiredApprovalTags": ["require-approval"], "serviceKindConfigurationId": "1ef45a85-218f-4428-a8b2-a97e5f56c258"}}, "critical": true}, {"_links": {"self": {"href": "/api/v2/projects/my-project/environments/my-environment", "type": "application/json"}}, "_id": "57be1db38b75bf0772d11384", "key": "environment-key-123abc", "name": "My Environment", "apiKey": "sdk-xxx", "mobileKey": "mob-xxx", "color": "F5A623", "defaultTtl": 5, "secureMode": true, "defaultTrackEvents": false, "requireComments": true, "confirmChanges": true, "tags": ["ops"], "approvalSettings": {"required": true, "bypassApprovalsForPendingChanges": false, "minNumApprovals": 1, "canReviewOwnRequest": false, "canApplyDeclinedChanges": true, "autoApplyApprovedChanges": true, "serviceKind": "launchdarkly", "serviceConfig": {}, "requiredApprovalTags": ["require-approval"], "serviceKindConfigurationId": "1ef45a85-218f-4428-a8b2-a97e5f56c258"}, "resourceApprovalSettings": {"key": {"required": true, "bypassApprovalsForPendingChanges": false, "minNumApprovals": 1, "canReviewOwnRequest": false, "canApplyDeclinedChanges": true, "autoApplyApprovedChanges": true, "serviceKind": "launchdarkly", "serviceConfig": {}, "requiredApprovalTags": ["require-approval"], "serviceKindConfigurationId": "1ef45a85-218f-4428-a8b2-a97e5f56c258"}, "key1": {"required": true, "bypassApprovalsForPendingChanges": false, "minNumApprovals": 1, "canReviewOwnRequest": false, "canApplyDeclinedChanges": true, "autoApplyApprovedChanges": true, "serviceKind": "launchdarkly", "serviceConfig": {}, "requiredApprovalTags": ["require-approval"], "serviceKindConfigurationId": "1ef45a85-218f-4428-a8b2-a97e5f56c258"}}, "critical": true}, {"_links": {"self": {"href": "/api/v2/projects/my-project/environments/my-environment", "type": "application/json"}}, "_id": "57be1db38b75bf0772d11384", "key": "environment-key-123abc", "name": "My Environment", "apiKey": "sdk-xxx", "mobileKey": "mob-xxx", "color": "F5A623", "defaultTtl": 5, "secureMode": true, "defaultTrackEvents": false, "requireComments": true, "confirmChanges": true, "tags": ["ops"], "approvalSettings": {"required": true, "bypassApprovalsForPendingChanges": false, "minNumApprovals": 1, "canReviewOwnRequest": false, "canApplyDeclinedChanges": true, "autoApplyApprovedChanges": true, "serviceKind": "launchdarkly", "serviceConfig": {}, "requiredApprovalTags": ["require-approval"], "serviceKindConfigurationId": "1ef45a85-218f-4428-a8b2-a97e5f56c258"}, "resourceApprovalSettings": {"key": {"required": true, "bypassApprovalsForPendingChanges": false, "minNumApprovals": 1, "canReviewOwnRequest": false, "canApplyDeclinedChanges": true, "autoApplyApprovedChanges": true, "serviceKind": "launchdarkly", "serviceConfig": {}, "requiredApprovalTags": ["require-approval"], "serviceKindConfigurationId": "1ef45a85-218f-4428-a8b2-a97e5f56c258"}, "key1": {"required": true, "bypassApprovalsForPendingChanges": false, "minNumApprovals": 1, "canReviewOwnRequest": false, "canApplyDeclinedChanges": true, "autoApplyApprovedChanges": true, "serviceKind": "launchdarkly", "serviceConfig": {}, "requiredApprovalTags": ["require-approval"], "serviceKindConfigurationId": "1ef45a85-218f-4428-a8b2-a97e5f56c258"}}, "critical": true}], "flag": {"name": "My Flag", "kind": "boolean", "description": "This flag controls the example widgets", "key": "flag-key-123abc", "_version": 1, "creationDate": 673862, "variations": [{"_id": "e432f62b-55f6-49dd-a02f-eb24acf39d05", "value": true}, {"_id": "a00bf58d-d252-476c-b915-15a74becacb4", "value": false}], "temporary": true, "tags": ["example-tag"], "_links": {"parent": {"href": "/api/v2/flags/my-project", "type": "application/json"}, "self": {"href": "/api/v2/flags/my-project/my-flag", "type": "application/json"}}, "maintainerId": "569f183514f4432160000007", "_maintainer": {"_links": {"self": {"href": "/api/v2/members/569f183514f4432160000007", "type": "application/json"}}, "_id": "569f183514f4432160000007", "firstName": "Ariel", "lastName": "Flores", "role": "admin", "email": "ariel@acme.com"}, "customProperties": {"key": {"name": "Jira issues", "value": ["is-123", "is-456"]}, "key1": {"name": "Jira issues", "value": ["is-123", "is-456"]}, "key2": {"name": "Jira issues", "value": ["is-123", "is-456"]}}, "archived": false, "defaults": {"onVariation": 0, "offVariation": 1}}, "resource": {"kind": "flag", "flag": {"name": "My Flag", "kind": "boolean", "description": "This flag controls the example widgets", "key": "flag-key-123abc", "_version": 1, "creationDate": 673862, "variations": [{"_id": "e432f62b-55f6-49dd-a02f-eb24acf39d05", "value": true}, {"_id": "a00bf58d-d252-476c-b915-15a74becacb4", "value": false}], "temporary": true, "tags": ["example-tag"], "_links": {"parent": {"href": "/api/v2/flags/my-project", "type": "application/json"}, "self": {"href": "/api/v2/flags/my-project/my-flag", "type": "application/json"}}, "maintainerId": "569f183514f4432160000007", "_maintainer": {"_links": {"self": {"href": "/api/v2/members/569f183514f4432160000007", "type": "application/json"}}, "_id": "569f183514f4432160000007", "firstName": "Ariel", "lastName": "Flores", "role": "admin", "email": "ariel@acme.com"}, "customProperties": {"key": {"name": "Jira issues", "value": ["is-123", "is-456"]}, "key1": {"name": "Jira issues", "value": ["is-123", "is-456"]}, "key2": {"name": "Jira issues", "value": ["is-123", "is-456"]}}, "archived": false, "defaults": {"onVariation": 0, "offVariation": 1}}, "segment": {"name": "Example segment", "description": "Bundle our sample customers together", "tags": ["testing"], "creationDate": 995805, "lastModifiedDate": 712436, "key": "segment-key-123abc", "included": ["user-key-123abc"], "excluded": ["user-key-123abc"], "_links": {"key": {}, "key1": {}}, "rules": [{"_id": "1234a56b7c89d012345e678f", "clauses": [{"_id": "12ab3c45de678910fab12345", "attribute": "email", "op": "endsWith", "values": [".edu"], "negate": false}]}], "version": 1, "deleted": false, "_access": {"denied": [{"action": "<value>", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "actions": ["*"], "effect": "allow"}}, {"action": "<value>", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "actions": ["*"], "effect": "allow"}}, {"action": "<value>", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "actions": ["*"], "effect": "allow"}}], "allowed": [{"action": "<value>", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "actions": ["*"], "effect": "allow"}}, {"action": "<value>", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "actions": ["*"], "effect": "allow"}}]}, "_flags": [{"name": "Example flag", "key": "flag-key-123abc"}, {"name": "Example flag", "key": "flag-key-123abc"}], "unbounded": false, "generation": 852643, "_external": "amplitude", "_externalLink": "https://analytics.amplitude.com/org/1234/cohort/123abc", "_importInProgress": false}, "aiConfig": {"key": "aiconfig-key-123abc", "name": "AI Config 1"}}}], "totalCount": 1, "_links": {"key": {}}}
+          application/json: {"items": [{"_id": "12ab3c45de678910abc12345", "_version": 1, "creationDate": 542910, "serviceKind": "<value>", "requestorId": "12ab3c45de678910abc12345", "description": "example: request approval from someone", "reviewStatus": "pending", "allReviews": [], "notifyMemberIds": ["1234a56b7c89d012345e678f"], "appliedByMemberId": "1234a56b7c89d012345e678f", "appliedByServiceTokenId": "1234a56b7c89d012345e678f", "status": "pending", "instructions": [{"key": "<value>", "key1": "<value>"}, {"key": "<value>"}], "conflicts": [{}, {}], "_links": {"key": "<value>"}, "operatingOnId": "12ab3c45de678910abc12345", "source": {"key": "source-flag-key-123abc", "version": 1}, "customWorkflowMetadata": {"name": "Example workflow name", "stage": {"index": 0, "name": "Stage 1"}}, "approvalSettings": {"required": true, "bypassApprovalsForPendingChanges": false, "minNumApprovals": 1, "canReviewOwnRequest": false, "canApplyDeclinedChanges": true, "autoApplyApprovedChanges": true, "serviceKind": "launchdarkly", "serviceConfig": {}, "requiredApprovalTags": ["require-approval"], "serviceKindConfigurationId": "1ef45a85-218f-4428-a8b2-a97e5f56c258"}, "project": {"_links": {"environments": {"href": "/api/v2/projects/my-project/environments", "type": "application/json"}, "self": {"href": "/api/v2/projects/my-project", "type": "application/json"}}, "_id": "57be1db38b75bf0772d11383", "key": "project-key-123abc", "includeInSnippetByDefault": true, "name": "My Project", "_access": {"denied": [{"action": "<value>", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "actions": ["*"], "effect": "allow"}}, {"action": "<value>", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "actions": ["*"], "effect": "allow"}}, {"action": "<value>", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "actions": ["*"], "effect": "allow"}}], "allowed": [{"action": "<value>", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "actions": ["*"], "effect": "allow"}}, {"action": "<value>", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "actions": ["*"], "effect": "allow"}}]}, "tags": ["ops"], "environments": {"totalCount": 2, "items": []}}, "environments": [{"_links": {"self": {"href": "/api/v2/projects/my-project/environments/my-environment", "type": "application/json"}}, "_id": "57be1db38b75bf0772d11384", "key": "environment-key-123abc", "name": "My Environment", "apiKey": "sdk-xxx", "mobileKey": "mob-xxx", "color": "F5A623", "defaultTtl": 5, "secureMode": true, "defaultTrackEvents": false, "requireComments": true, "confirmChanges": true, "tags": ["ops"], "approvalSettings": {"required": true, "bypassApprovalsForPendingChanges": false, "minNumApprovals": 1, "canReviewOwnRequest": false, "canApplyDeclinedChanges": true, "autoApplyApprovedChanges": true, "serviceKind": "launchdarkly", "serviceConfig": {}, "requiredApprovalTags": ["require-approval"], "serviceKindConfigurationId": "1ef45a85-218f-4428-a8b2-a97e5f56c258"}, "resourceApprovalSettings": {"key": {"required": true, "bypassApprovalsForPendingChanges": false, "minNumApprovals": 1, "canReviewOwnRequest": false, "canApplyDeclinedChanges": true, "autoApplyApprovedChanges": true, "serviceKind": "launchdarkly", "serviceConfig": {}, "requiredApprovalTags": ["require-approval"], "serviceKindConfigurationId": "1ef45a85-218f-4428-a8b2-a97e5f56c258"}, "key1": {"required": true, "bypassApprovalsForPendingChanges": false, "minNumApprovals": 1, "canReviewOwnRequest": false, "canApplyDeclinedChanges": true, "autoApplyApprovedChanges": true, "serviceKind": "launchdarkly", "serviceConfig": {}, "requiredApprovalTags": ["require-approval"], "serviceKindConfigurationId": "1ef45a85-218f-4428-a8b2-a97e5f56c258"}}, "critical": true}, {"_links": {"self": {"href": "/api/v2/projects/my-project/environments/my-environment", "type": "application/json"}}, "_id": "57be1db38b75bf0772d11384", "key": "environment-key-123abc", "name": "My Environment", "apiKey": "sdk-xxx", "mobileKey": "mob-xxx", "color": "F5A623", "defaultTtl": 5, "secureMode": true, "defaultTrackEvents": false, "requireComments": true, "confirmChanges": true, "tags": ["ops"], "approvalSettings": {"required": true, "bypassApprovalsForPendingChanges": false, "minNumApprovals": 1, "canReviewOwnRequest": false, "canApplyDeclinedChanges": true, "autoApplyApprovedChanges": true, "serviceKind": "launchdarkly", "serviceConfig": {}, "requiredApprovalTags": ["require-approval"], "serviceKindConfigurationId": "1ef45a85-218f-4428-a8b2-a97e5f56c258"}, "resourceApprovalSettings": {"key": {"required": true, "bypassApprovalsForPendingChanges": false, "minNumApprovals": 1, "canReviewOwnRequest": false, "canApplyDeclinedChanges": true, "autoApplyApprovedChanges": true, "serviceKind": "launchdarkly", "serviceConfig": {}, "requiredApprovalTags": ["require-approval"], "serviceKindConfigurationId": "1ef45a85-218f-4428-a8b2-a97e5f56c258"}, "key1": {"required": true, "bypassApprovalsForPendingChanges": false, "minNumApprovals": 1, "canReviewOwnRequest": false, "canApplyDeclinedChanges": true, "autoApplyApprovedChanges": true, "serviceKind": "launchdarkly", "serviceConfig": {}, "requiredApprovalTags": ["require-approval"], "serviceKindConfigurationId": "1ef45a85-218f-4428-a8b2-a97e5f56c258"}}, "critical": true}, {"_links": {"self": {"href": "/api/v2/projects/my-project/environments/my-environment", "type": "application/json"}}, "_id": "57be1db38b75bf0772d11384", "key": "environment-key-123abc", "name": "My Environment", "apiKey": "sdk-xxx", "mobileKey": "mob-xxx", "color": "F5A623", "defaultTtl": 5, "secureMode": true, "defaultTrackEvents": false, "requireComments": true, "confirmChanges": true, "tags": ["ops"], "approvalSettings": {"required": true, "bypassApprovalsForPendingChanges": false, "minNumApprovals": 1, "canReviewOwnRequest": false, "canApplyDeclinedChanges": true, "autoApplyApprovedChanges": true, "serviceKind": "launchdarkly", "serviceConfig": {}, "requiredApprovalTags": ["require-approval"], "serviceKindConfigurationId": "1ef45a85-218f-4428-a8b2-a97e5f56c258"}, "resourceApprovalSettings": {"key": {"required": true, "bypassApprovalsForPendingChanges": false, "minNumApprovals": 1, "canReviewOwnRequest": false, "canApplyDeclinedChanges": true, "autoApplyApprovedChanges": true, "serviceKind": "launchdarkly", "serviceConfig": {}, "requiredApprovalTags": ["require-approval"], "serviceKindConfigurationId": "1ef45a85-218f-4428-a8b2-a97e5f56c258"}, "key1": {"required": true, "bypassApprovalsForPendingChanges": false, "minNumApprovals": 1, "canReviewOwnRequest": false, "canApplyDeclinedChanges": true, "autoApplyApprovedChanges": true, "serviceKind": "launchdarkly", "serviceConfig": {}, "requiredApprovalTags": ["require-approval"], "serviceKindConfigurationId": "1ef45a85-218f-4428-a8b2-a97e5f56c258"}}, "critical": true}], "flag": {"name": "My Flag", "kind": "boolean", "description": "This flag controls the example widgets", "key": "flag-key-123abc", "_version": 1, "creationDate": 673862, "variations": [{"_id": "e432f62b-55f6-49dd-a02f-eb24acf39d05", "value": true}, {"_id": "a00bf58d-d252-476c-b915-15a74becacb4", "value": false}], "temporary": true, "tags": ["example-tag"], "_links": {"parent": {"href": "/api/v2/flags/my-project", "type": "application/json"}, "self": {"href": "/api/v2/flags/my-project/my-flag", "type": "application/json"}}, "maintainerId": "569f183514f4432160000007", "_maintainer": {"_links": {"self": {"href": "/api/v2/members/569f183514f4432160000007", "type": "application/json"}}, "_id": "569f183514f4432160000007", "firstName": "Ariel", "lastName": "Flores", "role": "admin", "email": "ariel@acme.com"}, "customProperties": {"key": {"name": "Jira issues", "value": ["is-123", "is-456"]}, "key1": {"name": "Jira issues", "value": ["is-123", "is-456"]}, "key2": {"name": "Jira issues", "value": ["is-123", "is-456"]}}, "archived": false, "defaults": {"onVariation": 0, "offVariation": 1}}, "resource": {"kind": "flag", "aiConfig": {"key": "aiconfig-key-123abc", "name": "AI Config 1"}, "flag": {"name": "My Flag", "kind": "boolean", "description": "This flag controls the example widgets", "key": "flag-key-123abc", "_version": 1, "creationDate": 673862, "variations": [{"_id": "e432f62b-55f6-49dd-a02f-eb24acf39d05", "value": true}, {"_id": "a00bf58d-d252-476c-b915-15a74becacb4", "value": false}], "temporary": true, "tags": ["example-tag"], "_links": {"parent": {"href": "/api/v2/flags/my-project", "type": "application/json"}, "self": {"href": "/api/v2/flags/my-project/my-flag", "type": "application/json"}}, "maintainerId": "569f183514f4432160000007", "_maintainer": {"_links": {"self": {"href": "/api/v2/members/569f183514f4432160000007", "type": "application/json"}}, "_id": "569f183514f4432160000007", "firstName": "Ariel", "lastName": "Flores", "role": "admin", "email": "ariel@acme.com"}, "customProperties": {"key": {"name": "Jira issues", "value": ["is-123", "is-456"]}, "key1": {"name": "Jira issues", "value": ["is-123", "is-456"]}, "key2": {"name": "Jira issues", "value": ["is-123", "is-456"]}}, "archived": false, "defaults": {"onVariation": 0, "offVariation": 1}}, "segment": {"name": "Example segment", "description": "Bundle our sample customers together", "tags": ["testing"], "creationDate": 995805, "lastModifiedDate": 712436, "key": "segment-key-123abc", "included": ["user-key-123abc"], "excluded": ["user-key-123abc"], "_links": {"key": {}, "key1": {}}, "rules": [{"_id": "1234a56b7c89d012345e678f", "clauses": [{"_id": "12ab3c45de678910fab12345", "attribute": "email", "op": "endsWith", "values": [".edu"], "negate": false}]}], "version": 1, "deleted": false, "_access": {"denied": [{"action": "<value>", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "actions": ["*"], "effect": "allow"}}, {"action": "<value>", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "actions": ["*"], "effect": "allow"}}, {"action": "<value>", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "actions": ["*"], "effect": "allow"}}], "allowed": [{"action": "<value>", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "actions": ["*"], "effect": "allow"}}, {"action": "<value>", "reason": {"resources": ["proj/*:env/*;qa_*:/flag/*"], "actions": ["*"], "effect": "allow"}}]}, "_flags": [{"name": "Example flag", "key": "flag-key-123abc"}, {"name": "Example flag", "key": "flag-key-123abc"}], "unbounded": false, "generation": 852643, "_external": "amplitude", "_externalLink": "https://analytics.amplitude.com/org/1234/cohort/123abc", "_importInProgress": false}}}], "totalCount": 1, "_links": {"key": {}}}
         "400":
           application/json: {"code": "invalid_request", "message": "Invalid request body"}
         "401":
