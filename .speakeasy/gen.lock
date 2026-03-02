@@ -1,441 +1,1654 @@
 lockVersion: 2.0.0
 id: cc3a5766-8b39-40da-a0be-fff57173d8e1
 management:
-  docChecksum: 8eac3d61628d156e0ba4619a0bee9746
+  docChecksum: 3bf333ffd4b2b0d832c5511a7e7ff173
   docVersion: "2.0"
-  speakeasyVersion: 1.580.0
-  generationVersion: 2.654.2
-  releaseVersion: 0.5.0
-  configChecksum: 6f16295e0c181e6c584b50b2a2962c45
+  speakeasyVersion: 1.736.1
+  generationVersion: 2.845.15
+  releaseVersion: 0.6.0
+  configChecksum: 976f9a3eab53c25137a5e27a963dcf9f
   repoURL: https://github.com/launchdarkly/mcp-server.git
   installationURL: https://github.com/launchdarkly/mcp-server
   published: true
+persistentEdits:
+  generation_id: c9f94ed6-fdb5-4186-8833-40022a1d0597
+  pristine_commit_hash: ef7273def0d4f9ecedf7c4cd0d65c94dfc01b038
+  pristine_tree_hash: f3ff54d7e32f317060981863152d5cc14567e21a
 features:
   typescript:
     additionalDependencies: 0.1.0
-    constsAndDefaults: 0.1.12
-    core: 3.21.13
+    constsAndDefaults: 0.1.14
+    core: 3.26.38
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
-    devContainers: 2.90.0
+    devContainers: 2.90.1
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.1.2
-    globalSecurity: 2.82.13
+    globalSecurity: 2.82.15
     globalSecurityCallbacks: 0.1.0
-    globalSecurityFlattening: 0.1.0
-    globalServerURLs: 2.82.5
-    groups: 2.81.2
+    globalSecurityFlattening: 0.1.1
+    globalServerURLs: 2.83.1
+    groups: 2.81.3
     ignores: 2.81.1
-    mcpServer: 0.9.3
-    nameOverrides: 2.81.2
-    responseFormat: 0.2.3
+    mcpServer: 0.9.4
+    nameOverrides: 2.81.4
+    responseFormat: 0.3.0
     retries: 2.83.0
-    sdkHooks: 0.3.0
-    unions: 2.85.11
-generatedFiles:
-  - .devcontainer/README.md
-  - .devcontainer/devcontainer.json
-  - .devcontainer/setup.sh
-  - .gitattributes
-  - .npmignore
-  - FUNCTIONS.md
-  - RUNTIMES.md
-  - USAGE.md
-  - docs/lib/utils/retryconfig.md
-  - docs/models/components/access.md
-  - docs/models/components/accessallowedreason.md
-  - docs/models/components/accessallowedreasoneffect.md
-  - docs/models/components/accessallowedrep.md
-  - docs/models/components/accessdenied.md
-  - docs/models/components/accessdeniedreason.md
-  - docs/models/components/accessdeniedreasoneffect.md
-  - docs/models/components/aiconfig.md
-  - docs/models/components/aiconfigdependency.md
-  - docs/models/components/aiconfigdependencytype.md
-  - docs/models/components/aiconfigmaintainer.md
-  - docs/models/components/aiconfigmode.md
-  - docs/models/components/aiconfigpatch.md
-  - docs/models/components/aiconfigpost.md
-  - docs/models/components/aiconfigpostmode.md
-  - docs/models/components/aiconfigs.md
-  - docs/models/components/aiconfigsaccess.md
-  - docs/models/components/aiconfigsaccessallowedreason.md
-  - docs/models/components/aiconfigsaccessallowedreasoneffect.md
-  - docs/models/components/aiconfigsaccessallowedrep.md
-  - docs/models/components/aiconfigsaccessdenied.md
-  - docs/models/components/aiconfigsaccessdeniedreason.md
-  - docs/models/components/aiconfigsaccessdeniedreasoneffect.md
-  - docs/models/components/aiconfigsexperimentenabledperiodrep.md
-  - docs/models/components/aiconfigsexperimentenvironmentsettingrep.md
-  - docs/models/components/aiconfigsexperimentinforep.md
-  - docs/models/components/aiconfigsfilter.md
-  - docs/models/components/aiconfigsfiltertype.md
-  - docs/models/components/aiconfigslegacyexperimentrep.md
-  - docs/models/components/aiconfigslink.md
-  - docs/models/components/aiconfigsmaintainerteam.md
-  - docs/models/components/aiconfigsmembersummary.md
-  - docs/models/components/aiconfigsmetricdatasourcerefrep.md
-  - docs/models/components/aiconfigsmetriceventdefaultrep.md
-  - docs/models/components/aiconfigsmetriclistingrep.md
-  - docs/models/components/aiconfigsmetriclistingrepanalysistype.md
-  - docs/models/components/aiconfigsmetriclistingrepkind.md
-  - docs/models/components/aiconfigsmetriclistingrepsuccesscriteria.md
-  - docs/models/components/aiconfigsmetriclistingrepunitaggregationtype.md
-  - docs/models/components/aiconfigsmodification.md
-  - docs/models/components/aiconfigtargeting.md
-  - docs/models/components/aiconfigtargetingdefaults.md
-  - docs/models/components/aiconfigtargetingenvironment.md
-  - docs/models/components/aiconfigtargetingenvironmentfallthrough.md
-  - docs/models/components/aiconfigtargetingenvironmentfallthroughrollout.md
-  - docs/models/components/aiconfigtargetingenvironmentfallthroughrolloutexperimentationallocation.md
-  - docs/models/components/aiconfigtargetingenvironmentfallthroughrolloutvariation.md
-  - docs/models/components/aiconfigtargetingenvironmentrule.md
-  - docs/models/components/aiconfigtargetingenvironmentruleclause.md
-  - docs/models/components/aiconfigtargetingenvironmenttarget.md
-  - docs/models/components/aiconfigtargetingpatch.md
-  - docs/models/components/aiconfigtargetingvariation.md
-  - docs/models/components/aiconfigtargetingvariationjson.md
-  - docs/models/components/aiconfigtargetingvariationvalue.md
-  - docs/models/components/aiconfigvariation.md
-  - docs/models/components/aiconfigvariationmodel.md
-  - docs/models/components/aiconfigvariationpatch.md
-  - docs/models/components/aiconfigvariationpatchmodel.md
-  - docs/models/components/aiconfigvariationpost.md
-  - docs/models/components/aiconfigvariationpostmodel.md
-  - docs/models/components/aiconfigvariationsresponse.md
-  - docs/models/components/approvalsettings.md
-  - docs/models/components/branchrep.md
-  - docs/models/components/clause.md
-  - docs/models/components/clientsideavailability.md
-  - docs/models/components/clientsideavailabilitypost.md
-  - docs/models/components/corelink.md
-  - docs/models/components/customproperty.md
-  - docs/models/components/defaults.md
-  - docs/models/components/environment.md
-  - docs/models/components/environments.md
-  - docs/models/components/experimentallocationrep.md
-  - docs/models/components/experimentenabledperiodrep.md
-  - docs/models/components/experimentenvironmentsettingrep.md
-  - docs/models/components/experimentinforep.md
-  - docs/models/components/featureflag.md
-  - docs/models/components/featureflagbody.md
-  - docs/models/components/featureflagconfig.md
-  - docs/models/components/featureflagkind.md
-  - docs/models/components/featureflags.md
-  - docs/models/components/featureflagstatus.md
-  - docs/models/components/featureflagstatusacrossenvironments.md
-  - docs/models/components/filter.md
-  - docs/models/components/filtertype.md
-  - docs/models/components/flagconfigevaluation.md
-  - docs/models/components/flagconfigmigrationsettingsrep.md
-  - docs/models/components/flagmigrationsettingsrep.md
-  - docs/models/components/flagprerequisitepost.md
-  - docs/models/components/flagsummary.md
-  - docs/models/components/hunkrep.md
-  - docs/models/components/judgeattachment.md
-  - docs/models/components/judgeconfiguration.md
-  - docs/models/components/legacyexperimentrep.md
-  - docs/models/components/link.md
-  - docs/models/components/maintainermember.md
-  - docs/models/components/maintainerteam.md
-  - docs/models/components/membersummary.md
-  - docs/models/components/message.md
-  - docs/models/components/metricdatasourcerefrep.md
-  - docs/models/components/metriceventdefaultrep.md
-  - docs/models/components/metriclistingrep.md
-  - docs/models/components/metriclistingrepanalysistype.md
-  - docs/models/components/metriclistingrepkind.md
-  - docs/models/components/metriclistingrepsuccesscriteria.md
-  - docs/models/components/metriclistingrepunitaggregationtype.md
-  - docs/models/components/migrationsettingspost.md
-  - docs/models/components/modification.md
-  - docs/models/components/name.md
-  - docs/models/components/paginatedlinks.md
-  - docs/models/components/parentandselflinks.md
-  - docs/models/components/parentlink.md
-  - docs/models/components/patchoperation.md
-  - docs/models/components/patchwithcomment.md
-  - docs/models/components/prerequisite.md
-  - docs/models/components/purpose.md
-  - docs/models/components/referencerep.md
-  - docs/models/components/repositorycollectionrep.md
-  - docs/models/components/repositoryrep.md
-  - docs/models/components/repositoryreptype.md
-  - docs/models/components/rollout.md
-  - docs/models/components/rule.md
-  - docs/models/components/security.md
-  - docs/models/components/target.md
-  - docs/models/components/variation.md
-  - docs/models/components/variationorrolloutrep.md
-  - docs/models/components/variationsummary.md
-  - docs/models/components/variationtool.md
-  - docs/models/components/variationtoolpost.md
-  - docs/models/components/weightedvariation.md
-  - docs/models/errors/errort.md
-  - docs/models/errors/forbiddenerrorrep.md
-  - docs/models/errors/invalidrequesterrorrep.md
-  - docs/models/errors/methodnotallowederrorrep.md
-  - docs/models/errors/notfounderrorrep.md
-  - docs/models/errors/ratelimitederrorrep.md
-  - docs/models/errors/statusconflicterrorrep.md
-  - docs/models/errors/unauthorizederrorrep.md
-  - docs/models/operations/deleteaiconfigrequest.md
-  - docs/models/operations/deleteaiconfigvariationrequest.md
-  - docs/models/operations/deletefeatureflagrequest.md
-  - docs/models/operations/getaiconfigrequest.md
-  - docs/models/operations/getaiconfigsrequest.md
-  - docs/models/operations/getaiconfigtargetingrequest.md
-  - docs/models/operations/getaiconfigvariationrequest.md
-  - docs/models/operations/getenvironmentsbyprojectrequest.md
-  - docs/models/operations/getfeatureflagrequest.md
-  - docs/models/operations/getfeatureflagsrequest.md
-  - docs/models/operations/getfeatureflagstatusacrossenvironmentsrequest.md
-  - docs/models/operations/getrepositoriesrequest.md
-  - docs/models/operations/patchaiconfigrequest.md
-  - docs/models/operations/patchaiconfigtargetingrequest.md
-  - docs/models/operations/patchaiconfigvariationrequest.md
-  - docs/models/operations/patchfeatureflagrequest.md
-  - docs/models/operations/postaiconfigrequest.md
-  - docs/models/operations/postaiconfigvariationrequest.md
-  - docs/models/operations/postfeatureflagrequest.md
-  - docs/sdks/aiconfigs/README.md
-  - docs/sdks/codereferences/README.md
-  - docs/sdks/environments/README.md
-  - docs/sdks/featureflags/README.md
-  - docs/sdks/launchdarkly/README.md
-  - eslint.config.mjs
-  - examples/.env.template
-  - examples/README.md
-  - examples/codeReferencesListRepositories.example.ts
-  - examples/package.json
-  - jsr.json
-  - package.json
-  - src/core.ts
-  - src/funcs/aiConfigsCreate.ts
-  - src/funcs/aiConfigsCreateVariation.ts
-  - src/funcs/aiConfigsDelete.ts
-  - src/funcs/aiConfigsDeleteVariation.ts
-  - src/funcs/aiConfigsGet.ts
-  - src/funcs/aiConfigsGetTargeting.ts
-  - src/funcs/aiConfigsGetVariation.ts
-  - src/funcs/aiConfigsList.ts
-  - src/funcs/aiConfigsUpdate.ts
-  - src/funcs/aiConfigsUpdateTargeting.ts
-  - src/funcs/aiConfigsUpdateVariation.ts
-  - src/funcs/codeReferencesListRepositories.ts
-  - src/funcs/environmentsListByProject.ts
-  - src/funcs/featureFlagsCreate.ts
-  - src/funcs/featureFlagsDelete.ts
-  - src/funcs/featureFlagsGet.ts
-  - src/funcs/featureFlagsGetStatus.ts
-  - src/funcs/featureFlagsList.ts
-  - src/funcs/featureFlagsPatch.ts
-  - src/hooks/hooks.ts
-  - src/hooks/index.ts
-  - src/hooks/types.ts
-  - src/index.ts
-  - src/lib/base64.ts
-  - src/lib/config.ts
-  - src/lib/dlv.ts
-  - src/lib/encodings.ts
-  - src/lib/env.ts
-  - src/lib/files.ts
-  - src/lib/http.ts
-  - src/lib/is-plain-object.ts
-  - src/lib/logger.ts
-  - src/lib/matchers.ts
-  - src/lib/primitives.ts
-  - src/lib/retries.ts
-  - src/lib/schemas.ts
-  - src/lib/sdks.ts
-  - src/lib/security.ts
-  - src/lib/url.ts
-  - src/mcp-server/build.mts
-  - src/mcp-server/cli.ts
-  - src/mcp-server/cli/start/command.ts
-  - src/mcp-server/cli/start/impl.ts
-  - src/mcp-server/console-logger.ts
-  - src/mcp-server/extensions.ts
-  - src/mcp-server/mcp-server.ts
-  - src/mcp-server/prompts.ts
-  - src/mcp-server/resources.ts
-  - src/mcp-server/scopes.ts
-  - src/mcp-server/server.ts
-  - src/mcp-server/shared.ts
-  - src/mcp-server/tools.ts
-  - src/mcp-server/tools/aiConfigsCreate.ts
-  - src/mcp-server/tools/aiConfigsCreateVariation.ts
-  - src/mcp-server/tools/aiConfigsDelete.ts
-  - src/mcp-server/tools/aiConfigsDeleteVariation.ts
-  - src/mcp-server/tools/aiConfigsGet.ts
-  - src/mcp-server/tools/aiConfigsGetTargeting.ts
-  - src/mcp-server/tools/aiConfigsGetVariation.ts
-  - src/mcp-server/tools/aiConfigsList.ts
-  - src/mcp-server/tools/aiConfigsUpdate.ts
-  - src/mcp-server/tools/aiConfigsUpdateTargeting.ts
-  - src/mcp-server/tools/aiConfigsUpdateVariation.ts
-  - src/mcp-server/tools/codeReferencesListRepositories.ts
-  - src/mcp-server/tools/environmentsListByProject.ts
-  - src/mcp-server/tools/featureFlagsCreate.ts
-  - src/mcp-server/tools/featureFlagsDelete.ts
-  - src/mcp-server/tools/featureFlagsGet.ts
-  - src/mcp-server/tools/featureFlagsGetStatus.ts
-  - src/mcp-server/tools/featureFlagsList.ts
-  - src/mcp-server/tools/featureFlagsPatch.ts
-  - src/models/components/access.ts
-  - src/models/components/accessallowedreason.ts
-  - src/models/components/accessallowedrep.ts
-  - src/models/components/accessdenied.ts
-  - src/models/components/accessdeniedreason.ts
-  - src/models/components/aiconfig.ts
-  - src/models/components/aiconfigdependency.ts
-  - src/models/components/aiconfigmaintainer.ts
-  - src/models/components/aiconfigpatch.ts
-  - src/models/components/aiconfigpost.ts
-  - src/models/components/aiconfigs.ts
-  - src/models/components/aiconfigsaccess.ts
-  - src/models/components/aiconfigsaccessallowedreason.ts
-  - src/models/components/aiconfigsaccessallowedrep.ts
-  - src/models/components/aiconfigsaccessdenied.ts
-  - src/models/components/aiconfigsaccessdeniedreason.ts
-  - src/models/components/aiconfigsexperimentenabledperiodrep.ts
-  - src/models/components/aiconfigsexperimentenvironmentsettingrep.ts
-  - src/models/components/aiconfigsexperimentinforep.ts
-  - src/models/components/aiconfigsfilter.ts
-  - src/models/components/aiconfigslegacyexperimentrep.ts
-  - src/models/components/aiconfigslink.ts
-  - src/models/components/aiconfigsmembersummary.ts
-  - src/models/components/aiconfigsmetricdatasourcerefrep.ts
-  - src/models/components/aiconfigsmetriceventdefaultrep.ts
-  - src/models/components/aiconfigsmetriclistingrep.ts
-  - src/models/components/aiconfigsmodification.ts
-  - src/models/components/aiconfigtargeting.ts
-  - src/models/components/aiconfigtargetingdefaults.ts
-  - src/models/components/aiconfigtargetingenvironment.ts
-  - src/models/components/aiconfigtargetingenvironmentfallthrough.ts
-  - src/models/components/aiconfigtargetingenvironmentfallthroughrollout.ts
-  - src/models/components/aiconfigtargetingenvironmentfallthroughrolloutexperimentationallocation.ts
-  - src/models/components/aiconfigtargetingenvironmentfallthroughrolloutvariation.ts
-  - src/models/components/aiconfigtargetingenvironmentrule.ts
-  - src/models/components/aiconfigtargetingenvironmentruleclause.ts
-  - src/models/components/aiconfigtargetingenvironmenttarget.ts
-  - src/models/components/aiconfigtargetingpatch.ts
-  - src/models/components/aiconfigtargetingvariation.ts
-  - src/models/components/aiconfigtargetingvariationjson.ts
-  - src/models/components/aiconfigtargetingvariationvalue.ts
-  - src/models/components/aiconfigvariation.ts
-  - src/models/components/aiconfigvariationpatch.ts
-  - src/models/components/aiconfigvariationpost.ts
-  - src/models/components/aiconfigvariationsresponse.ts
-  - src/models/components/approvalsettings.ts
-  - src/models/components/branchrep.ts
-  - src/models/components/clause.ts
-  - src/models/components/clientsideavailability.ts
-  - src/models/components/clientsideavailabilitypost.ts
-  - src/models/components/corelink.ts
-  - src/models/components/customproperty.ts
-  - src/models/components/defaults.ts
-  - src/models/components/environment.ts
-  - src/models/components/environments.ts
-  - src/models/components/experimentallocationrep.ts
-  - src/models/components/experimentenabledperiodrep.ts
-  - src/models/components/experimentenvironmentsettingrep.ts
-  - src/models/components/experimentinforep.ts
-  - src/models/components/featureflag.ts
-  - src/models/components/featureflagbody.ts
-  - src/models/components/featureflagconfig.ts
-  - src/models/components/featureflags.ts
-  - src/models/components/featureflagstatus.ts
-  - src/models/components/featureflagstatusacrossenvironments.ts
-  - src/models/components/filter.ts
-  - src/models/components/flagconfigevaluation.ts
-  - src/models/components/flagconfigmigrationsettingsrep.ts
-  - src/models/components/flagmigrationsettingsrep.ts
-  - src/models/components/flagprerequisitepost.ts
-  - src/models/components/flagsummary.ts
-  - src/models/components/hunkrep.ts
-  - src/models/components/index.ts
-  - src/models/components/judgeattachment.ts
-  - src/models/components/judgeconfiguration.ts
-  - src/models/components/legacyexperimentrep.ts
-  - src/models/components/link.ts
-  - src/models/components/maintainerteam.ts
-  - src/models/components/membersummary.ts
-  - src/models/components/message.ts
-  - src/models/components/metricdatasourcerefrep.ts
-  - src/models/components/metriceventdefaultrep.ts
-  - src/models/components/metriclistingrep.ts
-  - src/models/components/migrationsettingspost.ts
-  - src/models/components/modification.ts
-  - src/models/components/paginatedlinks.ts
-  - src/models/components/parentandselflinks.ts
-  - src/models/components/parentlink.ts
-  - src/models/components/patchoperation.ts
-  - src/models/components/patchwithcomment.ts
-  - src/models/components/prerequisite.ts
-  - src/models/components/referencerep.ts
-  - src/models/components/repositorycollectionrep.ts
-  - src/models/components/repositoryrep.ts
-  - src/models/components/rollout.ts
-  - src/models/components/rule.ts
-  - src/models/components/security.ts
-  - src/models/components/target.ts
-  - src/models/components/variation.ts
-  - src/models/components/variationorrolloutrep.ts
-  - src/models/components/variationsummary.ts
-  - src/models/components/variationtool.ts
-  - src/models/components/variationtoolpost.ts
-  - src/models/components/weightedvariation.ts
-  - src/models/errors/apierror.ts
-  - src/models/errors/error.ts
-  - src/models/errors/forbiddenerrorrep.ts
-  - src/models/errors/httpclienterrors.ts
-  - src/models/errors/index.ts
-  - src/models/errors/invalidrequesterrorrep.ts
-  - src/models/errors/launchdarklyerror.ts
-  - src/models/errors/methodnotallowederrorrep.ts
-  - src/models/errors/notfounderrorrep.ts
-  - src/models/errors/ratelimitederrorrep.ts
-  - src/models/errors/responsevalidationerror.ts
-  - src/models/errors/sdkvalidationerror.ts
-  - src/models/errors/statusconflicterrorrep.ts
-  - src/models/errors/unauthorizederrorrep.ts
-  - src/models/operations/deleteaiconfig.ts
-  - src/models/operations/deleteaiconfigvariation.ts
-  - src/models/operations/deletefeatureflag.ts
-  - src/models/operations/getaiconfig.ts
-  - src/models/operations/getaiconfigs.ts
-  - src/models/operations/getaiconfigtargeting.ts
-  - src/models/operations/getaiconfigvariation.ts
-  - src/models/operations/getenvironmentsbyproject.ts
-  - src/models/operations/getfeatureflag.ts
-  - src/models/operations/getfeatureflags.ts
-  - src/models/operations/getfeatureflagstatusacrossenvironments.ts
-  - src/models/operations/getrepositories.ts
-  - src/models/operations/index.ts
-  - src/models/operations/patchaiconfig.ts
-  - src/models/operations/patchaiconfigtargeting.ts
-  - src/models/operations/patchaiconfigvariation.ts
-  - src/models/operations/patchfeatureflag.ts
-  - src/models/operations/postaiconfig.ts
-  - src/models/operations/postaiconfigvariation.ts
-  - src/models/operations/postfeatureflag.ts
-  - src/sdk/aiconfigs.ts
-  - src/sdk/codereferences.ts
-  - src/sdk/environments.ts
-  - src/sdk/featureflags.ts
-  - src/sdk/index.ts
-  - src/sdk/sdk.ts
-  - src/types/async.ts
-  - src/types/blobs.ts
-  - src/types/constdatetime.ts
-  - src/types/enums.ts
-  - src/types/fp.ts
-  - src/types/index.ts
-  - src/types/operations.ts
-  - src/types/rfcdate.ts
-  - src/types/streams.ts
-  - tsconfig.json
+    sdkHooks: 0.4.0
+    unions: 2.86.4
+trackedFiles:
+  .devcontainer/README.md:
+    id: b170c0f184ac
+    last_write_checksum: sha1:5e6301d7cdd40e78adb9ee297cf7c5afd51eb368
+    pristine_git_object: 15ac66b219c11565f44b13fc849f0d539d9608a1
+  .devcontainer/devcontainer.json:
+    id: b34062a34eb1
+    last_write_checksum: sha1:d0b15193202c961e7d1875864ddb15f9d17c84dd
+    pristine_git_object: 4d560dd5f40afaf10d96eb75b1f02cd48bbd640c
+  .devcontainer/setup.sh:
+    id: 5f1dfbfeb8eb
+    last_write_checksum: sha1:bef780c01a1e7dac4be567bda9a868f6ea083bcb
+    pristine_git_object: a09169ee691f39fd377ffd478793b91b404c04bb
+  .gitattributes:
+    id: 24139dae6567
+    last_write_checksum: sha1:26d16d8297b104945139da8c25bd38feeaad3e25
+    pristine_git_object: 113eead5093c17d43a46159132885318f281a68a
+  .npmignore:
+    id: aa70c1f807c3
+    last_write_checksum: sha1:425e91786e3b6cddd2b364bf3f9f9cd38e3c3e1a
+    pristine_git_object: 134e78a629b846b88e408199011801852bacc600
+  FUNCTIONS.md:
+    id: 21b9df02aaeb
+    last_write_checksum: sha1:b95097a3daa0d2bcd997ffa44a9ff5a01e924b14
+    pristine_git_object: a9298490035b3bd7c8049e353df76b34a7a2e907
+  RUNTIMES.md:
+    id: 620c490847b6
+    last_write_checksum: sha1:e45b854f02c357cbcfdb8c3663000e8339e16505
+    pristine_git_object: 27731c3b5ace66bedc454ed5acbe15075aacd3dc
+  USAGE.md:
+    id: 3aed33ce6e6f
+    last_write_checksum: sha1:8ecb34ac6dd2963b590796d9177bbd34265afead
+    pristine_git_object: 261b3550e93fcc422b6894db5a9caabf17200947
+  docs/lib/utils/retryconfig.md:
+    id: 0ce9707cb848
+    last_write_checksum: sha1:bc4454e196fcd219f5a78da690375a884f5ed07b
+    pristine_git_object: 08f95f4552349360b2c0b01802aa71ec3a55d2c2
+  docs/models/components/access.md:
+    id: 50c3ed953397
+    last_write_checksum: sha1:1511f43f76de2eef5bb55d570d56c5b9ddb2ca79
+    pristine_git_object: 446e91c9be44af86840794ffccb8cbe69b4133f6
+  docs/models/components/accessallowedreason.md:
+    id: ad9bcaf308b6
+    last_write_checksum: sha1:2c292a394dd33bc33100ab27e0b61a970f7a048a
+    pristine_git_object: 89edfbdc2958a44d17a4bb4dadb0bd11ac846d35
+  docs/models/components/accessallowedreasoneffect.md:
+    id: 32b91e2a64dc
+    last_write_checksum: sha1:96ac043a9e3ad076a35ee942ed2e9e992aec3218
+    pristine_git_object: de5076d122710ac16f37dbbb6f2024850dec287e
+  docs/models/components/accessallowedrep.md:
+    id: fe3f4df17d54
+    last_write_checksum: sha1:fda74b99a8d190e3fa615edd22f2098b413dcfc6
+    pristine_git_object: 376c9e4638974867e07d3684966ff00f123e52fe
+  docs/models/components/accessdenied.md:
+    id: 31011b3d3365
+    last_write_checksum: sha1:c99dd39ca9a72fe9fe393e50ac28063fabefbd62
+    pristine_git_object: 3ea5ea5ed26186d3718457c27fe9d2961a58cfe6
+  docs/models/components/accessdeniedreason.md:
+    id: 45ad5e9ccd00
+    last_write_checksum: sha1:ccdc0c32b8af38bdcaaa7728547e2f3f0d69e959
+    pristine_git_object: c11e6e70845eb5a4cf83bae77f499bc906364faa
+  docs/models/components/accessdeniedreasoneffect.md:
+    id: fafc113f87c8
+    last_write_checksum: sha1:a831ed3770aaf3261197d40c827537e0bd872c13
+    pristine_git_object: 5351142fc92d0ab0304891f5f261c8841188624e
+  docs/models/components/aiconfig.md:
+    id: bbad7f17b0a6
+    last_write_checksum: sha1:bbeb0f1d17974f5fe85b9ec225f3692f24af5674
+    pristine_git_object: e4d19b0f85ce72d8e68753729e330422c6fc542b
+  docs/models/components/aiconfigdependency.md:
+    id: b3ff58f150bb
+    last_write_checksum: sha1:0db2ee89bf0b7d92b120a08cd4224833df7d4b7b
+    pristine_git_object: 315717497b13f8c0a29508c6910de662b50733de
+  docs/models/components/aiconfigdependencytype.md:
+    id: 42a7c8cacc77
+    last_write_checksum: sha1:622848b256137a37a9a26cf9b5b6ec5558cc2820
+    pristine_git_object: dd8bea8976f20046b6638e4af80b0ae0353f6395
+  docs/models/components/aiconfigmaintainer.md:
+    id: 584a2fbd75b4
+    last_write_checksum: sha1:639af7318f4ea4579f0f731b43fe2ef876b9f2b4
+    pristine_git_object: bdf0290503f56c4cfde18a03bc8ca55e3e1c91b4
+  docs/models/components/aiconfigmode.md:
+    id: d53b15ac1a41
+    last_write_checksum: sha1:33ce6ad17f31aa4b9132063952f3058a9274f6dd
+    pristine_git_object: be312e60e9dea01b83f13276b9c81ea557d49e39
+  docs/models/components/aiconfigpatch.md:
+    id: 7917326362f4
+    last_write_checksum: sha1:eb352bd2636c0356b2133c33fa9578f51fd0f055
+    pristine_git_object: 225d6bdf10cf77d721563a90056a9134d772ae61
+  docs/models/components/aiconfigpost.md:
+    id: a76cbfffa9aa
+    last_write_checksum: sha1:07fd6ae41403732569a14c38bd0fd8773b3fca87
+    pristine_git_object: f0e4e60fee4835a30b70a5681a53c8c97c2b5ece
+  docs/models/components/aiconfigpostmode.md:
+    id: fd6a832e98fc
+    last_write_checksum: sha1:9528116dd4184f153c8eec2fbb937b970bd4b2a5
+    pristine_git_object: 112d49d82043d390a932fe45cd4e071878a464dd
+  docs/models/components/aiconfigs.md:
+    id: 939eee65c3a2
+    last_write_checksum: sha1:506fd010e5c544eb8144689325e0d798b1d54694
+    pristine_git_object: 951cc5393fe2e5172e7502b6a5d9666fe68a23c6
+  docs/models/components/aiconfigsaccess.md:
+    id: 4a0ed6a90062
+    last_write_checksum: sha1:ef3c6a14f907bc657d2b8596cf8a746226e77cf8
+    pristine_git_object: c2a33ebfe494a4b497f1d768daeda2c36b182478
+  docs/models/components/aiconfigsaccessallowedreason.md:
+    id: 5553f445f7dd
+    last_write_checksum: sha1:880243dd361182df9d9d83f26552b74efc6cb2dc
+    pristine_git_object: c3a85708cd23134e563f5bc42afe5cd394013d3c
+  docs/models/components/aiconfigsaccessallowedreasoneffect.md:
+    id: b0b608c61064
+    last_write_checksum: sha1:fc06555f8bdb4d4e722ce27c13bc8d686c30170a
+    pristine_git_object: c21267c8e93f732bcdf54979d8c32577bb340503
+  docs/models/components/aiconfigsaccessallowedrep.md:
+    id: 64665f169e3b
+    last_write_checksum: sha1:413cb282a76003c4a796a36cf8bd2eecb55c8a14
+    pristine_git_object: c5b5bc4fd04b0f2bebc9b87f214239bd5e264cef
+  docs/models/components/aiconfigsaccessdenied.md:
+    id: ea990c3a03cf
+    last_write_checksum: sha1:61e3ae6340aead11f48c20a85c74a0a22469744d
+    pristine_git_object: a64ca48a6c203f2683b51aca7cc0858aa00ed02e
+  docs/models/components/aiconfigsaccessdeniedreason.md:
+    id: beba4828aa7a
+    last_write_checksum: sha1:7dd8463ac203f9b66832033c055ec86e5f23850e
+    pristine_git_object: 906fdd10637f020b9596fe6c445352df16e24a34
+  docs/models/components/aiconfigsaccessdeniedreasoneffect.md:
+    id: 5b6e0118ac2b
+    last_write_checksum: sha1:d563fdfa630c73f4dade58016c4addea3326e58e
+    pristine_git_object: 17e96343e7752cf1586453868fb437ed409e8cfc
+  docs/models/components/aiconfigsexperimentenabledperiodrep.md:
+    id: b274745db07a
+    last_write_checksum: sha1:cc1bbe3f07910ccc100e77c548343b52c65299be
+    pristine_git_object: 77c4e2b6f200bed2a5ac4e384bdca7249d41334b
+  docs/models/components/aiconfigsexperimentenvironmentsettingrep.md:
+    id: 090f8c05c9a9
+    last_write_checksum: sha1:ee92893a969d5edb0c898814e7ea27cd202b6f72
+    pristine_git_object: cb9da454a77fb8df29d36d08dce5ad78222cb5e7
+  docs/models/components/aiconfigsexperimentinforep.md:
+    id: 7dfe147e5514
+    last_write_checksum: sha1:03b67d4fef0ad9a8ced75e042da1664b672e24c0
+    pristine_git_object: 473d54f534011df71bb525515b4b70644221d1b4
+  docs/models/components/aiconfigsfilter.md:
+    id: 90070744da1e
+    last_write_checksum: sha1:6a792d4a38c5845442d32821252b6fd15ba3cf46
+    pristine_git_object: b7637a2605f70f2ad55e5aee6d3c9e012dbbdc70
+  docs/models/components/aiconfigsfiltertype.md:
+    id: 7927fbba78c6
+    last_write_checksum: sha1:cfc9a77eb58324531940510df512950a7321797a
+    pristine_git_object: 539238039591c4be374f133d28de4ab5eee96f57
+  docs/models/components/aiconfigslegacyexperimentrep.md:
+    id: 75ec713277d7
+    last_write_checksum: sha1:f280b9f039b8aaa8f6fafd82703138116a5d2ad8
+    pristine_git_object: e01ee8a8bf6e12addc431f50b28a57bf68be6ab7
+  docs/models/components/aiconfigslink.md:
+    id: 2acea7ac50d3
+    last_write_checksum: sha1:3d6723e43c0639cb02996d77ab011d05900f87dc
+    pristine_git_object: c9bd3e5b62934bf1d6c6e23dc4af2504e1d1c08d
+  docs/models/components/aiconfigsmaintainerteam.md:
+    id: 151f4c747d47
+    last_write_checksum: sha1:ac62d072c705a13783c58067291ede046bb10077
+    pristine_git_object: 664ae91d7fd3b3ec810580bed03cf3caf56ade25
+  docs/models/components/aiconfigsmembersummary.md:
+    id: a8474e34997c
+    last_write_checksum: sha1:6a81eaf7b72b2742a5a18e7ce789ef503335ff1d
+    pristine_git_object: cebed79db8a94955c286d440c74a265cc6700210
+  docs/models/components/aiconfigsmetricdatasourcerefrep.md:
+    id: a47a4ef50401
+    last_write_checksum: sha1:7add7bfb41bbfecfaa68f9d6ea66e362c8550156
+    pristine_git_object: 4896487f891e75151c75f12bf79151b02ac21714
+  docs/models/components/aiconfigsmetriceventdefaultrep.md:
+    id: 82e51fc33e58
+    last_write_checksum: sha1:6802b3a082134cb9f008806549430222c92e8d2c
+    pristine_git_object: b4df41c01b8d8805da47b90fc12bb18d355152bc
+  docs/models/components/aiconfigsmetriclistingrep.md:
+    id: d0b66fdf2156
+    last_write_checksum: sha1:0e5b01a9f29fccc953b400f85064dd133dd03de7
+    pristine_git_object: 128672e5bfd13cba2780de84799bb47bb11e2906
+  docs/models/components/aiconfigsmetriclistingrepanalysistype.md:
+    id: da418d93910e
+    last_write_checksum: sha1:d484d832909fefe1eb9cb794470d8d8fefd16e9a
+    pristine_git_object: 9747bf033046d712d62a9816178fb5cffba7ea49
+  docs/models/components/aiconfigsmetriclistingrepkind.md:
+    id: d2332878f0ce
+    last_write_checksum: sha1:bab44a5577207608af9c5e4ff3a72a4c33f6b582
+    pristine_git_object: de18b510c0c7342536862ab108726f514dd3f1ea
+  docs/models/components/aiconfigsmetriclistingrepsuccesscriteria.md:
+    id: 33bca1a27d2a
+    last_write_checksum: sha1:fd389178169ddbca9bc19ed051510cc60a1b22d0
+    pristine_git_object: ae99c7dfc13349eb039a53bd27910bf26ad31ee0
+  docs/models/components/aiconfigsmetriclistingrepunitaggregationtype.md:
+    id: c962ce56b039
+    last_write_checksum: sha1:3329520fc42984f6bd43f1b596c0ce9a56dd3e01
+    pristine_git_object: b071ecd7d855ec942cd94fab3f65e15eeb6b6488
+  docs/models/components/aiconfigsmodification.md:
+    id: 757ac9ee9307
+    last_write_checksum: sha1:b6b6e40452957891b0ce7d34014cc36157587070
+    pristine_git_object: 8f5bdc624e26f32667fafdc87fd6c54e006370e5
+  docs/models/components/aiconfigtargeting.md:
+    id: 0103f2615148
+    last_write_checksum: sha1:5d03b5b6a7ceda38e9f0b260f030093d7df33dbb
+    pristine_git_object: 9f1b81225eedb385fc98ba5ff41ce278df4dcc8e
+  docs/models/components/aiconfigtargetingdefaults.md:
+    id: 3e23a7b30c22
+    last_write_checksum: sha1:26d8e1d5bb8ad28b0c95ac63561143aba2b59463
+    pristine_git_object: 26162b5ccc42a287f2727afaf25236a7fdeb5e8c
+  docs/models/components/aiconfigtargetingenvironment.md:
+    id: 3b7fc2f415cd
+    last_write_checksum: sha1:678a0aca3104e6e9799b6b062196dff06b5ce256
+    pristine_git_object: 04296776fa5fd2922364d377c2e00b4207eff828
+  docs/models/components/aiconfigtargetingenvironmentfallthrough.md:
+    id: 7b6be82e1d83
+    last_write_checksum: sha1:aefd78388ec4c54485b6e68098030227de768429
+    pristine_git_object: da2cb4fceb51dff302d29a8d23b19fd6cbe57a20
+  docs/models/components/aiconfigtargetingenvironmentfallthroughrollout.md:
+    id: 8a09f5915631
+    last_write_checksum: sha1:555ebe56e4f2fea3b38bb8e380504bd842f4e73e
+    pristine_git_object: 73d8640dca53c2512cf1d66f0eda45a5bd88cdf4
+  docs/models/components/aiconfigtargetingenvironmentfallthroughrolloutexperimentationallocation.md:
+    id: 659e7d459dae
+    last_write_checksum: sha1:a0e1f9860e8e39bee4397094a09c5a64f19e719e
+    pristine_git_object: 0c8ef1e4a9c5612371f593578f14003657121096
+  docs/models/components/aiconfigtargetingenvironmentfallthroughrolloutvariation.md:
+    id: 7bd20c822e38
+    last_write_checksum: sha1:73eceb8a459c4468f84b8c4457f6a1eeae05f9d0
+    pristine_git_object: ce08bb0056516d99fcfca5a6633f874418ac59b5
+  docs/models/components/aiconfigtargetingenvironmentrule.md:
+    id: 6eaee5d34ecd
+    last_write_checksum: sha1:09b1113e43f90e491173f4dae0a84d19a3b204bf
+    pristine_git_object: 7cd589cb34061fa9c13508f0f778f6fe6b78e096
+  docs/models/components/aiconfigtargetingenvironmentruleclause.md:
+    id: e9ffe914649f
+    last_write_checksum: sha1:ec3a6ee4431075e4e69a16f55438e7a5aecb3263
+    pristine_git_object: 8a4eebfc2b9372ebb5809fa4b5d313c728b6ec3d
+  docs/models/components/aiconfigtargetingenvironmenttarget.md:
+    id: bd9783fd4f7b
+    last_write_checksum: sha1:a1284f2d27576cb06b363322f0907d4c2eb60d03
+    pristine_git_object: 227698dd7bc855b3b6d71fa5174522e95c39d6fa
+  docs/models/components/aiconfigtargetingpatch.md:
+    id: ba7a24ecb22a
+    last_write_checksum: sha1:af3b2ebcd3338aff56e160b9c7957f1737a69a79
+    pristine_git_object: 49ba83fb504c7b5fb200ae0227a40e53ab07c84e
+  docs/models/components/aiconfigtargetingvariation.md:
+    id: 93d117b74cda
+    last_write_checksum: sha1:8abc155437829935813bcbbf60cecc64c70933ea
+    pristine_git_object: 7a49091b31925dfa0f80fa58ae34cc46f5152c8f
+  docs/models/components/aiconfigtargetingvariationjson.md:
+    id: f2873ebebcbd
+    last_write_checksum: sha1:78fc751d9aa8dec57515bf663b31e809616535e7
+    pristine_git_object: c415b943128f40f6191758425ae3fdb7708fcb58
+  docs/models/components/aiconfigtargetingvariationvalue.md:
+    id: 23a74cea33c0
+    last_write_checksum: sha1:279e0bfdc02f8ac2670950e03947990eab171fb7
+    pristine_git_object: 3cee8a098fdbb85fdcd509a0430ad1a1de8c5727
+  docs/models/components/aiconfigvariation.md:
+    id: ae01016350c0
+    last_write_checksum: sha1:fa596c73c2de6c9985f18be835fa800e99b6f464
+    pristine_git_object: e372b56d14fa9cd7ce313b47d2db286313ea13be
+  docs/models/components/aiconfigvariationmodel.md:
+    id: 12cfbf622b93
+    last_write_checksum: sha1:bd330f400428a4312997dc263f659e8057b133d7
+    pristine_git_object: 15d2221cad72f79bacf4f601a65ed8724e74b524
+  docs/models/components/aiconfigvariationpatch.md:
+    id: c69804e9115a
+    last_write_checksum: sha1:02c436a0b3545eb0ae70e8ebcd2339a57466ec72
+    pristine_git_object: 3c7550e597687880585f66f39b4c42d6b412f9e8
+  docs/models/components/aiconfigvariationpatchmodel.md:
+    id: a2bb3bc3e0e4
+    last_write_checksum: sha1:b31837eb8de2b5d55a36f30f8c5fb22ef8e4ab0d
+    pristine_git_object: 8bdcbe4ca6b6a653586bf0cce36ccd09f37e569c
+  docs/models/components/aiconfigvariationpost.md:
+    id: bdd3c99ce7e9
+    last_write_checksum: sha1:9b260b1549582c2a6c8ecf8e213408a4bde2387c
+    pristine_git_object: 0c666338ee2498875cbd636a073ee94581ac8a87
+  docs/models/components/aiconfigvariationpostmodel.md:
+    id: 6d21c9a63a9d
+    last_write_checksum: sha1:101a62bc31cf480af6f21a60f0d593e9398237f7
+    pristine_git_object: 2a93b962605ba212af3f8803181ce1c8c446d21e
+  docs/models/components/aiconfigvariationsresponse.md:
+    id: c210e0a4610f
+    last_write_checksum: sha1:89b4bddb4fa6ebc9e5e95b89899a42a2ed991b70
+    pristine_git_object: a3f00619c6ab1de98305bf5941b8b9e08a003414
+  docs/models/components/approvalsettings.md:
+    id: abb6a31c11c8
+    last_write_checksum: sha1:d9aa6621cfefbf583f7d92d63e1606d1f37765a4
+    pristine_git_object: 807bc0c088894162d1c4d380030879775fd2dcbb
+  docs/models/components/branchrep.md:
+    id: b07a4d3fb453
+    last_write_checksum: sha1:572a316eab6e6d7ebb049217654dde8a87b094cc
+    pristine_git_object: ba3002548074c6bb3bd25ca706e1b15ad3fd56d5
+  docs/models/components/clause.md:
+    id: 909eec2ead9e
+    last_write_checksum: sha1:03d110a7eae4142696e022473152b219d8e84936
+    pristine_git_object: b44a872a2b7be3b2ffc7d7ff41a01d8a1a966da8
+  docs/models/components/clientsideavailability.md:
+    id: 3ef5729807cc
+    last_write_checksum: sha1:bf8215a40050862891317747d7637ce3bd5a3348
+    pristine_git_object: 524b32a746c7c461c684cc87cae7bf31a58af80c
+  docs/models/components/clientsideavailabilitypost.md:
+    id: 82af9c0d4a1e
+    last_write_checksum: sha1:fb28eb25e55f84c2e2855d5f81db8236707ee302
+    pristine_git_object: c50ec86631b51775bfa2462c43cc8b3725d9e63a
+  docs/models/components/corelink.md:
+    id: 2cd512f6e168
+    last_write_checksum: sha1:cc7bffbd165151fdbaef69ea15802684de1e7f59
+    pristine_git_object: 58d6973ba6a0eca486bff4fc136cf5988fa5667b
+  docs/models/components/customproperty.md:
+    id: c8bee897a039
+    last_write_checksum: sha1:a8ae958e014bdf436a299738b9719263d2575b90
+    pristine_git_object: d73a6a4df24eb38493ec9a8d542cf8128aa77444
+  docs/models/components/defaults.md:
+    id: 2389a1b8a2ac
+    last_write_checksum: sha1:6948ddbc3a3c429c5f03b9d556820f745680f068
+    pristine_git_object: aa8a17de4f20c10fe11d5933064d162bc88a6fec
+  docs/models/components/environment.md:
+    id: 2bbd505fcb39
+    last_write_checksum: sha1:7b29b02ef49286d2ea4cc28328987825bbc8b5b5
+    pristine_git_object: dd2b19d25f26ec647caf99a8aca57d06e81dde6a
+  docs/models/components/environments.md:
+    id: 4c2409d6f530
+    last_write_checksum: sha1:68149361d60d78dee0011010d8066536c230b829
+    pristine_git_object: 14230d32a9b11a05e5a88011c19191acff8e7781
+  docs/models/components/experimentallocationrep.md:
+    id: 75a25b7fcabd
+    last_write_checksum: sha1:2ad2284c69e56a2a04d33dc1967e749d9198057f
+    pristine_git_object: 2a4f27a31d0bac4b3464fcdcff24e9cc4e77566d
+  docs/models/components/experimentenabledperiodrep.md:
+    id: fbaf058000a0
+    last_write_checksum: sha1:8b34f21f13c46d8f39789c6a245b66ffbcc12ea1
+    pristine_git_object: 35973bcb0531ecafe28278b987a1faa2bc3704cd
+  docs/models/components/experimentenvironmentsettingrep.md:
+    id: f33ddfadb575
+    last_write_checksum: sha1:842236b12b4d3e907884c115df4a6556c0a7c70f
+    pristine_git_object: 16dd1d1ae0c3e4ae731465d99a1eaf0531a7f9af
+  docs/models/components/experimentinforep.md:
+    id: 9ced948a4c0e
+    last_write_checksum: sha1:62729688993bc747f3c66e0842c792ad1e86ace8
+    pristine_git_object: 8823f27f484cc73065e147aebeff015e218ca4d2
+  docs/models/components/featureflag.md:
+    id: a3171171929d
+    last_write_checksum: sha1:b91ea008e999d35c1db32622592fb810a657c0b0
+    pristine_git_object: acc0dc50d50784bc00571d4b1d7c92bdf28dc25b
+  docs/models/components/featureflagbody.md:
+    id: 4125afb05114
+    last_write_checksum: sha1:3a7119723fdb7a0941112d8166860e83e66de58b
+    pristine_git_object: bbaeb9731988d5fb31d5a92b74a25675e2b36b55
+  docs/models/components/featureflagconfig.md:
+    id: 153c31cea295
+    last_write_checksum: sha1:68bec158d44412e48a983c8e8909f26bb12813cb
+    pristine_git_object: 667e59e63f9015a55f5c80601de04b43d03e5d2a
+  docs/models/components/featureflagkind.md:
+    id: db8ee7215ead
+    last_write_checksum: sha1:1255d5b5cd06bab733ca02be5e0ca4b5b55c5166
+    pristine_git_object: f9fe1123172dd617bcb6b250cc5b578c97e80e6f
+  docs/models/components/featureflags.md:
+    id: 3eb9f15b0972
+    last_write_checksum: sha1:42d6ba012585e317e8b2ace9b04d33d9d70dc15c
+    pristine_git_object: 03d9f71b6b7add5b6152219064bf1d2738acd2e4
+  docs/models/components/featureflagstatus.md:
+    id: 11b89f74a6df
+    last_write_checksum: sha1:29758031e44efa0c415962f8df1cbc0e54ab3297
+    pristine_git_object: e431cb975ebe9fe0c91ff6dcae6e609ee3b77116
+  docs/models/components/featureflagstatusacrossenvironments.md:
+    id: da66ad714205
+    last_write_checksum: sha1:8f493585a08e174c975a1fae1f8fa42007fee969
+    pristine_git_object: 320260fbd78cae746669fc84d6ab0ba4af079c68
+  docs/models/components/filter.md:
+    id: 7effe8aedda6
+    last_write_checksum: sha1:1347b3d0115e3f664b21aea236ae305ac084d3dd
+    pristine_git_object: 8f7aa66c33570d2c922a8765300658da4700c4d4
+  docs/models/components/filtertype.md:
+    id: 333639c9dd1e
+    last_write_checksum: sha1:46f98a2b01401be1e7452b64d6b8299d3b0d0b16
+    pristine_git_object: 83d10a8efe9ebaa85c75220f66a94d20be3b1d0f
+  docs/models/components/flagconfigevaluation.md:
+    id: ddf0871969a9
+    last_write_checksum: sha1:7275a6cb21c59a694b9dbeae7d1c24142b69279a
+    pristine_git_object: c3f9077ea8bb3708e86c4154b93d6dbb1d465a16
+  docs/models/components/flagconfigmigrationsettingsrep.md:
+    id: 698f0e908d0b
+    last_write_checksum: sha1:c1f4f606e883410ed09bf559df234a4bb864c8ed
+    pristine_git_object: f144e34727a07642cb2fd1a6c11613ed90abe12f
+  docs/models/components/flagmigrationsettingsrep.md:
+    id: baa4d0044d89
+    last_write_checksum: sha1:f6ba5294d0bdc1360892bc07509391481aa7fbc8
+    pristine_git_object: 0544db3d1bb9567c3ad460fa6761455a0f3fa890
+  docs/models/components/flagprerequisitepost.md:
+    id: ecb10295364d
+    last_write_checksum: sha1:6066a515bfcb81bde5b45b2e34dd39aa8db6f297
+    pristine_git_object: d35ffc8245aede43c046ff157bad1ffe825151d4
+  docs/models/components/flagsummary.md:
+    id: fce10efa6a29
+    last_write_checksum: sha1:b4451815d8cbfa78a7f6606550eb6051c42649b6
+    pristine_git_object: 2fc446cbe31a5f7c9b7df78571bd7c4595e8cb9e
+  docs/models/components/hunkrep.md:
+    id: 1053e1594fe4
+    last_write_checksum: sha1:b08c1b35e20442faecd98b7ad4941b335b19b02d
+    pristine_git_object: ea7b62ecb845573254e543bf2c1317632a042903
+  docs/models/components/judgeattachment.md:
+    id: 928ca0b7e9cf
+    last_write_checksum: sha1:79c9253223af16ca94de45586942e0e3c54bba7d
+    pristine_git_object: 05ba46a2438c89ed94b7ec56621c7ec2983c1337
+  docs/models/components/judgeconfiguration.md:
+    id: 9b3aee4db56a
+    last_write_checksum: sha1:6ae19d4016032c29031fd7e9f64f9da7c5dde560
+    pristine_git_object: cda22069e52bd30a260253fba5fc1eaa88507add
+  docs/models/components/legacyexperimentrep.md:
+    id: 93313def1b12
+    last_write_checksum: sha1:aa9e5cf6245b0fae44f7fe6a289bd6dd21163e88
+    pristine_git_object: 89e8610fab7f53cae11d8015a48055421a31196d
+  docs/models/components/link.md:
+    id: 9e6e1afe0cdc
+    last_write_checksum: sha1:ba3571df7bab49e1e1c7f05951cf05fe796e42c2
+    pristine_git_object: 68e8ca2fb28825004eb13df3614c1f9b9ba340ff
+  docs/models/components/maintainermember.md:
+    id: 723c9d3566b0
+    last_write_checksum: sha1:e3a5ce95d2b3756726537ce7e900c77ea2818304
+    pristine_git_object: 34ce56e8774f1061d23a8cf071a4532f10d2b021
+  docs/models/components/maintainerteam.md:
+    id: 9fe85d0a64c5
+    last_write_checksum: sha1:fb0a56c1a891dce668e94f4ac046ca206dbdb661
+    pristine_git_object: 54d23f86e4ad0458cd895034faa13be6006cd5eb
+  docs/models/components/membersummary.md:
+    id: c828f780432e
+    last_write_checksum: sha1:3357d3a9beac0bb4a8918bba88f33aa755839a05
+    pristine_git_object: bacd58bbdc96f37929a0e5922fff59dfcb25782b
+  docs/models/components/message.md:
+    id: 6b6207b6871b
+    last_write_checksum: sha1:613a8da2e452808b3a8940d29be769f4b1867470
+    pristine_git_object: cc27f7ed3137288acc76e30ab9f24c688fc68e53
+  docs/models/components/metricdatasourcerefrep.md:
+    id: 9db6da7f56d7
+    last_write_checksum: sha1:d1c18d3ed0a9c69d23c7122fe4c227916597bc2c
+    pristine_git_object: 5dcefe81252aaa6a3650e787e02dec84abc188a9
+  docs/models/components/metriceventdefaultrep.md:
+    id: 28ec7f67cdd8
+    last_write_checksum: sha1:0aec62fc2b910acaf08324b65aed014790fc5a06
+    pristine_git_object: 9bd2b9f4ca3caf28ea68dd6942265e73a48c66f5
+  docs/models/components/metriclistingrep.md:
+    id: 8fd7b0cabc96
+    last_write_checksum: sha1:91e3433d66d3c6bf3915e70169d0772cbe4418c8
+    pristine_git_object: ecd5131f4d4781c4c6b2bf4de3a30b5602470e19
+  docs/models/components/metriclistingrepanalysistype.md:
+    id: 83e55e845186
+    last_write_checksum: sha1:7b12bc8f068ec1ee232a86ae7d0d71ede631723d
+    pristine_git_object: 99f4cd031f360be811d5a7ade0a2ac4127a0f0ce
+  docs/models/components/metriclistingrepkind.md:
+    id: 4356d7618ad1
+    last_write_checksum: sha1:5e6d5c4273840e8bbeffeee859e2b1d1e7f5515f
+    pristine_git_object: 37a6988eb080a6cef10210fd8eeb37527b81d0f8
+  docs/models/components/metriclistingrepsuccesscriteria.md:
+    id: 5d300e39ed4a
+    last_write_checksum: sha1:8a904435da86bb72958a3dcc2e189d1ff211cb13
+    pristine_git_object: 336dbcaa07fcca220b12daaf294615140fa5d7a7
+  docs/models/components/metriclistingrepunitaggregationtype.md:
+    id: 16453858d720
+    last_write_checksum: sha1:0d5bb0c769374214da0d40e550b23e694c323fe8
+    pristine_git_object: 2bb9d02656f3fda1c45ae1bffcd39afdcd9cb1dd
+  docs/models/components/migrationsettingspost.md:
+    id: 0fd15407d94b
+    last_write_checksum: sha1:0512423f9a4ab623c322b56ead473511076b155d
+    pristine_git_object: 5168b4f21e5501f925dc33674056bbe15042fb2f
+  docs/models/components/modification.md:
+    id: a6c4e44d5e0b
+    last_write_checksum: sha1:fe7ed68d9890d5e4d35269011a2be8151451f09e
+    pristine_git_object: 87012dd8d8c746aec1ebf9317f34340a884da06a
+  docs/models/components/name.md:
+    id: 817692a433a1
+    last_write_checksum: sha1:29d34a7f1afb250f96b6cf8988680e433705f2c3
+    pristine_git_object: beea950a7d21c528ede50fed606c60f3e2cbcea4
+  docs/models/components/paginatedlinks.md:
+    id: de076c4128be
+    last_write_checksum: sha1:ca023b950bf59614dd548d96fccc24775f7cb991
+    pristine_git_object: 3c84b94da565588cc9b0f2db8ab921cefe5b2532
+  docs/models/components/parentandselflinks.md:
+    id: 25ba6842df6c
+    last_write_checksum: sha1:007d259d1aa038253c70f9a78430f3d50f7997fe
+    pristine_git_object: a8cbe36244e3b785f34e046b01e3d7bb7840c715
+  docs/models/components/parentlink.md:
+    id: c11f6b0fc7c9
+    last_write_checksum: sha1:3f7ce621990324a98fbac86ac8e8b6c0ec8cd2c9
+    pristine_git_object: c3f3f248febebbd521d929305da19bf5405c3d3f
+  docs/models/components/patchoperation.md:
+    id: 105772748d3b
+    last_write_checksum: sha1:5c41f3041a9113c298b9189e91b45d140a88f482
+    pristine_git_object: 2a337709b7f0e0d6de5f4d39c570de9f1e7c0684
+  docs/models/components/patchwithcomment.md:
+    id: ce3d65fafd4a
+    last_write_checksum: sha1:15643aeddb0b6b7bda4e039939f291b580df9664
+    pristine_git_object: 5d089d63e692864c1d19dc92acea6cf3b0aee15f
+  docs/models/components/prerequisite.md:
+    id: 0550f93fb00c
+    last_write_checksum: sha1:0a221fb5a7be020bb32001276a71960fc79299df
+    pristine_git_object: 98aaf9ab803cdd90324e6006a3714dc8022e145f
+  docs/models/components/purpose.md:
+    id: 9425b6a9fa5e
+    last_write_checksum: sha1:b69cfde46be813fdb21f6021ce37295ac3870d14
+    pristine_git_object: e66d49c7bf4d561a8148f8f1ac8622bcce7fe7f7
+  docs/models/components/referencerep.md:
+    id: d4e9325d944b
+    last_write_checksum: sha1:d5ee00d3ece7d717303c73dc2941e4c15df2b222
+    pristine_git_object: 724fdcf892e46b765108f3f8077ab2f573691fa3
+  docs/models/components/repositorycollectionrep.md:
+    id: 8212304cb054
+    last_write_checksum: sha1:79025a62f105a5f9b11a288af6e073c88f598f59
+    pristine_git_object: 80315327b04320a610519ee0b71b10de20b6dd85
+  docs/models/components/repositoryrep.md:
+    id: c945f4228da5
+    last_write_checksum: sha1:006a5304b9903d387601ae8e1a46b2a057aaf47a
+    pristine_git_object: 5236c83bdc4910798fe7d67f0bc609182cec7aab
+  docs/models/components/repositoryreptype.md:
+    id: 3515ef79e582
+    last_write_checksum: sha1:32d0d14decda7133ced5154967ad8bad9736f0ff
+    pristine_git_object: c1db573b2f30513f58798ed21345def389c75404
+  docs/models/components/rollout.md:
+    id: 272e34d6ae8f
+    last_write_checksum: sha1:458f825709a99251022e6793aa4f99572d179167
+    pristine_git_object: 9d74a8ab2c09373821b00aa2299bc82f19f4bb88
+  docs/models/components/rule.md:
+    id: 96943514f0e3
+    last_write_checksum: sha1:4c8ced9173cafab011ceb908d51a3d68dd4c59db
+    pristine_git_object: 2a16610bbdcd6cc761bf15ee6227c3f88e70d18e
+  docs/models/components/security.md:
+    id: 54906b49ea28
+    last_write_checksum: sha1:30f9b50db444802ccdafe7b6453b0ea227590ede
+    pristine_git_object: df3ba19616399c02e6e7cb4e6e5579459bdeefd6
+  docs/models/components/target.md:
+    id: 6b01d6776a4e
+    last_write_checksum: sha1:1dd75078653d39e587c14637d784bc3270b7f9bb
+    pristine_git_object: 979126da7cd2392ef7c251988234d54eef1ce006
+  docs/models/components/variation.md:
+    id: 95680a8c739f
+    last_write_checksum: sha1:854624b4fa02e09c9651357e1e05361c18c1a65b
+    pristine_git_object: 3e671a8ce17f9fdaa2ead61737d36a930bc05f44
+  docs/models/components/variationorrolloutrep.md:
+    id: 0a135d4f350c
+    last_write_checksum: sha1:37cdafe33e0eafe6255cd6a805871eb3e4e9af72
+    pristine_git_object: fb365e5279be6df9e37c3b4fdcbb0c378419d059
+  docs/models/components/variationsummary.md:
+    id: 1297e5dc6d48
+    last_write_checksum: sha1:680dcb68e48bcf1a3f01a9faa1066f4d74dc49ea
+    pristine_git_object: 93983640957c38fb5c3aa5bf669d4df34cd0df48
+  docs/models/components/variationtool.md:
+    id: 273aa4801cc8
+    last_write_checksum: sha1:fcac47d04376798d05abf1122aa2ef7ac8ab5449
+    pristine_git_object: 999d8df260ecd6ab22a75a19a7bd77d8be64a1f7
+  docs/models/components/variationtoolpost.md:
+    id: 158cb665d169
+    last_write_checksum: sha1:6cba4d312f49c9aa2ebce86e13359eef97d6f0d0
+    pristine_git_object: 4b82cc0c716d3b788f35bc4306f2c1ab66eea1e1
+  docs/models/components/weightedvariation.md:
+    id: 57523d0d7c57
+    last_write_checksum: sha1:a97ac47971491805aa8cc4d06a127d903d51a146
+    pristine_git_object: 128c303fa68e8a46829971c7d99cd1b63eace472
+  docs/models/errors/errort.md:
+    id: 0fc20860e35e
+    last_write_checksum: sha1:a7d3103e464a34e0425e3d39f0164f33c47f635b
+    pristine_git_object: d4e6070b62cacedb948cd6ccdeecc16e01c2815a
+  docs/models/errors/forbiddenerrorrep.md:
+    id: 739f95d8ec92
+    last_write_checksum: sha1:0f2ab5288e9c56a68dad636935aeeb7bbd2980eb
+    pristine_git_object: d745ce12b4784a57248b43fbf0f657eed4766629
+  docs/models/errors/invalidrequesterrorrep.md:
+    id: cc82aac40ee6
+    last_write_checksum: sha1:ba34bc7f5e0a4a1d6dd839f57fe5559f8b96cc5d
+    pristine_git_object: a6194e42dc6d8ff828ec7911247b440371b90a63
+  docs/models/errors/methodnotallowederrorrep.md:
+    id: d5e683d60b63
+    last_write_checksum: sha1:dec1c37821864bb8f43e01c11c43fe9e901d9c6a
+    pristine_git_object: 6b0ae718b53f0647c0964de28b6b4ff76269dc67
+  docs/models/errors/notfounderrorrep.md:
+    id: 18c986b41191
+    last_write_checksum: sha1:282d68e357ecb8f982636d6b456fd835975fa607
+    pristine_git_object: 66afc99bbe90cf2db79e26e7925a375ec1784bcd
+  docs/models/errors/ratelimitederrorrep.md:
+    id: a961dfacd003
+    last_write_checksum: sha1:0f5e33941e6ac065030af7ad1417a164bb5a9643
+    pristine_git_object: 1db6d0defda902a27e80db7864f811472543c7e8
+  docs/models/errors/statusconflicterrorrep.md:
+    id: 745b94494527
+    last_write_checksum: sha1:36724567a7abef11c2c0f047461e490776592933
+    pristine_git_object: fedc514ac07c521ad47bae8710ea9fb6eeb97838
+  docs/models/errors/unauthorizederrorrep.md:
+    id: ca5af56732f0
+    last_write_checksum: sha1:a285a2d9c77e9a0bc260ef87051e7e532c06c5d6
+    pristine_git_object: 7abd8583fe68c77f58dd6cd674b53a1ded6b64d9
+  docs/models/operations/deleteaiconfigrequest.md:
+    id: e577e94fadf2
+    last_write_checksum: sha1:c941d91e6bee66ee58085bd2191a1f01fd0d13bf
+    pristine_git_object: cf4e0adf2510f377f5cddef36566d04023f92315
+  docs/models/operations/deleteaiconfigvariationrequest.md:
+    id: 685353a40a17
+    last_write_checksum: sha1:996298c68ca7fa5a8def0c25a4dd3e1cf2536097
+    pristine_git_object: a4578df4dcba6ae5803c4141afe63965d5f8968e
+  docs/models/operations/deletefeatureflagrequest.md:
+    id: 01394f6e0776
+    last_write_checksum: sha1:ebd8b5360fa7ad312d7171923d3a9bd8b2105230
+    pristine_git_object: ce4739338185d0d214bd0ab8199a16eaaa4dd482
+  docs/models/operations/getaiconfigrequest.md:
+    id: 2120266f42af
+    last_write_checksum: sha1:c0123943c41ac40848830ab1bc76831bcfe7f176
+    pristine_git_object: 49f5c89969b1bb8fbbe2c93dd94cb3bfb73ae1eb
+  docs/models/operations/getaiconfigsrequest.md:
+    id: 5b3c1b766b39
+    last_write_checksum: sha1:c925d52056846d91cc2c9e80f7bf69d60cfd017b
+    pristine_git_object: d81281e879191838884590c5198de4176a7654b2
+  docs/models/operations/getaiconfigtargetingrequest.md:
+    id: 8c9e944db60d
+    last_write_checksum: sha1:62021c99050d593114eff6d31f2f958073167d4d
+    pristine_git_object: b903470d28ac423c5ce46d30c3790c90811ed87f
+  docs/models/operations/getaiconfigvariationrequest.md:
+    id: a728e45bb955
+    last_write_checksum: sha1:4495b9dccd52600483329c47cdd092a68db8741a
+    pristine_git_object: 9a8627dab2535e34a3330f5253930f36e8be2245
+  docs/models/operations/getenvironmentsbyprojectrequest.md:
+    id: 9fc1ae07e3cb
+    last_write_checksum: sha1:10ec8a7535dd617cc74bed2e6653a3edd34cf227
+    pristine_git_object: 730317d1acbbf68be85f0a0682c7e9a96f8cd61b
+  docs/models/operations/getfeatureflagrequest.md:
+    id: bb5306cf5a4a
+    last_write_checksum: sha1:9e8056bc1c09abeb36f9384219b1a75da49f45bf
+    pristine_git_object: 0f369de609658bf67f41f76ccbeffeace355bdf5
+  docs/models/operations/getfeatureflagsrequest.md:
+    id: cdcde1d8cac5
+    last_write_checksum: sha1:279a2b01b595279dc5d535968bc4f3637ca0ac5e
+    pristine_git_object: 0b02372c98a5b1776bfbadee1899cf1e6b2cbc8b
+  docs/models/operations/getfeatureflagstatusacrossenvironmentsrequest.md:
+    id: 48f417754ccd
+    last_write_checksum: sha1:76805077c301049ca0b76dd3f0c4cb8964201ec3
+    pristine_git_object: d128517e27398527a0d0fb09fab963de038bad1c
+  docs/models/operations/getrepositoriesrequest.md:
+    id: 7fed1d9ed798
+    last_write_checksum: sha1:a7c8ba606722571a58403c8d19625210caaedad3
+    pristine_git_object: 83f6635f785eed269c72ea0ac303be2478e5f6a1
+  docs/models/operations/patchaiconfigrequest.md:
+    id: adb270edab6b
+    last_write_checksum: sha1:f829e12267536cb3860f2ad075cd369dd02fee59
+    pristine_git_object: 047d7f7b2ceca3137b494335479792cecd0f9493
+  docs/models/operations/patchaiconfigtargetingrequest.md:
+    id: d0c3bbab99cc
+    last_write_checksum: sha1:d75dffe09f892a543d18cb28a42b6bc80a2d515f
+    pristine_git_object: b7b2501b1f269a5c22d9b8bfc99b7e65c157e910
+  docs/models/operations/patchaiconfigvariationrequest.md:
+    id: 593f3fb6bf20
+    last_write_checksum: sha1:5890b832fd1948a88c02ece18e8154b1a2d50f73
+    pristine_git_object: efb4f290bfa2d8925cee0eb9e3bc4b830be6cf9d
+  docs/models/operations/patchfeatureflagrequest.md:
+    id: e1249e1c4fa6
+    last_write_checksum: sha1:acd4d7606dad355e0984d5b8a1f440fd2c0e5562
+    pristine_git_object: 2fa1db4ade6f51aeaf5a6bf61da6e60cd12f08fe
+  docs/models/operations/postaiconfigrequest.md:
+    id: 5798121a06af
+    last_write_checksum: sha1:512cc5ddea995da9ebf7d636774709f0772b74d6
+    pristine_git_object: 5cdfb2479b1d5a467b326e6c399ca42dfaf0efc6
+  docs/models/operations/postaiconfigvariationrequest.md:
+    id: 380b9d6fe341
+    last_write_checksum: sha1:1f95e4c22047925c0b0a4e74d26c9a4969ccc14c
+    pristine_git_object: 11cf943c061aab904f68f0fcb883476d9de7291f
+  docs/models/operations/postfeatureflagrequest.md:
+    id: 4b77dcacba74
+    last_write_checksum: sha1:b131140d95a7d00ae6abdb5efa46741d5a6145e2
+    pristine_git_object: 20a2249653dcaccce06f8dba85e39eda36c56a3c
+  docs/sdks/aiconfigs/README.md:
+    id: 33e1db755b36
+    last_write_checksum: sha1:daa4714482492fdfd120e40dabed6b8f948a616e
+    pristine_git_object: 145c051a513de8cbbbdd47866376caba7487c42d
+  docs/sdks/codereferences/README.md:
+    id: 5aeaba1478ce
+    last_write_checksum: sha1:00a003d758bd164b0fe4b7dfd895684fcfd43413
+    pristine_git_object: 221048b9cb4a210774a0f106a52f19cc12179f7a
+  docs/sdks/environments/README.md:
+    id: d15fc95481b6
+    last_write_checksum: sha1:4dae18a38ffa1423421beb254387ed9a6b67e339
+    pristine_git_object: 4286ec5ebfacecf68601a8dad18df212da540e70
+  docs/sdks/featureflags/README.md:
+    id: 63cfa36ba1c0
+    last_write_checksum: sha1:54de38693a65aba308ff8a18c9723f76f7e683a3
+    pristine_git_object: 5ad67a655a1209d8419e9d702410b41fe3b4b85e
+  eslint.config.mjs:
+    id: 461c8d07f6da
+    last_write_checksum: sha1:9398f326377fe47f67af2df6eb6370750c0790b4
+    pristine_git_object: 67bccfec985be20a00970d90155752832dd47135
+  examples/.env.template:
+    id: 52cbe5afed92
+    last_write_checksum: sha1:09bb149e0e16320e16d8efc511090a5e70ae3015
+    pristine_git_object: 0b6d089be603a7b1b2e09fa3dc17d2a8a0c45bf8
+  examples/README.md:
+    id: 9d0f69d6e677
+    last_write_checksum: sha1:a7bb5dedb2ee9ba274f0507f67a1687d1305464e
+    pristine_git_object: 37d8dd45f7990352b95be8e5aac91908798a27c2
+  examples/codeReferencesListRepositories.example.ts:
+    id: 4eec9f2b32b7
+    last_write_checksum: sha1:670220562ea0daab7632b55301633bdaee154cba
+    pristine_git_object: b8dd9cda0788a8cf0c845e7cddb3656857076f8c
+  examples/package.json:
+    id: c1d7b0ec8e7e
+    last_write_checksum: sha1:7bc4907d34572dbf5ce2bf130db420d3a064ff06
+    pristine_git_object: b6d40ae05716a1243a0adf677aef02a56b724541
+  jsr.json:
+    id: 7f6ab7767282
+    last_write_checksum: sha1:89ed0ca9be634c5a6cdde5a6a0f3132438d58bc7
+    pristine_git_object: 26ca5f132869d2bd2f01bc4464fc7bad5bc46943
+  package.json:
+    id: 7030d0b2f71b
+    last_write_checksum: sha1:f429edd953308ae302061d209cd8545d8aec3a30
+    pristine_git_object: e4b50d14b5003c0ea3db3ab4436beec55893fd90
+  src/core.ts:
+    id: f431fdbcd144
+    last_write_checksum: sha1:c5377e0f566bb6fa8c1f40abad8ed8e2afeff228
+    pristine_git_object: d6b6eb417ce5f679ee1de674eb8a6ca6f6c75f5b
+  src/funcs/aiConfigsCreate.ts:
+    id: a9ed184d648a
+    last_write_checksum: sha1:3850b9c7a43f01b0ce0e2f970cba214bebaeeb32
+    pristine_git_object: 539166494d9a87a2077c0058c007db27f69bca5b
+  src/funcs/aiConfigsCreateVariation.ts:
+    id: f8c41222e778
+    last_write_checksum: sha1:1e1ee5616a7e0532994f502c209af658db540a55
+    pristine_git_object: 82c5b1f9443a17e32fd7753c0af0e6a13612ebab
+  src/funcs/aiConfigsDelete.ts:
+    id: 8e6377611e5a
+    last_write_checksum: sha1:4ff919256b53add6b7b52ff08029aadf9cf645a6
+    pristine_git_object: e93bc499337644d56367c634ca1a26bb2cdcc623
+  src/funcs/aiConfigsDeleteVariation.ts:
+    id: 71fa3e9dcd06
+    last_write_checksum: sha1:0346b5ceb7b2b183d890999e66993485d15acde6
+    pristine_git_object: 9acb3b74198c359001f815ca13af431b2766dc9b
+  src/funcs/aiConfigsGet.ts:
+    id: 7e5cff89aba8
+    last_write_checksum: sha1:9604b8583676ac5e178fac38d04cf2d310a0bcf7
+    pristine_git_object: 052542f7bb7f2e10d68f95d9311ec9d03475f030
+  src/funcs/aiConfigsGetTargeting.ts:
+    id: c88000902bdb
+    last_write_checksum: sha1:054cb415faec0d05cd75d58dfb70baf76979c0db
+    pristine_git_object: 84f2287bf5b15f4f4b596129e391ef724209ad56
+  src/funcs/aiConfigsGetVariation.ts:
+    id: 7378ff44b42a
+    last_write_checksum: sha1:27306358765f0fa782e819f46a112b3bc095a559
+    pristine_git_object: cb862993810e3e02f20df55451a23a1fc47ec8c8
+  src/funcs/aiConfigsList.ts:
+    id: 3d0a0d28e264
+    last_write_checksum: sha1:4531334a5e0dbfd37b3abac4966d9386cf57cd6e
+    pristine_git_object: 07a654f2e01bd235cd08b5b19d93bc1830f5719a
+  src/funcs/aiConfigsUpdate.ts:
+    id: a693b65ad532
+    last_write_checksum: sha1:0ae815ffa06f8f4f0e2281ae149b87cca7419a5f
+    pristine_git_object: b555dbced00a719c498c28771c32306ba486d82f
+  src/funcs/aiConfigsUpdateTargeting.ts:
+    id: 9fcf42de7c92
+    last_write_checksum: sha1:cf539d182c25135691329ece3031bfbd18b681f8
+    pristine_git_object: 7c53a7889082df6de74441132f6e8f275433526f
+  src/funcs/aiConfigsUpdateVariation.ts:
+    id: 9ea8114bf389
+    last_write_checksum: sha1:03f87922d414cf09774a8b552f2df1f86cb3fd0c
+    pristine_git_object: 60d3ccf6931541c9fc033988126defc18e33bd8d
+  src/funcs/codeReferencesListRepositories.ts:
+    id: 8a43b229d197
+    last_write_checksum: sha1:711f7f82f812c7257e344591a713f738854a0f93
+    pristine_git_object: 02a916672935a247b45c8e4f88d640c8e7d19cf3
+  src/funcs/environmentsListByProject.ts:
+    id: 675b9cc6e081
+    last_write_checksum: sha1:3c78b2bf8c39b7441f6b81bce41a7648da9bc4d1
+    pristine_git_object: 5ce842960915b8a342c40f833608e0d1dca0fa03
+  src/funcs/featureFlagsCreate.ts:
+    id: a8fb195155bb
+    last_write_checksum: sha1:2f89b1e1331b98aea85f6660b151dd822f5827f8
+    pristine_git_object: f11df3a575b71b4bcab27f604ac1b20c318a5046
+  src/funcs/featureFlagsDelete.ts:
+    id: 3208f3e02239
+    last_write_checksum: sha1:756e6dd8878ef70307162f619570a8cd2a967c49
+    pristine_git_object: 2f20f1276816a6183de80b727f511733da0df9a2
+  src/funcs/featureFlagsGet.ts:
+    id: f7335b7cbc8f
+    last_write_checksum: sha1:1b09cd579b867fa8f37050f4ea6aab69339ea90f
+    pristine_git_object: 865cb4a4ed668e5caf43aac1f851c63831a99615
+  src/funcs/featureFlagsGetStatus.ts:
+    id: 9fb052c2835d
+    last_write_checksum: sha1:391e73e0e9f8eceb066b23d956b49ec757c23ce5
+    pristine_git_object: 4b527f13f07746f49b7e29c8bf2162e877d473a4
+  src/funcs/featureFlagsList.ts:
+    id: a3180188a768
+    last_write_checksum: sha1:1de2a1609153ef154a6d07dde6c38788846e9efd
+    pristine_git_object: f3cc79e4a2f7e34cbc3267f8a26597c70304009f
+  src/funcs/featureFlagsPatch.ts:
+    id: 2bc68f7d33fc
+    last_write_checksum: sha1:f3200c35ab8aa8de67f0c47ad0ec1e95599b7c24
+    pristine_git_object: f88bce627fb7da86d646985fa805a94c7ad44e4b
+  src/hooks/hooks.ts:
+    id: a2463fc6f69b
+    last_write_checksum: sha1:9a569ea8f3177ddcdfe6cd903feaf5c2d2c36a9a
+    pristine_git_object: d34c88497fb1cfb22a725e52b4c218f36d0b5c8e
+  src/hooks/index.ts:
+    id: 5f2dab62b520
+    last_write_checksum: sha1:1a11c073a6cd792932218e1d4ed36b8567bad8ef
+    pristine_git_object: f60ec7acd76141a71d78008c5a362eb0236d8335
+  src/hooks/types.ts:
+    id: 2a02d86ec24f
+    last_write_checksum: sha1:29372122898cc523fa47576f3f6608a28ec6080e
+    pristine_git_object: 8bfe4fe8137138decea7af0a5ed791bf01201789
+  src/index.ts:
+    id: c5fb850250c7
+    last_write_checksum: sha1:35c9cde3ae14b18b3f893a1afe8b6c44f8760f24
+    pristine_git_object: dbcba164a0082e3bb8c43cf21fa7f8ffb9d35dfc
+  src/lib/base64.ts:
+    id: "598522066688"
+    last_write_checksum: sha1:b0b12ddbd8625efb47c0e955a18641aeb10c6532
+    pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
+  src/lib/config.ts:
+    id: 320761608fb3
+    last_write_checksum: sha1:8060f84ef1eb510133a65b800a8416c65a6756cf
+    pristine_git_object: 51bf16a74bbc1e7e0663e3f6772d8995f7436a91
+  src/lib/dlv.ts:
+    id: b1988214835a
+    last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
+    pristine_git_object: e81091f5e536f82739f71379b1fddc2d147c49e2
+  src/lib/encodings.ts:
+    id: 3bd8ead98afd
+    last_write_checksum: sha1:d20c131976ab8ac68b22bdde2b7ed84b5b873922
+    pristine_git_object: 31cd3733907afbee3641b9ab680ed417247a7d33
+  src/lib/env.ts:
+    id: c52972a3b198
+    last_write_checksum: sha1:87509791ad37542df62b0cbef529d90148e1ab27
+    pristine_git_object: 049eda09456bd16f0f5d3b4c5f28606357c665c3
+  src/lib/files.ts:
+    id: e5efa54fcb95
+    last_write_checksum: sha1:d0f325f445b8d22e7d73baf052c585ec2dd24841
+    pristine_git_object: 0344cd046d033f9e8a55de02f7935c5cec5dc30b
+  src/lib/http.ts:
+    id: 63a80782d37e
+    last_write_checksum: sha1:797cbf16d3c7c4d62d3ba0eedb08617524938457
+    pristine_git_object: 13cf1fd7894a89f727b8d2db2ad24313a94f68c7
+  src/lib/is-plain-object.ts:
+    id: b9862591096a
+    last_write_checksum: sha1:df687f25a9590b6fd95d39df41a652ae3fd4e517
+    pristine_git_object: 61070d3d7c7e5e95b1ed7e7ea21869eb0767db77
+  src/lib/logger.ts:
+    id: 7ee7741a02bf
+    last_write_checksum: sha1:0ec9d3a2a34c362746b767e4f9a746c055d57a7b
+    pristine_git_object: d181f2937d4128afbe9b0327e0f81d1fa9c877b7
+  src/lib/matchers.ts:
+    id: d54b2253b719
+    last_write_checksum: sha1:e7587f40d36710d499f8a7e6b610610e55a2cb40
+    pristine_git_object: 77d41086d77e53263a3a9ba0ec73aea3df521096
+  src/lib/primitives.ts:
+    id: 74859f750b28
+    last_write_checksum: sha1:987869fc54790b9c22e9182099103d6aa7c67016
+    pristine_git_object: d21f1dc49affa4e6d324bdd60811b470fdfa7eb6
+  src/lib/retries.ts:
+    id: b24a69d15639
+    last_write_checksum: sha1:f3da74dffcbe2756c69393f8600205aa1dc06e68
+    pristine_git_object: e3ce9aba72150fc3c18f3105d39b21aba809377b
+  src/lib/schemas.ts:
+    id: deb4b531fae1
+    last_write_checksum: sha1:209cfaabfa7fc1c1310f97453215cb0755619c6e
+    pristine_git_object: 47edb9725c2482c667e2ddc8a56b1fec4285c492
+  src/lib/sdks.ts:
+    id: 8a6d91f1218d
+    last_write_checksum: sha1:6830e4a64ceaaa7ab28695d20f9e112ae94f4754
+    pristine_git_object: a4515cf08e66c4a0ef13de18856711353f4b1d01
+  src/lib/security.ts:
+    id: 0502afa7922e
+    last_write_checksum: sha1:46705c40356a13c9f45ff1efefa265300afe3c06
+    pristine_git_object: 55fe2f15902dcc67f398b034d1b4d93b85d17522
+  src/lib/url.ts:
+    id: b0057e24ed76
+    last_write_checksum: sha1:d124050c7e755c0cce233b9e029afb584ff65201
+    pristine_git_object: f3a8de6c021de59c991707946cd294596cae954d
+  src/mcp-server/build.mts:
+    id: f7a2ed2de4d7
+    last_write_checksum: sha1:1a7a5dc9ace5a5d707bd8d2339f76719e525e7eb
+    pristine_git_object: a04739f2ac2154c097ea821daf364ee4c037a820
+  src/mcp-server/cli.ts:
+    id: 4ade0ef98b00
+    last_write_checksum: sha1:7331efddde881832342fa8779d23be7445d4480c
+    pristine_git_object: b878d8de9f2a0275c3cdbfdcaed48a31092e558a
+  src/mcp-server/cli/start/command.ts:
+    id: b3e53408ccb4
+    last_write_checksum: sha1:e359578da3a7da5aa4e8c5d2d6afe2f326ea2345
+    pristine_git_object: b5fd6c40731f8ea63e91e408398f970a27a74ff0
+  src/mcp-server/cli/start/impl.ts:
+    id: 37494f674015
+    last_write_checksum: sha1:61b41e296c11dba0bcff60c69c5057ae8b91ac42
+    pristine_git_object: 231ca0da209460b1752c1fa0dbe4ec500c7fcd60
+  src/mcp-server/console-logger.ts:
+    id: 57aff4ff2e15
+    last_write_checksum: sha1:66e945860c8318f2a6bb9604a7720a979dacce4b
+    pristine_git_object: d65a295b9545bee0599e46f2a75f2ab5a03c4ae4
+  src/mcp-server/extensions.ts:
+    id: 3d9d20ff158f
+    last_write_checksum: sha1:e36e4b49b77347db80debccc2e77706b0ac7f4a4
+    pristine_git_object: 0955a573c2ce989d63c737410ab8cc28706d9f74
+  src/mcp-server/mcp-server.ts:
+    id: aabbc4ab07c1
+    last_write_checksum: sha1:14abc2979c582424ede0f99e2472bdf108dda818
+    pristine_git_object: 9b19ebc6ff00562e476a3ff8026ce96010803368
+  src/mcp-server/prompts.ts:
+    id: 26f3d73cbf31
+    last_write_checksum: sha1:d6c2743fa03a583234144acfc5c3a5008a355107
+    pristine_git_object: 92f64693d2338aa3b1e2efbfcb95c097fa91e5be
+  src/mcp-server/resources.ts:
+    id: cb0c57ebeaea
+    last_write_checksum: sha1:1d24762dcb0ce77bc4a28a1145176c2570dcf85a
+    pristine_git_object: 8daa646c68db9509840c9979215a7bfea50a3e53
+  src/mcp-server/scopes.ts:
+    id: 8966d24256b2
+    last_write_checksum: sha1:c3049445638436e8b00ec1b95753a5f26b538184
+    pristine_git_object: cb8330e4ae705d283de6ab337eefd3b4b8191fca
+  src/mcp-server/server.ts:
+    id: 2784dd48e82a
+    last_write_checksum: sha1:48742774d3b4f7b0c129f8b0425302bd0930245a
+    pristine_git_object: ae6587e12709fcc6ff1078a9ead7a8178ca0be04
+  src/mcp-server/shared.ts:
+    id: 074e80d4be1e
+    last_write_checksum: sha1:56c73d4429691516e35541825e759a0285747a2b
+    pristine_git_object: 3e94144d13f0707bc300183ebb4325b367c297dd
+  src/mcp-server/tools.ts:
+    id: 654d5d1f2062
+    last_write_checksum: sha1:f1325ce212ea849c7020eda756705f368917790e
+    pristine_git_object: 14c05aaa2ec873a50ae6c25e2f75b0f4a6eb996a
+  src/mcp-server/tools/aiConfigsCreate.ts:
+    id: 742aa8996d60
+    last_write_checksum: sha1:fe2a229c788bb7661d777e5f71e7fabd81d049df
+    pristine_git_object: 5b6a62c86d9a929c6ee242e339629c8fbb7f3960
+  src/mcp-server/tools/aiConfigsCreateVariation.ts:
+    id: 964174159c23
+    last_write_checksum: sha1:c15b93d5adbbc770a2521be533e19672dbcbf89e
+    pristine_git_object: 5e6d82e2313599ae213de294a9e48bef6153f4ed
+  src/mcp-server/tools/aiConfigsDelete.ts:
+    id: a9a849477b57
+    last_write_checksum: sha1:e917eb158b5e9a3880846d5577c74d9c5b5d1679
+    pristine_git_object: 79ec6c38cd71160d85587571302e65f03ae22763
+  src/mcp-server/tools/aiConfigsDeleteVariation.ts:
+    id: 143485764cde
+    last_write_checksum: sha1:fb6f60c1e980403787558bf30abce65334256837
+    pristine_git_object: c56337da7d0e28396c409ece09d2c7f8bf78e6d2
+  src/mcp-server/tools/aiConfigsGet.ts:
+    id: c7186b6acda1
+    last_write_checksum: sha1:00870afc4ec26482a75fc4526a06a1f0caed6ba6
+    pristine_git_object: 084c64623f315e0ce371d0ac7966937e54f94178
+  src/mcp-server/tools/aiConfigsGetTargeting.ts:
+    id: 122688de1191
+    last_write_checksum: sha1:9e45a686d01eb0c901055dd7e8254670d816143c
+    pristine_git_object: ad3af7aefd5bf8a86778d1641da38509b57a65f6
+  src/mcp-server/tools/aiConfigsGetVariation.ts:
+    id: f250de2898e6
+    last_write_checksum: sha1:356e740d787da9a73b1a42eeeb5eaab362f009d1
+    pristine_git_object: 627bffdca994085e3724be101d7d77e11e890eb1
+  src/mcp-server/tools/aiConfigsList.ts:
+    id: 68206d23700b
+    last_write_checksum: sha1:89fcc39a4d51cb053ad69700377a02094d6e846a
+    pristine_git_object: 37d83bc91af8b21be83c7da693a9641323216b22
+  src/mcp-server/tools/aiConfigsUpdate.ts:
+    id: a75137271cd3
+    last_write_checksum: sha1:785f1ca0aac696140c29551ade9d20aa4333a413
+    pristine_git_object: 4e5f29af86bfa09ee640fef16257c77405a4b35c
+  src/mcp-server/tools/aiConfigsUpdateTargeting.ts:
+    id: 2a4d84b8a89e
+    last_write_checksum: sha1:81801925c55ebc6bceb506d3488f7f8d92811284
+    pristine_git_object: f7b45a76e4cca5d6c9d21f162a650d474f3f2be0
+  src/mcp-server/tools/aiConfigsUpdateVariation.ts:
+    id: 6ce420678575
+    last_write_checksum: sha1:32234703280f640d61252e4984be7d5e6808f4ac
+    pristine_git_object: de063968e4a73fe7575a221ffe8aa24d0c2ec5e7
+  src/mcp-server/tools/codeReferencesListRepositories.ts:
+    id: 1c9f9152f67b
+    last_write_checksum: sha1:a022c7bcda69de555bee7f92f45d1b390aa9f2be
+    pristine_git_object: 37752cf5b57d1d86b645f199435a65e508649ed6
+  src/mcp-server/tools/environmentsListByProject.ts:
+    id: 498d203cf01f
+    last_write_checksum: sha1:a7bd673782ff0b283aa2adc9555e4e158c5466e8
+    pristine_git_object: b08b0623810acf5c2d0ed5a7fff6b64d15e5f6c2
+  src/mcp-server/tools/featureFlagsCreate.ts:
+    id: 58ff08c9bfb5
+    last_write_checksum: sha1:909b8beef0b26689eb1145a1374ce9d0587a1454
+    pristine_git_object: e9a45c19d3f961943467793c3c2d36bbec942097
+  src/mcp-server/tools/featureFlagsDelete.ts:
+    id: 97a3c58156c9
+    last_write_checksum: sha1:70bde6e9851289d16c8c66ef6ee8d02815c3b7f5
+    pristine_git_object: 881c885c98dfd53a46c131044db469193c5a50fd
+  src/mcp-server/tools/featureFlagsGet.ts:
+    id: e9cb1b16b0ed
+    last_write_checksum: sha1:3863e86ca09bcc3d067ca041375dd84fa73a3b67
+    pristine_git_object: 6d36ae1d8d4c396a01a8aa93a5aa69f0b8bd8d79
+  src/mcp-server/tools/featureFlagsGetStatus.ts:
+    id: c2e86b5eb34b
+    last_write_checksum: sha1:e48f67a3d42a62746aa735e5e33eed668bd7075c
+    pristine_git_object: 553c71b043e16768cc277797bdc6b11b982017b1
+  src/mcp-server/tools/featureFlagsList.ts:
+    id: e5f50cdc8b03
+    last_write_checksum: sha1:8b5d1534fdf78db274d39c8badad3f55d723796d
+    pristine_git_object: 05b1c8d6544c31d0e924f0c6f7fc3f24a62d9173
+  src/mcp-server/tools/featureFlagsPatch.ts:
+    id: 20355ce2ab21
+    last_write_checksum: sha1:8ff41f19cc27cfa8141d0b9f57776198e1aaa1a0
+    pristine_git_object: 523892c926de676e9085d6d19f9aff14b4f96f94
+  src/models/components/access.ts:
+    id: eca14f52fd74
+    last_write_checksum: sha1:4f3339c3a917ddd5a858147926ad4f4022fada6e
+    pristine_git_object: 6cf636f4fa8205e767e414e3e0507450a78cc901
+  src/models/components/accessallowedreason.ts:
+    id: a3f8b1199305
+    last_write_checksum: sha1:0b5be1f236f66e0b7c0255737def76161c2eeaae
+    pristine_git_object: 046ca49f0ec5b8e81f8dd173fa3bb8b5bd7f575c
+  src/models/components/accessallowedrep.ts:
+    id: 0f1db85ded60
+    last_write_checksum: sha1:fd4f8dd339f59a8d849016eddaa40c0ce6c636db
+    pristine_git_object: 0647e14b7ec72d2844e41fc7a44ac8bb57b735bb
+  src/models/components/accessdenied.ts:
+    id: 427dea33d022
+    last_write_checksum: sha1:5d6a99e534da4c8a89cabbca70f5948f8fd0bb43
+    pristine_git_object: 48b8f4496f7d2e4321cf4b515393fd30f5d36913
+  src/models/components/accessdeniedreason.ts:
+    id: 8737f1b930a8
+    last_write_checksum: sha1:692b9393b9e9f94c968f741a5b2b476e86088231
+    pristine_git_object: d9390435d8eea03b15f710cdbb0c19d5b7183c43
+  src/models/components/aiconfig.ts:
+    id: ae781bb15c14
+    last_write_checksum: sha1:7a34b56041769e3d67efc25fa31d26d6f81cf0b8
+    pristine_git_object: 4395caa2497ad051d2c78c2b0a702adf266015e4
+  src/models/components/aiconfigdependency.ts:
+    id: 4d44b22bb9e3
+    last_write_checksum: sha1:d0db5364bf9ae5ad07c667e39b216d5847dfc0f0
+    pristine_git_object: cea5669cdd65ad833177cc62217012496dd6850e
+  src/models/components/aiconfigmaintainer.ts:
+    id: 0420e431183b
+    last_write_checksum: sha1:c0b482fafc8d55670237065c53b919739059b1d3
+    pristine_git_object: d919b43afea749a8304a47b217ec6f23322d78e6
+  src/models/components/aiconfigpatch.ts:
+    id: ff4e9226b090
+    last_write_checksum: sha1:d596e9c4fa17ae8450dcb1b30b0058ea6064a230
+    pristine_git_object: 98f39dd584fc6b059709b44e56dae8cb9ec84bda
+  src/models/components/aiconfigpost.ts:
+    id: d6112c658632
+    last_write_checksum: sha1:2052511cfae7b6650bf341e7be2ee5bc2864c16f
+    pristine_git_object: df02a4b7714e79aea8343a752a54d1cbc77ec689
+  src/models/components/aiconfigs.ts:
+    id: 3d27f63810aa
+    last_write_checksum: sha1:3b9386a11975913af70fd7b47b5798f2f8653c80
+    pristine_git_object: 5491bdb99a96b985def49f0351feb27d7a6962cf
+  src/models/components/aiconfigsaccess.ts:
+    id: fc3a67a61b05
+    last_write_checksum: sha1:a4299ccdfb79793a532e168f52d1d2c631690ddc
+    pristine_git_object: 427c368095e01af4af5402000afef55a7e053e33
+  src/models/components/aiconfigsaccessallowedreason.ts:
+    id: f987dcac03af
+    last_write_checksum: sha1:ee314d0407e1a05c59c3c8dddb8e9006f1c84ffe
+    pristine_git_object: ef981e1a196fa0a7b08cfe0142e44be52c7419cc
+  src/models/components/aiconfigsaccessallowedrep.ts:
+    id: 75b6775c0c88
+    last_write_checksum: sha1:180f61211e487f357049446d76d5aa579ae4b7bc
+    pristine_git_object: eebbe227473c0e8f05ccbe658c1342e98c7ebd7f
+  src/models/components/aiconfigsaccessdenied.ts:
+    id: d0f74b8439d6
+    last_write_checksum: sha1:b699e081ce644ae4c08f146bbc9d3d5aa9e9a203
+    pristine_git_object: ebddde3b49efec70199289a1f8a16bb21b597248
+  src/models/components/aiconfigsaccessdeniedreason.ts:
+    id: 3f1694696836
+    last_write_checksum: sha1:35d8addd2d4368081b855673b0c35200202f8516
+    pristine_git_object: 34d8c0c8c79bbdea6b53b478cb38e0a9dade994d
+  src/models/components/aiconfigsexperimentenabledperiodrep.ts:
+    id: fc3b06538531
+    last_write_checksum: sha1:57e959993e4eef87daff819f0f0e09f9471c7293
+    pristine_git_object: 1c936451404be814fe999a0396c92d3cedc90282
+  src/models/components/aiconfigsexperimentenvironmentsettingrep.ts:
+    id: b1acb359a9c7
+    last_write_checksum: sha1:94112ecd37add4927fed3e49d2f4582291250272
+    pristine_git_object: fce6cd08be33abc6f37087187fba73ae2a574cac
+  src/models/components/aiconfigsexperimentinforep.ts:
+    id: 57b058d517c4
+    last_write_checksum: sha1:1ace2c3250f85e6128e5821b0e96898f7f2aff0e
+    pristine_git_object: 709c71a054aecd8c5423c8d9bc431a015d9d725c
+  src/models/components/aiconfigsfilter.ts:
+    id: bef417b3662a
+    last_write_checksum: sha1:354922a5c4481698b4b37aeef94e29fe791cd798
+    pristine_git_object: fbb00933185bed29c2921a5b2cad9d2ea5ecc52e
+  src/models/components/aiconfigslegacyexperimentrep.ts:
+    id: d5f7183aa33b
+    last_write_checksum: sha1:9ab84e7ea99c04eb7be72ea09d05f493301ab8d7
+    pristine_git_object: eefc9ae4573e4d372d43eb05df054f592f38d8f4
+  src/models/components/aiconfigslink.ts:
+    id: 2de328d02b96
+    last_write_checksum: sha1:2943585d9f4f3208ce528f4773acff5237782bca
+    pristine_git_object: fa170e0eb516f89a2472ed0bde02ad8b2f03d147
+  src/models/components/aiconfigsmembersummary.ts:
+    id: fe98de2218b9
+    last_write_checksum: sha1:d1dc57085d1924ff0391254075866369e7745b53
+    pristine_git_object: f0bda906cb84802a65b231d1354dde1008616ece
+  src/models/components/aiconfigsmetricdatasourcerefrep.ts:
+    id: 8608a739fc02
+    last_write_checksum: sha1:c13f92b17ee0d27de8b2dd4ce7a0f953d847a799
+    pristine_git_object: 4d0ee2161e3d4150aad39ad9f1b6d60bd0fc0f38
+  src/models/components/aiconfigsmetriceventdefaultrep.ts:
+    id: d30d5fe50826
+    last_write_checksum: sha1:3877b2c781e9af27d5e81dbd1bcadebcb6b517ac
+    pristine_git_object: 1dff428de0321abf0e7a3285566846ec55ae25d9
+  src/models/components/aiconfigsmetriclistingrep.ts:
+    id: 4ac8c694ee34
+    last_write_checksum: sha1:9be5f04f42f7c9f79e6a1b05c0533e0a9089c90a
+    pristine_git_object: 91eaaee71eb939984007f08fdf7f4653e243eec5
+  src/models/components/aiconfigsmodification.ts:
+    id: 0bd560ae1911
+    last_write_checksum: sha1:3afc17fc1ed7b6f28e2e0f88de606c0ff87f51d0
+    pristine_git_object: b2d34d33ec5347ec424287f61cbabc7ee6eb71a7
+  src/models/components/aiconfigtargeting.ts:
+    id: 6b30d1241468
+    last_write_checksum: sha1:43d54e25f4b3fbf60fe9340da7921befd42a8d53
+    pristine_git_object: f3120b06c20470168585d847226f8ce05bfc15bb
+  src/models/components/aiconfigtargetingdefaults.ts:
+    id: 8f635097d19a
+    last_write_checksum: sha1:57215bdc5183ee7fa733cb1ffe3c0b14fb8ca274
+    pristine_git_object: eb78516a980ffdb2865f622bad39ca19a5cd1565
+  src/models/components/aiconfigtargetingenvironment.ts:
+    id: d5d52e5b6dc8
+    last_write_checksum: sha1:69e76a413ccc387f278c2c98f7bf917488e3f709
+    pristine_git_object: a1e84abf63e66cc451c1c61e0203c4c402b5f596
+  src/models/components/aiconfigtargetingenvironmentfallthrough.ts:
+    id: 8fb4f6394c33
+    last_write_checksum: sha1:6415cf53424d381b02ce26aa73255b91eca0f563
+    pristine_git_object: c0594c6c98fd249d3086cb97f839d4242aef57bb
+  src/models/components/aiconfigtargetingenvironmentfallthroughrollout.ts:
+    id: cfc858b35797
+    last_write_checksum: sha1:34fbb2efe1babfc48569ef428411beaa3af9c2c5
+    pristine_git_object: 6fadf597a3bbae85ea44e1d60230d63ff54ac9cb
+  src/models/components/aiconfigtargetingenvironmentfallthroughrolloutexperimentationallocation.ts:
+    id: 0645c0bf64f2
+    last_write_checksum: sha1:d1dfeb9cb099df5ec9ff8466284fbc137a0f126d
+    pristine_git_object: da458edba54ac8b152b9a07c658d79d45c0964d1
+  src/models/components/aiconfigtargetingenvironmentfallthroughrolloutvariation.ts:
+    id: b1dcab61c5e9
+    last_write_checksum: sha1:4998858ce6b22f5c1f3dbc523077c5321de2ab67
+    pristine_git_object: 62146c841edabffcdef934544cdf90b232698398
+  src/models/components/aiconfigtargetingenvironmentrule.ts:
+    id: 47a9193a4d16
+    last_write_checksum: sha1:8b76c77ac668c3262eeff866c84b039d4bf3f4ad
+    pristine_git_object: 09cb4dd6a5ed7935b622d51ac507ac3ec66fc149
+  src/models/components/aiconfigtargetingenvironmentruleclause.ts:
+    id: 511748f9181b
+    last_write_checksum: sha1:e215e6393d4b3a4811987c936b280671650bfad8
+    pristine_git_object: b48a2514598516fc6f39db288ba73c9ae9a5b5e7
+  src/models/components/aiconfigtargetingenvironmenttarget.ts:
+    id: df9799517c4b
+    last_write_checksum: sha1:4ee86e33ae46e369e480415f804c5fc9f4a16164
+    pristine_git_object: e06469016621a0168fce0f6e8b60cd6acb1f4cbb
+  src/models/components/aiconfigtargetingpatch.ts:
+    id: c7d96e87a811
+    last_write_checksum: sha1:8ceb43ded8d39234302f317cd4f683667e2e7cf7
+    pristine_git_object: 2ebf49b7faafe8bcfa07d01ebeef06ab98839375
+  src/models/components/aiconfigtargetingvariation.ts:
+    id: 359241b301c0
+    last_write_checksum: sha1:9687fe1186edf1b57b34d7ba7884333f5bb6a4d9
+    pristine_git_object: c0c10ac401dfb58a90cc942582aba81d80f2f31e
+  src/models/components/aiconfigtargetingvariationjson.ts:
+    id: 1da4d3044009
+    last_write_checksum: sha1:0ff1ff054bf3452d57de38548f5fbd478294cd3e
+    pristine_git_object: 595649686f13c3c61263a30576e5159d52aea236
+  src/models/components/aiconfigtargetingvariationvalue.ts:
+    id: 2aa1b7f48520
+    last_write_checksum: sha1:32c992b18492f52d481b1529288aa09e24fe1a2f
+    pristine_git_object: 114c84199944df26f7c7ec13f57ca3d47965e8c5
+  src/models/components/aiconfigvariation.ts:
+    id: 187898c63c81
+    last_write_checksum: sha1:f2ca404a6e56189e56e627ae845298c62564d985
+    pristine_git_object: a4f0665452d014770777c293accf45c240999555
+  src/models/components/aiconfigvariationpatch.ts:
+    id: cc2ae337d7a3
+    last_write_checksum: sha1:277f6d039f5c5ae1806941fbfa2b66269bc4a848
+    pristine_git_object: 348aa99d0eced3a46efc8aa2b24574f6b7a7bbac
+  src/models/components/aiconfigvariationpost.ts:
+    id: accdf655ccb3
+    last_write_checksum: sha1:e284dd97146d377cb840358bb3c2d2db1b405590
+    pristine_git_object: d3d8f1fb26c56d0f96b7184d5ee7c2d3adecf18c
+  src/models/components/aiconfigvariationsresponse.ts:
+    id: 4ebd935febed
+    last_write_checksum: sha1:2e27dfad94886f09aa8a110337d73a7289cc930e
+    pristine_git_object: 13e509c3dcabb0ead357e6fb2832ee6247cd3a09
+  src/models/components/approvalsettings.ts:
+    id: 1113e576088d
+    last_write_checksum: sha1:83627db2f26d419b1859fe3ce4001de2e2135779
+    pristine_git_object: aca5c14f7a82686fd9a61c3143dc984e004fe9ce
+  src/models/components/branchrep.ts:
+    id: 3e7ca134c7b5
+    last_write_checksum: sha1:65da0cf11ff1a570c849501ce40b1a2e0569de57
+    pristine_git_object: 91a6dfaeee2ce75181b4096af5a029b778921526
+  src/models/components/clause.ts:
+    id: 1ce9fda9dc26
+    last_write_checksum: sha1:3f99d678bc4fc593fef4b0f61b90e48842176b81
+    pristine_git_object: b8a2fa6d26af72613a0e2c7f2adaca46aff9efbf
+  src/models/components/clientsideavailability.ts:
+    id: 44be6d745a92
+    last_write_checksum: sha1:8fa87a19d109433a876d84ea5d11f6f6f0e0fc19
+    pristine_git_object: d41aac95a021047315487ee91d3387af5ffc06e4
+  src/models/components/clientsideavailabilitypost.ts:
+    id: df03b77ebc0b
+    last_write_checksum: sha1:f49852f62b2e94c68eb5232ece7b448ee022ca2a
+    pristine_git_object: 6881bdeafa19c334a2c7a886d8a16c4e081f817b
+  src/models/components/corelink.ts:
+    id: a88c3fb9d248
+    last_write_checksum: sha1:232021127cbd109649519f8e76abacff0bd2acfd
+    pristine_git_object: 1a74880e07ff2e2ff40278efbf22de839a2e2b2e
+  src/models/components/customproperty.ts:
+    id: b6a6f826fc01
+    last_write_checksum: sha1:2770facf5cba9344c1069c4c84796f24b1378fb5
+    pristine_git_object: 616ac36f6eb3a3fb42f7148d0646284c149d25b3
+  src/models/components/defaults.ts:
+    id: a776d0fdbf45
+    last_write_checksum: sha1:7dfb2f074d8cbfa49a9923a34a96a9fd25270768
+    pristine_git_object: 0fc851f54316e3c744fd52a6271eb92fbd089a4d
+  src/models/components/environment.ts:
+    id: c68cb95d8182
+    last_write_checksum: sha1:32cb531460bde9d7300437a8cde49d8c665f4802
+    pristine_git_object: 263c4ea5173f88181a16c53bf7a6211e46092d3a
+  src/models/components/environments.ts:
+    id: 0fe02e80bec9
+    last_write_checksum: sha1:89011514f4c70315c89bc59150615bfff7b5ef82
+    pristine_git_object: adae412c07aad0b19269c87253794ec8729befe5
+  src/models/components/experimentallocationrep.ts:
+    id: f3f424ebcb27
+    last_write_checksum: sha1:35fffee54c7e243e1d9fed58ab17668bde829b6b
+    pristine_git_object: 36b358e3cff1d9601940c17f6cb007c265300194
+  src/models/components/experimentenabledperiodrep.ts:
+    id: 9e10a00354ff
+    last_write_checksum: sha1:3624e45eb42bc091fedb4649a58c0e395b3ffd10
+    pristine_git_object: 0a3df0cd1615550c7fb96abf51c265263416855d
+  src/models/components/experimentenvironmentsettingrep.ts:
+    id: 27a3bc081e29
+    last_write_checksum: sha1:cfb01f774c5bfa50044be4332ed81e32fd9dbb3b
+    pristine_git_object: 4cd15e8e9755f3af602c4743fc2b7b3b3af89505
+  src/models/components/experimentinforep.ts:
+    id: 79ab5a7167bf
+    last_write_checksum: sha1:b01c4522f3ad98925b2064228e7c2c39f928c2a8
+    pristine_git_object: ae1f38dbd333deed504c14bc09174ae36911cb4b
+  src/models/components/featureflag.ts:
+    id: 3bd2b5ce4dff
+    last_write_checksum: sha1:4b9a55137f32a3b9a75f5ec3b1bf780afa82f339
+    pristine_git_object: 49b0f8eb265dcd6b9a31d0a810c6080ac8c08c55
+  src/models/components/featureflagbody.ts:
+    id: 68865d794f0d
+    last_write_checksum: sha1:f70b3db5cd1a43c88e82aa460a6f8189a3629b81
+    pristine_git_object: df675b5664902fae55902c9025d6f8ae5130361e
+  src/models/components/featureflagconfig.ts:
+    id: 29e50a347df7
+    last_write_checksum: sha1:68d9a014b53b047586731b0a8e77ceb004a9fe18
+    pristine_git_object: 3c9ed2de2a9bc85085e08d6d56a5aa7b5837f843
+  src/models/components/featureflags.ts:
+    id: da5ed0885bda
+    last_write_checksum: sha1:ce248b744fa3b6b98411596dab008f4dfce4dacc
+    pristine_git_object: 4e9481ad6103095ac1cf896013605ff0f357d17b
+  src/models/components/featureflagstatus.ts:
+    id: f82c62603dcc
+    last_write_checksum: sha1:45df5a793f0920085f2c21b24d1d3cd3caea69e5
+    pristine_git_object: a4264ee044ac894ea492897c538c6734a065bd83
+  src/models/components/featureflagstatusacrossenvironments.ts:
+    id: f2eaa2755cf8
+    last_write_checksum: sha1:d6e51198f9fc877e4d808f6fd39513e8d540e2fe
+    pristine_git_object: 6384f3dc35dacb7d90994ddb82d61ce40a3dbaee
+  src/models/components/filter.ts:
+    id: 7824d6e24147
+    last_write_checksum: sha1:a4a566ba7fb85f2429e8b2dacf164d48146f2e66
+    pristine_git_object: ee73ee24a49885c01f4c4a60db96f8432180b077
+  src/models/components/flagconfigevaluation.ts:
+    id: bdcd6b18c156
+    last_write_checksum: sha1:80d80a92ba6daaca6f3234cf5b72f4751c3ff1b0
+    pristine_git_object: f9389e6e9c905f558be1770535958ca0980e3774
+  src/models/components/flagconfigmigrationsettingsrep.ts:
+    id: 8d6cf48f395c
+    last_write_checksum: sha1:5ed684b095a2602d0ba898e553a450dd4747911e
+    pristine_git_object: e863a17c1d26333d77542c1871cc9b476898fdad
+  src/models/components/flagmigrationsettingsrep.ts:
+    id: 46021c7f0658
+    last_write_checksum: sha1:f3e6cf6f7893555a6c54bfdbde164c10bcea585b
+    pristine_git_object: 3394b2d1167f25c7b188a20c79ce74e37a5b36f3
+  src/models/components/flagprerequisitepost.ts:
+    id: b16ce41c7b25
+    last_write_checksum: sha1:873bb3a2a7f395769d2b3d5197f9492d50580f23
+    pristine_git_object: 400c0320d294c4305e58217285425544d206975c
+  src/models/components/flagsummary.ts:
+    id: d67d3f5f9303
+    last_write_checksum: sha1:bfddd432d13cc9e6246352d92b7b7cfa0c47ab4e
+    pristine_git_object: 22ddf594067269a117aa7e093e0f4e30cf7143c6
+  src/models/components/hunkrep.ts:
+    id: 37bf3a2e857c
+    last_write_checksum: sha1:64725151eaed3fb8efb8dd8169d88cf2bcbe442d
+    pristine_git_object: f79ca268af0bcff8f774e6a8f409e8c0430744de
+  src/models/components/index.ts:
+    id: 0aa842dce54d
+    last_write_checksum: sha1:9229373918f7f4bb6e43619e93c4f8141a478410
+    pristine_git_object: 8f2cf4a19e8402ef92f70071b8f34dd5de6c6e91
+  src/models/components/judgeattachment.ts:
+    id: 7db7cd145f8a
+    last_write_checksum: sha1:2c149936872d3e4257903aae47951e9bfb01926d
+    pristine_git_object: 4c78baafc0944db7ff12813cd508975e44e1b27a
+  src/models/components/judgeconfiguration.ts:
+    id: 26acfd72f324
+    last_write_checksum: sha1:a74c9b85c69184b731c011296c9b9ef21d93b4ef
+    pristine_git_object: 1762e8be4edab7f2aa71895bdf9b0ce28e60d532
+  src/models/components/legacyexperimentrep.ts:
+    id: 0549effac33a
+    last_write_checksum: sha1:bf093b1e4d376d5fe02aa1b557e140dc9c7b3f38
+    pristine_git_object: ca1ccecb21b01cd8ac46ed7f74282279d3a571ac
+  src/models/components/link.ts:
+    id: 6841c80c58fe
+    last_write_checksum: sha1:7513a08e1f88eeacb7f29091d93ccd5044955ba2
+    pristine_git_object: 14a28de62b9eb196f6cadd4eaf36b15fc9569c21
+  src/models/components/maintainerteam.ts:
+    id: 5cdd1f068a5f
+    last_write_checksum: sha1:26523cc7e1ffe0d033aa11c2c6a891b842b30dd7
+    pristine_git_object: fdbab6f6a4d421dbf47be5d93c3a5cd646be9262
+  src/models/components/membersummary.ts:
+    id: 40e15a9579be
+    last_write_checksum: sha1:41e516898ad8932d4ab684ed0b05c77b19892dfb
+    pristine_git_object: 78adfb7a7924e51ea6fe38afaa39410d7f214ce3
+  src/models/components/message.ts:
+    id: c1f7bf936709
+    last_write_checksum: sha1:77bde8e9746339e6878b09ac1fbe39cc79571fae
+    pristine_git_object: a7ceb4134232f1d17d9f3ae4da4593d749b805bc
+  src/models/components/metricdatasourcerefrep.ts:
+    id: 523953c0f810
+    last_write_checksum: sha1:7e35f604c1644d1d3cd511fbd0404aec4d754828
+    pristine_git_object: 8886d144eef6ab638286f98380d0ab526dd69e18
+  src/models/components/metriceventdefaultrep.ts:
+    id: e72ca38259b0
+    last_write_checksum: sha1:1b4eb179bb0af6f1fd1766b4d6b093e5f851e533
+    pristine_git_object: e92ddc803cbaaede9b150348c7d2daef35e0bfe7
+  src/models/components/metriclistingrep.ts:
+    id: 8aab92d8aa8b
+    last_write_checksum: sha1:36755ce6c96f45e90fc8212c1541af9676c93b29
+    pristine_git_object: 6e546c4df8f3869d3707e7fe30a53dad14ba32de
+  src/models/components/migrationsettingspost.ts:
+    id: b9080d3d938f
+    last_write_checksum: sha1:51868c1563448c93e58ea0ff50c3878378fa35d1
+    pristine_git_object: b3bc115c92b5836b7f65952bbf18e7b98c7f0e5d
+  src/models/components/modification.ts:
+    id: 34563ff163f5
+    last_write_checksum: sha1:1fd89ce0ae055f3fe868f36b7ae00f98c59805d6
+    pristine_git_object: 6d53bb217bd46792ca3ae2e3c8fc69b1650a40a1
+  src/models/components/paginatedlinks.ts:
+    id: 2f308ad57d64
+    last_write_checksum: sha1:5fff6f2ef7562c24299e5c3179185a6f45f3928f
+    pristine_git_object: a43ebabf6474cd0e6d35ac99a3a1cb06f975f476
+  src/models/components/parentandselflinks.ts:
+    id: 576e19113174
+    last_write_checksum: sha1:38d3333e7e4ee26112053968d10a421bba875c5e
+    pristine_git_object: a55d767e2e32de782ccb633077fdf20f8c7a6634
+  src/models/components/parentlink.ts:
+    id: 1d663e03a500
+    last_write_checksum: sha1:01db9115590c5c07684e56119101c4564ec1f197
+    pristine_git_object: 13c16ea92c69437241aa495bcd22b4ce0b23947f
+  src/models/components/patchoperation.ts:
+    id: 8ea1baf04a70
+    last_write_checksum: sha1:20175b34b9702a5407475f7eb1c8a0ffcef803a4
+    pristine_git_object: e990267e55a5fa23ffb44daaaae76c7990b0fd7d
+  src/models/components/patchwithcomment.ts:
+    id: e0b41ec8d1ee
+    last_write_checksum: sha1:cf695b1ce43110461edacce9111a54a9fe570ab1
+    pristine_git_object: 2f29f9ee10b3c54c38bdab3b8e0c3ffe986f1a41
+  src/models/components/prerequisite.ts:
+    id: 15d5461a4e24
+    last_write_checksum: sha1:183b324cf0996648fb4b7867d837d853463f1e4e
+    pristine_git_object: 946c6e1dfc85ddea6dc3de4698b752821b4e3972
+  src/models/components/referencerep.ts:
+    id: 03a9f3bd2ccf
+    last_write_checksum: sha1:af8a40ce0a2d285d8fbc7f05868da677311ee12c
+    pristine_git_object: 4b88e69d93dfd682d99df87ac289052a77b00f83
+  src/models/components/repositorycollectionrep.ts:
+    id: ecbe0ece2a46
+    last_write_checksum: sha1:1bca903f54a234c723d4fda1c790fc13196f0d03
+    pristine_git_object: 37a0fd8f048d0e92fbf71e4e0ebf92e5a25188f9
+  src/models/components/repositoryrep.ts:
+    id: dd0bc2761da2
+    last_write_checksum: sha1:badf4924bd6d028e987a534ec20062efc16a1c1a
+    pristine_git_object: 202b38b779e7acd7e595c2402e2ad1165751c6cc
+  src/models/components/rollout.ts:
+    id: e950821b2b36
+    last_write_checksum: sha1:ae7676ab2fb87cb34eb3179558d318da812d7ca1
+    pristine_git_object: 0420ca75f74a0280807de864225fe73b57ee424a
+  src/models/components/rule.ts:
+    id: "317388417769"
+    last_write_checksum: sha1:a5e21be390aef754aec973fedb0e5f0b7e4bb0fd
+    pristine_git_object: c33911723f20509d57ee63f90d7cb857423f54e8
+  src/models/components/security.ts:
+    id: 472dde81bb1c
+    last_write_checksum: sha1:009bd7a101e5ec4b52b26eedc0283683d2a1cc66
+    pristine_git_object: f452d99fe997c568f3dcf5ccebf44e4e4f249a95
+  src/models/components/target.ts:
+    id: 8eaaafcaacef
+    last_write_checksum: sha1:09c619d29b0e5f571a69526d8537f9a2ccf14b6a
+    pristine_git_object: 629a1aa6132bb4229b7bb0e35bbba835f2d4be8b
+  src/models/components/variation.ts:
+    id: 2927c1e8372f
+    last_write_checksum: sha1:8a79fe98ede9968785583984f3e11de18025b3e1
+    pristine_git_object: 0497ebbee26c1010d31a2979c441fb8e17454cda
+  src/models/components/variationorrolloutrep.ts:
+    id: ef4f7580c01c
+    last_write_checksum: sha1:0738da44b34deef5cc77e296d64d54bf430cb4e4
+    pristine_git_object: 6df0fcc1d58b13b724f27520d8e83ae257e10a61
+  src/models/components/variationsummary.ts:
+    id: a38460d1173e
+    last_write_checksum: sha1:9b0cf3c7872e5612d4585c66f361a1cc8239b125
+    pristine_git_object: 0cb308ab01ab0bed7520339b2a4edde0bc0469c6
+  src/models/components/variationtool.ts:
+    id: 4245901fa54e
+    last_write_checksum: sha1:ee9555da698b55e087a7347aa96045b68b7d0858
+    pristine_git_object: 35437e70b4b3d519fd7c4fefc8b4aa304df9ac7a
+  src/models/components/variationtoolpost.ts:
+    id: e60de5c03d70
+    last_write_checksum: sha1:f0d0ef2df84c805c6a07086d524c5915e8982539
+    pristine_git_object: 4823e89e5cefc86d77b44c63249dd4e7cdf21572
+  src/models/components/weightedvariation.ts:
+    id: 701337a93df6
+    last_write_checksum: sha1:ec81a1dccb1f3702b94b5cf50042c1d3602ee685
+    pristine_git_object: ba6f720f716ae776aaea5c909352df3f85bc3044
+  src/models/errors/apierror.ts:
+    id: e2280e075454
+    last_write_checksum: sha1:f1dcd4f2f20142e84c3d0947f2bcc5b6a1821481
+    pristine_git_object: d4fe27f72dbc38c9d050942e2f489ab915eb8adf
+  src/models/errors/error.ts:
+    id: b25549ecd884
+    last_write_checksum: sha1:f69abe02fd0a7146083c1da3752b4258991eddad
+    pristine_git_object: 6c19f8f0a8b32a0828d6620f9c9fb06d3e63618b
+  src/models/errors/forbiddenerrorrep.ts:
+    id: a819a2e2ec8e
+    last_write_checksum: sha1:402a8e05750081f1ff7acbdc1df0ae77adc37288
+    pristine_git_object: 93bc9dd07afe2e177f5194dd6bfeb82a841012e3
+  src/models/errors/httpclienterrors.ts:
+    id: 6948de76af99
+    last_write_checksum: sha1:994ced121c54fecd0af038ccfb7855fbfd3868ec
+    pristine_git_object: b34f612124c797c2a1106b9735708f679a90b74f
+  src/models/errors/index.ts:
+    id: c4e22507cb83
+    last_write_checksum: sha1:c13cfa3868972c568a28c9a33afcee178306aa57
+    pristine_git_object: 32fdd221d8fe880497ff025ba9643056b1865fcc
+  src/models/errors/invalidrequesterrorrep.ts:
+    id: f78181f0d771
+    last_write_checksum: sha1:024715de1311a64fb80b446af4e3acf806f228fe
+    pristine_git_object: bdc17209309b41c8d124a53261916ee1fe05aac7
+  src/models/errors/launchdarklyerror.ts:
+    id: 3e3fc4e28620
+    last_write_checksum: sha1:5a84b4595028e5e9a5e2d9c9928b308c03963de0
+    pristine_git_object: 9d3412be5223b179f7d980ad1897489ad3de0fba
+  src/models/errors/methodnotallowederrorrep.ts:
+    id: 5ae493c1a23d
+    last_write_checksum: sha1:403c2567de1ed375dd89826f6978eddcc06a1161
+    pristine_git_object: 9b87c47150005231a4483e1ded0a83c2dbeb7dee
+  src/models/errors/notfounderrorrep.ts:
+    id: 191548284df5
+    last_write_checksum: sha1:7fe474031ee637fca2d00d825904fbca292bbeca
+    pristine_git_object: c40cf8867dba5705640ff4a2762bc972de816598
+  src/models/errors/ratelimitederrorrep.ts:
+    id: 9155520ebdc2
+    last_write_checksum: sha1:a2e1c53ceac013220aae9fc3687d4abeacf53049
+    pristine_git_object: 03c4a5438323717b85d307be2de060838487b50e
+  src/models/errors/responsevalidationerror.ts:
+    id: 88ff98a41be9
+    last_write_checksum: sha1:7d99e39b70efad88d34aaa27ea86cdc583a9f3f5
+    pristine_git_object: f32cda2e70fea1a237ef33c8c33ebef06888ca5a
+  src/models/errors/sdkvalidationerror.ts:
+    id: fb6b2b49c445
+    last_write_checksum: sha1:a69da17627bcc32b820544608f3400423ea53f26
+    pristine_git_object: 6826e1208a5d7b7d310535d18909646522bf0fbd
+  src/models/errors/statusconflicterrorrep.ts:
+    id: 804d063e5621
+    last_write_checksum: sha1:762c04b17239aafd6106908bde9f8d897d540504
+    pristine_git_object: 84518a3b3602b5f77f9e2ec57a971cf9f52e7bb9
+  src/models/errors/unauthorizederrorrep.ts:
+    id: 8c863295328c
+    last_write_checksum: sha1:6d05601003b53da5b4933738818ab53f4dcfaaae
+    pristine_git_object: 97cc304a8c0713afa15cf3ad272102655a27784c
+  src/models/operations/deleteaiconfig.ts:
+    id: 337c7f378ca3
+    last_write_checksum: sha1:62d1353f2a26ab56e10b9fc576e6450ea35fb19d
+    pristine_git_object: 5be8e64f6e2b078f15b3ca760ec3cd4a5dc1e83b
+  src/models/operations/deleteaiconfigvariation.ts:
+    id: 607aca12f714
+    last_write_checksum: sha1:46f35c442a658e3f63d6d0159b7328b3c361abd8
+    pristine_git_object: da8befd62ca7f84dda9f8f2915b09471368d2d6d
+  src/models/operations/deletefeatureflag.ts:
+    id: 9b374bc750b0
+    last_write_checksum: sha1:128fb856350aa8637d2961389985bf33a06fb320
+    pristine_git_object: 3d3b4a305715e5632eade668d69b5185129f6aa0
+  src/models/operations/getaiconfig.ts:
+    id: 4051a96aaaf0
+    last_write_checksum: sha1:0b0489f5cfb897672b81c009cd91cd67146cc54e
+    pristine_git_object: 0d7e195cfa8f77373381fb8888122f3be953a289
+  src/models/operations/getaiconfigs.ts:
+    id: 99c5b018578d
+    last_write_checksum: sha1:40c183db3d8effa1a695536b84609c8b1e1dfd3b
+    pristine_git_object: 8d5c310d1bf3bc1277d04996fe4318dcef278a4c
+  src/models/operations/getaiconfigtargeting.ts:
+    id: fa1d559097a2
+    last_write_checksum: sha1:ab95bd55492589235afb2a9cd58c4115565f89c7
+    pristine_git_object: 1821fca8b2e434f40d556e3ec6df7281b92c509c
+  src/models/operations/getaiconfigvariation.ts:
+    id: 7b8bf3e3a2b8
+    last_write_checksum: sha1:0cf2566adf723d404e2665f07cef572f2aca87a0
+    pristine_git_object: 917b2b69091dec7e03bf9c3d9e08aadd6b0289b1
+  src/models/operations/getenvironmentsbyproject.ts:
+    id: 12978c05182c
+    last_write_checksum: sha1:850485c136b7715a0532328d37095b263e624359
+    pristine_git_object: abef6015123ecdaf63562f715a07ccc93a0c3917
+  src/models/operations/getfeatureflag.ts:
+    id: 4f9cfcc1a0b1
+    last_write_checksum: sha1:d45a0e3ed5fc644db5b92ded9ed8bba636b4cbff
+    pristine_git_object: 1a1946f39e70c109e8dc46d38bd25e3c61080655
+  src/models/operations/getfeatureflags.ts:
+    id: 641ae02dc5f8
+    last_write_checksum: sha1:6594e031781856fdd922d683950ae6146007999f
+    pristine_git_object: 26762de62436fac3f3e09a5dade6a252aeec0eb0
+  src/models/operations/getfeatureflagstatusacrossenvironments.ts:
+    id: bebe542cd7c4
+    last_write_checksum: sha1:6c592cd8a4daf7a206cf05cee9154b0c325bcc36
+    pristine_git_object: 223b5982b8f37417b183a3108ff5424a5846130d
+  src/models/operations/getrepositories.ts:
+    id: a6793cab600e
+    last_write_checksum: sha1:1549954f90281d297c9c7dd176453304164a7398
+    pristine_git_object: fee835a0b59424600ee5c4254c504fb0a477ffeb
+  src/models/operations/index.ts:
+    id: 0d9ffaf774d2
+    last_write_checksum: sha1:3b596fbfabf90699e26e53d713b1b7c079c136ab
+    pristine_git_object: ae336a9924cf2d02f4d5b97d412c0b8ba2017e84
+  src/models/operations/patchaiconfig.ts:
+    id: 7a729862abd6
+    last_write_checksum: sha1:566329388f617b0a9f622211bff6352f2995f5f4
+    pristine_git_object: 2c8992be106e216d8a47a5d921fb29d65653cdb9
+  src/models/operations/patchaiconfigtargeting.ts:
+    id: 8b2e04ac3984
+    last_write_checksum: sha1:f7f81306604adb2bb3cce0bb7a8cfe8d1383ed19
+    pristine_git_object: c2e3eb4de2083eb06b43422bb90e03d15be0da45
+  src/models/operations/patchaiconfigvariation.ts:
+    id: 511749e9e9dd
+    last_write_checksum: sha1:2b972e787e8ab1a420f45bb6ceb8401f5699d7cf
+    pristine_git_object: 980f69ca4fdfc22ada98ff47b91193d1d3197efa
+  src/models/operations/patchfeatureflag.ts:
+    id: 975624e1a4b8
+    last_write_checksum: sha1:1a2bae8aa0db5dec2aec68a519e3a6261fcea3fa
+    pristine_git_object: d5485e53773d10dd8a26cd3cec52799cd51d67b7
+  src/models/operations/postaiconfig.ts:
+    id: ce15917aa665
+    last_write_checksum: sha1:01d6b970bc304258586e74d0da8194b1bb384649
+    pristine_git_object: c45d6faf1c409128f5c9a0ebf6a7c490e08ac384
+  src/models/operations/postaiconfigvariation.ts:
+    id: 0d4783db7278
+    last_write_checksum: sha1:af8a81b320c96ea6d7841227a47b3c41f4a7d46d
+    pristine_git_object: 1896842cf9e33bb0b947d633896092219370ec3f
+  src/models/operations/postfeatureflag.ts:
+    id: e7c7535586e2
+    last_write_checksum: sha1:06971ee5850983b089fc2c00d28b7b4e63343982
+    pristine_git_object: a0b32ee37738d3381bd004f14e46281b579c4855
+  src/sdk/aiconfigs.ts:
+    id: 37e59331bfe5
+    last_write_checksum: sha1:10b28837a75334436fb6283f58ce2b3abff4f3a8
+    pristine_git_object: 9912ef6dd7d9d80ec3ca2f24c60ea2e8c11ef60b
+  src/sdk/codereferences.ts:
+    id: 7c1554a57788
+    last_write_checksum: sha1:18ae11c1bc019136480460aa9227cc7f69bc0f90
+    pristine_git_object: 4ad9390965be7b2bd65cac789524ccdd27b5a80c
+  src/sdk/environments.ts:
+    id: 5f2a4a111fa8
+    last_write_checksum: sha1:1c786d6780c2519c94b1270684e825724f322758
+    pristine_git_object: 884867bf0b137c379e528ea6b789623b46518cc0
+  src/sdk/featureflags.ts:
+    id: 8364e339b966
+    last_write_checksum: sha1:03e37a8ad86f08184f1cf572a42ee73c08b08426
+    pristine_git_object: 323f30036c9344b484fc0c731a7ff71fabf60ceb
+  src/sdk/index.ts:
+    id: a857902a703f
+    last_write_checksum: sha1:ed6d64f2a6135349aa8498b8d8cff9ba85c7fb8f
+    pristine_git_object: ecac2264817bb369ff2dbf0f0e9029807e67ff77
+  src/sdk/sdk.ts:
+    id: 784571af2f69
+    last_write_checksum: sha1:41238a864fa60d05fc423bdd90c7340afad1f9e1
+    pristine_git_object: 0e739d4c1033f53fa29e1a6ab2b87ffc7c2a6f7d
+  src/types/async.ts:
+    id: fac8da972f86
+    last_write_checksum: sha1:3ff07b3feaf390ec1aeb18ff938e139c6c4a9585
+    pristine_git_object: 689dba5de50e8769e5f3bb913e3f42a146d15bc1
+  src/types/blobs.ts:
+    id: f8ab9b326c86
+    last_write_checksum: sha1:cf45d78916671cb6345a11c97c633c64402bc27c
+    pristine_git_object: cce2892d4f573a120ef3907db90ab15f5979cfda
+  src/types/constdatetime.ts:
+    id: 0f7b6f513917
+    last_write_checksum: sha1:dfaaf9adfaf49808bd4c9dea0039f21b7088d9c0
+    pristine_git_object: fe62144eaf6a2054fc8ca9a98466e70f41b5434d
+  src/types/enums.ts:
+    id: 4d03ddfe5100
+    last_write_checksum: sha1:ee590453d2c87e33e89c633d37ee46907eca0e58
+    pristine_git_object: aba0ffd2a3308a31e516d83b52823d80aa65a8f9
+  src/types/fp.ts:
+    id: ae9f0fb8aab6
+    last_write_checksum: sha1:d24994d58f37a1ca106847fcc6d2e976c6f1c093
+    pristine_git_object: ccbe51eac69dfb0da5131f14fd753c4b47c1d527
+  src/types/index.ts:
+    id: cd7a0a5ed005
+    last_write_checksum: sha1:bf43b3dccb960ca9ae9c5ab940da4786255881cd
+    pristine_git_object: abf0b7ab8f196829df8946da40d627a46da68e3c
+  src/types/operations.ts:
+    id: 314da01dca47
+    last_write_checksum: sha1:c49e724cfb1259296381cb57bc0fcdd2eae45865
+    pristine_git_object: beb81e10f0b9eee2ed398a853fe6f737b743f818
+  src/types/rfcdate.ts:
+    id: 9eb64906dcd6
+    last_write_checksum: sha1:8e5f382e02fe21c2f2e24deb1b7bbf8cddd3dd16
+    pristine_git_object: c79b3f53a3dd922aa2ace5a4191c8652cf9a8e89
+  src/types/streams.ts:
+    id: f99be9c4bf14
+    last_write_checksum: sha1:cc9ced2dd34a76c3a1bd7784ccda1cc3b37ab9a9
+    pristine_git_object: a0163e7a99cea88f21d0ad4ce3af1c720180ee20
+  src/types/unrecognized.ts:
+    id: 476605c40716
+    last_write_checksum: sha1:d33ac686528492f4cdc0dbf81ed343b4afe020fe
+    pristine_git_object: b7a2a13f3dff50663429df24ae2f55b647ff1084
+  tsconfig.json:
+    id: 61ebb9fd6e8c
+    last_write_checksum: sha1:c3ec7996536cdb9a54319e7d1eb3b199b733d34c
+    pristine_git_object: 0ccdbe286a8780e06a469a9eb7e2fb95322fd507
 examples:
   getRoot:
     speakeasy-default-get-root:
@@ -5932,3 +7145,407 @@ examples:
           application/json: {"message": "message", "code": "code"}
 examplesVersion: 1.0.2
 generatedTests: {}
+generatedFiles:
+  - .devcontainer/README.md
+  - .devcontainer/devcontainer.json
+  - .devcontainer/setup.sh
+  - .gitattributes
+  - .npmignore
+  - FUNCTIONS.md
+  - RUNTIMES.md
+  - USAGE.md
+  - docs/lib/utils/retryconfig.md
+  - docs/models/components/access.md
+  - docs/models/components/accessallowedreason.md
+  - docs/models/components/accessallowedreasoneffect.md
+  - docs/models/components/accessallowedrep.md
+  - docs/models/components/accessdenied.md
+  - docs/models/components/accessdeniedreason.md
+  - docs/models/components/accessdeniedreasoneffect.md
+  - docs/models/components/aiconfig.md
+  - docs/models/components/aiconfigdependency.md
+  - docs/models/components/aiconfigdependencytype.md
+  - docs/models/components/aiconfigmaintainer.md
+  - docs/models/components/aiconfigmode.md
+  - docs/models/components/aiconfigpatch.md
+  - docs/models/components/aiconfigpost.md
+  - docs/models/components/aiconfigpostmode.md
+  - docs/models/components/aiconfigs.md
+  - docs/models/components/aiconfigsaccess.md
+  - docs/models/components/aiconfigsaccessallowedreason.md
+  - docs/models/components/aiconfigsaccessallowedreasoneffect.md
+  - docs/models/components/aiconfigsaccessallowedrep.md
+  - docs/models/components/aiconfigsaccessdenied.md
+  - docs/models/components/aiconfigsaccessdeniedreason.md
+  - docs/models/components/aiconfigsaccessdeniedreasoneffect.md
+  - docs/models/components/aiconfigsexperimentenabledperiodrep.md
+  - docs/models/components/aiconfigsexperimentenvironmentsettingrep.md
+  - docs/models/components/aiconfigsexperimentinforep.md
+  - docs/models/components/aiconfigsfilter.md
+  - docs/models/components/aiconfigsfiltertype.md
+  - docs/models/components/aiconfigslegacyexperimentrep.md
+  - docs/models/components/aiconfigslink.md
+  - docs/models/components/aiconfigsmaintainerteam.md
+  - docs/models/components/aiconfigsmembersummary.md
+  - docs/models/components/aiconfigsmetricdatasourcerefrep.md
+  - docs/models/components/aiconfigsmetriceventdefaultrep.md
+  - docs/models/components/aiconfigsmetriclistingrep.md
+  - docs/models/components/aiconfigsmetriclistingrepanalysistype.md
+  - docs/models/components/aiconfigsmetriclistingrepkind.md
+  - docs/models/components/aiconfigsmetriclistingrepsuccesscriteria.md
+  - docs/models/components/aiconfigsmetriclistingrepunitaggregationtype.md
+  - docs/models/components/aiconfigsmodification.md
+  - docs/models/components/aiconfigtargeting.md
+  - docs/models/components/aiconfigtargetingdefaults.md
+  - docs/models/components/aiconfigtargetingenvironment.md
+  - docs/models/components/aiconfigtargetingenvironmentfallthrough.md
+  - docs/models/components/aiconfigtargetingenvironmentfallthroughrollout.md
+  - docs/models/components/aiconfigtargetingenvironmentfallthroughrolloutexperimentationallocation.md
+  - docs/models/components/aiconfigtargetingenvironmentfallthroughrolloutvariation.md
+  - docs/models/components/aiconfigtargetingenvironmentrule.md
+  - docs/models/components/aiconfigtargetingenvironmentruleclause.md
+  - docs/models/components/aiconfigtargetingenvironmenttarget.md
+  - docs/models/components/aiconfigtargetingpatch.md
+  - docs/models/components/aiconfigtargetingvariation.md
+  - docs/models/components/aiconfigtargetingvariationjson.md
+  - docs/models/components/aiconfigtargetingvariationvalue.md
+  - docs/models/components/aiconfigvariation.md
+  - docs/models/components/aiconfigvariationmodel.md
+  - docs/models/components/aiconfigvariationpatch.md
+  - docs/models/components/aiconfigvariationpatchmodel.md
+  - docs/models/components/aiconfigvariationpost.md
+  - docs/models/components/aiconfigvariationpostmodel.md
+  - docs/models/components/aiconfigvariationsresponse.md
+  - docs/models/components/approvalsettings.md
+  - docs/models/components/branchrep.md
+  - docs/models/components/clause.md
+  - docs/models/components/clientsideavailability.md
+  - docs/models/components/clientsideavailabilitypost.md
+  - docs/models/components/corelink.md
+  - docs/models/components/customproperty.md
+  - docs/models/components/defaults.md
+  - docs/models/components/environment.md
+  - docs/models/components/environments.md
+  - docs/models/components/experimentallocationrep.md
+  - docs/models/components/experimentenabledperiodrep.md
+  - docs/models/components/experimentenvironmentsettingrep.md
+  - docs/models/components/experimentinforep.md
+  - docs/models/components/featureflag.md
+  - docs/models/components/featureflagbody.md
+  - docs/models/components/featureflagconfig.md
+  - docs/models/components/featureflagkind.md
+  - docs/models/components/featureflags.md
+  - docs/models/components/featureflagstatus.md
+  - docs/models/components/featureflagstatusacrossenvironments.md
+  - docs/models/components/filter.md
+  - docs/models/components/filtertype.md
+  - docs/models/components/flagconfigevaluation.md
+  - docs/models/components/flagconfigmigrationsettingsrep.md
+  - docs/models/components/flagmigrationsettingsrep.md
+  - docs/models/components/flagprerequisitepost.md
+  - docs/models/components/flagsummary.md
+  - docs/models/components/hunkrep.md
+  - docs/models/components/judgeattachment.md
+  - docs/models/components/judgeconfiguration.md
+  - docs/models/components/legacyexperimentrep.md
+  - docs/models/components/link.md
+  - docs/models/components/maintainermember.md
+  - docs/models/components/maintainerteam.md
+  - docs/models/components/membersummary.md
+  - docs/models/components/message.md
+  - docs/models/components/metricdatasourcerefrep.md
+  - docs/models/components/metriceventdefaultrep.md
+  - docs/models/components/metriclistingrep.md
+  - docs/models/components/metriclistingrepanalysistype.md
+  - docs/models/components/metriclistingrepkind.md
+  - docs/models/components/metriclistingrepsuccesscriteria.md
+  - docs/models/components/metriclistingrepunitaggregationtype.md
+  - docs/models/components/migrationsettingspost.md
+  - docs/models/components/modification.md
+  - docs/models/components/name.md
+  - docs/models/components/paginatedlinks.md
+  - docs/models/components/parentandselflinks.md
+  - docs/models/components/parentlink.md
+  - docs/models/components/patchoperation.md
+  - docs/models/components/patchwithcomment.md
+  - docs/models/components/prerequisite.md
+  - docs/models/components/purpose.md
+  - docs/models/components/referencerep.md
+  - docs/models/components/repositorycollectionrep.md
+  - docs/models/components/repositoryrep.md
+  - docs/models/components/repositoryreptype.md
+  - docs/models/components/rollout.md
+  - docs/models/components/rule.md
+  - docs/models/components/security.md
+  - docs/models/components/target.md
+  - docs/models/components/variation.md
+  - docs/models/components/variationorrolloutrep.md
+  - docs/models/components/variationsummary.md
+  - docs/models/components/variationtool.md
+  - docs/models/components/variationtoolpost.md
+  - docs/models/components/weightedvariation.md
+  - docs/models/errors/errort.md
+  - docs/models/errors/forbiddenerrorrep.md
+  - docs/models/errors/invalidrequesterrorrep.md
+  - docs/models/errors/methodnotallowederrorrep.md
+  - docs/models/errors/notfounderrorrep.md
+  - docs/models/errors/ratelimitederrorrep.md
+  - docs/models/errors/statusconflicterrorrep.md
+  - docs/models/errors/unauthorizederrorrep.md
+  - docs/models/operations/deleteaiconfigrequest.md
+  - docs/models/operations/deleteaiconfigvariationrequest.md
+  - docs/models/operations/deletefeatureflagrequest.md
+  - docs/models/operations/getaiconfigrequest.md
+  - docs/models/operations/getaiconfigsrequest.md
+  - docs/models/operations/getaiconfigtargetingrequest.md
+  - docs/models/operations/getaiconfigvariationrequest.md
+  - docs/models/operations/getenvironmentsbyprojectrequest.md
+  - docs/models/operations/getfeatureflagrequest.md
+  - docs/models/operations/getfeatureflagsrequest.md
+  - docs/models/operations/getfeatureflagstatusacrossenvironmentsrequest.md
+  - docs/models/operations/getrepositoriesrequest.md
+  - docs/models/operations/patchaiconfigrequest.md
+  - docs/models/operations/patchaiconfigtargetingrequest.md
+  - docs/models/operations/patchaiconfigvariationrequest.md
+  - docs/models/operations/patchfeatureflagrequest.md
+  - docs/models/operations/postaiconfigrequest.md
+  - docs/models/operations/postaiconfigvariationrequest.md
+  - docs/models/operations/postfeatureflagrequest.md
+  - docs/sdks/aiconfigs/README.md
+  - docs/sdks/codereferences/README.md
+  - docs/sdks/environments/README.md
+  - docs/sdks/featureflags/README.md
+  - docs/sdks/launchdarkly/README.md
+  - eslint.config.mjs
+  - examples/.env.template
+  - examples/README.md
+  - examples/codeReferencesListRepositories.example.ts
+  - examples/package.json
+  - jsr.json
+  - package.json
+  - src/core.ts
+  - src/funcs/aiConfigsCreate.ts
+  - src/funcs/aiConfigsCreateVariation.ts
+  - src/funcs/aiConfigsDelete.ts
+  - src/funcs/aiConfigsDeleteVariation.ts
+  - src/funcs/aiConfigsGet.ts
+  - src/funcs/aiConfigsGetTargeting.ts
+  - src/funcs/aiConfigsGetVariation.ts
+  - src/funcs/aiConfigsList.ts
+  - src/funcs/aiConfigsUpdate.ts
+  - src/funcs/aiConfigsUpdateTargeting.ts
+  - src/funcs/aiConfigsUpdateVariation.ts
+  - src/funcs/codeReferencesListRepositories.ts
+  - src/funcs/environmentsListByProject.ts
+  - src/funcs/featureFlagsCreate.ts
+  - src/funcs/featureFlagsDelete.ts
+  - src/funcs/featureFlagsGet.ts
+  - src/funcs/featureFlagsGetStatus.ts
+  - src/funcs/featureFlagsList.ts
+  - src/funcs/featureFlagsPatch.ts
+  - src/hooks/hooks.ts
+  - src/hooks/index.ts
+  - src/hooks/types.ts
+  - src/index.ts
+  - src/lib/base64.ts
+  - src/lib/config.ts
+  - src/lib/dlv.ts
+  - src/lib/encodings.ts
+  - src/lib/env.ts
+  - src/lib/files.ts
+  - src/lib/http.ts
+  - src/lib/is-plain-object.ts
+  - src/lib/logger.ts
+  - src/lib/matchers.ts
+  - src/lib/primitives.ts
+  - src/lib/retries.ts
+  - src/lib/schemas.ts
+  - src/lib/sdks.ts
+  - src/lib/security.ts
+  - src/lib/url.ts
+  - src/mcp-server/build.mts
+  - src/mcp-server/cli.ts
+  - src/mcp-server/cli/start/command.ts
+  - src/mcp-server/cli/start/impl.ts
+  - src/mcp-server/console-logger.ts
+  - src/mcp-server/extensions.ts
+  - src/mcp-server/mcp-server.ts
+  - src/mcp-server/prompts.ts
+  - src/mcp-server/resources.ts
+  - src/mcp-server/scopes.ts
+  - src/mcp-server/server.ts
+  - src/mcp-server/shared.ts
+  - src/mcp-server/tools.ts
+  - src/mcp-server/tools/aiConfigsCreate.ts
+  - src/mcp-server/tools/aiConfigsCreateVariation.ts
+  - src/mcp-server/tools/aiConfigsDelete.ts
+  - src/mcp-server/tools/aiConfigsDeleteVariation.ts
+  - src/mcp-server/tools/aiConfigsGet.ts
+  - src/mcp-server/tools/aiConfigsGetTargeting.ts
+  - src/mcp-server/tools/aiConfigsGetVariation.ts
+  - src/mcp-server/tools/aiConfigsList.ts
+  - src/mcp-server/tools/aiConfigsUpdate.ts
+  - src/mcp-server/tools/aiConfigsUpdateTargeting.ts
+  - src/mcp-server/tools/aiConfigsUpdateVariation.ts
+  - src/mcp-server/tools/codeReferencesListRepositories.ts
+  - src/mcp-server/tools/environmentsListByProject.ts
+  - src/mcp-server/tools/featureFlagsCreate.ts
+  - src/mcp-server/tools/featureFlagsDelete.ts
+  - src/mcp-server/tools/featureFlagsGet.ts
+  - src/mcp-server/tools/featureFlagsGetStatus.ts
+  - src/mcp-server/tools/featureFlagsList.ts
+  - src/mcp-server/tools/featureFlagsPatch.ts
+  - src/models/components/access.ts
+  - src/models/components/accessallowedreason.ts
+  - src/models/components/accessallowedrep.ts
+  - src/models/components/accessdenied.ts
+  - src/models/components/accessdeniedreason.ts
+  - src/models/components/aiconfig.ts
+  - src/models/components/aiconfigdependency.ts
+  - src/models/components/aiconfigmaintainer.ts
+  - src/models/components/aiconfigpatch.ts
+  - src/models/components/aiconfigpost.ts
+  - src/models/components/aiconfigs.ts
+  - src/models/components/aiconfigsaccess.ts
+  - src/models/components/aiconfigsaccessallowedreason.ts
+  - src/models/components/aiconfigsaccessallowedrep.ts
+  - src/models/components/aiconfigsaccessdenied.ts
+  - src/models/components/aiconfigsaccessdeniedreason.ts
+  - src/models/components/aiconfigsexperimentenabledperiodrep.ts
+  - src/models/components/aiconfigsexperimentenvironmentsettingrep.ts
+  - src/models/components/aiconfigsexperimentinforep.ts
+  - src/models/components/aiconfigsfilter.ts
+  - src/models/components/aiconfigslegacyexperimentrep.ts
+  - src/models/components/aiconfigslink.ts
+  - src/models/components/aiconfigsmembersummary.ts
+  - src/models/components/aiconfigsmetricdatasourcerefrep.ts
+  - src/models/components/aiconfigsmetriceventdefaultrep.ts
+  - src/models/components/aiconfigsmetriclistingrep.ts
+  - src/models/components/aiconfigsmodification.ts
+  - src/models/components/aiconfigtargeting.ts
+  - src/models/components/aiconfigtargetingdefaults.ts
+  - src/models/components/aiconfigtargetingenvironment.ts
+  - src/models/components/aiconfigtargetingenvironmentfallthrough.ts
+  - src/models/components/aiconfigtargetingenvironmentfallthroughrollout.ts
+  - src/models/components/aiconfigtargetingenvironmentfallthroughrolloutexperimentationallocation.ts
+  - src/models/components/aiconfigtargetingenvironmentfallthroughrolloutvariation.ts
+  - src/models/components/aiconfigtargetingenvironmentrule.ts
+  - src/models/components/aiconfigtargetingenvironmentruleclause.ts
+  - src/models/components/aiconfigtargetingenvironmenttarget.ts
+  - src/models/components/aiconfigtargetingpatch.ts
+  - src/models/components/aiconfigtargetingvariation.ts
+  - src/models/components/aiconfigtargetingvariationjson.ts
+  - src/models/components/aiconfigtargetingvariationvalue.ts
+  - src/models/components/aiconfigvariation.ts
+  - src/models/components/aiconfigvariationpatch.ts
+  - src/models/components/aiconfigvariationpost.ts
+  - src/models/components/aiconfigvariationsresponse.ts
+  - src/models/components/approvalsettings.ts
+  - src/models/components/branchrep.ts
+  - src/models/components/clause.ts
+  - src/models/components/clientsideavailability.ts
+  - src/models/components/clientsideavailabilitypost.ts
+  - src/models/components/corelink.ts
+  - src/models/components/customproperty.ts
+  - src/models/components/defaults.ts
+  - src/models/components/environment.ts
+  - src/models/components/environments.ts
+  - src/models/components/experimentallocationrep.ts
+  - src/models/components/experimentenabledperiodrep.ts
+  - src/models/components/experimentenvironmentsettingrep.ts
+  - src/models/components/experimentinforep.ts
+  - src/models/components/featureflag.ts
+  - src/models/components/featureflagbody.ts
+  - src/models/components/featureflagconfig.ts
+  - src/models/components/featureflags.ts
+  - src/models/components/featureflagstatus.ts
+  - src/models/components/featureflagstatusacrossenvironments.ts
+  - src/models/components/filter.ts
+  - src/models/components/flagconfigevaluation.ts
+  - src/models/components/flagconfigmigrationsettingsrep.ts
+  - src/models/components/flagmigrationsettingsrep.ts
+  - src/models/components/flagprerequisitepost.ts
+  - src/models/components/flagsummary.ts
+  - src/models/components/hunkrep.ts
+  - src/models/components/index.ts
+  - src/models/components/judgeattachment.ts
+  - src/models/components/judgeconfiguration.ts
+  - src/models/components/legacyexperimentrep.ts
+  - src/models/components/link.ts
+  - src/models/components/maintainerteam.ts
+  - src/models/components/membersummary.ts
+  - src/models/components/message.ts
+  - src/models/components/metricdatasourcerefrep.ts
+  - src/models/components/metriceventdefaultrep.ts
+  - src/models/components/metriclistingrep.ts
+  - src/models/components/migrationsettingspost.ts
+  - src/models/components/modification.ts
+  - src/models/components/paginatedlinks.ts
+  - src/models/components/parentandselflinks.ts
+  - src/models/components/parentlink.ts
+  - src/models/components/patchoperation.ts
+  - src/models/components/patchwithcomment.ts
+  - src/models/components/prerequisite.ts
+  - src/models/components/referencerep.ts
+  - src/models/components/repositorycollectionrep.ts
+  - src/models/components/repositoryrep.ts
+  - src/models/components/rollout.ts
+  - src/models/components/rule.ts
+  - src/models/components/security.ts
+  - src/models/components/target.ts
+  - src/models/components/variation.ts
+  - src/models/components/variationorrolloutrep.ts
+  - src/models/components/variationsummary.ts
+  - src/models/components/variationtool.ts
+  - src/models/components/variationtoolpost.ts
+  - src/models/components/weightedvariation.ts
+  - src/models/errors/apierror.ts
+  - src/models/errors/error.ts
+  - src/models/errors/forbiddenerrorrep.ts
+  - src/models/errors/httpclienterrors.ts
+  - src/models/errors/index.ts
+  - src/models/errors/invalidrequesterrorrep.ts
+  - src/models/errors/launchdarklyerror.ts
+  - src/models/errors/methodnotallowederrorrep.ts
+  - src/models/errors/notfounderrorrep.ts
+  - src/models/errors/ratelimitederrorrep.ts
+  - src/models/errors/responsevalidationerror.ts
+  - src/models/errors/sdkvalidationerror.ts
+  - src/models/errors/statusconflicterrorrep.ts
+  - src/models/errors/unauthorizederrorrep.ts
+  - src/models/operations/deleteaiconfig.ts
+  - src/models/operations/deleteaiconfigvariation.ts
+  - src/models/operations/deletefeatureflag.ts
+  - src/models/operations/getaiconfig.ts
+  - src/models/operations/getaiconfigs.ts
+  - src/models/operations/getaiconfigtargeting.ts
+  - src/models/operations/getaiconfigvariation.ts
+  - src/models/operations/getenvironmentsbyproject.ts
+  - src/models/operations/getfeatureflag.ts
+  - src/models/operations/getfeatureflags.ts
+  - src/models/operations/getfeatureflagstatusacrossenvironments.ts
+  - src/models/operations/getrepositories.ts
+  - src/models/operations/index.ts
+  - src/models/operations/patchaiconfig.ts
+  - src/models/operations/patchaiconfigtargeting.ts
+  - src/models/operations/patchaiconfigvariation.ts
+  - src/models/operations/patchfeatureflag.ts
+  - src/models/operations/postaiconfig.ts
+  - src/models/operations/postaiconfigvariation.ts
+  - src/models/operations/postfeatureflag.ts
+  - src/sdk/aiconfigs.ts
+  - src/sdk/codereferences.ts
+  - src/sdk/environments.ts
+  - src/sdk/featureflags.ts
+  - src/sdk/index.ts
+  - src/sdk/sdk.ts
+  - src/types/async.ts
+  - src/types/blobs.ts
+  - src/types/constdatetime.ts
+  - src/types/enums.ts
+  - src/types/fp.ts
+  - src/types/index.ts
+  - src/types/operations.ts
+  - src/types/rfcdate.ts
+  - src/types/streams.ts
+  - tsconfig.json
