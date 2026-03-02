@@ -233,6 +233,16 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 * [getVariation](docs/sdks/aiconfigs/README.md#getvariation) - Get AI Config variation
 * [updateVariation](docs/sdks/aiconfigs/README.md#updatevariation) - Update AI Config variation
 
+### [Approvals](docs/sdks/approvals/README.md)
+
+* [list](docs/sdks/approvals/README.md#list) - List approval requests
+* [listForFlag](docs/sdks/approvals/README.md#listforflag) - List approval requests for a flag
+* [createRequest](docs/sdks/approvals/README.md#createrequest) - Create approval request for a flag
+* [getForFlag](docs/sdks/approvals/README.md#getforflag) - Get approval request for a flag
+* [deleteFlagRequest](docs/sdks/approvals/README.md#deleteflagrequest) - Delete approval request for a flag
+* [applyRequest](docs/sdks/approvals/README.md#applyrequest) - Apply approval request for a flag
+* [reviewFlagRequest](docs/sdks/approvals/README.md#reviewflagrequest) - Review approval request for a flag
+
 ### [CodeReferences](docs/sdks/codereferences/README.md)
 
 * [listRepositories](docs/sdks/codereferences/README.md#listrepositories) - List repositories

@@ -4,11 +4,15 @@
 
 export * from "./deleteaiconfig.js";
 export * from "./deleteaiconfigvariation.js";
+export * from "./deleteapprovalrequestforflag.js";
 export * from "./deletefeatureflag.js";
 export * from "./getaiconfig.js";
 export * from "./getaiconfigs.js";
 export * from "./getaiconfigtargeting.js";
 export * from "./getaiconfigvariation.js";
+export * from "./getapprovalforflag.js";
+export * from "./getapprovalrequests.js";
+export * from "./getapprovalsforflag.js";
 export * from "./getenvironmentsbyproject.js";
 export * from "./getfeatureflag.js";
 export * from "./getfeatureflags.js";
@@ -20,4 +24,7 @@ export * from "./patchaiconfigvariation.js";
 export * from "./patchfeatureflag.js";
 export * from "./postaiconfig.js";
 export * from "./postaiconfigvariation.js";
+export * from "./postapprovalrequestapplyforflag.js";
+export * from "./postapprovalrequestforflag.js";
+export * from "./postapprovalrequestreviewforflag.js";
 export * from "./postfeatureflag.js";

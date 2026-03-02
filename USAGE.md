@@ -7,7 +7,7 @@ const launchDarkly = new LaunchDarkly({
 });
 
 async function run() {
-  const result = await launchDarkly.codeReferences.listRepositories({});
+  const result = await launchDarkly.approvals.list({});
 
   console.log(result);
 }

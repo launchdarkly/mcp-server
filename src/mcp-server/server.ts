@@ -24,6 +24,13 @@ import { tool$aiConfigsList } from "./tools/aiConfigsList.js";
 import { tool$aiConfigsUpdate } from "./tools/aiConfigsUpdate.js";
 import { tool$aiConfigsUpdateTargeting } from "./tools/aiConfigsUpdateTargeting.js";
 import { tool$aiConfigsUpdateVariation } from "./tools/aiConfigsUpdateVariation.js";
+import { tool$approvalsApplyRequest } from "./tools/approvalsApplyRequest.js";
+import { tool$approvalsCreateRequest } from "./tools/approvalsCreateRequest.js";
+import { tool$approvalsDeleteFlagRequest } from "./tools/approvalsDeleteFlagRequest.js";
+import { tool$approvalsGetForFlag } from "./tools/approvalsGetForFlag.js";
+import { tool$approvalsList } from "./tools/approvalsList.js";
+import { tool$approvalsListForFlag } from "./tools/approvalsListForFlag.js";
+import { tool$approvalsReviewFlagRequest } from "./tools/approvalsReviewFlagRequest.js";
 import { tool$codeReferencesListRepositories } from "./tools/codeReferencesListRepositories.js";
 import { tool$environmentsListByProject } from "./tools/environmentsListByProject.js";
 import { tool$featureFlagsCreate } from "./tools/featureFlagsCreate.js";
@@ -43,7 +50,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "LaunchDarkly",
-    version: "0.6.0",
+    version: "0.6.1",
   });
 
   const client = new LaunchDarklyCore({
@@ -73,6 +80,13 @@ export function createMCPServer(deps: {
   const register = { tool, resource, resourceTemplate, prompt };
   void register; // suppress unused warnings
 
+  tool(tool$approvalsList);
+  tool(tool$approvalsListForFlag);
+  tool(tool$approvalsCreateRequest);
+  tool(tool$approvalsGetForFlag);
+  tool(tool$approvalsDeleteFlagRequest);
+  tool(tool$approvalsApplyRequest);
+  tool(tool$approvalsReviewFlagRequest);
   tool(tool$codeReferencesListRepositories);
   tool(tool$featureFlagsGetStatus);
   tool(tool$featureFlagsList);

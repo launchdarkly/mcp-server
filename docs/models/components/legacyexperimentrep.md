@@ -30,8 +30,34 @@ let value: LegacyExperimentRep = {
       },
     },
     access: {
-      denied: [],
-      allowed: [],
+      denied: [
+        {
+          action: "<value>",
+          reason: {
+            resources: [
+              "proj/*:env/*;qa_*:/flag/*",
+            ],
+            actions: [
+              "*",
+            ],
+            effect: "allow",
+          },
+        },
+      ],
+      allowed: [
+        {
+          action: "<value>",
+          reason: {
+            resources: [
+              "proj/*:env/*;qa_*:/flag/*",
+            ],
+            actions: [
+              "*",
+            ],
+            effect: "allow",
+          },
+        },
+      ],
     },
     tags: [],
     creationDate: 522106,

@@ -8,7 +8,7 @@ dotenv.config();
  * Example usage of the @launchdarkly/mcp-server SDK
  *
  * To run this example from the examples directory:
- * npm run build && npx tsx codeReferencesListRepositories.example.ts
+ * npm run build && npx tsx approvalsList.example.ts
  */
 
 import { LaunchDarkly } from "@launchdarkly/mcp-server";
@@ -18,7 +18,7 @@ const launchDarkly = new LaunchDarkly({
 });
 
 async function main() {
-  const result = await launchDarkly.codeReferences.listRepositories({});
+  const result = await launchDarkly.approvals.list({});
 
   console.log(result);
 }
