@@ -5,15 +5,15 @@ management:
   docVersion: "2.0"
   speakeasyVersion: 1.736.1
   generationVersion: 2.845.15
-  releaseVersion: 0.6.0
-  configChecksum: 976f9a3eab53c25137a5e27a963dcf9f
+  releaseVersion: 0.6.1
+  configChecksum: 2b1a4e81d4d79baeeaa073f49508a590
   repoURL: https://github.com/launchdarkly/mcp-server.git
   installationURL: https://github.com/launchdarkly/mcp-server
   published: true
 persistentEdits:
-  generation_id: c9f94ed6-fdb5-4186-8833-40022a1d0597
-  pristine_commit_hash: ef7273def0d4f9ecedf7c4cd0d65c94dfc01b038
-  pristine_tree_hash: f3ff54d7e32f317060981863152d5cc14567e21a
+  generation_id: ee4f918f-435a-49df-9c70-61331e6194ed
+  pristine_commit_hash: 711c8666233ddfc327dbfa671a129792032b69ea
+  pristine_tree_hash: fee31a644ea96f25adf45e921ab527a12ae678b7
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -735,12 +735,12 @@ trackedFiles:
     pristine_git_object: b6d40ae05716a1243a0adf677aef02a56b724541
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:89ed0ca9be634c5a6cdde5a6a0f3132438d58bc7
-    pristine_git_object: 26ca5f132869d2bd2f01bc4464fc7bad5bc46943
+    last_write_checksum: sha1:60bcfa39114c45ed0d9f6cfaffca0bcf28176e4c
+    pristine_git_object: 2bbfb1cad7c598438f86edbf512d39834e500751
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:f429edd953308ae302061d209cd8545d8aec3a30
-    pristine_git_object: e4b50d14b5003c0ea3db3ab4436beec55893fd90
+    last_write_checksum: sha1:5547292855f64b8e58da9cf92f9f347e4e88e195
+    pristine_git_object: 3c1c18fd273d7cae91ac8fe43bfe0346d317f000
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:c5377e0f566bb6fa8c1f40abad8ed8e2afeff228
@@ -843,8 +843,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:8060f84ef1eb510133a65b800a8416c65a6756cf
-    pristine_git_object: 51bf16a74bbc1e7e0663e3f6772d8995f7436a91
+    last_write_checksum: sha1:e2872cb8000c5227cc0547ae2c29ce88c27c6982
+    pristine_git_object: adfb0e6a6575e9b99304d1a157fd747760d02a6a
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
@@ -927,8 +927,8 @@ trackedFiles:
     pristine_git_object: 0955a573c2ce989d63c737410ab8cc28706d9f74
   src/mcp-server/mcp-server.ts:
     id: aabbc4ab07c1
-    last_write_checksum: sha1:14abc2979c582424ede0f99e2472bdf108dda818
-    pristine_git_object: 9b19ebc6ff00562e476a3ff8026ce96010803368
+    last_write_checksum: sha1:3d3374e7a9af9bdf8d737a7eb7726e03d20ea575
+    pristine_git_object: 78af261e961c59a4b6807fe8d5f7a1e3527c39ba
   src/mcp-server/prompts.ts:
     id: 26f3d73cbf31
     last_write_checksum: sha1:d6c2743fa03a583234144acfc5c3a5008a355107
@@ -943,8 +943,8 @@ trackedFiles:
     pristine_git_object: cb8330e4ae705d283de6ab337eefd3b4b8191fca
   src/mcp-server/server.ts:
     id: 2784dd48e82a
-    last_write_checksum: sha1:48742774d3b4f7b0c129f8b0425302bd0930245a
-    pristine_git_object: ae6587e12709fcc6ff1078a9ead7a8178ca0be04
+    last_write_checksum: sha1:9f44340ab6e80f81ccaf18ae1549d2446a4baae0
+    pristine_git_object: 34dfe1b36513bc490c3775378bd154c0b1e8f90c
   src/mcp-server/shared.ts:
     id: 074e80d4be1e
     last_write_checksum: sha1:56c73d4429691516e35541825e759a0285747a2b
