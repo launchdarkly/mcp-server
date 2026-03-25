@@ -13,7 +13,7 @@ const args = {
 export const tool$featureFlagsGet: ToolDefinition<typeof args> = {
   name: "get-feature-flag",
   description:
-    `Fetches the full configuration for a specific feature flag, including environments, variations, and targeting rules. For navigation/open-in-browser flows, use environments.<environmentKey>._site.href from this response as the canonical UI path for that environment.
+    `Fetches the full configuration for a specific feature flag, including environments, variations, and targeting rules. For navigation/open-in-browser flows, use environments.<environmentKey>.site.href from this response as the canonical UI path for that environment.
 `,
   scopes: ["read"],
   args,
