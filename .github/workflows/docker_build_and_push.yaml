@@ -14,15 +14,15 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-      - uses: zvonimirsun/read-package-version-actions@v2
+      - uses: zvonimirsun/read-package-version-actions@44935516da55bda046f7b39a93e11255987aa81a # v2
         id: get-semver
-      - uses: aws-actions/configure-aws-credentials@v4
+      - uses: aws-actions/configure-aws-credentials@7474bc4690e29a8392af63c5b98e7449536d5c3a # v4
         with:
           audience: "https://github.com/launchdarkly" 
           role-to-assume: "arn:aws:iam::011970158519:role/mcp-server-ecr-publisher"
           role-session-name: "McpServerPublish" 
           aws-region: "us-east-1"
-      - uses: aws-actions/amazon-ecr-login@v2
+      - uses: aws-actions/amazon-ecr-login@183a1442edf41672e66566b7fc560e297a290896 # v2
         with:
           registries: "709825985650" 
       - uses: docker/setup-buildx-action@e468171a9de216ec08956ac3ada2f0791b6bd435 # v3.11.1
