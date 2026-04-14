@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "launchdarkly-ai-configs": {
+      "url": "https://mcp.launchdarkly.com/mcp/aiconfigs"
+    },
+    "launchdarkly-fm": {
+      "url": "https://mcp.launchdarkly.com/mcp/fm"
+    }
+  }
+}

@@ -7,6 +7,9 @@
 !/**/*.mjs
 !/package.json
 !/jsr.json
+!/.mcp.json
+!/.codex-plugin/plugin.json
+!/skills/**/*.md
 !/dist/**/*.json
 !/esm/**/*.json
 !/**/*.map

@@ -1,0 +1,35 @@
+{
+  "name": "launchdarkly-mcp",
+  "version": "0.6.1",
+  "description": "Connect Codex to LaunchDarkly over MCP: AI Configs and feature management (FM) hosted endpoints, plus bundled guidance for using the tools.",
+  "author": {
+    "name": "LaunchDarkly",
+    "url": "https://launchdarkly.com"
+  },
+  "homepage": "https://github.com/launchdarkly/mcp-server",
+  "repository": "https://github.com/launchdarkly/mcp-server.git",
+  "license": "MIT",
+  "keywords": [
+    "launchdarkly",
+    "feature-flags",
+    "mcp",
+    "model-context-protocol",
+    "ai-configs"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "LaunchDarkly",
+    "shortDescription": "Feature flags, AI Configs, and environments via MCP.",
+    "longDescription": "Use LaunchDarkly’s hosted MCP servers for AI Configs and FM, or run the same surface locally with npx @launchdarkly/mcp-server (see repository README). Authenticate with your LaunchDarkly API access token when prompted.",
+    "developerName": "LaunchDarkly",
+    "category": "Developer tools",
+    "capabilities": ["Read", "Write"],
+    "websiteURL": "https://launchdarkly.com",
+    "defaultPrompt": [
+      "List my LaunchDarkly feature flags for this project.",
+      "Show AI Config targeting for the config I care about."
+    ],
+    "brandColor": "#3DD6F5"
+  }
+}
