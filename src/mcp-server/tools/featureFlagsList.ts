@@ -13,7 +13,7 @@ const args = {
 export const tool$featureFlagsList: ToolDefinition<typeof args> = {
   name: "list-feature-flags",
   description:
-    `Retrieves all feature flags within a project, including metadata and targeting rules. Enables AI agents to enumerate existing flags for inspection, configuration analysis, or generating flag usage reports across environments.
+    `Retrieves all feature flags within a project, including metadata and targeting rules. Enables AI agents to enumerate existing flags for inspection, configuration analysis, or generating flag usage reports across environments. IMPORTANT: Do not fabricate UI URLs from project/key. This endpoint is for discovery; when a user asks to open a flag, call get-feature-flag and use environments.<environmentKey>.site.href from that response. The 'filter' parameter uses field:value syntax — to search by keyword use query:<search-text> (e.g. filter: "query:dark-mode"). Other supported filters: tags:<tag>, state:live|deprecated|archived, hasExperiment:true|false, maintainerId:<id>, hasDataExport:true|false. Combine with commas.
 `,
   scopes: ["read"],
   args,
