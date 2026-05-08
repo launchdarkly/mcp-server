@@ -233,6 +233,10 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 * [getVariation](docs/sdks/aiconfigs/README.md#getvariation) - Get AI Config variation
 * [updateVariation](docs/sdks/aiconfigs/README.md#updatevariation) - Update AI Config variation
 
+### [AuditLog](docs/sdks/auditlog/README.md)
+
+* [listEntries](docs/sdks/auditlog/README.md#listentries) - List audit log entries
+
 ### [CodeReferences](docs/sdks/codereferences/README.md)
 
 * [listRepositories](docs/sdks/codereferences/README.md#listrepositories) - List repositories

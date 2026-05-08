@@ -2256,7 +2256,14 @@
           }
         ],
         "operationId": "getAuditLogEntries",
-        "x-speakeasy-ignore": true,
+        "x-speakeasy-mcp": {
+          "description": "Fetches audit log entries for a LaunchDarkly account. Use the `spec` parameter with format `proj/<projectKey>:env/<envKey>:flag/<flagKey>` to query a specific flag's change history (use `env/*` for all environments). The `before` and `after` parameters accept Unix epoch timestamps in milliseconds for date-range filtering. Returns at most 20 entries per call, ordered newest-first.\n",
+          "disabled": false,
+          "name": "get-audit-log-entries",
+          "scopes": [
+            "read"
+          ]
+        },
         "x-speakeasy-group": "auditLog",
         "x-speakeasy-name-override": "listEntries"
       },

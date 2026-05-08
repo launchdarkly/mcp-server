@@ -4,11 +4,17 @@
 
 import { ClientSDK } from "../lib/sdks.js";
 import { AiConfigs } from "./aiconfigs.js";
+import { AuditLog } from "./auditlog.js";
 import { CodeReferences } from "./codereferences.js";
 import { Environments } from "./environments.js";
 import { FeatureFlags } from "./featureflags.js";
 
 export class LaunchDarkly extends ClientSDK {
+  private _auditLog?: AuditLog;
+  get auditLog(): AuditLog {
+    return (this._auditLog ??= new AuditLog(this._options));
+  }
+
   private _codeReferences?: CodeReferences;
   get codeReferences(): CodeReferences {
     return (this._codeReferences ??= new CodeReferences(this._options));
