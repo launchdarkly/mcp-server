@@ -9,6 +9,7 @@ export * from "./getaiconfig.js";
 export * from "./getaiconfigs.js";
 export * from "./getaiconfigtargeting.js";
 export * from "./getaiconfigvariation.js";
+export * from "./getauditlogentries.js";
 export * from "./getenvironmentsbyproject.js";
 export * from "./getfeatureflag.js";
 export * from "./getfeatureflags.js";

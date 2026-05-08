@@ -20,7 +20,7 @@ specific category of applications.
 
 ```typescript
 import { LaunchDarklyCore } from "@launchdarkly/mcp-server/core.js";
-import { codeReferencesListRepositories } from "@launchdarkly/mcp-server/funcs/codeReferencesListRepositories.js";
+import { auditLogListEntries } from "@launchdarkly/mcp-server/funcs/auditLogListEntries.js";
 
 // Use `LaunchDarklyCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -29,12 +29,12 @@ const launchDarkly = new LaunchDarklyCore({
 });
 
 async function run() {
-  const res = await codeReferencesListRepositories(launchDarkly, {});
+  const res = await auditLogListEntries(launchDarkly, {});
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("codeReferencesListRepositories failed:", res.error);
+    console.log("auditLogListEntries failed:", res.error);
   }
 }
 
