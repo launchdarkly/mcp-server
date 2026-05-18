@@ -51,13 +51,15 @@ export async function formatResult(
   const contentType = response?.headers.get("content-type") ?? "";
   let content: CallToolResult["content"] = [];
 
-  if (contentType.search(/\bjson\b/g)) {
-    content = [{ type: "text", text: JSON.stringify(value) }];
+  const normalizedValue = normalizeLaunchDarklyLinks(value, response?.url);
+
+  if (/\bjson\b/g.test(contentType)) {
+    content = [{ type: "text", text: JSON.stringify(normalizedValue) }];
   } else if (
     contentType.startsWith("text/event-stream")
-    && isAsyncIterable(value)
+    && isAsyncIterable(normalizedValue)
   ) {
-    content = await consumeSSE(value);
+    content = await consumeSSE(normalizedValue);
   } else if (contentType.startsWith("text/") && typeof value === "string") {
     content = [{ type: "text", text: value }];
   } else if (isBinaryData(value) && contentType.startsWith("image/")) {
@@ -76,6 +78,78 @@ export async function formatResult(
   }
 
   return { content };
+}
+
+const canonicalLDHosts = new Set([
+  "app.launchdarkly.com",
+  "app.launchdarkly.us",
+]);
+
+function normalizeLaunchDarklyLinks(
+  value: unknown,
+  responseURL?: string,
+): unknown {
+  if (!responseURL) {
+    return value;
+  }
+
+  let origin: string;
+  try {
+    origin = new URL(responseURL).origin;
+  } catch {
+    return value;
+  }
+
+  return deepMap(value, (key, val) => {
+    if (key !== "href" || typeof val !== "string") {
+      return val;
+    }
+
+    if (val.startsWith("/")) {
+      try {
+        return new URL(val, origin).toString();
+      } catch {
+        return val;
+      }
+    }
+
+    try {
+      const parsed = new URL(val);
+      if (canonicalLDHosts.has(parsed.host) && parsed.origin !== origin) {
+        return `${origin}${parsed.pathname}${parsed.search}${parsed.hash}`;
+      }
+    } catch {
+      // Leave invalid URL-ish strings unchanged.
+    }
+
+    return val;
+  });
+}
+
+function deepMap(
+  value: unknown,
+  transform: (key: string | null, value: unknown) => unknown,
+  key: string | null = null,
+): unknown {
+  const transformed = transform(key, value);
+
+  if (Array.isArray(transformed)) {
+    return transformed.map((item) => deepMap(item, transform));
+  }
+
+  if (
+    transformed !== null
+    && typeof transformed === "object"
+    && Object.getPrototypeOf(transformed) === Object.prototype
+  ) {
+    const output: Record<string, unknown> = {};
+    for (const [k, v] of Object.entries(transformed as Record<string, unknown>)) {
+      output[k] = deepMap(v, transform, k);
+    }
+    return output;
+  }
+
+  return transformed;
 }
 
 async function consumeSSE(
