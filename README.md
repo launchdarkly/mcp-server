@@ -1,6 +1,6 @@
 # LaunchDarkly local MCP server
 
-The official local [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) server for [LaunchDarkly](https://launchdarkly.com/).
+The local [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) server for [LaunchDarkly](https://launchdarkly.com/) federal and European Union (EU) environments.
 
 <div align="left">
     <a href="https://opensource.org/licenses/MIT">
@@ -9,11 +9,11 @@ The official local [Model Context Protocol (MCP)](https://modelcontextprotocol.i
 </div>
 
 > [!IMPORTANT]
-> **Most customers should use LaunchDarkly's [hosted MCP server](https://launchdarkly.com/docs/home/getting-started/mcp-hosted) instead of this one.**
+> **Use the LaunchDarkly [hosted MCP server](https://launchdarkly.com/docs/home/getting-started/mcp-hosted) where available**
 >
-> LaunchDarkly [strongly recommends the hosted MCP server](https://launchdarkly.com/docs/home/getting-started/mcp): it is more feature complete and receives more frequent updates than this self-managed server.
+> LaunchDarkly strongly recommends using the [hosted MCP server](https://launchdarkly.com/docs/home/getting-started/mcp) where it is available. The hosted server is more feature complete and receives more frequent updates than this self-managed server.
 >
-> Use this self-managed MCP server only if you are on LaunchDarkly's **EU** or **Federal** instances, which are not yet supported by the hosted MCP server.
+> LaunchDarkly provides this self-managed MCP server for LaunchDarkly **EU** or **Federal** instances, which do not yet support the hosted MCP.
 
 <!-- No Summary [summary] -->
 
