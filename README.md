@@ -1,6 +1,6 @@
-# LaunchDarkly's Model Context Protocol (MCP) Server
+# LaunchDarkly local MCP server
 
-The official [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) server for [LaunchDarkly](https://launchdarkly.com/).
+The local [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) server for [LaunchDarkly](https://launchdarkly.com/) federal and European Union (EU) environments.
 
 <div align="left">
     <a href="https://opensource.org/licenses/MIT">
@@ -8,12 +8,19 @@ The official [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) se
     </a>
 </div>
 
+> [!IMPORTANT]
+> **Use the LaunchDarkly [hosted MCP server](https://launchdarkly.com/docs/home/getting-started/mcp-hosted) where available**
+>
+> LaunchDarkly strongly recommends using the [hosted MCP server](https://launchdarkly.com/docs/home/getting-started/mcp) where it is available. The hosted server is more feature complete and receives more frequent updates than this self-managed server.
+>
+> LaunchDarkly provides this self-managed MCP server for LaunchDarkly **EU** or **Federal** instances, which do not yet support the hosted MCP.
+
 <!-- No Summary [summary] -->
 
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
 <!-- $toc-max-depth=2 -->
-* [LaunchDarkly's Model Context Protocol (MCP) Server](#launchdarklys-model-context-protocol-mcp-server)
+* [LaunchDarkly local MCP server](#launchdarkly-local-mcp-server)
   * [Installation](#installation)
   * [Requirements](#requirements)
   * [Available Resources and Operations](#available-resources-and-operations)
