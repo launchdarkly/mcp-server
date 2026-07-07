@@ -6,6 +6,7 @@ sources:
         sourceBlobDigest: sha256:41a2ad76bc47436d617aecac155c7d1874739e72207edc2c639db000485d710d
         tags:
             - latest
+            - speakeasy-sdk-regen-1752106275
             - "2.0"
 targets:
     launchdarkly-mcp-server:
@@ -14,7 +15,7 @@ targets:
         sourceRevisionDigest: sha256:80bb48911dd638c18fe0922e126ce82954788ee0f92414f7e77fbaeb1b070465
         sourceBlobDigest: sha256:41a2ad76bc47436d617aecac155c7d1874739e72207edc2c639db000485d710d
         codeSamplesNamespace: launchdarkly-rest-api-typescript-code-samples
-        codeSamplesRevisionDigest: sha256:594386a19cb5768d0df5661cb11aff3fd325048da020daa36e5ade1dfb0f5f5d
+        codeSamplesRevisionDigest: sha256:c9adbdf8524f7ceb8d89b457d8cb2ef4dd7b0131c829529adfcaf42eb29b4d9b
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: 1.736.1
