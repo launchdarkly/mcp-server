@@ -13,8 +13,6 @@ targets:
         sourceNamespace: launchdarkly-rest-api
         sourceRevisionDigest: sha256:80bb48911dd638c18fe0922e126ce82954788ee0f92414f7e77fbaeb1b070465
         sourceBlobDigest: sha256:41a2ad76bc47436d617aecac155c7d1874739e72207edc2c639db000485d710d
-        codeSamplesNamespace: launchdarkly-rest-api-typescript-code-samples
-        codeSamplesRevisionDigest: sha256:594386a19cb5768d0df5661cb11aff3fd325048da020daa36e5ade1dfb0f5f5d
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: 1.736.1

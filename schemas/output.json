@@ -2721,8 +2721,15 @@
           }
         ],
         "operationId": "getExtinctions",
-        "x-speakeasy-ignore": true,
-        "x-speakeasy-group": "codereferences",
+        "x-speakeasy-mcp": {
+          "description": "Returns the commit that removed a flag's last code reference, including the commit SHA (revision), the full commit message, the repository name, and the extinction timestamp in Unix epoch milliseconds. Filter with projKey and flagKey, and optionally repoName, branchName, from, and to. Use this to date when a flag became dead code instead of doing git archaeology such as git log -S across source repositories. Pair it with check-flag-code-references, which confirms there are zero current references, and get-flag-status-across-environments, whose lastRequested shows whether anything is still evaluating the flag.\n",
+          "disabled": false,
+          "name": "get-flag-extinctions",
+          "scopes": [
+            "read"
+          ]
+        },
+        "x-speakeasy-group": "codeReferences",
         "x-speakeasy-name-override": "listExtinctions"
       }
     },
@@ -2819,7 +2826,7 @@
         ],
         "operationId": "getRepositories",
         "x-speakeasy-mcp": {
-          "description": "Identifies which repositories have code references to a given flag, helping agents determine if they're operating on the correct repository and understand the scope of cleanup (single vs multi-repo).\n",
+          "description": "Lists the repositories that have LaunchDarkly code-reference scanning enabled, along with their branches. IMPORTANT: this endpoint accepts a flagKey parameter but the API does not honor it, so the response is identical with and without it. Do not use this tool to determine whether a flag has code references; use check-flag-code-references instead. Also avoid setting withReferencesForDefaultBranch=true, which returns an unfiltered dump of every branch in every repository (currently ~11MB) and will exhaust your context without returning any per-flag reference data.\n",
           "disabled": false,
           "name": "get-code-references",
           "scopes": [
@@ -3843,7 +3850,14 @@
           }
         ],
         "operationId": "getStatistics",
-        "x-speakeasy-ignore": true,
+        "x-speakeasy-mcp": {
+          "description": "Answers whether a flag still has code references. Pass projectKey plus the flagKey query parameter. Returns a flags map keyed by flag key, where each entry lists the repositories containing references along with hunkCount, fileCount, and latestCommitTime. An empty flags object means the flag has zero code references and is dead code. This is the correct flag-scoped tool for code-reference checks and flag-cleanup sweeps, and responses are small (about 100 bytes when empty). Prefer this over get-code-references, which cannot filter by flag.\n",
+          "disabled": false,
+          "name": "check-flag-code-references",
+          "scopes": [
+            "read"
+          ]
+        },
         "x-speakeasy-group": "codeReferences"
       }
     },
@@ -5041,7 +5055,7 @@
         ],
         "operationId": "getFeatureFlagStatusAcrossEnvironments",
         "x-speakeasy-mcp": {
-          "description": "Returns lifecycle status (new, active, inactive, launched) based on actual usage patterns, evaluation counts, and configuration stability. This is the key intelligence for removal readiness assessment.\n",
+          "description": "Returns lifecycle status (new, active, inactive, launched) plus a per-environment lastRequested timestamp. This is the key intelligence for removal readiness assessment. Important caveat: lastRequested reflects evaluation events, which is not the same as \"code still references this flag\". On client-side SDKs, allFlags() and useFlags() emit an evaluation event for every flag in the payload on js-client-sdk v3.x and earlier, so a flag marked available to client-side SDKs can keep logging evaluations with zero code references. Distinguish the two by context kind: identified or logged-in contexts usually mean real variation() calls from stale cached SPA bundles, which drain within days of a deploy, whereas a low steady floor of anonymous contexts usually means a blanket allFlags() sweep and persists until the flag is archived or client-side availability is turned off. Establish code truth with check-flag-code-references and get-flag-extinctions rather than inferring it from evaluation counts. Before archiving, note that clients still evaluating the flag fall back to their compiled-in default variation once it stops being served, which can reintroduce the behavior the flag was gating.\n",
           "disabled": false,
           "name": "get-flag-status-across-environments",
           "scopes": [
