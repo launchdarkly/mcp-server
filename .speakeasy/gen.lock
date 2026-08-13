@@ -1,7 +1,7 @@
 lockVersion: 2.0.0
 id: cc3a5766-8b39-40da-a0be-fff57173d8e1
 management:
-  docChecksum: 69a0389003807b87145d2b62ae2ce30c
+  docChecksum: 0fda6d72bfd19fcf6d38bcf54961aa9f
   docVersion: "2.0"
   speakeasyVersion: 1.736.1
   generationVersion: 2.845.15
@@ -11,9 +11,9 @@ management:
   installationURL: https://github.com/launchdarkly/mcp-server
   published: true
 persistentEdits:
-  generation_id: 5bf91e7e-9c71-493c-9a62-bc6e871f8abc
-  pristine_commit_hash: ac2be0726a8caeb468e6e2ca0f8402db6229ec98
-  pristine_tree_hash: 4e5339bb181d556ea663d27398349df7a9c23301
+  generation_id: 2290c74f-30c5-495f-bcd9-4db0a47ac9be
+  pristine_commit_hash: 7f4031634c3262ecc0df552941ddc161d055a33b
+  pristine_tree_hash: 31ba3860cd26bac51386d3a79491a0d881388429
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -1096,8 +1096,8 @@ trackedFiles:
     pristine_git_object: 0489e0a4c89abafcefa5d86c43a4c734c12621d4
   src/mcp-server/tools/codeReferencesListRepositories.ts:
     id: 1c9f9152f67b
-    last_write_checksum: sha1:1c00ac4ce54dd0fa3f7f01ca2ffc32edbb1c0417
-    pristine_git_object: 989e6b9edaa7e9d080615ba8645ae0e5a696c53a
+    last_write_checksum: sha1:f213e9b1c77befa6198b053ce76c8d967c1819af
+    pristine_git_object: a20dc96ccffdc78db0700896f3770c94a6b4e6a2
   src/mcp-server/tools/environmentsListByProject.ts:
     id: 498d203cf01f
     last_write_checksum: sha1:a7bd673782ff0b283aa2adc9555e4e158c5466e8
