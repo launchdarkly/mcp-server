@@ -1,7 +1,7 @@
 lockVersion: 2.0.0
 id: cc3a5766-8b39-40da-a0be-fff57173d8e1
 management:
-  docChecksum: 1118e54ee9034beb7f0f153cedd75fdd
+  docChecksum: 69a0389003807b87145d2b62ae2ce30c
   docVersion: "2.0"
   speakeasyVersion: 1.736.1
   generationVersion: 2.845.15
@@ -11,9 +11,9 @@ management:
   installationURL: https://github.com/launchdarkly/mcp-server
   published: true
 persistentEdits:
-  generation_id: 25fc5cc6-ec19-4fb6-bbe7-93dcfe789683
-  pristine_commit_hash: 02d96f3433fde76eefdb7cf5f7cdc07117c4568e
-  pristine_tree_hash: 4a42e0246626bba6fbd20059e657af1c697613ba
+  generation_id: 5bf91e7e-9c71-493c-9a62-bc6e871f8abc
+  pristine_commit_hash: ac2be0726a8caeb468e6e2ca0f8402db6229ec98
+  pristine_tree_hash: 4e5339bb181d556ea663d27398349df7a9c23301
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -1088,16 +1088,16 @@ trackedFiles:
     pristine_git_object: 7ef92f31e05ca42f9063bb3f4d5abbe6ee3e6bd1
   src/mcp-server/tools/codeReferencesGetStatistics.ts:
     id: 9519ea30c573
-    last_write_checksum: sha1:7b2241095b31efee20f811c45fef72849aab4c9e
-    pristine_git_object: a89bfc5dd7fd7bc7dcde785bbea9ccaa25fccd69
+    last_write_checksum: sha1:f72401a880b3366c7c8cf2eb47ec32cd67cfd273
+    pristine_git_object: df243975d16b4f3d78fc6752ec8428ea65031da3
   src/mcp-server/tools/codeReferencesListExtinctions.ts:
     id: a5b64ec0a1f9
-    last_write_checksum: sha1:3d9dfebeac6074dda519c9bdbd9aec26482a3333
-    pristine_git_object: 5b56a0c1f6e0a3725b4829f78aca90cace0c8e15
+    last_write_checksum: sha1:c07d7f9b9eb697c815b78bfb379435453ed81b16
+    pristine_git_object: 0489e0a4c89abafcefa5d86c43a4c734c12621d4
   src/mcp-server/tools/codeReferencesListRepositories.ts:
     id: 1c9f9152f67b
-    last_write_checksum: sha1:c2e449a67d76f445928ecd8a38ae8e65bc97d244
-    pristine_git_object: 8f43de9fa25515aca2332ac816106d10b109b14e
+    last_write_checksum: sha1:1c00ac4ce54dd0fa3f7f01ca2ffc32edbb1c0417
+    pristine_git_object: 989e6b9edaa7e9d080615ba8645ae0e5a696c53a
   src/mcp-server/tools/environmentsListByProject.ts:
     id: 498d203cf01f
     last_write_checksum: sha1:a7bd673782ff0b283aa2adc9555e4e158c5466e8
@@ -1116,8 +1116,8 @@ trackedFiles:
     pristine_git_object: 6d36ae1d8d4c396a01a8aa93a5aa69f0b8bd8d79
   src/mcp-server/tools/featureFlagsGetStatus.ts:
     id: c2e86b5eb34b
-    last_write_checksum: sha1:3e9b54c7fd113af6edcc9466ab86f7b65086694f
-    pristine_git_object: ecc33b470d28a1890f5122632396954cc046b6ae
+    last_write_checksum: sha1:e45b7d3a4c2ee4284f7f850bfe27c72c6b1e4dd0
+    pristine_git_object: 191f08510d806959a25f5d98f987715bdf589845
   src/mcp-server/tools/featureFlagsList.ts:
     id: e5f50cdc8b03
     last_write_checksum: sha1:8b5d1534fdf78db274d39c8badad3f55d723796d

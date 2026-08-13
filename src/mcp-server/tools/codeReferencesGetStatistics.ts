@@ -13,7 +13,7 @@ const args = {
 export const tool$codeReferencesGetStatistics: ToolDefinition<typeof args> = {
   name: "check-flag-code-references",
   description:
-    `Answers whether a flag still has code references. Pass projectKey plus the flagKey query parameter. Returns a flags map keyed by flag key, where each entry lists the repositories containing references along with hunkCount, fileCount, and latestCommitTime. An empty flags object means the flag has zero code references and is dead code. This is the correct flag-scoped tool for code-reference checks and flag-cleanup sweeps, and responses are small (about 100 bytes when empty). Prefer this over get-code-references, which cannot filter by flag.
+    `Reports how many code references a flag has. Pass projectKey plus the flagKey query parameter. Returns a flags map keyed by flag key, where each entry lists the repositories containing references along with hunkCount, fileCount, and latestCommitTime. Responses are small, about 100 bytes when the map is empty. Scope matters: this covers only the DEFAULT branch of repositories onboarded to code-reference scanning. An empty flags map therefore means "no references on the default branch of scanned repos", which is strong evidence but not proof of dead code. A flag referenced only on a release or maintenance branch, or living in a repository that was never onboarded, also returns an empty map. Confirm with get-flag-extinctions, which reports the commit that removed the last reference, and treat a flag as dead only when both agree. Omitting flagKey is legal and returns statistics for every flag in the project, which can be megabytes on a large project, so always pass flagKey unless you deliberately want the full sweep.
 `,
   scopes: ["read"],
   args,
