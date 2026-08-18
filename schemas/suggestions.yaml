@@ -478,7 +478,7 @@ actions:
       type: method-name
   - target: $["paths"]["/api/v2/code-refs/extinctions"]["get"]
     update:
-      x-speakeasy-group: codereferences
+      x-speakeasy-group: codeReferences
       x-speakeasy-name-override: listExtinctions
     x-speakeasy-metadata:
       after: sdk.codereferences.listExtinctions()

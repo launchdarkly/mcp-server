@@ -11,3 +11,7 @@ actions:
     description: "API returns null for lastRequested when a flag has never been evaluated"
     update:
       nullable: true
+  - target: $["paths"]["/api/v2/code-refs/extinctions"]["get"]
+    description: "suggestions.yaml assigns x-speakeasy-group 'codereferences' (lowercase r) to this operation, while every other Code references operation uses 'codeReferences'. Uncorrected, Speakeasy emits two SDK groups for one tag and splits the generated class into Codereferences1/CodeReferences2. Applied here because spec-fixes runs after suggestions and survives its regeneration."
+    update:
+      x-speakeasy-group: codeReferences

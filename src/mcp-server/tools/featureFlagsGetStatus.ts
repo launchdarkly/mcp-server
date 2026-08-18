@@ -14,7 +14,7 @@ const args = {
 export const tool$featureFlagsGetStatus: ToolDefinition<typeof args> = {
   name: "get-flag-status-across-environments",
   description:
-    `Returns lifecycle status (new, active, inactive, launched) based on actual usage patterns, evaluation counts, and configuration stability. This is the key intelligence for removal readiness assessment.
+    `Returns lifecycle status (new, active, inactive, launched) plus a per-environment lastRequested timestamp, used to assess removal readiness. Important caveat: lastRequested reflects evaluation events, which is not the same as "code still references this flag". Client-side SDKs emit an evaluation event for every flag in the payload on js-client-sdk v3.x and earlier, so a flag marked available to client-side SDKs can keep logging evaluations with zero code references. This response does not break evaluations down by source or context kind, so it cannot on its own tell you whether traffic is real variation() calls or a blanket allFlags() sweep. Establish code truth with check-flag-code-references and get-flag-extinctions rather than inferring it from evaluation counts. Before archiving, note that clients still evaluating the flag fall back to their compiled-in default variation once it stops being served, which can reintroduce the behavior the flag was gating.
 `,
   scopes: ["read"],
   args,

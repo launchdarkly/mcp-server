@@ -14,7 +14,7 @@ export const tool$codeReferencesListRepositories: ToolDefinition<typeof args> =
   {
     name: "get-code-references",
     description:
-      `Identifies which repositories have code references to a given flag, helping agents determine if they're operating on the correct repository and understand the scope of cleanup (single vs multi-repo).
+      `Lists the repositories that have LaunchDarkly code-reference scanning enabled, along with their branches. The flagKey parameter only takes effect when withReferencesForDefaultBranch is set; on its own it does not change the response at all. Note that withReferencesForDefaultBranch is typed as a string, not a boolean, so pass the string "true" - passing a JSON boolean fails schema validation before the request is ever sent. With it set, plus projKey, which is required here or the API returns a 500, the response embeds the flag's actual reference paths and code hunks for the default branch. That is the one thing this endpoint can do that check-flag-code-references cannot, since statistics returns only counts. It is still expensive: the reference data arrives alongside a full dump of every branch in every repository, measured at roughly 11MB, which will exhaust your context. Reach for this only when you specifically need file paths or hunk contents, and use check-flag-code-references for the far cheaper question of whether a flag has references at all.
 `,
     scopes: ["read"],
     args,

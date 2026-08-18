@@ -68,9 +68,19 @@ actions:
     update:
       x-speakeasy-mcp:
         description: >
-          Returns lifecycle status (new, active, inactive, launched) based on actual
-          usage patterns, evaluation counts, and configuration stability. This is the
-          key intelligence for removal readiness assessment.
+          Returns lifecycle status (new, active, inactive, launched) plus a per-environment
+          lastRequested timestamp, used to assess removal readiness. Important caveat:
+          lastRequested reflects evaluation events, which is not the same as "code still
+          references this flag". Client-side SDKs emit an evaluation event for every flag in
+          the payload on js-client-sdk v3.x and earlier, so a flag marked available to
+          client-side SDKs can keep logging evaluations with zero code references. This
+          response does not break evaluations down by source or context kind, so it cannot on
+          its own tell you whether traffic is real variation() calls or a blanket allFlags()
+          sweep. Establish code truth with check-flag-code-references and
+          get-flag-extinctions rather than inferring it from evaluation counts. Before
+          archiving, note that clients still evaluating the flag fall back to their
+          compiled-in default variation once it stops being served, which can reintroduce the
+          behavior the flag was gating.
         disabled: false
         name: get-flag-status-across-environments
         scopes:
@@ -103,11 +113,64 @@ actions:
     update:
       x-speakeasy-mcp:
         description: >
-          Identifies which repositories have code references to a given flag, helping
-          agents determine if they're operating on the correct repository and understand
-          the scope of cleanup (single vs multi-repo).
+          Lists the repositories that have LaunchDarkly code-reference scanning enabled,
+          along with their branches. The flagKey parameter only takes effect when
+          withReferencesForDefaultBranch is set; on its own it does not change the response
+          at all. Note that withReferencesForDefaultBranch is typed as a string, not a
+          boolean, so pass the string "true" - passing a JSON boolean fails schema validation
+          before the request is ever sent. With it set, plus projKey, which is required here
+          or the API returns a 500, the response embeds the flag's actual reference paths and
+          code hunks for the default branch. That is the one thing this endpoint can do that
+          check-flag-code-references cannot, since statistics returns only counts. It is
+          still expensive: the reference data arrives alongside a full dump of every branch
+          in every repository, measured at roughly 11MB, which will exhaust your context.
+          Reach for this only when you specifically need file paths or hunk contents, and use
+          check-flag-code-references for the far cheaper question of whether a flag has
+          references at all.
         disabled: false
         name: get-code-references
+        scopes:
+          - read
+  - target: $["paths"]["/api/v2/code-refs/statistics/{projectKey}"]["get"]
+    update:
+      x-speakeasy-mcp:
+        description: >
+          Reports how many code references a flag has. Pass projectKey plus the flagKey query
+          parameter. Returns a flags map keyed by flag key, where each entry lists the
+          repositories containing references along with hunkCount, fileCount, and
+          latestCommitTime. Responses are small, about 100 bytes when the map is empty.
+          Scope matters: this covers only the DEFAULT branch of repositories onboarded to
+          code-reference scanning. An empty flags map therefore means "no references on the
+          default branch of scanned repos", which is strong evidence but not proof of dead
+          code. A flag referenced only on a release or maintenance branch, or living in a
+          repository that was never onboarded, also returns an empty map. Confirm with
+          get-flag-extinctions, which reports the commit that removed the last reference, and
+          treat a flag as dead only when both agree. Omitting flagKey is legal and returns
+          statistics for every flag in the project, which can be megabytes on a large
+          project, so always pass flagKey unless you deliberately want the full sweep.
+        disabled: false
+        name: check-flag-code-references
+        scopes:
+          - read
+  - target: $["paths"]["/api/v2/code-refs/extinctions"]["get"]
+    update:
+      x-speakeasy-mcp:
+        description: >
+          Returns the commits that removed a flag's last code reference. Each extinction
+          entry carries exactly four fields plus the commit SHA: revision, message, time
+          (Unix epoch milliseconds), flagKey, and projKey. There is no repository field on
+          the entry itself; results are grouped under an items map whose keys are repository
+          names. Filter with projKey and flagKey, and optionally repoName, branchName, from,
+          and to. Note that only the default branch is queried unless you pass branchName,
+          and that from and to must be supplied together. Use this to date when a flag became
+          dead code instead of doing git archaeology such as git log -S across source
+          repositories, and pair it with check-flag-code-references, which confirms there are
+          zero current references. All filters are optional, so omitting them returns every
+          extinction in the account; message holds the full commit body, so an unfiltered
+          call can run to megabytes. Always pass projKey and flagKey unless you deliberately
+          want a broad sweep.
+        disabled: false
+        name: get-flag-extinctions
         scopes:
           - read
   - target: $["paths"]["/api/v2/projects/{projectKey}/ai-configs"]["get"]
