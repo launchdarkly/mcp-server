@@ -25,6 +25,7 @@ import { tool$aiConfigsUpdate } from "./tools/aiConfigsUpdate.js";
 import { tool$aiConfigsUpdateTargeting } from "./tools/aiConfigsUpdateTargeting.js";
 import { tool$aiConfigsUpdateVariation } from "./tools/aiConfigsUpdateVariation.js";
 import { tool$auditLogListEntries } from "./tools/auditLogListEntries.js";
+import { tool$codeReferencesGetStatistics } from "./tools/codeReferencesGetStatistics.js";
 import { tool$codeReferencesListRepositories } from "./tools/codeReferencesListRepositories.js";
 import { tool$environmentsListByProject } from "./tools/environmentsListByProject.js";
 import { tool$featureFlagsCreate } from "./tools/featureFlagsCreate.js";
@@ -76,6 +77,7 @@ export function createMCPServer(deps: {
 
   tool(tool$auditLogListEntries);
   tool(tool$codeReferencesListRepositories);
+  tool(tool$codeReferencesGetStatistics);
   tool(tool$featureFlagsGetStatus);
   tool(tool$featureFlagsList);
   tool(tool$featureFlagsCreate);
