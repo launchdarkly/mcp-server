@@ -5375,10 +5375,10 @@
           {
             "name": "summary",
             "in": "query",
-            "description": "By default, flags do _not_ include their lists of prerequisites, targets, or rules for each environment. Set `summary=0` and include the `env` query parameter to include these fields for each flag returned.",
+            "description": "By default, flags do _not_ include their lists of prerequisites, targets, or rules for each environment. Set `summary=0` and filter by environment with `filter=filterEnv:<environment-key>` to include these fields for each flag returned.",
             "schema": {
               "type": "boolean",
-              "description": "By default, flags do _not_ include their lists of prerequisites, targets, or rules for each environment. Set `summary=0` and include the `env` query parameter to include these fields for each flag returned."
+              "description": "By default, flags do _not_ include their lists of prerequisites, targets, or rules for each environment. Set `summary=0` and filter by environment with `filter=filterEnv:<environment-key>` to include these fields for each flag returned."
             }
           },
           {
@@ -5402,16 +5402,6 @@
             }
           },
           {
-            "name": "compare",
-            "in": "query",
-            "description": "Deprecated, unavailable in API version `20240415`. A boolean to filter results by only flags that have differences between environments.",
-            "deprecated": true,
-            "schema": {
-              "type": "boolean",
-              "description": "Deprecated, unavailable in API version `20240415`. A boolean to filter results by only flags that have differences between environments."
-            }
-          },
-          {
             "name": "expand",
             "in": "query",
             "description": "A comma-separated list of fields to expand in the response. Supported fields are explained above.",
@@ -5424,7 +5414,7 @@
         ],
         "operationId": "getFeatureFlags",
         "x-speakeasy-mcp": {
-          "description": "Retrieves all feature flags within a project, including metadata and targeting rules. Enables AI agents to enumerate existing flags for inspection, configuration analysis, or generating flag usage reports across environments.\n",
+          "description": "Lists feature flags within a project, with their metadata. Enables AI agents to enumerate existing flags for inspection, configuration analysis, or generating flag usage reports. Results are paginated: each call returns up to 20 flags unless you set limit. The response includes totalCount, and links.next when more flags remain; to get the next page, call again with offset increased by the page size. Flags include the environments field (per-environment state and targeting) only when you filter by environment: set filter to \"filterEnv:<environment-key>\", and set env to the same key so that only that environment is returned. Set summary to false to also include prerequisites, individual targets, and rules. The filter parameter takes comma-separated field:value pairs, for example \"query:dark-mode,state:live\". The API rejects the followerId, hasDataExport, status, contextKindTargeted, segmentTargeted, codeReferences.min, and codeReferences.max filters and the targetingModifiedDate sort with a 400 error.\n",
           "disabled": false,
           "name": "list-feature-flags",
           "scopes": [

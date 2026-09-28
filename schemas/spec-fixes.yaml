@@ -1,4 +1,5 @@
 overlay: 1.0.0
+x-speakeasy-jsonpath: rfc9535
 info:
   title: Spec Fixes Overlay
   version: 0.0.1
@@ -11,3 +12,12 @@ actions:
     description: "API returns null for lastRequested when a flag has never been evaluated"
     update:
       nullable: true
+  - target: $["paths"]["/api/v2/flags/{projectKey}"]["get"]["parameters"][?@.name == "compare"]
+    description: "API version 20240415 rejects the compare query parameter with a 400"
+    remove: true
+  - target: $["paths"]["/api/v2/flags/{projectKey}"]["get"]["parameters"][?@.name == "summary"]
+    description: "API version 20240415 returns environments only when the request filters by environment with filterEnv"
+    update:
+      description: "By default, flags do _not_ include their lists of prerequisites, targets, or rules for each environment. Set `summary=0` and filter by environment with `filter=filterEnv:<environment-key>` to include these fields for each flag returned."
+      schema:
+        description: "By default, flags do _not_ include their lists of prerequisites, targets, or rules for each environment. Set `summary=0` and filter by environment with `filter=filterEnv:<environment-key>` to include these fields for each flag returned."

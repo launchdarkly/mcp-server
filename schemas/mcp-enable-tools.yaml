@@ -13,9 +13,19 @@ actions:
     update:
       x-speakeasy-mcp:
         description: >
-          Retrieves all feature flags within a project, including metadata
-          and targeting rules. Enables AI agents to enumerate existing flags for inspection,
-          configuration analysis, or generating flag usage reports across environments.
+          Lists feature flags within a project, with their metadata. Enables AI agents
+          to enumerate existing flags for inspection, configuration analysis, or generating
+          flag usage reports. Results are paginated: each call returns up to 20 flags unless
+          you set limit. The response includes totalCount, and links.next when more flags
+          remain; to get the next page, call again with offset increased by the page size.
+          Flags include the environments field (per-environment state and targeting) only
+          when you filter by environment: set filter to "filterEnv:<environment-key>", and
+          set env to the same key so that only that environment is returned. Set summary to
+          false to also include prerequisites, individual targets, and rules. The filter
+          parameter takes comma-separated field:value pairs, for example
+          "query:dark-mode,state:live". The API rejects the followerId, hasDataExport,
+          status, contextKindTargeted, segmentTargeted, codeReferences.min, and
+          codeReferences.max filters and the targetingModifiedDate sort with a 400 error.
         disabled: false
         name: list-feature-flags
         scopes:

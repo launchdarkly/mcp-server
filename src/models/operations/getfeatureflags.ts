@@ -35,7 +35,7 @@ export type GetFeatureFlagsRequest = {
    */
   archived?: boolean | undefined;
   /**
-   * By default, flags do _not_ include their lists of prerequisites, targets, or rules for each environment. Set `summary=0` and include the `env` query parameter to include these fields for each flag returned.
+   * By default, flags do _not_ include their lists of prerequisites, targets, or rules for each environment. Set `summary=0` and filter by environment with `filter=filterEnv:<environment-key>` to include these fields for each flag returned.
    */
   summary?: boolean | undefined;
   /**
@@ -46,12 +46,6 @@ export type GetFeatureFlagsRequest = {
    * A comma-separated list of fields to sort by. Fields prefixed by a dash ( - ) sort in descending order. Read the endpoint description for a full list of available sort fields.
    */
   sort?: string | undefined;
-  /**
-   * Deprecated, unavailable in API version `20240415`. A boolean to filter results by only flags that have differences between environments.
-   *
-   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-   */
-  compare?: boolean | undefined;
   /**
    * A comma-separated list of fields to expand in the response. Supported fields are explained above.
    */
@@ -73,7 +67,6 @@ export const GetFeatureFlagsRequest$inboundSchema: z.ZodType<
   summary: z.boolean().optional(),
   filter: z.string().optional(),
   sort: z.string().optional(),
-  compare: z.boolean().optional(),
   expand: z.string().optional(),
 });
 /** @internal */
@@ -87,7 +80,6 @@ export type GetFeatureFlagsRequest$Outbound = {
   summary?: boolean | undefined;
   filter?: string | undefined;
   sort?: string | undefined;
-  compare?: boolean | undefined;
   expand?: string | undefined;
 };
 
@@ -106,7 +98,6 @@ export const GetFeatureFlagsRequest$outboundSchema: z.ZodType<
   summary: z.boolean().optional(),
   filter: z.string().optional(),
   sort: z.string().optional(),
-  compare: z.boolean().optional(),
   expand: z.string().optional(),
 });
 

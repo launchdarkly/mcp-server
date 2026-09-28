@@ -171,7 +171,6 @@ async function $do(
 
   const query = encodeFormQuery({
     "archived": payload.archived,
-    "compare": payload.compare,
     "env": payload.env,
     "expand": payload.expand,
     "filter": payload.filter,
