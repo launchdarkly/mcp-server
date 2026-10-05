@@ -190,23 +190,15 @@ docker run --rm -p 127.0.0.1:8080:8080 709825985650.dkr.ecr.us-east-1.amazonaws.
 
 The container listens on `0.0.0.0`, so `--auth-token` (at least 16 characters) is required. Clients must send `Authorization: Bearer <token>` on `/sse` and `/message`. Outside Docker, the SSE transport listens on `127.0.0.1` by default; pass `--host` to change it, which also requires `--auth-token` for non-loopback hosts.
 
-Then, configure your server definition to reference your local clone. For example:
+Then, configure your server definition to point at the running container. For example:
 
 ```json
 {
   "mcpServers": {
     "launchdarkly": {
-      "command": "npx",
-      "args": [
-        "-y", "--package", "@launchdarkly/mcp-server", "--", "mcp", "start",
-        "--api-key", "$LD_ACCESS_TOKEN"
-      ],
-      "env": {
-        "LD_ACCESS_TOKEN": "MCP_LD_TOKEN"
-      }
       "url": "http://localhost:8080/sse",
       "headers": {
-        "Authorization": "Bearer MCP_AUTH_TOKEN"
+        "Authorization": "Bearer <your --auth-token value>"
       }
     }
   }

@@ -5,7 +5,6 @@
 import { SSEServerTransport } from "@modelcontextprotocol/sdk/server/sse.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { localhostHostValidation } from "@modelcontextprotocol/sdk/server/middleware/hostHeaderValidation.js";
-import { timingSafeEqual } from "node:crypto";
 import express from "express";
 import { SDKOptions } from "../../../lib/config.js";
 import { LocalContext } from "../../cli.js";
@@ -15,6 +14,11 @@ import {
 } from "../../console-logger.js";
 import { MCPScope } from "../../scopes.js";
 import { createMCPServer } from "../../server.js";
+import {
+  assertSafeSSEBind,
+  isLoopbackHost,
+  requireBearerToken,
+} from "./sse-security.js";
 
 interface StartCommandFlags {
   readonly transport: "stdio" | "sse";
@@ -72,11 +76,7 @@ async function startSSE(flags: StartCommandFlags) {
   const logger = createConsoleLogger(flags["log-level"]);
   const host = flags.host;
   const authToken = flags["auth-token"];
-  if (!authToken && !isLoopbackHost(host)) {
-    throw new Error(
-      `--auth-token is required when the SSE transport listens on a non-loopback host (${host})`,
-    );
-  }
+  assertSafeSSEBind(host, authToken);
 
   const app = express();
   if (isLoopbackHost(host)) {
@@ -109,7 +109,18 @@ async function startSSE(flags: StartCommandFlags) {
       void server.close();
     });
 
-    await server.connect(transport);
+    try {
+      await server.connect(transport);
+    } catch (err) {
+      logger.error("Failed to open SSE session", {
+        error: err instanceof Error ? err.message : String(err),
+      });
+      sessions.delete(transport.sessionId);
+      void server.close();
+      if (!res.headersSent) {
+        res.status(500).send("Internal Server Error");
+      }
+    }
   });
 
   app.post("/message", async (req, res) => {
@@ -122,7 +133,16 @@ async function startSSE(flags: StartCommandFlags) {
       return;
     }
 
-    await session.transport.handlePostMessage(req, res);
+    try {
+      await session.transport.handlePostMessage(req, res);
+    } catch (err) {
+      logger.error("Failed to handle SSE message", {
+        error: err instanceof Error ? err.message : String(err),
+      });
+      if (!res.headersSent) {
+        res.status(500).send("Internal Server Error");
+      }
+    }
   });
 
   const httpServer = app.listen(flags.port, host, () => {
@@ -160,22 +180,4 @@ async function startSSE(flags: StartCommandFlags) {
   const abort = () => controller.abort();
   process.on("SIGTERM", abort);
   process.on("SIGINT", abort);
-}
-
-function isLoopbackHost(host: string): boolean {
-  return host === "127.0.0.1" || host === "localhost" || host === "::1";
-}
-
-function requireBearerToken(token: string): express.RequestHandler {
-  const expected = Buffer.from(`Bearer ${token}`);
-  return (req, res, next) => {
-    const actual = Buffer.from(req.headers.authorization ?? "");
-    if (
-      actual.length !== expected.length || !timingSafeEqual(actual, expected)
-    ) {
-      res.status(401).send("Unauthorized");
-      return;
-    }
-    next();
-  };
 }
