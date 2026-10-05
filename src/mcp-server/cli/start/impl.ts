@@ -4,6 +4,7 @@
 
 import { SSEServerTransport } from "@modelcontextprotocol/sdk/server/sse.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import { localhostHostValidation } from "@modelcontextprotocol/sdk/server/middleware/hostHeaderValidation.js";
 import express from "express";
 import { SDKOptions } from "../../../lib/config.js";
 import { LocalContext } from "../../cli.js";
@@ -13,10 +14,17 @@ import {
 } from "../../console-logger.js";
 import { MCPScope } from "../../scopes.js";
 import { createMCPServer } from "../../server.js";
+import {
+  assertSafeSSEBind,
+  isLoopbackHost,
+  requireBearerToken,
+} from "./sse-security.js";
 
 interface StartCommandFlags {
   readonly transport: "stdio" | "sse";
   readonly port: number;
+  readonly host: string;
+  readonly "auth-token"?: string | undefined;
   readonly tool?: string[];
   readonly scope?: MCPScope[];
   readonly "api-key"?: string | undefined;
@@ -66,37 +74,78 @@ async function startStdio(flags: StartCommandFlags) {
 
 async function startSSE(flags: StartCommandFlags) {
   const logger = createConsoleLogger(flags["log-level"]);
+  const host = flags.host;
+  const authToken = flags["auth-token"];
+  assertSafeSSEBind(host, authToken);
+
   const app = express();
-  const mcpServer = createMCPServer({
-    logger,
-    allowedTools: flags.tool,
-    scopes: flags.scope,
-    ...{ apiKey: flags["api-key"] ?? "" },
-    serverURL: flags["server-url"],
-    serverIdx: flags["server-index"],
-  });
-  let transport: SSEServerTransport | undefined;
+  if (isLoopbackHost(host)) {
+    app.use(localhostHostValidation());
+  }
+  if (authToken) {
+    app.use(requireBearerToken(authToken));
+  }
+
+  const sessions = new Map<
+    string,
+    { transport: SSEServerTransport; server: ReturnType<typeof createMCPServer> }
+  >();
   const controller = new AbortController();
 
   app.get("/sse", async (_req, res) => {
-    transport = new SSEServerTransport("/message", res);
+    const server = createMCPServer({
+      logger,
+      allowedTools: flags.tool,
+      scopes: flags.scope,
+      ...{ apiKey: flags["api-key"] ?? "" },
+      serverURL: flags["server-url"],
+      serverIdx: flags["server-index"],
+    });
+    const transport = new SSEServerTransport("/message", res);
+    sessions.set(transport.sessionId, { transport, server });
 
-    await mcpServer.connect(transport);
+    res.on("close", () => {
+      sessions.delete(transport.sessionId);
+      void server.close();
+    });
 
-    mcpServer.server.onclose = async () => {
-      res.end();
-    };
+    try {
+      await server.connect(transport);
+    } catch (err) {
+      logger.error("Failed to open SSE session", {
+        error: err instanceof Error ? err.message : String(err),
+      });
+      sessions.delete(transport.sessionId);
+      void server.close();
+      if (!res.headersSent) {
+        res.status(500).send("Internal Server Error");
+      }
+    }
   });
 
   app.post("/message", async (req, res) => {
-    if (!transport) {
-      throw new Error("Server transport not initialized");
+    const sessionId = typeof req.query["sessionId"] === "string"
+      ? req.query["sessionId"]
+      : "";
+    const session = sessions.get(sessionId);
+    if (!session) {
+      res.status(404).send("Unknown session");
+      return;
     }
 
-    await transport.handlePostMessage(req, res);
+    try {
+      await session.transport.handlePostMessage(req, res);
+    } catch (err) {
+      logger.error("Failed to handle SSE message", {
+        error: err instanceof Error ? err.message : String(err),
+      });
+      if (!res.headersSent) {
+        res.status(500).send("Internal Server Error");
+      }
+    }
   });
 
-  const httpServer = app.listen(flags.port, "0.0.0.0", () => {
+  const httpServer = app.listen(flags.port, host, () => {
     const ha = httpServer.address();
     const host = typeof ha === "string" ? ha : `${ha?.address}:${ha?.port}`;
     logger.info("MCP HTTP server started", { host });
@@ -110,9 +159,9 @@ async function startSSE(flags: StartCommandFlags) {
     }
     closing = true;
 
-    logger.info("Shutting down MCP server");
+    logger.info("Shutting down MCP servers");
 
-    await mcpServer.close();
+    await Promise.all([...sessions.values()].map(({ server }) => server.close()));
 
     logger.info("Shutting down HTTP server");
 

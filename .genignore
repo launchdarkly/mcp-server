@@ -1,0 +1,3 @@
+# Hand-edited to wire in sse-security.ts; regenerating them would drop the SSE bind and bearer-token checks.
+src/mcp-server/cli/start/impl.ts
+src/mcp-server/cli/start/command.ts
