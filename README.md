@@ -185,24 +185,21 @@ If installing the MCP server from the AWS Markeplace, pull the image using an au
 To run the container:
 
 ```bash
-docker run --rm -p 8080:8080 709825985650.dkr.ecr.us-east-1.amazonaws.com/launchdarkly/mcp --api-key api-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx 
+docker run --rm -p 127.0.0.1:8080:8080 709825985650.dkr.ecr.us-east-1.amazonaws.com/launchdarkly/mcp --api-key api-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx --auth-token "$MCP_AUTH_TOKEN"
 ```
 
-Then, configure your server definition to reference your local clone. For example:
+The container listens on `0.0.0.0`, so `--auth-token` (at least 16 characters) is required. Clients must send `Authorization: Bearer <token>` on `/sse` and `/message`. Outside Docker, the SSE transport listens on `127.0.0.1` by default; pass `--host` to change it, which also requires `--auth-token` for non-loopback hosts.
+
+Then, configure your server definition to point at the running container. For example:
 
 ```json
 {
   "mcpServers": {
     "launchdarkly": {
-      "command": "npx",
-      "args": [
-        "-y", "--package", "@launchdarkly/mcp-server", "--", "mcp", "start",
-        "--api-key", "$LD_ACCESS_TOKEN"
-      ],
-      "env": {
-        "LD_ACCESS_TOKEN": "MCP_LD_TOKEN"
+      "url": "http://localhost:8080/sse",
+      "headers": {
+        "Authorization": "Bearer <your --auth-token value>"
       }
-      "url": "http://localhost:8080/sse"
     }
   }
 }

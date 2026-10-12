@@ -20,4 +20,4 @@ COPY --from=builder /app/bin ./bin
 COPY --from=builder /app/package.json ./
 
 EXPOSE 8080
-ENTRYPOINT ["/nodejs/bin/node", "/app/bin/mcp-server.js", "start", "--transport", "sse", "--port", "8080"]
+ENTRYPOINT ["/nodejs/bin/node", "/app/bin/mcp-server.js", "start", "--transport", "sse", "--host", "0.0.0.0", "--port", "8080"]

@@ -32,7 +32,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 typescript:
-  version: 0.6.2
+  version: 0.7.0
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies:
@@ -47,7 +47,8 @@ typescript:
       - mcp
       - modelcontextprotocol
     license: MIT
-  additionalScripts: {}
+  additionalScripts:
+    "test:sse-security": node --test --test-force-exit test/sse-security.test.mjs
   alwaysIncludeInboundAndOutbound: false
   author: LaunchDarkly
   baseErrorName: LaunchDarklyError

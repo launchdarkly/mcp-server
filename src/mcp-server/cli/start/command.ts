@@ -27,6 +27,20 @@ export const startCommand = buildCommand({
         parse: (val: string) =>
           z.coerce.number().int().gte(0).lt(65536).parse(val),
       },
+      host: {
+        kind: "parsed",
+        brief:
+          "The host to listen on when the SSE transport is enabled. Non-loopback hosts require --auth-token",
+        default: "127.0.0.1",
+        parse: (value) => z.string().nonempty().parse(value),
+      },
+      "auth-token": {
+        kind: "parsed",
+        brief:
+          "Bearer token that SSE clients must send in the Authorization header",
+        optional: true,
+        parse: (value) => z.string().min(16).parse(value),
+      },
       tool: {
         kind: "parsed",
         brief: "Specify tools to mount on the server",
