@@ -14,6 +14,7 @@ export * from "./getenvironmentsbyproject.js";
 export * from "./getfeatureflag.js";
 export * from "./getfeatureflags.js";
 export * from "./getfeatureflagstatusacrossenvironments.js";
+export * from "./getcoderefstatistics.js";
 export * from "./getrepositories.js";
 export * from "./patchaiconfig.js";
 export * from "./patchaiconfigtargeting.js";

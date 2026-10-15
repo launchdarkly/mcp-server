@@ -52,6 +52,7 @@ export * from "./auditlogentrylistingrep.js";
 export * from "./auditlogentrylistingrepcollection.js";
 export * from "./authorizedappdatarep.js";
 export * from "./branchrep.js";
+export * from "./coderefstatisticsrep.js";
 export * from "./clause.js";
 export * from "./clientsideavailability.js";
 export * from "./clientsideavailabilitypost.js";
