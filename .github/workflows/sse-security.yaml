@@ -20,3 +20,4 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npm run test:sse-security
+      - run: npm run test:tls-blocklist
