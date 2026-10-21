@@ -41,7 +41,7 @@ This MCP server can be installed in any AI client that supports the MCP protocol
 > Some eMudhra intermediate certificate authorities were compromised in October 2026 ([advisory](https://emudhra.we-have-a-problem.com/)). Anyone on your network who holds one of their keys could intercept the server's connection to LaunchDarkly and read your API access token.
 >
 > - **npx and local installs:** use Node.js **22.23.4, 24.22.1, 26.12.1 or later**. These releases reject the compromised intermediates. The server also rejects them itself and prints a warning on startup when your runtime does not.
-> - **Docker:** use an image newer than 0.7.0. Those run on Node.js 24.22.1; 0.7.0 and earlier run on Node.js 24.2.0.
+> - **Docker:** use image 0.7.1 or later. Those run on Node.js 24.22.1; 0.7.0 and earlier run on Node.js 24.2.0.
 > - **Standalone binaries:** stop using the `mcp-server-bun-*` binaries attached to releases v0.6.1 and earlier. They embed a Bun runtime that does not reject the compromised intermediates, and they are no longer published. Switch to npx with a patched Node.js or to Docker.
 
 ### Cursor installation steps
