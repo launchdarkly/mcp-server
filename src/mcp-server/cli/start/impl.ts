@@ -19,6 +19,10 @@ import {
   isLoopbackHost,
   requireBearerToken,
 } from "./sse-security.js";
+import {
+  installTlsBlocklist,
+  unpatchedRuntimeWarning,
+} from "./tls-blocklist.js";
 
 interface StartCommandFlags {
   readonly transport: "stdio" | "sse";
@@ -35,6 +39,13 @@ interface StartCommandFlags {
 }
 
 export async function main(this: LocalContext, flags: StartCommandFlags) {
+  // INC-289: block the compromised eMudhra intermediates before any request.
+  installTlsBlocklist();
+  const runtimeWarning = unpatchedRuntimeWarning();
+  if (runtimeWarning) {
+    process.stderr.write(runtimeWarning);
+  }
+
   flags.env?.forEach(([key, value]) => {
     process.env[key] = value;
   });
