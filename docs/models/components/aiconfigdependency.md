@@ -1,6 +1,6 @@
 # AIConfigDependency
 
-A resource that depends on this AI Config
+A resource that depends on this config
 
 ## Example Usage
 

@@ -1,5 +1,7 @@
 # AIConfigMaintainer
 
+The member or team that maintains this resource
+
 
 ## Supported Types
 

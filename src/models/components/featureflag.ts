@@ -63,6 +63,12 @@ import {
   MemberSummary$outboundSchema,
 } from "./membersummary.js";
 import {
+  StaleFlagData,
+  StaleFlagData$inboundSchema,
+  StaleFlagData$Outbound,
+  StaleFlagData$outboundSchema,
+} from "./staleflagdata.js";
+import {
   Variation,
   Variation$inboundSchema,
   Variation$Outbound,
@@ -157,6 +163,7 @@ export type FeatureFlag = {
   defaults?: Defaults | undefined;
   purpose?: string | undefined;
   migrationSettings?: FlagMigrationSettingsRep | undefined;
+  stale?: StaleFlagData | undefined;
   /**
    * Details on the environments for this flag. Only returned if the request is filtered by environment, using the <code>filterEnv</code> query parameter.
    */
@@ -204,6 +211,7 @@ export const FeatureFlag$inboundSchema: z.ZodType<
   defaults: Defaults$inboundSchema.optional(),
   _purpose: z.string().optional(),
   migrationSettings: FlagMigrationSettingsRep$inboundSchema.optional(),
+  stale: StaleFlagData$inboundSchema.optional(),
   environments: z.record(FeatureFlagConfig$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -242,6 +250,7 @@ export type FeatureFlag$Outbound = {
   defaults?: Defaults$Outbound | undefined;
   _purpose?: string | undefined;
   migrationSettings?: FlagMigrationSettingsRep$Outbound | undefined;
+  stale?: StaleFlagData$Outbound | undefined;
   environments?: { [k: string]: FeatureFlagConfig$Outbound } | undefined;
 };
 
@@ -277,6 +286,7 @@ export const FeatureFlag$outboundSchema: z.ZodType<
   defaults: Defaults$outboundSchema.optional(),
   purpose: z.string().optional(),
   migrationSettings: FlagMigrationSettingsRep$outboundSchema.optional(),
+  stale: StaleFlagData$outboundSchema.optional(),
   environments: z.record(FeatureFlagConfig$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {

@@ -156,6 +156,9 @@ let value: AiConfigsExperimentInfoRep = {
         randomizationUnits: [
           "user",
         ],
+        analysisUnits: [
+          "user",
+        ],
         filters: {
           type: "contextAttribute",
           attribute: "country",
@@ -191,6 +194,42 @@ let value: AiConfigsExperimentInfoRep = {
             "key": "<value>",
           },
         ],
+        windowStartOffset: 7,
+        windowEndOffset: 1,
+        winsorLowerPercentile: 1,
+        winsorUpperPercentile: 99.5,
+        winsorIncludeImputed: false,
+        traceQuery: "service.name = \"checkout\"",
+        traceValueLocation: "duration",
+        unitAggregationField: "unitAggregationField",
+        denominator: {
+          eventName: "eventName",
+          isNumeric: true,
+          unitAggregationType: "unitAggregationType",
+          unitAggregationField: "unitAggregationField",
+          valueColumn: "valueColumn",
+          dataSource: {
+            key: "key",
+            environmentKey: "environmentKey",
+            name: "_name",
+            integrationKey: "_integrationKey",
+          },
+          filters: {
+            type: "contextAttribute",
+            attribute: "country",
+            op: "op",
+            values: [
+              "JP",
+            ],
+            contextKind: "user",
+            negate: false,
+          },
+          windowStartOffset: 4,
+          windowEndOffset: 5,
+          winsorLowerPercentile: 9.965781217890562,
+          winsorUpperPercentile: 9.369310271410669,
+          winsorIncludeImputed: true,
+        },
       },
       environments: [
         "production",
@@ -199,16 +238,16 @@ let value: AiConfigsExperimentInfoRep = {
       ],
       environmentSettings: {
         "key": {
-          startDate: 7,
-          stopDate: 1,
+          startDate: 6,
+          stopDate: 8,
           enabledPeriods: [
             {
-              startDate: 4,
-              stopDate: 5,
+              startDate: 9,
+              stopDate: 6,
             },
             {
-              startDate: 4,
-              stopDate: 5,
+              startDate: 9,
+              stopDate: 6,
             },
           ],
         },
@@ -362,6 +401,9 @@ let value: AiConfigsExperimentInfoRep = {
         randomizationUnits: [
           "user",
         ],
+        analysisUnits: [
+          "user",
+        ],
         filters: {
           type: "contextAttribute",
           attribute: "country",
@@ -399,6 +441,42 @@ let value: AiConfigsExperimentInfoRep = {
             "key2": "<value>",
           },
         ],
+        windowStartOffset: 7,
+        windowEndOffset: 1,
+        winsorLowerPercentile: 1,
+        winsorUpperPercentile: 99.5,
+        winsorIncludeImputed: false,
+        traceQuery: "service.name = \"checkout\"",
+        traceValueLocation: "duration",
+        unitAggregationField: "unitAggregationField",
+        denominator: {
+          eventName: "eventName",
+          isNumeric: true,
+          unitAggregationType: "unitAggregationType",
+          unitAggregationField: "unitAggregationField",
+          valueColumn: "valueColumn",
+          dataSource: {
+            key: "key",
+            environmentKey: "environmentKey",
+            name: "_name",
+            integrationKey: "_integrationKey",
+          },
+          filters: {
+            type: "contextAttribute",
+            attribute: "country",
+            op: "op",
+            values: [
+              "JP",
+            ],
+            contextKind: "user",
+            negate: false,
+          },
+          windowStartOffset: 4,
+          windowEndOffset: 5,
+          winsorLowerPercentile: 9.965781217890562,
+          winsorUpperPercentile: 9.369310271410669,
+          winsorIncludeImputed: true,
+        },
       },
       environments: [
         "production",
@@ -407,16 +485,16 @@ let value: AiConfigsExperimentInfoRep = {
       ],
       environmentSettings: {
         "key": {
-          startDate: 7,
-          stopDate: 1,
+          startDate: 6,
+          stopDate: 8,
           enabledPeriods: [
             {
-              startDate: 4,
-              stopDate: 5,
+              startDate: 9,
+              stopDate: 6,
             },
             {
-              startDate: 4,
-              stopDate: 5,
+              startDate: 9,
+              stopDate: 6,
             },
           ],
         },

@@ -13,5 +13,5 @@ let value: AiConfigsMetricListingRepUnitAggregationType = "average";
 ## Values
 
 ```typescript
-"average" | "sum"
+"average" | "sum" | "count_distinct"
 ```

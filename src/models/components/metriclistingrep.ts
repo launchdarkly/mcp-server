@@ -39,6 +39,12 @@ import {
   MetricDataSourceRefRep$outboundSchema,
 } from "./metricdatasourcerefrep.js";
 import {
+  MetricDenominatorRep,
+  MetricDenominatorRep$inboundSchema,
+  MetricDenominatorRep$Outbound,
+  MetricDenominatorRep$outboundSchema,
+} from "./metricdenominatorrep.js";
+import {
   MetricEventDefaultRep,
   MetricEventDefaultRep$inboundSchema,
   MetricEventDefaultRep$Outbound,
@@ -58,6 +64,7 @@ export const MetricListingRepKind = {
   Pageview: "pageview",
   Click: "click",
   Custom: "custom",
+  Trace: "trace",
 } as const;
 /**
  * The kind of event the metric tracks
@@ -65,14 +72,14 @@ export const MetricListingRepKind = {
 export type MetricListingRepKind = ClosedEnum<typeof MetricListingRepKind>;
 
 /**
- * For custom metrics, the success criteria
+ * For custom and trace metrics, the success criteria
  */
 export const MetricListingRepSuccessCriteria = {
   HigherThanBaseline: "HigherThanBaseline",
   LowerThanBaseline: "LowerThanBaseline",
 } as const;
 /**
- * For custom metrics, the success criteria
+ * For custom and trace metrics, the success criteria
  */
 export type MetricListingRepSuccessCriteria = ClosedEnum<
   typeof MetricListingRepSuccessCriteria
@@ -84,6 +91,7 @@ export type MetricListingRepSuccessCriteria = ClosedEnum<
 export const MetricListingRepUnitAggregationType = {
   Average: "average",
   Sum: "sum",
+  CountDistinct: "count_distinct",
 } as const;
 /**
  * The method by which multiple unit event values are aggregated
@@ -177,15 +185,15 @@ export type MetricListingRep = {
    */
   category?: string | undefined;
   /**
-   * For custom metrics, whether to track numeric changes in value against a baseline (<code>true</code>) or to track a conversion when an end user takes an action (<code>false</code>).
+   * For custom and trace metrics, whether to track numeric changes in value against a baseline (<code>true</code>) or to track a conversion when an end user takes an action (<code>false</code>).
    */
   isNumeric?: boolean | undefined;
   /**
-   * For custom metrics, the success criteria
+   * For custom and trace metrics, the success criteria
    */
   successCriteria?: MetricListingRepSuccessCriteria | undefined;
   /**
-   * For numeric custom metrics, the unit of measure
+   * For numeric custom and trace metrics, the unit of measure
    */
   unit?: string | undefined;
   /**
@@ -193,9 +201,15 @@ export type MetricListingRep = {
    */
   eventKey?: string | undefined;
   /**
-   * An array of randomization units allowed for this metric
+   * Deprecated, use <code>analysisUnits</code> instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   randomizationUnits?: Array<string> | undefined;
+  /**
+   * An array of analysis units allowed for this metric.
+   */
+  analysisUnits?: Array<string> | undefined;
   filters?: Filter | undefined;
   /**
    * The method by which multiple unit event values are aggregated
@@ -222,6 +236,39 @@ export type MetricListingRep = {
    */
   selector?: string | undefined;
   urls?: Array<{ [k: string]: any }> | undefined;
+  /**
+   * Not yet implemented - The start of the measurement window, in milliseconds relative to the unit's first exposure to a flag variation
+   */
+  windowStartOffset?: number | undefined;
+  /**
+   * Not yet implemented - The end of the measurement window, in milliseconds relative to the unit's first exposure to a flag variation
+   */
+  windowEndOffset?: number | undefined;
+  /**
+   * Lower winsorization percentile, expressed as a percent in the open interval (0, 100). When both bounds are set, defines a two-sided clamp range. Otherwise lower-only winsorization.
+   */
+  winsorLowerPercentile?: number | undefined;
+  /**
+   * Upper winsorization percentile, expressed as a percent in the open interval (0, 100). When both bounds are set, must be greater than winsorLowerPercentile.
+   */
+  winsorUpperPercentile?: number | undefined;
+  /**
+   * When true, the percentile bound calculation includes imputed zeros. Only meaningful when at least one bound is set and the metric includes units that didn't send events.
+   */
+  winsorIncludeImputed?: boolean | undefined;
+  /**
+   * For trace metrics, the trace query to use for the metric.
+   */
+  traceQuery?: string | undefined;
+  /**
+   * For trace metrics, the location in the trace to use for numeric values.
+   */
+  traceValueLocation?: string | undefined;
+  /**
+   * For count_distinct metrics, the column to count distinct values of
+   */
+  unitAggregationField?: string | undefined;
+  denominator?: MetricDenominatorRep | undefined;
 };
 
 /** @internal */
@@ -292,6 +339,7 @@ export const MetricListingRep$inboundSchema: z.ZodType<
   unit: z.string().optional(),
   eventKey: z.string().optional(),
   randomizationUnits: z.array(z.string()).optional(),
+  analysisUnits: z.array(z.string()).optional(),
   filters: Filter$inboundSchema.optional(),
   unitAggregationType: MetricListingRepUnitAggregationType$inboundSchema
     .optional(),
@@ -304,6 +352,15 @@ export const MetricListingRep$inboundSchema: z.ZodType<
   archivedAt: z.number().int().optional(),
   selector: z.string().optional(),
   urls: z.array(z.record(z.any())).optional(),
+  windowStartOffset: z.number().int().optional(),
+  windowEndOffset: z.number().int().optional(),
+  winsorLowerPercentile: z.number().optional(),
+  winsorUpperPercentile: z.number().optional(),
+  winsorIncludeImputed: z.boolean().optional(),
+  traceQuery: z.string().optional(),
+  traceValueLocation: z.string().optional(),
+  unitAggregationField: z.string().optional(),
+  denominator: MetricDenominatorRep$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "_id": "id",
@@ -345,6 +402,7 @@ export type MetricListingRep$Outbound = {
   unit?: string | undefined;
   eventKey?: string | undefined;
   randomizationUnits?: Array<string> | undefined;
+  analysisUnits?: Array<string> | undefined;
   filters?: Filter$Outbound | undefined;
   unitAggregationType?: string | undefined;
   analysisType?: string | undefined;
@@ -356,6 +414,15 @@ export type MetricListingRep$Outbound = {
   archivedAt?: number | undefined;
   selector?: string | undefined;
   urls?: Array<{ [k: string]: any }> | undefined;
+  windowStartOffset?: number | undefined;
+  windowEndOffset?: number | undefined;
+  winsorLowerPercentile?: number | undefined;
+  winsorUpperPercentile?: number | undefined;
+  winsorIncludeImputed?: boolean | undefined;
+  traceQuery?: string | undefined;
+  traceValueLocation?: string | undefined;
+  unitAggregationField?: string | undefined;
+  denominator?: MetricDenominatorRep$Outbound | undefined;
 };
 
 /** @internal */
@@ -390,6 +457,7 @@ export const MetricListingRep$outboundSchema: z.ZodType<
   unit: z.string().optional(),
   eventKey: z.string().optional(),
   randomizationUnits: z.array(z.string()).optional(),
+  analysisUnits: z.array(z.string()).optional(),
   filters: Filter$outboundSchema.optional(),
   unitAggregationType: MetricListingRepUnitAggregationType$outboundSchema
     .optional(),
@@ -402,6 +470,15 @@ export const MetricListingRep$outboundSchema: z.ZodType<
   archivedAt: z.number().int().optional(),
   selector: z.string().optional(),
   urls: z.array(z.record(z.any())).optional(),
+  windowStartOffset: z.number().int().optional(),
+  windowEndOffset: z.number().int().optional(),
+  winsorLowerPercentile: z.number().optional(),
+  winsorUpperPercentile: z.number().optional(),
+  winsorIncludeImputed: z.boolean().optional(),
+  traceQuery: z.string().optional(),
+  traceValueLocation: z.string().optional(),
+  unitAggregationField: z.string().optional(),
+  denominator: MetricDenominatorRep$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     id: "_id",

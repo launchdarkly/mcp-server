@@ -7,7 +7,7 @@ import { VariationTool } from "@launchdarkly/mcp-server/models/components";
 
 let value: VariationTool = {
   key: "key",
-  version: 2,
+  version: 7,
   customParameters: {
     "key": "",
   },

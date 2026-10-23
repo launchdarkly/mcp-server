@@ -27,12 +27,22 @@ import { tool$aiConfigsUpdateVariation } from "./tools/aiConfigsUpdateVariation.
 import { tool$auditLogListEntries } from "./tools/auditLogListEntries.js";
 import { tool$codeReferencesListRepositories } from "./tools/codeReferencesListRepositories.js";
 import { tool$environmentsListByProject } from "./tools/environmentsListByProject.js";
+import { tool$experimentsCreate } from "./tools/experimentsCreate.js";
+import { tool$experimentsCreateIteration } from "./tools/experimentsCreateIteration.js";
+import { tool$experimentsGet } from "./tools/experimentsGet.js";
+import { tool$experimentsGetExperimentsAnyEnv } from "./tools/experimentsGetExperimentsAnyEnv.js";
+import { tool$experimentsList } from "./tools/experimentsList.js";
+import { tool$experimentsPatch } from "./tools/experimentsPatch.js";
 import { tool$featureFlagsCreate } from "./tools/featureFlagsCreate.js";
 import { tool$featureFlagsDelete } from "./tools/featureFlagsDelete.js";
 import { tool$featureFlagsGet } from "./tools/featureFlagsGet.js";
 import { tool$featureFlagsGetStatus } from "./tools/featureFlagsGetStatus.js";
 import { tool$featureFlagsList } from "./tools/featureFlagsList.js";
 import { tool$featureFlagsPatch } from "./tools/featureFlagsPatch.js";
+import { tool$metricsCreate } from "./tools/metricsCreate.js";
+import { tool$metricsGet } from "./tools/metricsGet.js";
+import { tool$metricsList } from "./tools/metricsList.js";
+import { tool$metricsPatch } from "./tools/metricsPatch.js";
 
 export function createMCPServer(deps: {
   logger: ConsoleLogger;
@@ -44,7 +54,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "LaunchDarkly",
-    version: "0.7.1",
+    version: "0.7.2",
   });
 
   const client = new LaunchDarklyCore({
@@ -82,7 +92,17 @@ export function createMCPServer(deps: {
   tool(tool$featureFlagsGet);
   tool(tool$featureFlagsPatch);
   tool(tool$featureFlagsDelete);
+  tool(tool$metricsList);
+  tool(tool$metricsCreate);
+  tool(tool$metricsGet);
+  tool(tool$metricsPatch);
   tool(tool$environmentsListByProject);
+  tool(tool$experimentsList);
+  tool(tool$experimentsCreate);
+  tool(tool$experimentsGet);
+  tool(tool$experimentsPatch);
+  tool(tool$experimentsCreateIteration);
+  tool(tool$experimentsGetExperimentsAnyEnv);
   tool(tool$aiConfigsGetTargeting);
   tool(tool$aiConfigsUpdateTargeting);
   tool(tool$aiConfigsList);

@@ -15,9 +15,21 @@ import {
 } from "./aiconfigtargetingvariationvalue.js";
 
 export type AIConfigTargetingVariation = {
+  /**
+   * The variation ID
+   */
   id: string;
+  /**
+   * A description of the variation
+   */
   description: string;
+  /**
+   * The variation name
+   */
   name: string;
+  /**
+   * The variation value
+   */
   value: AIConfigTargetingVariationValue;
 };
 

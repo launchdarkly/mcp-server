@@ -15,5 +15,5 @@ let value: GetAIConfigRequest = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectKey`       | *string*           | :heavy_check_mark: | N/A                |
-| `configKey`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectKey`       | *string*           | :heavy_check_mark: | The project key    |
+| `configKey`        | *string*           | :heavy_check_mark: | The AI Config key  |

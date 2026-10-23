@@ -853,7 +853,25 @@ async function run() {
         "tags",
         "tags",
       ],
+      viewKeys: [
+        "viewKeys",
+        "viewKeys",
+      ],
       defaultVariation: {
+        classifiers: [
+          {
+            key: "key",
+            type: "bool",
+            instructions: "instructions",
+            criteria: "",
+          },
+          {
+            key: "key",
+            type: "bool",
+            instructions: "instructions",
+            criteria: "",
+          },
+        ],
         comment: "comment",
         description: "description",
         instructions: "instructions",
@@ -870,30 +888,44 @@ async function run() {
         ],
         model: {},
         name: "name",
-        modelConfigKey: "modelConfigKey",
+        modelConfigKey: "OpenAI.gpt-4.1",
+        modelConfigVersion: 1,
+        outputFormat: {
+          "key": "",
+        },
         tools: [
           {
             key: "key",
-            version: 0,
+            version: 6,
           },
           {
             key: "key",
-            version: 0,
+            version: 6,
           },
         ],
         toolKeys: [
           "toolKeys",
           "toolKeys",
         ],
+        skills: [
+          {
+            key: "key",
+            version: 1,
+          },
+          {
+            key: "key",
+            version: 1,
+          },
+        ],
         judgeConfiguration: {
           judges: [
             {
               judgeConfigKey: "judgeConfigKey",
-              samplingRate: 0.7061401,
+              samplingRate: 0.36160767,
             },
             {
               judgeConfigKey: "judgeConfigKey",
-              samplingRate: 0.7061401,
+              samplingRate: 0.36160767,
             },
           ],
         },
@@ -935,7 +967,25 @@ async function run() {
         "tags",
         "tags",
       ],
+      viewKeys: [
+        "viewKeys",
+        "viewKeys",
+      ],
       defaultVariation: {
+        classifiers: [
+          {
+            key: "key",
+            type: "bool",
+            instructions: "instructions",
+            criteria: "",
+          },
+          {
+            key: "key",
+            type: "bool",
+            instructions: "instructions",
+            criteria: "",
+          },
+        ],
         comment: "comment",
         description: "description",
         instructions: "instructions",
@@ -952,30 +1002,44 @@ async function run() {
         ],
         model: {},
         name: "name",
-        modelConfigKey: "modelConfigKey",
+        modelConfigKey: "OpenAI.gpt-4.1",
+        modelConfigVersion: 1,
+        outputFormat: {
+          "key": "",
+        },
         tools: [
           {
             key: "key",
-            version: 0,
+            version: 6,
           },
           {
             key: "key",
-            version: 0,
+            version: 6,
           },
         ],
         toolKeys: [
           "toolKeys",
           "toolKeys",
         ],
+        skills: [
+          {
+            key: "key",
+            version: 1,
+          },
+          {
+            key: "key",
+            version: 1,
+          },
+        ],
         judgeConfiguration: {
           judges: [
             {
               judgeConfigKey: "judgeConfigKey",
-              samplingRate: 0.7061401,
+              samplingRate: 0.36160767,
             },
             {
               judgeConfigKey: "judgeConfigKey",
-              samplingRate: 0.7061401,
+              samplingRate: 0.36160767,
             },
           ],
         },
@@ -1012,7 +1076,7 @@ run();
 
 | Error Type       | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ErrorT    | 400, 403         | application/json |
+| errors.ErrorT    | 400, 403, 429    | application/json |
 | errors.ErrorT    | 500              | application/json |
 | errors.APIError  | 4XX, 5XX         | \*/\*            |
 
@@ -1200,6 +1264,7 @@ async function run() {
     projectKey: "<value>",
     configKey: "<value>",
     aiConfigPatch: {
+      defaultVariationKey: "defaultVariationKey",
       description: "description",
       maintainerId: "507f1f77bcf86cd799439011",
       maintainerTeamKey: "example-team-key",
@@ -1238,6 +1303,7 @@ async function run() {
     projectKey: "<value>",
     configKey: "<value>",
     aiConfigPatch: {
+      defaultVariationKey: "defaultVariationKey",
       description: "description",
       maintainerId: "507f1f77bcf86cd799439011",
       maintainerTeamKey: "example-team-key",
@@ -1313,6 +1379,20 @@ async function run() {
     projectKey: "<value>",
     configKey: "<value>",
     aiConfigVariationPost: {
+      classifiers: [
+        {
+          key: "key",
+          type: "bool",
+          instructions: "instructions",
+          criteria: "",
+        },
+        {
+          key: "key",
+          type: "bool",
+          instructions: "instructions",
+          criteria: "",
+        },
+      ],
       comment: "comment",
       description: "description",
       instructions: "instructions",
@@ -1329,30 +1409,44 @@ async function run() {
       ],
       model: {},
       name: "name",
-      modelConfigKey: "modelConfigKey",
+      modelConfigKey: "OpenAI.gpt-4.1",
+      modelConfigVersion: 1,
+      outputFormat: {
+        "key": "",
+      },
       tools: [
         {
           key: "key",
-          version: 0,
+          version: 6,
         },
         {
           key: "key",
-          version: 0,
+          version: 6,
         },
       ],
       toolKeys: [
         "toolKeys",
         "toolKeys",
       ],
+      skills: [
+        {
+          key: "key",
+          version: 1,
+        },
+        {
+          key: "key",
+          version: 1,
+        },
+      ],
       judgeConfiguration: {
         judges: [
           {
             judgeConfigKey: "judgeConfigKey",
-            samplingRate: 0.7061401,
+            samplingRate: 0.36160767,
           },
           {
             judgeConfigKey: "judgeConfigKey",
-            samplingRate: 0.7061401,
+            samplingRate: 0.36160767,
           },
         ],
       },
@@ -1384,6 +1478,20 @@ async function run() {
     projectKey: "<value>",
     configKey: "<value>",
     aiConfigVariationPost: {
+      classifiers: [
+        {
+          key: "key",
+          type: "bool",
+          instructions: "instructions",
+          criteria: "",
+        },
+        {
+          key: "key",
+          type: "bool",
+          instructions: "instructions",
+          criteria: "",
+        },
+      ],
       comment: "comment",
       description: "description",
       instructions: "instructions",
@@ -1400,30 +1508,44 @@ async function run() {
       ],
       model: {},
       name: "name",
-      modelConfigKey: "modelConfigKey",
+      modelConfigKey: "OpenAI.gpt-4.1",
+      modelConfigVersion: 1,
+      outputFormat: {
+        "key": "",
+      },
       tools: [
         {
           key: "key",
-          version: 0,
+          version: 6,
         },
         {
           key: "key",
-          version: 0,
+          version: 6,
         },
       ],
       toolKeys: [
         "toolKeys",
         "toolKeys",
       ],
+      skills: [
+        {
+          key: "key",
+          version: 1,
+        },
+        {
+          key: "key",
+          version: 1,
+        },
+      ],
       judgeConfiguration: {
         judges: [
           {
             judgeConfigKey: "judgeConfigKey",
-            samplingRate: 0.7061401,
+            samplingRate: 0.36160767,
           },
           {
             judgeConfigKey: "judgeConfigKey",
-            samplingRate: 0.7061401,
+            samplingRate: 0.36160767,
           },
         ],
       },
@@ -1457,7 +1579,7 @@ run();
 
 | Error Type       | Status Code      | Content Type     |
 | ---------------- | ---------------- | ---------------- |
-| errors.ErrorT    | 400, 403         | application/json |
+| errors.ErrorT    | 400, 403, 429    | application/json |
 | errors.ErrorT    | 500              | application/json |
 | errors.APIError  | 4XX, 5XX         | \*/\*            |
 
@@ -1625,6 +1747,8 @@ Edit an existing variation of an AI Config. This creates a new version of the va
 
 The request body must be a JSON object of the fields to update. The values you include replace the existing values for the fields.
 
+If the variation is in use in a project environment where approval settings require review for this AI Config, this endpoint returns 403 and the change must be submitted through an approval request.
+
 Here's an example:
 ```
   {
@@ -1654,6 +1778,20 @@ async function run() {
     configKey: "<value>",
     variationKey: "<value>",
     aiConfigVariationPatch: {
+      classifiers: [
+        {
+          key: "key",
+          type: "bool",
+          instructions: "instructions",
+          criteria: "",
+        },
+        {
+          key: "key",
+          type: "bool",
+          instructions: "instructions",
+          criteria: "",
+        },
+      ],
       comment: "comment",
       description: "description",
       instructions: "instructions",
@@ -1668,33 +1806,47 @@ async function run() {
         },
       ],
       model: {},
-      modelConfigKey: "modelConfigKey",
+      modelConfigKey: "OpenAI.gpt-4.1",
+      modelConfigVersion: 1,
       name: "name",
+      outputFormat: {
+        "key": "",
+      },
       published: true,
-      state: "state",
+      state: "archived",
       tools: [
         {
           key: "key",
-          version: 0,
+          version: 6,
         },
         {
           key: "key",
-          version: 0,
+          version: 6,
         },
       ],
       toolKeys: [
         "toolKeys",
         "toolKeys",
       ],
+      skills: [
+        {
+          key: "key",
+          version: 1,
+        },
+        {
+          key: "key",
+          version: 1,
+        },
+      ],
       judgeConfiguration: {
         judges: [
           {
             judgeConfigKey: "judgeConfigKey",
-            samplingRate: 0.7061401,
+            samplingRate: 0.36160767,
           },
           {
             judgeConfigKey: "judgeConfigKey",
-            samplingRate: 0.7061401,
+            samplingRate: 0.36160767,
           },
         ],
       },
@@ -1727,6 +1879,20 @@ async function run() {
     configKey: "<value>",
     variationKey: "<value>",
     aiConfigVariationPatch: {
+      classifiers: [
+        {
+          key: "key",
+          type: "bool",
+          instructions: "instructions",
+          criteria: "",
+        },
+        {
+          key: "key",
+          type: "bool",
+          instructions: "instructions",
+          criteria: "",
+        },
+      ],
       comment: "comment",
       description: "description",
       instructions: "instructions",
@@ -1741,33 +1907,47 @@ async function run() {
         },
       ],
       model: {},
-      modelConfigKey: "modelConfigKey",
+      modelConfigKey: "OpenAI.gpt-4.1",
+      modelConfigVersion: 1,
       name: "name",
+      outputFormat: {
+        "key": "",
+      },
       published: true,
-      state: "state",
+      state: "archived",
       tools: [
         {
           key: "key",
-          version: 0,
+          version: 6,
         },
         {
           key: "key",
-          version: 0,
+          version: 6,
         },
       ],
       toolKeys: [
         "toolKeys",
         "toolKeys",
       ],
+      skills: [
+        {
+          key: "key",
+          version: 1,
+        },
+        {
+          key: "key",
+          version: 1,
+        },
+      ],
       judgeConfiguration: {
         judges: [
           {
             judgeConfigKey: "judgeConfigKey",
-            samplingRate: 0.7061401,
+            samplingRate: 0.36160767,
           },
           {
             judgeConfigKey: "judgeConfigKey",
-            samplingRate: 0.7061401,
+            samplingRate: 0.36160767,
           },
         ],
       },

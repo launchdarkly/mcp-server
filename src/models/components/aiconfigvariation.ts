@@ -5,8 +5,15 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
+import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import {
+  Classifier,
+  Classifier$inboundSchema,
+  Classifier$Outbound,
+  Classifier$outboundSchema,
+} from "./classifier.js";
 import {
   JudgeConfiguration,
   JudgeConfiguration$inboundSchema,
@@ -26,17 +33,58 @@ import {
   ParentLink$outboundSchema,
 } from "./parentlink.js";
 import {
+  VariationSkill,
+  VariationSkill$inboundSchema,
+  VariationSkill$Outbound,
+  VariationSkill$outboundSchema,
+} from "./variationskill.js";
+import {
   VariationTool,
   VariationTool$inboundSchema,
   VariationTool$Outbound,
   VariationTool$outboundSchema,
 } from "./variationtool.js";
 
+/**
+ * Freeform JSON object. LaunchDarkly does not validate the keys. In a model config, `params` and `customParams` hold parameters that the provider's API accepts, for example `{"temperature": 0.7, "maxTokens": 4096}`.
+ */
 export type AIConfigVariationModel = {};
+
+/**
+ * The state of the variation.
+ *
+ * @remarks
+ * - `archived`: The variation is archived. To restore it, update the variation with `state` set to `published`.
+ * - `published`: The variation is active.
+ */
+export const AIConfigVariationState = {
+  Archived: "archived",
+  Published: "published",
+} as const;
+/**
+ * The state of the variation.
+ *
+ * @remarks
+ * - `archived`: The variation is archived. To restore it, update the variation with `state` set to `published`.
+ * - `published`: The variation is active.
+ */
+export type AIConfigVariationState = ClosedEnum<typeof AIConfigVariationState>;
 
 export type AIConfigVariation = {
   links?: ParentLink | undefined;
+  /**
+   * The color used for this variation in the UI
+   */
   color?: string | undefined;
+  /**
+   * Classifier rules for a judge variation. When this array is non-empty, messages must be empty.
+   *
+   * @remarks
+   */
+  classifiers?: Array<Classifier> | undefined;
+  /**
+   * A comment describing this version of the variation
+   */
   comment?: string | undefined;
   /**
    * Returns the description for the agent. This is only returned for agent variations.
@@ -46,19 +94,73 @@ export type AIConfigVariation = {
    * Returns the instructions for the agent. This is only returned for agent variations.
    */
   instructions?: string | undefined;
+  /**
+   * The variation key
+   */
   key: string;
+  /**
+   * The variation ID
+   */
   id: string;
+  /**
+   * The prompt messages for this variation
+   */
   messages?: Array<Message> | undefined;
+  /**
+   * Freeform JSON object. LaunchDarkly does not validate the keys. In a model config, `params` and `customParams` hold parameters that the provider's API accepts, for example `{"temperature": 0.7, "maxTokens": 4096}`.
+   */
   model: AIConfigVariationModel;
+  /**
+   * The key of the model config that this variation uses, not the provider model ID. Absent
+   *
+   * @remarks
+   * when the variation does not use a model config.
+   */
   modelConfigKey?: string | undefined;
+  /**
+   * The version of the model config that this variation is pinned to, when it references a
+   *
+   * @remarks
+   * custom model config. Absent when the variation does not reference a model config, when
+   * the variation is not pinned to a specific version, or when custom model config versioning
+   * is not enabled for the project.
+   */
+  modelConfigVersion?: number | undefined;
+  /**
+   * The variation name
+   */
   name: string;
+  /**
+   * JSON Schema defining the structured output format for the variation.
+   */
+  outputFormat?: { [k: string]: any } | undefined;
   createdAt: number;
+  /**
+   * The version number of this resource
+   */
   version: number;
-  state?: string | undefined;
+  /**
+   * The state of the variation.
+   *
+   * @remarks
+   * - `archived`: The variation is archived. To restore it, update the variation with `state` set to `published`.
+   * - `published`: The variation is active.
+   */
+  state?: AIConfigVariationState | undefined;
   archivedAt?: number | undefined;
   publishedAt?: number | undefined;
+  /**
+   * The tools this variation can use
+   */
   tools?: Array<VariationTool> | undefined;
+  /**
+   * The agent skills this variation can use
+   */
+  skills?: Array<VariationSkill> | undefined;
   judgeConfiguration?: JudgeConfiguration | undefined;
+  /**
+   * Keys of the judge AI Configs attached to this variation
+   */
   judgingConfigKeys?: Array<string> | undefined;
 };
 
@@ -96,6 +198,15 @@ export function aiConfigVariationModelFromJSON(
 }
 
 /** @internal */
+export const AIConfigVariationState$inboundSchema: z.ZodNativeEnum<
+  typeof AIConfigVariationState
+> = z.nativeEnum(AIConfigVariationState);
+/** @internal */
+export const AIConfigVariationState$outboundSchema: z.ZodNativeEnum<
+  typeof AIConfigVariationState
+> = AIConfigVariationState$inboundSchema;
+
+/** @internal */
 export const AIConfigVariation$inboundSchema: z.ZodType<
   AIConfigVariation,
   z.ZodTypeDef,
@@ -103,6 +214,7 @@ export const AIConfigVariation$inboundSchema: z.ZodType<
 > = z.object({
   _links: ParentLink$inboundSchema.optional(),
   color: z.string().optional(),
+  classifiers: z.array(Classifier$inboundSchema).optional(),
   comment: z.string().optional(),
   description: z.string().optional(),
   instructions: z.string().optional(),
@@ -111,13 +223,16 @@ export const AIConfigVariation$inboundSchema: z.ZodType<
   messages: z.array(Message$inboundSchema).optional(),
   model: z.lazy(() => AIConfigVariationModel$inboundSchema),
   modelConfigKey: z.string().optional(),
+  modelConfigVersion: z.number().int().optional(),
   name: z.string(),
+  outputFormat: z.record(z.any()).optional(),
   createdAt: z.number().int(),
   version: z.number().int(),
-  state: z.string().optional(),
+  state: AIConfigVariationState$inboundSchema.optional(),
   _archivedAt: z.number().int().optional(),
   _publishedAt: z.number().int().optional(),
   tools: z.array(VariationTool$inboundSchema).optional(),
+  skills: z.array(VariationSkill$inboundSchema).optional(),
   judgeConfiguration: JudgeConfiguration$inboundSchema.optional(),
   judgingConfigKeys: z.array(z.string()).optional(),
 }).transform((v) => {
@@ -132,6 +247,7 @@ export const AIConfigVariation$inboundSchema: z.ZodType<
 export type AIConfigVariation$Outbound = {
   _links?: ParentLink$Outbound | undefined;
   color?: string | undefined;
+  classifiers?: Array<Classifier$Outbound> | undefined;
   comment?: string | undefined;
   description?: string | undefined;
   instructions?: string | undefined;
@@ -140,13 +256,16 @@ export type AIConfigVariation$Outbound = {
   messages?: Array<Message$Outbound> | undefined;
   model: AIConfigVariationModel$Outbound;
   modelConfigKey?: string | undefined;
+  modelConfigVersion?: number | undefined;
   name: string;
+  outputFormat?: { [k: string]: any } | undefined;
   createdAt: number;
   version: number;
   state?: string | undefined;
   _archivedAt?: number | undefined;
   _publishedAt?: number | undefined;
   tools?: Array<VariationTool$Outbound> | undefined;
+  skills?: Array<VariationSkill$Outbound> | undefined;
   judgeConfiguration?: JudgeConfiguration$Outbound | undefined;
   judgingConfigKeys?: Array<string> | undefined;
 };
@@ -159,6 +278,7 @@ export const AIConfigVariation$outboundSchema: z.ZodType<
 > = z.object({
   links: ParentLink$outboundSchema.optional(),
   color: z.string().optional(),
+  classifiers: z.array(Classifier$outboundSchema).optional(),
   comment: z.string().optional(),
   description: z.string().optional(),
   instructions: z.string().optional(),
@@ -167,13 +287,16 @@ export const AIConfigVariation$outboundSchema: z.ZodType<
   messages: z.array(Message$outboundSchema).optional(),
   model: z.lazy(() => AIConfigVariationModel$outboundSchema),
   modelConfigKey: z.string().optional(),
+  modelConfigVersion: z.number().int().optional(),
   name: z.string(),
+  outputFormat: z.record(z.any()).optional(),
   createdAt: z.number().int(),
   version: z.number().int(),
-  state: z.string().optional(),
+  state: AIConfigVariationState$outboundSchema.optional(),
   archivedAt: z.number().int().optional(),
   publishedAt: z.number().int().optional(),
   tools: z.array(VariationTool$outboundSchema).optional(),
+  skills: z.array(VariationSkill$outboundSchema).optional(),
   judgeConfiguration: JudgeConfiguration$outboundSchema.optional(),
   judgingConfigKeys: z.array(z.string()).optional(),
 }).transform((v) => {

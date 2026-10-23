@@ -9,7 +9,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type JudgeAttachment = {
   /**
-   * Key of the judge AI Config
+   * Judge config key
    */
   judgeConfigKey: string;
   /**

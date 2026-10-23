@@ -8,8 +8,17 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type DeleteAIConfigVariationRequest = {
+  /**
+   * The project key
+   */
   projectKey: string;
+  /**
+   * The AI Config key
+   */
   configKey: string;
+  /**
+   * The AI Config variation key
+   */
   variationKey: string;
 };
 

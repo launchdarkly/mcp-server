@@ -20,12 +20,24 @@ import {
 } from "./aiconfigtargetingenvironmentfallthroughrolloutvariation.js";
 
 export type AIConfigTargetingEnvironmentFallthroughRollout = {
+  /**
+   * The context attribute used to bucket contexts
+   */
   bucketBy?: string | undefined;
+  /**
+   * The context kind used to bucket contexts
+   */
   contextKind: string;
   experimentAllocation?:
     | AIConfigTargetingEnvironmentFallthroughRolloutExperimentationAllocation
     | undefined;
+  /**
+   * The seed used for bucketing
+   */
   seed?: number | undefined;
+  /**
+   * The variations and their weights
+   */
   variations: Array<AIConfigTargetingEnvironmentFallthroughRolloutVariation>;
 };
 

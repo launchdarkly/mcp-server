@@ -13,6 +13,9 @@ import {
   AIConfigTargetingVariationJSON$outboundSchema,
 } from "./aiconfigtargetingvariationjson.js";
 
+/**
+ * The variation value
+ */
 export type AIConfigTargetingVariationValue =
   | boolean
   | AIConfigTargetingVariationJSON

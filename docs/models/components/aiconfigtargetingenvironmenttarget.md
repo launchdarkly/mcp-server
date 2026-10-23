@@ -17,8 +17,8 @@ let value: AIConfigTargetingEnvironmentTarget = {
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `contextKind`      | *string*           | :heavy_check_mark: | N/A                |
-| `values`           | *string*[]         | :heavy_check_mark: | N/A                |
-| `variation`        | *number*           | :heavy_check_mark: | N/A                |
+| Field                           | Type                            | Required                        | Description                     |
+| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
+| `contextKind`                   | *string*                        | :heavy_check_mark:              | The context kind                |
+| `values`                        | *string*[]                      | :heavy_check_mark:              | The context keys to target      |
+| `variation`                     | *number*                        | :heavy_check_mark:              | Index of the variation to serve |
