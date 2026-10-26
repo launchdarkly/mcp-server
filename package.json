@@ -1,6 +1,6 @@
 {
   "name": "@launchdarkly/mcp-server",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "author": "LaunchDarkly",
   "keywords": [
     "feature-flags",
@@ -39,6 +39,7 @@
     "build:mcp": "bun src/mcp-server/build.mts",
     "build": "npm run build:mcp && tshy",
     "test:sse-security": "node --test --test-force-exit test/sse-security.test.mjs",
+    "test:tls-blocklist": "node --test --test-force-exit test/tls-blocklist.test.mjs",
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {},

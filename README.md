@@ -35,6 +35,15 @@ The local [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) serve
 
 This MCP server can be installed in any AI client that supports the MCP protocol. Refer to your AI client's instructions if it isn't listed here.
 
+### Runtime requirements
+
+> [!IMPORTANT]
+> Some eMudhra intermediate certificate authorities were compromised in October 2026 ([advisory](https://emudhra.we-have-a-problem.com/)). Anyone on your network who holds one of their keys could intercept the server's connection to LaunchDarkly and read your API access token.
+>
+> - **npx and local installs:** use Node.js **22.23.4, 24.22.1, 26.12.1 or later**. These releases reject the compromised intermediates. The server also rejects them itself and prints a warning on startup when your runtime does not.
+> - **Docker:** use image 0.7.1 or later. Those run on Node.js 24.22.1; 0.7.0 and earlier run on Node.js 24.2.0.
+> - **Standalone binaries:** stop using the `mcp-server-bun-*` binaries attached to releases v0.6.1 and earlier. They embed a Bun runtime that does not reject the compromised intermediates, and they are no longer published. Switch to npx with a patched Node.js or to Docker.
+
 ### Cursor installation steps
 
 Create a `.cursor/mcp.json` file in your project root with the following content:
@@ -127,15 +136,6 @@ Or create/edit `~/.copilot/mcp-config.json` with the following content:
 Specify your API key as found on LaunchDarkly's Authorization page.
 
 For more information, see the [GitHub Copilot CLI documentation](https://docs.github.com/en/copilot/concepts/agents/about-copilot-cli).
-
-### Standalone binary installation steps
-
-You can also run the MCP server as a standalone binary with no additional dependencies. You must pull these binaries from available GitHub releases while specifying the appropriate `tag` value:
-
-```bash
-curl -L -o mcp-server https://github.com/launchdarkly/mcp-server/releases/download/{tag}/mcp-server-bun-darwin-arm64 && \
-chmod +x mcp-server
-```
 
 ### Installation steps from a local clone
 
