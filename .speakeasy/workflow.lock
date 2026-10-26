@@ -14,7 +14,7 @@ targets:
         sourceRevisionDigest: sha256:8c8289f98f208df0d66a10df1727ac5589576206d991791b3da6b152a90f0d89
         sourceBlobDigest: sha256:975e7a341b45b3ba22b9301b88c73d109b594b5423dedd130d9c584a15db077d
         codeSamplesNamespace: launchdarkly-rest-api-typescript-code-samples
-        codeSamplesRevisionDigest: sha256:7352d5752936f7b0ae069702966970b97eb7870c3ffd15aef72bad5633c70277
+        codeSamplesRevisionDigest: sha256:cb08f4f539c716ab60656ed82f1f10dcc90e4e999be31cf4980fb7ec7190b523
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: 1.736.1

@@ -68,7 +68,6 @@ export * from "./dependentexperimentrep.js";
 export * from "./dependentmetricgrouprep.js";
 export * from "./dependentmetricgrouprepwithmetrics.js";
 export * from "./dependentmetricormetricgrouprep.js";
-export * from "./dependentreleasephaserep.js";
 export * from "./environment.js";
 export * from "./environments.js";
 export * from "./eventfilter.js";

@@ -1,11 +1,13 @@
-# DependentReleasePhaseRep
+# LastUsedInGuardedRollout
+
+The most recent guarded rollout that used this metric
 
 ## Example Usage
 
 ```typescript
-import { DependentReleasePhaseRep } from "@launchdarkly/mcp-server/models/components";
+import { LastUsedInGuardedRollout } from "@launchdarkly/mcp-server/models/components";
 
-let value: DependentReleasePhaseRep = {
+let value: LastUsedInGuardedRollout = {
   id: "885ccadf-181b-4a9a-8414-7ad6f7ba2db0",
   flagKey: "my-flag",
   flagName: "My Flag",
@@ -13,7 +15,7 @@ let value: DependentReleasePhaseRep = {
   environmentKey: "production",
   environmentName: "Production",
   status: "monitoring",
-  creationDate: 748328,
+  creationDate: 783656,
   links: {
     "self": {
       href:

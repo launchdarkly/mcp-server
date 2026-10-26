@@ -27,12 +27,6 @@ import {
   DependentMetricGroupRep$outboundSchema,
 } from "./dependentmetricgrouprep.js";
 import {
-  DependentReleasePhaseRep,
-  DependentReleasePhaseRep$inboundSchema,
-  DependentReleasePhaseRep$Outbound,
-  DependentReleasePhaseRep$outboundSchema,
-} from "./dependentreleasephaserep.js";
-import {
   Filter,
   Filter$inboundSchema,
   Filter$Outbound,
@@ -135,6 +129,73 @@ export const MetricRepAnalysisType = {
  * The method for analyzing metric events
  */
 export type MetricRepAnalysisType = ClosedEnum<typeof MetricRepAnalysisType>;
+
+/**
+ * The most recent experiment that used this metric
+ */
+export type LastUsedInExperiment = {
+  /**
+   * The experiment key
+   */
+  key: string;
+  /**
+   * The experiment name
+   */
+  name: string;
+  /**
+   * The environment ID
+   */
+  environmentId: string;
+  /**
+   * The environment key
+   */
+  environmentKey: string;
+  creationDate: number;
+  archivedDate?: number | undefined;
+  /**
+   * The location and content type of related resources
+   */
+  links: { [k: string]: Link };
+};
+
+/**
+ * The most recent guarded rollout that used this metric
+ */
+export type LastUsedInGuardedRollout = {
+  /**
+   * The guarded rollout release phase ID
+   */
+  id: string;
+  /**
+   * The guarded rollout flag key
+   */
+  flagKey: string;
+  /**
+   * The guarded rollout flag name
+   */
+  flagName: string;
+  /**
+   * The guarded rollout flag purpose
+   */
+  flagPurpose?: string | undefined;
+  /**
+   * The guarded rollout environment key
+   */
+  environmentKey: string;
+  /**
+   * The guarded rollout environment name
+   */
+  environmentName: string;
+  /**
+   * The guarded rollout status
+   */
+  status: string;
+  creationDate: number;
+  /**
+   * The location and content type of related resources
+   */
+  links: { [k: string]: Link };
+};
 
 export type MetricRep = {
   /**
@@ -296,8 +357,6 @@ export type MetricRep = {
    * Metric groups that use this metric
    */
   metricGroups?: Array<DependentMetricGroupRep> | undefined;
-  lastUsedInExperiment?: DependentExperimentRep | undefined;
-  lastUsedInGuardedRollout?: DependentReleasePhaseRep | undefined;
   /**
    * Whether the metric is active
    */
@@ -305,7 +364,15 @@ export type MetricRep = {
   /**
    * Details on the flags attached to this metric
    */
-  attachedFeatures?: Array<FlagListingRep> | undefined;
+  attachedFeatures?: Array<FlagListingRep> | null | undefined;
+  /**
+   * The most recent experiment that used this metric
+   */
+  lastUsedInExperiment?: LastUsedInExperiment | null | undefined;
+  /**
+   * The most recent guarded rollout that used this metric
+   */
+  lastUsedInGuardedRollout?: LastUsedInGuardedRollout | null | undefined;
 };
 
 /** @internal */
@@ -343,6 +410,144 @@ export const MetricRepAnalysisType$inboundSchema: z.ZodNativeEnum<
 export const MetricRepAnalysisType$outboundSchema: z.ZodNativeEnum<
   typeof MetricRepAnalysisType
 > = MetricRepAnalysisType$inboundSchema;
+
+/** @internal */
+export const LastUsedInExperiment$inboundSchema: z.ZodType<
+  LastUsedInExperiment,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  key: z.string(),
+  name: z.string(),
+  environmentId: z.string(),
+  environmentKey: z.string(),
+  creationDate: z.number().int(),
+  archivedDate: z.number().int().optional(),
+  _links: z.record(Link$inboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    "_links": "links",
+  });
+});
+/** @internal */
+export type LastUsedInExperiment$Outbound = {
+  key: string;
+  name: string;
+  environmentId: string;
+  environmentKey: string;
+  creationDate: number;
+  archivedDate?: number | undefined;
+  _links: { [k: string]: Link$Outbound };
+};
+
+/** @internal */
+export const LastUsedInExperiment$outboundSchema: z.ZodType<
+  LastUsedInExperiment$Outbound,
+  z.ZodTypeDef,
+  LastUsedInExperiment
+> = z.object({
+  key: z.string(),
+  name: z.string(),
+  environmentId: z.string(),
+  environmentKey: z.string(),
+  creationDate: z.number().int(),
+  archivedDate: z.number().int().optional(),
+  links: z.record(Link$outboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    links: "_links",
+  });
+});
+
+export function lastUsedInExperimentToJSON(
+  lastUsedInExperiment: LastUsedInExperiment,
+): string {
+  return JSON.stringify(
+    LastUsedInExperiment$outboundSchema.parse(lastUsedInExperiment),
+  );
+}
+export function lastUsedInExperimentFromJSON(
+  jsonString: string,
+): SafeParseResult<LastUsedInExperiment, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LastUsedInExperiment$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LastUsedInExperiment' from JSON`,
+  );
+}
+
+/** @internal */
+export const LastUsedInGuardedRollout$inboundSchema: z.ZodType<
+  LastUsedInGuardedRollout,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  _id: z.string(),
+  flagKey: z.string(),
+  flagName: z.string(),
+  flagPurpose: z.string().optional(),
+  environmentKey: z.string(),
+  environmentName: z.string(),
+  status: z.string(),
+  creationDate: z.number().int(),
+  _links: z.record(Link$inboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    "_id": "id",
+    "_links": "links",
+  });
+});
+/** @internal */
+export type LastUsedInGuardedRollout$Outbound = {
+  _id: string;
+  flagKey: string;
+  flagName: string;
+  flagPurpose?: string | undefined;
+  environmentKey: string;
+  environmentName: string;
+  status: string;
+  creationDate: number;
+  _links: { [k: string]: Link$Outbound };
+};
+
+/** @internal */
+export const LastUsedInGuardedRollout$outboundSchema: z.ZodType<
+  LastUsedInGuardedRollout$Outbound,
+  z.ZodTypeDef,
+  LastUsedInGuardedRollout
+> = z.object({
+  id: z.string(),
+  flagKey: z.string(),
+  flagName: z.string(),
+  flagPurpose: z.string().optional(),
+  environmentKey: z.string(),
+  environmentName: z.string(),
+  status: z.string(),
+  creationDate: z.number().int(),
+  links: z.record(Link$outboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    id: "_id",
+    links: "_links",
+  });
+});
+
+export function lastUsedInGuardedRolloutToJSON(
+  lastUsedInGuardedRollout: LastUsedInGuardedRollout,
+): string {
+  return JSON.stringify(
+    LastUsedInGuardedRollout$outboundSchema.parse(lastUsedInGuardedRollout),
+  );
+}
+export function lastUsedInGuardedRolloutFromJSON(
+  jsonString: string,
+): SafeParseResult<LastUsedInGuardedRollout, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LastUsedInGuardedRollout$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LastUsedInGuardedRollout' from JSON`,
+  );
+}
 
 /** @internal */
 export const MetricRep$inboundSchema: z.ZodType<
@@ -399,10 +604,15 @@ export const MetricRep$inboundSchema: z.ZodType<
   denominator: MetricDenominatorRep$inboundSchema.optional(),
   experiments: z.array(DependentExperimentRep$inboundSchema).optional(),
   metricGroups: z.array(DependentMetricGroupRep$inboundSchema).optional(),
-  lastUsedInExperiment: DependentExperimentRep$inboundSchema.optional(),
-  lastUsedInGuardedRollout: DependentReleasePhaseRep$inboundSchema.optional(),
   isActive: z.boolean().optional(),
-  _attachedFeatures: z.array(FlagListingRep$inboundSchema).optional(),
+  _attachedFeatures: z.nullable(z.array(FlagListingRep$inboundSchema))
+    .optional(),
+  lastUsedInExperiment: z.nullable(
+    z.lazy(() => LastUsedInExperiment$inboundSchema),
+  ).optional(),
+  lastUsedInGuardedRollout: z.nullable(
+    z.lazy(() => LastUsedInGuardedRollout$inboundSchema),
+  ).optional(),
 }).transform((v) => {
   return remap$(v, {
     "_id": "id",
@@ -468,10 +678,13 @@ export type MetricRep$Outbound = {
   denominator?: MetricDenominatorRep$Outbound | undefined;
   experiments?: Array<DependentExperimentRep$Outbound> | undefined;
   metricGroups?: Array<DependentMetricGroupRep$Outbound> | undefined;
-  lastUsedInExperiment?: DependentExperimentRep$Outbound | undefined;
-  lastUsedInGuardedRollout?: DependentReleasePhaseRep$Outbound | undefined;
   isActive?: boolean | undefined;
-  _attachedFeatures?: Array<FlagListingRep$Outbound> | undefined;
+  _attachedFeatures?: Array<FlagListingRep$Outbound> | null | undefined;
+  lastUsedInExperiment?: LastUsedInExperiment$Outbound | null | undefined;
+  lastUsedInGuardedRollout?:
+    | LastUsedInGuardedRollout$Outbound
+    | null
+    | undefined;
 };
 
 /** @internal */
@@ -529,10 +742,15 @@ export const MetricRep$outboundSchema: z.ZodType<
   denominator: MetricDenominatorRep$outboundSchema.optional(),
   experiments: z.array(DependentExperimentRep$outboundSchema).optional(),
   metricGroups: z.array(DependentMetricGroupRep$outboundSchema).optional(),
-  lastUsedInExperiment: DependentExperimentRep$outboundSchema.optional(),
-  lastUsedInGuardedRollout: DependentReleasePhaseRep$outboundSchema.optional(),
   isActive: z.boolean().optional(),
-  attachedFeatures: z.array(FlagListingRep$outboundSchema).optional(),
+  attachedFeatures: z.nullable(z.array(FlagListingRep$outboundSchema))
+    .optional(),
+  lastUsedInExperiment: z.nullable(
+    z.lazy(() => LastUsedInExperiment$outboundSchema),
+  ).optional(),
+  lastUsedInGuardedRollout: z.nullable(
+    z.lazy(() => LastUsedInGuardedRollout$outboundSchema),
+  ).optional(),
 }).transform((v) => {
   return remap$(v, {
     id: "_id",

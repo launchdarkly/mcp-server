@@ -129,12 +129,19 @@ let value: MetricRep = {
       },
     },
   ],
+  isActive: true,
+  attachedFeatures: [
+    {
+      name: "Example flag",
+      key: "flag-key-123abc",
+    },
+  ],
   lastUsedInExperiment: {
     key: "experiment-key-123abc",
     name: "Example experiment",
     environmentId: "1234a56b7c89d012345e678f",
     environmentKey: "production",
-    creationDate: 911329,
+    creationDate: 202850,
     links: {
       "parent": {
         href: "/api/v2/projects/my-project/environments/my-environment",
@@ -155,7 +162,7 @@ let value: MetricRep = {
     environmentKey: "production",
     environmentName: "Production",
     status: "monitoring",
-    creationDate: 171464,
+    creationDate: 521585,
     links: {
       "self": {
         href:
@@ -164,13 +171,6 @@ let value: MetricRep = {
       },
     },
   },
-  isActive: true,
-  attachedFeatures: [
-    {
-      name: "Example flag",
-      key: "flag-key-123abc",
-    },
-  ],
 };
 ```
 
@@ -227,7 +227,7 @@ let value: MetricRep = {
 | `denominator`                                                                                                                                                                                  | [components.MetricDenominatorRep](../../models/components/metricdenominatorrep.md)                                                                                                             | :heavy_minus_sign:                                                                                                                                                                             | N/A                                                                                                                                                                                            |                                                                                                                                                                                                |
 | `experiments`                                                                                                                                                                                  | [components.DependentExperimentRep](../../models/components/dependentexperimentrep.md)[]                                                                                                       | :heavy_minus_sign:                                                                                                                                                                             | N/A                                                                                                                                                                                            |                                                                                                                                                                                                |
 | `metricGroups`                                                                                                                                                                                 | [components.DependentMetricGroupRep](../../models/components/dependentmetricgrouprep.md)[]                                                                                                     | :heavy_minus_sign:                                                                                                                                                                             | Metric groups that use this metric                                                                                                                                                             |                                                                                                                                                                                                |
-| `lastUsedInExperiment`                                                                                                                                                                         | [components.DependentExperimentRep](../../models/components/dependentexperimentrep.md)                                                                                                         | :heavy_minus_sign:                                                                                                                                                                             | N/A                                                                                                                                                                                            |                                                                                                                                                                                                |
-| `lastUsedInGuardedRollout`                                                                                                                                                                     | [components.DependentReleasePhaseRep](../../models/components/dependentreleasephaserep.md)                                                                                                     | :heavy_minus_sign:                                                                                                                                                                             | N/A                                                                                                                                                                                            |                                                                                                                                                                                                |
 | `isActive`                                                                                                                                                                                     | *boolean*                                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                                             | Whether the metric is active                                                                                                                                                                   | true                                                                                                                                                                                           |
 | `attachedFeatures`                                                                                                                                                                             | [components.FlagListingRep](../../models/components/flaglistingrep.md)[]                                                                                                                       | :heavy_minus_sign:                                                                                                                                                                             | Details on the flags attached to this metric                                                                                                                                                   |                                                                                                                                                                                                |
+| `lastUsedInExperiment`                                                                                                                                                                         | [components.LastUsedInExperiment](../../models/components/lastusedinexperiment.md)                                                                                                             | :heavy_minus_sign:                                                                                                                                                                             | The most recent experiment that used this metric                                                                                                                                               |                                                                                                                                                                                                |
+| `lastUsedInGuardedRollout`                                                                                                                                                                     | [components.LastUsedInGuardedRollout](../../models/components/lastusedinguardedrollout.md)                                                                                                     | :heavy_minus_sign:                                                                                                                                                                             | The most recent guarded rollout that used this metric                                                                                                                                          |                                                                                                                                                                                                |

@@ -15055,6 +15055,16 @@
                 }
               }
             }
+          },
+          "201": {
+            "description": "Iteration response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IterationRep"
+                }
+              }
+            }
           }
         },
         "tags": [
@@ -44462,7 +44472,8 @@
         "properties": {
           "bayesianThreshold": {
             "type": "string",
-            "description": "The threshold for the Probability to Beat Baseline (PBBL) and Probability to Be Best (PBB) comparisons for the Bayesian results analysis approach.  Value should be between 0-100 inclusive."
+            "description": "The threshold for the Probability to Beat Baseline (PBBL) and Probability to Be Best (PBB) comparisons for the Bayesian results analysis approach.  Value should be between 0-100 inclusive.",
+            "nullable": true
           },
           "significanceThreshold": {
             "type": "string",
@@ -54451,14 +54462,6 @@
               "$ref": "#/components/schemas/DependentMetricGroupRep"
             }
           },
-          "lastUsedInExperiment": {
-            "description": "The most recent experiment that used this metric",
-            "$ref": "#/components/schemas/DependentExperimentRep"
-          },
-          "lastUsedInGuardedRollout": {
-            "description": "The most recent guarded rollout that used this metric",
-            "$ref": "#/components/schemas/DependentReleasePhaseRep"
-          },
           "isActive": {
             "type": "boolean",
             "description": "Whether the metric is active",
@@ -54469,7 +54472,26 @@
             "description": "Details on the flags attached to this metric",
             "items": {
               "$ref": "#/components/schemas/FlagListingRep"
-            }
+            },
+            "nullable": true
+          },
+          "lastUsedInExperiment": {
+            "description": "The most recent experiment that used this metric",
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DependentExperimentRep"
+              }
+            ]
+          },
+          "lastUsedInGuardedRollout": {
+            "description": "The most recent guarded rollout that used this metric",
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DependentReleasePhaseRep"
+              }
+            ]
           }
         }
       },

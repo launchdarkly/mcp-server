@@ -41,7 +41,7 @@ export type AnalysisConfigRep = {
   /**
    * The threshold for the Probability to Beat Baseline (PBBL) and Probability to Be Best (PBB) comparisons for the Bayesian results analysis approach.  Value should be between 0-100 inclusive.
    */
-  bayesianThreshold?: string | undefined;
+  bayesianThreshold?: string | null | undefined;
   /**
    * The significance threshold for the frequentist results analysis approach. Value should be between 0.0-1.0 inclusive.
    */
@@ -92,7 +92,7 @@ export const AnalysisConfigRep$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  bayesianThreshold: z.string().optional(),
+  bayesianThreshold: z.nullable(z.string()).optional(),
   significanceThreshold: z.string().optional(),
   testDirection: z.string().optional(),
   multipleComparisonCorrectionMethod:
@@ -104,7 +104,7 @@ export const AnalysisConfigRep$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type AnalysisConfigRep$Outbound = {
-  bayesianThreshold?: string | undefined;
+  bayesianThreshold?: string | null | undefined;
   significanceThreshold?: string | undefined;
   testDirection?: string | undefined;
   multipleComparisonCorrectionMethod?: string | undefined;
@@ -118,7 +118,7 @@ export const AnalysisConfigRep$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AnalysisConfigRep
 > = z.object({
-  bayesianThreshold: z.string().optional(),
+  bayesianThreshold: z.nullable(z.string()).optional(),
   significanceThreshold: z.string().optional(),
   testDirection: z.string().optional(),
   multipleComparisonCorrectionMethod:

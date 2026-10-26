@@ -194,7 +194,7 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, components.IterationRep$inboundSchema),
+    M.json([200, 201], components.IterationRep$inboundSchema),
     M.jsonErr(400, errors.InvalidRequestErrorRep$inboundSchema),
     M.jsonErr(401, errors.UnauthorizedErrorRep$inboundSchema),
     M.jsonErr(403, errors.ForbiddenErrorRep$inboundSchema),
