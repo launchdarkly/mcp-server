@@ -47,3 +47,6 @@ actions:
         nullable: true
         allOf:
           - $ref: "#/components/schemas/DependentReleasePhaseRep"
+  - target: $["components"]["schemas"]["IterationRep"]["required"][?(@ == "hypothesis")]
+    description: "API omits hypothesis (omitempty) on iterations created without one, despite the spec marking it required"
+    remove: true

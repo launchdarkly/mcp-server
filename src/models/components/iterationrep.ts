@@ -72,7 +72,7 @@ export type IterationRep = {
   /**
    * The expected outcome of this experiment
    */
-  hypothesis: string;
+  hypothesis?: string | undefined;
   /**
    * The status of the iteration: <code>not_started</code>, <code>running</code>, <code>stopped</code>
    */
@@ -147,7 +147,7 @@ export const IterationRep$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   _id: z.string().optional(),
-  hypothesis: z.string(),
+  hypothesis: z.string().optional(),
   status: Status$inboundSchema,
   createdAt: z.number().int(),
   startedAt: z.number().int().optional(),
@@ -176,7 +176,7 @@ export const IterationRep$inboundSchema: z.ZodType<
 /** @internal */
 export type IterationRep$Outbound = {
   _id?: string | undefined;
-  hypothesis: string;
+  hypothesis?: string | undefined;
   status: string;
   createdAt: number;
   startedAt?: number | undefined;
@@ -206,7 +206,7 @@ export const IterationRep$outboundSchema: z.ZodType<
   IterationRep
 > = z.object({
   id: z.string().optional(),
-  hypothesis: z.string(),
+  hypothesis: z.string().optional(),
   status: Status$outboundSchema,
   createdAt: z.number().int(),
   startedAt: z.number().int().optional(),

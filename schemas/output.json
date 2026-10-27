@@ -52390,7 +52390,6 @@
       "IterationRep": {
         "type": "object",
         "required": [
-          "hypothesis",
           "status",
           "createdAt"
         ],
