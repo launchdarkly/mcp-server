@@ -19,10 +19,10 @@ let value: AIConfigTargetingEnvironmentRuleClause = {
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `attribute`        | *string*           | :heavy_check_mark: | N/A                |
-| `id`               | *string*           | :heavy_check_mark: | N/A                |
-| `negate`           | *boolean*          | :heavy_check_mark: | N/A                |
-| `op`               | *string*           | :heavy_check_mark: | N/A                |
-| `values`           | *any*[]            | :heavy_check_mark: | N/A                |
+| Field                          | Type                           | Required                       | Description                    |
+| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
+| `attribute`                    | *string*                       | :heavy_check_mark:             | The context attribute to match |
+| `id`                           | *string*                       | :heavy_check_mark:             | The clause ID                  |
+| `negate`                       | *boolean*                      | :heavy_check_mark:             | Whether to negate the match    |
+| `op`                           | *string*                       | :heavy_check_mark:             | The operator to use            |
+| `values`                       | *any*[]                        | :heavy_check_mark:             | The values to match against    |

@@ -11,3 +11,42 @@ actions:
     description: "API returns null for lastRequested when a flag has never been evaluated"
     update:
       nullable: true
+  - target: $["components"]["schemas"]["AnalysisConfigRep"]["properties"]["bayesianThreshold"]
+    description: "API returns null for bayesianThreshold on frequentist experiments"
+    update:
+      nullable: true
+  - target: $["components"]["schemas"]["MetricRep"]["properties"]["_attachedFeatures"]
+    description: "API returns null for _attachedFeatures in the create-metric response"
+    update:
+      nullable: true
+  - target: $["paths"]["/api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}/iterations"]["post"]["responses"]
+    description: "API returns 201, not the documented 200, when it creates an iteration"
+    update:
+      "201":
+        description: Iteration response
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/IterationRep"
+  # nullable is ignored beside a $ref in OAS 3.0, so these swap the $ref for a nullable allOf.
+  - target: $["components"]["schemas"]["MetricRep"]["properties"]["lastUsedInExperiment"]
+    description: "API returns null for lastUsedInExperiment when no experiment has used the metric"
+    remove: true
+  - target: $["components"]["schemas"]["MetricRep"]["properties"]["lastUsedInGuardedRollout"]
+    description: "API returns null for lastUsedInGuardedRollout when no guarded rollout has used the metric"
+    remove: true
+  - target: $["components"]["schemas"]["MetricRep"]["properties"]
+    update:
+      lastUsedInExperiment:
+        description: The most recent experiment that used this metric
+        nullable: true
+        allOf:
+          - $ref: "#/components/schemas/DependentExperimentRep"
+      lastUsedInGuardedRollout:
+        description: The most recent guarded rollout that used this metric
+        nullable: true
+        allOf:
+          - $ref: "#/components/schemas/DependentReleasePhaseRep"
+  - target: $["components"]["schemas"]["IterationRep"]["required"][?(@ == "hypothesis")]
+    description: "API omits hypothesis (omitempty) on iterations created without one, despite the spec marking it required"
+    remove: true

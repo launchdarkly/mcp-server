@@ -33,17 +33,29 @@ import {
   AIConfigVariation$outboundSchema,
 } from "./aiconfigvariation.js";
 import {
+  CoreLink,
+  CoreLink$inboundSchema,
+  CoreLink$Outbound,
+  CoreLink$outboundSchema,
+} from "./corelink.js";
+import {
   ParentAndSelfLinks,
   ParentAndSelfLinks$inboundSchema,
   ParentAndSelfLinks$Outbound,
   ParentAndSelfLinks$outboundSchema,
 } from "./parentandselflinks.js";
 
+/**
+ * The AI Config mode
+ */
 export const AIConfigMode = {
   Agent: "agent",
   Completion: "completion",
   Judge: "judge",
 } as const;
+/**
+ * The AI Config mode
+ */
 export type AIConfigMode = ClosedEnum<typeof AIConfigMode>;
 
 export type AIConfig = {
@@ -52,22 +64,47 @@ export type AIConfig = {
    * The location and content type of related resources
    */
   links?: ParentAndSelfLinks | undefined;
+  site?: CoreLink | undefined;
+  /**
+   * A description of the AI Config
+   */
   description: string;
+  /**
+   * The AI Config key
+   */
   key: string;
+  /**
+   * The member or team that maintains this resource
+   */
   maintainer?: AIConfigMaintainer | undefined;
+  /**
+   * The AI Config mode
+   */
   mode?: AIConfigMode | undefined;
+  /**
+   * The AI Config name
+   */
   name: string;
+  /**
+   * Tags for this resource
+   */
   tags: Array<string>;
+  /**
+   * The version number of this resource
+   */
   version: number;
+  /**
+   * The variations of this AI Config
+   */
   variations: Array<AIConfigVariation>;
   createdAt: number;
   updatedAt: number;
   /**
-   * Evaluation metric key for this AI Config
+   * Evaluation metric key for this config
    */
   evaluationMetricKey?: string | undefined;
   /**
-   * List of evaluation metric keys for this AI Config
+   * List of evaluation metric keys for this config
    *
    * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
@@ -77,7 +114,7 @@ export type AIConfig = {
    */
   isInverted?: boolean | undefined;
   /**
-   * Resources that depend on this AI Config, grouped by type
+   * Resources that depend on this config, grouped by type
    */
   dependencies?: Array<AIConfigDependency> | undefined;
 };
@@ -97,6 +134,7 @@ export const AIConfig$inboundSchema: z.ZodType<
 > = z.object({
   _access: AiConfigsAccess$inboundSchema.optional(),
   _links: ParentAndSelfLinks$inboundSchema.optional(),
+  _site: CoreLink$inboundSchema.optional(),
   description: z.string(),
   key: z.string(),
   _maintainer: AIConfigMaintainer$inboundSchema.optional(),
@@ -115,6 +153,7 @@ export const AIConfig$inboundSchema: z.ZodType<
   return remap$(v, {
     "_access": "access",
     "_links": "links",
+    "_site": "site",
     "_maintainer": "maintainer",
   });
 });
@@ -122,6 +161,7 @@ export const AIConfig$inboundSchema: z.ZodType<
 export type AIConfig$Outbound = {
   _access?: AiConfigsAccess$Outbound | undefined;
   _links?: ParentAndSelfLinks$Outbound | undefined;
+  _site?: CoreLink$Outbound | undefined;
   description: string;
   key: string;
   _maintainer?: AIConfigMaintainer$Outbound | undefined;
@@ -146,6 +186,7 @@ export const AIConfig$outboundSchema: z.ZodType<
 > = z.object({
   access: AiConfigsAccess$outboundSchema.optional(),
   links: ParentAndSelfLinks$outboundSchema.optional(),
+  site: CoreLink$outboundSchema.optional(),
   description: z.string(),
   key: z.string(),
   maintainer: AIConfigMaintainer$outboundSchema.optional(),
@@ -164,6 +205,7 @@ export const AIConfig$outboundSchema: z.ZodType<
   return remap$(v, {
     access: "_access",
     links: "_links",
+    site: "_site",
     maintainer: "_maintainer",
   });
 });

@@ -14,6 +14,9 @@ import {
 } from "./aiconfigtargetingenvironmentfallthroughrollout.js";
 
 export type AIConfigTargetingEnvironmentFallthrough = {
+  /**
+   * Index of the variation served by the default rule
+   */
   variation?: number | undefined;
   rollout?: AIConfigTargetingEnvironmentFallthroughRollout | undefined;
 };

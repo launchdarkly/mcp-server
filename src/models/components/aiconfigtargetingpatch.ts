@@ -8,8 +8,17 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AIConfigTargetingPatch = {
+  /**
+   * A comment describing the change
+   */
   comment?: string | undefined;
+  /**
+   * The environment key
+   */
   environmentKey: string;
+  /**
+   * The semantic patch instructions to apply
+   */
   instructions: Array<{ [k: string]: any }>;
 };
 

@@ -17,9 +17,10 @@ By default, this returns the first 20 environments. Page through this list with 
 
 ### Filtering environments
 
-LaunchDarkly supports two fields for filters:
+LaunchDarkly supports the following fields for filters:
 - `query` is a string that matches against the environments' names and keys. It is not case sensitive.
 - `tags` is a `+`-separated list of environment tags. It filters the list of environments that have all of the tags in the list.
+- `critical` is a boolean filter. `critical:true` returns only environments marked as critical, and `critical:false` returns only non-critical environments.
 
 For example, the filter `filter=query:abc,tags:tag-1+tag-2` matches environments with the string `abc` in their name or key and also are tagged with `tag-1` and `tag-2`. The filter is not case-sensitive.
 

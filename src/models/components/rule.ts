@@ -39,7 +39,7 @@ export type Rule = {
    */
   clauses: Array<Clause>;
   /**
-   * Whether LaunchDarkly tracks events for this rule
+   * Whether the SDK sends a detailed event for every evaluation of this rule, instead of only summary counts. Required for Data Export, but doesn't enable Data Export on its own.
    */
   trackEvents: boolean;
   /**

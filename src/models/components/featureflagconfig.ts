@@ -106,11 +106,11 @@ export type FeatureFlagConfig = {
    */
   environmentName: string;
   /**
-   * Whether LaunchDarkly tracks events for the feature flag, for all rules
+   * Whether the SDK sends a detailed event for every evaluation of this flag, across all rules, instead of only summary counts. Required for Data Export, but doesn't enable Data Export on its own.
    */
   trackEvents: boolean;
   /**
-   * Whether LaunchDarkly tracks events for the feature flag, for the default rule
+   * Whether the SDK sends a detailed event for every evaluation of this flag's default rule, instead of only summary counts. Required for Data Export, but doesn't enable Data Export on its own.
    */
   trackEventsFallthrough: boolean;
   debugEventsUntilDate?: number | undefined;

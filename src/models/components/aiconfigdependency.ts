@@ -20,7 +20,7 @@ export const AIConfigDependencyType = {
 export type AIConfigDependencyType = ClosedEnum<typeof AIConfigDependencyType>;
 
 /**
- * A resource that depends on this AI Config
+ * A resource that depends on this config
  */
 export type AIConfigDependency = {
   /**

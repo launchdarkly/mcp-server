@@ -22,7 +22,13 @@ import {
 
 export type AIConfigs = {
   links?: PaginatedLinks | undefined;
+  /**
+   * The items on this page
+   */
   items: Array<AIConfig>;
+  /**
+   * The total number of items
+   */
   totalCount: number;
 };
 

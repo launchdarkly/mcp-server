@@ -9,20 +9,44 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AiConfigsMaintainerTeam = {
+  /**
+   * The team key
+   */
   key: string;
+  /**
+   * The team name
+   */
   name: string;
   kind: string;
 };
 
 export type MaintainerMember = {
+  /**
+   * The member ID
+   */
   id: string;
+  /**
+   * The member email address
+   */
   email: string;
+  /**
+   * The member first name
+   */
   firstName?: string | undefined;
+  /**
+   * The member last name
+   */
   lastName?: string | undefined;
+  /**
+   * The member role
+   */
   role: string;
   kind: string;
 };
 
+/**
+ * The member or team that maintains this resource
+ */
 export type AIConfigMaintainer = MaintainerMember | AiConfigsMaintainerTeam;
 
 /** @internal */

@@ -9,8 +9,17 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AIConfigTargetingEnvironmentFallthroughRolloutExperimentationAllocation =
   {
+    /**
+     * Whether contexts can be reassigned to new buckets
+     */
     canReshuffle: boolean;
+    /**
+     * Index of the default variation
+     */
     defaultVariation: number;
+    /**
+     * The allocation type
+     */
     type: string;
   };
 

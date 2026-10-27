@@ -15,6 +15,20 @@ let value: AIConfigVariationsResponse = {
         },
       },
       color: "color",
+      classifiers: [
+        {
+          key: "key",
+          type: "bool",
+          instructions: "instructions",
+          criteria: "",
+        },
+        {
+          key: "key",
+          type: "bool",
+          instructions: "instructions",
+          criteria: "",
+        },
+      ],
       comment: "comment",
       description: "description",
       instructions: "instructions",
@@ -31,38 +45,52 @@ let value: AIConfigVariationsResponse = {
         },
       ],
       model: {},
-      modelConfigKey: "modelConfigKey",
+      modelConfigKey: "OpenAI.gpt-4.1",
+      modelConfigVersion: 6,
       name: "name",
-      createdAt: 6,
-      version: 1,
-      state: "state",
+      outputFormat: {
+        "key": "",
+      },
+      createdAt: 1,
+      version: 5,
+      state: "published",
       archivedAt: 5,
-      publishedAt: 5,
+      publishedAt: 2,
       tools: [
         {
           key: "key",
-          version: 2,
+          version: 7,
           customParameters: {
             "key": "",
           },
         },
         {
           key: "key",
-          version: 2,
+          version: 7,
           customParameters: {
             "key": "",
           },
+        },
+      ],
+      skills: [
+        {
+          key: "key",
+          version: 9,
+        },
+        {
+          key: "key",
+          version: 9,
         },
       ],
       judgeConfiguration: {
         judges: [
           {
             judgeConfigKey: "judgeConfigKey",
-            samplingRate: 0.7061401,
+            samplingRate: 0.36160767,
           },
           {
             judgeConfigKey: "judgeConfigKey",
-            samplingRate: 0.7061401,
+            samplingRate: 0.36160767,
           },
         ],
       },
@@ -79,6 +107,20 @@ let value: AIConfigVariationsResponse = {
         },
       },
       color: "color",
+      classifiers: [
+        {
+          key: "key",
+          type: "bool",
+          instructions: "instructions",
+          criteria: "",
+        },
+        {
+          key: "key",
+          type: "bool",
+          instructions: "instructions",
+          criteria: "",
+        },
+      ],
       comment: "comment",
       description: "description",
       instructions: "instructions",
@@ -95,38 +137,52 @@ let value: AIConfigVariationsResponse = {
         },
       ],
       model: {},
-      modelConfigKey: "modelConfigKey",
+      modelConfigKey: "OpenAI.gpt-4.1",
+      modelConfigVersion: 6,
       name: "name",
-      createdAt: 6,
-      version: 1,
-      state: "state",
+      outputFormat: {
+        "key": "",
+      },
+      createdAt: 1,
+      version: 5,
+      state: "published",
       archivedAt: 5,
-      publishedAt: 5,
+      publishedAt: 2,
       tools: [
         {
           key: "key",
-          version: 2,
+          version: 7,
           customParameters: {
             "key": "",
           },
         },
         {
           key: "key",
-          version: 2,
+          version: 7,
           customParameters: {
             "key": "",
           },
+        },
+      ],
+      skills: [
+        {
+          key: "key",
+          version: 9,
+        },
+        {
+          key: "key",
+          version: 9,
         },
       ],
       judgeConfiguration: {
         judges: [
           {
             judgeConfigKey: "judgeConfigKey",
-            samplingRate: 0.7061401,
+            samplingRate: 0.36160767,
           },
           {
             judgeConfigKey: "judgeConfigKey",
-            samplingRate: 0.7061401,
+            samplingRate: 0.36160767,
           },
         ],
       },
@@ -144,5 +200,5 @@ let value: AIConfigVariationsResponse = {
 
 | Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
 | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `items`                                                                        | [components.AIConfigVariation](../../models/components/aiconfigvariation.md)[] | :heavy_check_mark:                                                             | N/A                                                                            |
-| `totalCount`                                                                   | *number*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `items`                                                                        | [components.AIConfigVariation](../../models/components/aiconfigvariation.md)[] | :heavy_check_mark:                                                             | The items on this page                                                         |
+| `totalCount`                                                                   | *number*                                                                       | :heavy_check_mark:                                                             | The total number of items                                                      |

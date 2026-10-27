@@ -209,6 +209,86 @@ actions:
         disabled: false
         scopes:
           - write
+  - target: $["paths"]["/api/v2/projects/{projectKey}/experiments"]["get"]
+    update:
+      x-speakeasy-mcp:
+        name: list-experiments-any-environment
+        description: Lists experiments in a project across all environments. Use to discover experiments before fetching one by environment.
+        disabled: false
+        scopes:
+          - read
+  - target: $["paths"]["/api/v2/projects/{projectKey}/environments/{environmentKey}/experiments"]["get"]
+    update:
+      x-speakeasy-mcp:
+        name: list-experiments
+        description: Lists experiments in a project environment, including their current iteration and status.
+        disabled: false
+        scopes:
+          - read
+  - target: $["paths"]["/api/v2/projects/{projectKey}/environments/{environmentKey}/experiments"]["post"]
+    update:
+      x-speakeasy-mcp:
+        name: create-experiment
+        description: Creates an experiment in a project environment, with an initial iteration that sets the hypothesis, flag, treatments, and metrics.
+        disabled: false
+        scopes:
+          - write
+  - target: $["paths"]["/api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}"]["get"]
+    update:
+      x-speakeasy-mcp:
+        name: get-experiment
+        description: Fetches one experiment, including its current and past iterations, treatments, and metrics.
+        disabled: false
+        scopes:
+          - read
+  - target: $["paths"]["/api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}"]["patch"]
+    update:
+      x-speakeasy-mcp:
+        name: update-experiment
+        description: Updates an experiment using semantic patch instructions, such as starting or stopping an iteration, or changing its name or description.
+        disabled: false
+        scopes:
+          - write
+  - target: $["paths"]["/api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}/iterations"]["post"]
+    update:
+      x-speakeasy-mcp:
+        name: create-experiment-iteration
+        description: Creates a new iteration of an experiment. Start it afterwards with update-experiment.
+        disabled: false
+        scopes:
+          - write
+  - target: $["paths"]["/api/v2/metrics/{projectKey}"]["get"]
+    update:
+      x-speakeasy-mcp:
+        name: list-metrics
+        description: Lists metrics in a project. Use to find metric keys to attach to an experiment.
+        disabled: false
+        scopes:
+          - read
+  - target: $["paths"]["/api/v2/metrics/{projectKey}"]["post"]
+    update:
+      x-speakeasy-mcp:
+        name: create-metric
+        description: Creates a metric in a project, for use in experiments and guarded rollouts.
+        disabled: false
+        scopes:
+          - write
+  - target: $["paths"]["/api/v2/metrics/{projectKey}/{metricKey}"]["get"]
+    update:
+      x-speakeasy-mcp:
+        name: get-metric
+        description: Fetches one metric's configuration.
+        disabled: false
+        scopes:
+          - read
+  - target: $["paths"]["/api/v2/metrics/{projectKey}/{metricKey}"]["patch"]
+    update:
+      x-speakeasy-mcp:
+        name: update-metric
+        description: Updates a metric using a JSON patch.
+        disabled: false
+        scopes:
+          - write
   - target: $.paths.*[?@['x-speakeasy-mcp'].disabled != false]
     update:
       x-speakeasy-ignore: true

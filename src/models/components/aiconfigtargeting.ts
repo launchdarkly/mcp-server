@@ -38,12 +38,30 @@ export type AIConfigTargeting = {
    */
   createdAt: number;
   defaults?: AIConfigTargetingDefaults | undefined;
+  /**
+   * Targeting for each environment, keyed by environment key
+   */
   environments: { [k: string]: AIConfigTargetingEnvironment };
   experiments: AiConfigsExperimentInfoRep;
+  /**
+   * The AI Config key
+   */
   key: string;
+  /**
+   * The AI Config name
+   */
   name: string;
+  /**
+   * Tags for this resource
+   */
   tags: Array<string>;
+  /**
+   * The variations of this AI Config
+   */
   variations: Array<AIConfigTargetingVariation>;
+  /**
+   * The version number of this resource
+   */
   version: number;
 };
 

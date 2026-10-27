@@ -9,8 +9,17 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AIConfigTargetingEnvironmentFallthroughRolloutVariation = {
+  /**
+   * Whether this variation is excluded from experiment tracking
+   */
   untracked?: boolean | undefined;
+  /**
+   * Index of the variation
+   */
   variation: number;
+  /**
+   * The weight of this variation, in thousandths of a percent
+   */
   weight: number;
 };
 

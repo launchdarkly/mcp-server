@@ -28,6 +28,14 @@ export type GetAuditLogEntriesRequest = {
    * A resource specifier that lets you filter audit log listings by resource
    */
   spec?: string | undefined;
+  /**
+   * A member ID that lets you filter audit log listings by the member who made the change. Repeat the parameter to filter by multiple members.
+   */
+  member?: string | undefined;
+  /**
+   * An access token ID that lets you filter audit log listings by the token that made the change. Repeat the parameter to filter by multiple tokens.
+   */
+  token?: string | undefined;
 };
 
 /** @internal */
@@ -41,6 +49,8 @@ export const GetAuditLogEntriesRequest$inboundSchema: z.ZodType<
   q: z.string().optional(),
   limit: z.number().int().optional(),
   spec: z.string().optional(),
+  member: z.string().optional(),
+  token: z.string().optional(),
 });
 /** @internal */
 export type GetAuditLogEntriesRequest$Outbound = {
@@ -49,6 +59,8 @@ export type GetAuditLogEntriesRequest$Outbound = {
   q?: string | undefined;
   limit?: number | undefined;
   spec?: string | undefined;
+  member?: string | undefined;
+  token?: string | undefined;
 };
 
 /** @internal */
@@ -62,6 +74,8 @@ export const GetAuditLogEntriesRequest$outboundSchema: z.ZodType<
   q: z.string().optional(),
   limit: z.number().int().optional(),
   spec: z.string().optional(),
+  member: z.string().optional(),
+  token: z.string().optional(),
 });
 
 export function getAuditLogEntriesRequestToJSON(

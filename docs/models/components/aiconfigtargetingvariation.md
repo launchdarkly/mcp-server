@@ -17,7 +17,7 @@ let value: AIConfigTargetingVariation = {
 
 | Field                                        | Type                                         | Required                                     | Description                                  |
 | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| `id`                                         | *string*                                     | :heavy_check_mark:                           | N/A                                          |
-| `description`                                | *string*                                     | :heavy_check_mark:                           | N/A                                          |
-| `name`                                       | *string*                                     | :heavy_check_mark:                           | N/A                                          |
-| `value`                                      | *components.AIConfigTargetingVariationValue* | :heavy_check_mark:                           | N/A                                          |
+| `id`                                         | *string*                                     | :heavy_check_mark:                           | The variation ID                             |
+| `description`                                | *string*                                     | :heavy_check_mark:                           | A description of the variation               |
+| `name`                                       | *string*                                     | :heavy_check_mark:                           | The variation name                           |
+| `value`                                      | *components.AIConfigTargetingVariationValue* | :heavy_check_mark:                           | The variation value                          |

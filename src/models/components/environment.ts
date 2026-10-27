@@ -65,7 +65,7 @@ export type Environment = {
   secureMode: boolean;
   access?: Access | undefined;
   /**
-   * Enables tracking detailed information for new flags by default
+   * The initial value of trackEvents for flags created in this environment. Does not affect existing flags. Required for Data Export, but doesn't enable Data Export on its own.
    */
   defaultTrackEvents: boolean;
   /**
@@ -82,7 +82,7 @@ export type Environment = {
   tags: Array<string>;
   approvalSettings?: ApprovalSettings | undefined;
   /**
-   * Details on the approval settings for this environment for each resource kind
+   * Details about the approval settings for other resources in this environment, organized by resource kind (for example, "aiconfig" and "segment")
    */
   resourceApprovalSettings?: { [k: string]: ApprovalSettings } | undefined;
   /**

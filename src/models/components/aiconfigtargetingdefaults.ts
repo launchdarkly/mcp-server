@@ -8,7 +8,13 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AIConfigTargetingDefaults = {
+  /**
+   * Index of the variation served when targeting is on
+   */
   onVariation: number;
+  /**
+   * Index of the variation served when targeting is off
+   */
   offVariation: number;
 };
 

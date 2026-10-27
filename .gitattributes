@@ -1,2 +1,7 @@
 # This allows generated code to be indexed correctly
 *.ts linguist-generated=false
+
+# Overlay-applied spec written by `speakeasy run`; edit schemas/openapi.json or the overlays instead
+schemas/output.json linguist-generated=true
+.speakeasy/gen.lock linguist-generated=true
+.speakeasy/workflow.lock linguist-generated=true

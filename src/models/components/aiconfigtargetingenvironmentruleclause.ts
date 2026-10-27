@@ -8,10 +8,25 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AIConfigTargetingEnvironmentRuleClause = {
+  /**
+   * The context attribute to match
+   */
   attribute: string;
+  /**
+   * The clause ID
+   */
   id: string;
+  /**
+   * Whether to negate the match
+   */
   negate: boolean;
+  /**
+   * The operator to use
+   */
   op: string;
+  /**
+   * The values to match against
+   */
   values: Array<any>;
 };
 
