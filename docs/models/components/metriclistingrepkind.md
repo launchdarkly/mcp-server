@@ -13,5 +13,5 @@ let value: MetricListingRepKind = "custom";
 ## Values
 
 ```typescript
-"pageview" | "click" | "custom"
+"pageview" | "click" | "custom" | "trace"
 ```

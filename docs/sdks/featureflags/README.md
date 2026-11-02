@@ -1179,12 +1179,12 @@ Here's an example:
 
 #### updateRuleTrackEvents
 
-Updates whether or not LaunchDarkly tracks events for the feature flag associated with this rule.
+Updates whether the SDK sends a detailed event for every evaluation of this rule, instead of only summary counts. Required for Data Export, but doesn't enable Data Export on its own.
 
 ##### Parameters
 
 - `ruleId`: The ID of the rule. You can retrieve this by making a GET request for the flag.
-- `trackEvents`: Whether or not events are tracked.
+- `trackEvents`: Whether or not detailed events are sent for this rule.
 
 Here's an example:
 
@@ -1229,11 +1229,11 @@ Here's an example:
 
 #### updateTrackEvents
 
-Updates whether or not LaunchDarkly tracks events for the feature flag, for all rules.
+Updates whether the SDK sends detailed evaluation events for this flag, for all rules. Required for Data Export, but doesn't enable Data Export on its own.
 
 ##### Parameters
 
-- `trackEvents`: Whether or not events are tracked.
+- `trackEvents`: Whether or not detailed events are sent for this flag.
 
 Here's an example:
 
@@ -1246,11 +1246,11 @@ Here's an example:
 
 #### updateTrackEventsFallthrough
 
-Updates whether or not LaunchDarkly tracks events for the feature flag, for the default rule.
+Updates whether the SDK sends detailed evaluation events for the flag's default rule. Required for Data Export, but doesn't enable Data Export on its own.
 
 ##### Parameters
 
-- `trackEvents`: Whether or not events are tracked.
+- `trackEvents`: Whether or not detailed events are sent for the default rule.
 
 Here's an example:
 

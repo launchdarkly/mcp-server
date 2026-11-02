@@ -13,7 +13,7 @@ let value: AIConfigTargetingDefaults = {
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `onVariation`      | *number*           | :heavy_check_mark: | N/A                |
-| `offVariation`     | *number*           | :heavy_check_mark: | N/A                |
+| Field                                               | Type                                                | Required                                            | Description                                         |
+| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
+| `onVariation`                                       | *number*                                            | :heavy_check_mark:                                  | Index of the variation served when targeting is on  |
+| `offVariation`                                      | *number*                                            | :heavy_check_mark:                                  | Index of the variation served when targeting is off |

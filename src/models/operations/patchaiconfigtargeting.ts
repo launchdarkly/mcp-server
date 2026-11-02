@@ -10,7 +10,13 @@ import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type PatchAIConfigTargetingRequest = {
+  /**
+   * The project key
+   */
   projectKey: string;
+  /**
+   * The AI Config key
+   */
   configKey: string;
   /**
    * AI Config targeting semantic patch instructions

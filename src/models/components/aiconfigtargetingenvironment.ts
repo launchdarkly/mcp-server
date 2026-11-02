@@ -27,16 +27,43 @@ import {
 } from "./aiconfigtargetingenvironmenttarget.js";
 
 export type AIConfigTargetingEnvironment = {
+  /**
+   * Individual context targets for non-user context kinds
+   */
   contextTargets: Array<AIConfigTargetingEnvironmentTarget>;
+  /**
+   * Whether targeting is on in this environment
+   */
   enabled: boolean;
   fallthrough: AIConfigTargetingEnvironmentFallthrough;
   lastModified: number;
+  /**
+   * Index of the variation served when targeting is off
+   */
   offVariation?: number | undefined;
+  /**
+   * The targeting rules
+   */
   rules: Array<AIConfigTargetingEnvironmentRule>;
+  /**
+   * Individual user targets
+   */
   targets: Array<AIConfigTargetingEnvironmentTarget>;
+  /**
+   * Whether to send detailed events for all evaluations
+   */
   trackEvents: boolean;
+  /**
+   * Whether to send detailed events for evaluations that fall through to the default rule
+   */
   trackEventsFallthrough: boolean;
+  /**
+   * The environment name
+   */
   environmentName: string;
+  /**
+   * The version of the targeting in this environment
+   */
   version: number;
 };
 

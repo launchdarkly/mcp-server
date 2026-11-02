@@ -7,7 +7,9 @@ import { AiConfigs } from "./aiconfigs.js";
 import { AuditLog } from "./auditlog.js";
 import { CodeReferences } from "./codereferences.js";
 import { Environments } from "./environments.js";
+import { Experiments } from "./experiments.js";
 import { FeatureFlags } from "./featureflags.js";
+import { Metrics } from "./metrics.js";
 
 export class LaunchDarkly extends ClientSDK {
   private _auditLog?: AuditLog;
@@ -25,9 +27,19 @@ export class LaunchDarkly extends ClientSDK {
     return (this._featureFlags ??= new FeatureFlags(this._options));
   }
 
+  private _metrics?: Metrics;
+  get metrics(): Metrics {
+    return (this._metrics ??= new Metrics(this._options));
+  }
+
   private _environments?: Environments;
   get environments(): Environments {
     return (this._environments ??= new Environments(this._options));
+  }
+
+  private _experiments?: Experiments;
+  get experiments(): Experiments {
+    return (this._experiments ??= new Experiments(this._options));
   }
 
   private _aiConfigs?: AiConfigs;

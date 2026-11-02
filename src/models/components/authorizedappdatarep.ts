@@ -29,9 +29,17 @@ export type AuthorizedAppDataRep = {
    */
   name?: string | undefined;
   /**
+   * The icon for this authorized application, if it has one
+   */
+  iconUrl?: string | undefined;
+  /**
    * The name of the maintainer for this authorized application
    */
   maintainerName?: string | undefined;
+  /**
+   * Whether this application acted on behalf of the member in this entry. When true, the member and the application are co-authors of the change rather than the member acting alone. Omitted for applications that act on their own.
+   */
+  isAgent?: boolean | undefined;
 };
 
 /** @internal */
@@ -44,7 +52,9 @@ export const AuthorizedAppDataRep$inboundSchema: z.ZodType<
   _id: z.string().optional(),
   isScim: z.boolean().optional(),
   name: z.string().optional(),
+  iconUrl: z.string().optional(),
   maintainerName: z.string().optional(),
+  isAgent: z.boolean().optional(),
 }).transform((v) => {
   return remap$(v, {
     "_links": "links",
@@ -57,7 +67,9 @@ export type AuthorizedAppDataRep$Outbound = {
   _id?: string | undefined;
   isScim?: boolean | undefined;
   name?: string | undefined;
+  iconUrl?: string | undefined;
   maintainerName?: string | undefined;
+  isAgent?: boolean | undefined;
 };
 
 /** @internal */
@@ -70,7 +82,9 @@ export const AuthorizedAppDataRep$outboundSchema: z.ZodType<
   id: z.string().optional(),
   isScim: z.boolean().optional(),
   name: z.string().optional(),
+  iconUrl: z.string().optional(),
   maintainerName: z.string().optional(),
+  isAgent: z.boolean().optional(),
 }).transform((v) => {
   return remap$(v, {
     links: "_links",

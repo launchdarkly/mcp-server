@@ -249,6 +249,15 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 
 * [listByProject](docs/sdks/environments/README.md#listbyproject) - List environments
 
+### [Experiments](docs/sdks/experiments/README.md)
+
+* [list](docs/sdks/experiments/README.md#list) - Get experiments
+* [create](docs/sdks/experiments/README.md#create) - Create experiment
+* [get](docs/sdks/experiments/README.md#get) - Get experiment
+* [patch](docs/sdks/experiments/README.md#patch) - Patch experiment
+* [~~createIteration~~](docs/sdks/experiments/README.md#createiteration) - Create iteration :warning: **Deprecated**
+* [getExperimentsAnyEnv](docs/sdks/experiments/README.md#getexperimentsanyenv) - Get experiments any environment
+
 ### [FeatureFlags](docs/sdks/featureflags/README.md)
 
 * [getStatus](docs/sdks/featureflags/README.md#getstatus) - Get flag status across environments
@@ -257,6 +266,13 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 * [get](docs/sdks/featureflags/README.md#get) - Get feature flag
 * [patch](docs/sdks/featureflags/README.md#patch) - Update feature flag
 * [delete](docs/sdks/featureflags/README.md#delete) - Delete feature flag
+
+### [Metrics](docs/sdks/metrics/README.md)
+
+* [list](docs/sdks/metrics/README.md#list) - List metrics
+* [create](docs/sdks/metrics/README.md#create) - Create metric
+* [get](docs/sdks/metrics/README.md#get) - Get metric
+* [patch](docs/sdks/metrics/README.md#patch) - Update metric
 
 </details>
 <!-- End Available Resources and Operations [operations] -->

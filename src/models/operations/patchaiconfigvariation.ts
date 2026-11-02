@@ -10,8 +10,17 @@ import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type PatchAIConfigVariationRequest = {
+  /**
+   * The project key
+   */
   projectKey: string;
+  /**
+   * The AI Config key
+   */
   configKey: string;
+  /**
+   * The AI Config variation key
+   */
   variationKey: string;
   /**
    * AI Config variation object to update

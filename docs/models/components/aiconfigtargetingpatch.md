@@ -21,8 +21,8 @@ let value: AIConfigTargetingPatch = {
 
 ## Fields
 
-| Field                   | Type                    | Required                | Description             |
-| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
-| `comment`               | *string*                | :heavy_minus_sign:      | N/A                     |
-| `environmentKey`        | *string*                | :heavy_check_mark:      | N/A                     |
-| `instructions`          | Record<string, *any*>[] | :heavy_check_mark:      | N/A                     |
+| Field                                    | Type                                     | Required                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `comment`                                | *string*                                 | :heavy_minus_sign:                       | A comment describing the change          |
+| `environmentKey`                         | *string*                                 | :heavy_check_mark:                       | The environment key                      |
+| `instructions`                           | Record<string, *any*>[]                  | :heavy_check_mark:                       | The semantic patch instructions to apply |

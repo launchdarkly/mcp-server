@@ -18,6 +18,10 @@ export type Variation = {
    */
   value?: any | undefined;
   /**
+   * A deterministic hash of the canonicalized variation <code>value</code>. Computed server-side; ignored if supplied in request bodies.
+   */
+  valueHash?: string | undefined;
+  /**
    * Description of the variation. Defaults to an empty string, but is omitted from the response if not set.
    */
   description?: string | undefined;
@@ -35,6 +39,7 @@ export const Variation$inboundSchema: z.ZodType<
 > = z.object({
   _id: z.string().optional(),
   value: z.any().optional(),
+  valueHash: z.string().optional(),
   description: z.string().optional(),
   name: z.string().optional(),
 }).transform((v) => {
@@ -46,6 +51,7 @@ export const Variation$inboundSchema: z.ZodType<
 export type Variation$Outbound = {
   _id?: string | undefined;
   value?: any | undefined;
+  valueHash?: string | undefined;
   description?: string | undefined;
   name?: string | undefined;
 };
@@ -58,6 +64,7 @@ export const Variation$outboundSchema: z.ZodType<
 > = z.object({
   id: z.string().optional(),
   value: z.any().optional(),
+  valueHash: z.string().optional(),
   description: z.string().optional(),
   name: z.string().optional(),
 }).transform((v) => {

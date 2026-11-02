@@ -14,7 +14,13 @@ import {
 } from "./aiconfigtargetingenvironmentruleclause.js";
 
 export type AIConfigTargetingEnvironmentRule = {
+  /**
+   * The clauses a context must match
+   */
   clauses: Array<AIConfigTargetingEnvironmentRuleClause>;
+  /**
+   * Whether to send detailed events for evaluations that match this rule
+   */
   trackEvents: boolean;
 };
 

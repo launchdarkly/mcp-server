@@ -14,24 +14,55 @@ import {
   AIConfigVariationPost$outboundSchema,
 } from "./aiconfigvariationpost.js";
 
+/**
+ * The AI Config mode
+ */
 export const AIConfigPostMode = {
   Agent: "agent",
   Completion: "completion",
   Judge: "judge",
 } as const;
+/**
+ * The AI Config mode
+ */
 export type AIConfigPostMode = ClosedEnum<typeof AIConfigPostMode>;
 
 export type AIConfigPost = {
+  /**
+   * A description of the AI Config
+   */
   description?: string | undefined;
+  /**
+   * A unique key for the AI Config
+   */
   key: string;
+  /**
+   * The ID of the member who maintains this resource
+   */
   maintainerId?: string | undefined;
+  /**
+   * The key of the team that maintains this resource
+   */
   maintainerTeamKey?: string | undefined;
+  /**
+   * The AI Config mode
+   */
   mode?: AIConfigPostMode | undefined;
+  /**
+   * A human-readable name for the AI Config
+   */
   name: string;
+  /**
+   * Tags for this resource
+   */
   tags?: Array<string> | undefined;
+  /**
+   * Keys of the views to add the AI Config to
+   */
+  viewKeys?: Array<string> | undefined;
   defaultVariation?: AIConfigVariationPost | undefined;
   /**
-   * Evaluation metric key for this AI Config
+   * Evaluation metric key for this config
    */
   evaluationMetricKey?: string | undefined;
   /**
@@ -62,6 +93,7 @@ export const AIConfigPost$inboundSchema: z.ZodType<
   mode: AIConfigPostMode$inboundSchema.default("completion"),
   name: z.string(),
   tags: z.array(z.string()).optional(),
+  viewKeys: z.array(z.string()).optional(),
   defaultVariation: AIConfigVariationPost$inboundSchema.optional(),
   evaluationMetricKey: z.string().optional(),
   isInverted: z.boolean().optional(),
@@ -75,6 +107,7 @@ export type AIConfigPost$Outbound = {
   mode: string;
   name: string;
   tags?: Array<string> | undefined;
+  viewKeys?: Array<string> | undefined;
   defaultVariation?: AIConfigVariationPost$Outbound | undefined;
   evaluationMetricKey?: string | undefined;
   isInverted?: boolean | undefined;
@@ -93,6 +126,7 @@ export const AIConfigPost$outboundSchema: z.ZodType<
   mode: AIConfigPostMode$outboundSchema.default("completion"),
   name: z.string(),
   tags: z.array(z.string()).optional(),
+  viewKeys: z.array(z.string()).optional(),
   defaultVariation: AIConfigVariationPost$outboundSchema.optional(),
   evaluationMetricKey: z.string().optional(),
   isInverted: z.boolean().optional(),

@@ -7,6 +7,12 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  Classifier,
+  Classifier$inboundSchema,
+  Classifier$Outbound,
+  Classifier$outboundSchema,
+} from "./classifier.js";
+import {
   JudgeConfiguration,
   JudgeConfiguration$inboundSchema,
   JudgeConfiguration$Outbound,
@@ -19,15 +25,30 @@ import {
   Message$outboundSchema,
 } from "./message.js";
 import {
+  VariationSkillPost,
+  VariationSkillPost$inboundSchema,
+  VariationSkillPost$Outbound,
+  VariationSkillPost$outboundSchema,
+} from "./variationskillpost.js";
+import {
   VariationToolPost,
   VariationToolPost$inboundSchema,
   VariationToolPost$Outbound,
   VariationToolPost$outboundSchema,
 } from "./variationtoolpost.js";
 
+/**
+ * Freeform JSON object. LaunchDarkly does not validate the keys. In a model config, `params` and `customParams` hold parameters that the provider's API accepts, for example `{"temperature": 0.7, "maxTokens": 4096}`.
+ */
 export type AIConfigVariationPostModel = {};
 
 export type AIConfigVariationPost = {
+  /**
+   * Classifier rules for a judge variation. When this array is non-empty, messages must be empty.
+   *
+   * @remarks
+   */
+  classifiers?: Array<Classifier> | undefined;
   /**
    * Human-readable description of this variation
    */
@@ -40,11 +61,41 @@ export type AIConfigVariationPost = {
    * Returns the instructions for the agent. This is only returned for agent variations.
    */
   instructions?: string | undefined;
+  /**
+   * A unique key for the variation
+   */
   key: string;
+  /**
+   * The prompt messages for this variation
+   */
   messages?: Array<Message> | undefined;
+  /**
+   * Freeform JSON object. LaunchDarkly does not validate the keys. In a model config, `params` and `customParams` hold parameters that the provider's API accepts, for example `{"temperature": 0.7, "maxTokens": 4096}`.
+   */
   model?: AIConfigVariationPostModel | undefined;
+  /**
+   * A human-readable name for the variation
+   */
   name: string;
+  /**
+   * The key that GET /api/v2/projects/{projectKey}/ai-configs/model-configs returns for the
+   *
+   * @remarks
+   * model config. Do not use a custom model config's ID, which is the provider model ID.
+   */
   modelConfigKey?: string | undefined;
+  /**
+   * The exact model config version to set this variation to. Requires modelConfigKey to be
+   *
+   * @remarks
+   * set, and the version must exist for that model config. When omitted, the variation
+   * records the model config's current (latest) version.
+   */
+  modelConfigVersion?: number | undefined;
+  /**
+   * JSON Schema defining the structured output format for the variation.
+   */
+  outputFormat?: { [k: string]: any } | undefined;
   /**
    * List of tools to use for this variation. The latest version of the tool will be used.
    */
@@ -53,6 +104,10 @@ export type AIConfigVariationPost = {
    * List of tool keys to use for this variation. The latest version of the tool will be used.
    */
   toolKeys?: Array<string> | undefined;
+  /**
+   * List of agent skills to attach to this variation.
+   */
+  skills?: Array<VariationSkillPost> | undefined;
   judgeConfiguration?: JudgeConfiguration | undefined;
 };
 
@@ -95,6 +150,7 @@ export const AIConfigVariationPost$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  classifiers: z.array(Classifier$inboundSchema).optional(),
   comment: z.string().optional(),
   description: z.string().optional(),
   instructions: z.string().optional(),
@@ -103,12 +159,16 @@ export const AIConfigVariationPost$inboundSchema: z.ZodType<
   model: z.lazy(() => AIConfigVariationPostModel$inboundSchema).optional(),
   name: z.string(),
   modelConfigKey: z.string().optional(),
+  modelConfigVersion: z.number().int().optional(),
+  outputFormat: z.record(z.any()).optional(),
   tools: z.array(VariationToolPost$inboundSchema).optional(),
   toolKeys: z.array(z.string()).optional(),
+  skills: z.array(VariationSkillPost$inboundSchema).optional(),
   judgeConfiguration: JudgeConfiguration$inboundSchema.optional(),
 });
 /** @internal */
 export type AIConfigVariationPost$Outbound = {
+  classifiers?: Array<Classifier$Outbound> | undefined;
   comment?: string | undefined;
   description?: string | undefined;
   instructions?: string | undefined;
@@ -117,8 +177,11 @@ export type AIConfigVariationPost$Outbound = {
   model?: AIConfigVariationPostModel$Outbound | undefined;
   name: string;
   modelConfigKey?: string | undefined;
+  modelConfigVersion?: number | undefined;
+  outputFormat?: { [k: string]: any } | undefined;
   tools?: Array<VariationToolPost$Outbound> | undefined;
   toolKeys?: Array<string> | undefined;
+  skills?: Array<VariationSkillPost$Outbound> | undefined;
   judgeConfiguration?: JudgeConfiguration$Outbound | undefined;
 };
 
@@ -128,6 +191,7 @@ export const AIConfigVariationPost$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AIConfigVariationPost
 > = z.object({
+  classifiers: z.array(Classifier$outboundSchema).optional(),
   comment: z.string().optional(),
   description: z.string().optional(),
   instructions: z.string().optional(),
@@ -136,8 +200,11 @@ export const AIConfigVariationPost$outboundSchema: z.ZodType<
   model: z.lazy(() => AIConfigVariationPostModel$outboundSchema).optional(),
   name: z.string(),
   modelConfigKey: z.string().optional(),
+  modelConfigVersion: z.number().int().optional(),
+  outputFormat: z.record(z.any()).optional(),
   tools: z.array(VariationToolPost$outboundSchema).optional(),
   toolKeys: z.array(z.string()).optional(),
+  skills: z.array(VariationSkillPost$outboundSchema).optional(),
   judgeConfiguration: JudgeConfiguration$outboundSchema.optional(),
 });
 

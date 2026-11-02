@@ -34,6 +34,8 @@ import { Result } from "../types/fp.js";
  *
  * The request body must be a JSON object of the fields to update. The values you include replace the existing values for the fields.
  *
+ * If the variation is in use in a project environment where approval settings require review for this AI Config, this endpoint returns 403 and the change must be submitted through an approval request.
+ *
  * Here's an example:
  * ```
  *   {

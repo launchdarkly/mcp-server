@@ -8,13 +8,16 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetAIConfigsRequest = {
+  /**
+   * The project key
+   */
   projectKey: string;
   /**
-   * A sort to apply to the list of AI Configs.
+   * A sort to apply to the list of AgentControl configs.
    */
   sort?: string | undefined;
   /**
-   * The number of AI Configs to return.
+   * The number of resources to return.
    */
   limit?: number | undefined;
   /**
@@ -22,7 +25,7 @@ export type GetAIConfigsRequest = {
    */
   offset?: number | undefined;
   /**
-   * A filter to apply to the list of AI Configs.
+   * A filter to apply to the list.
    */
   filter?: string | undefined;
 };

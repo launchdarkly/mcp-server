@@ -1,5 +1,7 @@
 # AIConfigTargetingVariationValue
 
+The variation value
+
 
 ## Supported Types
 

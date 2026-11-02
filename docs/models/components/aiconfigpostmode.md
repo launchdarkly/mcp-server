@@ -1,5 +1,7 @@
 # AIConfigPostMode
 
+The AI Config mode
+
 ## Example Usage
 
 ```typescript

@@ -14,8 +14,8 @@ let value: GetAIConfigVariationRequest = {
 
 ## Fields
 
-| Field              | Type               | Required           | Description        | Example            |
-| ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectKey`       | *string*           | :heavy_check_mark: | N/A                | default            |
-| `configKey`        | *string*           | :heavy_check_mark: | N/A                | default            |
-| `variationKey`     | *string*           | :heavy_check_mark: | N/A                | default            |
+| Field                       | Type                        | Required                    | Description                 | Example                     |
+| --------------------------- | --------------------------- | --------------------------- | --------------------------- | --------------------------- |
+| `projectKey`                | *string*                    | :heavy_check_mark:          | The project key             | default                     |
+| `configKey`                 | *string*                    | :heavy_check_mark:          | The AI Config key           | default                     |
+| `variationKey`              | *string*                    | :heavy_check_mark:          | The AI Config variation key | default                     |

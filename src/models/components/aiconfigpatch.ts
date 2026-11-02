@@ -8,13 +8,32 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AIConfigPatch = {
+  /**
+   * Key of the variation this config serves by default
+   */
+  defaultVariationKey?: string | undefined;
+  /**
+   * A description of the AI Config
+   */
   description?: string | undefined;
+  /**
+   * The ID of the member who maintains this resource
+   */
   maintainerId?: string | undefined;
+  /**
+   * The key of the team that maintains this resource
+   */
   maintainerTeamKey?: string | undefined;
+  /**
+   * A human-readable name for the AI Config
+   */
   name?: string | undefined;
+  /**
+   * Tags for this resource
+   */
   tags?: Array<string> | undefined;
   /**
-   * Evaluation metric key for this AI Config
+   * Evaluation metric key for this config
    */
   evaluationMetricKey?: string | undefined;
   /**
@@ -29,6 +48,7 @@ export const AIConfigPatch$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  defaultVariationKey: z.string().optional(),
   description: z.string().optional(),
   maintainerId: z.string().optional(),
   maintainerTeamKey: z.string().optional(),
@@ -39,6 +59,7 @@ export const AIConfigPatch$inboundSchema: z.ZodType<
 });
 /** @internal */
 export type AIConfigPatch$Outbound = {
+  defaultVariationKey?: string | undefined;
   description?: string | undefined;
   maintainerId?: string | undefined;
   maintainerTeamKey?: string | undefined;
@@ -54,6 +75,7 @@ export const AIConfigPatch$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AIConfigPatch
 > = z.object({
+  defaultVariationKey: z.string().optional(),
   description: z.string().optional(),
   maintainerId: z.string().optional(),
   maintainerTeamKey: z.string().optional(),

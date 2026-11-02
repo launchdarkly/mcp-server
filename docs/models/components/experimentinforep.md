@@ -58,7 +58,7 @@ let value: ExperimentInfoRep = {
         category: "Error monitoring",
         isNumeric: true,
         eventKey: "Order placed",
-        randomizationUnits: [
+        analysisUnits: [
           "user",
         ],
         filters: {
@@ -79,6 +79,23 @@ let value: ExperimentInfoRep = {
         },
         dataSource: {
           key: "<key>",
+        },
+        winsorLowerPercentile: 1,
+        winsorUpperPercentile: 99.5,
+        winsorIncludeImputed: false,
+        traceQuery: "service.name = \"checkout\"",
+        traceValueLocation: "duration",
+        denominator: {
+          filters: {
+            type: "contextAttribute",
+            attribute: "country",
+            op: "<value>",
+            values: [
+              "JP",
+            ],
+            contextKind: "user",
+            negate: false,
+          },
         },
       },
       environments: [

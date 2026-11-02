@@ -10,7 +10,13 @@ import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type PostAIConfigVariationRequest = {
+  /**
+   * The project key
+   */
   projectKey: string;
+  /**
+   * The AI Config key
+   */
   configKey: string;
   /**
    * AI Config variation object to create

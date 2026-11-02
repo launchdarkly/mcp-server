@@ -14,7 +14,13 @@ import {
 } from "./aiconfigvariation.js";
 
 export type AIConfigVariationsResponse = {
+  /**
+   * The items on this page
+   */
   items: Array<AIConfigVariation>;
+  /**
+   * The total number of items
+   */
   totalCount: number;
 };
 

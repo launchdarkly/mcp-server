@@ -15,8 +15,8 @@ let value:
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `canReshuffle`     | *boolean*          | :heavy_check_mark: | N/A                |
-| `defaultVariation` | *number*           | :heavy_check_mark: | N/A                |
-| `type`             | *string*           | :heavy_check_mark: | N/A                |
+| Field                                             | Type                                              | Required                                          | Description                                       |
+| ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
+| `canReshuffle`                                    | *boolean*                                         | :heavy_check_mark:                                | Whether contexts can be reassigned to new buckets |
+| `defaultVariation`                                | *number*                                          | :heavy_check_mark:                                | Index of the default variation                    |
+| `type`                                            | *string*                                          | :heavy_check_mark:                                | The allocation type                               |

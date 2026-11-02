@@ -45,10 +45,6 @@ export type ApprovalSettings = {
    * Optional field for integration configuration ID of a custom approval integration. This is an Enterprise-only feature.
    */
   serviceKindConfigurationId?: string | undefined;
-  /**
-   * The kind of resource for which the approval settings apply, for example, flag or segment
-   */
-  resourceKind?: string | undefined;
 };
 
 /** @internal */
@@ -67,7 +63,6 @@ export const ApprovalSettings$inboundSchema: z.ZodType<
   serviceConfig: z.record(z.any()),
   requiredApprovalTags: z.array(z.string()),
   serviceKindConfigurationId: z.string().optional(),
-  resourceKind: z.string().optional(),
 });
 /** @internal */
 export type ApprovalSettings$Outbound = {
@@ -81,7 +76,6 @@ export type ApprovalSettings$Outbound = {
   serviceConfig: { [k: string]: any };
   requiredApprovalTags: Array<string>;
   serviceKindConfigurationId?: string | undefined;
-  resourceKind?: string | undefined;
 };
 
 /** @internal */
@@ -100,7 +94,6 @@ export const ApprovalSettings$outboundSchema: z.ZodType<
   serviceConfig: z.record(z.any()),
   requiredApprovalTags: z.array(z.string()),
   serviceKindConfigurationId: z.string().optional(),
-  resourceKind: z.string().optional(),
 });
 
 export function approvalSettingsToJSON(

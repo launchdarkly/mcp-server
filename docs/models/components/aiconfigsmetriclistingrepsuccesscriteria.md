@@ -1,6 +1,6 @@
 # AiConfigsMetricListingRepSuccessCriteria
 
-For custom metrics, the success criteria
+For custom and trace metrics, the success criteria
 
 ## Example Usage
 

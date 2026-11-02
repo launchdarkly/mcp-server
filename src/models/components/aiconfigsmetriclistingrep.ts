@@ -39,6 +39,12 @@ import {
   AiConfigsMetricDataSourceRefRep$outboundSchema,
 } from "./aiconfigsmetricdatasourcerefrep.js";
 import {
+  AiConfigsMetricDenominatorRep,
+  AiConfigsMetricDenominatorRep$inboundSchema,
+  AiConfigsMetricDenominatorRep$Outbound,
+  AiConfigsMetricDenominatorRep$outboundSchema,
+} from "./aiconfigsmetricdenominatorrep.js";
+import {
   AiConfigsMetricEventDefaultRep,
   AiConfigsMetricEventDefaultRep$inboundSchema,
   AiConfigsMetricEventDefaultRep$Outbound,
@@ -58,6 +64,7 @@ export const AiConfigsMetricListingRepKind = {
   Pageview: "pageview",
   Click: "click",
   Custom: "custom",
+  Trace: "trace",
 } as const;
 /**
  * The kind of event the metric tracks
@@ -67,14 +74,14 @@ export type AiConfigsMetricListingRepKind = ClosedEnum<
 >;
 
 /**
- * For custom metrics, the success criteria
+ * For custom and trace metrics, the success criteria
  */
 export const AiConfigsMetricListingRepSuccessCriteria = {
   HigherThanBaseline: "HigherThanBaseline",
   LowerThanBaseline: "LowerThanBaseline",
 } as const;
 /**
- * For custom metrics, the success criteria
+ * For custom and trace metrics, the success criteria
  */
 export type AiConfigsMetricListingRepSuccessCriteria = ClosedEnum<
   typeof AiConfigsMetricListingRepSuccessCriteria
@@ -86,6 +93,7 @@ export type AiConfigsMetricListingRepSuccessCriteria = ClosedEnum<
 export const AiConfigsMetricListingRepUnitAggregationType = {
   Average: "average",
   Sum: "sum",
+  CountDistinct: "count_distinct",
 } as const;
 /**
  * The method by which multiple unit event values are aggregated
@@ -187,15 +195,15 @@ export type AiConfigsMetricListingRep = {
    */
   category?: string | undefined;
   /**
-   * For custom metrics, whether to track numeric changes in value against a baseline (<code>true</code>) or to track a conversion when an end user takes an action (<code>false</code>).
+   * For custom and trace metrics, whether to track numeric changes in value against a baseline (<code>true</code>) or to track a conversion when an end user takes an action (<code>false</code>).
    */
   isNumeric?: boolean | undefined;
   /**
-   * For custom metrics, the success criteria
+   * For custom and trace metrics, the success criteria
    */
   successCriteria?: AiConfigsMetricListingRepSuccessCriteria | undefined;
   /**
-   * For numeric custom metrics, the unit of measure
+   * For numeric custom and trace metrics, the unit of measure
    */
   unit?: string | undefined;
   /**
@@ -203,9 +211,15 @@ export type AiConfigsMetricListingRep = {
    */
   eventKey?: string | undefined;
   /**
-   * An array of randomization units allowed for this metric
+   * Deprecated, use <code>analysisUnits</code> instead.
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   randomizationUnits?: Array<string> | undefined;
+  /**
+   * An array of analysis units allowed for this metric.
+   */
+  analysisUnits?: Array<string> | undefined;
   filters?: AiConfigsFilter | undefined;
   /**
    * The method by which multiple unit event values are aggregated
@@ -234,6 +248,39 @@ export type AiConfigsMetricListingRep = {
    */
   selector?: string | undefined;
   urls?: Array<{ [k: string]: any }> | undefined;
+  /**
+   * Not yet implemented - The start of the measurement window, in milliseconds relative to the unit's first exposure to a flag variation
+   */
+  windowStartOffset?: number | undefined;
+  /**
+   * Not yet implemented - The end of the measurement window, in milliseconds relative to the unit's first exposure to a flag variation
+   */
+  windowEndOffset?: number | undefined;
+  /**
+   * Lower winsorization percentile, expressed as a percent in the open interval (0, 100). When both bounds are set, defines a two-sided clamp range. Otherwise lower-only winsorization.
+   */
+  winsorLowerPercentile?: number | undefined;
+  /**
+   * Upper winsorization percentile, expressed as a percent in the open interval (0, 100). When both bounds are set, must be greater than winsorLowerPercentile.
+   */
+  winsorUpperPercentile?: number | undefined;
+  /**
+   * When true, the percentile bound calculation includes imputed zeros. Only meaningful when at least one bound is set and the metric includes units that didn't send events.
+   */
+  winsorIncludeImputed?: boolean | undefined;
+  /**
+   * For trace metrics, the trace query to use for the metric.
+   */
+  traceQuery?: string | undefined;
+  /**
+   * For trace metrics, the location in the trace to use for numeric values.
+   */
+  traceValueLocation?: string | undefined;
+  /**
+   * For count_distinct metrics, the column to count distinct values of
+   */
+  unitAggregationField?: string | undefined;
+  denominator?: AiConfigsMetricDenominatorRep | undefined;
 };
 
 /** @internal */
@@ -308,6 +355,7 @@ export const AiConfigsMetricListingRep$inboundSchema: z.ZodType<
   unit: z.string().optional(),
   eventKey: z.string().optional(),
   randomizationUnits: z.array(z.string()).optional(),
+  analysisUnits: z.array(z.string()).optional(),
   filters: AiConfigsFilter$inboundSchema.optional(),
   unitAggregationType:
     AiConfigsMetricListingRepUnitAggregationType$inboundSchema.optional(),
@@ -320,6 +368,15 @@ export const AiConfigsMetricListingRep$inboundSchema: z.ZodType<
   archivedAt: z.number().int().optional(),
   selector: z.string().optional(),
   urls: z.array(z.record(z.any())).optional(),
+  windowStartOffset: z.number().int().optional(),
+  windowEndOffset: z.number().int().optional(),
+  winsorLowerPercentile: z.number().optional(),
+  winsorUpperPercentile: z.number().optional(),
+  winsorIncludeImputed: z.boolean().optional(),
+  traceQuery: z.string().optional(),
+  traceValueLocation: z.string().optional(),
+  unitAggregationField: z.string().optional(),
+  denominator: AiConfigsMetricDenominatorRep$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "_id": "id",
@@ -363,6 +420,7 @@ export type AiConfigsMetricListingRep$Outbound = {
   unit?: string | undefined;
   eventKey?: string | undefined;
   randomizationUnits?: Array<string> | undefined;
+  analysisUnits?: Array<string> | undefined;
   filters?: AiConfigsFilter$Outbound | undefined;
   unitAggregationType?: string | undefined;
   analysisType?: string | undefined;
@@ -374,6 +432,15 @@ export type AiConfigsMetricListingRep$Outbound = {
   archivedAt?: number | undefined;
   selector?: string | undefined;
   urls?: Array<{ [k: string]: any }> | undefined;
+  windowStartOffset?: number | undefined;
+  windowEndOffset?: number | undefined;
+  winsorLowerPercentile?: number | undefined;
+  winsorUpperPercentile?: number | undefined;
+  winsorIncludeImputed?: boolean | undefined;
+  traceQuery?: string | undefined;
+  traceValueLocation?: string | undefined;
+  unitAggregationField?: string | undefined;
+  denominator?: AiConfigsMetricDenominatorRep$Outbound | undefined;
 };
 
 /** @internal */
@@ -411,6 +478,7 @@ export const AiConfigsMetricListingRep$outboundSchema: z.ZodType<
   unit: z.string().optional(),
   eventKey: z.string().optional(),
   randomizationUnits: z.array(z.string()).optional(),
+  analysisUnits: z.array(z.string()).optional(),
   filters: AiConfigsFilter$outboundSchema.optional(),
   unitAggregationType:
     AiConfigsMetricListingRepUnitAggregationType$outboundSchema.optional(),
@@ -423,6 +491,15 @@ export const AiConfigsMetricListingRep$outboundSchema: z.ZodType<
   archivedAt: z.number().int().optional(),
   selector: z.string().optional(),
   urls: z.array(z.record(z.any())).optional(),
+  windowStartOffset: z.number().int().optional(),
+  windowEndOffset: z.number().int().optional(),
+  winsorLowerPercentile: z.number().optional(),
+  winsorUpperPercentile: z.number().optional(),
+  winsorIncludeImputed: z.boolean().optional(),
+  traceQuery: z.string().optional(),
+  traceValueLocation: z.string().optional(),
+  unitAggregationField: z.string().optional(),
+  denominator: AiConfigsMetricDenominatorRep$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     id: "_id",

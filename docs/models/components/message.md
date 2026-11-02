@@ -13,7 +13,7 @@ let value: Message = {
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `content`          | *string*           | :heavy_check_mark: | N/A                |
-| `role`             | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                | Type                                                 | Required                                             | Description                                          |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| `content`                                            | *string*                                             | :heavy_check_mark:                                   | The message text                                     |
+| `role`                                               | *string*                                             | :heavy_check_mark:                                   | The message role, such as system, user, or assistant |

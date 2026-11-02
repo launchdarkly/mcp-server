@@ -130,6 +130,10 @@ let value: AIConfigs = {
           type: "type",
         },
       },
+      site: {
+        href: "href",
+        type: "type",
+      },
       description: "description",
       key: "key",
       maintainer: {
@@ -152,6 +156,20 @@ let value: AIConfigs = {
             },
           },
           color: "color",
+          classifiers: [
+            {
+              key: "key",
+              type: "bool",
+              instructions: "instructions",
+              criteria: "",
+            },
+            {
+              key: "key",
+              type: "bool",
+              instructions: "instructions",
+              criteria: "",
+            },
+          ],
           comment: "comment",
           description: "description",
           instructions: "instructions",
@@ -168,38 +186,52 @@ let value: AIConfigs = {
             },
           ],
           model: {},
-          modelConfigKey: "modelConfigKey",
+          modelConfigKey: "OpenAI.gpt-4.1",
+          modelConfigVersion: 6,
           name: "name",
-          createdAt: 6,
-          version: 1,
-          state: "state",
+          outputFormat: {
+            "key": "",
+          },
+          createdAt: 1,
+          version: 5,
+          state: "published",
           archivedAt: 5,
-          publishedAt: 5,
+          publishedAt: 2,
           tools: [
             {
               key: "key",
-              version: 2,
+              version: 7,
               customParameters: {
                 "key": "",
               },
             },
             {
               key: "key",
-              version: 2,
+              version: 7,
               customParameters: {
                 "key": "",
               },
+            },
+          ],
+          skills: [
+            {
+              key: "key",
+              version: 9,
+            },
+            {
+              key: "key",
+              version: 9,
             },
           ],
           judgeConfiguration: {
             judges: [
               {
                 judgeConfigKey: "judgeConfigKey",
-                samplingRate: 0.7061401,
+                samplingRate: 0.36160767,
               },
               {
                 judgeConfigKey: "judgeConfigKey",
-                samplingRate: 0.7061401,
+                samplingRate: 0.36160767,
               },
             ],
           },
@@ -216,6 +248,20 @@ let value: AIConfigs = {
             },
           },
           color: "color",
+          classifiers: [
+            {
+              key: "key",
+              type: "bool",
+              instructions: "instructions",
+              criteria: "",
+            },
+            {
+              key: "key",
+              type: "bool",
+              instructions: "instructions",
+              criteria: "",
+            },
+          ],
           comment: "comment",
           description: "description",
           instructions: "instructions",
@@ -232,38 +278,52 @@ let value: AIConfigs = {
             },
           ],
           model: {},
-          modelConfigKey: "modelConfigKey",
+          modelConfigKey: "OpenAI.gpt-4.1",
+          modelConfigVersion: 6,
           name: "name",
-          createdAt: 6,
-          version: 1,
-          state: "state",
+          outputFormat: {
+            "key": "",
+          },
+          createdAt: 1,
+          version: 5,
+          state: "published",
           archivedAt: 5,
-          publishedAt: 5,
+          publishedAt: 2,
           tools: [
             {
               key: "key",
-              version: 2,
+              version: 7,
               customParameters: {
                 "key": "",
               },
             },
             {
               key: "key",
-              version: 2,
+              version: 7,
               customParameters: {
                 "key": "",
               },
+            },
+          ],
+          skills: [
+            {
+              key: "key",
+              version: 9,
+            },
+            {
+              key: "key",
+              version: 9,
             },
           ],
           judgeConfiguration: {
             judges: [
               {
                 judgeConfigKey: "judgeConfigKey",
-                samplingRate: 0.7061401,
+                samplingRate: 0.36160767,
               },
               {
                 judgeConfigKey: "judgeConfigKey",
-                samplingRate: 0.7061401,
+                samplingRate: 0.36160767,
               },
             ],
           },
@@ -273,8 +333,8 @@ let value: AIConfigs = {
           ],
         },
       ],
-      createdAt: 9,
-      updatedAt: 3,
+      createdAt: 2,
+      updatedAt: 4,
       evaluationMetricKey: "evaluationMetricKey",
       evaluationMetricKeys: [
         "evaluationMetricKeys",
@@ -393,6 +453,10 @@ let value: AIConfigs = {
           type: "type",
         },
       },
+      site: {
+        href: "href",
+        type: "type",
+      },
       description: "description",
       key: "key",
       maintainer: {
@@ -416,6 +480,20 @@ let value: AIConfigs = {
             },
           },
           color: "color",
+          classifiers: [
+            {
+              key: "key",
+              type: "bool",
+              instructions: "instructions",
+              criteria: "",
+            },
+            {
+              key: "key",
+              type: "bool",
+              instructions: "instructions",
+              criteria: "",
+            },
+          ],
           comment: "comment",
           description: "description",
           instructions: "instructions",
@@ -432,38 +510,52 @@ let value: AIConfigs = {
             },
           ],
           model: {},
-          modelConfigKey: "modelConfigKey",
+          modelConfigKey: "OpenAI.gpt-4.1",
+          modelConfigVersion: 6,
           name: "name",
-          createdAt: 6,
-          version: 1,
-          state: "state",
+          outputFormat: {
+            "key": "",
+          },
+          createdAt: 1,
+          version: 5,
+          state: "published",
           archivedAt: 5,
-          publishedAt: 5,
+          publishedAt: 2,
           tools: [
             {
               key: "key",
-              version: 2,
+              version: 7,
               customParameters: {
                 "key": "",
               },
             },
             {
               key: "key",
-              version: 2,
+              version: 7,
               customParameters: {
                 "key": "",
               },
+            },
+          ],
+          skills: [
+            {
+              key: "key",
+              version: 9,
+            },
+            {
+              key: "key",
+              version: 9,
             },
           ],
           judgeConfiguration: {
             judges: [
               {
                 judgeConfigKey: "judgeConfigKey",
-                samplingRate: 0.7061401,
+                samplingRate: 0.36160767,
               },
               {
                 judgeConfigKey: "judgeConfigKey",
-                samplingRate: 0.7061401,
+                samplingRate: 0.36160767,
               },
             ],
           },
@@ -480,6 +572,20 @@ let value: AIConfigs = {
             },
           },
           color: "color",
+          classifiers: [
+            {
+              key: "key",
+              type: "bool",
+              instructions: "instructions",
+              criteria: "",
+            },
+            {
+              key: "key",
+              type: "bool",
+              instructions: "instructions",
+              criteria: "",
+            },
+          ],
           comment: "comment",
           description: "description",
           instructions: "instructions",
@@ -496,38 +602,52 @@ let value: AIConfigs = {
             },
           ],
           model: {},
-          modelConfigKey: "modelConfigKey",
+          modelConfigKey: "OpenAI.gpt-4.1",
+          modelConfigVersion: 6,
           name: "name",
-          createdAt: 6,
-          version: 1,
-          state: "state",
+          outputFormat: {
+            "key": "",
+          },
+          createdAt: 1,
+          version: 5,
+          state: "published",
           archivedAt: 5,
-          publishedAt: 5,
+          publishedAt: 2,
           tools: [
             {
               key: "key",
-              version: 2,
+              version: 7,
               customParameters: {
                 "key": "",
               },
             },
             {
               key: "key",
-              version: 2,
+              version: 7,
               customParameters: {
                 "key": "",
               },
+            },
+          ],
+          skills: [
+            {
+              key: "key",
+              version: 9,
+            },
+            {
+              key: "key",
+              version: 9,
             },
           ],
           judgeConfiguration: {
             judges: [
               {
                 judgeConfigKey: "judgeConfigKey",
-                samplingRate: 0.7061401,
+                samplingRate: 0.36160767,
               },
               {
                 judgeConfigKey: "judgeConfigKey",
-                samplingRate: 0.7061401,
+                samplingRate: 0.36160767,
               },
             ],
           },
@@ -537,8 +657,8 @@ let value: AIConfigs = {
           ],
         },
       ],
-      createdAt: 9,
-      updatedAt: 3,
+      createdAt: 2,
+      updatedAt: 4,
       evaluationMetricKey: "evaluationMetricKey",
       evaluationMetricKeys: [
         "evaluationMetricKeys",
@@ -557,7 +677,7 @@ let value: AIConfigs = {
       ],
     },
   ],
-  totalCount: 2,
+  totalCount: 7,
 };
 ```
 
@@ -566,5 +686,5 @@ let value: AIConfigs = {
 | Field                                                                                                                                                                                                                           | Type                                                                                                                                                                                                                            | Required                                                                                                                                                                                                                        | Description                                                                                                                                                                                                                     | Example                                                                                                                                                                                                                         |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `links`                                                                                                                                                                                                                         | [components.PaginatedLinks](../../models/components/paginatedlinks.md)                                                                                                                                                          | :heavy_minus_sign:                                                                                                                                                                                                              | N/A                                                                                                                                                                                                                             | {<br/>"next": {<br/>"href": "href",<br/>"type": "type"<br/>},<br/>"last": {<br/>"href": "href",<br/>"type": "type"<br/>},<br/>"prev": {<br/>"href": "href",<br/>"type": "type"<br/>},<br/>"self": {<br/>"href": "href",<br/>"type": "type"<br/>},<br/>"first": {<br/>"href": "href",<br/>"type": "type"<br/>}<br/>} |
-| `items`                                                                                                                                                                                                                         | [components.AIConfig](../../models/components/aiconfig.md)[]                                                                                                                                                                    | :heavy_check_mark:                                                                                                                                                                                                              | N/A                                                                                                                                                                                                                             |                                                                                                                                                                                                                                 |
-| `totalCount`                                                                                                                                                                                                                    | *number*                                                                                                                                                                                                                        | :heavy_check_mark:                                                                                                                                                                                                              | N/A                                                                                                                                                                                                                             |                                                                                                                                                                                                                                 |
+| `items`                                                                                                                                                                                                                         | [components.AIConfig](../../models/components/aiconfig.md)[]                                                                                                                                                                    | :heavy_check_mark:                                                                                                                                                                                                              | The items on this page                                                                                                                                                                                                          |                                                                                                                                                                                                                                 |
+| `totalCount`                                                                                                                                                                                                                    | *number*                                                                                                                                                                                                                        | :heavy_check_mark:                                                                                                                                                                                                              | The total number of items                                                                                                                                                                                                       |                                                                                                                                                                                                                                 |

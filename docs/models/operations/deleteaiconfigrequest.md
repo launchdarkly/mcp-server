@@ -15,5 +15,5 @@ let value: DeleteAIConfigRequest = {
 
 | Field              | Type               | Required           | Description        | Example            |
 | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectKey`       | *string*           | :heavy_check_mark: | N/A                | default            |
-| `configKey`        | *string*           | :heavy_check_mark: | N/A                |                    |
+| `projectKey`       | *string*           | :heavy_check_mark: | The project key    | default            |
+| `configKey`        | *string*           | :heavy_check_mark: | The AI Config key  |                    |

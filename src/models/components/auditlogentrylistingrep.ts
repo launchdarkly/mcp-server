@@ -32,6 +32,24 @@ import {
   ParentResourceRep$outboundSchema,
 } from "./parentresourcerep.js";
 import {
+  RelatedAIConfig,
+  RelatedAIConfig$inboundSchema,
+  RelatedAIConfig$Outbound,
+  RelatedAIConfig$outboundSchema,
+} from "./relatedaiconfig.js";
+import {
+  RelatedExperiment,
+  RelatedExperiment$inboundSchema,
+  RelatedExperiment$Outbound,
+  RelatedExperiment$outboundSchema,
+} from "./relatedexperiment.js";
+import {
+  RelatedFlag,
+  RelatedFlag$inboundSchema,
+  RelatedFlag$Outbound,
+  RelatedFlag$outboundSchema,
+} from "./relatedflag.js";
+import {
   ResourceAccess,
   ResourceAccess$inboundSchema,
   ResourceAccess$Outbound,
@@ -91,6 +109,9 @@ export type AuditLogEntryListingRep = {
    * Optional comment for the audit log entry
    */
   comment?: string | undefined;
+  relatedFlag?: RelatedFlag | undefined;
+  relatedExperiment?: RelatedExperiment | undefined;
+  relatedAIConfig?: RelatedAIConfig | undefined;
   subject?: SubjectDataRep | undefined;
   member?: MemberDataRep | undefined;
   token?: TokenSummary | undefined;
@@ -123,6 +144,9 @@ export const AuditLogEntryListingRep$inboundSchema: z.ZodType<
   description: z.string(),
   shortDescription: z.string(),
   comment: z.string().optional(),
+  relatedFlag: RelatedFlag$inboundSchema.optional(),
+  relatedExperiment: RelatedExperiment$inboundSchema.optional(),
+  relatedAIConfig: RelatedAIConfig$inboundSchema.optional(),
   subject: SubjectDataRep$inboundSchema.optional(),
   member: MemberDataRep$inboundSchema.optional(),
   token: TokenSummary$inboundSchema.optional(),
@@ -150,6 +174,9 @@ export type AuditLogEntryListingRep$Outbound = {
   description: string;
   shortDescription: string;
   comment?: string | undefined;
+  relatedFlag?: RelatedFlag$Outbound | undefined;
+  relatedExperiment?: RelatedExperiment$Outbound | undefined;
+  relatedAIConfig?: RelatedAIConfig$Outbound | undefined;
   subject?: SubjectDataRep$Outbound | undefined;
   member?: MemberDataRep$Outbound | undefined;
   token?: TokenSummary$Outbound | undefined;
@@ -176,6 +203,9 @@ export const AuditLogEntryListingRep$outboundSchema: z.ZodType<
   description: z.string(),
   shortDescription: z.string(),
   comment: z.string().optional(),
+  relatedFlag: RelatedFlag$outboundSchema.optional(),
+  relatedExperiment: RelatedExperiment$outboundSchema.optional(),
+  relatedAIConfig: RelatedAIConfig$outboundSchema.optional(),
   subject: SubjectDataRep$outboundSchema.optional(),
   member: MemberDataRep$outboundSchema.optional(),
   token: TokenSummary$outboundSchema.optional(),

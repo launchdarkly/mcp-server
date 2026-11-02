@@ -9,11 +9,11 @@ let value: JudgeConfiguration = {
   judges: [
     {
       judgeConfigKey: "judgeConfigKey",
-      samplingRate: 0.7061401,
+      samplingRate: 0.36160767,
     },
     {
       judgeConfigKey: "judgeConfigKey",
-      samplingRate: 0.7061401,
+      samplingRate: 0.36160767,
     },
   ],
 };

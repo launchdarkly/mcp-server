@@ -16,6 +16,6 @@ let value: AiConfigsMaintainerTeam = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `key`              | *string*           | :heavy_check_mark: | N/A                |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
+| `key`              | *string*           | :heavy_check_mark: | The team key       |
+| `name`             | *string*           | :heavy_check_mark: | The team name      |
 | `kind`             | *string*           | :heavy_check_mark: | N/A                |

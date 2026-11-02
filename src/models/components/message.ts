@@ -8,7 +8,13 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type Message = {
+  /**
+   * The message text
+   */
   content: string;
+  /**
+   * The message role, such as system, user, or assistant
+   */
   role: string;
 };
 

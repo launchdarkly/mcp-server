@@ -8,8 +8,17 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AIConfigTargetingEnvironmentTarget = {
+  /**
+   * The context kind
+   */
   contextKind: string;
+  /**
+   * The context keys to target
+   */
   values: Array<string>;
+  /**
+   * Index of the variation to serve
+   */
   variation: number;
 };
 

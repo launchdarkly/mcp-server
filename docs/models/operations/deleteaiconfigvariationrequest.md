@@ -14,8 +14,8 @@ let value: DeleteAIConfigVariationRequest = {
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectKey`       | *string*           | :heavy_check_mark: | N/A                |
-| `configKey`        | *string*           | :heavy_check_mark: | N/A                |
-| `variationKey`     | *string*           | :heavy_check_mark: | N/A                |
+| Field                       | Type                        | Required                    | Description                 |
+| --------------------------- | --------------------------- | --------------------------- | --------------------------- |
+| `projectKey`                | *string*                    | :heavy_check_mark:          | The project key             |
+| `configKey`                 | *string*                    | :heavy_check_mark:          | The AI Config key           |
+| `variationKey`              | *string*                    | :heavy_check_mark:          | The AI Config variation key |
